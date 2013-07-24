@@ -6,6 +6,7 @@ class CreatePeople < ActiveRecord::Migration
       t.string :phone
       t.string :mobile
       t.string :email
+      t.references :address
 
       t.timestamps
     end
