@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130724112554) do
+ActiveRecord::Schema.define(version: 20130724122555) do
 
   create_table "addresses", force: true do |t|
     t.string   "dx_number"
@@ -28,24 +28,21 @@ ActiveRecord::Schema.define(version: 20130724112554) do
 
   create_table "claimants", force: true do |t|
     t.integer  "person_id"
+    t.integer  "claim_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "claimants_property_possession_claims", id: false, force: true do |t|
-    t.integer "property_possession_claim_id", null: false
-    t.integer "claimant_id",                  null: false
+  create_table "claims", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "defendants", force: true do |t|
     t.integer  "person_id"
+    t.integer  "claim_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "defendants_property_possession_claims", id: false, force: true do |t|
-    t.integer "property_possession_claim_id", null: false
-    t.integer "defendant_id",                 null: false
   end
 
   create_table "people", force: true do |t|
@@ -55,11 +52,6 @@ ActiveRecord::Schema.define(version: 20130724112554) do
     t.string   "mobile"
     t.string   "email"
     t.integer  "address_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "property_possession_claims", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
