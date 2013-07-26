@@ -11,36 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130724122555) do
-
-  create_table "addresses", force: true do |t|
-    t.string   "dx_number"
-    t.string   "dx_exchange"
-    t.string   "street_1"
-    t.string   "street_2"
-    t.string   "street_3"
-    t.string   "town"
-    t.string   "county"
-    t.string   "postcode"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "claimants", force: true do |t|
-    t.integer  "person_id"
-    t.integer  "claim_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(version: 20130724112554) do
 
   create_table "claims", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "defendants", force: true do |t|
-    t.integer  "person_id"
-    t.integer  "claim_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -51,7 +24,16 @@ ActiveRecord::Schema.define(version: 20130724122555) do
     t.string   "phone"
     t.string   "mobile"
     t.string   "email"
-    t.integer  "address_id"
+    t.string   "dx_number"
+    t.string   "dx_exchange"
+    t.string   "street_1"
+    t.string   "street_2"
+    t.string   "street_3"
+    t.string   "town"
+    t.string   "county"
+    t.string   "postcode"
+    t.string   "type"
+    t.integer  "claim_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

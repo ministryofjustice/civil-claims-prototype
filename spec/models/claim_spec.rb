@@ -5,12 +5,12 @@ describe Claim do
     claim = Claim.new
     claim.save
 
-    person = create(:person)
-    claim.claimants.create(:person_id => person.id)
-    person2 = create(:person)
-    claim.claimants.create(:person_id => person2.id)
+    claimant = Claimant.new(attributes_for :person)
+    claimant.save
+    claim.claimants << claimant
 
-    assert claim.claimants.count == 2
+    assert claim.claimants.count == 1
+
     assert claim.save
   end
 

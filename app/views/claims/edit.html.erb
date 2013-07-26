@@ -1,0 +1,28 @@
+<div class='navbar'>
+  <div class='navbar-inner'>
+    <ul class="nav">
+      <li class='active'><a href='#'>Personal Details</a></li>
+      <li><a href='#'>Claim Particulars</a></li>
+      <li><a href='#'>Court Scheduling</a></li>
+      <li><a href='#'>Statement of Truth</a></li>
+      <li><a href='#'>Fees &amp; Payment</a></li>
+      <li><a href='#'>Confirmation &amp; Next Steps</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="page-header">
+  <h1>1. Personal Details</h1>
+</div>
+<p>Add the details of the claimants and defendants involved in the possession claim</p>
+<a href='#'>About claimants and defendants</a>
+
+<h4>Who is the claimant in this claim</h4>
+<div class="well">
+  <%= render 'person/claimant' %>
+</div>
+
+<h4>Who is the defendant in this claim</h4>
+<div class="well">
+  <%= render 'person/defendant' %>
+</div>

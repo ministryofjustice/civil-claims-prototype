@@ -1,13 +1,18 @@
 CivilClaims::Application.routes.draw do
-  post "claim/create"
-  get "claim/list"
-  get "claim/:id" => "claim#show", as: :claim
-  get "claim/index"
+  post "claims/create"
+  get "claims/list"
+  get "claims/:id" => "claims#show", as: :claim
+  get "claims/index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'claim#index'
+  root 'claims#index'
+
+  resources :claims do
+    resources :claimants
+    resources :defendants
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

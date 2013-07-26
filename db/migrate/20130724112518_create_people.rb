@@ -6,8 +6,18 @@ class CreatePeople < ActiveRecord::Migration
       t.string :phone
       t.string :mobile
       t.string :email
-      t.references :address
 
+      t.string :dx_number
+      t.string :dx_exchange
+      t.string :street_1
+      t.string :street_2
+      t.string :street_3
+      t.string :town
+      t.string :county
+      t.string :postcode
+
+      t.string :type
+      t.references :claim
       t.timestamps
     end
   end

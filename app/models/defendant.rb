@@ -1,0 +1,2 @@
+class Defendant < Person
+end
