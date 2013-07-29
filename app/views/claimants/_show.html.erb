@@ -1,0 +1,10 @@
+<div class='address'>
+  <span class='name'><%= claimant.title + ' ' + claimant.full_name %></span>
+  <% if claimant.street_1 %><span class='address'><%= claimant.street_1 %></span><% end %>
+  <% if claimant.street_2 %><span class='address'><%= claimant.street_2 %></span><% end %>
+  <% if claimant.street_3 %><span class='address'><%= claimant.street_3 %></span><% end %>
+  <% if claimant.town %><span class='address'><%= claimant.town %></span><% end %>
+  <% if claimant.county %><span class='address'><%= claimant.county %></span><% end %>
+  <% if claimant.postcode %><span class='address'><%= claimant.postcode %></span><% end %>
+  <span class='edit'><%= link_to "View/edit full details", show_editor_claim_claimant_path( @claim, claimant ) %></span>
+</div>

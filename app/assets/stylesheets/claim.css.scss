@@ -5,3 +5,27 @@
 .navbar li {
   width: 120px;
 }
+
+.address span {
+  float:left;
+  clear:left;
+}
+
+.user-data ul {
+  float:right;
+}
+
+.user-data ul li {
+  float:left;
+  list-style-type: none;
+}
+
+#new li a {
+  display:block;
+}
+
+.form-horizontal .control-group {
+  margin-bottom:10px;
+}
+
+h2.center { text-align: center; }

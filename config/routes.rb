@@ -1,8 +1,5 @@
 CivilClaims::Application.routes.draw do
-  post "claims/create"
-  get "claims/list"
-  get "claims/:id" => "claims#show", as: :claim
-  get "claims/index"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -10,9 +7,14 @@ CivilClaims::Application.routes.draw do
   root 'claims#index'
 
   resources :claims do
-    resources :claimants
+    resources :claimants do
+      member do
+        get 'show_editor'
+      end
+    end
     resources :defendants
   end
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

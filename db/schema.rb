@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20130724112554) do
   create_table "claims", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "person_id"
   end
 
   create_table "people", force: true do |t|

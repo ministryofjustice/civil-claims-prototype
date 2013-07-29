@@ -1,4 +1,4 @@
-<%= simple_form_for( [@claim, @defendant], html: {class: 'form-horizontal' } ) do |f| %>
+<%= simple_form_for( [@claim, claimant], remote: true, html: {class: 'form-horizontal person' } ) do |f| %>
   <%= f.input :title %>
   <%= f.input :full_name %>
   <%= f.input :phone %>
