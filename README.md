@@ -10,7 +10,9 @@ ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)" # install brew
   
 brew doctor # check brew installation
 
-curl -L https://get.rvm.io | bash -s stable --rails --autolibs=enabled # install RVM
+curl -L https://get.rvm.io | bash -s stable --rails --autolibs=enabled # install RVM  
+
+source ~/.bash_profile
 ```
 
 - Install http://postgresapp.com/
@@ -18,8 +20,8 @@ curl -L https://get.rvm.io | bash -s stable --rails --autolibs=enabled # install
 - After installation, click the elephant icon in the task bar and select `open psql`
 
 - In the terminal window that opens, type:
-`create database pcol_dev`
-After a brief wait, it should come back affirmative.
+`create database pcol_dev;`
+After a brief pause, it should say 'CREATE DATABASE.
 
 
 - You'll need an account on `github.com` if you don't already have one. Speak to a DSD team developer to get your account linked to the MoJ organisation on Github.
@@ -30,8 +32,9 @@ After a brief wait, it should come back affirmative.
 mkdir ~/Sites  
 cd ~/Sites  
 git clone git@github.com:ministryofjustice/civil-claims.git  
-cd civil-claims  
-rake db:create  
+cd civil-claims
+gem install   
+bundle install  
 rake db:migrate  
 rake db:seed  
 rails s  
@@ -53,3 +56,10 @@ $ rails s
 - If this is the case, you can access your local copy of the Civil Claims alpha prototype at the folllowing URL: `http://localhost:3000`
  
 - If it didn't work out quite like that, you might want to consider speaking to one of the DSD development team.
+
+- If you reboot your laptop, you'll need to restart the application. Do it in terminal.app, like this:  
+```
+cd ~/Sites/civil-claims
+rails s
+```
+
