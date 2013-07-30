@@ -35,6 +35,13 @@ class ClaimsController < ApplicationController
     render "claims/edit"
   end
 
+  def delete_all
+    Claim.delete_all
+    reset_session
+      
+    redirect_to root_path
+  end
+
   def init_editables(claim)
     session[claim.id] = {}
     claimant_ids = claim.claimants.map { |claimant| claimant.id }

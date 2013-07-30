@@ -29,3 +29,13 @@
 }
 
 h2.center { text-align: center; }
+
+.form-horizontal .controls { margin-left: 160px; }
+.form-horizontal .control-label { text-align: left; }
+
+.claimant_postcode { float:left; }
+.claimant_postcode .controls { margin-left: 0; float: left; }
+.claimant_postcode input { width: 6em; }
+.address-lookup { float:left; margin:2px 10px; }
+.person input.special { float:left; margin-right: 5px; }
+.person input.break { clear:left; }
