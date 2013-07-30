@@ -5,7 +5,7 @@ class ClaimantsController < ApplicationController
 
     hide_editor
 
-    if params[:commit] == 'SAVE'
+    if params[:commit].downcase == 'save'
       params.permit!
       claimant.update_attributes!(params[:claimant])
     end
@@ -38,7 +38,7 @@ class ClaimantsController < ApplicationController
 
     hide_editor
 
-    if params[:commit] == 'SAVE'
+    if params[:commit].downcase == 'save'
       params.permit!
       claimant = Claimant.create(params[:claimant])
       @claim.claimants << claimant
