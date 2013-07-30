@@ -50,6 +50,6 @@ $ rails s
 [2013-07-30 14:01:23] INFO  WEBrick::HTTPServer#start: pid=2374 port=3000  
 ```
 
-- If this is the case, you can access your local copy of the civil claims alpha prototype at the folllowing URL: `http://localhost:3000`
+- If this is the case, you can access your local copy of the Civil Claims alpha prototype at the folllowing URL: `http://localhost:3000`
  
 - If it didn't work out quite like that, you might want to consider speaking to one of the DSD development team.
