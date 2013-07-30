@@ -14,7 +14,11 @@ CivilClaims::Application.routes.draw do
         get 'show_editor'
       end
     end
-    resources :defendants
+    resources :defendants do
+      member do
+        get 'show_editor'
+      end
+    end
   end
 
 

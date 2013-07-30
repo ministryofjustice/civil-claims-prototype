@@ -8,7 +8,7 @@ $('#claims-index-tabs li.list a').click(function (e) {
   $(this).tab('show');
 });
 
-$('.address-lookup').click(function (e) {
+$('input.address-lookup').click(function (e) {
   console.log('asd');
- console.log(this.parent.html)
+  console.log(this.parent.html)
 });

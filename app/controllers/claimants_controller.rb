@@ -18,7 +18,7 @@ class ClaimantsController < ApplicationController
 
   def new
     @claim = Claim.find(params[:claim_id])
-    @claim.claimants << Claimant.create
+    @claim.claimants << Claimant.new
 
     redirect_to claim_path @claim
   end
