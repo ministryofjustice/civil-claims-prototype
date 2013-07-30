@@ -24,12 +24,12 @@ After a brief wait, it should come back affirmative.
 
 - You'll need an account on `github.com` if you don't already have one. Speak to a DSD team developer to get your account linked to the MoJ organisation on Github.
 
-- In terminal.app, enter each line followed by enter:  
+- In terminal.app, enter each of the following lines followed by enter.
+
 ```
 mkdir ~/Sites  
 cd ~/Sites  
 git clone git@github.com:ministryofjustice/civil-claims.git  
-
 cd civil-claims  
 rake db:create  
 rake db:migrate  
