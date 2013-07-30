@@ -6,6 +6,8 @@ CivilClaims::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'claims#index'
 
+  # relax, it's a prototype.
+  get 'claims/:id/delete' => 'claims#delete', as: :claim_delete
   get "claims/delete_all" => "claims#delete_all"
 
   resources :claims do

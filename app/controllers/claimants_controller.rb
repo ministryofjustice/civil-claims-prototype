@@ -17,10 +17,13 @@ class ClaimantsController < ApplicationController
   end
 
   def new
-    @claim = Claim.find(params[:claim_id])
-    @claim.claimants << Claimant.new
+    claim = Claim.find(params[:claim_id])
+    claimant = Claimant.new(Person.generate)
+    claim.claimants << claimant
 
-    redirect_to claim_path @claim
+    session[claim.id][claimant.id] = true
+
+    redirect_to claim_path claim
   end
 
   def show

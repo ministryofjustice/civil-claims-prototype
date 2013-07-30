@@ -48,6 +48,9 @@ group :development, :test do
   gem "factory_girl_rails", "~> 4.0"
 end
 
+# it's a prototype after all
+gem "random_data", "~> 1.6.0"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

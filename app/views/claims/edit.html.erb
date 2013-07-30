@@ -22,7 +22,7 @@
   <h4>Who is the claimant in this claim</h4>
   <% @claim.claimants.each do |claimant| %>
     <div class="well clearfix">
-      <% if(claimant.full_name && !@editors[claimant.id]) %>
+      <% if(!@editors[claimant.id]) %>
         <%= render partial: 'claimants/show', locals: {claimant: claimant} %>
       <% else %>
         <%= render partial: 'claimants/edit', locals: {claimant: claimant} %>
@@ -37,12 +37,15 @@
 
   <h4>Who is the defendant in this claim</h4>
   <% @claim.defendants.each do |defendant| %>
-    <div class="well">
+    <div class="well clearfix">
       <% if(defendant.full_name && !@editors[defendant.id]) %>
         <%= render partial: 'defendants/show', locals: {defendant: defendant} %>
       <% else %>
         <%= render partial: 'defendants/edit', locals: {defendant: defendant} %>
       <% end %>
     </div>
+  <% end %>
+  <%= form_tag(new_claim_defendant_path( @claim ), method: "get") do %>
+    <%= submit_tag("Add a co-defendant") %>
   <% end %>
 </section>

@@ -53,9 +53,23 @@
     <% end %>
   </div>
   <div class='tab-pane well' id='list'>
-    <ul class='claims'>
+    <ul class='claims' id='claims-list'>
       <% @user.claims.each do |claim| %>
-        <li><%= link_to @claim_id, claim_path(claim) %></li>
+        <li class='clearfix'>
+          <div class='claim_id'>
+            <span class='title'>Claim</span>
+            <span class='content'><%= claim.id %></span>
+          </div>
+          <div class='participants'>
+            <span class='title'>Claimant/Defendant Names</span>
+            <span class='content'><%= claim.claimants.first.full_name %> vs <%= claim.defendants.first.full_name %></span>
+          </div>
+          <div class='controls'>
+             <span><%= link_to 'Continue', claim_path(claim) %></span>
+             <span><%= link_to 'Delete', claim_delete_path(claim) %></span>
+          </div>
+         
+        </li>
       <% end %>
     </ul>
   </div>

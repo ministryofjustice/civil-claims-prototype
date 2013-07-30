@@ -4,17 +4,20 @@ class ClaimsController < ApplicationController
     @user = get_user
   end
 
+  def delete
+    Claim.find(params[:id]).delete
+    redirect_to root_path
+  end
+
   def create
     @user = get_user
 
     @claim = Claim.new
     @claim.user = @user
-
     person_hash = @user.attributes.except('type').except('id')
-    logger.debug(person_hash)
 
     @claimant = Claimant.new(person_hash)
-    @defendant = Defendant.new
+    @defendant = Defendant.new(Person.generate)
 
     @claim.claimants << @claimant
     @claim.defendants << @defendant

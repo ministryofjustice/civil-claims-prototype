@@ -1,7 +1,7 @@
 class DefendantsController < ApplicationController
   def update
     claim = Claim.find(params[:claim_id])
-    defendant = defendant.find(params[:id])
+    defendant = Defendant.find(params[:id])
 
     hide_editor
 
@@ -17,15 +17,18 @@ class DefendantsController < ApplicationController
   end
 
   def new
-    @claim = Claim.find(params[:claim_id])
-    @claim.defendants << defendant.new
+    claim = Claim.find(params[:claim_id])
+    defendant = Defendant.new(Person.generate)
+    claim.defendants << defendant
 
-    redirect_to claim_path @claim
+    session[claim.id][defendant.id] = true
+
+    redirect_to claim_path claim
   end
 
   def show
     @claim = Claim.find(params[:claim_id])
-    @defendant = defendant.find(params[:id])
+    @defendant = Defendant.find(params[:id])
 
     respond_to do |format|
       format.html { redirect_to claim_path @claim }
@@ -40,7 +43,7 @@ class DefendantsController < ApplicationController
 
     if params[:commit].downcase == 'save'
       params.permit!
-      defendant = defendant.create(params[:defendant])
+      defendant = Defendant.create(params[:defendant])
       @claim.defendants << defendant
       @claim.save
     end
