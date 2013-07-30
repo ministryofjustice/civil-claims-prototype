@@ -8,6 +8,9 @@ gem 'rails', '4.0.0'
 # Use postgres as the database for Active Record
 gem 'pg'
 
+# for Heroku
+gem 'rails_12factor', group: :production
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -43,7 +46,6 @@ end
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
   gem "factory_girl_rails", "~> 4.0"
-  gem 'sqlite3' # sqlite in dev / test
 end
 
 # Use ActiveModel has_secure_password
