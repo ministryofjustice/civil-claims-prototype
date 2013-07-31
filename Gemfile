@@ -43,9 +43,16 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :development do
+  gem 'guard'
+  gem 'guard-rails'
+  gem 'guard-rspec'
+end
+
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
   gem "factory_girl_rails", "~> 4.0"
+  gem 'sqlite3', '1.3.7'
 end
 
 # it's a prototype after all
