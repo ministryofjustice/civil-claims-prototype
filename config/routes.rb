@@ -10,17 +10,11 @@ CivilClaims::Application.routes.draw do
   get 'claims/:id/delete' => 'claims#delete', as: :claim_delete
   get "claims/delete_all" => "claims#delete_all"
 
+  get "people/:id/show_editor" => 'people#show_editor', as: :show_editor
+
   resources :claims do
-    resources :claimants do
-      member do
-        get 'show_editor'
-      end
-    end
-    resources :defendants do
-      member do
-        get 'show_editor'
-      end
-    end
+    resources :claimants
+    resources :defendants
   end
 
 

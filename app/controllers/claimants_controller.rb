@@ -3,8 +3,6 @@ class ClaimantsController < ApplicationController
     claim = Claim.find(params[:claim_id])
     claimant = Claimant.find(params[:id])
 
-    hide_editor
-
     if params[:commit].downcase == 'save'
       params.permit!
       claimant.update_attributes!(params[:claimant])
@@ -54,16 +52,4 @@ class ClaimantsController < ApplicationController
     end
   end
 
-  def hide_editor
-    claim = Claim.find(params[:claim_id])
-    session[claim.id] ||= {}
-    session[claim.id][params[:id].to_i] = false
-  end
-
-  def show_editor
-    claim = Claim.find(params[:claim_id])
-    session[claim.id] ||= {}
-    session[claim.id][params[:id].to_i] = true
-    redirect_to claim_path claim
-  end
 end

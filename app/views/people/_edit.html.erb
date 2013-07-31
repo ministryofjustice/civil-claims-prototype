@@ -1,0 +1,12 @@
+<%= simple_form_for( [@claim, person], remote: true, html: {class: 'form-horizontal person' } ) do |f| %>
+  <%= f.input :title %>
+  <%= f.input :full_name %>
+  <%= f.input :phone %>
+  <%= f.input :mobile %>
+  <%= f.input :email %>
+
+  <%= render partial: "addresses/edit", formats: [:html], locals: {address: person.address, f: f} %>
+
+  <%= f.submit :Save,  :class => 'special break' %>
+  <%= f.submit :Cancel, :class => 'special' %>
+<% end %>

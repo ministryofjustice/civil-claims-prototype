@@ -1,5 +1,5 @@
 class Person < ActiveRecord::Base
-  has_one :claim
+  belongs_to :claim
   belongs_to :address
 
   def self.create_random

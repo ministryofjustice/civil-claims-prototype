@@ -1,0 +1,12 @@
+<% if !(address.postcode.to_s != '' && address.street_1.to_s != '') %>
+  <div class='control-group'><a href="#">Do you have a DX number?</a></div>
+  <%= f.input :postcode %>
+  <input type='button' value='Find UK address' class='address-lookup' />
+<% else %>
+  <%= f.input address.street_1 %>
+  <%= f.input address.street_2 %>
+  <%= f.input address.street_3 %>
+  <%= f.input address.town %>
+  <%= f.input address.county %>
+  <%= f.input address.postcode %>
+<% end %>
