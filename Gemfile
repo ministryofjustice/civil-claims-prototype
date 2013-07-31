@@ -47,6 +47,9 @@ group :development do
   gem 'guard'
   gem 'guard-rails'
   gem 'guard-rspec'
+  gem 'spork', '1.0.0rc3'
+  gem 'spork-rails', :github => 'sporkrb/spork-rails'
+  gem 'guard-spork'
 end
 
 group :development, :test do
