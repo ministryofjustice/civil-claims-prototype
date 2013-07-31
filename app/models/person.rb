@@ -1,5 +1,10 @@
 class Person < ActiveRecord::Base
   has_one :claim
+  belongs_to :address
+
+  def self.create_random
+    self.create(generate)
+  end
 
   def self.generate
     {
@@ -7,10 +12,7 @@ class Person < ActiveRecord::Base
       :title      => %w(Mr Mrs Miss Ms Dr).sample,
       :phone      => Random.phone,
       :email      => Random.email,
-      :street_1   => Random.address_line_1,
-      :street_2   => Random.address_line_2,
-      :postcode   => Random.uk_post_code,
-      :town       => Random.city
+      :address    => Address.create_random
     }
   end
 end
