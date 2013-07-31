@@ -2,6 +2,31 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+body { padding-top: 110px; }
+
+main { padding-top: 12px; }
+
+header {
+  h2 {
+    float:left; 
+    margin-top:0px;
+    a:hover { text-decoration: none; }
+  }
+  section.user-data { 
+    position: absolute; 
+    bottom:0px; 
+    right:0px; 
+    ul {
+      float:right;
+      li {
+        float:left;
+        list-style-type: none;
+      }
+    }
+  }
+}
+
 .navbar li {
   width: 120px;
 }
@@ -9,15 +34,6 @@
 .address span {
   float:left;
   clear:left;
-}
-
-.user-data ul {
-  float:right;
-}
-
-.user-data ul li {
-  float:left;
-  list-style-type: none;
 }
 
 #new li a {

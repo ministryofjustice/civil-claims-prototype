@@ -1,55 +1,54 @@
-<h2>Recover Property: Make a possession claim online</h1>
-<p>You can take court action to repossess a property if you are owed money for rent or mortgage, and the tenant or mortgage holder wont pay.</p>
-
+<p><b>Use this online form to repossess a property if your tenant or a mortgage borrower doesn't keep up with payments or won't leave the property.</b></p>
+<p>The form will take about 20 minutes to complete.</p>
+<p>You will have to pay a £100 court fee.</p>
+<p>You may have to go to a court hearing afterwards.</p>
+<p>The whole process usually takes at least 12 weeks.</p>
 <% if @user.claims.size > 0 %>
 <ul class='nav nav-tabs' id='claims-index-tabs'>
-  <li class='active submit'><a href='#new' data-toggle="tab">Submit a new claim</a></li>
+  <li class='active submit'><a href='#new' data-toggle="tab">Start a new claim</a></li>
   <li class='list'><a href='#list' data-toggle="tab">Your claims</a></li>
 </ul>
 <% else %>
-<h4>Submit a new claim</h4>
+<h4>Start a new claim</h4>
 <% end %>
 
 <div class='tab-content'>
   <div class='tab-pane active well' id='new'>
-    <p>To submit a new claim, follow the steps below</p>
+    <p>To start court action to repossess a property, follow the steps below:</p>
     <ol>
       <li>
-        <h4>Confirm people involved</h4>
-        <p>The details of all the parties involved in the claim,
-          any co-claimants and all defendants.
+        <h4>Name people involved</h4>
+        <p>Fill in your details and the name of your tenant or borrower.
           <a href='#'>More about defendants and co-claimants</a>
         </p>
       </li>
       <li>
-        <h4>Details of the claim</h4>
-        <p>All the claim particulars including address for possession,
-          grounds for possession, details of tenancy and the defendants.
+        <h4>Give details of property</h4>
+        <p>Include the address and why you want the property back.
           <a href='#'>More about claim details</a>
         </p>
       </li>
       <li>
-        <h4>Statement of truth</h4>
-        <p>Confirm that all details of case being brought are correct.
+        <h4>Check and confirm information</h4>
+        <p>Check all the details and confirm they are correct.
           <a href='#'>More about making a statement of truth</a>
         </p>
       </li>
       <li>
-        <h4>Fee payment</h4>
-        <p>When everything is correct and you are ready to pay the &pound;100 fee
+        <h4>Pay court fee</h4>
+        <p>Pay the &pound;100 court fee using a debit or credit card.
         </p>
       </li>
       <li>
         <h4>Confirmation and next steps</h4>
-        <p>Get confirmation of which court and when, what you will
-          need to bring to court and what happens next.
+        <p>We'll confirm receipt of your claim and tell you what happens next.
           <a href='#'>More about what happens next</a>
         </p>
       </li>
     </ul>
 
     <%= form_tag(claims_path, method: "post") do %>
-      <%= submit_tag("SUBMIT NEW CLAIM") %>
+      <%= submit_tag("Start a new claim") %>
     <% end %>
   </div>
   <div class='tab-pane well' id='list'>
