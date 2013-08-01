@@ -9,6 +9,8 @@ class PeopleController < ApplicationController
       person.address.update_attributes!(params[:address])
     end
 
+    session['editors'][person.id] = false
+
     respond_to do |format|
       format.html { redirect_to claim_path claim }
       format.js { redirect_to claim_person_path claim, person }

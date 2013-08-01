@@ -24,15 +24,14 @@ class ClaimsController < ApplicationController
   def show
     @claim = Claim.find(params[:id], :include => [{:claimants => :address}, {:defendants => :address}])
     @editors = session['editors'] || {}
+    logger.debug(@editors)
   
     render "claims/edit"
   end
-
 
   private 
 
   def pretend_to_login
     @user = User.at_random
-    logger.debug @user
   end
 end
