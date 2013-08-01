@@ -1,0 +1,2 @@
+myHtml = '<%=j render partial: "people/show", formats: [:html], locals: {person: person}  %>';
+$('<%= "#edit-person-#{person.id.to_s}" %>').html(myHtml).effect('highlight');

@@ -1,2 +1,14 @@
-<%= debug address %>
-<%= debug f %>
+<%= simple_fields_for( address ) do |f| %>
+  <% if !(:postcode.to_s != '' && :street_1.to_s != '') %>
+    <div class='control-group'><a href="#">Do you have a DX number?</a></div>
+    <%= f.input :postcode %>
+    <input type='button' value='Find UK address' class='address-lookup' />
+  <% else %>
+    <%= f.input :street_1 %>
+    <%= f.input :street_2 %>
+    <%= f.input :street_3 %>
+    <%= f.input :town %>
+    <%= f.input :county %>
+    <%= f.input :postcode %>
+  <% end %>
+<% end %>

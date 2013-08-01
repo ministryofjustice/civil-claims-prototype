@@ -18,27 +18,16 @@ class ClaimsController < ApplicationController
     @claim.claimants << Claimant.new(@user.attributes.except('type', 'id'))
     @claim.defendants << Defendant.create_random
     @claim.save
-
     redirect_to claim_path @claim
   end
 
   def show
-    @claim = Claim.find(params[:id])
-    init_editables(@claim) if(!session[@claim.id])
-
-    @editors = session[@claim.id]
+    @claim = Claim.find(params[:id], :include => [{:claimants => :address}, {:defendants => :address}])
+    @editors = session['editors'] || {}
   
     render "claims/edit"
   end
 
-  def init_editables(claim)
-    session[claim.id] = {}
-    claimant_ids = claim.claimants.map { |claimant| claimant.id }
-    defendant_ids = claim.defendants.map { |defendant| defendant.id }
-    (claimant_ids + defendant_ids).each do |id|
-      session[claim.id][id] = false
-    end
-  end
 
   private 
 
