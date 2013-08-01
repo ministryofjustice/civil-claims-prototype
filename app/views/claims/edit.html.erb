@@ -20,32 +20,34 @@
   <a href='#'>About claimants and defendants</a>
 
   <h4>Who is the claimant in this claim</h4>
-  <% @claim.claimants.each do |claimant| %>
+  <% @claim.claimants.each do |person| %>
     <div class="well clearfix">
-      <% if(!@editors[claimant.id]) %>
-        <%= render partial: 'claimants/show', locals: {claimant: claimant} %>
+      <% if(@editors[person.id]) %>
+        <%= render partial: 'people/edit', locals: {person: person} %>
       <% else %>
-        <%= render partial: 'claimants/edit', locals: {claimant: claimant} %>
+        <%= render partial: 'people/show', locals: {person: person} %>
       <% end %>
     </div>
   <% end %>
-  <%= form_tag(new_claim_claimant_path( @claim ), method: "get") do %>
+  <%= form_tag(new_claim_person_path( @claim ), method: "get") do %>
+    <%= hidden_field_tag 'type', 'claimant' %>
     <%= submit_tag("Add a co-claimant") %>
   <% end %>
 
   <h2 class='center'>vs</h2>
 
   <h4>Who is the defendant in this claim</h4>
-  <% @claim.defendants.each do |defendant| %>
+  <% @claim.defendants.each do |person| %>
     <div class="well clearfix">
-      <% if(defendant.full_name && !@editors[defendant.id]) %>
-        <%= render partial: 'defendants/show', locals: {defendant: defendant} %>
+      <% if(@editors[person.id]) %>
+        <%= render partial: 'people/edit', locals: {person: person} %>
       <% else %>
-        <%= render partial: 'defendants/edit', locals: {defendant: defendant} %>
+        <%= render partial: 'people/show', locals: {person: person} %>
       <% end %>
     </div>
   <% end %>
-  <%= form_tag(new_claim_defendant_path( @claim ), method: "get") do %>
+  <%= form_tag(new_claim_person_path( @claim ), method: "get") do %>
+    <%= hidden_field_tag 'type', 'defendant' %>
     <%= submit_tag("Add a co-defendant") %>
   <% end %>
 </section>

@@ -56,6 +56,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 2.0'
   gem "factory_girl_rails", "~> 4.0"
   gem 'sqlite3', '1.3.7'
+  gem "assert_difference", "~> 0.5.0"
 end
 
 # it's a prototype after all
