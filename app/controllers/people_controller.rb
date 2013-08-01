@@ -41,6 +41,7 @@ class PeopleController < ApplicationController
 
     claim.save
 
+    session['editors'] ||= {}
     session['editors'][person.id] = true
     redirect_to claim_path claim
   end
@@ -48,14 +49,13 @@ class PeopleController < ApplicationController
 
   def show_editor
     person = Person.find(params[:id])
-    session['editors'] ||= {}
-    session['editors'][person.id] = true
+    super(person.id)
 
     redirect_to claim_path(person.claim)
   end
 
   def hide_editor
-    session['editors'][params[:id].to_i] = false
+    super(params[:id].to_i)
   end
 
 end
