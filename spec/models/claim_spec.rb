@@ -1,17 +1,32 @@
 require 'spec_helper'
 
 describe Claim do
-  it 'can add claimants' do
-    claim = Claim.new
-    claim.save
+  before :each do
+    @claim = Claim.new
+  end
 
-    claimant = Claimant.new(attributes_for :person)
-    claimant.save
-    claim.claimants << claimant
+  it 'has an owner' do
+    @claim.owner = User.create_random
+    assert @claim.save
+  end
 
-    assert claim.claimants.count == 1
+  it 'has 0 or more claimants' do
+    assert @claim.claimants.empty?
+    assert @claim.claimants << Claimant.create_random
+    assert @claim.claimants.size == 1
+    assert @claim.save
+  end
 
-    assert claim.save
+  it 'has 0 or more defendants' do
+    assert @claim.defendants << Defendant.create_random
+    assert @claim.defendants << Defendant.create_random
+    assert @claim.defendants.size == 2
+    assert @claim.save
+  end
+
+  it 'has an address for repossession' do
+    @claim.address_for_possession = Address.create_random
+    assert @claim.save
   end
 
 end

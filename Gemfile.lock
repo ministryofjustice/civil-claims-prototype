@@ -34,6 +34,7 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     arel (4.0.0)
+    assert_difference (0.5.0)
     atomic (1.1.10)
     bootstrap-sass (2.3.2.1)
       sass (~> 3.2)
@@ -190,6 +191,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  assert_difference (~> 0.5.0)
   bootstrap-sass (~> 2.3.2.1)
   coffee-rails (~> 4.0.0)
   factory_girl_rails (~> 4.0)

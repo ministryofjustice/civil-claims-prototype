@@ -1,56 +1,37 @@
 class ClaimsController < ApplicationController
-
-  def index
-    @user = get_user
-  end
+  before_action :pretend_to_login
 
   def delete
     Claim.find(params[:id]).delete
     redirect_to root_path
   end
 
+  def delete_all
+    Claim.delete_all
+    reset_session    
+    redirect_to root_path
+  end
+
   def create
-    @user = get_user
-
     @claim = Claim.new
-    @claim.user = @user
-    person_hash = @user.attributes.except('type').except('id')
-
-    @claimant = Claimant.new(person_hash)
-    @defendant = Defendant.new(Person.generate)
-
-    @claim.claimants << @claimant
-    @claim.defendants << @defendant
-
+    @claim.owner = @user
+    @claim.claimants << Claimant.new(@user.attributes.except('type', 'id'))
+    @claim.defendants << Defendant.create_random
     @claim.save
-
     redirect_to claim_path @claim
   end
 
   def show
-    @user = get_user
-
-    @claim = Claim.find(params[:id])
-    init_editables(@claim) if(!session[@claim.id])
-
-    @editors = session[@claim.id]
+    @claim = Claim.find(params[:id], :include => [{:claimants => :address}, {:defendants => :address}])
+    @editors = session['editors'] || {}
+    logger.debug(@editors)
   
     render "claims/edit"
   end
 
-  def delete_all
-    Claim.delete_all
-    reset_session
-      
-    redirect_to root_path
-  end
+  private 
 
-  def init_editables(claim)
-    session[claim.id] = {}
-    claimant_ids = claim.claimants.map { |claimant| claimant.id }
-    defendant_ids = claim.defendants.map { |defendant| defendant.id }
-    (claimant_ids + defendant_ids).each do |id|
-      session[claim.id][id] = false
-    end
+  def pretend_to_login
+    @user = User.at_random
   end
 end
