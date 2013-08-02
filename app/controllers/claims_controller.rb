@@ -31,6 +31,22 @@ class ClaimsController < ApplicationController
     @claim = Claim.find(params[:id])
   end
 
+  def scheduling
+    @claim = Claim.find(params[:id])
+  end
+
+  def statement
+    @claim = Claim.find(params[:id])
+  end
+
+  def fees
+    @claim = Claim.find(params[:id])
+  end
+
+  def confirmation
+    @claim = Claim.find(params[:id])
+  end
+
   private 
 
   def pretend_to_login

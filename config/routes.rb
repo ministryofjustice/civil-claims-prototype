@@ -15,7 +15,12 @@ CivilClaims::Application.routes.draw do
 
   get 'claims/:id' => 'claims#personal_details', as: :show_claim
   get 'claims/:id/particulars' => 'claims#particulars'
-  
+  get 'claims/:id/scheduling' => 'claims#scheduling'
+  get 'claims/:id/statement' => 'claims#statement'
+  get 'claims/:id/fees' => 'claims#fees'
+  get 'claims/:id/confirmation' => 'claims#confirmation'
+
+
   resources :claims do
     resources :people do
       resources :address
