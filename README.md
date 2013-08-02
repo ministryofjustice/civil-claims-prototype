@@ -32,8 +32,7 @@ After a brief pause, it should say 'CREATE DATABASE.
 mkdir ~/Sites  
 cd ~/Sites  
 git clone git@github.com:ministryofjustice/civil-claims.git  
-cd civil-claims
-gem install   
+cd civil-claims  
 bundle install  
 rake db:migrate  
 rake db:seed  
