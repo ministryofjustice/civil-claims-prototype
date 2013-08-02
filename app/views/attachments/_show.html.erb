@@ -1,11 +1,14 @@
 <p>Attach any documents to support your claim</p>
 
 <div>
-	<button type="button" class="btn btn-primary">Select</button>
-	<button type="button" class="btn btn-success">Attach</button>
+	<button id="attachment-select" type="button" class="btn btn-primary">Select</div>
 </div>
 <p>
   <a href="#">About supporting documentation</a>
-  
 </p>
+<br/>
+
+<div id="attachment-list" hidden>
+	<%= render partial: 'attachments/list' %>
+</div>
 
