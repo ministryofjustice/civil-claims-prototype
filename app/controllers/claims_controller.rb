@@ -17,6 +17,7 @@ class ClaimsController < ApplicationController
     @claim.owner = @user
     @claim.claimants << Claimant.new(@user.attributes.except('type', 'id'))
     @claim.defendants << Defendant.create_random
+    @claim.address_for_possession = Address.create_random
     @claim.save
     redirect_to claim_path @claim
   end
@@ -24,9 +25,8 @@ class ClaimsController < ApplicationController
   def show
     @claim = Claim.find(params[:id], :include => [{:claimants => :address}, {:defendants => :address}])
     @editors = session['editors'] || {}
-    logger.debug(@editors)
   
-    render "claims/edit"
+    render "claims/personal_details"
   end
 
   private 

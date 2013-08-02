@@ -62,3 +62,8 @@ h2.center { text-align: center; }
 #claims-list span.content { float:left; clear:left; }
 #claims-list .participants { float:left; width: 300px; }
 #claims-list .controls span { display:inline-block; padding: 3px 5px; background-color: #cccccc; margin-top: 8px; }
+
+.radios {
+  label { float:left; margin: 0 50px 0 20px; }
+  input { float:left; }
+}

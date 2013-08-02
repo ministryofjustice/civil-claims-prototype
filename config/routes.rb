@@ -9,6 +9,7 @@ CivilClaims::Application.routes.draw do
   # relax, it's a prototype.
   get 'claims/:id/delete' => 'claims#delete', as: :claim_delete
   get "claims/delete_all" => "claims#delete_all"
+  post "claims/:id/update" => "claims#update", as: :update_claim
 
   get "people/:id/editor" => 'people#show_editor', as: :show_editor
 
