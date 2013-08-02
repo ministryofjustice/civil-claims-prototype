@@ -14,8 +14,9 @@ gem 'rails_12factor', group: :production
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
-# bootstrap, naturally
-gem 'bootstrap-sass', '~> 2.3.2.1'
+# bootstrap 3
+gem 'therubyracer' 
+gem 'less-rails-bootstrap', '~> 3.0.0.wip', github: 'sinfin/less-rails-bootstrap-3'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
