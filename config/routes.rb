@@ -13,6 +13,9 @@ CivilClaims::Application.routes.draw do
 
   get "people/:id/editor" => 'people#show_editor', as: :show_editor
 
+  get 'claims/:id' => 'claims#personal_details', as: :show_claim
+  get 'claims/:id/particulars' => 'claims#particulars'
+  
   resources :claims do
     resources :people do
       resources :address

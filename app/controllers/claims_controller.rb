@@ -22,11 +22,13 @@ class ClaimsController < ApplicationController
     redirect_to claim_path @claim
   end
 
-  def show
+  def personal_details
     @claim = Claim.find(params[:id], :include => [{:claimants => :address}, {:defendants => :address}])
     @editors = session['editors'] || {}
-  
-    render "claims/personal_details"
+  end
+
+  def particulars
+    @claim = Claim.find(params[:id])
   end
 
   private 
