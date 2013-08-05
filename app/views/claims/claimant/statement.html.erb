@@ -30,10 +30,10 @@
     <%= render :partial => 'addresses/show', :locals => { address: @claim.address_for_possession } %>
   </div>
 
-  <%= simple_form_for @claim, :url => claim_path(@claim), :class => 'form-horizontal' do |f| %>
+  <%= simple_form_for @claim, :url => update_claim_path(@claim), :class => 'form-horizontal' do |f| %>
     <div class='panel'>
       <div class='panel'>
-        <%= check_box_tag(:signature) %>
+        <%= f.check_box(:signature) %>
         <%= label_tag(:signature, "I believe that the facts stated in this claim (and any attached documents) are to the best of my knowledge true and correct.") %>
       </div>
       <div class="alert alert-danger">
