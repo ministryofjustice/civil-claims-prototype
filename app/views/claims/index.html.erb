@@ -14,10 +14,10 @@
 
 <div class='tab-content'>
   <div class='tab-pane active well' id='new'>
-    <%= render partial: 'claims/home' %>
+    <%= render partial: 'claims/claimant/home' %>
   </div>
   <div class='tab-pane well' id='list'>
-    <%= render partial: 'claims/list', locals: {claims: @user.claims} %>
+    <%= render partial: 'claims/claimant/list', locals: {claims: @user.claims} %>
   </div>
 </div>
 
