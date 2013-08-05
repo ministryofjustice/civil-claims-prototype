@@ -9,4 +9,14 @@ module ClaimHelper
       link_to text, '#', :class => 'active'
     end
   end
+
+  def login_link_to_role( role )
+    url = '/login_as/' + role
+    content = role.titleize
+    if session[:role] == role
+      link_to content, url, :class => 'current_role'
+    else
+      link_to content, url
+    end
+  end
 end
