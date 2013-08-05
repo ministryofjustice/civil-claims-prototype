@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130805133151) do
+ActiveRecord::Schema.define(version: 20130805143101) do
 
   create_table "addresses", force: true do |t|
     t.string   "dx_number"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20130805133151) do
     t.integer  "owner_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "signature"
   end
 
   create_table "grounds_for_possession_answers", force: true do |t|

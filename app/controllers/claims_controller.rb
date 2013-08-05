@@ -21,13 +21,19 @@ class ClaimsController < ApplicationController
 
   def delete_all
     Claim.delete_all
+    unless Rails.env.production?
+      Person.delete_all
+      Address.delete_all
+      `rake db:seed RAILS_ENV=#{Rails.env}` #sickandwrong
+    end
     reset_session    
     redirect_to root_path
   end
 
   def create
     @claim = Claim.new
-    @claim.owner = @user || Person.find(session[:user])
+    @user = @user || Person.find(session[:user])
+    @claim.owner = @user
     @claim.claimants << Claimant.new(@user.attributes.except('type', 'id'))
     @claim.defendants << Defendant.create_random
     @claim.address_for_possession = Address.create_random

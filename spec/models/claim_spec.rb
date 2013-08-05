@@ -6,7 +6,7 @@ describe Claim do
   end
 
   it 'has an owner' do
-    @claim.owner = User.create_random
+    @claim.owner = Person.create_random
     assert @claim.save
   end
 

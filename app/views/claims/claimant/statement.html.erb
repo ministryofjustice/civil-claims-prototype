@@ -6,3 +6,43 @@
 
 <p>Please read through all the information that you have provided and ensure that to the best of your knowledge it is all correct.</p>
 <p>If anything is incorrect please go to the relevent section and update it.</p>
+
+<div class='panel'>
+  <h4>Details of claim</h4>
+  <% @claim.claimants.each do |claimant| %>
+    <div class='well clearfix'>
+      <h5>Claimant</h5>
+      <%= render :partial => 'people/show', :locals => { person: claimant } %>
+    </div>
+  <% end %>
+
+  <h2 class='center'>vs</h2>
+
+  <% @claim.defendants.each do |defendant| %>
+    <div class='well clearfix'>
+      <h5>Defendant</h5>
+      <%= render :partial => 'people/show', :locals => { person: defendant } %>
+    </div>
+  <% end %>
+
+  <div class='well clearfix address'>
+    <h5>Property to be recovered</h5>
+    <%= render :partial => 'addresses/show', :locals => { address: @claim.address_for_possession } %>
+  </div>
+
+  <%= simple_form_for @claim, :url => update_claim_path(@claim), :class => 'form-horizontal' do |f| %>
+    <div class='panel'>
+      <div class='panel'>
+        <%= f.check_box(:signature) %>
+        <%= label_tag(:signature, "I believe that the facts stated in this claim (and any attached documents) are to the best of my knowledge true and correct.") %>
+      </div>
+      <div class="alert alert-danger">
+        <p>A person who completes a statement of truth without an honest belief in the truth of the given information is liable to proceedings for contempt of court.</p>
+      </div>
+    </div>
+
+    <%= f.submit "Save & Continue", :class => 'special break' %>
+    <%= f.submit :Cancel, :class => 'special' %>
+  <% end %>
+
+</div>

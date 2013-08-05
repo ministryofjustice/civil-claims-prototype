@@ -15,6 +15,7 @@
         <%= render partial: 'people/edit', locals: {person: person} %>
       <% else %>
         <%= render partial: 'people/show', locals: {person: person} %>
+        <span class='toggle-editor'><%= link_to "View/edit full details", show_editor_url( person )  %></span>
       <% end %>
     </div>
   <% end %>
@@ -32,6 +33,7 @@
         <%= render partial: 'people/edit', locals: {person: person} %>
       <% else %>
         <%= render partial: 'people/show', locals: {person: person} %>
+        <span class='toggle-editor'><%= link_to "View/edit full details", show_editor_url( person )  %></span>
       <% end %>
     </div>
   <% end %>

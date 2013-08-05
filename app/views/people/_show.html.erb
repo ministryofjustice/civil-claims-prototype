@@ -1,5 +1,4 @@
 <div class='address'>
   <span class='name'><%= person.title + ' ' + person.full_name %></span>
   <%= render partial: 'addresses/show', formats: [:html], locals: {address: person.address} %>
-  <span class='edit'><%= link_to "View/edit full details", show_editor_url( person )  %></span>
 </div>
