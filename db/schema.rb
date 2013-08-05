@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130802105006) do
+ActiveRecord::Schema.define(version: 20130805133151) do
 
   create_table "addresses", force: true do |t|
     t.string   "dx_number"
@@ -22,6 +22,15 @@ ActiveRecord::Schema.define(version: 20130802105006) do
     t.string   "town"
     t.string   "county"
     t.string   "postcode"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "arrears", force: true do |t|
+    t.date     "due_date"
+    t.decimal  "amount"
+    t.decimal  "arrear"
+    t.integer  "claim_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
