@@ -16,7 +16,7 @@ function add_attachments() {
   var file_name = file_names[Math.floor(Math.random() * 3)]
 
     $('#attachments-table tbody').append('\
-    <tr class="attachment-fields"> \
+    <tr> \
       <input id="claim_attachments_attributes_'+att_index+'__destroy" name="claim[attachments_attributes]['+att_index+'][_destroy]" type="hidden" value="false"> \
       <input id="claim_attachments_attributes_'+att_index+'_file_name" name="claim[attachments_attributes]['+att_index+'][file_name]" type="hidden" value="'+file_name+'"> \
       <td><a href="#">'+file_name+'</a></td> \

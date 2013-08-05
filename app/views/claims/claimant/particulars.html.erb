@@ -12,52 +12,11 @@
 
   <%= form_for @claim, url: claim_path(@claim) do |f| %>
 
-    <div class='well clearfix'>
-      <h4>Supporting documentation</h4>
-      <p>Attach any documents to support your claim</p>
-
-      <div>
-        <%= link_to_function "Select", "add_attachments()", :class => "btn btn-primary" %>
-      </div>
-      <p>
-        <a href="#">About supporting documentation</a>
-      </p>
-      
-      <br/>
-      
-
-
-      <div id="attachments">
-        <table id="attachments-table" class="table table-condensed">
-          <tbody id="attachments-body">
-
-            <%= f.fields_for :attachments do |af| %>
-
-              <tr class="attachment-fields" >
-
-                <%= af.hidden_field :_destroy, :class => "destroy" %>
-                <%= af.hidden_field :file_name %>
-                <td><a href="#"><%= af.object.file_name %></a></td>
-                
-
-                <td>
-                  
-                  <%= link_to_function "Remove", "remove_attachment(this)", :class => "btn btn-danger btn-small" %>
-                </td>
-
-              </tr>
-              <tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
-
-    </div>
+    <%= render partial: 'attachments/show', :locals => { :f=>f } %>
 
     <%= f.submit 'Save & Continue' %>
 
   <% end %>
-
 
 </section>
 
