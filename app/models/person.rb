@@ -2,6 +2,16 @@ class Person < ActiveRecord::Base
   belongs_to :claim
   belongs_to :address
 
+  scope :randomly, -> { order("RANDOM()") }
+
+  def self.at_random
+    randomly.first
+  end
+
+  def claims
+    Claim.where(:owner => self)
+  end
+  
   def self.create_random
     self.create(generate)
   end

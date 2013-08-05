@@ -4,7 +4,7 @@ CivilClaims::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'claims#index'
+  root 'claims#home'
 
   # relax, it's a prototype.
   get 'claims/:id/delete' => 'claims#delete', as: :claim_delete
@@ -22,6 +22,7 @@ CivilClaims::Application.routes.draw do
   get 'claims/:id/fees' => 'claims#fees'
   get 'claims/:id/confirmation' => 'claims#confirmation'
 
+  get 'login_as/:role' => 'people#login', as: :login
 
   resources :claims do
     resources :people do
