@@ -1,9 +1,18 @@
 <h1>Service</h1>
 <h2><a href='/'>Repossess a property</a></h2>
-<section class='user-data clearfix'>
-  <ul>
-    <li><%= @user.full_name %></li>
+<div class='user-data clearfix navbar' id='user-nav'>
+  <ul class="nav navbar-nav">
+    <li class='dropdown'>
+      <a href='#' class='dropdown-toggle' data-toggle='dropdown'><%= @user.full_name %><b class='caret'></b></a>
+      <ul class='dropdown-menu'>
+        <li class='indent'>Application roles:</li>
+        <li class='divider'></li>
+        <li><%= login_link_to_role 'claimant' %></li>
+        <li><%= login_link_to_role 'defendant' %></li>
+        <li><%= login_link_to_role 'staff' %></li>
+      </ul>
+    </li>
     <li><a href='#'>Account details</a></li>
     <li><%= link_to 'Sign Out', claims_delete_all_path %></li>
   </ul>
-</section>
+</div>
