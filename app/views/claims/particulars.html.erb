@@ -17,7 +17,7 @@
       <p>Attach any documents to support your claim</p>
 
       <div>
-        <button id="attachment-select" type="button" class="btn btn-primary">Select</button>
+        <%= link_to_function "Select", "add_attachments()", :class => "btn btn-primary" %>
       </div>
       <p>
         <a href="#">About supporting documentation</a>
@@ -25,13 +25,25 @@
       
       <br/>
       
+
+
       <div id="attachments">
-        <table class="table table-condensed">
-          <tbody>
+        <table id="attachments-table" class="table table-condensed">
+          <tbody id="attachments-body">
+
             <%= f.fields_for :attachments do |af| %>
-              <tr>
+
+              <tr class="attachment-fields" >
+
+                <%= af.hidden_field :_destroy %>
                 <td><a href="#"><%= af.object.file_name %></a></td>
-                <td><button type="button" class="btn btn-danger btn-small">Remove</button></td>
+                
+
+                <td>
+                  
+                  <%= link_to_function "Remove", "remove_attachment(this)", :class => "btn btn-danger btn-small" %>
+                </td>
+
               </tr>
               <tr>
             <% end %>
@@ -47,3 +59,7 @@
 
 
 </section>
+
+
+
+
