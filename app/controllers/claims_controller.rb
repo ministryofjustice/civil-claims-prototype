@@ -18,8 +18,26 @@ class ClaimsController < ApplicationController
     @claim.claimants << Claimant.new(@user.attributes.except('type', 'id'))
     @claim.defendants << Defendant.create_random
     @claim.address_for_possession = Address.create_random
+
+    #just for now
+    3.times { 
+      attachment = Attachment.create_random 
+      @claim.attachments.push(attachment)
+    }
+    
     @claim.save
     redirect_to claim_path @claim
+  end
+
+  def update
+    claim = Claim.find(params[:id])
+    params.permit!
+    if claim.update_attributes params[:claim]
+      redirect_to :back
+    else 
+      render :text => "error"
+    end
+    
   end
 
   def personal_details

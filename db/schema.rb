@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20130802105006) do
 
   create_table "attachments", force: true do |t|
     t.string   "file_name"
+    t.integer  "claim_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
