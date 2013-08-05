@@ -2,10 +2,10 @@ require 'spec_helper'
 
 describe Person do
   it 'can be / has been seeded' do
-    User.all.each do |u|
-      assert u.class == User
+    Claimant.all.each do |u|
+      assert u.class == Claimant
     end
-    assert User.all.count > 1
+    assert Staff.all.count == 1
   end
 
   it 'can be factory generated' do
@@ -26,8 +26,28 @@ describe Person do
     assert d.type == 'Defendant'
   end
 
-  it 'is subclassed by User' do
-    assert u = User.create(FactoryGirl.attributes_for :person)
-    assert u.type == 'User'
+  it 'is subclassed by Judge' do
+    assert u = Judge.create(FactoryGirl.attributes_for :person)
+    assert u.type == 'Judge'
+  end
+
+  it 'selects a pre-seeded user at random' do
+    user = Claimant.at_random
+    assert user.type == 'Claimant'
+  end
+
+  it 'find all claims started by a user' do
+    user = Person.at_random
+
+    assert user.claims.size == 0
+
+    count = rand(1..10)
+    count.times do 
+      c = Claim.create
+      c.owner = user
+      c.save
+    end
+
+    assert user.claims.size == count
   end
 end

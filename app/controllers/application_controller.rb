@@ -5,10 +5,20 @@ class ApplicationController < ActionController::Base
   before_action :pretend_to_authenticate
 
   def pretend_to_authenticate
-    if (( defined? session[:user] ) && (session[:user].to_i > 0 ) )
-      @user = Person.find(session[:user])
-    else 
-      redirect_to '/login_as/claimant'
+    logger.debug 'authenticating'
+
+    bypass = session.has_key? :bypass_auth
+    logged_in = (session.has_key? :user) && (session[:user].to_i > 0 )
+
+    puts 'Bypassing auth' if bypass 
+    logger.debug 'User is logged in.' if logged_in 
+
+    if !bypass
+      if logged_in
+        @user = Person.find(session[:user])
+      else 
+        redirect_to '/login_as/claimant'
+      end
     end
   end
 

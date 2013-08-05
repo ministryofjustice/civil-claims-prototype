@@ -1,0 +1,16 @@
+require 'spec_helper'
+
+describe 'login and auth' do
+  it 'forces login on first visit' do
+    get('/')
+    assert_redirected_to login_path :claimant
+  end
+
+  it 'logs you in as a claimant by default' do
+    get login_path :claimant
+    assert session[:role] == 'claimant'
+    assert session.has_key? :user
+    assert Person.find(session[:user]).type == 'Claimant'
+  end
+
+end

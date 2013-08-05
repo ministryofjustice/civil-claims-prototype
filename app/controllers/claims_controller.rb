@@ -27,7 +27,8 @@ class ClaimsController < ApplicationController
 
   def create
     @claim = Claim.new
-    @claim.owner = @user || Person.find(session[:user])
+    @user = @user || Person.find(session[:user])
+    @claim.owner = @user
     @claim.claimants << Claimant.new(@user.attributes.except('type', 'id'))
     @claim.defendants << Defendant.create_random
     @claim.address_for_possession = Address.create_random

@@ -5,7 +5,6 @@ class PeopleController < ApplicationController
     if %w(claimant defendant staff judge).include? params[:role] 
       reset_session
       session[:role] = params[:role]
-      session[:user] = 1 unless defined? params[:user]
 
       case params[:role]
       when 'claimant'
