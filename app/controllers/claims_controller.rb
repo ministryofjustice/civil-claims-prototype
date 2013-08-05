@@ -9,6 +9,8 @@ class ClaimsController < ApplicationController
       render 'claims/defendant/index'
     when 'staff'
       render 'claims/staff/index'
+    when 'judge'
+      render 'claims/judge/index'
     end
   end
 

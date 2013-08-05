@@ -2,7 +2,7 @@ class PeopleController < ApplicationController
   skip_before_action :pretend_to_authenticate, only: [:login]
 
   def login
-    if %w(claimant defendant staff).include? params[:role] 
+    if %w(claimant defendant staff judge).include? params[:role] 
       reset_session
       session[:role] = params[:role]
       session[:user] = 1 unless defined? params[:user]
@@ -17,6 +17,9 @@ class PeopleController < ApplicationController
       when 'staff'
         flash[:notice] = "Logged in as Court Staff."
         session[:user] = Staff.at_random.id
+      when 'judge'
+        flash[:notice] = "Logged in as a Judge."
+        session[:user] = Judge.at_random.id
       end
     end
 

@@ -9,3 +9,4 @@
 Claimant.create(Person.generate)
 Defendant.create(Person.generate)
 Staff.create(Person.generate)
+Judge.create(Person.generate)
