@@ -1,5 +1,18 @@
 class ClaimsController < ApplicationController
-  before_action :pretend_to_login
+  skip_before_action :pretend_to_authenticate, only: [:delete_all]
+
+  def home
+    case session[:role]
+    when 'claimant'
+      render 'claims/claimant/index'
+    when 'defendant'
+      render 'claims/defendant/index'
+    when 'staff'
+      render 'claims/staff/index'
+    when 'judge'
+      render 'claims/judge/index'
+    end
+  end
 
   def delete
     Claim.find(params[:id]).delete
@@ -14,7 +27,7 @@ class ClaimsController < ApplicationController
 
   def create
     @claim = Claim.new
-    @claim.owner = @user
+    @claim.owner = @user || Person.find(session[:user])
     @claim.claimants << Claimant.new(@user.attributes.except('type', 'id'))
     @claim.defendants << Defendant.create_random
     @claim.address_for_possession = Address.create_random
@@ -71,9 +84,4 @@ class ClaimsController < ApplicationController
     render 'claims/claimant/confirmation'
   end
 
-  private 
-
-  def pretend_to_login
-    @user = User.at_random
-  end
 end

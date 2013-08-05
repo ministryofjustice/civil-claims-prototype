@@ -13,23 +13,21 @@ header {
     margin-top:0px;
     a:hover { text-decoration: none; }
   }
-  section.user-data { 
+  div.user-data { 
     position: absolute; 
     bottom:0px; 
     right:0px; 
-    ul {
-      float:right;
-      li {
-        float:left;
-        list-style-type: none;
-      }
-    }
+    margin-bottom:0;
   }
+  .indent { text-indent: 10px;}
+
 }
+
+#user-nav a.current_role { font-weight: bold;}
 
 #claim-nav li a.active { background-color: #cccccc; }
 
-.navbar li {
+#claim-nav.navbar li {
   width: 120px;
 }
 
