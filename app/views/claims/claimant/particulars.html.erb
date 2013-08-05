@@ -13,9 +13,9 @@
   <%= form_for @claim, url: claim_path(@claim) do |f| %>
     
     <%= render partial: 'arrears/show', :locals => { :f=>f } %>
-    <%= render partial: 'attachments/show', :locals => { :f=>f } %>
+    <!-- <%= render partial: 'attachments/show', :locals => { :f=>f } %> -->
 
-    <%= f.submit 'Save & Continue' %>
+    <%= f.submit 'Save & Continue', :class => 'btn btn-success' %>
 
   <% end %>
 

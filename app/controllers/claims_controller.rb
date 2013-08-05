@@ -39,9 +39,19 @@ class ClaimsController < ApplicationController
     @claim.address_for_possession = Address.create_random
 
     #just for now
-    3.times { 
-      attachment = Attachment.create_random 
-      @claim.attachments.push(attachment)
+    3.times { @claim.attachments.push(Attachment.create_random) }
+
+    #just for now some arrears
+    month=1
+    10.times{
+      
+      arrear = @claim.arrears.build
+      arrear.amount=350
+      arrear.arrear=350 * month
+      arrear.due_date='30-'+month.to_s+'-2011'
+
+      @claim.arrears.push(arrear)
+      month+=1
     }
     
     @claim.save

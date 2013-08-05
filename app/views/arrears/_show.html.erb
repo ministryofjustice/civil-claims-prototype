@@ -1,23 +1,65 @@
-<div class='well clearfix'>
-  <h4>Rental arrears</h4>
-  <p>Add all payment arrears to the table below or <a href="#">upload a csv file</a></p>
+<div class="panel">
+  <div class="panel-heading">Rental arrears</div>
+
+
+    <p>Add all payment arrears to the table below or <a href="#">upload a csv file</a></p>
 
   <div>
-   <label>Rent due on</label>
+    <%= f.label :rent_due_date, "Rent due on" %><br />
+    <%= f.date_field :rent_due_date %>
   </div>
-  <p>
-    Did the defendant(s) make any contributions this month?
-    £<input type="text" />
-  </p>
-   <%= link_to_function "Add", "", :class => "btn btn-primary" %>
+
+    
+  <div>
+    <%= f.label :contributions_this_month, "Did the defendant(s) make any contributions this month?" %><br />
+    <div class="input-group">
+      <span class="input-group-addon">&pound</span>
+
+        <%= f.number_field :contributions_this_month, :id=>"arrears-paid-this-month", :class => "form-control" %>
+      <span class="input-group-addon">.00</span>
+    </div>
+  </div>
+
+  <br/>
+  
+  <div>
+   <%= link_to_function "Add", "add_arrear()", :class => "btn btn-primary" %>
    <%= link_to_function "Cancel", "", :class => "btn btn-danger" %>
-  
+  </div>
+  <br>
+
   <div>
+    <table id="arrears-table" class="table table-condensed">
+      <thead>
+        <th>Rent due on</th>
+        <th>Amount due</th>
+        <th>Arrears</th>
+        <th></th>
+      </thead>
+      <tbody id="arrears-body">
+        <%= f.fields_for :arrears do |ar| %>
+          <tr>
+            <%= ar.hidden_field :_destroy, :class => "destroy" %>
+            <td><%= ar.date_field :due_date %></td>
+            <!-- :field_attribute, :value => format_method(f.object.field_attribute) %> -->
+            <td><%= ar.number_field :amount %></td>
+            <td><%= ar.number_field :arrear %></td>
+            <td>
+              <%= link_to_function "Edit", "", :class => "btn btn-default btn-small" %>
+              <%= link_to_function "X", "remove_arrear(this)", :class => "btn btn-danger btn-small" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    <a href="#">About adding rental arrears</a>
+  </p>
+
+
+  
 
   </div>
-  <p>
-  
-
-  
-
 </div>

@@ -1,32 +1,34 @@
-<div class='well clearfix'>
-  <h4>Supporting documentation</h4>
-  <p>Attach any documents to support your claim</p>
+<div class="panel">
+  <div class="panel-heading">Supporting documentation</div>
 
-  <div>
-    <%= link_to_function "Select", "add_attachments()", :class => "btn btn-primary" %>
+    <p>Attach any documents to support your claim</p>
+
+    <div>
+      <%= link_to_function "Select", "add_attachment()", :class => "btn btn-primary" %>
+    </div>
+
+    <br/>
+
+    <div>
+      <table id="attachments-table" class="table table-condensed">
+        <tbody id="attachments-body">
+          <%= f.fields_for :attachments do |af| %>
+            <tr>
+              <%= af.hidden_field :_destroy, :class => "destroy" %>
+              <%= af.hidden_field :file_name %>
+              <td><a href="#"><%= af.object.file_name %></a></td>
+              <td>
+                <%= link_to_function "Remove", "remove_attachment(this)", :class => "btn btn-danger btn-small" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <p>
+      <a href="#">About supporting documentation</a>
+    </p>
+
   </div>
-  <p>
-    <a href="#">About supporting documentation</a>
-  </p>
-  
-  <br/>
-
-  <div id="attachments">
-    <table id="attachments-table" class="table table-condensed">
-      <tbody id="attachments-body">
-        <%= f.fields_for :attachments do |af| %>
-          <tr>
-            <%= af.hidden_field :_destroy, :class => "destroy" %>
-            <%= af.hidden_field :file_name %>
-            <td><a href="#"><%= af.object.file_name %></a></td>
-            <td>
-              <%= link_to_function "Remove", "remove_attachment(this)", :class => "btn btn-danger btn-small" %>
-            </td>
-          </tr>
-          <tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-
 </div>
