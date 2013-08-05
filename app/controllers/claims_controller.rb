@@ -25,26 +25,32 @@ class ClaimsController < ApplicationController
   def personal_details
     @claim = Claim.find(params[:id], :include => [{:claimants => :address}, {:defendants => :address}])
     @editors = session['editors'] || {}
+    render 'claims/claimant/personal_details'
   end
 
   def particulars
     @claim = Claim.find(params[:id])
+    render 'claims/claimant/particulars'
   end
 
   def scheduling
     @claim = Claim.find(params[:id])
+    render 'claims/claimant/scheduling'
   end
 
   def statement
     @claim = Claim.find(params[:id])
+    render 'claims/claimant/statement'
   end
 
   def fees
     @claim = Claim.find(params[:id])
+    render 'claims/claimant/fees'
   end
 
   def confirmation
     @claim = Claim.find(params[:id])
+    render 'claims/claimant/confirmation'
   end
 
   private 
