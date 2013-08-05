@@ -30,6 +30,19 @@
     <%= render :partial => 'addresses/show', :locals => { address: @claim.address_for_possession } %>
   </div>
 
-  <%= form_for @claim, url: claim_path(@claim) do |f| %>
+  <%= simple_form_for @claim, :url => claim_path(@claim), :class => 'form-horizontal' do |f| %>
+    <div class='panel'>
+      <div class='panel'>
+        <%= check_box_tag(:signature) %>
+        <%= label_tag(:signature, "I believe that the facts stated in this claim (and any attached documents) are to the best of my knowledge true and correct.") %>
+      </div>
+      <div class="alert alert-danger">
+        <p>A person who completes a statement of truth without an honest belief in the truth of the given information is liable to proceedings for contempt of court.</p>
+      </div>
+    </div>
+
+    <%= f.submit "Save & Continue", :class => 'special break' %>
+    <%= f.submit :Cancel, :class => 'special' %>
   <% end %>
+
 </div>
