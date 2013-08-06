@@ -7,7 +7,7 @@ function remove_attachment(link) {
 };
 
 function add_attachment() {
-  var att_index = $('tr:visible').length;
+  var att_index = new Date().getTime();//$('tr:visible').length;
   var file_names = [
       "Crystal palace park road.pdf",
       "Tenancy Agreement July 2010.doc",
