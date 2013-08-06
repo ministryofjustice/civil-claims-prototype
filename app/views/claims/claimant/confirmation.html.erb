@@ -1,4 +1,24 @@
 <%= render partial: 'claims/claimant/navigation' %>
 
+<div class='panel'>
+  <p>Thankyou for submitting your claim</p>
+  <p>Your reference code is <em><strong><%= @claim.id %></strong></em></p>
 
-<p>Thankyou for submitting your claim</p>
+  <a class='btn btn-default' href='#'>Print receipt</a>
+  <a class='btn btn-default' href='#'>Print completed form</a>
+
+  <p class='center'>Your hearing will take place on</p>
+  <% date = (Date.today + 3.weeks).strftime("%A %-d %B %Y") %>
+  <h2 class='center'><%= date %> at 10:30am</h2>
+  <p class='center'>at</p>
+
+  <iframe class='centered' src='/courtfinder-api/highbury-corner-magistrates-court.html?asc' width='800px' height='350px'></iframe>
+
+  <p>You can view all these details and full details of this submitted claim under <a href='#'>Your Claims</a> in your <a href='#'>Account</a></p>
+
+  <h3>What happens next</h3>
+
+
+
+
+</div>
