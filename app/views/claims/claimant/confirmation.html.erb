@@ -1,24 +1,35 @@
 <%= render partial: 'claims/claimant/navigation' %>
 
-<div class='panel'>
-  <p>Thankyou for submitting your claim</p>
-  <p>Your reference code is <em><strong><%= @claim.id %></strong></em></p>
+<div class='row'>
+  <div class='panel'>
+    <p>Thankyou for submitting your claim</p>
+    <p>Your reference code is <em><strong><%= @claim.id %></strong></em></p>
 
-  <a class='btn btn-default' href='#'>Print receipt</a>
-  <a class='btn btn-default' href='#'>Print completed form</a>
+    <a class='btn btn-default' href='#'>Print receipt</a>
+    <a class='btn btn-default' href='#'>Print completed form</a>
 
-  <p class='center'>Your hearing will take place on</p>
-  <% date = (Date.today + 3.weeks).strftime("%A %-d %B %Y") %>
-  <h2 class='center'><%= date %> at 10:30am</h2>
-  <p class='center'>at</p>
+    <p class='center'>Your hearing will take place on</p>
+    <% date = (Date.today + 3.weeks).strftime("%A %-d %B %Y") %>
+    <h2 class='center'><%= date %> at 10:30am</h2>
+    <p class='center'>at</p>
 
-  <iframe class='centered' src='/courtfinder-api/highbury-corner-magistrates-court.html?asc' width='800px' height='350px'></iframe>
+    <iframe class='centered' src='/courtfinder-api/highbury-corner-magistrates-court.html?asc' width='800px' height='350px'></iframe>
 
-  <p>You can view all these details and full details of this submitted claim under <a href='#'>Your Claims</a> in your <a href='#'>Account</a></p>
+    <p>You can view all these details and full details of this submitted claim under <a href='#'>Your Claims</a> in your <a href='#'>Account</a></p>
 
-  <h3>What happens next</h3>
+    <h3>What happens next</h3>
+    <ul>
+      <li>
+        <h4>Claim submitted and court scheduled</h4>
+        <p>The details of all the parties involved in the claim, any co-claimants and all defendants.</p>
+      </li>
+      <li>
+        <h4>Defence Notified</h4>
+        <p>The defendant in the claim is notified of the claim and can login to the system and respond to the claim.</p>
+      </li>
+      <li>
 
 
 
-
+  </div>
 </div>
