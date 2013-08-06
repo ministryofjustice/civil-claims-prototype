@@ -117,6 +117,7 @@ nav#secondary {
         content: counter(pos) ".";
         float: left;
         margin-left: -2px;
+        font-size:16px;
       }
       a {
         font-size:16px;
@@ -136,7 +137,10 @@ nav#secondary {
   }
 }
 
-#footer { margin-top: 20px; }
+#footer { 
+  margin-top: 20px; 
+  .footer-wrapper { max-width: 940px; }
+}
 
 #user-nav a.current_role { font-weight: bold;}
 
