@@ -56,6 +56,11 @@ h2.center { text-align: center; }
 .claimant_postcode input { width: 6em; }
 .address-lookup { float:left; margin:2px 10px; }
 
+.address-linear {
+  span:after { content: ",  "; }
+  span:last-child:after { content: ""; }
+}
+
 input.special { float:left; margin-right: 5px; }
 input.break { clear:left; }
 
@@ -71,4 +76,4 @@ input.break { clear:left; }
   input { float:left; }
 }
 
-iframe { border: none;}
+iframe { border: none; }
