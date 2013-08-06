@@ -3,9 +3,6 @@
 
     <p>Attach any documents to support your claim</p>
 
-    <!-- <div>
-      <%= link_to_function "Select", "add_attachment()", :class => "btn btn-primary" %>
-    </div>  -->
     <div>
       <%= link_to_add_fields "attachments", "Select", f, :attachments %>
     </div>
@@ -15,14 +12,8 @@
     <div>
       <table id="attachments-table" class="table table-condensed">
         <tbody id="attachments-body">
-          <%= f.fields_for :attachments do |af| %>
-            <tr>
-              <%= af.hidden_field :file_name %>
-              <td><a href="#"><%= af.object.file_name %></a></td>
-              <td>
-                <%= link_to_remove_fields "Remove", af %>
-              </td>
-            </tr>
+          <%= f.fields_for :attachments do |builder| %>
+            <%= render "attachments/attachment_fields", :f => builder %>
           <% end %>
         </tbody>
       </table>
