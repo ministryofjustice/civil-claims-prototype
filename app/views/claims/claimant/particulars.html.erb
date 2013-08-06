@@ -1,13 +1,15 @@
 <%= render partial: 'claims/claimant/navigation' %>
 
-<div class="page-header">
-  <h1>2. Claim Particulars</h1>
-</div>
+<div class='row'>
+  <div class="page-header">
+    <h1>Step 2 of 6 - Claim particulars</h1>
+  </div>
 
-<section id='edit-claim'>
+  <section id='edit-claim'>
 
-  <p>Add all details you have about the claim and upload further information if required.</p>
-  <a href='#'>About adding claim particulars</a>
+    <p>Add all details you have about the claim and upload further information if required.</p>
+    <a href='#'>About adding claim particulars</a>
+
 
 
   <%= form_for @claim, url: claim_path(@claim) do |f| %>
@@ -17,10 +19,10 @@
 
     <%= f.submit 'Save & Continue', :class => 'btn btn-success' %>
 
-  <% end %>
+    <% end %>
 
-</section>
-
+  </section>
+</div>
 
 
 

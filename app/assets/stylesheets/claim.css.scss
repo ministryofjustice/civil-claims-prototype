@@ -2,25 +2,142 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-body { padding-top: 110px; }
+// GOV.UK Toolkit
+@import "_colours";
+@import "_typography";
 
 main { padding-top: 12px; }
 
 header {
-  h2 {
-    float:left; 
-    margin-top:0px;
-    a:hover { text-decoration: none; }
-  }
-  div.user-data { 
-    position: absolute; 
-    bottom:0px; 
-    right:0px; 
-    margin-bottom:0;
-  }
-  .indent { text-indent: 10px;}
+  img { max-width: none; } // bootstrap override to work with header+footer gov.uk css
+  a#proposition-name { float: right; }
+}
 
+div.user-data { 
+  border-bottom: 1px solid #ccc;
+  max-width: 940px;
+  background-color: #fff;
+  margin: 0 auto;
+  > ul.nav { 
+    float: right; 
+    > li > a {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+  } 
+}
+
+#main-content {
+  margin: 0 auto;
+  max-width: 1020px;
+  position: relative;
+  padding: 0 2em;
+
+  .row {
+    margin-left: 2em;
+    margin-right: 2em;
+  }
+}
+
+.indent { text-indent: 10px;}
+
+
+.alpha #phase-notice p {
+  padding: 0.5em 2em;
+  max-width: 940px;
+  margin: 0 auto;
+  font-size: 1.6rem;
+  background: #d53880;
+  color: #fff;
+}
+
+.alpha #proposition-name small {
+  vertical-align: 3px;
+  margin-left: 10px;
+  padding: 3px 5px 1px;
+  background-color: #d53880;
+  font-family: "nta",Arial,sans-serif;
+  font-size: 16px;
+  line-height: 1.25;
+  font-weight: 300;
+  text-transform: none;
+  color: #fff;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+header.page-header {
+  margin: 0;
+  border: none;
+  hgroup h1 {
+    font-family: "nta",Arial,sans-serif;
+    font-size: 48px;
+    line-height: 1.04167;
+    font-weight: 400;
+    text-transform: none;
+    font-weight: 700;
+    color: #0b0c0c;
+
+    span {
+      font-size: 27px;
+      line-height: 1;
+      font-weight: 400;
+      display: block;
+      margin-bottom: 0.25em;
+      text-shadow: none;
+      color: #6f777b;
+    }
+
+    strong {
+      font-size: 17px;
+      background: #d53880;
+      color: #fff;
+      vertical-align: middle;
+      padding: 2px 7px;
+    }
+  }
+}
+
+nav#secondary {
+  padding: 0px 2em;
+  border-bottom: 2px solid #ccc;
+  margin-bottom: 20px;
+  ol {
+    list-style: decimal inside none;
+    margin: 0px 0px -2px 0px;
+    counter-reset: pos;
+    li {
+      display: inline-block;
+      &:before {
+        counter-increment: pos;
+        content: counter(pos) ".";
+        float: left;
+        margin-left: -2px;
+        font-size:16px;
+      }
+      a {
+        font-size:16px;
+        color: #555;
+        border-bottom: 2px solid #ccc;
+        padding: 0px 10px 10px 14px;
+        display: block;
+        &:hover { 
+          text-decoration: none;
+          border-bottom: 2px solid #7fb299;
+        }
+        &.active {
+          border-bottom: 2px solid #7fb299;
+        }
+      }
+    }
+  }
+}
+
+#footer { 
+  margin-top: 20px; 
+  .footer-wrapper { max-width: 940px; }
 }
 
 #user-nav a.current_role { font-weight: bold;}

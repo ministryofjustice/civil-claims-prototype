@@ -1,27 +1,29 @@
-<p><b>Use this online form to repossess a property if your tenant or a mortgage borrower doesn't keep up with payments or won't leave the property.</b></p>
-<p>The form will take about 20 minutes to complete.</p>
-<p>You will have to pay a £100 court fee.</p>
-<p>You may have to go to a court hearing afterwards.</p>
-<p>The whole process usually takes at least 12 weeks.</p>
-<% if @user.claims.size > 0 %>
-<ul class='nav nav-tabs' id='claims-index-tabs'>
-  <li class='active submit'><a href='#new' data-toggle="tab">Start a new claim</a></li>
-  <li class='list'><a href='#list' data-toggle="tab">Your claims</a></li>
-</ul>
-<% else %>
-<h4>Start a new claim</h4>
-<% end %>
+<div class='row'>
+  <p><b>Use this online form to repossess a property if your tenant or a mortgage borrower doesn't keep up with payments or won't leave the property.</b></p>
+  <p>The form will take about 20 minutes to complete.</p>
+  <p>You will have to pay a £100 court fee.</p>
+  <p>You may have to go to a court hearing afterwards.</p>
+  <p>The whole process usually takes at least 12 weeks.</p>
+  <% if @user.claims.size > 0 %>
+  <ul class='nav nav-tabs' id='claims-index-tabs'>
+    <li class='active submit'><a href='#new' data-toggle="tab">Start a new claim</a></li>
+    <li class='list'><a href='#list' data-toggle="tab">Your claims</a></li>
+  </ul>
+  <% else %>
+  <h4>Start a new claim</h4>
+  <% end %>
 
-<div class='tab-content'>
-  <div class='tab-pane active well' id='new'>
-    <%= render partial: 'claims/claimant/home' %>
+  <div class='tab-content'>
+    <div class='tab-pane active well' id='new'>
+      <%= render partial: 'claims/claimant/home' %>
+    </div>
+    <div class='tab-pane well' id='list'>
+      <%= render partial: 'claims/claimant/list', locals: {claims: @user.claims} %>
+    </div>
   </div>
-  <div class='tab-pane well' id='list'>
-    <%= render partial: 'claims/claimant/list', locals: {claims: @user.claims} %>
-  </div>
-</div>
 
-<div>
-  <h4>Before you begin</h4>
-  <p>If you are making your first possession claim online here are a few things you need to know and to think about. These help topics are a good place to start....</p>
+  <div>
+    <h4>Before you begin</h4>
+    <p>If you are making your first possession claim online here are a few things you need to know and to think about. These help topics are a good place to start....</p>
+  </div>
 </div>
