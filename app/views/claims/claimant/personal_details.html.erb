@@ -1,75 +1,77 @@
 <%= render partial: 'claims/claimant/navigation' %>
 
-<div class="page-header">
-  <h1>1. Personal Details</h1>
-</div>
+<div class='row'>
+  <div class="page-header">
+    <h1>Step 1 of 6 - Personal details</h1>
+  </div>
 
-<section id='edit-claim'>
-  <p>Add the details of the claimants and defendants involved in the possession claim</p>
-  <a href='#'>About claimants and defendants</a>
+  <section id='edit-claim'>
+    <p>Add the details of the claimants and defendants involved in the possession claim</p>
+    <a href='#'>About claimants and defendants</a>
 
-  <h4>Who is the claimant in this claim</h4>
-  <% @claim.claimants.each do |person| %>
-    <div class="well clearfix">
-      <% if(@editors[person.id]) %>
-        <%= render partial: 'people/edit', locals: {person: person} %>
-      <% else %>
-        <%= render partial: 'people/show', locals: {person: person} %>
-        <span class='toggle-editor'><%= link_to "View/edit full details", show_editor_url( person )  %></span>
-      <% end %>
-    </div>
-  <% end %>
-  <%= form_tag(new_claim_person_path( @claim ), method: "get") do %>
-    <%= hidden_field_tag 'type', 'claimant' %>
-    <%= submit_tag("Add a co-claimant") %>
-  <% end %>
-
-  <h2 class='center'>vs</h2>
-
-  <h4>Who is the defendant in this claim</h4>
-  <% @claim.defendants.each do |person| %>
-    <div class="well clearfix">
-      <% if(@editors[person.id]) %>
-        <%= render partial: 'people/edit', locals: {person: person} %>
-      <% else %>
-        <%= render partial: 'people/show', locals: {person: person} %>
-        <span class='toggle-editor'><%= link_to "View/edit full details", show_editor_url( person )  %></span>
-      <% end %>
-    </div>
-  <% end %>
-  <%= form_tag(new_claim_person_path( @claim ), method: "get") do %>
-    <%= hidden_field_tag 'type', 'defendant' %>
-    <%= submit_tag("Add a co-defendant") %>
-  <% end %>
-
-  <%= simple_form_for @claim, url: update_claim_path( @claim) do |f| %>
-    <div class='well clearfix'>
-      <h4>Address for possession</h4>
-      <a href='#'>Same address as defendant</a>
-      <div class='address'>
-        <%= render partial: 'addresses/show', locals: {address: @claim.address_for_possession} %>
+    <h4>Who is the claimant in this claim</h4>
+    <% @claim.claimants.each do |person| %>
+      <div class="well clearfix">
+        <% if(@editors[person.id]) %>
+          <%= render partial: 'people/edit', locals: {person: person} %>
+        <% else %>
+          <%= render partial: 'people/show', locals: {person: person} %>
+          <span class='toggle-editor'><%= link_to "View/edit full details", show_editor_url( person )  %></span>
+        <% end %>
       </div>
-    </div>
-
-    <div class='well radios clearfix'>
-      <h4>What type of property is it</h4>
-      <%= f.radio_button(:property_type, 'residential') %>
-      <%= label_tag :claim_property_type_residential, 'Residential' %>
-
-      <%= f.radio_button :property_type, 'commercial' %>
-      <%= label_tag :claim_property_type_commercial, 'Commercial' %>
-    </div>
-
-    <div class='well radios clearfix'>
-      <h4>Who is in the property</h4>
-      <%= f.radio_button :resident_type, 'private tenant' %>
-      <%= label_tag :claim_resident_type_private_tenant, 'Private Tenant' %>
-
-      <%= f.radio_button :resident_type, 'squatter' %>
-      <%= label_tag :claim_resident_type_squatter, 'Squatter' %>
-    </div>
-
-    <%= f.submit 'Save & Continue' %>
-    <%= f.submit 'Close' %>
     <% end %>
-</section>
+    <%= form_tag(new_claim_person_path( @claim ), method: "get") do %>
+      <%= hidden_field_tag 'type', 'claimant' %>
+      <%= submit_tag("Add a co-claimant") %>
+    <% end %>
+
+    <h2 class='center'>vs</h2>
+
+    <h4>Who is the defendant in this claim</h4>
+    <% @claim.defendants.each do |person| %>
+      <div class="well clearfix">
+        <% if(@editors[person.id]) %>
+          <%= render partial: 'people/edit', locals: {person: person} %>
+        <% else %>
+          <%= render partial: 'people/show', locals: {person: person} %>
+          <span class='toggle-editor'><%= link_to "View/edit full details", show_editor_url( person )  %></span>
+        <% end %>
+      </div>
+    <% end %>
+    <%= form_tag(new_claim_person_path( @claim ), method: "get") do %>
+      <%= hidden_field_tag 'type', 'defendant' %>
+      <%= submit_tag("Add a co-defendant") %>
+    <% end %>
+
+    <%= simple_form_for @claim, url: update_claim_path( @claim) do |f| %>
+      <div class='well clearfix'>
+        <h4>Address for possession</h4>
+        <a href='#'>Same address as defendant</a>
+        <div class='address'>
+          <%= render partial: 'addresses/show', locals: {address: @claim.address_for_possession} %>
+        </div>
+      </div>
+
+      <div class='well radios clearfix'>
+        <h4>What type of property is it</h4>
+        <%= f.radio_button(:property_type, 'residential') %>
+        <%= label_tag :claim_property_type_residential, 'Residential' %>
+
+        <%= f.radio_button :property_type, 'commercial' %>
+        <%= label_tag :claim_property_type_commercial, 'Commercial' %>
+      </div>
+
+      <div class='well radios clearfix'>
+        <h4>Who is in the property</h4>
+        <%= f.radio_button :resident_type, 'private tenant' %>
+        <%= label_tag :claim_resident_type_private_tenant, 'Private Tenant' %>
+
+        <%= f.radio_button :resident_type, 'squatter' %>
+        <%= label_tag :claim_resident_type_squatter, 'Squatter' %>
+      </div>
+
+      <%= f.submit 'Save & Continue' %>
+      <%= f.submit 'Close' %>
+      <% end %>
+  </section>
+</div>
