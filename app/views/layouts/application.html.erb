@@ -14,12 +14,20 @@
   <main role="main">
     <div class="container" id='main-content'>
       <div class="content">
-         <div class="row">
-          <div class="span12">
-            <%= render 'layouts/messages' %>
-            <%= yield %>
-          </div>
+        <div class="row">
+          <header class="page-header group">
+            <hgroup class="full-width">
+              <h1>
+                <span>Service</span> 
+                Recover Property:<br />
+                Make a possession claim online <strong>ALPHA</strong>
+              </h1>
+            </hgroup>
+          </header>
         </div>
+
+        <%= render 'layouts/messages' %>
+        <%= yield %>
       </div>
     </div>
   </main>

@@ -70,6 +70,74 @@ div.user-data {
   -webkit-font-smoothing: subpixel-antialiased;
 }
 
+header.page-header {
+  margin: 0;
+  border: none;
+  hgroup h1 {
+    font-family: "nta",Arial,sans-serif;
+    font-size: 48px;
+    line-height: 1.04167;
+    font-weight: 400;
+    text-transform: none;
+    font-weight: 700;
+    color: #0b0c0c;
+
+    span {
+      font-size: 27px;
+      line-height: 1;
+      font-weight: 400;
+      display: block;
+      margin-bottom: 0.25em;
+      text-shadow: none;
+      color: #6f777b;
+    }
+
+    strong {
+      font-size: 17px;
+      background: #d53880;
+      color: #fff;
+      vertical-align: middle;
+      padding: 2px 7px;
+    }
+  }
+}
+
+nav#secondary {
+  padding: 0px 2em;
+  border-bottom: 2px solid #ccc;
+  margin-bottom: 20px;
+  ol {
+    list-style: decimal inside none;
+    margin: 0px 0px -2px 0px;
+    counter-reset: pos;
+    li {
+      display: inline-block;
+      &:before {
+        counter-increment: pos;
+        content: counter(pos) ".";
+        float: left;
+        margin-left: -2px;
+      }
+      a {
+        font-size:16px;
+        color: #555;
+        border-bottom: 2px solid #ccc;
+        padding: 0px 10px 10px 14px;
+        display: block;
+        &:hover { 
+          text-decoration: none;
+          border-bottom: 2px solid #7fb299;
+        }
+        &.active {
+          border-bottom: 2px solid #7fb299;
+        }
+      }
+    }
+  }
+}
+
+#footer { margin-top: 20px; }
+
 #user-nav a.current_role { font-weight: bold;}
 
 #claim-nav li a.active { background-color: #cccccc; }

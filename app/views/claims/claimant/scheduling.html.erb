@@ -1,14 +1,16 @@
 <%= render partial: 'claims/claimant/navigation' %>
 
-<div class="page-header">
-  <h1>3. Court Scheduling</h1>
+<div class='row'>
+  <div class="page-header">
+    <h1>Step 3 of 6 - Court scheduling</h1>
+  </div>
+
+  <p>Based on the postcode of the property you are claiming possession of, your hearing will take place in the following court or tribunal.</p>
+
+  <iframe class='centered' src='/courtfinder-api/highbury-corner-magistrates-court.html?asc' width='800px' height='350px'></iframe>
+
+  <p>Based on availability your hearing will take place on the following date &amp; time.</p>
+
+  <% date = (Date.today + 3.weeks).strftime("%A %-d %B %Y") %>
+  <div class='panel'><h2><%= date %> at 10:30am</h2></div>
 </div>
-
-<p>Based on the postcode of the property you are claiming possession of, your hearing will take place in the following court or tribunal.</p>
-
-<iframe class='centered' src='/courtfinder-api/highbury-corner-magistrates-court.html?asc' width='800px' height='350px'></iframe>
-
-<p>Based on availability your hearing will take place on the following date &amp; time.</p>
-
-<% date = (Date.today + 3.weeks).strftime("%A %-d %B %Y") %>
-<div class='panel'><h2><%= date %> at 10:30am</h2></div>
