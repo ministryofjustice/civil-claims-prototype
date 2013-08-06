@@ -2,25 +2,72 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// GOV.UK Toolkit
+@import "_colours";
+@import "_typography";
 
 body { padding-top: 110px; }
 
 main { padding-top: 12px; }
 
 header {
-  h2 {
-    float:left; 
-    margin-top:0px;
-    a:hover { text-decoration: none; }
-  }
-  div.user-data { 
-    position: absolute; 
-    bottom:0px; 
-    right:0px; 
-    margin-bottom:0;
-  }
-  .indent { text-indent: 10px;}
+  img { max-width: none; } // bootstrap override to work with header+footer gov.uk css
+  a#proposition-name { float: right; }
+}
 
+div.user-data { 
+  border-bottom: 1px solid #ccc;
+  max-width: 940px;
+  background-color: #fff;
+  margin: 0 auto;
+  > ul.nav { 
+    float: right; 
+    > li > a {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+  } 
+}
+
+#main-content {
+  margin: 0 auto;
+  max-width: 1020px;
+  position: relative;
+  padding: 0 2em;
+
+  .row {
+    margin-left: 2em;
+    margin-right: 2em;
+  }
+}
+
+.indent { text-indent: 10px;}
+
+
+.alpha #phase-notice p {
+  padding: 0.5em 2em;
+  max-width: 940px;
+  margin: 0 auto;
+  font-size: 1.6rem;
+  background: #d53880;
+  color: #fff;
+}
+
+.alpha #proposition-name small {
+  vertical-align: 3px;
+  margin-left: 10px;
+  padding: 3px 5px 1px;
+  background-color: #d53880;
+  font-family: "nta",Arial,sans-serif;
+  font-size: 16px;
+  line-height: 1.25;
+  font-weight: 300;
+  text-transform: none;
+  color: #fff;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  -webkit-font-smoothing: subpixel-antialiased;
 }
 
 #user-nav a.current_role { font-weight: bold;}

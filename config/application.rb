@@ -21,5 +21,17 @@ module CivilClaims
     # config.i18n.default_locale = :de
 
     config.autoload_paths += Dir[Rails.root.join('app', 'models', '{**}')]
+
+    # Enable the asset pipeline
+    config.assets.enabled = true
+    config.assets.precompile += %w(
+      govuk-static/application.css
+      govuk-static/application-ie6.css
+      govuk-static/application-ie7.css
+      govuk-static/application-ie8.css
+      govuk-static/fonts-ie8.css
+      govuk-static/fonts.css
+      govuk-static/print.css
+    )
   end
 end

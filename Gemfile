@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+source 'https://BnrJb6FZyzspBboNJzYZ@gem.fury.io/govuk/'
 
 ruby "2.0.0"
 
@@ -13,6 +14,9 @@ gem 'rails_12factor', group: :production
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
+
+# Gov.uk styles
+gem 'govuk_frontend_toolkit'
 
 # bootstrap 3
 gem 'therubyracer' 
