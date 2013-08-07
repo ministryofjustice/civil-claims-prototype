@@ -7,7 +7,10 @@
 
   <section id='edit-claim'>
     <p>Add the details of the claimants and defendants involved in the possession claim</p>
-    <a href='#'>About claimants and defendants</a>
+    <%= toggle_inline_help_link( 
+      'About claimants and defendants', 
+      'Bacon ipsum dolor sit amet beef boudin pork belly pancetta, t-bone ground round shoulder chuck andouille bresaola doner drumstick. Pork loin jerky doner swine boudin ball tip pork belly. Beef ribs frankfurter turducken short ribs corned beef, t-bone capicola pork belly brisket venison spare ribs ball tip chicken rump swine. Bresaola tongue short ribs t-bone jerky.'
+    ) %>
 
     <h4>Who is the claimant in this claim</h4>
     <% @claim.claimants.each do |person| %>
