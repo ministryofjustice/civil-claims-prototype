@@ -14,6 +14,52 @@
 
   <%= simple_form_for @claim, url: claim_path(@claim) do |f| %>
     
+<!-- THE NEXT STEPS -->
+    <div class="panel">
+      <div class="panel-heading">Next steps</div>
+      
+      <ul class="list-unstyled">
+        <li>
+          <div class="checkbox">
+            <label><input type="checkbox"> Claim rent arrears</label>
+          </div>
+        </li>
+
+        <li>
+          <div class="checkbox">
+            <label><input type="checkbox"> Forfeiture of the lease</label>
+          </div>
+        </li>
+      </ul>
+
+
+
+
+      <div class="accordion" id="accordion2">
+
+        <div class="accordion-group">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+              Does, or will, the claim include any issues under the human rights act 1998
+            </a>
+          </div>
+          <div id="collapseOne" class="accordion-body collapse out">
+            <div class="accordion-inner">
+              <p>
+                The Human Rights Act 1998 (c 42) is an Act of Parliament of the United Kingdom which received Royal Assent on 9 November 1998, and mostly came into force on 2 October 2000.[1] Its aim is to "give further effect" in UK law to the rights contained in the Convention for the Protection of Human Rights and Fundamental Freedoms, but more commonly known as the European Convention on Human Rights. The Act makes available in UK courts a remedy for breach of a Convention right, without the need to go to the European Court of Human Rights in Strasbourg.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+    </div>
+
+
 <!-- ABOUT THE TENANCY -->
     <div class="panel">
       <div class="panel-heading">About the tenancy</div>
