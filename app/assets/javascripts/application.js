@@ -24,10 +24,7 @@ function remove_fields(link) {
 }
 
 function add_fields(link, association, content) {
-
   var new_id = new Date().getTime();
   var regexp = new RegExp("new_" + association, "g");
-  console.log(new_id);
-  console.log($(association+"-body"));
   $('#'+association+'-table tbody').append(content.replace(regexp, new_id));
 }

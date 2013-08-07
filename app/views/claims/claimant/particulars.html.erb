@@ -21,13 +21,19 @@
       <ul class="list-unstyled">
         <li>
           <div class="checkbox">
-            <label><input type="checkbox"> Claim rent arrears</label>
+            <label>
+              <%= f.check_box :claim_rental_arrears %>
+              Claim rent arrears
+            </label>
           </div>
         </li>
 
         <li>
           <div class="checkbox">
-            <label><input type="checkbox"> Forfeiture of the lease</label>
+            <label>
+              <%= f.check_box :lease_forfeiture %>
+              Forfeiture of the lease
+            </label>
           </div>
         </li>
       </ul>
@@ -122,11 +128,11 @@
       </div>
       <div class="row">
         <div class="checkbox">
-        <label>
-          <%= f.check_box :defendent_to_pay_for_claim %>
-          Do you want to request that the defendent/s pay the cost of the claim
-        </label>
-      </div>
+          <label>
+            <%= f.check_box :defendent_to_pay_for_claim %>
+            Do you want to request that the defendent/s pay the cost of the claim
+          </label>
+        </div>
       </div>
     </div>
 

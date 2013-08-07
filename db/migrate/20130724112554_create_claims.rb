@@ -4,6 +4,9 @@ class CreateClaims < ActiveRecord::Migration
       t.string :property_type
       t.string :resident_type
 
+      t.boolean :claim_rental_arrears
+      t.boolean :lease_forfeiture
+
       t.string :tenancy_type
       t.date :tenancy_start_date
       t.decimal :rental_amount
