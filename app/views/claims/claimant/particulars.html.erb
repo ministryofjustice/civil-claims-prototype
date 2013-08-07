@@ -15,6 +15,37 @@
   <%= form_for @claim, url: claim_path(@claim) do |f| %>
 
     <%= render partial: 'arrears/show', :locals => { f: f } %>
+
+
+    <div class="panel">
+      <div class="row">
+        <div class="col-lg-3">
+          <%= f.label :unpaid_rent_per_day, "Unpaid rent should be calculated at" %>
+        </div>
+        <div class="col-lg-3">
+          <div class="input-group">
+            <span class="input-group-addon">&pound</span>
+              <%= f.number_field :unpaid_rent_per_day, :class => "form-control" %>
+            <span class="input-group-addon">.00</span>
+          </div>
+        </div>
+        <div class="col-lg-2">
+          per day
+        </div>
+      </div>
+      <div class="row">
+        <div class="checkbox">
+        <label>
+          <%= f.check_box :defendent_to_pay_for_claim %>
+          Do you want to request that the defendent/s pay the cost of the claim
+        </label>
+      </div>
+      </div>
+    </div>
+
+   
+
+
     <%= render partial: 'attachments/show', :locals => { f: f } %>
 
     <%= f.submit 'Save & Continue', :class => 'button medium' %>

@@ -6,6 +6,10 @@ class CreateClaims < ActiveRecord::Migration
 
       t.date :rent_due_date
       t.decimal :contributions_this_month
+      
+      t.decimal :unpaid_rent_per_day
+      t.boolean :defendent_to_pay_for_claim
+
 
       t.references :address_for_possession
       t.references :owner

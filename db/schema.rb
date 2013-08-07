@@ -47,6 +47,8 @@ ActiveRecord::Schema.define(version: 20130805143101) do
     t.string   "resident_type"
     t.date     "rent_due_date"
     t.decimal  "contributions_this_month"
+    t.decimal  "unpaid_rent_per_day"
+    t.boolean  "defendent_to_pay_for_claim"
     t.integer  "address_for_possession_id"
     t.integer  "owner_id"
     t.datetime "created_at"
