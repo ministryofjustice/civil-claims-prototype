@@ -37,12 +37,7 @@ class ClaimsController < ApplicationController
     @claim.claimants << Claimant.new(@user.attributes.except('type', 'id'))
     @claim.defendants << Defendant.create_random
     @claim.address_for_possession = Address.create_random
-
-    #just for now
-    3.times { @claim.attachments.push(Attachment.create_random) }
-
-    
-    
+   
     @claim.save
     redirect_to claim_path @claim
   end

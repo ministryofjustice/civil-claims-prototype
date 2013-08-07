@@ -1,9 +1,9 @@
 <tr>
   <%= f.hidden_field :_destroy, :class => "destroy" %>
-  <td><%= f.date_field :due_date, :value => DateTime.now() %></td>
+  <td><%= f.date_field :due_date %></td>
   <!-- :field_attribute, :value => format_method(f.object.field_attribute) %> -->
-  <td><%= f.number_field :amount, :value => 0 %></td>
-  <td><%= f.number_field :arrear, :value => 0 %></td>
+  <td><%= f.number_field :amount %></td>
+  <td><%= f.number_field :arrear %></td>
   <td>
     <%= link_to_function "Edit", "", :class => "btn btn-default btn-small" %>
     <%= link_to_remove_fields "X", f %>
