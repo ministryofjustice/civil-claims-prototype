@@ -6,6 +6,37 @@
 @import "_colours";
 @import "_typography";
 
+a.toggle-hidden:before {
+  border-left-color: #333333;
+  border-right-color: #333333;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-right: 4px;
+  vertical-align: middle;
+  border-left: 4px solid #000;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  content: "";
+}
+
+a.toggle-visible:before {
+  border-top-color: #333333;
+  border-bottom-color: #333333;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-right: 4px;
+  vertical-align: middle;
+  border-top: 4px solid #000;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+  content: "";
+}
+
+.inline-help p.collapse { margin-top: 8px; }
+
+
 main { padding-top: 12px; }
 
 header {
@@ -67,6 +98,8 @@ div.user-data {
   text-transform: uppercase;
   -webkit-font-smoothing: subpixel-antialiased;
 }
+
+#main-content .page-header { border: none; }
 
 header.page-header {
   margin: 0;
