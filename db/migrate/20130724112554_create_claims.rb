@@ -4,6 +4,9 @@ class CreateClaims < ActiveRecord::Migration
       t.string :property_type
       t.string :resident_type
 
+      t.date :rent_due_date
+      t.decimal :contributions_this_month
+
       t.references :address_for_possession
       t.references :owner
 

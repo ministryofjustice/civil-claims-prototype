@@ -16,3 +16,18 @@
 //= require turbolinks
 //= require_tree .
 //= require jquery.ui.effect-highlight
+
+// want to hide something different then TR then add attribute to fn
+function remove_fields(link) {
+  $(link).prev("input[type=hidden]").val("1");
+  $(link).closest("tr").hide('fast');
+}
+
+function add_fields(link, association, content) {
+
+  var new_id = new Date().getTime();
+  var regexp = new RegExp("new_" + association, "g");
+  console.log(new_id);
+  console.log($(association+"-body"));
+  $('#'+association+'-table tbody').append(content.replace(regexp, new_id));
+}

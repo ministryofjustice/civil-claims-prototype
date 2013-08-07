@@ -11,11 +11,13 @@
     <a href='#'>About adding claim particulars</a>
 
 
-    <%= form_for @claim, url: claim_path(@claim) do |f| %>
 
-      <%= render partial: 'attachments/show', :locals => { :f=>f } %>
+  <%= form_for @claim, url: claim_path(@claim) do |f| %>
 
-      <%= f.submit 'Save & Continue' %>
+    <%= render partial: 'arrears/show', :locals => { f: f } %>
+    <%= render partial: 'attachments/show', :locals => { f: f } %>
+
+    <%= f.submit 'Save & Continue', :class => 'button medium' %>
 
     <% end %>
 
