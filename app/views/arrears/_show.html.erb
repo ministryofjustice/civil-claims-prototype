@@ -14,15 +14,13 @@
   
   <br />
 
-    
   <div>
     <%= f.label :contributions_this_month, "Did the defendant(s) make any contributions this month?" %><br />
     <div class="row">
       <div class="col-lg-5">
         <div class="input-group">
           <span class="input-group-addon">&pound</span>
-            <%= f.number_field :contributions_this_month, :id=>"arrears-paid-this-month", :class => "form-control" %>
-          <span class="input-group-addon">.00</span>
+          <%= f.input :contributions_this_month, label: false %>
         </div>
       </div>
     </div>
