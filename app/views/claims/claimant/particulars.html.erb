@@ -42,13 +42,15 @@
       </div>
       </div>
     </div>
-
-   
-
+    
+    <div class="panel">
+      <p>Any other information you would like to give about the claim</p>
+      <%= f.text_area :other_information, :rows => 3 %>
+    </div>
 
     <%= render partial: 'attachments/show', :locals => { f: f } %>
 
-    <%= f.submit 'Save & Continue', :class => 'button medium' %>
+    <%= f.submit 'Save & Continue', :class => 'btn btn-success' %>
 
     <% end %>
 
