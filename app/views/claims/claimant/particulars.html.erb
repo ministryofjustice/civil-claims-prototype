@@ -12,11 +12,53 @@
 
 
 
-  <%= form_for @claim, url: claim_path(@claim) do |f| %>
+  <%= simple_form_for @claim, url: claim_path(@claim) do |f| %>
+    
+<!-- ABOUT THE TENANCY -->
+    <div class="panel">
+      <div class="panel-heading">About the tenancy</div>
+      <div class="row">
+       <div class="col-lg-3"><%= f.label :tenancy_type%></div>
+        <div class="col-lg-3">
+          <%= f.input :tenancy_type, label: false, collection: ["Assuret shorthold","Assured tenancy","Regulated"] %>
+        </div>
+      </div>
 
+      <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-3"><a href="#">More about tenancy types</a></div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-3"><%= f.label :tenancy_start_date%></div>
+        <div class="col-lg-3"><%= f.date_field :tenancy_start_date %></div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-3"><%= f.label :rental_amount%></div>
+        <div class="col-lg-3">
+          <div class="input-group">
+            <span class="input-group-addon">&pound</span>
+            <%= f.input :rental_amount, :label => false %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-3"><%= f.label :payment_frequency%></div>
+        <div class="col-lg-3">
+          <%= f.input :payment_frequency, 
+            :label => false, 
+            collection: ["Monthly", "Fortnightly", "Week"],
+            as: :radio_buttons%>
+        </div>
+      </div>
+    </div>
+
+<!-- RENTAL ARREARS -->
     <%= render partial: 'arrears/show', :locals => { f: f } %>
 
-
+<!-- UNPAID RENT -->
     <div class="panel">
       <div class="row">
         <div class="col-lg-3">
@@ -25,8 +67,7 @@
         <div class="col-lg-3">
           <div class="input-group">
             <span class="input-group-addon">&pound</span>
-              <%= f.number_field :unpaid_rent_per_day, :class => "form-control" %>
-            <span class="input-group-addon">.00</span>
+              <%= f.input :unpaid_rent_per_day, :label => false %>
           </div>
         </div>
         <div class="col-lg-2">
@@ -42,12 +83,14 @@
       </div>
       </div>
     </div>
-    
+
+<!-- OTHER INFORMATION -->
     <div class="panel">
       <p>Any other information you would like to give about the claim</p>
       <%= f.text_area :other_information, :rows => 3 %>
     </div>
 
+<!-- SUPPORTING DOCUMENTTION -->
     <%= render partial: 'attachments/show', :locals => { f: f } %>
 
     <%= f.submit 'Save & Continue', :class => 'btn btn-success' %>

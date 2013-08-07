@@ -45,7 +45,7 @@
         <th></th>
       </thead>
       <tbody id="arrears-body">
-        <%= f.fields_for :arrears do |builder| %>
+        <%= f.simple_fields_for :arrears do |builder| %>
           <%= render "arrears/arrear_fields", :f => builder %>
         <% end %>
       </tbody>

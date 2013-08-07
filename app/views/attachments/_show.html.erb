@@ -12,7 +12,7 @@
   <div>
     <table id="attachments-table" class="table table-condensed">
       <tbody id="attachments-body">
-        <%= f.fields_for :attachments do |builder| %>
+        <%= f.simple_fields_for :attachments do |builder| %>
           <%= render "attachments/attachment_fields", :f => builder %>
         <% end %>
       </tbody>

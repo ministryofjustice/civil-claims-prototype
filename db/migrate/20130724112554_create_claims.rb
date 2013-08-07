@@ -4,6 +4,11 @@ class CreateClaims < ActiveRecord::Migration
       t.string :property_type
       t.string :resident_type
 
+      t.string :tenancy_type
+      t.date :tenancy_start_date
+      t.decimal :rental_amount
+      t.string :payment_frequency
+
       t.date :rent_due_date
       t.decimal :contributions_this_month
       
