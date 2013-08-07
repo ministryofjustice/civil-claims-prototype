@@ -26,6 +26,15 @@ ActiveRecord::Schema.define(version: 20130805143101) do
     t.datetime "updated_at"
   end
 
+  create_table "arrears", force: true do |t|
+    t.date     "due_date"
+    t.decimal  "amount"
+    t.decimal  "arrear"
+    t.integer  "claim_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "attachments", force: true do |t|
     t.string   "file_name"
     t.integer  "claim_id"
@@ -36,6 +45,8 @@ ActiveRecord::Schema.define(version: 20130805143101) do
   create_table "claims", force: true do |t|
     t.string   "property_type"
     t.string   "resident_type"
+    t.date     "rent_due_date"
+    t.decimal  "contributions_this_month"
     t.integer  "address_for_possession_id"
     t.integer  "owner_id"
     t.datetime "created_at"

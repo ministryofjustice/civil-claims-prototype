@@ -1,0 +1,6 @@
+<tr>
+  <% file_name = f.object.file_name || get_random_filename %>
+  <%= f.hidden_field :file_name, :value => file_name %>
+  <td><a href="#"><%= file_name %></a></td>
+  <td><%= link_to_remove_fields "Remove", f %></td>
+</tr>
