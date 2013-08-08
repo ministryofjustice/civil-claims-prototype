@@ -1,26 +1,27 @@
-<div class="panel">
-  <div class="panel-heading">Supporting documentation</div>
+<div id="attachments">
+  <h3>Supporting documentation</h3>
 
-  <p>Attach any documents to support your claim</p>
+  <div class="well well-sm clearfix">
+    <p>Attach any documents to support your claim</p>
 
-  <div>
-    <%= link_to_add_fields "attachments", "Select", f, :attachments %>
+    <div>
+      <%= button_to_add_fields "attachments", "Select", f, :attachments %>
+    </div>
+
+    <br/>
+
+    <div>
+      <table id="attachments-table" class="table table-condensed">
+        <tbody id="attachments-body">
+          <%= f.simple_fields_for :attachments do |builder| %>
+            <%= render "attachments/attachment_fields", :f => builder %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <p>
+      <a href="#">About supporting documentation</a>
+    </p>
   </div>
-
-  <br/>
-
-  <div>
-    <table id="attachments-table" class="table table-condensed">
-      <tbody id="attachments-body">
-        <%= f.simple_fields_for :attachments do |builder| %>
-          <%= render "attachments/attachment_fields", :f => builder %>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-
-  <p>
-    <a href="#">About supporting documentation</a>
-  </p>
-
 </div>
