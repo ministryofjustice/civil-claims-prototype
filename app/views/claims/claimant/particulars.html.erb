@@ -15,51 +15,51 @@
   <%= simple_form_for @claim, url: claim_path(@claim) do |f| %>
     
 <!-- THE NEXT STEPS -->
-    <div class="panel">
-      <div class="panel-heading">Next steps</div>
-      
-      <ul class="list-unstyled">
-        <li>
-          <div class="checkbox">
-            <label>
-              <%= f.check_box :claim_rental_arrears %>
-              Claim rent arrears
-            </label>
-          </div>
-        </li>
+    <div id="next-steps">
+      <h3>Next steps</h3>
+      <div class="well well-sm">
+        <ul class="list-unstyled">
+          <li>
+            <div id="claim-rental-arrears-check" class="checkbox">
+              <label>
+                <%= f.check_box :claim_rental_arrears %>
+                Claim rent arrears
+              </label>
+            </div>
+          </li>
 
-        <li>
-          <div class="checkbox">
-            <label>
-              <%= f.check_box :lease_forfeiture %>
-              Forfeiture of the lease
-            </label>
-          </div>
-        </li>
-      </ul>
-
-
+          <li>
+            <div class="checkbox">
+              <label>
+                <%= f.check_box :lease_forfeiture %>
+                Forfeiture of the lease
+              </label>
+            </div>
+          </li>
+        </ul>
 
 
-      <div class="accordion" id="accordion2">
 
-        <div class="accordion-group">
-          <div class="accordion-heading">
-            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-              Does, or will, the claim include any issues under the human rights act 1998
-            </a>
-          </div>
-          <div id="collapseOne" class="accordion-body collapse out">
-            <div class="accordion-inner">
-              <p>
-                The Human Rights Act 1998 (c 42) is an Act of Parliament of the United Kingdom which received Royal Assent on 9 November 1998, and mostly came into force on 2 October 2000.[1] Its aim is to "give further effect" in UK law to the rights contained in the Convention for the Protection of Human Rights and Fundamental Freedoms, but more commonly known as the European Convention on Human Rights. The Act makes available in UK courts a remedy for breach of a Convention right, without the need to go to the European Court of Human Rights in Strasbourg.
-              </p>
+        <div class="accordion" id="accordion2">
+
+          <div class="accordion-group">
+            <div class="accordion-heading">
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                Does, or will, the claim include any issues under the human rights act 1998
+              </a>
+            </div>
+            <div id="collapseOne" class="accordion-body collapse out">
+              <div class="accordion-inner">
+                <p>
+                  The Human Rights Act 1998 (c 42) is an Act of Parliament of the United Kingdom which received Royal Assent on 9 November 1998, and mostly came into force on 2 October 2000.[1] Its aim is to "give further effect" in UK law to the rights contained in the Convention for the Protection of Human Rights and Fundamental Freedoms, but more commonly known as the European Convention on Human Rights. The Act makes available in UK courts a remedy for breach of a Convention right, without the need to go to the European Court of Human Rights in Strasbourg.
+                </p>
+              </div>
             </div>
           </div>
         </div>
+
+
       </div>
-
-
 
 
 
@@ -67,42 +67,44 @@
 
 
 <!-- ABOUT THE TENANCY -->
-    <div class="panel">
-      <div class="panel-heading">About the tenancy</div>
-      <div class="row">
-       <div class="col-lg-3"><%= f.label :tenancy_type%></div>
-        <div class="col-lg-3">
-          <%= f.input :tenancy_type, label: false, collection: ["Assuret shorthold","Assured tenancy","Regulated"] %>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-3"></div>
-        <div class="col-lg-3"><a href="#">More about tenancy types</a></div>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-3"><%= f.label :tenancy_start_date%></div>
-        <div class="col-lg-3"><%= f.date_field :tenancy_start_date %></div>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-3"><%= f.label :rental_amount%></div>
-        <div class="col-lg-3">
-          <div class="input-group">
-            <span class="input-group-addon">&pound</span>
-            <%= f.input :rental_amount, :label => false %>
+    <div id="about-tenancy">
+      <h3>About the tenancy</h3>
+      <div class="well well-sm">
+        <div class="row">
+         <div class="col-lg-3"><%= f.label :tenancy_type%></div>
+          <div class="col-lg-3">
+            <%= f.input :tenancy_type, label: false, collection: ["Assuret shorthold","Assured tenancy","Regulated"] %>
           </div>
         </div>
-      </div>
 
-      <div class="row">
-        <div class="col-lg-3"><%= f.label :payment_frequency%></div>
-        <div class="col-lg-3">
-          <%= f.input :payment_frequency, 
-            :label => false, 
-            collection: ["Monthly", "Fortnightly", "Week"],
-            as: :radio_buttons%>
+        <div class="row">
+          <div class="col-lg-3"></div>
+          <div class="col-lg-3"><a href="#">More about tenancy types</a></div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-3"><%= f.label :tenancy_start_date%></div>
+          <div class="col-lg-3"><%= f.date_field :tenancy_start_date %></div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-3"><%= f.label :rental_amount%></div>
+          <div class="col-lg-3">
+            <div class="input-group">
+              <span class="input-group-addon">&pound</span>
+              <%= f.input :rental_amount, :label => false %>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-3"><%= f.label :payment_frequency%></div>
+          <div class="col-lg-3">
+            <%= f.input :payment_frequency, 
+              :label => false, 
+              collection: ["Monthly", "Fortnightly", "Week"],
+              as: :radio_buttons %>
+          </div>
         </div>
       </div>
     </div>
@@ -111,7 +113,7 @@
     <%= render partial: 'arrears/show', :locals => { f: f } %>
 
 <!-- UNPAID RENT -->
-    <div class="panel">
+    <div class="well well-sm">
       <div class="row">
         <div class="col-lg-3">
           <%= f.label :unpaid_rent_per_day, "Unpaid rent should be calculated at" %>
@@ -137,7 +139,7 @@
     </div>
 
 <!-- OTHER INFORMATION -->
-    <div class="panel">
+    <div class="well well-sm">
       <p>Any other information you would like to give about the claim</p>
       <%= f.text_area :other_information, :rows => 3 %>
     </div>

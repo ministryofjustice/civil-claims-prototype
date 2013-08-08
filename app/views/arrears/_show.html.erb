@@ -1,58 +1,59 @@
-<div id="rental-arrears" class="panel">
-  <div class="panel-heading">Rental arrears</div>
-
-  <p>Add all payment arrears to the table below or <a href="#">upload a csv file</a></p>
-
-  <div class="row">
-    <div class="col-lg-2">
-      <%= f.label :rent_due_date, "Rent due on" %>
-    </div>
-    <div class="col-lg-3">
-      <%= f.date_field :rent_due_date, :class => "form-control" %>
-    </div>
-  </div>
+<div id="rental-arrears">
+  <h3>Rental arrears</h3>
   
-  <br />
+  <div class="well well-sm">
+    <p>Add all payment arrears to the table below or <a href="#">upload a csv file</a></p>
 
-  <div>
-    <%= f.label :contributions_this_month, "Did the defendant(s) make any contributions this month?" %><br />
     <div class="row">
-      <div class="col-lg-5">
-        <div class="input-group">
-          <span class="input-group-addon">&pound</span>
-          <%= f.input :contributions_this_month, label: false %>
+      <div class="col-lg-2">
+        <%= f.label :rent_due_date, "Rent due on" %>
+      </div>
+      <div class="col-lg-3">
+        <%= f.date_field :rent_due_date, :class => "form-control" %>
+      </div>
+    </div>
+    
+    <br />
+
+    <div>
+      <%= f.label :contributions_this_month, "Did the defendant(s) make any contributions this month?" %><br />
+      <div class="row">
+        <div class="col-lg-5">
+          <div class="input-group">
+            <span class="input-group-addon">&pound</span>
+            <%= f.input :contributions_this_month, label: false %>
+          </div>
         </div>
       </div>
     </div>
+
+    <br/>
+    
+    <div>
+      <%= link_to_add_fields "arrears", "Add", f, :arrears %>
+      <%= link_to_function "Cancel", "", :class => "btn btn-danger disabled" %>
+    </div>
+    <br />
+
+    <div>
+      <table id="arrears-table" class="table table-condenced">
+        <thead>
+          <th>Rent due on</th>
+          <th>Amount due</th>
+          <th>Arrears</th>
+          <th></th>
+        </thead>
+        <tbody id="arrears-body">
+          <%= f.simple_fields_for :arrears do |builder| %>
+            <%= render "arrears/arrear_fields", :f => builder %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <p>
+      <a href="#">About adding rental arrears</a>
+    </p>
+
   </div>
-
-  <br/>
-  
-  <div>
-    <%= link_to_add_fields "arrears", "Add", f, :arrears %>
-    <%= link_to_function "Cancel", "", :class => "btn btn-danger" %>
-  </div>
-  <br />
-
-  <div>
-    <table id="arrears-table" class="table table-condenced">
-      <thead>
-        <th>Rent due on</th>
-        <th>Amount due</th>
-        <th>Arrears</th>
-        <th></th>
-      </thead>
-      <tbody id="arrears-body">
-        <%= f.simple_fields_for :arrears do |builder| %>
-          <%= render "arrears/arrear_fields", :f => builder %>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-
-  <p>
-    <a href="#">About adding rental arrears</a>
-  </p>
-
-
 </div>
