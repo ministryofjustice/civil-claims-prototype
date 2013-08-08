@@ -83,28 +83,16 @@
           <%= f.label :claim_rental_arrears, "Claim rent arrears" %>
           <%= f.check_box :claim_rental_arrears, :onClick => "toggle_panel(this,'rental-arrears');" %>
         </div>
-
         <div class="row checkbox">
           <%= f.label :lease_forfeiture, "Forfeiture of the lease" %>
           <%= f.check_box :lease_forfeiture %>
         </div>
-  
-        <div class="row accordion" id="accordion2">
-          <div class="accordion-group">
-            <div class="accordion-heading">
-              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                Does, or will, the claim include any issues under the human rights act 1998
-              </a>
-            </div>
-            <div id="collapseOne" class="accordion-body collapse out">
-              <div class="accordion-inner">
-                <p>
-                  The Human Rights Act 1998 (c 42) is an Act of Parliament of the United Kingdom which received Royal Assent on 9 November 1998, and mostly came into force on 2 October 2000.[1] Its aim is to "give further effect" in UK law to the rights contained in the Convention for the Protection of Human Rights and Fundamental Freedoms, but more commonly known as the European Convention on Human Rights. The Act makes available in UK courts a remedy for breach of a Convention right, without the need to go to the European Court of Human Rights in Strasbourg.
-                </p>
-              </div>
-            </div>
-          </div>
+        <div class="row">
+          <%= toggle_inline_help_link("Does, or will, the claim include any issues under the human rights act 1998",
+            "Bacon ipsum dolor sit amet beef boudin pork belly pancetta, t-bone ground round shoulder chuck andouille bresaola doner drumstick. Pork loin jerky doner swine boudin ball tip pork belly. Beef ribs frankfurter turducken short ribs corned beef, t-bone capicola pork belly brisket venison spare ribs ball tip chicken rump swine. Bresaola tongue short ribs t-bone jerky."
+          ) %>
         </div>
+        
 
       </div>
 
