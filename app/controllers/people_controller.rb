@@ -29,18 +29,27 @@ class PeopleController < ApplicationController
     claim = Claim.find(params[:claim_id])
     person = Person.find(params[:id])
 
-    if params[:commit].downcase == 'save'
-      params.permit!
-      person.update_attributes!(params[:claimant])
-      person.address.update_attributes!(params[:address])
-    end
-
     session['editors'][person.id] = false
 
-    respond_to do |format|
-      format.html { redirect_to claim_path claim }
-      format.js { redirect_to claim_person_path claim, person }
+    if params[:commit].upcase == 'SAVE'
+      params.permit!
+      person.update_attributes!(params[:claimant])
+      person.update_attributes!(params[:defendant]) #lazy
+      person.address.update_attributes!(params[:address])
+
+      respond_to do |format|
+        format.html { redirect_to claim_path claim }
+        format.js { redirect_to claim_person_path claim, person }
+      end
+    elsif params[:commit].upcase == 'REMOVE'
+      person.delete
+
+      respond_to do |format|
+        format.html { redirect_to claim_path claim }
+        format.js { render :json => {action: 'remove'}, :status => :ok }
+      end
     end
+
   end
 
   def show

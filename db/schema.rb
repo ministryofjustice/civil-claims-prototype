@@ -11,11 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130805143101) do
+ActiveRecord::Schema.define(version: 20130807140855) do
 
   create_table "addresses", force: true do |t|
-    t.string   "dx_number"
-    t.string   "dx_exchange"
     t.string   "street_1"
     t.string   "street_2"
     t.string   "street_3"
@@ -85,6 +83,8 @@ ActiveRecord::Schema.define(version: 20130805143101) do
     t.integer  "claim_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "dx_number"
+    t.string   "dx_exchange"
   end
 
   create_table "steps_already_taken_answers", force: true do |t|

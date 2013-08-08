@@ -15,4 +15,11 @@ $(document).ready(function() {
       var $collapse = $(this).closest('.collapse-group').find('.collapse').collapse('toggle');
       $(this).toggleClass('toggle-hidden').toggleClass('toggle-visible');
   });
+
+  $('form.edit-person .address_postcode .controls').append("<a href='#' class='btn btn-default btn-small'>Find UK Address</a>");
+
+  $('form.edit-person').bind("ajax:success", function(data, status, xhr) {
+    alert('hiya');
+    //$(this).remove();
+  });
 });
