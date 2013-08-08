@@ -11,19 +11,19 @@
   <div class='panel'>
     <h4>Details of claim</h4>
     <% @claim.claimants.each do |claimant| %>
-      <div class='well clearfix'>
-        <h5>Claimant</h5>
-        <%= render :partial => 'people/show', :locals => { person: claimant } %>
-      </div>
+      <% options = {} %>
+      <% options[:class] = 'well clearfix' %>
+      <% options[:title] = 'Claimant' %>
+      <%= render :partial => 'people/show', :locals => { person: claimant, options: options, claim: @claim } %>
     <% end %>
 
     <h2 class='center'>vs</h2>
 
     <% @claim.defendants.each do |defendant| %>
-      <div class='well clearfix'>
-        <h5>Defendant</h5>
-        <%= render :partial => 'people/show', :locals => { person: defendant } %>
-      </div>
+      <% options = {} %>
+      <% options[:class] = 'well clearfix' %>
+      <% options[:title] = 'Defendant' %>
+      <%= render :partial => 'people/show', :locals => { person: defendant, options: options, claim: @claim } %>
     <% end %>
 
     <div class='well clearfix address'>

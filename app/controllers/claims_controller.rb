@@ -58,7 +58,7 @@ class ClaimsController < ApplicationController
 
   def personal_details
     @claim = Claim.find(params[:id], :include => [{:claimants => :address}, {:defendants => :address}])
-    @claim.address_for_possession = Address.new unless @claim.address_for_possession
+    @claim.address_for_possession ||= Address.new
     @editors = session['editors'] || {}
     render 'claims/claimant/personal_details'
   end
@@ -74,12 +74,14 @@ class ClaimsController < ApplicationController
   end
 
   def statement
-    @claim = Claim.find(params[:id])
+    @claim = Claim.find(params[:id], :include => [{:claimants => :address}, {:defendants => :address}])
+    @claim.address_for_possession ||= Address.new 
     render 'claims/claimant/statement'
   end
 
   def fees
     @claim = Claim.find(params[:id])
+    @claim.address_for_possession ||= Address.new
     render 'claims/claimant/fees'
   end
 
