@@ -10,10 +10,36 @@
     <p>Add all details you have about the claim and upload further information if required.</p>
     <a href='#'>About adding claim particulars</a>
 
-
-
   <%= simple_form_for @claim, url: claim_path(@claim) do |f| %>
-    
+
+<!-- GROUNDS FOR POSSESSION -->
+    <div id="grounds-for-possesion">
+      <h3>Ground for possession</h3>
+      <div class="well well-sm clearfix">
+        <div class="row checkbox">
+          <%= f.label :non_payment_of_rent, "Non payment of rent" %>
+          <%= f.check_box :non_payment_of_rent %>
+        </div>
+        <div class="row checkbox">
+          <%= f.label :anti_social_behaviour, "Anti-social behaviour" %>
+          <%= f.check_box :anti_social_behaviour %>
+        </div>
+        <div class="row checkbox">
+          <%= f.label :property_misuse, "Misuse of property" %>
+          <%= f.check_box :property_misuse %>
+        </div>
+        <div class="row checkbox">
+          <%= f.label :other_breach_of_tenancy, "Other breach of tenancy" %>
+          <%= f.check_box :other_breach_of_tenancy, :onClick => "toggle_panel(this,'other-breach');" %>
+        </div>
+        <div id="other-breach" class="row" <%= "hidden" unless(@claim.other_breach_of_tenancy) %> >
+          <%= f.label :other_breach, "Please specify" %>
+          <%= f.text_area :other_breach, :rows => 3 %>
+        </div>
+
+      </div>
+    </div>
+
 <!-- STEPS ALREADY TAKEN -->
     <div id="steps-taken">
       <h3>Steps already taken</h3>
@@ -36,7 +62,7 @@
           <%= f.check_box :seeking_possetion %>
         </div>
         <div class="row checkbox">
-          <%= f.label :other_recovery_steps_taken, "Othe recovery steps taken" %>
+          <%= f.label :other_recovery_steps_taken, "Other recovery steps taken" %>
           <%= f.check_box :other_recovery_steps_taken, :onClick => "toggle_panel(this,'other-recovery-steps');" %>
         </div>
         <div id="other-recovery-steps" class="row" <%= "hidden" unless(@claim.other_recovery_steps_taken) %> >
