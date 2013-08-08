@@ -10,5 +10,9 @@ $('#claims-index-tabs li.list a').click(function (e) {
 
 $('input.address-lookup').click(function (e) {
   console.log('asd');
-  console.log(this.parent.html)
+  console.log(this.parent.html);
 });
+
+function toggle_rental_arrears(checkbox){
+  $("#rental-arrears").toggle("slow");
+}

@@ -22,7 +22,7 @@
           <li>
             <div id="claim-rental-arrears-check" class="checkbox">
               <label>
-                <%= f.check_box :claim_rental_arrears %>
+                <%= f.check_box :claim_rental_arrears, :onClick => "toggle_rental_arrears(this);" %>
                 Claim rent arrears
               </label>
             </div>
