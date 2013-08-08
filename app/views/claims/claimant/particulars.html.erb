@@ -18,29 +18,28 @@
     <div id="steps-taken">
       <h3>Steps already taken</h3>
       <div class="well well-sm clearfix">
-        <div class="checkbox">
+
+        <div class="row checkbox">
           <%= f.label :notice_to_quit, "Notice to quit" %>
-          <%= f.check_box :notice_to_quit %>
+          <%= f.check_box :notice_to_quit, :onClick => "toggle_panel(this, 'notice-served-date');" %>
         </div>
-        <div>
+        <div id="notice-served-date" class="row" <%= "hidden" unless(@claim.notice_to_quit) %> >
           <div class="col-lg-2"><%= f.label :notice_served_date, "Date notice served" %></div>
           <div class="col-lg-3"><%= f.date_field :notice_served_date %></div>
         </div>
-        <!-- change this -->
-        <br /><br />
-        <div class="checkbox">
+        <div class="row checkbox">
           <%= f.label :lease_breach, "Breach of lease" %>
           <%= f.check_box :lease_breach %>
         </div>
-        <div class="checkbox">
+        <div class="row checkbox">
           <%= f.label :seeking_possetion, "Seeking possesion" %>
           <%= f.check_box :seeking_possetion %>
         </div>
-        <div class="checkbox">
+        <div class="row checkbox">
           <%= f.label :other_recovery_steps_taken, "Othe recovery steps taken" %>
           <%= f.check_box :other_recovery_steps_taken, :onClick => "toggle_panel(this,'other-recovery-steps');" %>
         </div>
-        <div id="other-recovery-steps" <%= "hidden" unless(@claim.other_recovery_steps_taken) %> >
+        <div id="other-recovery-steps" class="row" <%= "hidden" unless(@claim.other_recovery_steps_taken) %> >
           <%= f.label :other_recovery_steps, "Please specify" %>
           <%= f.text_area :other_recovery_steps, :rows => 3 %>
         </div>
@@ -54,17 +53,17 @@
       <h3>Next steps</h3>
       <div class="well well-sm">
 
-        <div class="checkbox">
+        <div class="row checkbox">
           <%= f.label :claim_rental_arrears, "Claim rent arrears" %>
           <%= f.check_box :claim_rental_arrears, :onClick => "toggle_panel(this,'rental-arrears');" %>
         </div>
 
-        <div class="checkbox">
+        <div class="row checkbox">
           <%= f.label :lease_forfeiture, "Forfeiture of the lease" %>
           <%= f.check_box :lease_forfeiture %>
         </div>
   
-        <div class="accordion" id="accordion2">
+        <div class="row accordion" id="accordion2">
           <div class="accordion-group">
             <div class="accordion-heading">
               <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
