@@ -19,4 +19,8 @@ module ClaimHelper
       link_to content, url
     end
   end
+
+  def toggle_inline_help_link( link_text, help_content )
+    render :partial => 'shared/inline_help', :locals => {link_text: link_text, help_content: help_content }
+  end
 end

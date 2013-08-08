@@ -6,6 +6,37 @@
 @import "_colours";
 @import "_typography";
 
+a.toggle-hidden:before {
+  border-left-color: #333333;
+  border-right-color: #333333;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-right: 4px;
+  vertical-align: middle;
+  border-left: 4px solid #000;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  content: "";
+}
+
+a.toggle-visible:before {
+  border-top-color: #333333;
+  border-bottom-color: #333333;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-right: 4px;
+  vertical-align: middle;
+  border-top: 4px solid #000;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+  content: "";
+}
+
+.inline-help p.collapse { margin-top: 8px; }
+
+
 main { padding-top: 12px; }
 
 header {
@@ -67,6 +98,8 @@ div.user-data {
   text-transform: uppercase;
   -webkit-font-smoothing: subpixel-antialiased;
 }
+
+#main-content .page-header { border: none; }
 
 header.page-header {
   margin: 0;
@@ -159,19 +192,42 @@ nav#secondary {
   display:block;
 }
 
-.form-horizontal .control-group {
-  margin-bottom:10px;
+.form-horizontal {
+  .controls { margin-left: 160px; }
+  .control-label { text-align: left; float: left; }
+  .control-group { margin-bottom:10px; }
+}
+
+.edit-person {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  .controls {
+    input, select { 
+      width: 20em;
+      min-height: 30px;
+      height: 30px;
+      padding-top:4px;
+      padding-bottom:4px;
+    }
+    select {
+      width: 6em; 
+    }
+  }
+
+  .btn-danger { margin-left: 21em; }
+
+  .address_postcode {
+    .postcode { display: inline-block;  width: 7.5em; }
+    a { display: inline-block; margin-left: 10px; }
+  }
+  
+  .inline-help {
+    margin-bottom: 5px;
+    a.toggle-help  { font-size: 80%; margin-left: 160px; }
+  }
 }
 
 h2.center { text-align: center; }
-
-.form-horizontal .controls { margin-left: 160px; }
-.form-horizontal .control-label { text-align: left; }
-
-.claimant_postcode { float:left; }
-.claimant_postcode .controls { margin-left: 0; float: left; }
-.claimant_postcode input { width: 6em; }
-.address-lookup { float:left; margin:2px 10px; }
 
 .address-linear {
   span:after { content: ",  "; }
@@ -194,3 +250,38 @@ input.break { clear:left; }
 }
 
 iframe { border: none; }
+
+.person {
+  padding-left: 6em;
+  .name { font-weight: bold; }
+  margin-bottom: -1px;
+}
+
+form.add-additional-person {
+  margin-top: 21px;
+  margin-bottom: 20px;
+}
+
+.claimant, .defendant {
+  background-repeat: no-repeat;
+  background-position: 18px 20px;
+  background-size: 63px 68px;
+  border-width: 1px 0;
+  border-style: solid;
+}
+
+.claimant {
+  background-color: #d5edea;
+  background-image: url(<%= asset_path 'claimant.png' %>);
+  border-color: #bddcd6;
+}
+
+.defendant {
+  background-color: #fde4d6;
+  background-image: url(<%= asset_path 'defendant.png' %>);
+  border-color: #f49365;
+  background-size: 52px 68px;
+  background-position: 24px 20px;
+}
+
+#edit-claim h3 { margin-top: 40px; }

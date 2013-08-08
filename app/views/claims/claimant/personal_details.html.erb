@@ -2,72 +2,58 @@
 
 <div class='row'>
   <div class="page-header">
-    <h1>Step 1 of 6 - Personal details</h1>
+    <h2>Step 1 of 6 - Personal details</h2>
   </div>
 
   <section id='edit-claim'>
     <p>Add the details of the claimants and defendants involved in the possession claim</p>
-    <a href='#'>About claimants and defendants</a>
+    <%= toggle_inline_help_link( 
+      'About claimants and defendants', 
+      'Bacon ipsum dolor sit amet beef boudin pork belly pancetta, t-bone ground round shoulder chuck andouille bresaola doner drumstick. Pork loin jerky doner swine boudin ball tip pork belly. Beef ribs frankfurter turducken short ribs corned beef, t-bone capicola pork belly brisket venison spare ribs ball tip chicken rump swine. Bresaola tongue short ribs t-bone jerky.'
+    ) %>
 
-    <h4>Who is the claimant in this claim</h4>
-    <% @claim.claimants.each do |person| %>
-      <div class="well clearfix">
-        <% if(@editors[person.id]) %>
-          <%= render partial: 'people/edit', locals: {person: person} %>
-        <% else %>
-          <%= render partial: 'people/show', locals: {person: person} %>
-          <span class='toggle-editor'><%= link_to "View/edit full details", show_editor_url( person )  %></span>
-        <% end %>
-      </div>
-    <% end %>
-    <%= form_tag(new_claim_person_path( @claim ), method: "get") do %>
-      <%= hidden_field_tag 'type', 'claimant' %>
-      <%= submit_tag("Add a co-claimant") %>
-    <% end %>
+    <div class='row'>
 
-    <h2 class='center'>vs</h2>
+      <h3>Who is the Claimant in this claim?</h3>
+      <% @claim.claimants.each.with_index do |person, i| %>
+        <%= render :partial => 'people/display', :locals => {claim:@claim, person:person, people:@claim.claimants, i:i} %>
+      <% end %>
 
-    <h4>Who is the defendant in this claim</h4>
-    <% @claim.defendants.each do |person| %>
-      <div class="well clearfix">
-        <% if(@editors[person.id]) %>
-          <%= render partial: 'people/edit', locals: {person: person} %>
-        <% else %>
-          <%= render partial: 'people/show', locals: {person: person} %>
-          <span class='toggle-editor'><%= link_to "View/edit full details", show_editor_url( person )  %></span>
-        <% end %>
-      </div>
-    <% end %>
-    <%= form_tag(new_claim_person_path( @claim ), method: "get") do %>
-      <%= hidden_field_tag 'type', 'defendant' %>
-      <%= submit_tag("Add a co-defendant") %>
-    <% end %>
+      <%= render :partial => 'people/add', formats: [:html], :locals => {claim: @claim, person_type: 'claimant', button_text: 'Add an additional claimant'} %>
 
-    <%= simple_form_for @claim, url: update_claim_path( @claim) do |f| %>
-      <div class='well clearfix'>
-        <h4>Address for possession</h4>
-        <a href='#'>Same address as defendant</a>
-        <div class='address'>
-          <%= render partial: 'addresses/show', locals: {address: @claim.address_for_possession} %>
+      <h3>Who are the Defendants in this claim?</h3>
+      <% @claim.defendants.each.with_index do |person, i| %>
+        <%= render :partial => 'people/display', :locals => {claim:@claim, person:person, people:@claim.defendants, i:i} %>
+      <% end %>
+
+      <%= render :partial => 'people/add', formats: [:html], :locals => {claim: @claim, person_type: 'defendant', button_text: 'Add a co-defendant'} %>
+
+      <%= simple_form_for @claim, url: update_claim_path( @claim) do |f| %>
+        <div class='well clearfix'>
+          <h4>Address for possession</h4>
+          <a href='#'>Same address as defendant</a>
+          <div class='address'>
+            <%= render partial: 'addresses/show', locals: {address: @claim.address_for_possession} %>
+          </div>
         </div>
-      </div>
 
-      <div class='well radios clearfix'>
-        <h4>What type of property is it</h4>
-        <%= f.radio_button(:property_type, 'residential') %>
-        <%= label_tag :claim_property_type_residential, 'Residential' %>
+        <div class='well radios clearfix'>
+          <h4>What type of property is it</h4>
+          <%= f.radio_button(:property_type, 'residential') %>
+          <%= label_tag :claim_property_type_residential, 'Residential' %>
 
-        <%= f.radio_button :property_type, 'commercial' %>
-        <%= label_tag :claim_property_type_commercial, 'Commercial' %>
-      </div>
+          <%= f.radio_button :property_type, 'commercial' %>
+          <%= label_tag :claim_property_type_commercial, 'Commercial' %>
+        </div>
 
-      <div class='well radios clearfix'>
-        <h4>Who is in the property</h4>
-        <%= f.radio_button :resident_type, 'private tenant' %>
-        <%= label_tag :claim_resident_type_private_tenant, 'Private Tenant' %>
+        <div class='well radios clearfix'>
+          <h4>Who is in the property</h4>
+          <%= f.radio_button :resident_type, 'private tenant' %>
+          <%= label_tag :claim_resident_type_private_tenant, 'Private Tenant' %>
 
-        <%= f.radio_button :resident_type, 'squatter' %>
-        <%= label_tag :claim_resident_type_squatter, 'Squatter' %>
+          <%= f.radio_button :resident_type, 'squatter' %>
+          <%= label_tag :claim_resident_type_squatter, 'Squatter' %>
+        </div>
       </div>
 
       <%= f.submit 'Save & Continue' %>

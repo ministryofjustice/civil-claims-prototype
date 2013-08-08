@@ -15,14 +15,15 @@ class ApplicationController < ActionController::Base
 
     if !bypass
       if logged_in
-        @user = Person.find(session[:user])
+        @user = Person.find_by_id(session[:user])
+        redirect_to '/login_as/claimant' if !@user
       else 
         redirect_to '/login_as/claimant'
       end
     end
   end
 
-  def show_editor(person_id)
+  def editor(person_id)
     session['editors'] ||= {}
     session['editors'][person_id] = true
   end
