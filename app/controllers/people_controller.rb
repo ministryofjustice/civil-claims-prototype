@@ -51,7 +51,11 @@ class PeopleController < ApplicationController
       person.delete if params.has_key? :delete_on_cancel
       respond_to do |format|
         format.html { redirect_to claim_path claim }
-        format.js { render partial: 'people/remove', locals: {person: person} }
+        if params.has_key? :delete_on_cancel
+          format.js { render partial: 'people/remove', locals: {person: person} }
+        else
+          format.js { redirect_to claim_person_path claim, person }
+        end
       end
     end
   end
