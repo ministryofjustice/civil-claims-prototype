@@ -1,4 +1,4 @@
-<div id="rental-arrears" hidden>
+<div id="rental-arrears" <%= "hidden" unless @claim.claim_rental_arrears %> >
   <h3>Rental arrears</h3>
   
   <div class="well well-sm">
@@ -36,7 +36,7 @@
     <br />
 
     <div>
-      <table id="arrears-table" class="table table-condenced">
+      <table id="arrears-table" class="table table-condenced" <%= "hidden" if @claim.attachments.empty? %> >
         <thead>
           <th>Rent due on</th>
           <th>Amount due</th>

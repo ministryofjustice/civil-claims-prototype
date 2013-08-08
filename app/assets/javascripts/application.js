@@ -18,17 +18,22 @@
 //= require jquery.ui.effect-highlight
 
 // want to hide something different then TR then add attribute to fn
-function remove_fields(link) {
-  $(link).prev("input[type=hidden]").val("1");
-  $(link).closest("tr").hide('fast');
+function remove_fields(link, association) {
+  $(link).prev('input[type=hidden]').val('1');
+  $(link).closest('tr').hide('fast');
+
+  // hide the associated table when we are removing the last one
+  if ($('#'+association+'-table tbody tr:visible').length==1)
+    $('#'+association+'-table').hide('fast');
 }
 
 function add_fields(link, association, content) {
   var new_id = new Date().getTime();
-  var regexp = new RegExp("new_" + association, "g");
+  var regexp = new RegExp('new_' + association, 'g');
+  $('#'+association+'-table').show('fast');
   $('#'+association+'-table tbody').append(content.replace(regexp, new_id));
 }
 
 function toggle_panel(checkbox, panel_id){
-  $('#'+panel_id).toggle("fast");
+  $('#'+panel_id).toggle('fast');
 }
