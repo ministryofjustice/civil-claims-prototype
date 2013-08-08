@@ -1,4 +1,9 @@
-<span class='name'><%= "#{person.title} #{person.full_name}".strip %></span>
-<div class='address-linear'>
-  <%= render partial: 'addresses/show', formats: [:html], locals: {address: person.address} %>
+<div class="<%= options[:class] %>">
+  <span class='name'><%= "#{person.title} #{person.full_name}".strip %></span>
+  <div class='address-linear'>
+    <%= render partial: 'addresses/show', formats: [:html], locals: {address: person.address} %>
+  </div>
+  <% if options.has_key? :show_edit_link %>
+    <span class='toggle-editor'><%= link_to "View/edit details", show_editor_url( person )  %></span>
+  <% end %>
 </div>

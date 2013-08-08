@@ -31,7 +31,7 @@ class PeopleController < ApplicationController
 
     session['editors'][person.id] = false
 
-    if params[:commit].upcase == 'SAVE'
+    if %w(SAVE UPDATE).include? params[:commit].upcase
       params.permit!
       person.update_attributes!(params[:claimant])
       person.update_attributes!(params[:defendant]) #lazy
@@ -41,24 +41,31 @@ class PeopleController < ApplicationController
         format.html { redirect_to claim_path claim }
         format.js { redirect_to claim_person_path claim, person }
       end
-    elsif params[:commit].upcase == 'REMOVE'
+    elsif 'REMOVE' == params[:commit].upcase
       person.delete
-
       respond_to do |format|
         format.html { redirect_to claim_path claim }
-        format.js { render :json => {action: 'remove'}, :status => :ok }
+        format.js { render partial: 'people/remove', locals: {person: person} }
+      end
+    elsif 'CANCEL' == params[:commit].upcase
+      respond_to do |format|
+        format.html { redirect_to claim_path claim }
+        format.js { redirect_to claim_person_path claim, person }
       end
     end
-
   end
 
   def show
     claim = Claim.find(params[:claim_id])
     person = Person.find(params[:id])
 
+    options = {}
+    options[:type] = person.type.downcase
+    options[:show_edit_link] = true
+
     respond_to do |format|
       format.html { redirect_to claim_path claim }
-      format.js { render partial: 'people/save', locals: {person: person} }
+      format.js { render partial: 'people/save', locals: {person: person, options:options} }
     end
   end
 

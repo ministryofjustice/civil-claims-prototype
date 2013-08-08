@@ -1,7 +1,7 @@
 <%= simple_form_for( [@claim, person], url: claim_person_url(@claim, person), remote: true, html: { :id => 'edit-person-'+person.id.to_s, :class => 'form-horizontal edit-person' } ) do |f| %>
-  <div class='<%= wrapper_class %>'>
-    <% if title %>
-      <h4><%= title %></h4>
+  <div class='<%= options[:class] %>'>
+    <% if options.has_key? :title %>
+      <h4><%= options[:title] %></h4>
     <% end %>
     <%= f.input :title, :collection => %w(Mr Mrs Ms Miss Dr), :priority => 'Mr' %>
     <%= f.input :full_name, :placeholder => 'e.g. John Smith' %>
@@ -9,14 +9,19 @@
     <%= f.input :mobile %>
     <%= f.input :email %>
 
-    <% dx_controls = capture { f.input :dx_number, :label => 'DX number' } %>
-    <% dx_controls << capture { f.input :dx_exchange, :label => 'DX exchange' } %>
-    <%= toggle_inline_help_link( 'Do they have a DX number?', dx_controls ) %>
+    <% if options.has_key? :show_dx %>
+      <% dx_controls = capture { f.input :dx_number, :label => 'DX number' } %>
+      <% dx_controls << capture { f.input :dx_exchange, :label => 'DX exchange' } %>
+      <%= toggle_inline_help_link( 'Do they have a DX number?', dx_controls ) %>
+    <% end %>
 
     <%= render partial: "addresses/edit", formats: [:html], locals: {address: person.address, form: f} %>
 
     <%= f.submit :Save,  :class => 'btn btn-primary btn-small' %>
     <%= f.submit :Cancel, :class => 'btn btn-default btn-small' %>
-    <%= f.submit :Remove, :class => 'btn btn-danger btn-small' %>
+
+    <% if options.has_key? :show_remove_button %>
+      <%= f.submit :Remove, :class => 'btn btn-danger btn-small' %>
+    <% end %>
   </div>
 <% end %>

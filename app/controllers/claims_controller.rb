@@ -40,10 +40,6 @@ class ClaimsController < ApplicationController
     defendant = Defendant.new
     defendant.address = Address.new
     @claim.defendants << defendant
-
-    3.times do
-      @claim.attachments << Attachment.create_random
-    end
     
     @claim.save
     redirect_to claim_path @claim

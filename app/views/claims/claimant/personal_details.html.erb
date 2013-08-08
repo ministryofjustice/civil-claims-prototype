@@ -14,43 +14,52 @@
 
     <div class='row'>
 
-      <h3>Who is the claimant in this claim?</h3>
+      <h3>Who is the Claimant in this claim?</h3>
       <% @claim.claimants.each.with_index do |person, i| %>
+        <% options = {} %>
         <% if(@editors[person.id]) %>
-          <% classes = 'person well clearfix' %>
-          <% title = "Additional Claimant" if i > 0 %>
-          <%= render partial: 'people/edit', locals: {person: person, wrapper_class: classes, title: title} %>
+          <% options[:class] = 'person well clearfix' %>
+          <% options[:show_dx] = true %>
+          <% if i > 0 %>
+            <% options[:title] = "Additional Claimant" %>
+            <% options[:show_remove_button] = true %>
+            <% options[:duplicate_address] = @claim.claimants.first.address.id %>
+          <% end %>
+          <%= render partial: 'people/edit', locals: {person: person, options: options} %>
         <% else %>
-          <% classes = "person claimant well clearfix" %>
-          <% classes << " not-first" if i > 0 %>
-          <div class="<%= classes %>">
-            <%= render partial: 'people/show', locals: {person: person} %>
-            <span class='toggle-editor'><%= link_to "View/edit details", show_editor_url( person )  %></span>
-          </div>
+          <% options[:class] = "person claimant well clearfix" %>
+          <% options[:class] << " not-first" if i > 0 %>
+          <% options[:show_edit_link] = true %>
+          <%= render partial: 'people/show', locals: {person: person, options: options} %>
         <% end %>
       <% end %>
 
-      <%= form_tag(new_claim_person_path( @claim ), method: "get") do %>
+      <%= form_tag(new_claim_person_path( @claim ), :method => "get", :class => 'add-additional-person' ) do %>
         <%= hidden_field_tag 'type', 'claimant' %>
         <%= submit_tag("Add an additional claimant") %>
       <% end %>
 
-      <h3>Who are the defendants in this claim?</h3>
+      <h3>Who are the Defendants in this claim?</h3>
       <% @claim.defendants.each.with_index do |person, i| %>
+        <% options = {} %>
         <% if(@editors[person.id] || person.full_name.nil?) %>
-          <% classes = 'person well clearfix' %>
-          <% title = "Additional Defendant" if i > 0 %>
-          <%= render partial: 'people/edit', locals: {person: person, wrapper_class: classes, title: title} %>
+          <% options = {} %>
+          <% options[:class] = 'person well clearfix' %>
+          <% if i > 0 %>
+            <% options[:title] = "Additional Defendant" %>
+            <% options[:show_remove_button] = true  %>
+            <% options[:duplicate_address] = @claim.defendants.first.address.id  %>
+          <% end %>
+          <%= render partial: 'people/edit', locals: {person: person, options: options} %>
         <% else %>
-          <% classes = "person defendant well clearfix" %>
-          <% classes << " not-first" if i > 0 %>
-          <div class="<%= classes %>">
-            <%= render partial: 'people/show', locals: {person: person} %>
-            <span class='toggle-editor'><%= link_to "View/edit full details", show_editor_url( person )  %></span>
-          </div>
+          <% options[:class] = "person defendant well clearfix" %>
+          <% options[:class] << " not-first" if i > 0 %>
+          <% options[:show_edit_link] = true %>
+          <%= render partial: 'people/show', locals: {person: person, options: options} %>
         <% end %>
       <% end %>
-      <%= form_tag(new_claim_person_path( @claim ), method: "get") do %>
+
+      <%= form_tag(new_claim_person_path( @claim ), :method => "get", :class => 'add-additional-person' ) do %>
         <%= hidden_field_tag 'type', 'defendant' %>
         <%= submit_tag("Add a co-defendant") %>
       <% end %>
