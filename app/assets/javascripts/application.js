@@ -28,3 +28,7 @@ function add_fields(link, association, content) {
   var regexp = new RegExp("new_" + association, "g");
   $('#'+association+'-table tbody').append(content.replace(regexp, new_id));
 }
+
+function toggle_panel(checkbox, panel_id){
+  $('#'+panel_id).toggle("fast");
+}

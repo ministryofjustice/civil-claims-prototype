@@ -4,6 +4,13 @@ class CreateClaims < ActiveRecord::Migration
       t.string :property_type
       t.string :resident_type
 
+      t.boolean :notice_to_quit;
+      t.date :notice_served_date
+      t.boolean :lease_breach;
+      t.boolean :seeking_possetion;
+      t.boolean :other_recovery_steps_taken;
+      t.text :other_recovery_steps;
+
       t.boolean :claim_rental_arrears
       t.boolean :lease_forfeiture
 

@@ -14,34 +14,57 @@
 
   <%= simple_form_for @claim, url: claim_path(@claim) do |f| %>
     
+<!-- STEPS ALREADY TAKEN -->
+    <div id="steps-taken">
+      <h3>Steps already taken</h3>
+      <div class="well well-sm clearfix">
+        <div class="checkbox">
+          <%= f.label :notice_to_quit, "Notice to quit" %>
+          <%= f.check_box :notice_to_quit %>
+        </div>
+        <div>
+          <div class="col-lg-2"><%= f.label :notice_served_date, "Date notice served" %></div>
+          <div class="col-lg-3"><%= f.date_field :notice_served_date %></div>
+        </div>
+        <!-- change this -->
+        <br /><br />
+        <div class="checkbox">
+          <%= f.label :lease_breach, "Breach of lease" %>
+          <%= f.check_box :lease_breach %>
+        </div>
+        <div class="checkbox">
+          <%= f.label :seeking_possetion, "Seeking possesion" %>
+          <%= f.check_box :seeking_possetion %>
+        </div>
+        <div class="checkbox">
+          <%= f.label :other_recovery_steps_taken, "Othe recovery steps taken" %>
+          <%= f.check_box :other_recovery_steps_taken, :onClick => "toggle_panel(this,'other-recovery-steps');" %>
+        </div>
+        <div id="other-recovery-steps" <%= "hidden" unless(@claim.other_recovery_steps_taken) %> >
+          <%= f.label :other_recovery_steps, "Please specify" %>
+          <%= f.text_area :other_recovery_steps, :rows => 3 %>
+        </div>
+      </div>
+
+    </div>
+
+
 <!-- THE NEXT STEPS -->
     <div id="next-steps">
       <h3>Next steps</h3>
       <div class="well well-sm">
-        <ul class="list-unstyled">
-          <li>
-            <div id="claim-rental-arrears-check" class="checkbox">
-              <label>
-                <%= f.check_box :claim_rental_arrears, :onClick => "toggle_rental_arrears(this);" %>
-                Claim rent arrears
-              </label>
-            </div>
-          </li>
 
-          <li>
-            <div class="checkbox">
-              <label>
-                <%= f.check_box :lease_forfeiture %>
-                Forfeiture of the lease
-              </label>
-            </div>
-          </li>
-        </ul>
+        <div class="checkbox">
+          <%= f.label :claim_rental_arrears, "Claim rent arrears" %>
+          <%= f.check_box :claim_rental_arrears, :onClick => "toggle_panel(this,'rental-arrears');" %>
+        </div>
 
-
-
+        <div class="checkbox">
+          <%= f.label :lease_forfeiture, "Forfeiture of the lease" %>
+          <%= f.check_box :lease_forfeiture %>
+        </div>
+  
         <div class="accordion" id="accordion2">
-
           <div class="accordion-group">
             <div class="accordion-heading">
               <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
@@ -58,10 +81,7 @@
           </div>
         </div>
 
-
       </div>
-
-
 
     </div>
 
@@ -130,10 +150,8 @@
       </div>
       <div class="row">
         <div class="checkbox">
-          <label>
-            <%= f.check_box :defendent_to_pay_for_claim %>
-            Do you want to request that the defendent/s pay the cost of the claim
-          </label>
+          <%= f.label :defendent_to_pay_for_claim, "Do you want to request that the defendent/s pay the cost of the claim" %>
+          <%= f.check_box :defendent_to_pay_for_claim %>
         </div>
       </div>
     </div>
