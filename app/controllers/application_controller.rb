@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def show_editor(person_id)
+  def editor(person_id)
     session['editors'] ||= {}
     session['editors'][person_id] = true
   end

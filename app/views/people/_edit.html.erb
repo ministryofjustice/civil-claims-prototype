@@ -1,4 +1,7 @@
-<%= simple_form_for( [@claim, person], url: claim_person_url(@claim, person), remote: true, html: { :id => 'edit-person-'+person.id.to_s, :class => 'form-horizontal edit-person' } ) do |f| %>
+<%= simple_form_for( [claim, person], url: claim_person_url(claim, person), remote: true, html: { :id => 'edit-person-'+person.id.to_s, :class => 'form-horizontal edit-person' } ) do |f| %>
+  <% if options.has_key? :delete_on_cancel %>
+    <input type='hidden' name='delete_on_cancel' />
+  <% end %>
   <div class='<%= options[:class] %>'>
     <% if options.has_key? :title %>
       <h4><%= options[:title] %></h4>
@@ -17,7 +20,10 @@
 
     <%= render partial: "addresses/edit", formats: [:html], locals: {address: person.address, form: f} %>
 
-    <%= f.submit :Save,  :class => 'btn btn-primary btn-small' %>
+    <%= button_tag(type: 'submit', name: 'commit', value: 'save', class: "btn btn-primary btn-small") do %>
+      <%= options[:save_button_text] || 'Save details' %>
+    <% end %>
+
     <%= f.submit :Cancel, :class => 'btn btn-default btn-small' %>
 
     <% if options.has_key? :show_remove_button %>

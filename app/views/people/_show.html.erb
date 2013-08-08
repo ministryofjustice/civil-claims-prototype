@@ -1,9 +1,9 @@
-<div class="<%= options[:class] %>">
+<div class="<%= options[:class] %>" id="person<%= person.id %>">
   <span class='name'><%= "#{person.title} #{person.full_name}".strip %></span>
   <div class='address-linear'>
     <%= render partial: 'addresses/show', formats: [:html], locals: {address: person.address} %>
   </div>
   <% if options.has_key? :show_edit_link %>
-    <span class='toggle-editor'><%= link_to "View/edit details", show_editor_url( person )  %></span>
+    <span class='toggle-editor'><%= link_to "View/edit details", editor_claim_person_url( claim, person ), :remote => true  %></span>
   <% end %>
 </div>

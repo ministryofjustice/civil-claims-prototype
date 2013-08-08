@@ -1,0 +1,4 @@
+<%= form_tag(new_claim_person_path( claim ), :method => "get", :remote => true, :class => 'add-additional-person' ) do %>
+  <%= hidden_field_tag 'type', person_type %>
+  <%= submit_tag(button_text) %>
+<% end %>

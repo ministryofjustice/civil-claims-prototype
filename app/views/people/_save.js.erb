@@ -1,3 +1,3 @@
 <% options[:class] = 'person well clearfix ' + options[:type] %>
-myHtml = '<%=j render partial: "people/show", formats: [:html], locals: {person: person, options: options}  %>';
+myHtml = '<%=j render partial: "people/show", formats: [:html], locals: {claim: claim, person: person, options: options}  %>';
 $('<%= "#edit-person-#{person.id.to_s}" %>').replaceWith(myHtml).effect('highlight');
