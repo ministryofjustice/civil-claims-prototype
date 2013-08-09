@@ -5,12 +5,10 @@ class ApplicationController < ActionController::Base
   before_action :pretend_to_authenticate
 
   def pretend_to_authenticate
-    logger.debug 'authenticating'
 
     bypass = session.has_key? :bypass_auth
     logged_in = (session.has_key? :user) && (session[:user].to_i > 0 )
 
-    puts 'Bypassing auth' if bypass 
     logger.debug 'User is logged in.' if logged_in 
 
     if !bypass

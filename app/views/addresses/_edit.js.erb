@@ -1,0 +1,2 @@
+myHtml = '<%=j render partial: "addresses/edit", formats: [:html], locals: {claim: claim, person: person, address: address}  %>';
+$('#address-<%= address.id %>').replaceWith(myHtml);

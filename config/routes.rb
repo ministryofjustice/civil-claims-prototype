@@ -25,7 +25,10 @@ CivilClaims::Application.routes.draw do
   resources :claims do
     resources :people do
       get 'editor', on: :member
-      resources :address
+      resources :address do
+        get 'editor', on: :member
+        get 'picker', on: :member
+      end
     end
   end
 

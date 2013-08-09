@@ -1,12 +1,19 @@
-<%= simple_fields_for( address ) do |f| %>
-  <%= f.input :postcode, input_html: { class: 'postcode' } %>
+<div id='address-<%= address.id %>'>
+  <%= simple_fields_for( address ) do |f| %>
+    <%= f.input :postcode, input_html: { class: 'postcode' } %>
+    <%= link_to 'Find UK Address', picker_claim_person_address_path( claim, person, address), :remote => true, :class => 'btn btn-default btn-small find-uk-address' %>
 
-  <% unless address.postcode.nil? || address.postcode.empty? %>
-    <%= f.input :street_1, :label => 'Street' %>
-    <%= f.input :street_2, label: false %>
-    <%= f.input :street_3, label: false %>
-    <%= f.input :town %>
-    <%= f.input :county %>
+    <% if address.show_editor || !(address.street_1.nil? || address.street_1.empty?) %>
+      <%= f.input :street_1, :label => 'Street' %>
+      <%= f.input :street_2, label: false %>
+      <%= f.input :street_3, label: false %>
+      <%= f.input :town %>
+      <%= f.input :county %>    
+    <% else %>  
+      <%= link_to 'Enter address manually', editor_claim_person_address_path( claim, person, address ), :remote => true, :class => 'manual-address' %>
+      <% if !(address.postcode.nil? || address.postcode.empty?) %>
+        <%= render :partial => 'addresses/picker', :format => [:html], :locals => { address: address} %>
+      <% end %>
+    <% end %>
   <% end %>
-
-<% end %>
+</div>

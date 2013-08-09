@@ -1,0 +1,3 @@
+myHtml = '<%=j render partial: "addresses/picker", formats: [:html], :locals => {address: address} %>';
+$('#address-<%= address.id %> .pick_address').remove();
+$('#address-<%= address.id %>').append(myHtml);

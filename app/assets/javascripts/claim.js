@@ -16,6 +16,5 @@ $(document).ready(function() {
       $(this).toggleClass('toggle-hidden').toggleClass('toggle-visible');
   });
 
-  $('form.edit-person .address_postcode .controls').append("<a href='#' class='btn btn-default btn-small'>Find UK Address</a>");
 
 });

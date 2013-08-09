@@ -1,4 +1,6 @@
 class Address < ActiveRecord::Base
+  attr_accessor :show_editor
+
   def self.create_random
     self.create(generate)
   end
