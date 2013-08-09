@@ -3,3 +3,4 @@
 <% options[:show_remove_button] = true if person.id != people.first.id %>
 myHtml = '<%=j render partial: "people/edit", formats: [:html], locals: {claim: claim, person: person, options: options}  %>';
 $('#person<%= person.id %>').replaceWith(myHtml);
+$('#add-additional-<%= person.type.downcase %>').remove();

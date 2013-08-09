@@ -1,1 +1,7 @@
 $('<%= "#edit-person-#{person.id.to_s}" %>').remove();
+type_selector = '.person.<%= person.type.downcase %>';
+button_selector = '#add-additional-<%= person.type.downcase %>';
+if( $(button_selector).length == 0 ) {
+  buttonHTML = '<%=j render partial: "people/add", formats: [:html], locals: {claim: claim, person_type: person.type} %>';
+  $(type_selector).last().after(buttonHTML);
+}

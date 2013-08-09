@@ -18,8 +18,4 @@ $(document).ready(function() {
 
   $('form.edit-person .address_postcode .controls').append("<a href='#' class='btn btn-default btn-small'>Find UK Address</a>");
 
-  $('form.edit-person').bind("ajax:success", function(data, status, xhr) {
-    
-    //$(this).remove();
-  });
 });

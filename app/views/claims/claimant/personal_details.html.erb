@@ -19,14 +19,14 @@
         <%= render :partial => 'people/display', :locals => {claim:@claim, person:person, people:@claim.claimants, i:i} %>
       <% end %>
 
-      <%= render :partial => 'people/add', formats: [:html], :locals => {claim: @claim, person_type: 'claimant', button_text: 'Add an additional claimant'} %>
+      <%= render :partial => 'people/add', formats: [:html], :locals => {claim: @claim, person_type: 'claimant'} %>
 
       <h3>Who are the Defendants in this claim?</h3>
       <% @claim.defendants.each.with_index do |person, i| %>
         <%= render :partial => 'people/display', :locals => {claim:@claim, person:person, people:@claim.defendants, i:i} %>
       <% end %>
 
-      <%= render :partial => 'people/add', formats: [:html], :locals => {claim: @claim, person_type: 'defendant', button_text: 'Add a co-defendant'} %>
+      <%= render :partial => 'people/add', formats: [:html], :locals => {claim: @claim, person_type: 'defendant'} %>
 
       <%= simple_form_for @claim, url: update_claim_path( @claim) do |f| %>
         <div class='well clearfix'>
