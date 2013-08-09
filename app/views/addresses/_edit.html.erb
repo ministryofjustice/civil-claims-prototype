@@ -1,4 +1,4 @@
-<div id='address-<%= address.id %>'>
+<div id='address-<%= address.id %>' class='address-container'>
   <%= simple_fields_for( address ) do |f| %>
     <%= f.input :postcode, input_html: { class: 'postcode' } %>
     <%= link_to 'Find UK Address', picker_claim_person_address_path( claim, person, address), :remote => true, :class => 'btn btn-default btn-small find-uk-address' %>

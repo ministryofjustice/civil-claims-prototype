@@ -22,6 +22,10 @@ CivilClaims::Application.routes.draw do
 
   get 'login_as/:role' => 'people#login', as: :login
 
+  get 'address/random' => 'address#random', as: :random_address
+  get 'address/:id'    => 'adddress#get', as: :get_address
+  post 'address/copy'  => 'address#copy'
+
   resources :claims do
     resources :people do
       get 'editor', on: :member

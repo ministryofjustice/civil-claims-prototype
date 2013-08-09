@@ -8,6 +8,11 @@ module AddressHelper
   end
 
   def generateAddresses( )
-    addresses = options_for_select([['Please select an address...', 0], ['one', 1], ['two', 2], ['three', 3]], 0)
+    addresses = options_for_select([
+      ['Please select an address...'], 
+      ['29 Alpacca Drive, Llamaville'], 
+      ['31 Alpacca Drive, Llamaville'], 
+      ['33 Alpacca Drive, Llamaville']
+    ])
   end
 end

@@ -35,18 +35,14 @@
           <div class='address'>
             <%= render partial: 'addresses/show', locals: {address: @claim.address_for_possession} %>
           </div>
-        </div>
 
-        <div class='well radios clearfix'>
           <h4>What type of property is it</h4>
           <%= f.radio_button(:property_type, 'residential') %>
           <%= label_tag :claim_property_type_residential, 'Residential' %>
 
           <%= f.radio_button :property_type, 'commercial' %>
           <%= label_tag :claim_property_type_commercial, 'Commercial' %>
-        </div>
-
-        <div class='well radios clearfix'>
+          
           <h4>Who is in the property</h4>
           <%= f.radio_button :resident_type, 'private tenant' %>
           <%= label_tag :claim_resident_type_private_tenant, 'Private Tenant' %>

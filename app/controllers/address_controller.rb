@@ -28,4 +28,12 @@ class AddressController < ApplicationController
       format.js { render :partial => 'addresses/picker', :locals => {address: address} }
     end
   end
+
+  def random
+    address = Address.generate
+    respond_to do |format|
+      format.json { render :json => address.to_json }
+    end
+  end
+
 end
