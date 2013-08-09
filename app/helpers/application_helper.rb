@@ -11,4 +11,9 @@ module ApplicationHelper
     end
     button_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")", class: "btn btn-primary")
   end
+
+  def inline_date_input(form, date_field_symbol)
+    render :partial => 'shared/inline_date', :locals => {f: form, date_field: date_field_symbol }
+  end
+
 end

@@ -50,8 +50,8 @@
           <%= f.check_box :notice_to_quit, :onClick => "toggle_panel(this, 'notice-served-date');" %>
         </div>
         <div id="notice-served-date" class="row" <%= "hidden" unless(@claim.notice_to_quit) %> >
-          <div class="col-lg-2"><%= f.label :notice_served_date, "Date notice served" %></div>
-          <div class="col-lg-3"><%= f.date_field :notice_served_date %></div>
+          <div class="col-lg-3"><%= f.label :notice_served_date, "Date notice served" %></div>
+          <div class="col-lg-8"><%= inline_date_input f, :notice_served_date %></div>
         </div>
         <div class="row checkbox">
           <%= f.label :lease_breach, "Breach of lease" %>
@@ -105,24 +105,24 @@
       <div class="well well-sm">
         <div class="row">
          <div class="col-lg-3"><%= f.label :tenancy_type%></div>
-          <div class="col-lg-3">
+          <div class="col-lg-4">
             <%= f.input :tenancy_type, label: false, collection: ["Assuret shorthold","Assured tenancy","Regulated"] %>
           </div>
         </div>
 
         <div class="row">
           <div class="col-lg-3"></div>
-          <div class="col-lg-3"><a href="#">More about tenancy types</a></div>
+          <div class="col-lg-4"><a href="#">More about tenancy types</a></div>
         </div>
 
         <div class="row">
           <div class="col-lg-3"><%= f.label :tenancy_start_date%></div>
-          <div class="col-lg-3"><%= f.date_field :tenancy_start_date %></div>
+          <div class="col-lg-8"><%= inline_date_input f, :tenancy_start_date %></div>
         </div>
 
         <div class="row">
           <div class="col-lg-3"><%= f.label :rental_amount%></div>
-          <div class="col-lg-3">
+          <div class="col-lg-4">
             <div class="input-group">
               <span class="input-group-addon">&pound</span>
               <%= f.input :rental_amount, :label => false %>
@@ -132,11 +132,12 @@
 
         <div class="row">
           <div class="col-lg-3"><%= f.label :payment_frequency%></div>
-          <div class="col-lg-3">
+          <div class="col-lg-4">
             <%= f.input :payment_frequency, 
               :label => false, 
               collection: ["Monthly", "Fortnightly", "Week"],
-              as: :radio_buttons %>
+              as: :radio_buttons,
+              label_html: { class: "col-lg-3" } %>
           </div>
         </div>
       </div>

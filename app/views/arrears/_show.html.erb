@@ -5,15 +5,11 @@
     <p>Add all payment arrears to the table below or <a href="#">upload a csv file</a></p>
 
     <div class="row">
-      <div class="col-lg-2">
-        <%= f.label :rent_due_date, "Rent due on" %>
-      </div>
-      <div class="col-lg-3">
-        <%= f.date_field :rent_due_date, :class => "form-control" %>
-      </div>
+      <div class="col-lg-3"><%= f.label :rent_due_date, "Rent due on" %></div>
+      <div class="col-lg-8"><%= inline_date_input f, :rent_due_date %></div>
     </div>
     
-    <br />
+    <br>
 
     <div>
       <%= f.label :contributions_this_month, "Did the defendant(s) make any contributions this month?" %><br />
