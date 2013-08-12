@@ -9,8 +9,10 @@
 
   <iframe class='centered' src='/courtfinder-api/highbury-corner-magistrates-court.html?asc' width='800px' height='350px'></iframe>
 
-  <p>Based on availability your hearing will take place on the following date &amp; time.</p>
+  <div class="info-notice">
+	  <p>Based on availability your hearing will take place on the following date &amp; time.</p>
 
-  <% date = (Date.today + 3.weeks).strftime("%A %-d %B %Y") %>
-  <div class='panel'><h2><%= date %> at 10:30am</h2></div>
+	  <% date = (Date.today + 3.weeks).strftime("%A %-d %B %Y") %>
+	  <h2><%= date %> at 10:30am</h2>
+  </div>
 </div>

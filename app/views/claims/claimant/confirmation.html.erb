@@ -7,10 +7,11 @@
 
     <a class='button-secondary' href='#'>Print receipt</a>
     <a class='button-secondary' href='#'>Print completed form</a>
-
-    <p class='center'>Your hearing will take place on</p>
-    <% date = (Date.today + 3.weeks).strftime("%A %-d %B %Y") %>
-    <h2 class='center'><%= date %> at 10:30am</h2>
+    <div class="info-notice">
+      <p class='center'>Your hearing will take place on</p>
+      <% date = (Date.today + 3.weeks).strftime("%A %-d %B %Y") %>
+      <h2 class='center'><%= date %> at 10:30am</h2>
+    </div>
     <p class='center'>at</p>
 
     <iframe class='centered' src='/courtfinder-api/highbury-corner-magistrates-court.html?asc' width='800px' height='350px'></iframe>
