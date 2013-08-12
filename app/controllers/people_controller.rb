@@ -42,7 +42,7 @@ class PeopleController < ApplicationController
         if person.full_name.blank?
           people = get_people(claim, person)
           options = build_editor_options( person, people )
-          format.js { render :partial => 'people/edit', :locals => {claim: claim, person: person, options: options } }
+          format.js { render :partial => 'people/edit', :locals => {claim: claim, person: person, people: people, options: options } }
         else
           format.js { redirect_to claim_person_path claim, person }
         end
@@ -85,10 +85,12 @@ class PeopleController < ApplicationController
 
     case params[:type]
     when 'claimant'
-      person = Claimant.create(Person.generate)
+      person = Claimant.create
+      person.address = Address.create
       @claim.claimants << person
     when 'defendant'
-      person = Defendant.create(Person.generate)
+      person = Defendant.create
+      person.address = Address.create
       @claim.defendants << person
     end
 
@@ -108,13 +110,14 @@ class PeopleController < ApplicationController
   end
 
   def get_people( claim, person )
+    people = [person]
     case person.type.downcase
     when 'claimant'
-      people = claim.claimants || {}
+      people = claim.claimants 
     when 'defendant'
-      people = claim.defendants || {}
+      people = claim.defendants
     end
-    logger.debug people
+    logger.debug people.inspect
     people
   end
 
@@ -123,7 +126,7 @@ class PeopleController < ApplicationController
     options[:type] = person.type.downcase
     options[:title] = 'Add an additional ' + person.type.titleize
     options[:delete_on_cancel] = true if person.id != people.first.id
-
+    options[:not_the_first] = true if person.id != people.first.id
     options
   end
 

@@ -9,6 +9,7 @@
       <% options[:title] = "Additional #{person.type.titleize}" %>
       <% options[:show_remove_button] = true  %>
       <% options[:duplicate_address] = people.first.address.id  %>
+      <% options[:not_the_first] = true %>
     <% end %>
     <% editor_showing = true %>
     <%= render partial: 'people/edit', locals: {claim: claim, person: person, options: options} %>

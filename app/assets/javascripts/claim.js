@@ -37,7 +37,7 @@ $(document).ready(function() {
         address_element.find('.manual-address').click();
         setTimeout(function(){
           claim.address.populate(master_form.find('.address-container'), address);
-        }, 20);
+        }, 50);
       } else {
         claim.address.populate(address_element, address);
       }

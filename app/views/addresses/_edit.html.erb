@@ -9,7 +9,10 @@
       <%= f.input :street_3, label: false %>
       <%= f.input :town %>
       <%= f.input :county %>    
-    <% else %>  
+    <% else %> 
+      <% if options.has_key? :not_the_first %>
+        <%= link_to "Same address as first #{person.type.titleize}", copy_address_of_first_claim_person_address_path( claim, person, address ), :remote => true, :class => 'copy-address' %>
+      <% end %>
       <%= link_to 'Enter address manually', editor_claim_person_address_path( claim, person, address ), :remote => true, :class => 'manual-address' %>
       <% if !(address.postcode.nil? || address.postcode.empty?) %>
         <%= render :partial => 'addresses/picker', :format => [:html], :locals => { address: address} %>
