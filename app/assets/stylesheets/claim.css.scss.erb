@@ -354,7 +354,7 @@ details summary:focus{
 }
 
 //stolen from govuk (removed parent 'article')
-table {
+.govuk-table table {
   border-collapse: collapse;
   border-spacing: 0;
   margin: 1em -1em 2em -1em;
@@ -368,17 +368,17 @@ table {
   }
 }
 
-th, td {
+.govuk-table th, .govuk-table td {
   vertical-align: top;
   line-height: 1.3em;
   padding: 0.7em 0.5em 0.7em 1em;
 }
 
-tr:nth-child(even) td {
+.govuk-table tr:nth-child(even) td {
   background-color: #fff;
 }
 
-td {
+.govuk-table td {
   background: #eaedef;
   border: dotted 1px #bbb;
 
@@ -387,13 +387,17 @@ td {
   }
 }
 
-th {
+.govuk-table th {
   line-height: 1.25em;
   text-align: left;
   color: #000;
   font-weight: normal;
   background-color: #e1e8e8;
   border: solid 1px #bbb;
+}
+
+.arrears-table{
+  padding-top: 10px;
 }
 
 
