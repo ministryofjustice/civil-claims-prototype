@@ -42,10 +42,12 @@
     <div>
       <table id="arrears-table" class="table table-condenced" <%= "hidden" if @claim.arrears.empty? %> >
         <thead>
-          <th>Rent due on</th>
-          <th>Amount due</th>
-          <th>Arrears</th>
-          <th></th>
+          <tr>
+            <th>Rent due on</th>
+            <th>Amount due</th>
+            <th>Arrears</th>
+            <th></th>
+          </tr>
         </thead>
         <tbody id="arrears-body">
           <%= f.simple_fields_for :arrears do |builder| %>
@@ -55,9 +57,7 @@
       </table>
     </div>
     
-    <p>
-      <a class="fake-link">About adding rental arrears</a>
-    </p>
+    <p><a class="fake-link">About adding rental arrears</a></p>
 
   </div>
 </section>
