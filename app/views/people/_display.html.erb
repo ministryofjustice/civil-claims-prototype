@@ -1,15 +1,24 @@
-<% options = {} %>
-<% options[:class] = 'well clearfix' %>
-<% if(@editors[person.id] || person.full_name.nil?) %>
-  <% if i > 0 %>
-    <% options[:title] = "Additional #{person.type.titleize}" %>
-    <% options[:show_remove_button] = true  %>
-    <% options[:duplicate_address] = people.first.address.id  %>
+<% people = claim.send(person_type.pluralize) %>
+<% editor_showing = false %>
+
+<% people.each.with_index do |person, i| %>
+  <% options = {} %>
+  <% options[:class] = 'person well clearfix' %>
+  <% if(@editors[person.id] || person.full_name.blank? ) %>
+    <% if i > 0 %>
+      <% options[:title] = "Additional #{person.type.titleize}" %>
+      <% options[:show_remove_button] = true  %>
+      <% options[:duplicate_address] = people.first.address.id  %>
+    <% end %>
+    <% editor_showing = true %>
+    <%= render partial: 'people/edit', locals: {claim: claim, person: person, options: options} %>
+  <% else %>
+    <% options[:class] << " #{person.type.downcase}" %>
+    <% options[:class] << " not-first" if i > 0 %>
+    <% options[:show_edit_link] = true %>
+    <%= render partial: 'people/show', locals: {claim: claim, person: person, options: options} %>
   <% end %>
-  <%= render partial: 'people/edit', locals: {claim: claim, person: person, options: options} %>
-<% else %>
-  <% options[:class] << " person #{person.type.downcase}" %>
-  <% options[:class] << " not-first" if i > 0 %>
-  <% options[:show_edit_link] = true %>
-  <%= render partial: 'people/show', locals: {claim: claim, person: person, options: options} %>
+<% end %>
+<% unless editor_showing %>
+  <%= render :partial => 'people/add', formats: [:html], :locals => {claim: @claim, person_type: 'claimant'} %>
 <% end %>
