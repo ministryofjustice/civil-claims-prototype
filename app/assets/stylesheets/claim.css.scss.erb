@@ -303,9 +303,11 @@ form.add-additional-person {
 .button{
   @include button;
 }
+
 .button-secondary{
   @include button($grey-3);
 }
+
 .button-warning{
   @include button($red);
 }
@@ -314,6 +316,21 @@ form.add-additional-person {
   background: url(https://assets.digital.cabinet-office.gov.uk/static/icon-information.png) no-repeat scroll 98% 1em $info-background;
   margin: 1em -1em 1.5em -1em;
   padding: 0.25em 1em 0.25em 1em;
+}
+
+details summary{
+  color: #2E3191;
+  cursor: pointer;
+  display: block;
+  text-decoration: underline;
+}
+
+details summary:hover{
+  color: #1D97FF;
+}
+
+details summary:focus{
+  outline: none;
 }
 
 

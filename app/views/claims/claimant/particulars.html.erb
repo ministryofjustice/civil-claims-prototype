@@ -88,13 +88,13 @@
         </div>
         <div class="row">
           <%= toggle_inline_help_link("Does, or will, the claim include any issues under the human rights act 1998",
-            "Bacon ipsum dolor sit amet beef boudin pork belly pancetta, t-bone ground round shoulder chuck andouille bresaola doner drumstick. Pork loin jerky doner swine boudin ball tip pork belly. Beef ribs frankfurter turducken short ribs corned beef, t-bone capicola pork belly brisket venison spare ribs ball tip chicken rump swine. Bresaola tongue short ribs t-bone jerky."
+            'The Human Rights Act 1998 (c 42) is an Act of Parliament of the United Kingdom which received Royal Assent on 9 November 1998, 
+            and mostly came into force on 2 October 2000.[1] Its aim is to "give further effect" in UK law to the rights 
+            contained in the Convention for the Protection of Human Rights and Fundamental Freedoms, but more commonly known as the European Convention on Human Rights. 
+            The Act makes available in UK courts a remedy for breach of a Convention right, without the need to go to the European Court of Human Rights in Strasbourg.'
           ) %>
         </div>
-        
-
       </div>
-
     </section>
 
 
@@ -105,7 +105,7 @@
         <div class="row">
          <div class="col-lg-3"><%= f.label :tenancy_type%></div>
           <div class="col-lg-4">
-            <%= f.input :tenancy_type, label: false, collection: ["Assuret shorthold","Assured tenancy","Regulated"] %>
+            <%= f.input :tenancy_type, label: false, collection: ["Assured shorthold","Assured tenancy","Regulated"] %>
           </div>
         </div>
 
