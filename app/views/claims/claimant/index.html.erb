@@ -14,16 +14,17 @@
   <% end %>
 
   <div class='tab-content'>
-    <div class='tab-pane active well' id='new'>
+    <div class='tab-pane active' id='new'>
       <%= render partial: 'claims/claimant/home' %>
     </div>
-    <div class='tab-pane well' id='list'>
+    <div class='tab-pane' id='list'>
       <%= render partial: 'claims/claimant/list', locals: {claims: @user.claims} %>
     </div>
   </div>
 
-  <div>
-    <h4>Before you begin</h4>
+  <div style="padding-top:10px;">
+    <h3>Before you begin</h3>
     <p>If you are making your first possession claim online here are a few things you need to know and to think about. These help topics are a good place to start....</p>
   </div>
+  
 </div>

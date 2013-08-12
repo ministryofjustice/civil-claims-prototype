@@ -9,6 +9,7 @@
 
 $info-background: #d5e8f3;
 $link-color-hover: #1D97FF;
+$button-border-radius: 3px;
 
 @mixin link-style{
   color: #2E3191;
@@ -263,7 +264,7 @@ input.break { clear:left; }
 #claims-list span.title { float:left; font-weight: bold; text-decoration: underline; }
 #claims-list span.content { float:left; clear:left; }
 #claims-list .participants { float:left; width: 300px; }
-#claims-list .controls span { display:inline-block; padding: 3px 5px; background-color: #cccccc; margin-top: 8px; }
+#claims-list .controls span { display:inline-block; padding: 3px 5px; margin-top: 8px; }
 
 .radios {
   label { float:left; margin: 0 50px 0 20px; }
@@ -309,14 +310,17 @@ form.add-additional-person {
 
 .button{
   @include button;
+  @include border-radius($button-border-radius);
 }
 
 .button-secondary{
   @include button($grey-3);
+  @include border-radius($button-border-radius);
 }
 
 .button-warning{
   @include button($red);
+  @include border-radius($button-border-radius);
 }
 
 .info-notice{
@@ -344,4 +348,9 @@ details summary:focus{
 .fake-link:hover{
   color: $link-color-hover;
 }
+
+.big{
+  zoom: 150%;
+}
+
 

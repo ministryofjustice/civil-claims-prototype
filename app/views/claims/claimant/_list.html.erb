@@ -10,10 +10,9 @@
         <span class='content'><%= claim.claimants.first.full_name %> vs <%= claim.defendants.first.full_name %></span>
       </div>
       <div class='controls'>
-         <span><%= link_to 'Continue', claim_path(claim) %></span>
-         <span><%= link_to 'Delete', claim_delete_path(claim) %></span>
+         <span><%= link_to 'Continue', claim_path(claim), :class => 'button' %></span>
+         <span><%= link_to 'Delete', claim_delete_path(claim), :class=> 'button-warning' %></span>
       </div>
-     
     </li>
   <% end %>
 </ul>
