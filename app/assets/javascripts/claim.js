@@ -1,3 +1,5 @@
+window.claim = window.claim || {}
+
 $(document).ready(function() {
 
   $('#claims-index-tabs li.submit a').click(function (e) {
@@ -16,26 +18,62 @@ $(document).ready(function() {
       $(this).toggleClass('toggle-hidden').toggleClass('toggle-visible');
   });
 
-  $('.edit-claim').on('change', '.edit-person .address-container .pick_address select', function(event) {
-    var val = $(this).val();
-    var address_element = $(this).parents('.address-container');
-    var postcode = address_element.find('.address_postcode input.postcode').val();
-    url = '/address/random';
-    $.ajax(url).done(function(address) {
-      address.street_1 = val.split(',')[0];
-      address.town = val.split(',')[1];
-      address.postcode = postcode;
+  // filth
+  $('#edit-claim').on('change', '.edit-person  .pick_address select', function(event) {
+    var master_form = $(this).parents('form');
+    var address_element = master_form.find('.address-container');
 
-      populate_address(address_element, address);
-    })
+    var address = claim.address.extract_partial_address($(this).val());
+
+    user_entered_postcode = address_element.find('.address_postcode input.postcode').val();
+    if(user_entered_postcode.length > 0) {
+      address.postcode = user_entered_postcode;
+    }
+
+    $.ajax('/address/random').done(function(random_address) {
+      address = claim.address.merge(address, random_address);
+
+      if(address_element.find('.address_street_1 input').length == 0 ) {
+        address_element.find('.manual-address').click();
+        setTimeout(function(){
+          claim.address.populate(master_form.find('.address-container'), address);
+        }, 20);
+      } else {
+        claim.address.populate(address_element, address);
+      }
+    });
   });
 
-  function populate_address(element, address) {
-    element.find('.address_street_1 input').val(address.street_1);
-    element.find('.address_street_2 input').val(address.street_2);
-    element.find('.address_street_3 input').val(address.street_3);
-    element.find('.address_town input').val(address.town);
-    element.find('.address_county input').val(address.county);
-  }
+
 
 });
+
+claim.address = {
+  merge: function( primary, secondary ) {
+    for (var attrname in secondary) { 
+      if(!primary.hasOwnProperty(attrname)) {
+        primary[attrname] = secondary[attrname];
+      }
+    }
+    return primary;
+  },
+
+  populate: function(container, address) {
+    container.find('.address_street_1 input').val(address.street_1);
+    container.find('.address_street_2 input').val(address.street_2);
+    container.find('.address_street_3 input').val(address.street_3);
+    container.find('.address_town input').val(address.town);
+    container.find('.address_county input').val(address.county);
+    container.find('.address_postcode input').val(address.postcode);
+  },
+
+  extract_partial_address: function(address_string) {
+    var address = {};
+    var sections = address_string.split(',');
+    if(sections.length > 1) {
+      address.street_1 = sections[0];
+      address.town = sections[1].trim();
+    }
+    return address
+  }
+};

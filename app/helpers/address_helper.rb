@@ -8,11 +8,11 @@ module AddressHelper
   end
 
   def generateAddresses( )
-    addresses = options_for_select([
-      ['Please select an address...'], 
-      ['29 Alpacca Drive, Llamaville'], 
-      ['31 Alpacca Drive, Llamaville'], 
-      ['33 Alpacca Drive, Llamaville']
-    ])
+    addresses = [['Please select an address...']];
+    5.times do
+      a = Address.generate
+      addresses << [a[:street_1] + ', ' + a[:town]];
+    end
+    options_for_select(addresses)
   end
 end

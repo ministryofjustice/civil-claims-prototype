@@ -1,2 +1,4 @@
-myHtml = '<%=j render partial: "addresses/edit", formats: [:html], locals: {claim: claim, person: person, address: address}  %>';
-$('#address-<%= address.id %>').replaceWith(myHtml);
+address_element = $.parseHTML('<%=j render partial: "addresses/edit", formats: [:html], locals: {claim: claim, person: person, address: address}  %>');
+var postcode = $('#address-<%= address.id %> .postcode').val();
+$(address_element).find('.postcode').val(postcode);
+$('#address-<%= address.id %>').replaceWith(address_element);
