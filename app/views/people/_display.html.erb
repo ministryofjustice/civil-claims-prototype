@@ -5,6 +5,7 @@
   <% options = {} %>
   <% options[:class] = 'person well clearfix' %>
   <% if(@editors[person.id] || person.full_name.blank? ) %>
+    <% options[:show_dx] = true if 'claimant' == person.type.downcase %>
     <% if i > 0 %>
       <% options[:title] = "Additional #{person.type.titleize}" %>
       <% options[:show_remove_button] = true  %>
@@ -21,5 +22,5 @@
   <% end %>
 <% end %>
 <% unless editor_showing %>
-  <%= render :partial => 'people/add', formats: [:html], :locals => {claim: @claim, person_type: 'claimant'} %>
+  <%= render :partial => 'people/add', formats: [:html], :locals => {claim: @claim, person_type: person_type} %>
 <% end %>
