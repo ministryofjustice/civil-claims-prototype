@@ -1,0 +1,12 @@
+    
+<div class="modal fade" id="<%= dialog_id %>">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> -->
+        <h4 class="modal-title"><%= dialog_title %></h4>
+      </div>
+      <%= render content_partial, :f=>f, :file_name => file_name %>
+    </div>
+  </div>
+</div>

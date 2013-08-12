@@ -1,10 +1,18 @@
-<div id="rental-arrears" <%= "hidden" unless @claim.claim_rental_arrears %> >
+<section id="rental-arrears" <%= "hidden" unless @claim.claim_rental_arrears %> >
   <h3>Rental arrears</h3>
   
   <div class="well well-sm">
-    <p>Add all payment arrears to the table below or <a href="#">upload a csv file</a></p>
+    <p>Add all payment arrears to the table below or <a data-toggle="modal" href="#arrears-dialog">upload a csv file</a></p>
+    
+    <%= render "shared/modal_dialog", 
+    :dialog_id=>"arrears-dialog", 
+    :content_partial=>"arrears/upload_dialog_content",
+    :f=>f, 
+    :dialog_title =>"Upload CSV file", :file_name=>"arrears-property.csv" 
 
-    <div class="row">
+     %>
+    
+      <div class="row">
       <div class="col-lg-3"><%= f.label :rent_due_date, "Rent due on" %></div>
       <div class="col-lg-8"><%= inline_date_input f, :rent_due_date %></div>
     </div>
@@ -26,13 +34,13 @@
     <br/>
     
     <div>
-      <%= button_to_add_fields "arrears", "Add", f, :arrears %>
-      <%= button_to_function "Cancel", "", :class => "btn btn-danger disabled" %>
+      <%= button_to_add_fields "arrears", "Add", f, :arrears, { :due_date => DateTime.now(), :amount => 0, :arrear => 0 } %>
+      <a href="#" class="disabled">Cancel</a>
     </div>
     <br />
 
     <div>
-      <table id="arrears-table" class="table table-condenced" <%= "hidden" if @claim.attachments.empty? %> >
+      <table id="arrears-table" class="table table-condenced" <%= "hidden" if @claim.arrears.empty? %> >
         <thead>
           <th>Rent due on</th>
           <th>Amount due</th>
@@ -41,7 +49,7 @@
         </thead>
         <tbody id="arrears-body">
           <%= f.simple_fields_for :arrears do |builder| %>
-            <%= render "arrears/arrear_fields", :f => builder %>
+            <%= render "arrears/arrear_fields", :f => builder, :default_values=>nil %>
           <% end %>
         </tbody>
       </table>
@@ -52,4 +60,4 @@
     </p>
 
   </div>
-</div>
+</section>

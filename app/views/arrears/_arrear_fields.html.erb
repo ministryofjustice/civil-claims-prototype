@@ -1,11 +1,11 @@
 <tr>
   <%= f.hidden_field :_destroy, :class => "destroy" %>
-  <td><%= f.date_field :due_date %></td>
+  <td><%= f.date_field :due_date, :as => :datepicker %></td>
   <!-- :field_attribute, :value => format_method(f.object.field_attribute) %> -->
-  <td><%= f.input :amount, label: false %></td>
-  <td><%= f.input :arrear, label: false %></td>
+  <td><%= f.input :amount, label: false, :input_html => { :value => f.object.amount || default_values && default_values[:amount] }  %></td>
+  <td><%= f.input :arrear, label: false, :input_html => { :value => f.object.arrear || default_values && default_values[:arrear] }%></td>
   <td>
-    <div class="btn btn-default btn-small disabled">Edit</div>
-    <%= button_to_remove_fields "X", f ,:arrears %>
+    <a href="#" class="button disabled">Edit</a>
+    <%= button_to_remove_fields "Remove", f, :arrears %>
   </td>
 </tr>

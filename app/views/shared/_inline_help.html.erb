@@ -1,4 +1,4 @@
 <div class="inline-help span4 collapse-group">
   <%= link_to link_text, '#', :class => 'toggle-hidden toggle-help' %>
-  <div class="collapse"><%= help_content %></div>
+  <div class="collapse"><%= help_content.html_safe %></div>
 </div>

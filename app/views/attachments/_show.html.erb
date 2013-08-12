@@ -1,20 +1,23 @@
-<div id="attachments">
+<section id="attachments">
   <h3>Supporting documentation</h3>
 
   <div class="well well-sm clearfix">
     <p>Attach any documents to support your claim</p>
 
-    <div>
-      <%= button_to_add_fields "attachments", "Select", f, :attachments %>
-    </div>
+    <a data-toggle="modal" href="#attachments-dialog" >Select</a><br/>
 
-    <br/>
-
+    <%= render "shared/modal_dialog", 
+    :dialog_id=>"attachments-dialog",
+    :content_partial=>"attachments/upload_dialog_content",
+    :f=>f , 
+    :dialog_title =>"Upload files", 
+    :file_name=>get_random_filename %>
+    
     <div>
       <table id="attachments-table" class="table table-condensed">
         <tbody id="attachments-body">
           <%= f.simple_fields_for :attachments do |builder| %>
-            <%= render "attachments/attachment_fields", :f => builder %>
+            <%= render "attachments/attachment_fields", :f => builder, :default_values=>nil %>
           <% end %>
         </tbody>
       </table>
@@ -24,4 +27,4 @@
       <a href="#">About supporting documentation</a>
     </p>
   </div>
-</div>
+</section>

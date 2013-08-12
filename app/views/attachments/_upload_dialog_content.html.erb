@@ -1,0 +1,20 @@
+<div class="modal-body">
+  <div class="col-lg-8">
+    <input type="text" value="<%= file_name %>" >
+  </div>
+  <div class="col-lg3">
+    <a class="button">Browse</a>
+  </div>
+  <br>
+    <div class="application-notice info-notice">
+    <p>Types of files supported</p>
+    
+
+    <p>You can upload pdf, doc, open office, jpg and many others. For the <a>full list</a></p> 
+  </div>
+</div>
+
+<div class="modal-footer">
+  <%= button_to_add_fields "attachments", "Attach", f, :attachments, { :file_name => file_name } %>
+  <a href="#" data-dismiss="modal">Cancel</a>
+</div>
