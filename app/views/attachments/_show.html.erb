@@ -4,7 +4,9 @@
   <div class="well well-sm clearfix">
     <p>Attach any documents to support your claim</p>
 
-    <a data-toggle="modal" href="#attachments-dialog" >Select</a><br/>
+    <button data-toggle="modal" href="#attachments-dialog" class="button">Select</button>
+    <!-- fix this -->
+    <br/><br/>
 
     <%= render "shared/modal_dialog", 
     :dialog_id=>"attachments-dialog",

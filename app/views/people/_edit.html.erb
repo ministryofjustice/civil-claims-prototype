@@ -20,16 +20,19 @@
 
     <%= render partial: "addresses/edit", formats: [:html], locals: {claim: claim, person: person, address: person.address} %>
 
-    <div class='button-group'>
-      <%= button_tag(type: 'submit', name: 'commit', value: 'save', class: "btn btn-success btn-small") do %>
-        <%= options[:save_button_text] || 'Save details' %>
-      <% end %>
+    <div class='btn-toolbar'>
+      <div class='btn-group'>
+        <%= button_tag(type: 'submit', name: 'commit', value: 'save', class: "button") do %>
+          <%= options[:save_button_text] || 'Save details' %>
+        <% end %>
 
-      <%= f.submit :Cancel, :class => 'btn btn-default btn-small' %>
-
-      <% if options.has_key? :show_remove_button %>
-        <%= f.submit :Remove, :class => 'btn btn-danger btn-small' %>
-      <% end %>
+        <%= f.submit :Cancel, :class => 'button-secondary' %>
+      </div>
+      <div class='btn-group' style = 'margin-left:11em'>
+        <% if options.has_key? :show_remove_button %>
+          <%= f.submit :Remove, :class => "button-warning" %>
+        <% end %>
+      </div>
     </div>
   </div>
 <% end %>

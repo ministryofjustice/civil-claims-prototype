@@ -5,8 +5,8 @@
     <p>Thankyou for submitting your claim</p>
     <p>Your reference code is <em><strong><%= @claim.id %></strong></em></p>
 
-    <a class='btn btn-default' href='#'>Print receipt</a>
-    <a class='btn btn-default' href='#'>Print completed form</a>
+    <a class='button-secondary' href='#'>Print receipt</a>
+    <a class='button-secondary' href='#'>Print completed form</a>
 
     <p class='center'>Your hearing will take place on</p>
     <% date = (Date.today + 3.weeks).strftime("%A %-d %B %Y") %>
