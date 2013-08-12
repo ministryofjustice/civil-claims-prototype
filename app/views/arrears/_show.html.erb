@@ -4,12 +4,13 @@
   <div class="well well-sm">
     <p>Add all payment arrears to the table below or <a data-toggle="modal" href="#arrears-dialog">upload a csv file</a></p>
     
+    <!-- for now -->
     <%= render "shared/modal_dialog", 
-    :dialog_id=>"arrears-dialog", 
-    :content_partial=>"arrears/upload_dialog_content",
-    :f=>f, 
-    :dialog_title =>"Upload CSV file", :file_name=>"arrears-property.csv" 
-
+      :dialog_id => "arrears-dialog", 
+      :content_partial => "arrears/upload_dialog_content",
+      :f => f, 
+      :dialog_title => "Upload CSV file", 
+      :file_name=>"arrears-property.csv" 
      %>
     
       <div class="row">
@@ -33,11 +34,10 @@
 
     <br/>
     
-    <div>
+    <div class="btn-group">
       <%= button_to_add_fields "arrears", "Add", f, :arrears, { :due_date => DateTime.now(), :amount => 0, :arrear => 0 } %>
-      <a href="#" class="disabled">Cancel</a>
+      <a class="fake-link">Cancel</a>
     </div>
-    <br />
 
     <div>
       <table id="arrears-table" class="table table-condenced" <%= "hidden" if @claim.arrears.empty? %> >
@@ -54,9 +54,9 @@
         </tbody>
       </table>
     </div>
-
+    
     <p>
-      <a href="#">About adding rental arrears</a>
+      <a class="fake-link">About adding rental arrears</a>
     </p>
 
   </div>

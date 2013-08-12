@@ -8,6 +8,13 @@
 @import "design-patterns/_buttons.scss";
 
 $info-background: #d5e8f3;
+$link-color-hover: #1D97FF;
+
+@mixin link-style{
+  color: #2E3191;
+  cursor: pointer;
+  text-decoration: underline;
+}
 
 a.toggle-hidden:before {
   border-left-color: #333333;
@@ -319,18 +326,22 @@ form.add-additional-person {
 }
 
 details summary{
-  color: #2E3191;
-  cursor: pointer;
-  display: block;
-  text-decoration: underline;
+  @include link-style
 }
 
 details summary:hover{
-  color: #1D97FF;
+  color: $link-color-hover;
 }
 
 details summary:focus{
   outline: none;
 }
 
+.fake-link{
+  @include link-style
+}
+
+.fake-link:hover{
+  color: $link-color-hover;
+}
 

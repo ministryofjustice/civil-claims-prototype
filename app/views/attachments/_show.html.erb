@@ -9,11 +9,11 @@
     <br/><br/>
 
     <%= render "shared/modal_dialog", 
-    :dialog_id=>"attachments-dialog",
-    :content_partial=>"attachments/upload_dialog_content",
-    :f=>f , 
-    :dialog_title =>"Upload files", 
-    :file_name=>get_random_filename %>
+      :dialog_id=>"attachments-dialog",
+      :content_partial=>"attachments/upload_dialog_content",
+      :f=>f , 
+      :dialog_title =>"Upload files", 
+      :file_name=>get_random_filename %>
     
     <div>
       <table id="attachments-table" class="table table-condensed">
@@ -26,7 +26,7 @@
     </div>
 
     <p>
-      <a href="#">About supporting documentation</a>
+      <a class="fake-link">About supporting documentation</a>
     </p>
   </div>
 </section>

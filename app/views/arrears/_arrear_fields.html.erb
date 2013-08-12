@@ -5,7 +5,7 @@
   <td><%= f.input :amount, label: false, :input_html => { :value => f.object.amount || default_values && default_values[:amount] }  %></td>
   <td><%= f.input :arrear, label: false, :input_html => { :value => f.object.arrear || default_values && default_values[:arrear] }%></td>
   <td>
-    <a href="#" class="button disabled">Edit</a>
+    <div class="button disabled">Edit</div>
     <%= button_to_remove_fields "Remove", f, :arrears %>
   </td>
 </tr>
