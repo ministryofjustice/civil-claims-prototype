@@ -23,7 +23,7 @@
       <%= simple_form_for @claim, url: update_claim_path( @claim) do |f| %>
         <div class='well clearfix'>
           <h4>Address for possession</h4>
-          <a href='#'>Same address as defendant</a>
+          <a class='fake-link'>Same address as defendant</a>
           <div class='address'>
             <%= render partial: 'addresses/show', locals: {address: @claim.address_for_possession} %>
           </div>
