@@ -39,7 +39,13 @@ class PeopleController < ApplicationController
 
       respond_to do |format|
         format.html { redirect_to claim_path claim }
-        format.js { redirect_to claim_person_path claim, person }
+        if person.full_name.blank?
+          people = get_people(claim, person)
+          options = build_editor_options( person, people )
+          format.js { render :partial => 'people/edit', :locals => {claim: claim, person: person, options: options } }
+        else
+          format.js { redirect_to claim_person_path claim, person }
+        end
       end
     elsif 'REMOVE' == params[:commit].upcase
       person.delete
@@ -61,7 +67,6 @@ class PeopleController < ApplicationController
   end
 
   def show
-    logger.debug params
     claim = Claim.find(params[:claim_id])
     person = Person.find(params[:id])
 
@@ -82,22 +87,19 @@ class PeopleController < ApplicationController
     when 'claimant'
       person = Claimant.create(Person.generate)
       @claim.claimants << person
-      people = @claim.claimants
     when 'defendant'
       person = Defendant.create(Person.generate)
       @claim.defendants << person
-      people = @claim.defendants
     end
+
+    people = get_people(@claim, person)
 
     @claim.save
 
     session['editors'] ||= {}
     session['editors'][person.id] = true
 
-    options = {}
-    options[:type] = person.type.downcase
-    options[:title] = 'Add an additional ' + person.type.titleize
-    options[:delete_on_cancel] = true if person.id != people.first.id
+    options = build_editor_options( person, people )
 
     respond_to do |format|
       format.html { redirect_to claim_path claim }
@@ -105,6 +107,25 @@ class PeopleController < ApplicationController
     end
   end
 
+  def get_people( claim, person )
+    case person.type.downcase
+    when 'claimant'
+      people = claim.claimants || {}
+    when 'defendant'
+      people = claim.defendants || {}
+    end
+    logger.debug people
+    people
+  end
+
+  def build_editor_options( person, people )
+    options = {}
+    options[:type] = person.type.downcase
+    options[:title] = 'Add an additional ' + person.type.titleize
+    options[:delete_on_cancel] = true if person.id != people.first.id
+
+    options
+  end
 
   def editor
     claim = Claim.find(params[:claim_id])
