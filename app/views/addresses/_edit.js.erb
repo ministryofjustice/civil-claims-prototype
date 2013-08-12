@@ -1,4 +1,6 @@
-address_element = $.parseHTML('<%=j render partial: "addresses/edit", formats: [:html], locals: {claim: claim, person: person, address: address}  %>');
-var postcode = $('#address-<%= address.id %> .postcode').val();
-$(address_element).find('.postcode').val(postcode);
+address_element = $.parseHTML('<%=j render partial: "addresses/edit", formats: [:html], locals: {claim: claim, person: person, address: address, options:options}  %>');
+<% unless options.has_key? :no_postcode_override %>
+  var postcode = $('#address-<%= address.id %> .postcode').val();
+  $(address_element).find('.postcode').val(postcode);
+<% end %>
 $('#address-<%= address.id %>').replaceWith(address_element);

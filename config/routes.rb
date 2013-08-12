@@ -24,14 +24,14 @@ CivilClaims::Application.routes.draw do
 
   get 'address/random' => 'address#random', as: :random_address
   get 'address/:id'    => 'adddress#get', as: :get_address
-  post 'address/copy'  => 'address#copy'
-
+  
   resources :claims do
     resources :people do
       get 'editor', on: :member
       resources :address do
         get 'editor', on: :member
         get 'picker', on: :member
+        get 'copy_address_of_first', on: :member
       end
     end
   end
