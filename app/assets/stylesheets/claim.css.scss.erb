@@ -5,6 +5,7 @@
 // GOV.UK Toolkit
 @import "_colours";
 @import "_typography";
+@import "design-patterns/_buttons.scss";
 
 a.toggle-hidden:before {
   border-left-color: #333333;
@@ -296,5 +297,15 @@ form.add-additional-person {
 }
 
 #edit-claim h3 { margin-top: 40px; }
+
+.button{
+  @include button;
+}
+.button-secondary{
+  @include button($grey-3);
+}
+.button-warning{
+  @include button($red);
+}
 
 
