@@ -30,10 +30,39 @@ function remove_fields(link, association) {
 function add_fields(link, association, content) {
   var new_id = new Date().getTime();
   var regexp = new RegExp('new_' + association, 'g');
+  
+  content = fix_new_table_idem_values(association, content);
+ 
   $('#'+association+'-table').show('fast');
   $('#'+association+'-table tbody').append(content.replace(regexp, new_id));
+
 }
 
 function toggle_panel(checkbox, panel_id){
   $('#'+panel_id).toggle('fast');
 }
+
+function fix_new_table_idem_values(association, content) {
+  if(association=="arrears"){
+    
+    var rent = $('#claim_rental_amount').val() || 0;
+    var contribiution = $('#claim_contributions_this_month').val() || 0;
+    var arrears_sum =0.0;
+    $('#arrears-table tbody td .arrears-arrear:visible').each(function(index){
+      arrears_sum += parseFloat($(this).val()) || 0;
+    });
+    console.log('rent: '+rent);
+    console.log('contribution: '+contribiution);
+    console.log('already arrears: '+arrears_sum);
+
+    return content
+      .replace('arrears_new_item_amount', rent)
+      .replace('arrears_new_item_arrear', rent-contribiution-arrears_sum);
+  }
+  else if(association=="attachments"){
+
+  }
+  return content;
+}
+
+
