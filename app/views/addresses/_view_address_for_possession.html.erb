@@ -1,0 +1,8 @@
+<div class='address-for-possession person well' id='address-<%= address.id %>'>
+  <div class='address-linear'>
+    <%= render :partial => 'addresses/show', :locals => {address: address} %>
+  </div>
+  <span><%= claim.property_type.titleize %> property</span>
+  <span><%= claim.resident_type.humanize %></span>
+  <span><%= link_to "View/edit details", claim_address_editor_url( claim, address ), :remote => true  %>
+</div>

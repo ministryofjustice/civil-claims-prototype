@@ -1,0 +1,41 @@
+<%= simple_form_for claim, :url => claim_address_for_possession_path( claim), :remote => true, :html => { :id => "edit-address-#{address.id}", :class => 'form-horizontal' } do |f| %>
+
+  <div class='well clearfix'>
+  
+    <div class='address-editor address'>
+      <% options = {} %>
+      <% options[:address_for_possesion] = true %>
+      <% options[:not_the_first] = true %>
+      <% person = claim.defendants.first %>
+
+      <%= render partial: 'addresses/edit', :formats => [:html], locals: {claim: claim, person: person, address: address, options: options } %>
+    
+      <div class='form-group'>
+        <h4>What type of property is it?</h4>
+        <div class='striped'>
+          <%= f.radio_button(:property_type, 'residential') %>
+          <%= label_tag :claim_property_type_residential, 'Residential' %>
+        </div>
+        <div>
+          <%= f.radio_button :property_type, 'commercial' %>
+          <%= label_tag :claim_property_type_commercial, 'Commercial' %>
+        </div>
+      </div>
+
+      <div class='form-group'>
+        <h4>Who is in the property?</h4>
+        <div class='striped'>
+          <%= f.radio_button :resident_type, 'private tenant' %>
+          <%= label_tag :claim_resident_type_private_tenant, 'Private Tenant' %>
+        </div>
+        <div>
+          <%= f.radio_button :resident_type, 'squatter' %>
+          <%= label_tag :claim_resident_type_squatter, 'Squatter' %>
+        </div>
+      </div>
+    </div>
+
+    <%= f.submit 'Save & Continue', :class => "button" %>
+    <%= f.submit 'Close', :class => "button-secondary" %>
+  </div>
+<% end %>

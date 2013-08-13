@@ -1,0 +1,2 @@
+var address_element = '<%=j render partial: "addresses/edit_address_for_possession", formats: [:html], locals: {claim: claim, address: address}  %>';
+$('#address-<%= address.id %>').replaceWith(address_element);

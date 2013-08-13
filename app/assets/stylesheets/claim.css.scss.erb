@@ -209,7 +209,7 @@ nav#secondary {
   .control-group { margin-bottom:10px; }
 }
 
-.edit-person {
+.edit-person, .address-container {
   margin-top: 20px;
   margin-bottom: 20px;
   input[type=text], input[type=tel], input[type=email], select { 
@@ -226,7 +226,9 @@ nav#secondary {
   }
 
   .btn-danger { margin-left: 21em; }
+}
 
+.address-container {
   .address_postcode {
     display: inline-block;
     .postcode { display: inline-block;  width: 7.5em; }
@@ -247,6 +249,11 @@ nav#secondary {
   .button-group {
     margin:20px 0;
   }
+
+}
+
+div.striped {
+  background-color: #d9edf7;
 }
 
 h2.center { text-align: center; }
@@ -273,18 +280,35 @@ input.break { clear:left; }
 
 iframe { border: none; }
 
-.person {
+.person, .address-editor {
   padding-left: 6em;
   .name { font-weight: bold; }
   margin-bottom: -1px;
 }
+
+.address-editor .form-group {
+  &> div {
+    padding:4px 10px;
+  }
+
+  h4 {
+    margin-bottom: 10px;
+  }
+
+  label {
+    margin-bottom: 0;
+  }
+
+  margin: 10px 0;
+}
+
 
 form.add-additional-person {
   margin-top: 21px;
   margin-bottom: 20px;
 }
 
-.claimant, .defendant {
+.claimant, .defendant, .address-for-possession {
   background-repeat: no-repeat;
   background-position: 18px 20px;
   background-size: 63px 68px;
@@ -304,6 +328,22 @@ form.add-additional-person {
   border-color: #f49365;
   background-size: 52px 68px;
   background-position: 24px 20px;
+}
+
+.address-for-possession {
+  background-color: #d5e8f2;
+  background-image: url(<%= asset_path 'address.png' %>);
+  border-color: #308bc4;
+  background-size: 58px 63px;
+  background-position: 20px 20px;
+
+  .address-linear {
+    font-weight: bold;
+  }
+
+  &> span {
+    display:block;
+  }
 }
 
 #edit-claim h3 { margin-top: 40px; }
