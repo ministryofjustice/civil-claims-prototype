@@ -19,7 +19,7 @@ $(document).ready(function() {
   });
 
   // filth
-  $('#edit-claim').on('change', '.edit-person  .pick_address select', function(event) {
+  $('#edit-claim').on('change', '.pick_address select', function(event) {
     var master_form = $(this).parents('form');
     var address_element = master_form.find('.address-container');
 
