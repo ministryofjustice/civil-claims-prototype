@@ -39,13 +39,7 @@ class PeopleController < ApplicationController
 
       respond_to do |format|
         format.html { redirect_to claim_path claim }
-        if person.full_name.blank?
-          people = get_people(claim, person)
-          options = build_editor_options( person, people )
-          format.js { render :partial => 'people/edit', :locals => {claim: claim, person: person, people: people, options: options } }
-        else
-          format.js { redirect_to claim_person_path claim, person }
-        end
+        format.js { redirect_to claim_person_path claim, person }
       end
     elsif 'REMOVE' == params[:commit].upcase
       person.delete
