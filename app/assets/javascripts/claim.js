@@ -30,6 +30,15 @@ $(document).ready(function() {
     }
   });
 
+  // enable CSS validation once user tabs out of form field.  
+  $('#edit-claim').on('blur', 'form.edit-person input', function(event) {
+    if($(this).val().length) {
+      $(this).siblings('.icon-container').css('display', 'inline');
+    } else {
+      $(this).siblings('.icon-container').css('display', 'none');
+    }
+  });
+
   // filthy address picker business
   $('#edit-claim').on('change', '.pick_address select', function(event) {
     var master_form = $(this).parents('form');

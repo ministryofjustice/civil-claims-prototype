@@ -1,4 +1,4 @@
-<%= simple_form_for( [claim, person], url: claim_person_url(claim, person), remote: true, html: { :id => 'edit-person-'+person.id.to_s, :class => 'form-horizontal edit-person' } ) do |f| %>
+<%= simple_form_for( [claim, person], url: claim_person_url(claim, person), remote: true, html: { :id => 'edit-person-'+person.id.to_s, :class => 'form-horizontal edit-person'  } ) do |f| %>
   <% if options.has_key? :delete_on_cancel %>
     <input type='hidden' name='delete_on_cancel' />
   <% end %>
@@ -15,7 +15,9 @@
     <%= f.input :full_name, :placeholder => 'e.g. John Smith' %>
     <%= f.input :phone %>
     <%= f.input :mobile %>
-    <%= f.input :email, as: :string %>
+    <%= f.input :email do %>
+      <%= f.input_field :email, as: :string, :pattern => ".+@.+" %><span class='icon-container' style='display:none' />
+    <% end %>
 
     <% if options.has_key? :show_dx || !(person.dx_number.blank? && person.dx_exchange.blank? ) %>
       <% dx_controls = capture { f.input :dx_number, :label => 'DX number' } %>
