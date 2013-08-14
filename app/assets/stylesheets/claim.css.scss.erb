@@ -7,7 +7,9 @@
 @import "_typography";
 @import "design-patterns/_buttons.scss";
 
-$info-background: #d5e8f3;
+$default-panel-background-color: #F8F8F8;
+$default-panel-border-color: #E3E3E3;
+$info-background: #D2E8F2;
 $link-color-hover: #1D97FF;
 $button-border-radius: 3px;
 
@@ -16,6 +18,13 @@ $button-border-radius: 3px;
   cursor: pointer;
   text-decoration: underline;
 }
+
+@mixin panel-style($background-color: $default-panel-background-color, $border-color: $default-panel-border-color) {
+  background-color: $background-color;
+  border-top:       1px solid $border-color;
+  border-bottom:    1px solid $border-color;
+}
+
 
 a.toggle-hidden:before {
   border-left-color: #333333;
@@ -440,16 +449,10 @@ details summary:focus{
   padding-top: 10px;
 }
 
-.test-field{
-  font-family: "nta",Arial,sans-serif;
-font-size: 16px;
-line-height: 1.25;
-font-weight: 300;
-text-transform: none;
-border: 1px solid #bbb;
-min-width: 8em;
-margin: 0 0.5em;
-padding: 0.25em;
+.input-panel{
+  @include panel-style;
 }
+
+
 
 
