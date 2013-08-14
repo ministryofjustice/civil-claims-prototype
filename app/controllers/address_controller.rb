@@ -14,7 +14,6 @@ class AddressController < ApplicationController
         person = Person.find(params[:person_id]) 
         format.js { render :partial => 'addresses/edit', :formats => [:js], :locals => {claim: claim, person: person, address: address, options: {}} }
       elsif claim.address_for_possession.id == address.id
-        logger.debug 'XXXXXXXXXXXXXXXX'
         format.js { render :partial => 'addresses/edit_address_for_possession', :formats => [:js], :locals => {claim:claim, address:address} }  
       else
         format.js { render :partial => 'addresses/edit', :formats => [:js], :locals => {claim: claim, address: address, options: {}} }
@@ -31,17 +30,9 @@ class AddressController < ApplicationController
     person = Person.find(params[:person_id])
     address = Address.find(params[:id])
 
-    address_to_copy = claim.send(person.type.downcase.pluralize).first.address
+    address.copy_from claim.send(person.type.downcase.pluralize).first.address
 
-    address.street_1 = address_to_copy[:street_1]
-    address.street_2 = address_to_copy[:street_2]
-    address.street_3 = address_to_copy[:street_3]
-    address.town     = address_to_copy[:town]
-    address.postcode = address_to_copy[:postcode]
-    address.save
-
-    options = {}
-    options[:no_postcode_override] = true
+    options = { :no_postcode_override => true }
 
     respond_to do |format|
       format.html { redirect_to claim_path claim }

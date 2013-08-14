@@ -18,6 +18,17 @@ $(document).ready(function() {
       $(this).toggleClass('toggle-hidden').toggleClass('toggle-visible');
   });
 
+  // Magic of 'other...' in title field
+  $('#edit-claim').on('change', 'form.edit-person select.title', function(event) {
+    if('Other...' == $(this).val()) {
+      $(this).replaceWith($('<input />', {
+        name: $(this).attr('name'),
+        id: $(this).attr('id'),
+        class: $(this).attr('class')
+      }));
+    }
+  });
+
   // filth
   $('#edit-claim').on('change', '.pick_address select', function(event) {
     var master_form = $(this).parents('form');
