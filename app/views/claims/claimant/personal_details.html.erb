@@ -20,32 +20,13 @@
       <h3>Who are the Defendants in this claim?</h3>
       <%= render :partial => 'people/display', :locals => {claim: @claim, person_type: 'defendant'} %>
 
-      <%= simple_form_for @claim, url: update_claim_path( @claim) do |f| %>
-        <div class='well clearfix'>
-          <h4>Address for possession</h4>
-          <a class='fake-link'>Same address as defendant</a>
-          <div class='address'>
-            <%= render partial: 'addresses/show', locals: {address: @claim.address_for_possession} %>
-          </div>
-
-          <h4>What type of property is it</h4>
-          <%= f.radio_button(:property_type, 'residential') %>
-          <%= label_tag :claim_property_type_residential, 'Residential' %>
-
-          <%= f.radio_button :property_type, 'commercial' %>
-          <%= label_tag :claim_property_type_commercial, 'Commercial' %>
-
-          <h4>Who is in the property</h4>
-          <%= f.radio_button :resident_type, 'private tenant' %>
-          <%= label_tag :claim_resident_type_private_tenant, 'Private Tenant' %>
-
-          <%= f.radio_button :resident_type, 'squatter' %>
-          <%= label_tag :claim_resident_type_squatter, 'Squatter' %>
-        </div>
-      </div>
-
-      <%= f.submit 'Save & Continue', :class => "button" %>
-      <%= f.submit 'Close', :class => "button-secondary" %>
+      <h3>Address for possession</h3>
+      <% address = @claim.address_for_possession %>
+      <% if address.postcode.blank? %> 
+        <%= render :partial => 'addresses/edit_address_for_possession', :locals => { claim: @claim, address: address } %>
+      <% else %>
+        <%= render :partial => 'addresses/view_address_for_possession', :locals => { claim: @claim, address: address } %>
       <% end %>
+    </div>
   </section>
 </div>

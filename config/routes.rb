@@ -19,18 +19,21 @@ CivilClaims::Application.routes.draw do
   get 'claims/:id/statement' => 'claims#statement'
   get 'claims/:id/fees' => 'claims#fees'
   get 'claims/:id/confirmation' => 'claims#confirmation'
+  patch 'claims/:id/address_for_possession' => 'claims#address', as: :claim_address_for_possession
 
   get 'login_as/:role' => 'people#login', as: :login
 
   get 'address/random' => 'address#random', as: :random_address
   get 'address/:id'    => 'adddress#get', as: :get_address
+  get 'address/picker/:id' => 'address#picker', as: :address_picker
+
+  get 'claims/:claim_id/address/:id/edit' => 'address#editor', as: :claim_address_editor
   
   resources :claims do
     resources :people do
       get 'editor', on: :member
       resources :address do
         get 'editor', on: :member
-        get 'picker', on: :member
         get 'copy_address_of_first', on: :member
       end
     end

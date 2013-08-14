@@ -3,14 +3,22 @@ class AddressController < ApplicationController
 
   def editor
     claim = Claim.find(params[:claim_id])
-    person = Person.find(params[:person_id])
     address = Address.find(params[:id])
 
     address.show_editor = true
 
     respond_to do |format|
       format.html { redirect_to claim_path claim }
-      format.js { render :partial => 'addresses/edit', :formats => [:js], :locals => {claim: claim, person: person, address: address, options: {}} }
+
+      if params.has_key? :person_id
+        person = Person.find(params[:person_id]) 
+        format.js { render :partial => 'addresses/edit', :formats => [:js], :locals => {claim: claim, person: person, address: address, options: {}} }
+      elsif claim.address_for_possession.id == address.id
+        logger.debug 'XXXXXXXXXXXXXXXX'
+        format.js { render :partial => 'addresses/edit_address_for_possession', :formats => [:js], :locals => {claim:claim, address:address} }  
+      else
+        format.js { render :partial => 'addresses/edit', :formats => [:js], :locals => {claim: claim, address: address, options: {}} }
+      end
     end
   end
 
@@ -43,8 +51,6 @@ class AddressController < ApplicationController
   end
 
   def picker
-    claim = Claim.find(params[:claim_id])
-    person = Person.find(params[:person_id])
     address = Address.find(params[:id])
 
     respond_to do |format|

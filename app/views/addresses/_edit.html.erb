@@ -1,7 +1,8 @@
+<% options ||= {} %>
 <div id='address-<%= address.id %>' class='address-container'>
   <%= simple_fields_for( address ) do |f| %>
     <%= f.input :postcode, input_html: { class: 'postcode' } %>
-    <%= link_to 'Find UK Address', picker_claim_person_address_path( claim, person, address), :remote => true, :class => 'button-secondary find-uk-address' %>
+    <%= link_to 'Find UK Address', address_picker_path( address ), :remote => true, :class => 'button-secondary find-uk-address' %>
 
     <% if address.show_editor || !(address.street_1.nil? || address.street_1.empty?) %>
       <%= f.input :street_1, :label => 'Street' %>
@@ -13,7 +14,12 @@
       <% if options.has_key? :not_the_first %>
         <%= link_to "Same address as first #{person.type.titleize}", copy_address_of_first_claim_person_address_path( claim, person, address ), :remote => true, :class => 'copy-address' %>
       <% end %>
-      <%= link_to 'Enter address manually', editor_claim_person_address_path( claim, person, address ), :remote => true, :class => 'manual-address' %>
+      <% if options.has_key? :address_for_possession %>
+        <% manual_url = claim_address_editor_path( claim, address ) %>
+      <% else %>
+        <% manual_url = editor_claim_person_address_path( claim, person, address ) %>
+      <% end %>
+      <%= link_to 'Enter address manually', manual_url , :remote => true, :class => 'manual-address' %>
       <% if !(address.postcode.nil? || address.postcode.empty?) %>
         <%= render :partial => 'addresses/picker', :format => [:html], :locals => { address: address} %>
       <% end %>
