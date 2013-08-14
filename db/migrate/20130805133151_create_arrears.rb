@@ -3,7 +3,7 @@ class CreateArrears < ActiveRecord::Migration
     create_table :arrears do |t|
       t.date :due_date
       t.decimal :amount
-      t.decimal :arrear
+      t.decimal :paid
       t.integer :claim_id
       
       t.timestamps

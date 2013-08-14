@@ -35,8 +35,7 @@
     <br/>
     
     <div class="btn-group">
-      <%= button_to_add_fields "arrears", "Add", f, :arrears, { :due_date => DateTime.now(), :amount => 0, :arrear => 0 } %>
-      <a class="fake-link">Cancel</a>
+      <%= button_to_add_fields "arrears", "Add", f, :arrears %>
     </div>
 
     <div style="padding-top:10px;">
@@ -44,14 +43,15 @@
         <thead>
           <tr>
             <th>Rent due on</th>
-            <th>Amount due</th>
+            <th>Rental amount</th>
+            <th>Amount paid</th>
             <th>Arrears</th>
             <th></th>
           </tr>
         </thead>
         <tbody id="arrears-body">
           <%= f.simple_fields_for :arrears do |builder| %>
-            <%= render "arrears/arrear_fields", :f => builder, :default_values=>nil %>
+            <%= render "arrears/arrear_fields", :f => builder %>
           <% end %>
         </tbody>
       </table>

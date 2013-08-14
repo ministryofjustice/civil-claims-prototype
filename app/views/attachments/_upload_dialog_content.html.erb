@@ -1,9 +1,9 @@
 <div class="modal-body">
   <div class="col-lg-8">
-    <input type="text" value="<%= file_name %>" >
+    <input id="attachment-upload-filename" type="text">
   </div>
   <div class="col-lg3">
-    <a class="button">Browse</a>
+    <%= button_to_function("Browse", "set_random_filename_to('attachment-upload-filename')", :class=>"button") %>
   </div>
   <br>
     <div class="application-notice info-notice">
@@ -14,7 +14,7 @@
 
 <div class="modal-footer">
   <div class="btn-group">
-    <%= button_to_add_fields "attachments", "Attach", f, :attachments, { :file_name => file_name } %>
+    <%= button_to_add_fields "attachments", "Attach", f, :attachments %>
     <a class="fake-link" data-dismiss="modal">Cancel</a>
   </div>
 </div>

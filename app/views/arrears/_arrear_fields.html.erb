@@ -1,11 +1,20 @@
 <tr>
   <%= f.hidden_field :_destroy, :class => "destroy" %>
-  <td><%= f.date_field :due_date, :as => :datepicker %></td>
+  <td class="arrears-duedate">
+  	<%= f.hidden_field :due_date %>
+  	<div><%= f.object.due_date %> </div>
+  </td>
   <!-- :field_attribute, :value => format_method(f.object.field_attribute) %> -->
-  <td><%= f.input :amount, label: false, :input_html => { :class=>"arrears-amount", :value => f.object.amount || "arrears_new_item_amount" }  %></td>
-  <td><%= f.input :arrear, label: false, :input_html => { :class=>"arrears-arrear", :value => f.object.arrear || "arrears_new_item_arrear" }%></td>
+  <td class="arrears-amount">
+  	<%= f.hidden_field :amount %>
+  	<div>&pound<%= f.object.amount %></div>
+  </td>
+  <td class="arrears-paid">
+  	<%= f.hidden_field :paid %>
+  	<div>&pound<%= f.object.paid %></div>
+  </td>
+  <td class="arrears-arrear">rent - f.object.amount</td>
   <td>
-    <div class="button disabled">Edit</div>
-    <%= button_to_remove_fields "Remove", f, :arrears %>
+    <%= button_to_remove_fields "X", f, :arrears %>
   </td>
 </tr>
