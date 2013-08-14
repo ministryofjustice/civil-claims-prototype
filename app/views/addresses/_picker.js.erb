@@ -1,3 +1,7 @@
 myHtml = '<%=j render partial: "addresses/picker", formats: [:html], :locals => {address: address} %>';
-$('#address-<%= address.id %>').siblings('.pick_address').remove();
-$('#address-<%= address.id %>').after(myHtml);
+$('#address-<%= address.id %> .pick_address').remove();
+if($('#address-<%= address.id %> .manual-address').length) {
+  $('#address-<%= address.id %> .manual-address').after(myHtml);
+} else {
+  $('#address-<%= address.id %> .find-uk-address').after(myHtml);
+}
