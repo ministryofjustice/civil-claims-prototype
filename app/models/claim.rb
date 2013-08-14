@@ -10,4 +10,13 @@ class Claim < ActiveRecord::Base
   accepts_nested_attributes_for :attachments, :allow_destroy => true
   accepts_nested_attributes_for :arrears, :allow_destroy => true
 
+
+  def setup_linked_records( user )
+    self.owner = user
+    self.claimants << Claimant.new(user.attributes.except('type', 'id'))
+
+    defendant = Defendant.new
+    defendant.address = Address.new
+    self.defendants << defendant
+  end
 end
