@@ -10,9 +10,9 @@
 
       <%= render partial: 'addresses/edit', :formats => [:html], locals: {claim: claim, person: person, address: address, options: options } %>
     
-      <div class='form-group'>
+      <div class='form-group striped-radios'>
         <h4>What type of property is it?</h4>
-        <div class='striped'>
+        <div>
           <%= f.radio_button(:property_type, 'residential') %>
           <%= label_tag :claim_property_type_residential, 'Residential' %>
         </div>
@@ -22,9 +22,9 @@
         </div>
       </div>
 
-      <div class='form-group'>
+      <div class='form-group striped-radios'>
         <h4>Who is in the property?</h4>
-        <div class='striped'>
+        <div>
           <%= f.radio_button :resident_type, 'private tenant' %>
           <%= label_tag :claim_resident_type_private_tenant, 'Private Tenant' %>
         </div>
