@@ -30,12 +30,13 @@ $(document).ready(function() {
     }
   });
 
-  // filth
+  // filthy address picker business
   $('#edit-claim').on('change', '.pick_address select', function(event) {
     var master_form = $(this).parents('form');
     var address_element = master_form.find('.address-container');
 
     var address = claim.address.extract_partial_address($(this).val());
+    var picker = $(this).parents('.control-group');
 
     user_entered_postcode = address_element.find('.address_postcode input.postcode').val();
     if(user_entered_postcode.length > 0) {
@@ -45,14 +46,20 @@ $(document).ready(function() {
     $.ajax('/address/random').done(function(random_address) {
       address = claim.address.merge(address, random_address);
 
+      // are we showing the editable address form?
       if(address_element.find('.address_street_1 input').length == 0 ) {
         address_element.find('.manual-address').click();
+
+        // this is my favourite hack out of this enture shitpile
         setTimeout(function(){
           claim.address.populate(master_form.find('.address-container'), address);
-        }, 50);
+        }, 75); // callbacks are for turd-polishers. Real Coders just wait until the request completes.
+
       } else {
         claim.address.populate(address_element, address);
       }
+
+      picker.remove();
     });
   });
 
