@@ -15,7 +15,7 @@
     <%= f.input :full_name, :placeholder => 'e.g. John Smith' %>
     <%= f.input :phone %>
     <%= f.input :mobile %>
-    <%= f.input :email %>
+    <%= f.input :email, as: :string %>
 
     <% if options.has_key? :show_dx || !(person.dx_number.blank? && person.dx_exchange.blank? ) %>
       <% dx_controls = capture { f.input :dx_number, :label => 'DX number' } %>
