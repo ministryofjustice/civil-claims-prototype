@@ -24,7 +24,8 @@ $(document).ready(function() {
       $(this).replaceWith($('<input />', {
         name: $(this).attr('name'),
         id: $(this).attr('id'),
-        class: $(this).attr('class')
+        class: $(this).attr('class'),
+        type: 'text'
       }));
     }
   });
