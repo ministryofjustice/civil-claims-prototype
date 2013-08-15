@@ -11,18 +11,26 @@ $default-panel-background-color: #F8F8F8;
 $default-panel-border-color: #E3E3E3;
 $info-background: #D2E8F2;
 $link-color-hover: #1D97FF;
+$selected-item-background-color: #D5E9F4;
 $button-border-radius: 3px;
 
-@mixin link-style{
+@mixin link-style {
   color: #2E3191;
   cursor: pointer;
   text-decoration: underline;
+  &:hover {
+    color: $link-color-hover;
+  }
+  &:focus {
+    outline: none;
+  }
 }
 
 @mixin panel-style($background-color: $default-panel-background-color, $border-color: $default-panel-border-color) {
   background-color: $background-color;
-  border-top:       1px solid $border-color;
-  border-bottom:    1px solid $border-color;
+  border-top: 1px solid $border-color;
+  border-bottom: 1px solid $border-color;
+  padding: 20px 90px 20px 90px;
 }
 
 
@@ -431,30 +439,13 @@ form.add-additional-person {
   @include border-radius($button-border-radius);
 }
 
-.info-notice{
-  background: url(https://assets.digital.cabinet-office.gov.uk/static/icon-information.png) no-repeat scroll 98% 1em $info-background;
-  margin: 1em -1em 1.5em -1em;
-  padding: 0.25em 1em 0.25em 1em;
-}
-
 details summary{
   @include link-style
 }
 
-details summary:hover{
-  color: $link-color-hover;
-}
-
-details summary:focus{
-  outline: none;
-}
 
 .fake-link{
   @include link-style
-}
-
-.fake-link:hover{
-  color: $link-color-hover;
 }
 
 .big{
@@ -508,10 +499,49 @@ details summary:focus{
   padding-top: 10px;
 }
 
-.input-panel{
+.default-panel{
   @include panel-style;
 }
 
 
+.striped-choice {
+  // margin-bottom: 10px;
+  div {
+    position: relative;
+    z-index: 0;
+
+    input {
+      display: block;
+      height: 2.0em;
+      margin-left: 10px;
+    }
+
+    input[type="radio"]:checked + label, input[type="checkbox"]:checked + label {
+      background-color: $selected-item-background-color;
+    }
+
+    label {
+      position: absolute;
+
+      padding-top: 8px;
+      padding-left: 35px;
+      cursor: pointer;
+
+      font-weight: normal;
+
+      z-index: -1;
+      
+      top:0px;
+      left:0;
+      right:0;
+      bottom:0;
+    }
+  }
+}
+
+article {
+  padding-left: 30px;
+  padding-right: 30px;
+}
 
 

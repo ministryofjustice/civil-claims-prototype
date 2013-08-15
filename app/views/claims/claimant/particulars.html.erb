@@ -9,67 +9,81 @@
 
     <p>Add all details you have about the claim and upload further information if required.</p>
     <a class="fake-link">About adding claim particulars</a>
+  
+
+
+
+
 
   <%= simple_form_for @claim, url: claim_path(@claim) do |f| %>
 
-    <article role="article" class="group">
+    <article role="article">
   <!-- GROUNDS FOR POSSESSION -->
       <section id="grounds-for-possesion">
         <h3>Grounds for possession</h3>
-        <div class="input-panel">
-          <div class="row checkbox">
-            <%= f.label :non_payment_of_rent, "Non payment of rent" %>
-            <%= f.check_box :non_payment_of_rent %>
-          </div>
-          <div class="row checkbox">
-            <%= f.label :anti_social_behaviour, "Anti-social behaviour" %>
-            <%= f.check_box :anti_social_behaviour %>
-          </div>
-          <div class="row checkbox">
-            <%= f.label :property_misuse, "Misuse of property" %>
-            <%= f.check_box :property_misuse %>
-          </div>
-          <div class="row checkbox">
-            <%= f.label :other_breach_of_tenancy, "Other breach of tenancy" %>
-            <%= f.check_box :other_breach_of_tenancy, :onClick => "toggle_panel(this,'other-breach');" %>
-          </div>
-          <div id="other-breach" class="row" <%= "hidden" unless(@claim.other_breach_of_tenancy) %> >
-            <%= f.label :other_breach, "Please specify" %>
-            <%= f.text_area :other_breach, :rows => 3 %>
+        <div class="default-panel">
+          
+          <div class="striped-choice">
+            <div>
+              <%= f.check_box :non_payment_of_rent %>
+              <%= f.label :non_payment_of_rent, "Non payment of rent" %>
+            </div>
+            <div>
+              <%= f.check_box :anti_social_behaviour %>
+              <%= f.label :anti_social_behaviour, "Anti-social behaviour" %>
+            </div>
+            <div>
+              <%= f.check_box :property_misuse %>
+              <%= f.label :property_misuse, "Misuse of property" %>
+            </div>
+            <div>
+              <%= f.check_box :other_breach_of_tenancy, :onClick => "toggle_panel(this,'other-breach');" %>
+              <%= f.label :other_breach_of_tenancy, "Other breach of tenancy" %>
+            </div>
+            <div id="other-breach" <%= "hidden" unless(@claim.other_breach_of_tenancy) %> >
+              <%= f.label :other_breach, "Please specify" %>
+              <%= f.text_area :other_breach, :rows => 3 %>
+            </div>
           </div>
 
+          <a class="fake-link">More about grounds for possession</a>
         </div>
       </section>
 
   <!-- STEPS ALREADY TAKEN -->
       <section id="steps-taken">
         <h3>Steps already taken</h3>
-        <div class="input-panel">
+        <div class="default-panel">
+          <h4><strong>Types of notice served</strong></h4>
+          
+          <div class="striped-choice">
+            <div>
+              <%= f.check_box :notice_to_quit, :onClick => "toggle_panel(this, 'notice-served-date');" %>
+              <%= f.label :notice_to_quit, "Notice to quit" %>
+            </div>
+            <div id="notice-served-date" class="row" <%= "hidden" unless(@claim.notice_to_quit) %> >
+              <div class="col-lg-3"><%= f.label :notice_served_date, "Date notice served" %></div>
+              <div class="col-lg-8"><%= inline_date_input f, :notice_served_date %></div>
+            </div>
+            <div>
+              <%= f.check_box :lease_breach %>
+              <%= f.label :lease_breach, "Breach of lease" %>
+            </div>
+            <div>
+              <%= f.check_box :seeking_possetion %>
+              <%= f.label :seeking_possetion, "Seeking possesion" %>
+            </div>
+            <div>
+              <%= f.check_box :other_recovery_steps_taken, :onClick => "toggle_panel(this,'other-recovery-steps');" %>
+              <%= f.label :other_recovery_steps_taken, "Other recovery steps taken" %>
+            </div>
+            <div id="other-recovery-steps" <%= "hidden" unless(@claim.other_recovery_steps_taken) %> >
+              <%= f.text_area :other_recovery_steps, :rows => 3 %>
+              <%= f.label :other_recovery_steps, "Please specify" %>
+            </div>
+          </div>
 
-          <div class="row checkbox">
-            <%= f.label :notice_to_quit, "Notice to quit" %>
-            <%= f.check_box :notice_to_quit, :onClick => "toggle_panel(this, 'notice-served-date');" %>
-          </div>
-          <div id="notice-served-date" class="row" <%= "hidden" unless(@claim.notice_to_quit) %> >
-            <div class="col-lg-3"><%= f.label :notice_served_date, "Date notice served" %></div>
-            <div class="col-lg-8"><%= inline_date_input f, :notice_served_date %></div>
-          </div>
-          <div class="row checkbox">
-            <%= f.label :lease_breach, "Breach of lease" %>
-            <%= f.check_box :lease_breach %>
-          </div>
-          <div class="row checkbox">
-            <%= f.label :seeking_possetion, "Seeking possesion" %>
-            <%= f.check_box :seeking_possetion %>
-          </div>
-          <div class="row checkbox">
-            <%= f.label :other_recovery_steps_taken, "Other recovery steps taken" %>
-            <%= f.check_box :other_recovery_steps_taken, :onClick => "toggle_panel(this,'other-recovery-steps');" %>
-          </div>
-          <div id="other-recovery-steps" class="row" <%= "hidden" unless(@claim.other_recovery_steps_taken) %> >
-            <%= f.label :other_recovery_steps, "Please specify" %>
-            <%= f.text_area :other_recovery_steps, :rows => 3 %>
-          </div>
+          <a class="fake-link">More types of notices</a>
         </div>
 
       </section>
@@ -78,31 +92,32 @@
   <!-- THE NEXT STEPS -->
       <section id="next-steps">
         <h3>Next steps</h3>
-        <div class="input-panel">
-          <div class="row checkbox">
-            <%= f.label :claim_rental_arrears, "Claim rent arrears" %>
-            <%= f.check_box :claim_rental_arrears, :onClick => "toggle_panel(this,'rental-arrears');" %>
+        <div class="default-panel">
+          <div class="striped-choice">
+            <div>
+              <%= f.check_box :claim_rental_arrears, :onClick => "toggle_panel(this,'rental-arrears');" %>
+              <%= f.label :claim_rental_arrears, "Claim rent arrears" %>
+            </div>
+            <div>
+              <%= f.check_box :lease_forfeiture %>
+              <%= f.label :lease_forfeiture, "Forfeiture of the lease" %>
+            </div>
           </div>
-          <div class="row checkbox">
-            <%= f.label :lease_forfeiture, "Forfeiture of the lease" %>
-            <%= f.check_box :lease_forfeiture %>
-          </div>
-          <div class="row">
-            <%= toggle_inline_help_link("Does, or will, the claim include any issues under the human rights act 1998",
-              'The Human Rights Act 1998 (c 42) is an Act of Parliament of the United Kingdom which received Royal Assent on 9 November 1998, 
-              and mostly came into force on 2 October 2000.[1] Its aim is to "give further effect" in UK law to the rights 
-              contained in the Convention for the Protection of Human Rights and Fundamental Freedoms, but more commonly known as the European Convention on Human Rights. 
-              The Act makes available in UK courts a remedy for breach of a Convention right, without the need to go to the European Court of Human Rights in Strasbourg.'
-            ) %>
-          </div>
+
+          <%= toggle_inline_help_link("Does, or will, the claim include any issues under the human rights act 1998",
+            'The Human Rights Act 1998 (c 42) is an Act of Parliament of the United Kingdom which received Royal Assent on 9 November 1998, 
+            and mostly came into force on 2 October 2000.[1] Its aim is to "give further effect" in UK law to the rights 
+            contained in the Convention for the Protection of Human Rights and Fundamental Freedoms, but more commonly known as the European Convention on Human Rights. 
+            The Act makes available in UK courts a remedy for breach of a Convention right, without the need to go to the European Court of Human Rights in Strasbourg.'
+          ) %>
+
         </div>
       </section>
-
 
   <!-- ABOUT THE TENANCY -->
       <section id="about-tenancy">
         <h3>About the tenancy</h3>
-        <div class="input-panel">
+        <div class="default-panel">
           <div class="row">
            <div class="col-lg-3"><%= f.label :tenancy_type%></div>
             <div class="col-lg-4">
@@ -152,7 +167,7 @@
 
   <!-- UNPAID RENT -->
       <section>
-        <div class="input-panel">
+        <div class="default-panel">
           <div class="row">
             <div class="col-lg-3">
               <%= f.label :unpaid_rent_per_day, "Unpaid rent should be calculated at" %>
@@ -178,7 +193,7 @@
 
   <!-- OTHER INFORMATION -->
       <section>
-        <div class="input-panel">
+        <div class="default-panel">
           <p>Any other information you would like to give about the claim</p>
           <%= f.text_area :other_information, :rows => 3 %>
         </diV>
