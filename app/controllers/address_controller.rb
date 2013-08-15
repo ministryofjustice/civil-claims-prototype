@@ -33,7 +33,10 @@ class AddressController < ApplicationController
 
     address.copy_from claim.send(person.type.downcase.pluralize).first.address
 
-    options = { :no_postcode_override => true }
+    options = { 
+      :no_postcode_override => true,
+      :just_the_address_fields => true
+    }
 
     respond_to do |format|
       format.html { redirect_to claim_path claim }

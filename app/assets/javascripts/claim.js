@@ -41,7 +41,7 @@ $(document).ready(function() {
   });
 
   // enable html5 validation checking of the edit-person form
-  $('#edit-claim').on('keydown', 'form.edit-person input', function(event) {
+  $('#edit-claim').on('keyup', 'form.edit-person input', function(event) {
     claim.validate($(this).parents('form'));
   });
 
