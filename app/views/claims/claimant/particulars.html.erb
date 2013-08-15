@@ -21,7 +21,7 @@
   <!-- GROUNDS FOR POSSESSION -->
       <section id="grounds-for-possesion">
         <h3>Grounds for possession</h3>
-        <div class="default-panel">
+        <div class="panel-default">
           
           <div class="striped-choice">
             <div>
@@ -53,8 +53,8 @@
   <!-- STEPS ALREADY TAKEN -->
       <section id="steps-taken">
         <h3>Steps already taken</h3>
-        <div class="default-panel">
-          <h4><strong>Types of notice served</strong></h4>
+        <div class="panel-default">
+          <strong>Types of notice served</strong>
           
           <div class="striped-choice">
             <div>
@@ -92,7 +92,7 @@
   <!-- THE NEXT STEPS -->
       <section id="next-steps">
         <h3>Next steps</h3>
-        <div class="default-panel">
+        <div class="panel-default">
           <div class="striped-choice">
             <div>
               <%= f.check_box :claim_rental_arrears, :onClick => "toggle_panel(this,'rental-arrears');" %>
@@ -117,47 +117,64 @@
   <!-- ABOUT THE TENANCY -->
       <section id="about-tenancy">
         <h3>About the tenancy</h3>
-        <div class="default-panel">
-          <div class="row">
-           <div class="col-lg-3"><%= f.label :tenancy_type%></div>
-            <div class="col-lg-4">
+        <div class="panel-default">
+          
+          <div class="inline-content">
+            <div class="content-label">
+              <%= f.label :tenancy_type %>
+            </div>
+            <div class="content">
               <%= f.input :tenancy_type, 
                 label: false, 
                 collection: ["Assured shorthold","Assured tenancy","Regulated"],
                 selected: "Assured shorthold" %>
+                
+                <a class="fake-link">More about tenancy types</a>
+              </div>
+          </div>
+
+          <div class="inline-content">
+            <div class="content-label"><%= f.label :tenancy_start_date%></div>
+            <div class="content">
+
+              <%= f.date_field :tenancy_start_date, :label => false %>
             </div>
           </div>
 
-          <div class="row">
-            <div class="col-lg-3"></div>
-            <div class="col-lg-4"><a class="fake-link">More about tenancy types</a></div>
+          <div class="inline-content">
+            <div class="content-label"><%= f.label :rental_amount%></div>
+              <div class="content">
+                 &pound <%= f.input :rental_amount, :label => false,required: true %>
+              </div>
           </div>
 
-          <div class="row">
-            <div class="col-lg-3"><%= f.label :tenancy_start_date%></div>
-            <div class="col-lg-8"><%= inline_date_input f, :tenancy_start_date %></div>
-          </div>
 
-          <div class="row">
-            <div class="col-lg-3"><%= f.label :rental_amount%></div>
-            <div class="col-lg-4">
-              <div class="input-group">
-                <span class="input-group-addon">&pound</span>
-                <%= f.input :rental_amount, :label => false,required: true %>
+   <!--        <div id="container">
+    <span id="label"><p>song title</p></span>
+    <span id="buttons">
+      <a href="#" class="button88x31">edit</a>
+
+      <a href="#" class="button88x31">delete</a>
+    </span>
+  </div> -->
+
+          <div>
+            <strong>Rent frequency</strong>
+            <div class="striped-choice">
+              <div>
+                <%= f.radio_button(:property_type, 'monthly') %>
+                <%= f.label :property_type_monthly, 'Monthly' %>
+              </div>
+              <div>
+                <%= f.radio_button :property_type, 'fortnightly' %>
+                <%= f.label :property_type_fortnightly, 'Fortnightly' %>
+              </div>
+              <div>
+                <%= f.radio_button :property_type, 'week' %>
+                <%= f.label :property_type_week, 'Week' %>
               </div>
             </div>
-          </div>
 
-          <div class="row">
-            <div class="col-lg-3"><%= f.label :payment_frequency%></div>
-            <div class="col-lg-4">
-              <%= f.input :payment_frequency, 
-                :label => false, 
-                collection: ["Monthly", "Fortnightly", "Week"],
-                selected: "Monthly",
-                as: :radio_buttons,
-                label_html: { class: "col-lg-3" } %>
-            </div>
           </div>
         </div>
       </section>
@@ -167,7 +184,7 @@
 
   <!-- UNPAID RENT -->
       <section>
-        <div class="default-panel">
+        <div class="panel-default">
           <div class="row">
             <div class="col-lg-3">
               <%= f.label :unpaid_rent_per_day, "Unpaid rent should be calculated at" %>
@@ -182,10 +199,10 @@
               per day
             </div>
           </div>
-          <div class="row">
-            <div class="checkbox">
-              <%= f.label :defendent_to_pay_for_claim, "Do you want to request that the defendent/s pay the cost of the claim" %>
+          <div class="striped-choice">
+            <div>
               <%= f.check_box :defendent_to_pay_for_claim %>
+              <%= f.label :defendent_to_pay_for_claim, "Do you want to request that the defendent/s pay the cost of the claim" %>
             </div>
           </div>
         </div>
@@ -193,7 +210,7 @@
 
   <!-- OTHER INFORMATION -->
       <section>
-        <div class="default-panel">
+        <div class="panel-default">
           <p>Any other information you would like to give about the claim</p>
           <%= f.text_area :other_information, :rows => 3 %>
         </diV>

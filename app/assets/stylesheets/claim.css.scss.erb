@@ -12,7 +12,7 @@ $default-panel-border-color: #E3E3E3;
 $info-background: #D2E8F2;
 $link-color-hover: #1D97FF;
 $selected-item-background-color: #D5E9F4;
-$button-border-radius: 3px;
+$button-border-radius: 0px;
 
 @mixin link-style {
   color: #2E3191;
@@ -31,6 +31,9 @@ $button-border-radius: 3px;
   border-top: 1px solid $border-color;
   border-bottom: 1px solid $border-color;
   padding: 20px 90px 20px 90px;
+  label {
+    font-weight: normal;
+  }
 }
 
 
@@ -499,7 +502,7 @@ details summary{
   padding-top: 10px;
 }
 
-.default-panel{
+.panel-default{
   @include panel-style;
 }
 
@@ -543,5 +546,29 @@ article {
   padding-left: 30px;
   padding-right: 30px;
 }
+
+
+.inline-content {
+
+  .content-label {
+    float: left;
+    width: 20%;
+    padding-top: 5px;
+  }
+  .content {
+    float: left;
+    width: 40%;
+    margin-right: 40%;
+  }
+}
+
+
+
+
+
+
+
+
+
 
 
