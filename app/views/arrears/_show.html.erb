@@ -2,31 +2,40 @@
   <h3>Rental arrears</h3>
   
   <div class="panel-default">
-    <p>Add all payment arrears to the table below or <a data-toggle="modal" href="#arrears-dialog">upload a csv file</a></p>
+    <strong>Add rental arrears</strong>
     
-    <!-- for now -->
-    <%= render "shared/modal_dialog", 
-      :dialog_id => "arrears-dialog", 
-      :content_partial => "arrears/upload_dialog_content",
-      :f => f, 
-      :dialog_title => "Upload CSV file", 
-      :file_name=>"arrears-property.csv" 
-     %>
-    
-      <div class="row">
-      <div class="col-lg-3"><%= f.label :rent_due_date, "Rent due on" %></div>
-      <div class="col-lg-8"><%= inline_date_input f, :rent_due_date %></div>
+    <div class="inline-content">
+      <div class="content-label">
+        rent due on
+      </div>
+
+      <div class="content-60">
+        <%= %>
+        <details>
+          <summary>Did the defendant/s make any partial payments?</summary>
+          <div>
+            
+          </div>
+        </details>
+
+      </div>
+
+
+      <div class="content-20">
+       <button class="button">button</button>
+      </div>
+
+
     </div>
 
-    <br>
 
     <div>
-      <%= f.label :contributions_this_month, "Did the defendant(s) make any contributions this month?" %><br />
+      <%= "Did the defendant(s) make any contributions this month?" %><br />
       <div class="row">
         <div class="col-lg-5">
           <div class="input-group">
             <span class="input-group-addon">&pound</span>
-            <%= f.input :contributions_this_month, label: false %>
+
           </div>
         </div>
       </div>
@@ -58,6 +67,23 @@
     </div>
     
     <p><a class="fake-link">About adding rental arrears</a></p>
-
+    
   </div>
+  <div class="panel-default">
+          
+
+              <%= f.label :unpaid_rent_per_day, "Unpaid rent should be calculated at" %>
+              <div>
+              <span>&pound
+              <%= f.input :unpaid_rent_per_day, :label => false, input_html: { class: "testc"} %></span>
+              a day
+          </div>
+          <div class="striped-choice">
+            <div>
+              <%= f.check_box :defendent_to_pay_for_claim %>
+              <%= f.label :defendent_to_pay_for_claim, "Do you want to request that the defendent/s pay the cost of the claim" %>
+            </div>
+          </div> 
+
+        </div>
 </section>

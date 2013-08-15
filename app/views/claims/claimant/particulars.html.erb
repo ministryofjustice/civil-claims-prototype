@@ -62,8 +62,8 @@
               <%= f.label :notice_to_quit, "Notice to quit" %>
             </div>
             <div id="notice-served-date" class="row" <%= "hidden" unless(@claim.notice_to_quit) %> >
-              <div class="col-lg-3"><%= f.label :notice_served_date, "Date notice served" %></div>
-              <div class="col-lg-8"><%= inline_date_input f, :notice_served_date %></div>
+              <%= f.label :notice_served_date, "Date notice served" %>
+              <%= f.date_field :notice_served_date %>
             </div>
             <div>
               <%= f.check_box :lease_breach %>
@@ -104,12 +104,15 @@
             </div>
           </div>
 
-          <%= toggle_inline_help_link("Does, or will, the claim include any issues under the human rights act 1998",
-            'The Human Rights Act 1998 (c 42) is an Act of Parliament of the United Kingdom which received Royal Assent on 9 November 1998, 
-            and mostly came into force on 2 October 2000.[1] Its aim is to "give further effect" in UK law to the rights 
-            contained in the Convention for the Protection of Human Rights and Fundamental Freedoms, but more commonly known as the European Convention on Human Rights. 
-            The Act makes available in UK courts a remedy for breach of a Convention right, without the need to go to the European Court of Human Rights in Strasbourg.'
-          ) %>
+          <details <%= "open" if(@claim.includes_human_rights_issues) %> >
+            <summary>Does, or will, the claim include any issues under the human rights act 1998</summary>
+            <div class="striped-choice">
+              <div>
+                <%= f.check_box :includes_human_rights_issues %>
+                <%= f.label :includes_human_rights_issues, "Yes, I want to claim under the human rights act" %>
+              </div>
+            </div>
+          </details>
 
         </div>
       </section>
@@ -144,19 +147,9 @@
           <div class="inline-content">
             <div class="content-label"><%= f.label :rental_amount%></div>
               <div class="content">
-                 &pound <%= f.input :rental_amount, :label => false,required: true %>
+                &pound <%= f.input :rental_amount, :label => false,required: true %>
               </div>
           </div>
-
-
-   <!--        <div id="container">
-    <span id="label"><p>song title</p></span>
-    <span id="buttons">
-      <a href="#" class="button88x31">edit</a>
-
-      <a href="#" class="button88x31">delete</a>
-    </span>
-  </div> -->
 
           <div>
             <strong>Rent frequency</strong>
@@ -182,34 +175,10 @@
   <!-- RENTAL ARREARS -->
       <%= render partial: 'arrears/show', :locals => { f: f } %>
 
-  <!-- UNPAID RENT -->
-      <section>
-        <div class="panel-default">
-          <div class="row">
-            <div class="col-lg-3">
-              <%= f.label :unpaid_rent_per_day, "Unpaid rent should be calculated at" %>
-            </div>
-            <div class="col-lg-3">
-              <div class="input-group">
-                <span class="input-group-addon">&pound</span>
-                  <%= f.input :unpaid_rent_per_day, :label => false %>
-              </div>
-            </div>
-            <div class="col-lg-2">
-              per day
-            </div>
-          </div>
-          <div class="striped-choice">
-            <div>
-              <%= f.check_box :defendent_to_pay_for_claim %>
-              <%= f.label :defendent_to_pay_for_claim, "Do you want to request that the defendent/s pay the cost of the claim" %>
-            </div>
-          </div>
-        </div>
-      </section>
 
   <!-- OTHER INFORMATION -->
       <section>
+        <h3>Other information</h3>
         <div class="panel-default">
           <p>Any other information you would like to give about the claim</p>
           <%= f.text_area :other_information, :rows => 3 %>

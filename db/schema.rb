@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20130807140855) do
     t.text     "other_recovery_steps"
     t.boolean  "claim_rental_arrears"
     t.boolean  "lease_forfeiture"
+    t.boolean  "includes_human_rights_issues"
     t.string   "tenancy_type"
     t.date     "tenancy_start_date"
     t.decimal  "rental_amount"
