@@ -12,7 +12,8 @@ class AddressController < ApplicationController
 
       if params.has_key? :person_id
         person = Person.find(params[:person_id]) 
-        format.js { render :partial => 'addresses/edit', :formats => [:js], :locals => {claim: claim, person: person, address: address, options: {}} }
+        options = { :just_the_address_fields => true }
+        format.js { render :partial => 'addresses/edit', :formats => [:js], :locals => {claim: claim, person: person, address: address, options: options } }
       elsif claim.address_for_possession.id == address.id
         format.js { render :partial => 'addresses/edit_address_for_possession', :formats => [:js], :locals => {claim:claim, address:address} }  
       else
