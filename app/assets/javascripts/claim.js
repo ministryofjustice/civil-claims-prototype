@@ -18,7 +18,7 @@ $(document).ready(function() {
       $(this).toggleClass('toggle-hidden').toggleClass('toggle-visible');
   });
 
-  // Magic of 'other...' in title field
+  // Magic 'other...' in title field
   $('#edit-claim').on('change', 'form.edit-person select.title', function(event) {
     if('Other...' == $(this).val()) {
       $(this).replaceWith($('<input />', {
@@ -32,11 +32,21 @@ $(document).ready(function() {
 
   // enable CSS validation once user tabs out of form field.  
   $('#edit-claim').on('blur', 'form.edit-person input', function(event) {
-    if($(this).val().length) {
+    if($(this).attr('required') || $(this).val().length ) {
+      $(this).addClass('tabbed-out'); // register the interaction
       $(this).siblings('.icon-container').css('display', 'inline');
-    } else {
+    } else {  // no validation indicator if field is optional & blank
       $(this).siblings('.icon-container').css('display', 'none');
     }
+  });
+
+  // enable html5 validation checking of the edit-person form
+  $('#edit-claim').on('keydown', 'form.edit-person input', function(event) {
+    claim.validate($(this).parents('form'));
+  });
+
+  $('form.edit-person').each(function(i, el) {
+    claim.validate(el);
   });
 
   // filthy address picker business
@@ -74,6 +84,17 @@ $(document).ready(function() {
   });
 
 });
+
+claim.validate = function(form) {
+  form = $(form);
+  var ready_to_go = form[0].checkValidity();
+    
+  if( ready_to_go ) {
+    form.find("button[value='save']").removeAttr('disabled');
+  } else {
+    form.find("button[value='save']").attr('disabled', 'disabled');
+  }
+};
 
 claim.address = {
   merge: function( primary, secondary ) {

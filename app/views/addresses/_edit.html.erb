@@ -1,10 +1,11 @@
 <% options ||= {} %>
-<% show_full_address = options.has_key?(:just_the_address_fields) || address.show_editor || !(address.street_1.nil? || address.street_1.empty?) %>
+<% address_blank = (address.street_1.nil? || address.street_1.empty?) %>
+<% show_full_address = options.has_key?(:just_the_address_fields) || address.show_editor || !address_blank %>
 
-<% unless show_full_address %>
-  <div id='address-<%= address.id %>' class='address-container'>
-<% else %>
+<% if options.has_key?(:just_the_address_fields) %>
   <div id='address-<%= address.id %>-inner' class='expanda'>
+<% else %>
+  <div id='address-<%= address.id %>' class='address-container'>
 <% end %>
 
   <%= simple_fields_for( address ) do |f| %>
@@ -28,8 +29,10 @@
 
     <%# Postcode field and 'Find UK Address' button %>
     <% unless options.has_key? :just_the_address_fields %>
-      <%= f.input :postcode, input_html: { class: 'postcode' } %>
-      <%= link_to 'Find UK Address', address_picker_path( address ), :remote => true, :class => 'button-secondary find-uk-address' %>
+      <%= f.input :postcode do %>
+        <%= f.input_field :postcode, class: 'postcode' %>
+        <%= link_to 'Find UK Address', address_picker_path( address ), :remote => true, :class => 'button-secondary find-uk-address' %>
+      <% end %>
     <% end %>
 
     <% unless show_full_address %> 

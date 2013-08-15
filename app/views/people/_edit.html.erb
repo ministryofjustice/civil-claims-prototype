@@ -3,30 +3,53 @@
     <input type='hidden' name='delete_on_cancel' />
   <% end %>
   <div class='<%= options[:class] %>'>
+
+    <%# Section Head %>
     <% if options.has_key? :title %>
       <h4><%= options[:title] %></h4>
     <% end %>
+
+    <%# Title %>
     <% default_titles = %w(Mr Mrs Miss Ms Dr Other...) %>
     <% if person.title.blank? || default_titles.include?( person.title ) %>
       <%= f.input :title, :collection => default_titles, :default => 'Mr', input_html: { class: 'title' } %>
     <% else %>
       <%= f.input :title, :input_html => { class: 'title' } %>
     <% end %>
-    <%= f.input :full_name, :placeholder => 'e.g. John Smith' %>
-    <%= f.input :phone %>
-    <%= f.input :mobile %>
-    <%= f.input :email do %>
-      <%= f.input_field :email, as: :string, :pattern => ".+@.+" %><span class='icon-container' style='display:none' />
+
+    <%# Full Name %>
+    <%= f.input :full_name do %>
+      <%= f.input_field :full_name, placeholder: 'e.g. John Smith', pattern: '^[a-zA-Z ]{5,}$', required: true %>
+      <span class='icon-container' style='display:none' />
     <% end %>
 
+    <%# Contact Details %>
+    <%= f.input :phone do %>
+      <%= f.input_field :phone, as: :tel, pattern: "^[0-9\(\)\+ ]*$" %>
+      <span class='icon-container' style='display:none' />
+    <% end %>
+
+    <%= f.input :mobile do %>
+      <%= f.input_field :mobile, as: :tel, pattern: "^[0-9\(\)\+ ]*$" %>
+      <span class='icon-container' style='display:none' />
+    <% end %>
+
+    <%= f.input :email do %>
+      <%= f.input_field :email, as: :string, pattern: ".+@.+" %>
+      <span class='icon-container' style='display:none' />
+    <% end %>
+
+    <%# DX Number %>
     <% if options.has_key? :show_dx || !(person.dx_number.blank? && person.dx_exchange.blank? ) %>
       <% dx_controls = capture { f.input :dx_number, :label => 'DX number' } %>
       <% dx_controls << capture { f.input :dx_exchange, :label => 'DX exchange' } %>
       <%= toggle_inline_help_link( 'Do they have a DX number?', dx_controls ) %>
     <% end %>
 
+    <%# Address %>
     <%= render partial: "addresses/edit", formats: [:html], locals: {claim: claim, person: person, address: person.address, options: options} %>
 
+    <%# Save / Cancel / Remove %>
     <div class='btn-toolbar'>
       <div class='btn-group'>
         <%= button_tag(type: 'submit', name: 'commit', value: 'save', class: "button") do %>
