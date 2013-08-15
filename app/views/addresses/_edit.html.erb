@@ -1,32 +1,51 @@
 <% options ||= {} %>
-<div id='address-<%= address.id %>' class='address-container'>
-  <%= simple_fields_for( address ) do |f| %>
-    <% show_full_address = address.show_editor || !(address.street_1.nil? || address.street_1.empty?) %>
+<% show_full_address = options.has_key?(:just_the_address_fields) || address.show_editor || !(address.street_1.nil? || address.street_1.empty?) %>
 
+<% unless show_full_address %>
+  <div id='address-<%= address.id %>' class='address-container'>
+<% else %>
+  <div id='address-<%= address.id %>-inner' class='expanda'>
+<% end %>
+
+  <%= simple_fields_for( address ) do |f| %>
+    
+    <%# Same Address As ... link %>
     <% unless show_full_address %>
       <% if options.has_key? :not_the_first %>
         <%= link_to "Same address as first #{person.type.titleize}", copy_address_of_first_claim_person_address_path( claim, person, address ), :remote => true, :class => 'copy-address' %>
       <% end %>
     <% end %>
-    
-    <%= f.input :postcode, input_html: { class: 'postcode' } %>
-    <%= link_to 'Find UK Address', address_picker_path( address ), :remote => true, :class => 'button-secondary find-uk-address' %>
+
+    <%# Full address %>
     <% if show_full_address %>
       <%= f.input :street_1, :label => 'Street' %>
       <%= f.input :street_2, label: false %>
       <%= f.input :street_3, label: false %>
       <%= f.input :town %>
-      <%= f.input :county %>    
-    <% else %> 
+      <%= f.input :county %>
+    <% end %>
+
+
+    <%# Postcode field and 'Find UK Address' button %>
+    <% unless options.has_key? :just_the_address_fields %>
+      <%= f.input :postcode, input_html: { class: 'postcode' } %>
+      <%= link_to 'Find UK Address', address_picker_path( address ), :remote => true, :class => 'button-secondary find-uk-address' %>
+    <% end %>
+
+    <% unless show_full_address %> 
+
+      <%# Pick an address %>
+      <% if !(address.postcode.nil? || address.postcode.empty?) %>
+        <%= render :partial => 'addresses/picker', :format => [:html], :locals => { address: address} %>
+      <% end %>
+
+      <%# Enter Address Manaually link %>
       <% if options.has_key? :address_for_possession %>
         <% manual_url = claim_address_editor_path( claim, address ) %>
       <% else %>
         <% manual_url = editor_claim_person_address_path( claim, person, address ) %>
       <% end %>
       <%= link_to 'Enter address manually', manual_url , :remote => true, :class => 'manual-address' %>
-      <% if !(address.postcode.nil? || address.postcode.empty?) %>
-        <%= render :partial => 'addresses/picker', :format => [:html], :locals => { address: address} %>
-      <% end %>
     <% end %>
   <% end %>
 </div>

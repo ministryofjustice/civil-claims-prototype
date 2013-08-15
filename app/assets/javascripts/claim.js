@@ -68,11 +68,10 @@ $(document).ready(function() {
         claim.address.populate(address_element, address);
       }
 
-      picker.remove();
+      // keep the address picker 
+      // picker.remove();
     });
   });
-
-
 
 });
 
