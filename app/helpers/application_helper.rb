@@ -1,7 +1,7 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
   def button_to_remove_fields(name, form, association)
-    form.hidden_field(:_destroy) + button_to_function(name, "remove_fields(this,'#{association}')", class: "button-warning")
+    form.hidden_field(:_destroy) + button_to_function(name, "remove_fields(this,'#{association}')", class: "button-secondary")
   end
   
   def button_to_add_fields(directory, name, form, association)

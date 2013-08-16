@@ -41,7 +41,7 @@
               <%= f.label :other_breach_of_tenancy, "Other breach of tenancy" %>
             </div>
             <div id="other-breach" <%= "hidden" unless(@claim.other_breach_of_tenancy) %> >
-              <%= f.label :other_breach, "Please specify" %>
+              Please specify
               <%= f.text_area :other_breach, :rows => 3 %>
             </div>
           </div>
@@ -61,10 +61,16 @@
               <%= f.check_box :notice_to_quit, :onClick => "toggle_panel(this, 'notice-served-date');" %>
               <%= f.label :notice_to_quit, "Notice to quit" %>
             </div>
-            <div id="notice-served-date" class="row" <%= "hidden" unless(@claim.notice_to_quit) %> >
-              <%= f.label :notice_served_date, "Date notice served" %>
-              <%= f.date_field :notice_served_date %>
-            </div>
+          </div>
+
+          <!-- this should be fixed by css -->
+          <div id="notice-served-date" class-"all-inline" <%= "hidden" unless(@claim.notice_to_quit) %> >
+            <%= f.label :notice_served_date, "Date notice served" %>
+            <%= f.date_field :notice_served_date %> sdf
+          </div>
+
+          <!-- this should be fixed by css -->
+          <div class="striped-choice">
             <div>
               <%= f.check_box :lease_breach %>
               <%= f.label :lease_breach, "Breach of lease" %>
@@ -122,33 +128,37 @@
         <h3>About the tenancy</h3>
         <div class="panel-default">
           
-          <div class="inline-content">
+          <div class="labeled-content">
             <div class="content-label">
               <%= f.label :tenancy_type %>
             </div>
-            <div class="content">
+            <div class="content-block">
               <%= f.input :tenancy_type, 
                 label: false, 
-                collection: ["Assured shorthold","Assured tenancy","Regulated"],
+                collection: ["Assured shorthold tenancy","Assured tenancy","Regulated tenancy"],
                 selected: "Assured shorthold" %>
                 
                 <a class="fake-link">More about tenancy types</a>
               </div>
           </div>
 
-          <div class="inline-content">
+          <div class="labeled-content">
             <div class="content-label"><%= f.label :tenancy_start_date%></div>
-            <div class="content">
-
+            <div class="content-block">
               <%= f.date_field :tenancy_start_date, :label => false %>
             </div>
           </div>
 
-          <div class="inline-content">
+          <div class="labeled-content">
             <div class="content-label"><%= f.label :rental_amount%></div>
-              <div class="content">
-                &pound <%= f.input :rental_amount, :label => false,required: true %>
-              </div>
+            <div class="content">
+              <div class="money-input">
+                &pound
+                <div>
+                  <%= f.text_field :rental_amount, :label => false,required: true %>
+                </div>
+            </div>
+            </div>
           </div>
 
           <div>

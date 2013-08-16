@@ -14,6 +14,9 @@ $link-color-hover: #1D97FF;
 $selected-item-background-color: #D5E9F4;
 $button-border-radius: 0px;
 
+$labeled-content-label-width: 20%;
+$labeled-content-block-width: 35%;
+
 @mixin link-style {
   color: #2E3191;
   cursor: pointer;
@@ -460,7 +463,8 @@ details summary{
   border-collapse: collapse;
   border-spacing: 0;
   margin: 1em -1em 2em -1em;
-  width: 105.95%;
+    table-layout: fixed;
+    width: 900px;
 
   caption {
     @include core-19;
@@ -509,12 +513,14 @@ details summary{
 
 .striped-choice {
   // margin-bottom: 10px;
+  position: relative;
+  
   div {
     position: relative;
     z-index: 0;
 
     input {
-      display: block;
+      display: block-inline;
       height: 2.0em;
       margin-left: 10px;
     }
@@ -548,34 +554,44 @@ article {
 }
 
 
-.inline-content {
+.all-inline, .date-day, .date-month, .date-year {
+  * { display: inline-block; }
+}
+
+
+
+
+
+.labeled-content {
   display: block;
+  position: relative;
+  margin-top: 10px;
+  margin-bottom: 10px;
   
   .content-label {
-    float: left;
-    width: 20%;
-    padding-top: 5px;
+    vertical-align: top;
+    display: inline-block;
+    width: $labeled-content-label-width;
   }
 
   .content {
-    float: left;
-    width: 40%;
-    margin-right: 40%;  
+    display: inline-block;
+    .money-input {
+      * { display: inline-block }
+      input{
+        display: inline-block;
+        width: 100+$labeled-content-block-width;
+      }
+    }
   }
-  
-  .content-20 {
-    float: left;
-    width: 20%;
+  .content-block {
+    display: inline-block;
+    width: $labeled-content-block-width;
   }
 
-  .content-40 {
-    float: left;
-    width: 40%;
-  }
 
-  .content-60 {
-    float: left;
-    width: 60%;
+  &:after{
+    clear: both;
   }
 }
 
