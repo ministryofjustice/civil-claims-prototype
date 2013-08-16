@@ -5,31 +5,60 @@
     <h1>Step 4 of 6 - Statement of truth</h1>
   </div>
 
-  <p>Please read through all the information that you have provided and ensure that to the best of your knowledge it is all correct.</p>
-  <p>If anything is incorrect please go to the relevent section and update it.</p>
+  <p>Please read through all the information that you have provided and ensure that to the best of your knowledge it is all correct. If anything is incorrect please go to the relevent section and update it.</p>
 
-  <div class='panel'>
-    <h4>Details of claim</h4>
+  <div class='row' id='statement-of-truth'>
+    <h2>Landlord/s</h2>
     <% @claim.claimants.each do |claimant| %>
       <% options = {} %>
-      <% options[:class] = 'well clearfix' %>
-      <% options[:title] = 'Claimant' %>
+      <% options[:class] = 'claimant person well clearfix no-edit' %>
       <%= render :partial => 'people/show', :locals => { person: claimant, options: options, claim: @claim } %>
     <% end %>
 
-    <h2 class='center'>vs</h2>
-
+    <h2>Tenant/s</h2>
     <% @claim.defendants.each do |defendant| %>
       <% options = {} %>
-      <% options[:class] = 'well clearfix' %>
-      <% options[:title] = 'Defendant' %>
+      <% options[:class] = 'defendant person well clearfix' %>
       <%= render :partial => 'people/show', :locals => { person: defendant, options: options, claim: @claim } %>
     <% end %>
 
-    <div class='well clearfix address'>
-      <h5>Property to be recovered</h5>
-      <%= render :partial => 'addresses/show', :locals => { address: @claim.address_for_possession } %>
+
+    <h2>Address for possession</h2>
+    <% address = @claim.address_for_possession %>
+    <% options = {} %>
+    <%= render :partial => 'addresses/view_address_for_possession', :locals => { claim: @claim, address: address, options: options } %>
+
+    <h2>Claim particulars</h2>
+    <div class='person well clearfix particulars'>
+      <h4>Grounds for possession</h4>
+      <% if @claim.non_payment_of_rent %>
+        <span>Non payment of rent</span>
+      <% end %>
+      <% if @claim.anti_social_behaviour %>
+        <span>Anti-social behaviour</span>
+      <% end %>
+      <% if @claim.property_misuse %>
+        <span>Property misuse</span>
+      <% end %>
+      <% if @claim.other_breach_of_tenancy %>
+        <span>Other breach of tenancy: <%= @claim.other_breach %></span>
+      <% end %>
+
+      <% if @claim.notice_to_quit %>
+      <h4>Notices served</h4>
+      <span>Notice to quit served on <%= @claim.notice_served_date.strftime('%e %B %Y') %></span>
+      <% end %>
+
+      <h4>Tenancy type</h4>
+      <span><%= @claim.tenancy_type %></span>
+
+      <h4>Tenancy start date</h4>
+      <span><%= @claim.tenancy_start_date.strftime('%e %B %Y') %></span>
+
+      <h4>Rental amount</h4>
+      <span>&pound;<%= @claim.rental_amount.to_s %> per <%= @claim.payment_frequency %></span>
     </div>
+
 
     <%= simple_form_for @claim, :url => update_claim_path(@claim), :class => 'form-horizontal' do |f| %>
       <div class='panel'>
