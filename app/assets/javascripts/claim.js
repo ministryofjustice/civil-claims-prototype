@@ -88,7 +88,23 @@ $(document).ready(function() {
 claim.validate = function(form) {
   form = $(form);
   var ready_to_go = form[0].checkValidity();
-    
+  var address_fields = 0;
+  var field_names = ['address_street_1', 'address_street_2', 'address_street_3','address_town', 'address_county'];
+
+  address_fields = field_names.map(function(f) { 
+    if( form.find( 'input#'+f).length && form.find( 'input#'+f).val().length ) { return 1; }
+    return 0;
+  }).reduce(function(a, b) { return a + b; });
+
+  if(address_fields < 2) {
+    ready_to_go = false;
+    if(form.find('input#address_street_1') && !form.find('input#address_street_1').val().length) {
+      form.find('input#address_street_1').attr('required', 'required').get(0).setCustomValidity('Not gonna happen');
+    }
+  } else {
+    form.find('input#address_street_1').removeAttr('required').get(0).setCustomValidity('');
+  }
+  
   if( ready_to_go ) {
     form.find("button[value='save']").removeAttr('disabled');
   } else {

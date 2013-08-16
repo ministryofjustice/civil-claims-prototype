@@ -19,7 +19,10 @@
 
     <%# Full address %>
     <% if show_full_address %>
-      <%= f.input :street_1, :label => 'Street' %>
+      <%= f.input :street_1 do %>
+        <%= f.input_field :street_1, :label => 'Street' %>
+        <span class='icon-container' style='display:none' />
+      <% end %>
       <%= f.input :street_2, label: false %>
       <%= f.input :street_3, label: false %>
       <%= f.input :town %>
