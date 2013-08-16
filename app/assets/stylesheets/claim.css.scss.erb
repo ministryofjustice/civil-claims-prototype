@@ -340,7 +340,21 @@ iframe { border: none; }
 
 .person .filler { height: 20px; display:block; }
 
+.person.particulars { background-color: #d7edeb; border-color: #b5d5d0; }
 #statement-of-truth h2 { margin: 50px 0 10px 0; }
+#statement-of-truth h4 { font-weight: bold; margin-top: 20px;}
+#statement-of-truth h4:first-child { margin-top: 0px; }
+#statement-of-truth form.edit_claim { 
+  margin-top: 30px; 
+  .claim_signature {
+    position: relative;
+    label {
+      position: absolute;
+      left: 30px;
+    }
+
+  }
+}
 
 .address-editor .form-group {
   &> div {
@@ -394,7 +408,7 @@ form.add-additional-person {
   margin-bottom: 20px;
 }
 
-.claimant, .defendant, .address-for-possession {
+.claimant, .defendant, .address-for-possession, .particulars {
   background-repeat: no-repeat;
   background-position: 18px 20px;
   background-size: 63px 68px;
