@@ -10,20 +10,55 @@
       </div>
 
       <div class="content">
-        <div class="all-inline">calendar here 
-          <%= button_to_add_fields "arrears", "Add arrears", f, :arrears %>
+        <div class="all-inline">
+          <div>
+            <select id="arrears-select-day">
+              <option />
+              <% for day in 1..31 %>
+                <option value="<%= day %>"><%= day %></option>
+              <% end %>
+            </select>
+          </div>
+          <div>
+            <select id="arrears-select-month">
+              <option />
+              <option value="1">January</option>
+              <option value="2">February</option>
+              <option value="3">March</option>
+              <option value="4">April</option>
+              <option value="5">May</option>
+              <option value="6">June</option>
+              <option value="7">July</option>
+              <option value="8">August</option>
+              <option value="9">September</option>
+              <option value="10">October</option>
+              <option value="11">November</option>
+              <option value="12">December</option>
+            </select>
+          </div>
+          <div>
+            <select id="arrears-select-year">
+              <option />
+              <% for day in 2009..2013 %>
+                <option value="<%= day %>"><%= day %></option>
+              <% end %>
+            </select>
+          </div>
+          <div >
+                    <%= button_to_add_fields "arrears", "Add arrears", f, :arrears %></div>
         </div> 
 
 
         <details>
           <summary>Did the defendant/s make any partial payments?</summary>
           <div class="all-inline">
-            &pound<input type="text" />
+            <strong>&pound</strong>
+            <div class="default-box-width"><input type="text" /></div>
           </div>
         </details>
       </div>
 
-      </div>
+    </div>
 
 
 
@@ -55,16 +90,16 @@
     
     
     
+    </div>
   </div>
-</div>
-  <div class="panel-default">
+    <div class="panel-default">
+            
           
-
               <%= f.label :unpaid_rent_per_day, "Unpaid rent should be calculated at" %>
-              <div class="all-inline">
-              <span>&pound
-              <%= f.text_field :unpaid_rent_per_day, :label => false, input_html: { class: "testc"} %></span>
-              a day
+          <div class="all-inline">
+            <strong>&pound</strong>
+            <div class="default-box-width"><%= f.text_field :unpaid_rent_per_day, :label => false, input_html: { class: "testc"} %></div>
+            a day
           </div>
           <div class="striped-choice">
             <div>

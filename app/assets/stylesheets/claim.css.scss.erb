@@ -560,7 +560,9 @@ article {
 
 
 
-
+.default-box-width{
+  width: 225px;
+}
 
 .labeled-content {
   display: block;
@@ -576,23 +578,21 @@ article {
 
   .content {
     display: inline-block;
+    
     .money-input {
       * { display: inline-block }
       input{
         display: inline-block;
-        width: 100+$labeled-content-block-width;
+        width: 100 + $labeled-content-block-width;
       }
     }
   }
+
   .content-block {
     display: inline-block;
     width: $labeled-content-block-width;
   }
 
-
-  &:after{
-    clear: both;
-  }
 }
 
 

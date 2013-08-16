@@ -63,10 +63,11 @@
             </div>
           </div>
 
-          <!-- this should be fixed by css -->
-          <div id="notice-served-date" class-"all-inline" <%= "hidden" unless(@claim.notice_to_quit) %> >
-            <%= f.label :notice_served_date, "Date notice served" %>
-            <%= f.date_field :notice_served_date %> sdf
+          <!-- this should be fixed by css in striped-choice -->
+          <div id="notice-served-date" class="all-inline" <%= "hidden" unless(@claim.notice_to_quit) %> >
+            <!-- this should be fixed by css in all-inline -->
+            <div><%= f.label :notice_served_date, "Date notice served" %></div>
+            <div><%= f.date_field :notice_served_date %></div>
           </div>
 
           <!-- this should be fixed by css -->
@@ -153,7 +154,7 @@
             <div class="content-label"><%= f.label :rental_amount%></div>
             <div class="content">
               <div class="money-input">
-                &pound
+                <strong>&pound</strong>
                 <div>
                   <%= f.text_field :rental_amount, :label => false,required: true %>
                 </div>

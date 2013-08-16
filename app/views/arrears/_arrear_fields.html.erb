@@ -13,7 +13,7 @@
   	<%= f.hidden_field :paid %>
   	<div>&pound<%= f.object.paid %></div>
   </td>
-  <td class="arrears-arrear">rent - f.object.amount</td>
+  <td class="arrears-arrear">&pound<%= f.object.amount.to_f - f.object.paid.to_f %></td>
   <td>
     <%= button_to_remove_fields "Remove", f, :arrears %>
   </td>
