@@ -8,5 +8,7 @@
   </div>
   <% if options.has_key? :show_edit_link %>
     <span class='toggle-editor'><%= link_to "View/edit details", editor_claim_person_url( claim, person ), :remote => true  %></span>
+  <% else %>
+    <span class='filler'></span>
   <% end %>
 </div>
