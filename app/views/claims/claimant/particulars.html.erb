@@ -198,9 +198,11 @@
 
   <!-- SUPPORTING DOCUMENTTION -->
       <%= render partial: 'attachments/show', :locals => { f: f } %>
-
-      <%= f.submit 'Save & Continue', :class => 'button medium' %>
-      <a href="/" class="button-secondary">Close</a>
+      
+      <div class="save-close-panel">
+        <%= f.submit 'Save & Continue', :class => 'button' %>
+        <a href="/" class="button-secondary">Close</a>
+      </div>
 
     </article>
     <% end %>

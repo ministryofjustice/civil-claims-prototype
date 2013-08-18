@@ -33,7 +33,6 @@ $labeled-content-block-width: 35%;
   background-color: $background-color;
   border-top: 1px solid $border-color;
   border-bottom: 1px solid $border-color;
-  padding: 20px 90px 20px 90px;
   label {
     font-weight: normal;
   }
@@ -449,7 +448,7 @@ form.add-additional-person {
 #edit-claim h3 { margin-top: 40px; }
 
 .button{
-  @include button;
+  @include button(#01A75F);
   @include border-radius($button-border-radius);
 }
 
@@ -526,6 +525,18 @@ details summary{
 
 .panel-default{
   @include panel-style;
+  padding: 20px 90px 20px 90px;
+}
+
+.panel-error{
+  @include panel-style(#F2DEDE,#EED3D7);
+  padding: 5px 5px 5px 5px;
+  color: #BB4A48;
+  text-align: center;
+}
+
+.panel-file-upload{
+  @include panel-style(#D5EEEA)
 }
 
 
@@ -634,7 +645,9 @@ h2.info-notice {
 .court-badge .court-address h4 { font-weight: bold; }
 .court-badge .court-address span.dx { margin:20px 0; }
 
-
+.save-close-panel{
+  margin: 30px 0px 10px;
+}
 
 
 

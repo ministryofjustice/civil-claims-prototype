@@ -53,7 +53,9 @@
           <summary>Did the defendant/s make any partial payments?</summary>
           <div class="all-inline">
             <strong>&pound</strong>
-            <div class="default-box-width"><input type="text" /></div>
+            <div class="default-box-width">
+              <input id="arrears-month-contribution" type="text" />
+            </div>
           </div>
         </details>
       </div>
@@ -69,6 +71,9 @@
     <div>
 <p><a class="fake-link">About adding rental arrears</a></p>
 
+
+    <div id="rental-arrears-error" class="panel-error" hidden>
+    </div>
     <div style="padding-top:10px;">
       <table id="arrears-table" class="govuk-table arrear-table" <%= "hidden" if @claim.arrears.empty? %> >
         <thead>

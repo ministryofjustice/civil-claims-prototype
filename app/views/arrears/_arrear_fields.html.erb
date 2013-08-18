@@ -1,19 +1,27 @@
 <tr>
   <%= f.hidden_field :_destroy, :class => "destroy" %>
   <td class="arrears-duedate">
-  	<%= f.hidden_field :due_date %>
-  	<div><%= f.object.due_date %> </div>
+  	<%= f.hidden_field :due_date, :value => f.object.due_date || "arrears-duedate-new-item-hidden" %>
+  	<div>
+      <%= if(f.object.due_date) then f.object.due_date.strftime("%d/%m/%Y") else "arrears-duedate-new-item-text" end %> 
+    </div>
   </td>
-  <!-- :field_attribute, :value => format_method(f.object.field_attribute) %> -->
   <td class="arrears-amount">
-  	<%= f.hidden_field :amount %>
-  	<div>&pound<%= f.object.amount %></div>
+    <% amount_value= f.object.amount || "arrears-amount-new-item" %>
+  	<%= f.hidden_field :amount, :value => amount_value %>
+  	<div>&pound<%= amount_value %></div>
   </td>
   <td class="arrears-paid">
-  	<%= f.hidden_field :paid %>
-  	<div>&pound<%= f.object.paid %></div>
+    <% paid_value= f.object.paid || "arrears-paid-new-item" %>
+  	<%= f.hidden_field :paid, :value => paid_value %>
+  	<div>&pound<%= paid_value %></div>
   </td>
-  <td class="arrears-arrear">&pound<%= f.object.amount.to_f - f.object.paid.to_f %></td>
+  <td class="arrears-arrear">&pound<% if f.object.amount && f.object.paid %>
+    <%=f.object.amount.to_f - f.object.paid.to_f %>
+    <% else %>
+    <%="arrears-arrear-new-item" %>
+    <% end %>
+  </td>
   <td>
     <%= button_to_remove_fields "Remove", f, :arrears %>
   </td>

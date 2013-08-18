@@ -28,80 +28,69 @@ remove_fields = function(link, association) {
 }
 
 add_fields = function(link, association, content) {
+  var errors="";
+
   var new_id = new Date().getTime();
   var regexp = new RegExp('new_' + association, 'g');
   
- 
-  $('#'+association+'-table').show('fast');
-  $('#'+association+'-table tbody').append(content.replace(regexp, new_id));
-
-  content = fix_new_table_item_values(association);
-}
-
-toggle_panel = function (checkbox, panel_id){
-  $('#'+panel_id).toggle('fast');
-}
-
-fix_new_table_item_values = function(association) {
   if(association=="arrears"){
+    $('#rental-arrears-error').hide();
     
     var rent = $('#claim_rental_amount').val() || 0;
-    var contribution = $('#claim_contributions_this_month').val() || 0;
-    var paid_sum = 0;
-    // take the date from 'Rent due on'
-    var last_arrear_date = format_date_form(
-      // new Date(
-      //   parseInt($('#claim_rent_due_date_1i').val()),
-      //   parseInt($('#claim_rent_due_date_2i').val()-1),
-      //   parseInt($('#claim_rent_due_date_3i').val()))
-      // || 
-      new Date());
-
-    var rows = $('#arrears-table tbody tr:visible');
-    var new_row_index = rows.length-1;
+    var contribution = $('#arrears-month-contribution').val() || 0;
     
-    rows.each(function(index){
+    var rent_due_on_data=[
+      parseInt($('#arrears-select-year').val()),
+      parseInt($('#arrears-select-month').val()),
+      parseInt($('#arrears-select-day').val())];
+
+    var arrear_date = "";
+
+    if(isNaN(rent_due_on_data[0] + rent_due_on_data[1] + rent_due_on_data[2])) {
+      errors=errors+"Please select rent due date. ";
+    }
+    
+    if(isNaN(rent)) {
+      errors=errors+"Rental amount should be a number value.";
+    }
+    
+    if(isNaN(contribution)) {
+      errors=errors+"Payment amount should be a number value.";
+    }
+
+    if(errors){
+      $('#rental-arrears-error').show('fast');
+      $('#rental-arrears-error').text(errors);
+    } else {
+      arrear_date = new Date(rent_due_on_data[0], rent_due_on_data[1]-1, rent_due_on_data[2]);
+      rent_value = parseFloat(rent);
+      contribution_value = parseFloat(contribution);
+      arrear_value = rent_value - contribution_value;
       
-
-
-      date_cell = this.cells[0]; //$(this).find('.arrears-duedate');
-      amount_cell = this.cells[1]; //$(this).find('.arrears-amount');
-      paid_cell = this.cells[2];
-      arrear_cell = this.cells[3]; //$(this).find('.arrears-arrear');
-
-      if(index == new_row_index){
-
-        var new_arrear_date = new Date(last_arrear_date);
-        new_arrear_date.setMonth(new_arrear_date.getMonth()+1);
-        $(date_cell).find('input').val(format_date_form(new_arrear_date));
-        $(date_cell).find('div').text(format_date(new_arrear_date));
-
-        $(amount_cell).find('input').val(rent);
-        $(amount_cell).find('div').text('\u00A3'+rent);
-        
-        var amount_paid = contribution - paid_sum;
-        if (amount_paid<0) amount_paid=0;
-        $(paid_cell).find('input').val(amount_paid);
-        $(paid_cell).find('div').text('\u00A3'+amount_paid);
-
-        var new_arrear_value = rent - amount_paid;
-        if (new_arrear_value<0) new_arrear_value=0;
-        // $(arrear_cell).find('input').val(new_arrear_value);
-        $(arrear_cell).text('\u00A3'+new_arrear_value);
-
-      }else{
-        paid_sum += parseFloat($(paid_cell).find('input').val()) || 0;
-        last_arrear_date = $(date_cell).find('input').val() || last_arrear_date;        
-      }
-    });
-
-  }
-  else if(association=="attachments"){
+      content=content.replace('arrears-duedate-new-item-hidden',format_date_form(arrear_date));
+      content=content.replace('arrears-duedate-new-item-text',format_date(arrear_date));
+      content=content.replace(new RegExp('arrears-amount-new-item', 'g'), rent_value.toFixed(1));
+      content=content.replace(new RegExp('arrears-paid-new-item', 'g'), contribution_value.toFixed(1));
+      content=content.replace(new RegExp('arrears-arrear-new-item', 'g'), arrear_value.toFixed(1));
+      
+      $('#arrears-select-month').val(rent_due_on_data[1]+1);
+    }
+  } else if(association=="attachments"){
     var attachment_filename=$('#attachment-upload-filename').val();
     var new_row_filecell = $('#attachments-table tbody tr:visible:last td:first');
     $(new_row_filecell).find('input').val(attachment_filename);
     $(new_row_filecell).find('.attachments-filename').text(attachment_filename);
   }
+
+  if(!errors){
+    $('#'+association+'-table').show('fast');
+    $('#'+association+'-table tbody').append(content.replace(regexp, new_id));
+  }
+
+}
+
+toggle_panel = function (checkbox, panel_id){
+  $('#'+panel_id).toggle('fast');
 }
 
 // this will format date in edible format for simple_forms
@@ -118,14 +107,12 @@ format_date = function(date) {
     date.getFullYear();
 }
 
-set_random_filename_to = function(id){
+get_random_filename = function(){
   var filenames = 
     ["Crystal palace park road.pdf",
     "Tenancy Agreement July 2010.doc",
     "Notice to quit - June 2013.doc"];
-  var random_filename = filenames[Math.floor(Math.random() * filenames.length)];
-
-  $('#'+id).val(random_filename);
+  return filenames[Math.floor(Math.random() * filenames.length)];
 }
 
 
