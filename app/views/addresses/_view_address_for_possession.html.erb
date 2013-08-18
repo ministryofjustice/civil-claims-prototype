@@ -4,5 +4,9 @@
   </div>
   <% unless claim.property_type.blank? %><span><%= claim.property_type.titleize %> property</span><% end %>
   <% unless claim.resident_type.blank? %><span><%= claim.resident_type.humanize %></span><% end %>
-  <span><%= link_to "View/edit details", claim_address_editor_url( claim, address ), :remote => true  %>
+  <% if options.has_key? :show_edit_link %>
+    <span><%= link_to "View/edit details", claim_address_editor_url( claim, address ), :remote => true  %>
+  <% else %>
+    <span class='filler'></span>
+  <% end %>
 </div>
