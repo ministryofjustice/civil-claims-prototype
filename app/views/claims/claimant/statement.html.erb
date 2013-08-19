@@ -56,7 +56,7 @@
       <span><%= @claim.tenancy_start_date.strftime('%e %B %Y') %></span>
 
       <h4>Rental amount</h4>
-      <span>&pound;<%= @claim.rental_amount.to_s %> per <%= @claim.payment_frequency %></span>
+      <span>&pound;<%= @claim.rental_amount.to_s %> <%= @claim.payment_frequency %></span>
     </div>
 
 

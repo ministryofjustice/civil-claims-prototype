@@ -41,10 +41,6 @@ class ClaimsController < ApplicationController
 
   def personal_details
     @claim = Claim.find(params[:id], :include => [{:claimants => :address}, {:defendants => :address}])
-    if @claim.address_for_possession.nil?
-      @claim.address_for_possession = Address.create
-      @claim.save
-    end
 
     @editors = session['editors'] || {}
     render 'claims/claimant/personal_details'
@@ -88,7 +84,7 @@ class ClaimsController < ApplicationController
       format.html { redirect_to :back }
       format.js { 
         address = claim.address_for_possession
-        render :partial => 'addresses/view_address_for_possession', :format => [:js], :locals => {claim: claim, address: address}}
+        render :partial => 'addresses/view_address_for_possession', :format => [:js], :locals => {claim: claim, address: address, options: {}}}
       end
   end
 
