@@ -9,10 +9,16 @@
 
 $default-panel-background-color: #F8F8F8;
 $default-panel-border-color: #c2c2c2;
+
 $info-background: #D2E8F2;
 $link-color-hover: #1D97FF;
+
 $selected-item-background-color: #D5E9F4;
+
 $button-border-radius: 0px;
+$button-primary-color: #01A75F;
+$button-secondary-color: $grey-3;
+$button-warning-color: $red;
 
 $labeled-content-label-width: 25%;
 $labeled-content-block-width: 40%;
@@ -480,18 +486,18 @@ form.add-additional-person {
 #edit-claim h3 { margin-top: 40px; }
 
 .button{
-  @include button(#01A75F);
+  @include button($button-primary-color);
   @include border-radius($button-border-radius);
-  transition: opacity 0.8s;
+  // transition: opacity 0.8s;
 }
 
 .button-secondary{
-  @include button($grey-3);
+  @include button($button-secondary-color);
   @include border-radius($button-border-radius);
 }
 
 .button-warning{
-  @include button($red);
+  @include button($button-warning-color);
   @include border-radius($button-border-radius);
 }
 
