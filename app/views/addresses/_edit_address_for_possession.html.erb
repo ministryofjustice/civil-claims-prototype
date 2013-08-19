@@ -11,7 +11,7 @@
       <%= render partial: 'addresses/edit', :formats => [:html], locals: {claim: claim, person: person, address: address, options: options } %>
     
       <div class='form-group striped-radios'>
-        <h4>What type of property is it?</h4>
+        <h4>Type of property</h4>
         <div>
           <%= f.radio_button(:property_type, 'residential') %>
           <%= label_tag :claim_property_type_residential, 'Residential' %>
