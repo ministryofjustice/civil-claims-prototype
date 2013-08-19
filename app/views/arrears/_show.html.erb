@@ -75,11 +75,10 @@
           <tr class="table-footer">
             <td id="arrears-total-label" colspan="3">Total arrears</td>
             <td id="arrears-total-amount">
-              <% arrears_total_amount = (@claim.rental_amount* @claim.arrears.count)- @claim.arrears.sum(:paid) %>
+              <% rental_amount = @claim.rental_amount || 0 %>
+              <% arrears_total_amount = (rental_amount * @claim.arrears.count)- @claim.arrears.sum(:paid) %>
               <input type="hidden" value="<%= arrears_total_amount %>" />
-              <div id="arrears-total-amount-text">
-                &pound<%=arrears_total_amount %>
-              </div>
+              <div id="arrears-total-amount-text">&pound;<%=arrears_total_amount %></div>
             </td>
             <td></td>
           </tr>
