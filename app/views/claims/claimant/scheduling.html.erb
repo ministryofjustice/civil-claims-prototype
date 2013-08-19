@@ -1,4 +1,4 @@
-<%= render partial: 'claims/claimant/navigation' %>
+<%= render_claimant_navigation %>
 
 <div class='row'>
   <div class="page-header">
@@ -12,10 +12,9 @@
 
   <%= render :partial => 'shared/lambeth_court' %>
   
-  <div class="save-close-panel">
-    <div class="button">Save & Continue</div>
-    <a href="/" class="button-secondary">Close</a>
-  </div>
+  <%= form_for @claim do |f| %>
+    <%= render :partial => 'claims/claimant/save_continue', :locals => {f: f} %>
+  <% end %>
   
 </div>
 

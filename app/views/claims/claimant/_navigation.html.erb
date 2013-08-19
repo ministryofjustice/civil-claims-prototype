@@ -1,11 +1,7 @@
 <nav id='secondary'>
   <ol class='clearfix'>
-    <!-- links are for convenience only. this will be a progress indicator -->
-    <li class='clearfix'><%= nav_link 'personal_details', 'Personal details' %></li>
-    <li><%= nav_link 'particulars', 'Claim particulars'  %></li>
-    <li><%= nav_link 'scheduling', 'Court scheduling' %></li>
-    <li><%= nav_link 'statement', 'Statement of truth' %></li>
-    <li><%= nav_link 'fees', 'Fees & payment' %></li>
-    <li><%= nav_link 'confirmation', 'Confirmation' %></li>
+    <% links.each do |link| %>
+      <li><%= nav_link link[:path], link[:text] %></li>
+    <% end %>
   </ol>
 </nav>

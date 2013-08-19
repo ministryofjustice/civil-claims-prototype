@@ -1,4 +1,4 @@
-<%= render partial: 'claims/claimant/navigation' %>
+<%= render_claimant_navigation %>
 
 <div class='row'>
   <div class="page-header">
@@ -68,8 +68,8 @@
         <p><span>&#x22;</span>A person who completes a statement of truth without an honest belief in the truth of the given information is liable to proceedings for contempt of court.</p>
       </div>
 
-      <%= f.submit "Save & Continue", :class => 'button' %>
-      <%= f.submit :Cancel, :class => 'button-secondary' %>
+      <%= render :partial => 'claims/claimant/save_continue', :locals => {f: f} %>
+
     <% end %>
 
   </div>
