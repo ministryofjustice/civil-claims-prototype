@@ -56,7 +56,9 @@
           <%= options[:save_button_text] || 'Save details' %>
         <% end %>
 
-        <%= f.submit :Cancel, :class => 'button-secondary' %>
+        <% unless options.has_key? :no_cancel %>
+          <%= f.submit :Cancel, :class => 'button-secondary' %>
+        <% end %>
       </div>
       <div class='btn-group' style = 'margin-left:11em'>
         <% if options.has_key? :show_remove_button %>

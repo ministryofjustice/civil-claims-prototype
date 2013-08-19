@@ -98,7 +98,7 @@ claim.validate = function(form) {
 
   if(address_fields < 2) {
     ready_to_go = false;
-    if(form.find('input#address_street_1') && !form.find('input#address_street_1').val().length) {
+    if(form.find('input#address_street_1').length && !form.find('input#address_street_1').val().length) {
       form.find('input#address_street_1').attr('required', 'required').get(0).setCustomValidity('Not gonna happen');
     }
   } else {
@@ -107,8 +107,10 @@ claim.validate = function(form) {
   
   if( ready_to_go ) {
     form.find("button[value='save']").removeAttr('disabled');
+    form.find("input[value='Cancel']").removeAttr('disabled');
   } else {
     form.find("button[value='save']").attr('disabled', 'disabled');
+    form.find("input[value='Cancel']").attr('disabled', 'disabled');
   }
 };
 
@@ -129,6 +131,8 @@ claim.address = {
     container.find('.address_town input').val(address.town);
     container.find('.address_county input').val(address.county);
     container.find('.address_postcode input').val(address.postcode);
+
+    window.claim.validate(container.parents('form')); 
   },
 
   extract_partial_address: function(address_string) {
