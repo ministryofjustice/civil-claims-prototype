@@ -40,7 +40,7 @@ $(document).ready(function() {
   });
 
   // filthy address picker business
-  $('#edit-claim').on('change', '.pick_address select', function(event) {
+  $('#edit-claim').on('change', '.pick_address', function(event) {
     var master_form = $(this).parents('form');
     var address_element = master_form.find('.address-container');
 
