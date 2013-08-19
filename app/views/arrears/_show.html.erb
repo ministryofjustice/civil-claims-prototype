@@ -5,10 +5,7 @@
     <strong>Add rental arrears</strong>
     
     <div class="labeled-content">
-      <div class="content-label">
-        Rent due on
-      </div>
-
+      <div class="content-label">Rent due on</div>
       <div class="content">
         <div class="all-inline">
           <div>
@@ -44,10 +41,8 @@
               <% end %>
             </select>
           </div>
-          <div >
-                    <%= button_to_add_fields "arrears", "Add arrears", f, :arrears %></div>
+          <div id="arrears-add-item"> <%= button_to_add_fields "arrears", "Add arrears", f, :arrears %></div>
         </div> 
-
 
         <details>
           <summary>Did the defendant/s make any partial payments?</summary>
@@ -60,31 +55,35 @@
         </details>
       </div>
 
+      <div id="about-rental-arrears"><a class="fake-link">About adding rental arrears</a></div>
     </div>
-
-
-
-
-
-
-
+    
+    <div id="rental-arrears-error" class="panel-error" hidden></div>
+    
     <div>
-<p><a class="fake-link">About adding rental arrears</a></p>
-
-
-    <div id="rental-arrears-error" class="panel-error" hidden>
-    </div>
-    <div style="padding-top:10px;">
-      <table id="arrears-table" class="govuk-table arrear-table" <%= "hidden" if @claim.arrears.empty? %> >
+      <table id="arrears-table" class="govuk-table" <%= "hidden" if @claim.arrears.empty? %> >
         <thead>
           <tr>
-            <th>Rent due on</th>
+            <th id="rent-date-header">Rent due on</th>
             <th>Rental amount</th>
             <th>Amount paid</th>
             <th>Arrears</th>
-            <th></th>
+            <th class="arrears-cols-button"></th>
           </tr>
         </thead>
+        <tfoot>
+          <tr class="table-footer">
+            <td id="arrears-total-label" colspan="3">Total arrears</td>
+            <td id="arrears-total-amount">
+              <% arrears_total_amount = (@claim.rental_amount* @claim.arrears.count)- @claim.arrears.sum(:paid) %>
+              <input type="hidden" value="<%= arrears_total_amount %>" />
+              <div id="arrears-total-amount-text">
+                &pound<%=arrears_total_amount %>
+              </div>
+            </td>
+            <td></td>
+          </tr>
+        </tfoot>
         <tbody id="arrears-body">
           <%= f.simple_fields_for :arrears do |builder| %>
             <%= render "arrears/arrear_fields", :f => builder %>
@@ -93,25 +92,21 @@
       </table>
     </div>
     
-    
-    
-    </div>
   </div>
-    <div class="panel-default">
-            
-          
-              <%= f.label :unpaid_rent_per_day, "Unpaid rent should be calculated at" %>
-          <div class="all-inline">
-            <strong>&pound</strong>
-            <div class="default-box-width"><%= f.text_field :unpaid_rent_per_day, :label => false, input_html: { class: "testc"} %></div>
-            a day
-          </div>
-          <div class="striped-choice">
-            <div>
-              <%= f.check_box :defendent_to_pay_for_claim %>
-              <%= f.label :defendent_to_pay_for_claim, "Do you want to request that the defendent/s pay the cost of the claim" %>
-            </div>
-          </div> 
+    
+  <div id="unpaid-rent-calculation" class="panel-default">
+    <%= f.label :unpaid_rent_per_day, "Unpaid rent should be calculated at" %>
+    <div class="all-inline">
+      <strong>&pound</strong>
+      <div class="default-box-width"><%= f.text_field :unpaid_rent_per_day, :label => false %></div>
+      a day
+    </div>
+    <div class="striped-choice">
+      <div>
+        <%= f.check_box :defendent_to_pay_for_claim %>
+        <%= f.label :defendent_to_pay_for_claim, "Do you want to request that the defendent/s pay the cost of the claim" %>
+      </div>
+    </div> 
+  </div>
 
-        </div>
 </section>

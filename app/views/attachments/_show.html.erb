@@ -2,32 +2,20 @@
   <h3>Supporting documentation</h3>
 
   <div class="panel-default">
-    <p>Attach any documents to support your claim</p>
-
-    <!-- <button data-toggle="modal" href="#attachments-dialog" class="button">Select</button> -->
-    <div class="button">Select</div>
-
-    <!-- fix this -->
-    <br/><br/>
-
-    <%= render "shared/modal_dialog", 
-      :dialog_id=>"attachments-dialog",
-      :content_partial=>"attachments/upload_dialog_content",
-      :f=>f , 
-      :dialog_title =>"Upload files" %>
-    
-    <div>
-      <table id="attachments-table" class="table table-condensed">
-        <tbody id="attachments-body">
-          <%= f.simple_fields_for :attachments do |builder| %>
-            <%= render "attachments/attachment_fields", :f => builder %>
-          <% end %>
-        </tbody>
-      </table>
+    <p>
+      Attach any documents to support your claim.<br/>
+      Type of files supported include pdf, doc, open office, jpg, png, and many others.
+    </p>
+    <p><a class="fake-link">About supporting documentation</a></p>
+   
+    <div id="attachments-section">
+      <%= button_to_add_fields "attachments", "Attach documents", f, :attachments %>
+      <ul id="attachments-list">
+        <%= f.simple_fields_for :attachments do |builder| %>
+          <%= render "attachments/attachment_fields", :f => builder %>
+        <% end %>  
+      </ul>
     </div>
 
-    <p>
-      <a class="fake-link">About supporting documentation</a>
-    </p>
   </div>
 </section>

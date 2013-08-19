@@ -16,13 +16,16 @@
   	<%= f.hidden_field :paid, :value => paid_value %>
   	<div>&pound<%= paid_value %></div>
   </td>
-  <td class="arrears-arrear">&pound<% if f.object.amount && f.object.paid %>
-    <%=f.object.amount.to_f - f.object.paid.to_f %>
-    <% else %>
-    <%="arrears-arrear-new-item" %>
+  <td class="arrears-arrear">
+    <% arrear_value = if f.object.amount && f.object.paid %>
+      <% f.object.amount.to_f - f.object.paid.to_f %>
+    <% else "arrears-arrear-new-item" %>
     <% end %>
+    &pound<%=arrear_value %>
+
+    <input type="hidden" value="<%=arrear_value%>" >
   </td>
-  <td>
+  <td class="arrears-cols-button">
     <%= button_to_remove_fields "Remove", f, :arrears %>
   </td>
 </tr>

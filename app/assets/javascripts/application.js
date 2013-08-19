@@ -20,11 +20,22 @@
 // want to hide something different then TR then add attribute to fn
 remove_fields = function(link, association) {
   $(link).prev('input[type=hidden]').val('1');
-  $(link).closest('tr').hide('fast');
+  
+  if(association==="arrears"){
+    // hide the associated table when we are removing the last one
+    if ($('#'+association+'-table tbody tr:visible').length==1)
+      $('#'+association+'-table').hide('fast');
 
-  // hide the associated table when we are removing the last one
-  if ($('#'+association+'-table tbody tr:visible').length==1)
-    $('#'+association+'-table').hide('fast');
+    var current_row = $(link).closest('tr');
+    var arrear_value = $(current_row).find('.arrears-arrear input').val();
+    var total_arrears = parseFloat($('#arrears-total-amount input').val()) - arrear_value;
+    $('#arrears-total-amount input').val(total_arrears);
+    $('#arrears-total-amount-text').text('\u00A3'+total_arrears.toFixed(1));
+    $(link).closest('tr').hide('fast');
+
+  } else if(association==="attachments"){
+    $(link).closest('li').hide('fast');
+  }
 }
 
 add_fields = function(link, association, content) {
@@ -44,47 +55,45 @@ add_fields = function(link, association, content) {
       parseInt($('#arrears-select-month').val()),
       parseInt($('#arrears-select-day').val())];
 
-    var arrear_date = "";
-
     if(isNaN(rent_due_on_data[0] + rent_due_on_data[1] + rent_due_on_data[2])) {
       errors=errors+"Please select rent due date. ";
     }
     
     if(isNaN(rent)) {
-      errors=errors+"Rental amount should be a number value.";
+      errors=errors+"Rental amount should be a number value. ";
     }
     
     if(isNaN(contribution)) {
-      errors=errors+"Payment amount should be a number value.";
+      errors=errors+"Payment amount should be a number value. ";
     }
 
     if(errors){
       $('#rental-arrears-error').show('fast');
       $('#rental-arrears-error').text(errors);
     } else {
-      arrear_date = new Date(rent_due_on_data[0], rent_due_on_data[1]-1, rent_due_on_data[2]);
-      rent_value = parseFloat(rent);
-      contribution_value = parseFloat(contribution);
-      arrear_value = rent_value - contribution_value;
+      var arrear_date = new Date(rent_due_on_data[0], rent_due_on_data[1]-1, rent_due_on_data[2]);
+      var rent_value = parseFloat(rent);
+      var contribution_value = parseFloat(contribution);
+      var arrear_value = rent_value - contribution_value;
       
-      content=content.replace('arrears-duedate-new-item-hidden',format_date_form(arrear_date));
-      content=content.replace('arrears-duedate-new-item-text',format_date(arrear_date));
-      content=content.replace(new RegExp('arrears-amount-new-item', 'g'), rent_value.toFixed(1));
-      content=content.replace(new RegExp('arrears-paid-new-item', 'g'), contribution_value.toFixed(1));
-      content=content.replace(new RegExp('arrears-arrear-new-item', 'g'), arrear_value.toFixed(1));
+      content= content.replace('arrears-duedate-new-item-hidden',format_date_form(arrear_date));
+      content= content.replace('arrears-duedate-new-item-text',format_date(arrear_date));
+      content= content.replace(new RegExp('arrears-amount-new-item', 'g'), rent_value.toFixed(1));
+      content= content.replace(new RegExp('arrears-paid-new-item', 'g'), contribution_value.toFixed(1));
+      content= content.replace(new RegExp('arrears-arrear-new-item', 'g'), arrear_value.toFixed(1));
       
       $('#arrears-select-month').val(rent_due_on_data[1]+1);
+      $('#arrears-table').show('fast');
+      $('#arrears-table tbody').append(content.replace(regexp, new_id));
+
+      var total_arrears = parseFloat($('#arrears-total-amount input').val()) + arrear_value;
+      $('#arrears-total-amount input').val(total_arrears);
+      $('#arrears-total-amount-text').text('\u00A3'+total_arrears.toFixed(1));
     }
   } else if(association=="attachments"){
-    var attachment_filename=$('#attachment-upload-filename').val();
-    var new_row_filecell = $('#attachments-table tbody tr:visible:last td:first');
-    $(new_row_filecell).find('input').val(attachment_filename);
-    $(new_row_filecell).find('.attachments-filename').text(attachment_filename);
-  }
-
-  if(!errors){
-    $('#'+association+'-table').show('fast');
-    $('#'+association+'-table tbody').append(content.replace(regexp, new_id));
+    var file_name=get_random_filename;
+    content= content.replace(new RegExp('attachments-filename-new-item','g'),file_name);
+    $('#attachments-list').append(content.replace(regexp, new_id));
   }
 
 }

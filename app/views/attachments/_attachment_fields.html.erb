@@ -1,8 +1,7 @@
-<tr>
-  <% file_name = f.object.file_name %>
-  <td>
-  	<%= f.hidden_field :file_name, :input_html => { :class=>"attachments-filename-hidden" }  %>
-  	<a class="fake-link attachments-filename"><%= file_name %></a>
-  </td>
-  <td><%= button_to_remove_fields "Remove", f, :attachments %></td>
-</tr>
+<li class="panel-file-upload">
+  <% file_name = f.object.file_name || "attachments-filename-new-item" %>
+	<%= f.hidden_field :file_name, :value => file_name %>
+  <a class="fake-link attachments-filename"><%= file_name %></a>
+
+  <%= button_to_remove_fields "Remove", f, :attachments %>
+</li>
