@@ -34,7 +34,7 @@ class ClaimsController < ApplicationController
     claim.update_attributes params[:claim]
  
     if 'Save & Continue' == params[:commit]
-      redirect_to continue_to_url( request.referer )
+      redirect_to next_navigation_path
     elsif 'Close' == params[:commit]
       redirect_to root_path
     end
@@ -97,16 +97,7 @@ class ClaimsController < ApplicationController
 
   private
 
-  def continue_to_url( referer )
-    navlinks = view_context.claimant_navigation_linkdata
-    current_page = -1
-    navlinks.each_with_index do |lnk, i|
-      if lnk[:path] == session[:referer]
-        current_page = i
-      elsif current_page > -1
-        return url_for( controller: 'claims', action: lnk[:path], only_path: true )
-      end
-    end
-    return root_path
+  def next_navigation_path
+    view_context.get_next_navigation_path request.referer
   end
 end
