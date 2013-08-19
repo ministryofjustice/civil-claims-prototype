@@ -14,8 +14,8 @@ $link-color-hover: #1D97FF;
 $selected-item-background-color: #D5E9F4;
 $button-border-radius: 0px;
 
-$labeled-content-label-width: 20%;
-$labeled-content-block-width: 35%;
+$labeled-content-label-width: 25%;
+$labeled-content-block-width: 40%;
 
 @mixin link-style {
   color: #2E3191;
@@ -556,12 +556,10 @@ details summary{
   }
 }
 
-
-
-
 .panel-default{
   @include panel-style;
   padding: 20px 90px 20px 90px;
+  margin: 10px 0px 10px 0px;
 }
 
 .panel-error{
@@ -569,6 +567,12 @@ details summary{
   padding: 5px 5px 5px 5px;
   color: #BB4A48;
   text-align: center;
+}
+
+.panel-info {
+  background-color: #dfe0e2;
+  padding: 15px 15px 15px 15px;
+  margin: 15px 0px 15px 0px;
 }
 
 .striped-choice {
@@ -719,12 +723,42 @@ h2.info-notice {
 
 #unpaid-rent-calculation{
   border-top: none;
+  margin-top: -10px;
 }
 
 #about-rental-arrears{
   margin-top: 15px;
 }
 
+#claim-fee{
+  display: block;
+  padding: 10px 0px 10px 0;
+  margin: 20px 0px 20px 0px;
+  background-color: #1fa398;
+  color: #fff;
+  text-align: center;
+  h1 {
+    zoom: 120%;
+    font-weight: bold;
+  }
+}
+
+.payment-details-wrap{
+  border-bottom: 1px solid $default-panel-border-color;
+  margin-bottom: 10px;
+  .payment-details{
+    padding: 10px 40px 20px 40px;
+  }
+}
+
+#card-security-code{
+  display: inline-block;
+  width: 130px;
+}
+
+#card-payment-expiry-date{
+  padding-left: 10px;
+}
 
 
 

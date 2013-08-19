@@ -36,7 +36,7 @@ remove_fields = function(link, association) {
   } else if(association==="attachments"){
     $(link).closest('li').hide('fast');
   }
-}
+};
 
 add_fields = function(link, association, content) {
   var errors="";
@@ -96,25 +96,25 @@ add_fields = function(link, association, content) {
     $('#attachments-list').append(content.replace(regexp, new_id));
   }
 
-}
+};
 
 toggle_panel = function (checkbox, panel_id){
   $('#'+panel_id).toggle('fast');
-}
+};
 
 // this will format date in edible format for simple_forms
 format_date_form = function(date) { 
   return date.getFullYear()+'-'+
     ('0' + (date.getMonth()+1)).slice(-2) +'-'+
     ('0' + date.getDate()).slice(-2);
-}
+};
 
 // this will format date to display
 format_date = function(date) { 
   return ('0' + date.getDate()).slice(-2) + '/' +
     ('0' + (date.getMonth()+1)).slice(-2) + '/' +
     date.getFullYear();
-}
+};
 
 get_random_filename = function(){
   var filenames = 
@@ -122,8 +122,14 @@ get_random_filename = function(){
     "Tenancy Agreement July 2010.doc",
     "Notice to quit - June 2013.doc"];
   return filenames[Math.floor(Math.random() * filenames.length)];
-}
+};
 
-
+show_payment_panel = function(panel_id){
+  $('#credit-card-details').hide();
+  $('#paypal-details').hide();
+  $('#worldpay-details').hide();
+  
+  $('#'+panel_id).show();
+};
 
 

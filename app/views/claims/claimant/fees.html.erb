@@ -1,114 +1,134 @@
 <%= render_claimant_navigation %>
 
-<div class='row'>
+<div>
+  <div class="page-header">
+    <h1>Step 5 of 6 - Fees &amp; payment</h1>
+  </div>
+
+
   <section id='fees'>
-
-    <div class="page-header">
-      <h1>Step 5 of 6 - Fees &amp; payment</h1>
-    </div>
-
     <p>You will now need to enter your card details in order to pay the &pound;100 fee to have the claim submitted.</p>
 
-    <div class="panel">
-      <div class="panel-heading">
-        <h3 class="panel-title clearfix">
-          <span class='pull-left'>Your claim</span>
-          <span class='pull-right'>Total fees: &pound;100</span>
-        </h3>
-      </div>
-      <div><%= @claim.claimants.first.full_name %> vs <%= @claim.defendants.first.full_name %></div>
-      <div><strong>Address for possession</strong></div>
-      <div class='address-linear'>
-        <%= render partial: 'addresses/show', :locals => { address: @claim.address_for_possession } %>
+  <article role="article">
+    
+    <div id="claim-fee">
+      <h3>Claim fee</h3>
+      <h1>&pound100</h1>
+    </div>
+    
+    <section id="grounds-for-possesion">
+        <h3>Payment type</h3>
+        <div class="panel-default">
+          
+          <div class="striped-choice">
+            <div>
+              <input checked type="radio" name="payment-type" id="payment-type-credit-card" onClick="show_payment_panel('credit-card-details')">
+              <label for="payment-type-credit-card">Pay with creadit or debit card</label>
+            </div>
+            <!-- credic card details -->
+            <div id="credit-card-details" class="payment-details-wrap">
+              <div class="payment-details">
+                
+                <div class="labeled-content">
+                  <div class="content-label">Card number</div>
+                  <div class="content-block all-inline"><input type="text" id="card-number"></div>
+                </div>
+
+                <div class="labeled-content">
+                  <div class="content-label">Expiry date</div>
+                  <div class="content-block all-inline" id="card-payment-expiry-date">
+                    <div>
+                      <select id="card-payment-month">
+                        <option />
+                        <option value="1">January</option>
+                        <option value="2">February</option>
+                        <option value="3">March</option>
+                        <option value="4">April</option>
+                        <option value="5">May</option>
+                        <option value="6">June</option>
+                        <option value="7">July</option>
+                        <option value="8">August</option>
+                        <option value="9">September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                      </select>
+                    </div>
+                    <div>
+                      <select id="card-payment-year">
+                        <option />
+                        <% for year in 2013..2016 %>
+                          <option value="<%= year %>"><%= year %></option>
+                        <% end %>
+                      </select>
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="labeled-content">
+                  <div class="content-label">Security code (cvs)</div>
+                  <div class="content-block all-inline">
+                    <input type="text" id="card-security-code">
+                    <a class="fake-link">What's this?</a>
+                  </div>
+                </div>
+
+                <div class="labeled-content">
+                  <div class="content-label">Cardholder's name</div>
+                  <div class="content-block all-inline"><input type="text" id="card-cardholder"></div>
+                </div>
+
+              </div>
+            </div> <!-- credit card details end -->
+
+            <div>
+              <input type="radio" name="payment-type" id="payment-type-paypal" onClick="show_payment_panel('paypal-details')">
+              <label for="payment-type-paypal">Pay with PayPal</label>
+            </div>
+            <div id="paypal-details" class="payment-details-wrap" hidden>
+              <div class="payment-details">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, magni, dolorem alias nihil ducimus sequi beatae ipsa commodi quis mollitia ullam officia veritatis molestias. Pariatur repellendus dicta assumenda. Recusandae, voluptatem.
+              </div>
+            </div>
+
+
+            <div>
+              <input type="radio" name="payment-type" id="payment-type-worldpay" onClick="show_payment_panel('worldpay-details')">
+              <label for="payment-type-worldpay">Pay with WorldPay</label>
+            </div>
+            <div id="worldpay-details" class="payment-details-wrap" hidden>
+              <div class="payment-details">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, atque, quae, fugit quidem sed voluptas nisi deserunt perferendis natus quibusdam consequuntur qui vero assumenda recusandae sit? Magni quibusdam perferendis cupiditate.
+              </div>
+            </div>
+          
+          </div>
+
+        </div>
+    
+    </section>
+
+    <p class="panel-info">
+      We will never share with anyone any of the data or details you have provided in this form.<br>
+      For full details about out <a class="fake-link">privacy policy</a> and <a class="fake-link">termis and coditions</a>.
+    </p>
+
+    <div class="striped-choice">
+      <div>
+        <input type="checkbox" id="tnc-agreement">
+        <label for="tnc-agreement">I agree to terms and condition of this service</label>
       </div>
     </div>
 
-    <form class='form-horizontal accordion' id='accordion1'>
 
-      <div class='panel accordion-group'>
-        <div class="form-group accordion-heading">
-          <div class="radio">
-            <a href='#creditcard' class="accordion-toggle" data-toggle='collapse' data-parent='#accordion1'>
-              <label class="control-label">
-                <input type='radio' name='method' value='credit'> Pay now with debit or credit card
-              </label>
-            </a>
-          </div>
-        </div>
 
-        <div id='creditcard' class='accordion-body collapse'>
-          <div class='accordion-inner'>
-            <div class="form-group row">
-              <label class="col-lg-2 control-label">Credit or debit card number</label>
-              <div class="col-lg-10"><input type='text'></div>
-            </div>
-            <div class="form-group row">
-              <label class="col-lg-2 control-label">Expiry date</label>
-              <div class="col-lg-1"><input type='number' min='1' max='31' placeholder='mm'></div>
-               <div class='col-lg-1'><input type='number' min='1' max='99' placeholder='yy'></div>
-            </div>
-            <div class="form-group row">
-              <label class="col-lg-2 control-label">Security code (cvc)</label>
-              <div class="col-lg-2"><input type='text'></div>
-              <div class='col-lg-2'><a class="fake-link">What is this?</a></div>
-            </div>
-            <div class="form-group row">
-              <label class="col-lg-2 control-label">Cardholder's name</label>
-              <div class="col-lg-10"><input type='text'></div>
-            </div>
-          </div>
-        </div>
-      </div>
+   
 
-      <div class='panel accordion-group'>
-        <div class="form-group accordion-heading">
-          <div class="radio">
-            <a href='#paypal' class='accordion-toggle' data-toggle='collapse' data-parent='#accordion1'>
-              <label class="control-label">
-                <input type='radio' name='method' value='paypal'> Pay with PayPal
-              </label>
-            </a>
-          </div>
-        </div>
+    <%= form_for @claim do |f| %>
+      <%= render :partial => 'claims/claimant/save_continue', :locals => {f: f} %>
+    <% end %>
 
-        <div id='paypal' class='accordion-body collapse'>
-          <div class='accordion-inner'>
-            <div class='form-group row'>
-              <label>Pay with paypal</label>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class='panel accordion-group'>
-        <div class="form-group accordion-heading">
-          <div class="radio">
-            <a href='#worldpay' class='accordion-toggle' data-toggle='collapse' data-parent='#accordion1'>
-              <label class="control-label">
-                <input type='radio' name='method' value='worldpay'> Pay with Worldpay
-              </label>
-            </a>
-          </div>
-        </div>
-
-        <div id='worldpay' class='accordion-body collapse'>
-          <div class='accordion-inner'>
-            <div class='form-group row'>
-              <label>Pay with worldpay</label>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class='panel'>
-        <div class='checkbox'>
-          <label class='control-label'><input type='checkbox'> I agree to the <a href='#'>terms &amp; conditions</a> of this service.</label>
-        </div>
-      </div>
-
-      <input type='submit' class="big button" value='Make payment and submit claim'>
-      <input type='submit' class="button-secondary" value='Close'>
-
-    </form>
+  </article>
   </section>
 </div>
