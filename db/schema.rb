@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20130807140855) do
   create_table "arrears", force: true do |t|
     t.date     "due_date"
     t.decimal  "amount"
-    t.decimal  "arrear"
+    t.decimal  "paid"
     t.integer  "claim_id"
     t.datetime "created_at"
     t.datetime "updated_at"
