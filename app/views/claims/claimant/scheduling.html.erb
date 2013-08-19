@@ -10,24 +10,7 @@
   <% date = (Date.today + 6.weeks).strftime("%A %-d %B %Y") %>
   <h2 class="info-notice moj-panel"><%= date %> at 10:30am</h2>
 
-
-  <div class='court-badge moj-panel clearfix'>
-    <div class='court-address'>
-      <h3>Lambeth County Court</h3>
-      <h4>Address:</h4>
-      <span>Court House</span>
-      <span>Cleaver Street</span>
-      <span>Kennington Road</span>
-      <span>London</span>
-      <span>SE11 4DZ</span>
-      <span class='dx'>DX 145020 Kennington 2</span>
-      <a class='button' href='https://courttribunalfinder.service.gov.uk/courts/lambeth-county-court?from=se114dz' target='_blank'>View full court details</a>
-    </div>
-    <div class='court-map'>
-      <%= image_tag "lambeth-court-map.png" %>
-      <a href='http://goo.gl/maps/XF2zk' target='_blank'>View a larger version of the map</a>
-    </div>
-  </div>
+  <%= render :partial => 'shared/lambeth_court' %>
   
   <div class="save-close-panel">
     <div class="button">Save & Continue</div>

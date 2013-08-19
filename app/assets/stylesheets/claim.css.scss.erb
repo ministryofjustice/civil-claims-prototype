@@ -176,25 +176,29 @@ nav#secondary {
     counter-reset: pos;
     li {
       display: inline-block;
-      &:before {
-        counter-increment: pos;
-        content: counter(pos) ".";
-        float: left;
-        margin-left: -2px;
-        font-size:16px;
-      }
+      margin-left:-4px;
       a {
         font-size:16px;
         color: #555;
         border-bottom: 2px solid #ccc;
-        padding: 0px 10px 10px 14px;
+        padding: 0px 8px 10px 12px;
         display: block;
+        &:before {
+          counter-increment: pos;
+          content: counter(pos) ".";
+          float: left;
+          margin-left: -2px;
+        }
         &:hover { 
           text-decoration: none;
-          border-bottom: 2px solid #7fb299;
+          cursor: default;
         }
         &.active {
           border-bottom: 2px solid #7fb299;
+          font-weight: bold;
+        }
+        &.active:before {
+          font-weight: bold;
         }
       }
     }
@@ -343,15 +347,22 @@ iframe { border: none; }
 #statement-of-truth h2 { margin: 50px 0 10px 0; }
 #statement-of-truth h4 { font-weight: bold; margin-top: 20px;}
 #statement-of-truth h4:first-child { margin-top: 0px; }
+#statement-of-truth .particulars span {
+  display:block;
+}
 #statement-of-truth form.edit_claim { 
   margin-top: 30px; 
   .claim_signature {
-    position: relative;
-    label {
-      position: absolute;
-      left: 30px;
-    }
-
+    margin-top:40px;
+    margin-bottom:40px;
+  }
+  .warning span {
+    font-family: validators;
+    color: red;
+    float: left;
+    font-size: 27px;
+    margin-right: 20px;
+    margin-top: 5px;
   }
 }
 

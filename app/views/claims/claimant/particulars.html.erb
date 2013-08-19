@@ -161,16 +161,16 @@
             <strong>Rent frequency</strong>
             <div class="striped-choice">
               <div>
-                <%= f.radio_button(:property_type, 'monthly') %>
-                <%= f.label :property_type_monthly, 'Monthly' %>
+                <%= f.radio_button(:payment_frequency, 'monthly') %>
+                <%= f.label :payment_frequency_monthly, 'Monthly' %>
               </div>
               <div>
-                <%= f.radio_button :property_type, 'fortnightly' %>
-                <%= f.label :property_type_fortnightly, 'Fortnightly' %>
+                <%= f.radio_button :payment_frequency, 'fortnightly' %>
+                <%= f.label :payment_frequency_fortnightly, 'Fortnightly' %>
               </div>
               <div>
-                <%= f.radio_button :property_type, 'week' %>
-                <%= f.label :property_type_week, 'Week' %>
+                <%= f.radio_button :payment_frequency, 'week' %>
+                <%= f.label :payment_frequency_week, 'Week' %>
               </div>
             </div>
 

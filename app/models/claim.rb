@@ -18,5 +18,7 @@ class Claim < ActiveRecord::Base
     defendant = Defendant.new
     defendant.address = Address.new
     self.defendants << defendant
+
+    self.address_for_possession = Address.new
   end
 end
