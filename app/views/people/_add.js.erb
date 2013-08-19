@@ -1,5 +1,9 @@
 <% options[:class] = 'well clearfix' %>
-<% options[:save_button_text] = 'Add ' + person.type.titleize %>
+<% if 'Claimant' == person.type %>
+  <% options[:save_button_text] = 'Add Landlord' %>
+<% else %>
+  <% options[:save_button_text] = 'Add Tenant' %>
+<% end %>
 myHtml = '<%=j render partial: "people/edit", formats: [:html], locals: {claim: claim, person: person, options: options}  %>';
 $('.person.<%= options[:type] %>').last().after(myHtml);
 $('#add-additional-<%= options[:type] %>').remove();
