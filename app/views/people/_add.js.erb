@@ -4,6 +4,7 @@
 <% else %>
   <% options[:save_button_text] = 'Add Tenant' %>
 <% end %>
-myHtml = '<%=j render partial: "people/edit", formats: [:html], locals: {claim: claim, person: person, options: options}  %>';
+myHtml = $.parseHTML('<%=j render partial: "people/edit", formats: [:html], locals: {claim: claim, person: person, options: options}  %>');
+claim.validate(myHtml);
 $('.person.<%= options[:type] %>').last().after(myHtml);
 $('#add-additional-<%= options[:type] %>').remove();
