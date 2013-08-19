@@ -176,25 +176,29 @@ nav#secondary {
     counter-reset: pos;
     li {
       display: inline-block;
-      &:before {
-        counter-increment: pos;
-        content: counter(pos) ".";
-        float: left;
-        margin-left: -2px;
-        font-size:16px;
-      }
+      margin-left:-4px;
       a {
         font-size:16px;
         color: #555;
         border-bottom: 2px solid #ccc;
-        padding: 0px 10px 10px 14px;
+        padding: 0px 8px 10px 12px;
         display: block;
+        &:before {
+          counter-increment: pos;
+          content: counter(pos) ".";
+          float: left;
+          margin-left: -2px;
+        }
         &:hover { 
           text-decoration: none;
-          border-bottom: 2px solid #7fb299;
+          cursor: default;
         }
         &.active {
           border-bottom: 2px solid #7fb299;
+          font-weight: bold;
+        }
+        &.active:before {
+          font-weight: bold;
         }
       }
     }
