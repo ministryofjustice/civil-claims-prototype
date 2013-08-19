@@ -107,10 +107,8 @@ claim.validate = function(form) {
   
   if( ready_to_go ) {
     form.find("button[value='save']").removeAttr('disabled');
-    form.find("input[value='Cancel']").removeAttr('disabled');
   } else {
     form.find("button[value='save']").attr('disabled', 'disabled');
-    form.find("input[value='Cancel']").attr('disabled', 'disabled');
   }
 };
 
