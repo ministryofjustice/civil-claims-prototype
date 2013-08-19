@@ -62,10 +62,10 @@
 
     <%= simple_form_for @claim, :url => update_claim_path(@claim), :class => 'form-horizontal' do |f| %>
   
-      <%= f.input :signature, :label => "I believe that the facts stated in this claim (and any attached documents) are to the best of my knowledge true and correct." %>
+      <%= f.input :signature, :label => false, :inline_label => "I believe that the facts stated in this claim (and any attached documents) are to the best of my knowledge true and correct." %>
       
-      <div class="alert alert-danger">
-        <p>A person who completes a statement of truth without an honest belief in the truth of the given information is liable to proceedings for contempt of court.</p>
+      <div class="well warning">
+        <p><span>&#x22;</span>A person who completes a statement of truth without an honest belief in the truth of the given information is liable to proceedings for contempt of court.</p>
       </div>
 
       <%= f.submit "Save & Continue", :class => 'button' %>
