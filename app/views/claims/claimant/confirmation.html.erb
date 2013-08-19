@@ -1,36 +1,38 @@
 <%= render_claimant_navigation %>
 
-<div class='row'>
-  <div class='panel'>
-    <p>Thankyou for submitting your claim</p>
-    <p>Your reference code is <em><strong><%= @claim.id %></strong></em></p>
-
-    <a class='button-secondary' href='#'>Print receipt</a>
-    <a class='button-secondary' href='#'>Print completed form</a>
-    <div class="info-notice">
-      <p class='center'>Your hearing will take place on</p>
-      <% date = (Date.today + 3.weeks).strftime("%A %-d %B %Y") %>
-      <h2 class='center'><%= date %> at 10:30am</h2>
-    </div>
-    <p class='center'>at</p>
-
-    <%= render :partial => 'shared/lambeth_court' %>
-
-    <p>You can view all these details and full details of this submitted claim under <a class='fake-link'>Your Claims</a> in your <a class='fake-link'>Account</a></p>
-
-    <h3>What happens next</h3>
-    <ul>
-      <li>
-        <h4>Claim submitted and court scheduled</h4>
-        <p>The details of all the parties involved in the claim, any co-claimants and all defendants.</p>
-      </li>
-      <li>
-        <h4>Defence Notified</h4>
-        <p>The defendant in the claim is notified of the claim and can login to the system and respond to the claim.</p>
-      </li>
-      <li>
-
-
-
+<div>
+  <div class="page-header">
+    <h1>Step 6 of 6 - Confirmation</h1>
   </div>
+  <p>
+    Your claim has been submitted successfully and the claim fee has been paid.<br>
+    You can view full details of this claim under <a class="fake-link">your claims</a> in your <a class="fake-link">account</a>
+  </p>
+  
+  <p id="reference-number">Your reference is: <strong><%=@claim.id%></strong></p>
+  
+  <div id="confirmation-view-print-buttons">
+    <div class="button">View the claim</div>
+    <div id="confirmation-print-receipt" class="button-secondary">Print receipt</div>
+  </div>
+
+  <article role="article">
+    <section id="hearing-details">
+      <h3>Hearing details</h3>
+      <div class="court-hearing-details-time">
+        <% date = (Date.today + 3.weeks) %>
+        <h3><strong><%= date.strftime("%A %-d %B") %></strong> at <strong>10:30am</strong></h3>
+      </div>
+      <%= render :partial => 'shared/lambeth_court' %>
+    </section>
+
+    <section id="what-next">
+      <h2 id="what-next-title">What happens next</h2>
+      <p>We'll send the tenant details of your court action.</p>
+      <p>The tenant has until <strong><%=(Date.today + 2.weeks).strftime("%-d %B %Y")%></strong> to respond.</p>
+      <p>A judge will decide on the case at the eharing on <strong><%=date.strftime("%-d %B %Y")%>.</strong></p>
+      
+    </section>
+  </article>
+
 </div>
