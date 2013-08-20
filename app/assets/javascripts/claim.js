@@ -49,38 +49,46 @@ $(document).ready(function() {
     claim.validate(el);
   });
 
+  // when postcode is valid, enable Find Address link
+  $('#edit-claim').on('keyup', '.postcode', function(evt) {
+    if(this.validity.valid) {
+      $(this).siblings('.find-uk-address').removeAttr('disabled');
+    } else {
+      $(this).siblings('.find-uk-address').attr('disabled', 'disabled');
+    }
+  });
+
+  // click the Find Address link, see what happens
+  $('#edit-claim').on('click', '.find-uk-address', function(evt) {
+    evt.preventDefault();
+    var postcode = $(this).siblings('.postcode').val();
+    var that = $(this);
+
+    $.ajax($(this).attr('href'), { 'data': { 'postcode': postcode } }).done(function(data, textStatus, jqXHR) {
+      that.parents('form').find('.pick_address').remove();
+      that.parents('.control-group').after(data);
+    });
+
+  });
+
   // filthy address picker business
   $('#edit-claim').on('change', '.pick_address', function(event) {
     var master_form = $(this).parents('form');
     var address_element = master_form.find('.address-container');
-
-    var address = claim.address.extract_partial_address($(this).val());
     var picker = $(this).parents('.control-group');
+    var address = $(this).find('option:selected').data('address');
 
-    user_entered_postcode = address_element.find('.address_postcode input.postcode').val();
-    if(user_entered_postcode.length > 0) {
-      address.postcode = user_entered_postcode;
+    // are we showing the editable address form?
+    if(address_element.find('.address_street_1 input').length == 0 ) {
+      address_element.find('.manual-address').click();
+
+      setTimeout(function(){
+        claim.address.populate(master_form.find('.address-container'),address);
+      }, 75); // callbacks are hard, let's just wait.
+
+    } else {
+      claim.address.populate(address_element, address);
     }
-
-    $.ajax('/address/random').done(function(random_address) {
-      address = claim.address.merge(address, random_address);
-
-      // are we showing the editable address form?
-      if(address_element.find('.address_street_1 input').length == 0 ) {
-        address_element.find('.manual-address').click();
-
-        // this is my favourite hack out of this enture shitpile
-        setTimeout(function(){
-          claim.address.populate(master_form.find('.address-container'), address);
-        }, 75); // callbacks are for turd-polishers. Real Coders just wait until the request completes.
-
-      } else {
-        claim.address.populate(address_element, address);
-      }
-
-      // keep the address picker 
-      // picker.remove();
-    });
   });
 
 });
@@ -113,14 +121,6 @@ claim.validate = function(form) {
 };
 
 claim.address = {
-  merge: function( primary, secondary ) {
-    for (var attrname in secondary) { 
-      if(!primary.hasOwnProperty(attrname)) {
-        primary[attrname] = secondary[attrname];
-      }
-    }
-    return primary;
-  },
 
   populate: function(container, address) {
     container.find('.address_street_1 input').val(address.street_1);
@@ -133,13 +133,4 @@ claim.address = {
     window.claim.validate(container.parents('form')); 
   },
 
-  extract_partial_address: function(address_string) {
-    var address = {};
-    var sections = address_string.split(',');
-    if(sections.length > 1) {
-      address.street_1 = sections[0];
-      address.town = sections[1].trim();
-    }
-    return address
-  }
 };

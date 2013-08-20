@@ -46,18 +46,11 @@ class AddressController < ApplicationController
   end
 
   def picker
-    address = Address.find(params[:id])
-
-    respond_to do |format|
-      format.js { render :partial => 'addresses/picker', :locals => {address: address} }
+    if (params.has_key?(:postcode) && params[:postcode].upcase.gsub(/ /, '') == 'SE266UP')
+      addresses = view_context.defendant_addresses_for_journey
+    else
+      addresses = view_context.generate_random_addresses( params[:postcode] )
     end
+    render :partial => 'addresses/picker', :locals => { addresses: addresses }
   end
-
-  def random
-    address = Address.generate
-    respond_to do |format|
-      format.json { render :json => address.to_json }
-    end
-  end
-
 end
