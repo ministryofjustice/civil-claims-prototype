@@ -1,7 +1,8 @@
-<nav id='secondary'>
-  <ol class='clearfix'>
+<nav role='navigation' id='secondary' class='progress-indicator'>
+  <ol class='group'>
     <% links.each do |link| %>
-      <li><%= nav_link link[:path], link[:text] %></li>
+      <!-- <li><%= nav_link link[:path], link[:text] %></li> -->
+	 <li><%= link[:text] %></li> 
     <% end %>
   </ol>
 </nav>

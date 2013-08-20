@@ -172,44 +172,44 @@ header.page-header {
   }
 }
 
-nav#secondary {
-  padding: 0px 2em;
-  border-bottom: 2px solid #ccc;
-  margin-bottom: 20px;
-  ol {
-    list-style: decimal inside none;
-    margin: 0px 0px -2px 0px;
-    counter-reset: pos;
-    li {
-      display: inline-block;
-      margin-left:-4px;
-      a {
-        font-size:16px;
-        color: #555;
-        border-bottom: 2px solid #ccc;
-        padding: 0px 8px 10px 12px;
-        display: block;
-        &:before {
-          counter-increment: pos;
-          content: counter(pos) ".";
-          float: left;
-          margin-left: -2px;
-        }
-        &:hover { 
-          text-decoration: none;
-          cursor: default;
-        }
-        &.active {
-          border-bottom: 2px solid #7fb299;
-          font-weight: bold;
-        }
-        &.active:before {
-          font-weight: bold;
-        }
-      }
-    }
-  }
-}
+// nav#secondary {
+//   padding: 0px 2em;
+//   border-bottom: 2px solid #ccc;
+//   margin-bottom: 20px;
+//   ol {
+//     list-style: decimal inside none;
+//     margin: 0px 0px -2px 0px;
+//     counter-reset: pos;
+//     li {
+//       display: inline-block;
+//       margin-left:-4px;
+//       a {
+//         font-size:16px;
+//         color: #555;
+//         border-bottom: 2px solid #ccc;
+//         padding: 0px 8px 10px 12px;
+//         display: block;
+//         &:before {
+//           counter-increment: pos;
+//           content: counter(pos) ".";
+//           float: left;
+//           margin-left: -2px;
+//         }
+//         &:hover { 
+//           text-decoration: none;
+//           cursor: default;
+//         }
+//         &.active {
+//           border-bottom: 2px solid #7fb299;
+//           font-weight: bold;
+//         }
+//         &.active:before {
+//           font-weight: bold;
+//         }
+//       }
+//     }
+//   }
+// }
 
 #edit-claim form {
   input {
@@ -814,5 +814,108 @@ h2.info-notice {
   background-color: #238cc6;
 }
 
+nav.progress-indicator {
+  margin-left: -1em;
+  margin-right: -2em;
+  padding: 0; }
 
+nav.progress-indicator ol {
+  list-style-type: decimal;
+  list-style-position: inside;
+  margin: 0;
+  padding: 0; }
+
+nav.progress-indicator ol li {
+  background-color: #e8f0f0;
+  float: left;
+  font-size: 1em;
+  font-weight: 300;
+  line-height: 1.75;
+  border: solid 1px #c1cacb;
+  margin: 0;
+  padding: 0.25em 0.5em 0.25em 1.75em;
+  position: relative;
+  border-right: none;
+  border-left: none; 
+
+  a {
+        font-size:16px;
+        color: #555;
+        border-bottom: 2px solid #ccc;
+        padding: 0px 8px 10px 12px;
+        display: block;
+        &:before {
+          float: left;
+          margin-left: -2px;
+        }
+        &:hover { 
+          text-decoration: none;
+          cursor: default;
+        }
+        &.active {
+          border-bottom: 2px solid #7fb299;
+          font-weight: bold;
+        }
+        &.active:before {
+          font-weight: bold;
+        }
+      }
+}
+
+nav.progress-indicator ol li:first-child {
+  border-left: solid 1px #c1cacb;
+  margin-left: 0;
+  padding-left: 1em; }
+
+nav.progress-indicator ol li.active {
+  background-color: white; }
+
+nav.progress-indicator ol li.done {
+  color: #777; }
+
+nav.progress-indicator ol li:last-child {
+  border-right: 1px solid #c1cacb;
+  padding-right: 1em; }
+
+nav.progress-indicator ol li:last-child::before,
+nav.progress-indicator ol li:last-child::after {
+  display: none; }
+
+nav.progress-indicator ol li:before,
+nav.progress-indicator ol li:after {
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  z-index: 10; }
+
+nav.progress-indicator ol li:after {
+  border-left-color: #e8f0f0;
+  border-width: 18px;
+  top: 29px;
+  right: -36px;
+  margin-top: -29px; }
+
+nav.progress-indicator ol li:before {
+  border-left-color: #c1cacb;
+  border-width: 18px;
+  top: 29px;
+  right: -37px;
+  margin-top: -29px; }
+
+nav.progress-indicator ol li.active:after {
+  border-left-color: white; 
+}
+
+.lte-ie8 nav.progress-indicator ol li {
+  padding: 0.25em 1em; }
+
+.lte-ie8 nav.progress-indicator .step-count {
+  display: block;
+  position: relative;
+  left: 0;
+  font-size: 0.85em;
+  margin-bottom: 0.25em; }
 
