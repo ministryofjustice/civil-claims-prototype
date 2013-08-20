@@ -1,4 +1,4 @@
-# Installing the civil-claims alpha on your macbook.
+# Installing the civil-claims alpha on OSX.
 
 - Install XCode from the mac App Store
 - Run XCode, open `Preferences` -> `Downloads` and install the `Command Line Tools`
