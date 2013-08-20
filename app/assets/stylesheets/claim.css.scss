@@ -823,4 +823,16 @@ h2.info-notice {
   margin-top: 50px;
 }
 
+#new-claim-step-list {
+  list-style-type: none;
+  li {
+    // display: block;
+    // height: 150px; //use this one
+
+    height: 90px;
+    margin: 10px 0 10px 0;
+  }
+
+}
+
 

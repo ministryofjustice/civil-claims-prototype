@@ -1,47 +1,48 @@
 <p>
   To submit a new claim follow the steps below:
 </p>
-<ol class="new-claim-step-list">
-  <li class="new-claim-step">
-    <h4>Confirm people involved</h4>
-    <p>The details of all the parties involved in the claim - any claimants and defendants</p>
-    <a class='fake-link'>More about defendants and claimants</a>
-
-  </li>
-  <li>
-    <h4>Details of claim</h4>
-    <p>
-      All the claim particulars including address of possession,
-      grounds for possession, details of tenancy and the defendants
-    </p>
-    <a class='fake-link'>More about claim details</a>
-  </li>
-  <li>
-    <h4>Court scheduling</h4>
-    <p>
-      Based on the postcode of the property you are claiming
-      possession of, you will be given a specific court and hearing time
+<div>
+  <ol id="new-claim-step-list">
+    <li>
+      <h4>Confirm people involved</h4>
+      <p>The details of all the parties involved in the claim - any claimants and defendants</p>
+      <a class='fake-link'>More about defendants and claimants</a>
+    </li>
+    <li>
+      <h4>Details of claim</h4>
+      <p>
+        All the claim particulars including address of possession,
+        grounds for possession, details of tenancy and the defendants
+      </p>
+      <a class='fake-link'>More about claim details</a>
+    </li>
+    <li>
+      <h4>Court scheduling</h4>
+      <p>
+        Based on the postcode of the property you are claiming
+        possession of, you will be given a specific court and hearing time
+        <a class='fake-link'>More about making a statement of truth</a>
+      </p>
+    </li>
+    <li>
+      <h4>Statement of truth</h4>
+      <p>Confirm that all details of case being brought are correct
       <a class='fake-link'>More about making a statement of truth</a>
-    </p>
-  </li>
-  <li>
-    <h4>Statement of truth</h4>
-    <p>Confirm that all details of case being brought are correct
-    <a class='fake-link'>More about making a statement of truth</a>
-  </li>
-  <li>
-    <h4>Fee payment</h4>
-    <p>When everything is correct and you are ready to pay the &poung100 fee</p>
-  </li>
-  <li>
-    <h4>Confirmation and next steps</h4>
-    <p>
-      Get confirmation of which court and when, what you will
-      need to bring to court and what happens next
-    </p>
-    <a class='fake-link'>More about what happens next</a>
-  </li>
-</ul>
+    </li>
+    <li>
+      <h4>Fee payment</h4>
+      <p>When everything is correct and you are ready to pay the &poung100 fee</p>
+    </li>
+    <li>
+      <h4>Confirmation and next steps</h4>
+      <p>
+        Get confirmation of which court and when, what you will
+        need to bring to court and what happens next
+      </p>
+      <a class='fake-link'>More about what happens next</a>
+    </li>
+  </ol>
+</div>
 
 <%= form_tag(claims_path, method: "post") do %>
   <%= submit_tag "Start a new claim", class: "big button" %>
