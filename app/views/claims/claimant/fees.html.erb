@@ -1,6 +1,6 @@
 <%= render_claimant_navigation %>
 
-<div>
+<div class="content-wrap">
   <div class="page-header">
     <h1>Step 5 of 6 - Fees &amp; payment</h1>
   </div>
@@ -24,7 +24,8 @@
               <input checked type="radio" name="payment-type" id="payment-type-credit-card" onClick="show_payment_panel('credit-card-details')">
               <label for="payment-type-credit-card">Pay with creadit or debit card</label>
             </div>
-            <!-- credic card details -->
+            
+            <!-- credit card details -->
             <div id="credit-card-details" class="payment-details-wrap">
               <div class="payment-details">
                 
@@ -91,7 +92,6 @@
               </div>
             </div>
 
-
             <div>
               <input type="radio" name="payment-type" id="payment-type-worldpay" onClick="show_payment_panel('worldpay-details')">
               <label for="payment-type-worldpay">Pay with WorldPay</label>
@@ -119,10 +119,6 @@
         <label for="tnc-agreement">I agree to terms and condition of this service</label>
       </div>
     </div>
-
-
-
-   
 
     <%= form_for @claim do |f| %>
       <%= render :partial => 'claims/claimant/save_continue', :locals => {f: f} %>

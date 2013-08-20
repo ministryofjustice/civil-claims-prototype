@@ -1,14 +1,18 @@
 <%= render_claimant_navigation %>
 
-<div class='row'>
+<div class="content-wrap">
   <div class="page-header">
     <h1>Step 3 of 6 - Court scheduling</h1>
   </div>
 
-  <p>Based on court availability and the postcode you are claiming possession of, your hearing will take place in the following court or tribunal on the following day.</p>
+  <p>
+    Based on court availability and the postcode you are claiming possession of, your hearing will take place in the following court or tribunal on the following day.
+  </p>
 
-  <% date = (Date.today + 6.weeks).strftime("%A %-d %B %Y") %>
-  <h2 class="info-notice moj-panel"><%= date %> at 10:30am</h2>
+  <div class="court-hearing-details-time">
+    <% date = (Date.today + 3.weeks) %>
+    <h3><strong><%= date.strftime("%A %-d %B") %></strong> at <strong>10:30am</strong></h3>
+  </div>
 
   <%= render :partial => 'shared/lambeth_court' %>
   
