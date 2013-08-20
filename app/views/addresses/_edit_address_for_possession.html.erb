@@ -1,4 +1,4 @@
-<%= simple_form_for claim, :url => claim_address_for_possession_path( claim), :remote => true, :html => { :id => "edit-address-#{address.id}", :class => 'form-horizontal' } do |f| %>
+<%= simple_form_for claim, :url => address_for_possession_claim_path( claim), :remote => true, :html => { :id => "edit-address-#{address.id}", :class => 'form-horizontal' } do |f| %>
 
   <div class='well clearfix'>
   

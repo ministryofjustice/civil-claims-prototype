@@ -7,29 +7,32 @@ CivilClaims::Application.routes.draw do
   root 'claims#home'
 
   # relax, it's a prototype.
-  get 'claims/:id/delete' => 'claims#delete', as: :claim_delete
+  
   get "claims/delete_all" => "claims#delete_all"
-  # post "claims/:id/update" => "claims#update", as: :update_claim
-  patch "claims/:id/update" => "claims#update", as: :update_claim
-  # match "claims/:id/update" => "claims#update", as: :update_claim, via: post
- 
-  get 'claims/:id' => 'claims#personal_details', as: :show_claim
-  get 'claims/:id/particulars' => 'claims#particulars'
-  get 'claims/:id/scheduling' => 'claims#scheduling'
-  get 'claims/:id/statement' => 'claims#statement'
-  get 'claims/:id/fees' => 'claims#fees'
-  get 'claims/:id/confirmation' => 'claims#confirmation'
-  patch 'claims/:id/address_for_possession' => 'claims#address', as: :claim_address_for_possession
+  
+  
 
   get 'login_as/:role' => 'people#login', as: :login
 
-  get 'address/random' => 'address#random', as: :random_address
-  get 'address/:id'    => 'adddress#get', as: :get_address
-  get 'address/picker/:id' => 'address#picker', as: :address_picker
+  get 'address/:id'    => 'address#get', as: :get_address
+  get 'address/picker' => 'address#picker', as: :address_picker
 
   get 'claims/:claim_id/address/:id/edit' => 'address#editor', as: :claim_address_editor
   
   resources :claims do
+    member do
+      get '/' => 'claims#personal_details', as: :show_claim
+      get 'particulars'
+      get 'scheduling'
+      get 'statement'
+      get 'fees'
+      get 'confirmation'
+
+      patch "update", as: :update_claim
+      patch 'address_for_possession' => 'claims#address', as: :address_for_possession
+
+      get 'delete'
+    end
     resources :people do
       get 'editor', on: :member
       resources :address do

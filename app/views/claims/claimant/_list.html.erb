@@ -11,34 +11,8 @@
       </div>
       <div class='controls'>
          <span><%= link_to 'Continue', claim_path(claim), :class => 'button' %></span>
-         <span><%= link_to 'Delete', claim_delete_path(claim), :class=> 'button-warning' %></span>
+         <span><%= link_to 'Delete', delete_claim_path(claim), :class=> 'button-warning' %></span>
       </div>
     </li>
   <% end %>
 </ul> 
-
-
-<!-- table if we want to switch to it -->
-<!-- <table id='claims-list'>
-  <thead>
-    <tr>
-      <th>Claim</th>
-      <th>Claimant/Defendant Names</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% claims.each do |claim| %>
-      <tr>
-        <td><%= claim.id %></td>
-        <td><%= claim.claimants.first.full_name %> vs <%= claim.defendants.first.full_name %></td>
-        <td>
-          <div class='controls'>
-            <span><%= link_to 'Continue', claim_path(claim), :class => 'button' %></span>
-            <span><%= link_to 'Delete', claim_delete_path(claim), :class=> 'button-warning' %></span>
-          </div>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table> -->
