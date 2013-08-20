@@ -835,4 +835,8 @@ h2.info-notice {
 
 }
 
+a.disabled {
+  opacity: 0.5;
+  &:hover { text-decoration: none; cursor: default; }
+}
 

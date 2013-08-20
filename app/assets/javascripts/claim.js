@@ -50,17 +50,25 @@ $(document).ready(function() {
   });
 
   // when postcode is valid, enable Find Address link
-  $('#edit-claim').on('keyup', '.postcode', function(evt) {
+  var validate_postcode_for_address_picker = function(evt) {
     if(this.validity.valid) {
-      $(this).siblings('.find-uk-address').removeAttr('disabled');
+      $(this).siblings('.find-uk-address').removeClass('disabled');
     } else {
-      $(this).siblings('.find-uk-address').attr('disabled', 'disabled');
+      $(this).siblings('.find-uk-address').addClass('disabled');
     }
+  }
+  $('#edit-claim').on('keyup', '.postcode', validate_postcode_for_address_picker);
+
+  $('#edit-claim').on('click', 'a.disabled', function(evt) {
+    evt.preventDefault;
   });
 
   // click the Find Address link, see what happens
   $('#edit-claim').on('click', '.find-uk-address', function(evt) {
     evt.preventDefault();
+    if($(this).hasClass('disabled')) {
+      return false;
+    }
     var postcode = $(this).siblings('.postcode').val();
     var that = $(this);
 

@@ -35,7 +35,9 @@
       <%= f.input :postcode do %>
         <%= f.input_field :postcode, class: 'postcode', required: true %>
         <span class='icon-container' style='display:none'></span>
-        <%= link_to 'Find UK Address', '/address/picker', :class => 'button-secondary find-uk-address' %>
+        <% classes = 'button-secondary find-uk-address' %>
+        <% classes << ' disabled' if address.postcode.blank? %>
+        <%= link_to 'Find UK Address', '/address/picker', :class => classes %>
       <% end %>
     <% end %>
 
