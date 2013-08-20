@@ -80,11 +80,14 @@ $(document).ready(function() {
 
     // are we showing the editable address form?
     if(address_element.find('.address_street_1 input').length == 0 ) {
-      address_element.find('.manual-address').click();
+
+      // the tragic downside of framework generated javascript is that I'm too
+      // lazy to find a better way of triggering this behaviour
+      address_element.find('.manual-address').click(); 
 
       setTimeout(function(){
         claim.address.populate(master_form.find('.address-container'),address);
-      }, 75); // callbacks are hard, let's just wait.
+      }, 150); // callbacks are hard, let's just wait.
 
     } else {
       claim.address.populate(address_element, address);
