@@ -16,95 +16,95 @@
     </div>
     
     <section id="grounds-for-possesion">
-        <h3>Payment type</h3>
-        <div class="panel-default">
+      <h3>Payment type</h3>
+      <div class="panel-default">
+        
+        <div class="striped-choice">
+          <div>
+            <input checked type="radio" name="payment-type" id="payment-type-credit-card" onClick="show_payment_panel('credit-card-details')">
+            <label for="payment-type-credit-card">Pay with creadit or debit card</label>
+          </div>
           
-          <div class="striped-choice">
-            <div>
-              <input checked type="radio" name="payment-type" id="payment-type-credit-card" onClick="show_payment_panel('credit-card-details')">
-              <label for="payment-type-credit-card">Pay with creadit or debit card</label>
-            </div>
-            
-            <!-- credit card details -->
-            <div id="credit-card-details" class="payment-details-wrap">
-              <div class="payment-details">
-                
-                <div class="labeled-content">
-                  <div class="content-label">Card number</div>
-                  <div class="content-block all-inline"><input type="text" id="card-number"></div>
-                </div>
+          <!-- credit card details -->
+          <div id="credit-card-details" class="payment-details-wrap">
+            <div class="payment-details">
+              
+              <div class="labeled-content">
+                <div class="content-label">Card number</div>
+                <div class="content-block all-inline"><input type="text" id="card-number"></div>
+              </div>
 
-                <div class="labeled-content">
-                  <div class="content-label">Expiry date</div>
-                  <div class="content-block all-inline" id="card-payment-expiry-date">
-                    <div>
-                      <select id="card-payment-month">
-                        <option />
-                        <option value="1">January</option>
-                        <option value="2">February</option>
-                        <option value="3">March</option>
-                        <option value="4">April</option>
-                        <option value="5">May</option>
-                        <option value="6">June</option>
-                        <option value="7">July</option>
-                        <option value="8">August</option>
-                        <option value="9">September</option>
-                        <option value="10">October</option>
-                        <option value="11">November</option>
-                        <option value="12">December</option>
-                      </select>
-                    </div>
-                    <div>
-                      <select id="card-payment-year">
-                        <option />
-                        <% for year in 2013..2016 %>
-                          <option value="<%= year %>"><%= year %></option>
-                        <% end %>
-                      </select>
-                    </div>
-
+              <div class="labeled-content">
+                <div class="content-label">Expiry date</div>
+                <div class="content-block all-inline" id="card-payment-expiry-date">
+                  <div>
+                    <select id="card-payment-month">
+                      <option />
+                      <option value="1">January</option>
+                      <option value="2">February</option>
+                      <option value="3">March</option>
+                      <option value="4">April</option>
+                      <option value="5">May</option>
+                      <option value="6">June</option>
+                      <option value="7">July</option>
+                      <option value="8">August</option>
+                      <option value="9">September</option>
+                      <option value="10">October</option>
+                      <option value="11">November</option>
+                      <option value="12">December</option>
+                    </select>
                   </div>
-                </div>
-
-                <div class="labeled-content">
-                  <div class="content-label">Security code (cvs)</div>
-                  <div class="content-block all-inline">
-                    <input type="text" id="card-security-code">
-                    <a class="fake-link">What's this?</a>
+                  <div>
+                    <select id="card-payment-year">
+                      <option />
+                      <% for year in 2013..2016 %>
+                        <option value="<%= year %>"><%= year %></option>
+                      <% end %>
+                    </select>
                   </div>
+
                 </div>
+              </div>
 
-                <div class="labeled-content">
-                  <div class="content-label">Cardholder's name</div>
-                  <div class="content-block all-inline"><input type="text" id="card-cardholder"></div>
+              <div class="labeled-content">
+                <div class="content-label">Security code (cvs)</div>
+                <div class="content-block all-inline">
+                  <input type="text" id="card-security-code">
+                  <a class="fake-link">What's this?</a>
                 </div>
-
               </div>
-            </div> <!-- credit card details end -->
 
-            <div>
-              <input type="radio" name="payment-type" id="payment-type-paypal" onClick="show_payment_panel('paypal-details')">
-              <label for="payment-type-paypal">Pay with PayPal</label>
-            </div>
-            <div id="paypal-details" class="payment-details-wrap" hidden>
-              <div class="payment-details">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, magni, dolorem alias nihil ducimus sequi beatae ipsa commodi quis mollitia ullam officia veritatis molestias. Pariatur repellendus dicta assumenda. Recusandae, voluptatem.
+              <div class="labeled-content">
+                <div class="content-label">Cardholder's name</div>
+                <div class="content-block all-inline"><input type="text" id="card-cardholder"></div>
               </div>
-            </div>
 
-            <div>
-              <input type="radio" name="payment-type" id="payment-type-worldpay" onClick="show_payment_panel('worldpay-details')">
-              <label for="payment-type-worldpay">Pay with WorldPay</label>
             </div>
-            <div id="worldpay-details" class="payment-details-wrap" hidden>
-              <div class="payment-details">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, atque, quae, fugit quidem sed voluptas nisi deserunt perferendis natus quibusdam consequuntur qui vero assumenda recusandae sit? Magni quibusdam perferendis cupiditate.
-              </div>
+          </div> <!-- credit card details end -->
+
+          <div>
+            <input type="radio" name="payment-type" id="payment-type-paypal" onClick="show_payment_panel('paypal-details')">
+            <label for="payment-type-paypal">Pay with PayPal</label>
+          </div>
+          <div id="paypal-details" class="payment-details-wrap" hidden>
+            <div class="payment-details">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, magni, dolorem alias nihil ducimus sequi beatae ipsa commodi quis mollitia ullam officia veritatis molestias. Pariatur repellendus dicta assumenda. Recusandae, voluptatem.
             </div>
-          
           </div>
 
+          <div>
+            <input type="radio" name="payment-type" id="payment-type-worldpay" onClick="show_payment_panel('worldpay-details')">
+            <label for="payment-type-worldpay">Pay with WorldPay</label>
+          </div>
+          <div id="worldpay-details" class="payment-details-wrap" hidden>
+            <div class="payment-details">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, atque, quae, fugit quidem sed voluptas nisi deserunt perferendis natus quibusdam consequuntur qui vero assumenda recusandae sit? Magni quibusdam perferendis cupiditate.
+            </div>
+          </div>
+        
         </div>
+
+      </div>
     
     </section>
 
