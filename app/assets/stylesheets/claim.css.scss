@@ -80,7 +80,7 @@ main { padding-top: 12px; }
 
 header {
   img { max-width: none; } // bootstrap override to work with header+footer gov.uk css
-  a#proposition-name { float: right; }
+  
 }
 
 div.user-data { 
@@ -244,11 +244,6 @@ nav#secondary {
     left:-27px;
     position:relative;
   }
-}
-
-#footer { 
-  margin-top: 20px; 
-  .footer-wrapper { max-width: 940px; }
 }
 
 #user-nav a.current_role { font-weight: bold;}

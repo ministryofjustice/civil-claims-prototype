@@ -12,10 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require twitter/bootstrap
 //= require turbolinks
-//= require_tree .
 //= require jquery.ui.effect-highlight
+//= require claim
 
 // want to hide something different then TR then add attribute to fn
 remove_fields = function(link, association) {
