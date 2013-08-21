@@ -91,8 +91,10 @@ class ClaimsController < ApplicationController
       format.html { redirect_to :back }
       format.js { 
         address = claim.address_for_possession
-        render :partial => 'addresses/view_address_for_possession', :format => [:js], :locals => {claim: claim, address: address, options: {}}}
-      end
+        options = { :show_edit_link => true }
+        render :partial => 'addresses/view_address_for_possession', :format => [:js], :locals => {claim: claim, address: address, options: options}
+      }
+    end
   end
 
   private

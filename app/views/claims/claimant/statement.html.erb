@@ -66,7 +66,7 @@
     </div>
 
 
-    <%= simple_form_for @claim, :url => update_claim_path(@claim), :class => 'form-horizontal' do |f| %>
+    <%= simple_form_for @claim, :class => 'form-horizontal' do |f| %>
   
       <%= f.input :signature, :label => false, :inline_label => "I believe that the facts stated in this claim (and any attached documents) are to the best of my knowledge true and correct." %>
       

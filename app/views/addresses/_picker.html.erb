@@ -1,7 +1,6 @@
-<% options = generateAddresses %>
 <div class="control-group string optional pick_address">
   <label class="string optional control-label" for="pick_address">Pick an address</label>
   <div class="controls">
-    <%= select_tag('pick_address', options) %>
+    <%= select_tag('pick_address', format_address_for_select(addresses) ) %>
   </div>
 </div>

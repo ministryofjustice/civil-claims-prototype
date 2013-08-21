@@ -7,29 +7,28 @@ CivilClaims::Application.routes.draw do
   root 'claims#home'
 
   # relax, it's a prototype.
-  get 'claims/:id/delete' => 'claims#delete', as: :claim_delete
+  
   get "claims/delete_all" => "claims#delete_all"
-  # post "claims/:id/update" => "claims#update", as: :update_claim
-  patch "claims/:id/update" => "claims#update", as: :update_claim
-  # match "claims/:id/update" => "claims#update", as: :update_claim, via: post
- 
-  get 'claims/:id' => 'claims#personal_details', as: :show_claim
-  get 'claims/:id/particulars' => 'claims#particulars'
-  get 'claims/:id/scheduling' => 'claims#scheduling'
-  get 'claims/:id/statement' => 'claims#statement'
-  get 'claims/:id/fees' => 'claims#fees'
-  get 'claims/:id/confirmation' => 'claims#confirmation'
-  patch 'claims/:id/address_for_possession' => 'claims#address', as: :claim_address_for_possession
-
   get 'login_as/:role' => 'people#login', as: :login
-
-  get 'address/random' => 'address#random', as: :random_address
-  get 'address/:id'    => 'adddress#get', as: :get_address
-  get 'address/picker/:id' => 'address#picker', as: :address_picker
 
   get 'claims/:claim_id/address/:id/edit' => 'address#editor', as: :claim_address_editor
   
+  get 'address/picker' => 'address#picker', as: :address_picker
+
   resources :claims do
+    member do
+      get '/' => 'claims#personal_details', as: :show_claim
+      get 'particulars'
+      get 'scheduling'
+      get 'statement'
+      get 'fees'
+      get 'confirmation'
+
+      patch "update", as: :update_claim
+      patch 'address_for_possession', to: 'claims#address', as: :address_for_possession
+
+      get 'delete'
+    end
     resources :people do
       get 'editor', on: :member
       resources :address do
@@ -39,53 +38,4 @@ CivilClaims::Application.routes.draw do
     end
   end
 
-
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
-
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
-  
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
-
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
 end
