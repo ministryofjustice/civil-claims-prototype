@@ -40,7 +40,7 @@ class AddressController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to claim_path claim }
-      format.js { render :partial => 'addresses/edit', :formats => [:js], :locals => {claim: claim, person: person, address: address, options: options } }
+      format.js { render :partial => 'addresses/fill', :formats => [:js], :locals => {address: address} }
     end    
 
   end

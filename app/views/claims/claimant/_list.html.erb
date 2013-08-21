@@ -1,17 +1,71 @@
-<ul class='claims' id='claims-list'>
+<ul id="claims-list">
   <% claims.each do |claim| %>
-    <li class='clearfix'>
-      <div class='claim_id'>
-        <span class='title'>Claim</span>
-        <span class='content'><%= claim.id %></span>
+    <li class="claim-item">
+      <div class="labeled-content">
+        <div class="content-label">Claim Ref #</div>
+        <div class="content block"><%= claim.id %></div>
       </div>
-      <div class='participants'>
-        <span class='title'>Claimant/Defendant Names</span>
-        <span class='content'><%= claim.claimants.first.full_name %> vs <%= claim.defendants.first.full_name %></span>
+
+      <div class="labeled-content">
+        <div class="content-label">Landlord<%= "s" if claim.claimants.count>1 %></div>
+        <div class="content block">
+          <% claim.claimants.each do |claimant| %>
+            <%= "#{claimant.title} #{claimant.full_name}".strip %> <br>
+          <% end %>
+        </div>
       </div>
-      <div class='controls'>
-         <span><%= link_to 'Continue', claim_path(claim), :class => 'button' %></span>
-         <span><%= link_to 'Delete', delete_claim_path(claim), :class=> 'button-warning' %></span>
+
+      <div class="labeled-content">
+        <div class="content-label">Tenant<%= "s" if claim.defendants.count>1 %></div>
+        <div class="content block">
+          <% claim.defendants.each do |defendant| %>
+            <%= "#{defendant.title} #{defendant.full_name}".strip %><br>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="labeled-content">
+        <div class="content-label">Property</div>
+        <div class="content block">
+          <%= claim.address_for_possession.street_1 %> <br>
+          <%= claim.address_for_possession.street_2 %> <br>
+          <%= claim.address_for_possession.town %> <br>
+          <%= claim.address_for_possession.postcode %> <br>
+        </div>
+      </div>
+
+      
+      <details id="claims-item-status">
+        <summary>
+          <span id="claims-item-status-label">Status</span>
+          <% has_personal_details = (claim.claimants.any? && !claim.claimants.first.full_name.nil?) && (claim.defendants.any? && !claim.defendants.first.full_name.nil?) %>
+          <% has_particulars = !claim.tenancy_start_date.nil? %>
+          <% has_signature = claim.signature %>
+          <% percentage = 0 + (has_personal_details ? 25:0) + (has_particulars ? 25:0) + (has_signature ? 25:0) %>
+ 
+          <span id="claims-item-status-header">Claim form <%=percentage%>% complete and not yet submitted</span>
+        </summary>
+        <div id="claims-item-status-content">
+          <ul id="claims-item-status-content-list">
+            <li class="claims-item-status-item-<%= (has_personal_details ? 'yes':'no') %>">
+              <!-- for now -->
+              <span><%= '✔' if has_personal_details %></span>Personal details
+            </li>
+            <li class="claims-item-status-item-<%= (has_particulars ? 'yes':'no') %>">
+              <span><%= '✔' if has_particulars %></span>Claim particulars
+            </li>
+
+            <li class="claims-item-status-item-<%= (has_signature ? 'yes':'no') %>">
+              <span><%= '✔' if has_signature %></span>Statement of truth
+            </li>
+            <li class="claims-item-status-item-no"><span></span>Fees & payments</li>
+          </ul>
+        </div>
+      </details>
+      
+      <div id="claim-item-action-buttons">
+        <span><%= link_to 'Continue', claim_path(claim), :class => 'button' %></span>
+        <span><%= link_to 'Delete', delete_claim_path(claim), :class=> 'button-warning' %></span>
       </div>
     </li>
   <% end %>

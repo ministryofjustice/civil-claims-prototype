@@ -845,18 +845,141 @@ h2.info-notice {
 
 #new-claim-step-list {
   list-style-type: none;
+  position: relative;
+  
+  h4 { font-weight: bold; }
+  p { width: 65%; }
+
   li {
-    // display: block;
-    // height: 150px; //use this one
+    position: relative;        
+    padding-left: 15px;
+    padding-top: 30px;
 
-    height: 90px;
-    margin: 10px 0 10px 0;
+    height: 150px; 
+    margin: 15px 0 15px 0;
+
+    background-repeat: no-repeat;        
+    background-position: right 100px top;
+    
+    &:nth-child(1){ background-image: image_url('claim-steps/step1.png'); }
+    &:nth-child(2){ background-image: image_url('claim-steps/step2.png'); }
+    &:nth-child(3){ background-image: image_url('claim-steps/step3.png'); }
+    &:nth-child(4){ background-image: image_url('claim-steps/step4.png'); }
+    &:nth-child(5){ background-image: image_url('claim-steps/step5.png'); }
+    &:nth-child(6){ background-image: image_url('claim-steps/step6.png'); }
+
+    span {
+      position: absolute;
+      left: -25px;
+      padding: 4px 7px;
+
+      font-size: 12px;
+      font-weight: bold;
+      line-height: 1;
+      color: #fff;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: baseline;
+      
+      background-color: #000;
+      border-radius: 9999px;
+    }
   }
-
 }
 
 a.disabled {
   opacity: 0.5;
   &:hover { text-decoration: none; cursor: default; }
+}
+
+#start-new-claim-buttons {
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.tab-content{
+  margin-bottom: 30px;
+}
+
+#start-continue-claim-disclaimer{
+  padding-top: 20px;
+  border-top: 1px solid $default-panel-border-color;
+  div {
+    padding-top: 20px;
+    padding-bottom: 10px;
+  }
+}
+
+#claims-list{
+  .claim-item {
+    @extend .panel-default;
+    margin-top: 25px;
+    margin-bottom: 40px;
+    
+    .content-label{
+      font-weight: bold;
+    }
+    
+    #claim-item-action-buttons{
+      margin: 25px 0px 10px 0px;
+    }
+    #claims-item-status-label{
+      @extend details;
+    }
+  }
+}
+
+#claims-item-status {
+  position: relative;
+  summary{
+    text-decoration: none;
+    display: inline-block;
+    #claims-item-status-label{
+      display: inline;
+      text-decoration: underline;
+    }
+    #claims-item-status-header{
+      margin-left: 105px;
+      text-decoration: none;
+      color: #000;
+      &:hover{
+        color: #000;
+      }
+    }
+  }
+
+  #claims-item-status-content{
+    position: relative;
+    margin-left: 150px;
+    margin-top: 15px;
+
+// hey hey refactor this span
+    #claims-item-status-content-list{
+      
+      span {
+        position: inline;
+        margin-right: 10px;
+
+        font-size: 12px;
+        font-weight: bold;
+        line-height: 1;
+        color: #fff;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: baseline;
+        
+        background-color: #01A75F;
+        border-radius: 9999px;
+      }
+
+      .claims-item-status-item-yes span { padding: 4px 6px; }
+      .claims-item-status-item-no span { 
+        background-color: $grey-3;
+        padding: 4px 11px; 
+      }
+
+    }
+  }
+
 }
 

@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 20130807140855) do
     t.string   "tenancy_type"
     t.date     "tenancy_start_date"
     t.decimal  "rental_amount"
-    t.string   "payment_frequency"
+    t.string   "payment_frequency",            default: "monthly"
     t.decimal  "unpaid_rent_per_day"
     t.boolean  "defendent_to_pay_for_claim"
     t.string   "other_information"

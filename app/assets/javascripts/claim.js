@@ -90,23 +90,12 @@ $(document).ready(function() {
     var picker = $(this).parents('.control-group');
     var address = $(this).find('option:selected').data('address');
 
-    // are we showing the editable address form?
-    if(address_element.find('.address_street_1 input').length == 0 ) {
-
-      // the tragic downside of framework generated javascript is that I'm too
-      // lazy to find a better way of triggering this behaviour
-      address_element.find('.manual-address').click(); 
-
-      setTimeout(function(){
-        claim.address.populate(master_form.find('.address-container'),address);
-      }, 150); // callbacks are hard, let's just wait.
-
-    } else {
-      claim.address.populate(address_element, address);
-    }
+    claim.address.populate(master_form, address);
   });
 
 });
+
+
 
 claim.validate = function(form) {
   form = $(form);
@@ -136,16 +125,33 @@ claim.validate = function(form) {
 };
 
 claim.address = {
-
   populate: function(container, address) {
+
+    // are we showing the editable address form?
+    if(container.find('.address_street_1 input').length == 0 ) {
+
+      // the tragic downside of framework generated javascript is that I'm too
+      // lazy to find a better way of triggering this behaviour
+      container.find('.manual-address').click(); 
+
+      setTimeout(function(){
+        claim.address.feels_dirty(container, address);
+        window.claim.validate(container.parents('form')); 
+      }, 150); // callbacks are hard, let's just wait.
+
+    } else {
+      claim.address.feels_dirty(container, address);
+      //window.claim.validate(container.parents('form')); 
+    }
+  },
+
+  feels_dirty: function(container, address) {
     container.find('.address_street_1 input').val(address.street_1);
     container.find('.address_street_2 input').val(address.street_2);
     container.find('.address_street_3 input').val(address.street_3);
     container.find('.address_town input').val(address.town);
     container.find('.address_county input').val(address.county);
     container.find('.address_postcode input').val(address.postcode);
-
-    window.claim.validate(container.parents('form')); 
   },
 
 };
