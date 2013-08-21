@@ -16,6 +16,7 @@
 //= require turbolinks
 //= require_tree .
 //= require jquery.ui.effect-highlight
+//= require validator
 
 // want to hide something different then TR then add attribute to fn
 remove_fields = function(link, association) {

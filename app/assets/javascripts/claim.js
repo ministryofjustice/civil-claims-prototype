@@ -1,4 +1,3 @@
-window.claim = window.claim || {}
 
 $(document).ready(function() {
 
@@ -29,40 +28,7 @@ $(document).ready(function() {
       }));
     }
   });
-
-  // enable CSS validation once user tabs out of form field.  
-  $('#edit-claim').on('blur', 'form.edit-person input', function(event) {
-    if($(this).attr('required') || $(this).val().length ) {
-      $(this).addClass('tabbed-out'); // register the interaction
-      $(this).siblings('.icon-container').css('display', 'inline');
-    } else {  // no validation indicator if field is optional & blank
-      $(this).siblings('.icon-container').css('display', 'none');
-    }
-  });
-
-  // enable html5 validation checking of the edit-person form
-  $('#edit-claim').on('keyup', 'form.edit-person input', function(event) {
-    claim.validate($(this).parents('form'));
-  });
-
-  $('form.edit-person').each(function(i, el) {
-    claim.validate(el);
-  });
-
-  // when postcode is valid, enable Find Address link
-  var validate_postcode_for_address_picker = function(evt) {
-    if(this.validity.valid) {
-      $(this).siblings('.find-uk-address').removeClass('disabled');
-    } else {
-      $(this).siblings('.find-uk-address').addClass('disabled');
-    }
-  }
-  $('#edit-claim').on('keyup', '.postcode', validate_postcode_for_address_picker);
-
-  $('#edit-claim').on('click', 'a.disabled', function(evt) {
-    evt.preventDefault;
-  });
-
+  
   // click the Find Address link, see what happens
   $('#edit-claim').on('click', '.find-uk-address', function(evt) {
     evt.preventDefault();
@@ -79,6 +45,17 @@ $(document).ready(function() {
 
   });
 
+  var populate_address = function(container, address) {
+    container.find('.address_street_1 input').val(address.street_1);
+    container.find('.address_street_2 input').val(address.street_2);
+    container.find('.address_street_3 input').val(address.street_3);
+    container.find('.address_town input').val(address.town);
+    container.find('.address_county input').val(address.county);
+    container.find('.address_postcode input').val(address.postcode);
+
+    window.claim.validate(container.parents('form')); 
+  };
+
   // filthy address picker business
   $('#edit-claim').on('change', '.pick_address', function(event) {
     var master_form = $(this).parents('form');
@@ -94,54 +71,13 @@ $(document).ready(function() {
       address_element.find('.manual-address').click(); 
 
       setTimeout(function(){
-        claim.address.populate(master_form.find('.address-container'),address);
+        populate_address(master_form.find('.address-container'),address);
       }, 150); // callbacks are hard, let's just wait.
 
     } else {
-      claim.address.populate(address_element, address);
+      populate_address(address_element, address);
     }
   });
 
 });
 
-claim.validate = function(form) {
-  form = $(form);
-  var ready_to_go = form[0].checkValidity();
-  var address_fields = 0;
-  var field_names = ['address_street_1', 'address_street_2', 'address_street_3','address_town', 'address_county'];
-
-  address_fields = field_names.map(function(f) { 
-    if( form.find( 'input#'+f).length && form.find( 'input#'+f).val().length ) { return 1; }
-    return 0;
-  }).reduce(function(a, b) { return a + b; });
-
-  if(address_fields < 2) {
-    ready_to_go = false;
-    if(form.find('input#address_street_1').length && !form.find('input#address_street_1').val().length) {
-      form.find('input#address_street_1').attr('required', 'required').get(0).setCustomValidity('Not gonna happen');
-    }
-  } else {
-    form.find('input#address_street_1').removeAttr('required').get(0).setCustomValidity('');
-  }
-  
-  if( ready_to_go ) {
-    form.find("button[value='save']").removeAttr('disabled');
-  } else {
-    form.find("button[value='save']").attr('disabled', 'disabled');
-  }
-};
-
-claim.address = {
-
-  populate: function(container, address) {
-    container.find('.address_street_1 input').val(address.street_1);
-    container.find('.address_street_2 input').val(address.street_2);
-    container.find('.address_street_3 input').val(address.street_3);
-    container.find('.address_town input').val(address.town);
-    container.find('.address_county input').val(address.county);
-    container.find('.address_postcode input').val(address.postcode);
-
-    window.claim.validate(container.parents('form')); 
-  },
-
-};

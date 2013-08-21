@@ -19,8 +19,7 @@
 
     <%# Full Name %>
     <%= f.input :full_name do %>
-      <%= f.input_field :full_name, placeholder: 'e.g. John Smith', pattern: '^[a-zA-Z ]{5,}$', required: true %>
-      <span class='icon-container' style='display:none' />
+      <%= f.input_field :full_name, placeholder: 'e.g. John Smith', pattern: '^[a-zA-Z ]{5,}$', required: true, data: { validate: true } %>
     <% end %>
 
     <%# Contact Details %>
