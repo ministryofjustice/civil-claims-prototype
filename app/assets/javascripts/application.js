@@ -130,5 +130,3 @@ show_payment_panel = function(panel_id){
   
   $('#'+panel_id).show();
 };
-
-

@@ -2,6 +2,10 @@ window.claim = window.claim || {}
 
 $(document).ready(function() {
 
+  $('.dropdown a').on('click', function(e) {
+    $(this).parent().toggleClass('open');
+  });
+
   $('#claims-index-tabs li.submit a').click(function (e) {
     e.preventDefault();
     $(this).tab('show');

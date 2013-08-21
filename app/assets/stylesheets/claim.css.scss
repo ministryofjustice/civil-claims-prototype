@@ -78,14 +78,10 @@ a.toggle-visible:before {
 
 main { padding-top: 12px; }
 
-header {
-  img { max-width: none; } // bootstrap override to work with header+footer gov.uk css
-  
-}
-
 div.user-data { 
   border-bottom: 1px solid #ccc;
-  max-width: 940px;
+  max-width: 960px;
+  padding: 0 30px;
   background-color: #fff;
   margin: 0 auto;
   > ul.nav { 
@@ -111,64 +107,93 @@ div.user-data {
 
 .indent { text-indent: 10px;}
 
+.navbar {
+  ul {
+    padding: 0;
+    margin: 10px 0;
+  }
 
-.alpha #phase-notice p {
-  padding: 0.5em 2em;
-  max-width: 940px;
-  margin: 0 auto;
-  font-size: 1.6rem;
-  background: #d53880;
-  color: #fff;
-}
+  li {
+    display: inline;
 
-.alpha #proposition-name small {
-  vertical-align: 3px;
-  margin-left: 10px;
-  padding: 3px 5px 1px;
-  background-color: #d53880;
-  font-family: "nta",Arial,sans-serif;
-  font-size: 16px;
-  line-height: 1.25;
-  font-weight: 300;
-  text-transform: none;
-  color: #fff;
-  font-weight: bold;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  -webkit-font-smoothing: subpixel-antialiased;
-}
+    a {
+      padding: 0 10px;
+      text-decoration: underline;
 
-#main-content .page-header { border: none; }
-
-header.page-header {
-  margin: 0;
-  border: none;
-  hgroup h1 {
-    font-family: "nta",Arial,sans-serif;
-    font-size: 48px;
-    line-height: 1.04167;
-    font-weight: 400;
-    text-transform: none;
-    font-weight: 700;
-    color: #0b0c0c;
-
-    span {
-      font-size: 27px;
-      line-height: 1;
-      font-weight: 400;
-      display: block;
-      margin-bottom: 0.25em;
-      text-shadow: none;
-      color: #6f777b;
+      &:hover {
+        color: #333;
+        text-decoration: none;
+      }
     }
 
-    strong {
-      font-size: 17px;
-      background: #d53880;
-      color: #fff;
-      vertical-align: middle;
-      padding: 2px 7px;
+    &.dropdown {
+      a {
+        .caret {
+          border-bottom-color: #777777;
+          border-top: 4px solid #777777;
+          border-left: 4px solid transparent;
+          border-right: 4px solid transparent;
+          content: "";
+          display: inline-block;
+          height: 0;
+          margin-left: 2px;
+          vertical-align: middle;
+          width: 0;
+        }
+      }
     }
+
+    ul {
+      display: none;
+    }
+
+    &.open {
+      a {
+        color: #555;
+        background-color: #d5d5d5;
+      }
+      ul {
+        background-clip: padding-box;
+        background-color: #FFFFFF;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        border-radius: 0;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.176);
+        display: block;
+        list-style: none outside none;
+        margin: 10px 0 0 0;
+        min-width: 160px;
+        padding: 5px 0;
+        position: absolute;
+        z-index: 1000;
+
+        li {
+          display: block;
+
+          a {
+            background-color: transparent;
+            color: #777;
+            padding: 3px 10px;
+            display: block;
+            text-decoration: none;
+            color: $black;
+
+            &:hover {
+              background-color: #d5d5d5;
+            }
+          }
+
+          &.divider {
+            border-top: 1px solid #eee;
+            margin: 5px 0 10px;
+
+          }
+        }
+      }
+    }
+  }
+
+  a {
+    color: #777;
   }
 }
 

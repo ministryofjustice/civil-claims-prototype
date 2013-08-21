@@ -2,11 +2,8 @@
 <html>
 <head>
   <%= render "shared/head", :title => Rails.configuration.app_title %>
-  <!-- <title>CivilClaims</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <link rel="icon" href="/favicon.png">
-  <%= csrf_meta_tags %> -->
 </head>
 <body class='<%= Rails.configuration.phase %>'>
   <%= render 'shared/header', :proposition => 'Repossess a property' %>

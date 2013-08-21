@@ -22,7 +22,7 @@ gem 'haml-rails'
 gem 'govuk_frontend_toolkit'
 
 # MOJ styles
-gem 'moj_frontend_toolkit_gem', git: 'https://github.com/ministryofjustice/moj_frontend_toolkit_gem.git', tag: 'v0.0.31'
+gem 'moj_frontend_toolkit_gem', git: 'https://github.com/ministryofjustice/moj_frontend_toolkit_gem.git', tag: 'v0.0.32'
 
 # bootstrap 3
 gem 'therubyracer' 
