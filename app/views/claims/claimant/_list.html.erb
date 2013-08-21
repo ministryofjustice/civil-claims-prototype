@@ -42,8 +42,16 @@
         </summary>
         <div id="claims-item-status-content">
           <ul id="claims-item-status-content-list">
-            <li class="claims-item-status-item-yes"><span>&#10004;</span>Personal details</li>
-            <li class="claims-item-status-item-yes"><span>&#10004;</span>Claim particulars</li>
+            <% has_personal_details = (claim.claimants.any? && !claim.claimants.first.full_name.nil?) && (claim.defendants.any? && !claim.defendants.first.full_name.nil?) %>
+            <li class="claims-item-status-item-<%= (has_personal_details ? 'yes':'no') %>">
+              <!-- for now -->
+              <span><%= '✔' if has_personal_details %></span>Personal details
+            </li>
+
+            <% has_particulars = !claim.tenancy_start_date.nil? %>
+            <li class="claims-item-status-item-<%= (has_particulars ? 'yes':'no') %>">
+              <span><%= '✔' if has_particulars %></span>Claim particulars
+            </li>
             <li class="claims-item-status-item-no"><span></span>Statement of truth</li>
             <li class="claims-item-status-item-no"><span></span>Fees & payments</li>
           </ul>
