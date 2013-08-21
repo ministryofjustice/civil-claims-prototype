@@ -53,7 +53,7 @@ $(document).ready(function() {
     container.find('.address_county input').val(address.county);
     container.find('.address_postcode input').val(address.postcode);
 
-    window.claim.validate(container.parents('form')); 
+    address_form_validator(container.parents('form')); 
   };
 
   // filthy address picker business

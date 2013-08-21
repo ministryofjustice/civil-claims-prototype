@@ -1,9 +1,9 @@
 (function($) {
 
   $.fn.validate_form = function() {
-    this.each( function() {
-      this.checkValidity(); // native html5 method
-    });
+    var validity = this.get(0).checkValidity(); // native html5 method
+    console.log('Form: ' + validity);
+    return validity;
   };
 
   // called on a validation event (generally on blur)
@@ -53,6 +53,7 @@
   // $('.myForm a').enable() or
   // $('.myForm').enable('a')
   $.fn.enable = function(selector) {
+    console.log('enabling a thing!');
     if( typeof selector === 'undefined' ) {
       this.removeClass('disabled');
       this.removeAttr('disabled');
@@ -84,7 +85,7 @@
 
   $.fn.validify = function(selector) {
     if( typeof selector === 'undefined' ) {
-      this.removeAttr('required').each(function() { this.setCustomerValidity(''); });
+      this.removeAttr('required').each(function() { this.setCustomValidity(''); });
     } else {
       this.find(selector).validify();
     }
@@ -92,33 +93,86 @@
   };
 
   $.fn.prevalidate = function() {
+    this.init_validation_markup();
+    this.init_validation_event();
+    return this;
+  };
+
+  $.fn.init_validation_markup = function() {
     var vclass = 'icon-container';
     this.each( function() {
       if( $(this).siblings('.'+vclass).length === 0 ) {
         $(this).after("<span class='"+vclass+"' style='display:none' />");
       }
     });
-    this.off('blur').on('blur', function(evt) {
-      if(!$(this).data('custom-validator')) { $(this).validate(); }
-    });
+    return this;
+  };
+
+  $.fn.init_validation_event = function() {
+
+    var validation_handler = function(evt) {
+      var element_uses_custom_validation = ( $(this).data('custom-validator') === true );
+      if( !element_uses_custom_validation ) { $(this).validate(); }
+    };
+
+    this.filter(':not([data-validation-event-processed])').on('blur', validation_handler).attr('data-validation-event-processed');
+
+    // init handler to capture change events
+    // by javascript of whatever
+
+    // this.each(function() {
+    //   var el = $(this);
+    //   el.data('old', el.val());
+    //   el.on("propertychange keyup input paste", function(evt){
+    //     if( el.data('old') != el.val() ) {
+    //       el.data('old', el.val());
+    //     }
+    // });
+
     return this;
   };
 
   $.fn.has_custom_validator = function(fn) {
     this.data('custom-validator', 'true');
     return this;
-  }
+  };
+
+  $.fn.register_custom_validator = function(selector, event_name, fn) {
+    var that = this;
+    $(document).ready(function() { 
+      that.on(event_name, selector, fn); 
+    });
+    return this;
+  };
 
   // convenience function
-  // can only be called on a single element
+  // returns true if elements are all blank
   $.fn.blank = function(selector) {
     if( typeof selector === 'undefined' ) {
-      if(this.length === 1 && this.val().length === 0) { return true; }
-      else { return false; }
+      var blankness = true;
+      this.each( function() {
+        if ( $(this).val().length > 0) { 
+          blankness = false;
+        }
+      });
+      if( blankness ) {
+        return true;
+      } else {
+        return false;
+      }
     } else {
       return this.find(selector).blank();
     }
   };
+
+  // returns true if the selector matches 1 or more elements
+  $.fn.exists = function(selector) {
+    if( typeof selector === 'undefined' ) {
+      return (this.length > 0)
+    } else {
+      return this.find(selector).exists();
+    }
+  };    
 
   // set up some expected behaviours
 
@@ -140,16 +194,21 @@
 
 })(jQuery);
 
+// bespoke validation for Claims/claimant forms
+
 // expects form to be a jquery element
 var address_form_validator = function(form) {
   var ready_to_go = form.validate();
-  var address_fields = 0;
   var field_names = ['address_street_1', 'address_street_2', 'address_street_3','address_town', 'address_county'];
+  form.find('input#address_street_1').init_validation_markup().has_custom_validator();
 
-  address_fields = field_names.map(function(f) { 
-    if( form.blank( 'input#'+f) ) { return 1; }
-    else { return 0; }
-  }).reduce(function(a, b) { return a + b; });
+  var address_fields = 0;
+  $.each(field_names, function(f) { 
+    var sel = 'input#'+field_names[f];
+    if( form.exists( sel ) && !form.blank( sel )) { 
+      address_fields += 1; 
+    }
+  });
 
   if(address_fields < 2) {
     ready_to_go = false;
@@ -167,22 +226,22 @@ var address_form_validator = function(form) {
   }
 };
 
-// when postcode is valid, enable Find Address link
-$('#edit-claim').on('keyup', '.postcode', function(evt) {
-  var address_finder_link = $(this).siblings('.find-uk-address');
-  if($(this).valid()) { address_finder_link.enable(); } 
-  else                { address_finder_link.disable(); }
+
+$(document).ready(function() {
+  // when postcode is valid, enable Find Address link
+  $('#edit-claim').register_custom_validator('.postcode', 'keyup', function() {
+    var address_finder_link = $(this).siblings('.find-uk-address');
+    if($(this).valid()) { address_finder_link.enable(); } 
+    else                { address_finder_link.disable(); }
+  });
+
+
+  // set up custom form validator
+  $('#edit-claim').register_custom_validator('form.edit-person input', 'keyup', function() {
+    address_form_validator($(this).parents('form'));
+  });
+
+  $('form.edit-person').each(function(i, el) {
+    address_form_validator( $(el) );
+  });
 });
-
-
-// set up custom form validator
-
-
-$('#edit-claim').on('keyup', 'form.edit-person input', function(event) {
-  address_form_validator($(this).parents('form'));
-});
-
-$('form.edit-person').each(function(i, el) {
-  address_form_validator($(el);
-});
-
