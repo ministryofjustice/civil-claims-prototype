@@ -6,20 +6,23 @@
   </p>
     
   <div id="start-continue-claim">
-    <% if @user.claims.size > 0 %>
-    <ul class='nav nav-tabs' id='claims-index-tabs'>
-      <li class='submit'><a href='#new' data-toggle="tab">Start a new claim</a></li>
-      <li class='active list'><a href='#list' data-toggle="tab">Your claims</a></li>
-    </ul>
+    <% has_claims = (@user.claims.size > 0) %>
+    <% if has_claims %>
+      <ul class='nav nav-tabs' id='claims-index-tabs'>
+        <li class='submit'><a href='#new' data-toggle="tab">Start a new claim</a></li>
+        <li class='active list'><a href='#list' data-toggle="tab">Your claims</a></li>
+      </ul>
     <% else %>
-    <h3>Start a new claim</h3>
+      <h3>Start a new claim</h3>
     <% end %>
 
     <div class='tab-content'>
-     <div class='tab-pane' id='new'>
+      <% tab_class = has_claims ? 'tab-pane' : 'tab-pane active' %>
+     <div class='<%= tab_class %>' id='new'>
         <%= render partial: 'claims/claimant/home' %>
       </div>
-      <div class='tab-pane active' id='list'>
+      <% tab_class = has_claims ? 'tab-pane active' : 'tab-pane' %>
+      <div class='<%= tab_class %>' id='list'>
         <%= render partial: 'claims/claimant/list', locals: {claims: @user.claims} %>
       </div>
     </div>

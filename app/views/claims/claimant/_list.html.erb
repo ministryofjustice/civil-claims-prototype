@@ -10,7 +10,7 @@
         <div class="content-label">Landlord<%= "s" if claim.claimants.count>1 %></div>
         <div class="content block">
           <% claim.claimants.each do |claimant| %>
-            <%= claimant.title+" "+claimant.full_name %> <br>
+            <%= "#{claimant.title} #{claimant.full_name}".strip %> <br>
           <% end %>
         </div>
       </div>
@@ -19,7 +19,7 @@
         <div class="content-label">Tenant<%= "s" if claim.defendants.count>1 %></div>
         <div class="content block">
           <% claim.defendants.each do |defendant| %>
-            <%= defendant.title+" "+defendant.full_name %> <br>
+            <%= "#{defendant.title} #{defendant.full_name}".strip %><br>
           <% end %>
         </div>
       </div>
