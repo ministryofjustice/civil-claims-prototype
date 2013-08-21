@@ -100,8 +100,8 @@ div.user-data {
   padding: 0 2em;
 
   .row {
-    margin-left: 2em;
-    margin-right: 2em;
+    margin-left: 30px;
+    margin-right: 30px;
   }
 }
 
@@ -194,6 +194,27 @@ div.user-data {
 
   a {
     color: #777;
+  }
+}
+
+.nav-tabs {
+  list-style-type: none;
+  margin: 0;
+
+  li {
+    margin-bottom: -1px;
+
+    a {
+      border-radius: 4px 4px 0 0;
+      margin-bottom: 0;
+      text-decoration: none;
+    }
+
+    &.active {
+      a {
+        border-color: #ddd #ddd transparent;
+      }
+    }
   }
 }
 
@@ -899,6 +920,15 @@ a.disabled {
 
 .tab-content{
   margin-bottom: 30px;
+
+  .tab-pane {
+    border-color: #ddd;
+    display: none;
+
+    &.active {
+      display: block;
+    }
+  }
 }
 
 #start-continue-claim-disclaimer{
