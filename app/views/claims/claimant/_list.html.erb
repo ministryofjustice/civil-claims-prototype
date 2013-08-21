@@ -38,21 +38,26 @@
       <details id="claims-item-status">
         <summary>
           <span id="claims-item-status-label">Status</span>
-          <span id="claims-item-status-header">Claim form 60% complete and not yet submitted</span>
+          <% has_personal_details = (claim.claimants.any? && !claim.claimants.first.full_name.nil?) && (claim.defendants.any? && !claim.defendants.first.full_name.nil?) %>
+          <% has_particulars = !claim.tenancy_start_date.nil? %>
+          <% has_signature = claim.signature %>
+          <% percentage = 0 + (has_personal_details ? 25:0) + (has_particulars ? 25:0) + (has_signature ? 25:0) %>
+ 
+          <span id="claims-item-status-header">Claim form <%=percentage%>% complete and not yet submitted</span>
         </summary>
         <div id="claims-item-status-content">
           <ul id="claims-item-status-content-list">
-            <% has_personal_details = (claim.claimants.any? && !claim.claimants.first.full_name.nil?) && (claim.defendants.any? && !claim.defendants.first.full_name.nil?) %>
             <li class="claims-item-status-item-<%= (has_personal_details ? 'yes':'no') %>">
               <!-- for now -->
               <span><%= '✔' if has_personal_details %></span>Personal details
             </li>
-
-            <% has_particulars = !claim.tenancy_start_date.nil? %>
             <li class="claims-item-status-item-<%= (has_particulars ? 'yes':'no') %>">
               <span><%= '✔' if has_particulars %></span>Claim particulars
             </li>
-            <li class="claims-item-status-item-no"><span></span>Statement of truth</li>
+
+            <li class="claims-item-status-item-<%= (has_signature ? 'yes':'no') %>">
+              <span><%= '✔' if has_signature %></span>Statement of truth
+            </li>
             <li class="claims-item-status-item-no"><span></span>Fees & payments</li>
           </ul>
         </div>
