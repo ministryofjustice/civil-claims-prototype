@@ -952,13 +952,11 @@ a.disabled {
         border-radius: 9999px;
       }
 
-      .claims-item-status-item-yes span { padding: 3px 6px; }
+      .claims-item-status-item-yes span { padding: 4px 6px; }
       .claims-item-status-item-no span { 
         background-color: $grey-3;
-        padding: 3px 10px; 
+        padding: 4px 11px; 
       }
-        
-      
 
     }
   }
