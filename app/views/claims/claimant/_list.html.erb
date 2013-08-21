@@ -1,6 +1,6 @@
 <ul id="claims-list">
   <% claims.each do |claim| %>
-    <li>
+    <li class="claim-item">
       <div class="labeled-content">
         <div class="content-label">Claim Ref #</div>
         <div class="content block"><%= claim.id %></div>
@@ -34,16 +34,26 @@
         </div>
       </div>
 
-      <div class="labeled-content">
-        <div class="content-label">Status</div>
-        <div class="content block">
-          Claim form 60% complete and not yet submitted
+      
+      <details id="claims-item-status">
+        <summary>
+          <span id="claims-item-status-label">Status</span>
+          <span id="claims-item-status-header">Claim form 60% complete and not yet submitted</span>
+        </summary>
+        <div id="claims-item-status-content">
+          <ul id="claims-item-status-content-list">
+            <li class="claims-item-status-item-yes"><span>&#10004;</span>Personal details</li>
+            <li class="claims-item-status-item-yes"><span>&#10004;</span>Claim particulars</li>
+            <li class="claims-item-status-item-no"><span></span>Statement of truth</li>
+            <li class="claims-item-status-item-no"><span></span>Fees & payments</li>
+          </ul>
         </div>
+      </details>
+      
+      <div id="claim-item-action-buttons">
+        <span><%= link_to 'Continue', claim_path(claim), :class => 'button' %></span>
+        <span><%= link_to 'Delete', delete_claim_path(claim), :class=> 'button-warning' %></span>
       </div>
-
-       <span><%= link_to 'Continue', claim_path(claim), :class => 'button' %></span>
-       <span><%= link_to 'Delete', delete_claim_path(claim), :class=> 'button-warning' %></span>
-
     </li>
   <% end %>
 </ul> 
