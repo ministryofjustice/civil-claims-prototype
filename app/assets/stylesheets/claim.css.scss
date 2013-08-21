@@ -912,9 +912,11 @@ a.disabled {
 #claims-item-status {
   position: relative;
   summary{
+    text-decoration: none;
     display: inline-block;
     #claims-item-status-label{
       display: inline;
+      text-decoration: underline;
     }
     #claims-item-status-header{
       margin-left: 105px;
