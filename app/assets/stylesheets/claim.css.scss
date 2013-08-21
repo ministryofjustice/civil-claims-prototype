@@ -890,3 +890,12 @@ a.disabled {
   }
 }
 
+#claims-list{
+  li {
+    @extend .panel-default;
+    margin-top: 25px;
+    margin-bottom: 40px;
+
+  }
+}
+
