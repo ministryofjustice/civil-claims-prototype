@@ -136,8 +136,8 @@ claim.address = {
       }, 150); // callbacks are hard, let's just wait.
 
     } else {
-      feels_dirty(container, address);
-      window.claim.validate(container.parents('form')); 
+      claim.address.feels_dirty(container, address);
+      //window.claim.validate(container.parents('form')); 
     }
   },
 
