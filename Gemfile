@@ -15,12 +15,18 @@ gem 'rails_12factor', group: :production
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
+# Enable HAML (required for MOJ toolkit)
+gem 'haml-rails'
+
 # Gov.uk styles
 gem 'govuk_frontend_toolkit'
 
+# MOJ styles
+gem 'moj_frontend_toolkit_gem', git: 'https://github.com/ministryofjustice/moj_frontend_toolkit_gem.git', tag: 'v0.0.33'
+
 # bootstrap 3
 gem 'therubyracer' 
-gem 'less-rails-bootstrap', '~> 3.0.0.wip', github: 'sinfin/less-rails-bootstrap-3'
+# gem 'less-rails-bootstrap', '~> 3.0.0.wip', github: 'sinfin/less-rails-bootstrap-3'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'

@@ -1,17 +1,17 @@
 GIT
-  remote: git://github.com/sinfin/less-rails-bootstrap-3.git
-  revision: dd8521ee374fb31b083dfbb312d53f7c79322319
-  specs:
-    less-rails-bootstrap (3.0.0.wip)
-      less-rails (~> 2.3.1)
-
-GIT
   remote: git://github.com/sporkrb/spork-rails.git
   revision: 3224f84d8c31fcb0894e9a43f6c3ac67e3aa0d71
   specs:
     spork-rails (3.2.1)
       rails (>= 3.0.0, < 5)
       spork (>= 1.0rc0)
+
+GIT
+  remote: https://github.com/ministryofjustice/moj_frontend_toolkit_gem.git
+  revision: 0b5dbb97256cd750dfd7ecf2a0d4f490244f1d95
+  tag: v0.0.33
+  specs:
+    moj_frontend_toolkit_gem (0.0.1)
 
 GEM
   remote: https://rubygems.org/
@@ -55,7 +55,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
-    commonjs (0.2.6)
     diff-lcs (1.2.4)
     erubis (2.7.0)
     execjs (1.4.0)
@@ -85,6 +84,13 @@ GEM
       childprocess (>= 0.2.3)
       guard (>= 1.1)
       spork (>= 0.8.4)
+    haml (4.0.3)
+      tilt
+    haml-rails (0.4)
+      actionpack (>= 3.1, < 4.1)
+      activesupport (>= 3.1, < 4.1)
+      haml (>= 3.1, < 4.1)
+      railties (>= 3.1, < 4.1)
     hike (1.2.3)
     i18n (0.6.4)
     jbuilder (1.5.0)
@@ -97,11 +103,6 @@ GEM
       jquery-rails
       railties (>= 3.1.0)
     json (1.8.0)
-    less (2.3.2)
-      commonjs (~> 0.2.6)
-    less-rails (2.3.3)
-      actionpack (>= 3.1)
-      less (~> 2.3.1)
     libv8 (3.11.8.17)
     listen (1.2.3)
       rb-fsevent (>= 0.9.3)
@@ -219,10 +220,11 @@ DEPENDENCIES
   guard-rails
   guard-rspec
   guard-spork
+  haml-rails
   jbuilder (~> 1.2)
   jquery-rails
   jquery-ui-rails
-  less-rails-bootstrap (~> 3.0.0.wip)!
+  moj_frontend_toolkit_gem!
   pg
   rails (= 4.0.0)
   rails_12factor
