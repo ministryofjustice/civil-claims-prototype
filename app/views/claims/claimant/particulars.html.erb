@@ -130,9 +130,12 @@
             </div>
             <div class="content-block">
               <%= f.input :tenancy_type, 
-                label: false, 
-                collection: ["Assured shorthold tenancy","Assured tenancy","Regulated tenancy"],
-                selected: "Assured shorthold" %>
+                label: false,
+                collection: [
+                  ["Assured shorthold tenancy", "assured-shorhold-tenancy"],
+                  ["Assured tenancy", "assured-tenancy"],
+                  ["Regulated tenancy", "regulated-tenancy"]],
+                selected: f.object.tenancy_type || "assured-shorhold-tenancy" %>
                 
                 <a class="fake-link">More about tenancy types</a>
               </div>
@@ -194,10 +197,9 @@
   <!-- SUPPORTING DOCUMENTTION -->
       <%= render partial: 'attachments/show', :locals => { f: f } %>
       
-      <div class="save-close-panel">
-        <%= f.submit 'Save & Continue', :class => 'button' %>
-        <a href="/" class="button-secondary">Close</a>
-      </div>
+      <%= form_for @claim do |f| %>
+        <%= render :partial => 'claims/claimant/save_continue', :locals => {f: f} %>
+      <% end %>
 
     </article>
     <% end %>
