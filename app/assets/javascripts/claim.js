@@ -2,14 +2,31 @@ window.claim = window.claim || {}
 
 $(document).ready(function() {
 
-  $('#claims-index-tabs li.submit a').click(function (e) {
-    e.preventDefault();
-    $(this).tab('show');
+  // usernav dropdown
+  $('.dropdown a').on('click', function (e) {
+    $(this).parent().toggleClass('open');
   });
 
-  $('#claims-index-tabs li.list a').click(function (e) {
+  // tabs
+  $('#claims-index-tabs a').on('click', function (e) {
+    var $this = $(this),
+        tabs = $this.closest('ul').find('li'),
+        tabpanes = $('.tab-pane'),
+        i = $this.closest('ul').find('li').index($this.closest('li')),
+        x;
+
     e.preventDefault();
-    $(this).tab('show');
+    this.blur();
+
+    for (x = 0; x < tabs.length; x++) {
+      if(x === i) {
+        $(tabs[x]).addClass('active');
+        $(tabpanes[x]).show();
+      } else {
+        $(tabs[x]).removeClass('active');
+        $(tabpanes[x]).hide();
+      }
+    }
   });
 
   $('.inline-help .toggle-help').click(function(e) {

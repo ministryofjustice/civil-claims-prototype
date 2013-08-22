@@ -20,18 +20,33 @@ module CivilClaims
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+    # app title appears in the header bar
+    config.app_title = 'Civil Claims'
+    # phase governs text indicators and highlight colours
+    # presumed values: alpha, beta, live
+    config.phase = 'alpha'
+    # product type may also govern highlight colours
+    # known values: information, service
+    config.product_type = 'service'
+    # govbranding switches on or off the crown logo, full footer and NTA font
+    config.govbranding = true
+    # feedback_email is the address linked in the alpha/beta bar asking for feedback
+    config.feedback_email = 'test@example.com'
+
     config.autoload_paths += Dir[Rails.root.join('app', 'models', '{**}')]
 
     # Enable the asset pipeline
     config.assets.enabled = true
     config.assets.precompile += %w(
-      govuk-static/application.css
-      govuk-static/application-ie6.css
-      govuk-static/application-ie7.css
-      govuk-static/application-ie8.css
-      govuk-static/fonts-ie8.css
-      govuk-static/fonts.css
-      govuk-static/print.css
+      gov-static/gov-goodbrowsers.css
+      gov-static/gov-ie6.css
+      gov-static/gov-ie7.css
+      gov-static/gov-ie8.css
+      gov-static/gov-fonts.css
+      gov-static/gov-fonts-ie8.css
+      gov-static/gov-print.css
+      moj-base.css
+      gov-static/gov-ie.js
     )
   end
 end
