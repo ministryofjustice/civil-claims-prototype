@@ -205,7 +205,7 @@ div.user-data {
     margin-bottom: -1px;
 
     a {
-      border-radius: 4px 4px 0 0;
+      // border-radius: 4px 4px 0 0;
       margin-bottom: 0;
       text-decoration: none;
     }
@@ -857,53 +857,54 @@ h2.info-notice {
 }
 
 .content-wrap{
-  padding: 0px 30px 0 30px;
+  padding: 0 30px 0 30px;
 }
 
 #start-continue-claim{
   margin-top: 50px;
 }
 
-#new-claim-step-list {
+ol.large-steps, ul.large-steps {
   list-style-type: none;
   position: relative;
-  
-  h4 { font-weight: bold; }
-  p { width: 65%; }
 
   li {
     position: relative;        
     padding-left: 15px;
-    padding-top: 30px;
-
-    height: 150px; 
-    margin: 15px 0 15px 0;
-
-    background-repeat: no-repeat;        
-    background-position: right 100px top;
+    margin: 40px 0;
     
-    &:nth-child(1){ background-image: image_url('claim-steps/step1.png'); }
-    &:nth-child(2){ background-image: image_url('claim-steps/step2.png'); }
-    &:nth-child(3){ background-image: image_url('claim-steps/step3.png'); }
-    &:nth-child(4){ background-image: image_url('claim-steps/step4.png'); }
-    &:nth-child(5){ background-image: image_url('claim-steps/step5.png'); }
-    &:nth-child(6){ background-image: image_url('claim-steps/step6.png'); }
+    img {
+      margin-left: 60px;
+      vertical-align: top;
+    }
+    
+    div {
+      display: inline-block;
+      width: 50%;
+    
+      span {
+        position: absolute;
+        display:inline-block;
+        left: -25px;
+        top: 20px;
+        padding: 5px 8px;
 
-    span {
-      position: absolute;
-      left: -25px;
-      padding: 4px 7px;
+        font-size: 12px;
+        font-weight: bold;
+        line-height: 1;
+        color: #fff;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        
+        background-color: #000;
+        border-radius: 20px;
+      }
 
-      font-size: 12px;
-      font-weight: bold;
-      line-height: 1;
-      color: #fff;
-      text-align: center;
-      white-space: nowrap;
-      vertical-align: baseline;
-      
-      background-color: #000;
-      border-radius: 9999px;
+      .step-title {
+        font-weight: bold;
+      }
+
     }
   }
 }
