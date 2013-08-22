@@ -1,0 +1,43 @@
+@import "_colours";
+@import "_typography";
+@import "design-patterns/_buttons.scss";
+
+.nav-tabs {
+  margin: 0;
+  list-style-image: none;
+  list-style-type: none;
+
+  border-bottom: 1px solid #ddd;
+
+  li {
+    list-style-type: none;
+    margin-bottom: -1px;
+
+    a {
+      border-radius: 4px 4px 0 0;
+      margin-bottom: 0;
+      text-decoration: none;
+    }
+
+    &.active {
+      a {
+        border-color: #ddd #ddd transparent;
+      }
+    }
+  }
+}
+
+.tab-content{
+  margin-bottom: 30px;
+
+  .tab-pane {
+    border: none;
+    border-bottom: 1px solid #ddd;
+    display: none;
+    padding: 20px 0;
+
+    &.active {
+      display: block;
+    }
+  }
+}

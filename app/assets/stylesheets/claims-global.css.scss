@@ -1,0 +1,154 @@
+// GOV.UK Toolkit
+@import "_colours";
+@import "_typography";
+@import "design-patterns/_buttons.scss";
+
+$default-panel-background-color: #F8F8F8;
+$default-panel-border-color: #c2c2c2;
+
+$info-background: #D2E8F2;
+$link-color-hover: #1D97FF;
+
+$selected-item-background-color: #D5E9F4;
+
+$button-border-radius: 4px;
+$button-primary-color: #01A75F;
+$button-secondary-color: $grey-3;
+$button-warning-color: $red;
+
+$labeled-content-label-width: 25%;
+$labeled-content-block-width: 40%;
+
+@mixin link-style {
+  color: #2E3191;
+  cursor: pointer;
+  text-decoration: underline;
+  &:hover {
+    color: $link-color-hover;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+@mixin panel-style($background-color: $default-panel-background-color, $border-color: $default-panel-border-color) {
+  background-color: $background-color;
+  border-top: 1px solid $border-color;
+  border-bottom: 1px solid $border-color;
+  label {
+    font-weight: normal;
+  }
+}
+
+
+a.toggle-hidden:before {
+  border-left-color: #333333;
+  border-right-color: #333333;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-right: 4px;
+  vertical-align: middle;
+  border-left: 4px solid #000;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  content: "";
+}
+
+a.toggle-visible:before {
+  border-top-color: #333333;
+  border-bottom-color: #333333;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-right: 4px;
+  vertical-align: middle;
+  border-top: 4px solid #000;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+  content: "";
+}
+
+.inline-help p.collapse { margin-top: 8px; }
+
+
+main { padding-top: 12px; }
+
+.indent {
+  text-indent: 10px;
+}
+
+.button{
+  @include button($button-primary-color);
+  @include border-radius($button-border-radius);
+  // transition: opacity 0.8s;
+}
+
+.button-secondary{
+  @include button($button-secondary-color);
+  @include border-radius($button-border-radius);
+}
+
+.button-warning{
+  @include button($button-warning-color);
+  @include border-radius($button-border-radius);
+}
+
+details summary{
+  @include link-style
+}
+
+article li {
+  font-size: inherit;
+  li {
+    font-size: inherit;
+  }
+}
+
+a.disabled {
+  opacity: 0.5;
+  &:hover { text-decoration: none; cursor: default; }
+}
+
+.fake-link{
+  @include link-style
+}
+
+.big {
+  zoom: 150%;
+}
+
+
+.labeled-content {
+  display: block;
+  position: relative;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  
+  .content-label {
+    vertical-align: top;
+    display: inline-block;
+    width: $labeled-content-label-width;
+  }
+
+  .content {
+    display: inline-block;
+    
+    .money-input {
+      * { display: inline-block }
+      input{
+        display: inline-block;
+        width: 100 + $labeled-content-block-width;
+      }
+    }
+  }
+
+  .content-block {
+    display: inline-block;
+    width: $labeled-content-block-width;
+  }
+}
+
+#claims-list .claim-item .content-label {
+  font-weight: bold;
+}
