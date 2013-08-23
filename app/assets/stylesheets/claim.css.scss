@@ -770,23 +770,6 @@ h2.info-notice {
 
 }
 
-.panel-file-upload{
-  @include panel-style(#D5EEEA);
-
-  padding: 15px 5px 15px 5px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-
-  a{
-    margin-left: 5px;
-  }
-
-  input {
-    float: right;
-    margin-right:5px;
-  }
-}
-
 #arrears-table{
   margin-top: 25px;
 }
@@ -863,6 +846,7 @@ h2.info-notice {
 #start-continue-claim{
   margin-top: 50px;
 }
+
 
 ol.large-steps, ul.large-steps {
   list-style-type: none;
@@ -1011,6 +995,22 @@ a.disabled {
 
     }
   }
+}
 
+.panel-file-upload{
+  @include panel-style(#D5EEEA);
+
+  padding: 15px 5px 15px 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+
+  a{
+    margin-left: 5px;
+  }
+
+  input {
+    float: right;
+    margin-right:5px;
+  }
 }
 

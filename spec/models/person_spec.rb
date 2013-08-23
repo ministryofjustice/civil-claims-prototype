@@ -1,13 +1,6 @@
 require 'spec_helper'
 
 describe Person do
-  it 'can be / has been seeded' do
-    Claimant.all.each do |u|
-      assert u.class == Claimant
-    end
-    assert Staff.all.count == 1
-  end
-
   it 'can be factory generated' do
     assert FactoryGirl.create(:person)
   end
@@ -32,12 +25,12 @@ describe Person do
   end
 
   it 'selects a pre-seeded user at random' do
-    user = Claimant.at_random
+    user = Claimant.create_random
     assert user.type == 'Claimant'
   end
 
   it 'find all claims started by a user' do
-    user = Person.at_random
+    user = Person.create_random
 
     assert user.claims.size == 0
 

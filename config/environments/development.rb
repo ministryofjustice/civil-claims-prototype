@@ -28,4 +28,6 @@ CivilClaims::Application.configure do
   config.assets.debug = true
 
   config.action_controller.default_url_options = {:host => "localhost:3000"}
+
+  Rails.env = 'development'
 end
