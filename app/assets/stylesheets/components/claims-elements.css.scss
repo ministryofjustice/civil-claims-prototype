@@ -140,3 +140,112 @@ ol.large-steps, ul.large-steps {
     }
   }
 }
+
+
+
+// SECONDARY NAV
+nav#secondary {
+  padding: 0px 30px;
+  border-bottom: 2px solid #ccc;
+  margin-bottom: 20px;
+  ol {
+    list-style: decimal inside none;
+    margin: 0px 0px -2px 0px;
+    counter-reset: pos;
+    li {
+      display: inline-block;
+      margin-left:-4px;
+      a {
+        font-size:16px;
+        color: #555;
+        border-bottom: 2px solid #ccc;
+        padding: 0px 8px 10px 12px;
+        display: block;
+        &:before {
+          counter-increment: pos;
+          content: counter(pos) ".";
+          float: left;
+          margin-left: -2px;
+        }
+        &:hover { 
+          text-decoration: none;
+          cursor: default;
+        }
+        &.active {
+          border-bottom: 2px solid #7fb299;
+          font-weight: bold;
+        }
+        &.active:before {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+
+
+// PERSON
+
+.person, article .address.well.address-editor {// I know. horrible.
+  padding-left: 6em;
+  margin-bottom: -1px;
+  .name {
+    font-weight: bold;
+  }
+}
+
+.person .filler {
+  height: 20px; display:block;
+}
+
+.person.particulars {
+  background-color: #d7edeb; border-color: #b5d5d0;
+}
+
+.claimant, .defendant, .address-for-possession, .particulars {
+  background-repeat: no-repeat;
+  background-position: 18px 20px;
+  background-size: 63px 68px;
+  border-width: 1px 0;
+  border-style: solid;
+}
+
+.claimant {
+  background-color: #d5edea;
+  background-image: image-url('claimant.png');
+  border-color: #bddcd6;
+}
+
+.defendant {
+  background-color: #fde4d6;
+  background-image: image-url('defendant.png');
+  border-color: #f49365;
+  background-size: 52px 68px;
+  background-position: 24px 20px;
+}
+
+.address-for-possession {
+  background-color: #d5e8f2;
+  background-image: image-url('address.png');
+  border-color: #308bc4;
+  background-size: 58px 63px;
+  background-position: 20px 20px;
+
+  .address-linear {
+    font-weight: bold;
+  }
+
+  &> span {
+    display:block;
+  }
+}
+
+
+
+// ADDRESS
+
+.address-linear {
+  span:after { content: ",  "; }
+  span:last-child:after { content: ""; }
+}

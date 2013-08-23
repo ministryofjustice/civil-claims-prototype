@@ -1,0 +1,129 @@
+@import "_colours";
+@import "_typography";
+@import "design-patterns/_buttons.scss";
+
+// generic
+.form-row {
+  clear: both;
+  margin-bottom: 10px;
+
+  label {
+    float: left;
+    text-align: left;
+    width: 160px;
+  }
+
+  input[type=text], input[type=tel], input[type=email], select { 
+    width: 20em;
+    min-height: 30px;
+    height: 30px;
+    padding-top:4px;
+    padding-bottom:4px;
+
+    &.title  {
+      width: 6em;   
+    }
+    &.postcode {
+      width: 7.5em;
+    }
+    &.nolabel {
+      margin-left: 160px;
+    }
+  }
+}
+
+form {
+  h3 {
+    margin-top: 40px;
+  }
+}
+
+.address-editor .form-group {
+  &> div {
+    padding:4px 10px;
+  }
+
+  h4 {
+    margin-bottom: 10px;
+  }
+
+  label {
+    margin-bottom: 0;
+  }
+
+  margin: 10px 0;
+}
+
+.striped-radios div {
+
+  position: relative;
+  z-index: 0;
+
+  input {
+    display: block;
+    height: 2em;
+    margin-top: 0px;
+  }
+
+  input[type="radio"]:checked + label {
+    background-color: #d9edf7;
+  }
+
+  label {
+    position: absolute;
+
+    padding-top: 9px;
+    padding-left: 34px;
+
+    z-index: -1;
+    
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+  }
+}
+
+
+
+// specific
+
+form.add-additional-person {
+  margin-top: 21px;
+  margin-bottom: 20px;
+}
+
+.edit-person, .address-container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  .btn-danger { margin-left: 21em; }
+}
+
+.address-container {
+  .address_postcode {
+    display: inline-block;
+    .postcode { display: inline-block;  width: 7.5em; }
+  }
+  a.find-uk-address { display: inline-block; margin-left: 10px; }
+  
+  .inline-help {
+    margin-bottom: 5px;
+    a.toggle-help  { font-size: 80%; margin-left: 160px; }
+  }
+
+  .manual-address, .copy-address {
+    display: inline-block;
+    margin-left: 10em;
+    margin-bottom: 10px;
+  }
+
+  .manual-address {
+    width: 100%;
+  }
+
+  .button-group {
+    margin:20px 0;
+  }
+
+}
