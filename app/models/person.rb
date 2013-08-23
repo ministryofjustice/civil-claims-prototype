@@ -2,8 +2,10 @@ class Person < ActiveRecord::Base
   belongs_to :claim
   belongs_to :address
 
+  scope :randomly, -> { order("RANDOM()") }
+
   def self.at_random
-    Claim.order("RANDOM()").first
+    randomly.first
   end
 
   def claims
