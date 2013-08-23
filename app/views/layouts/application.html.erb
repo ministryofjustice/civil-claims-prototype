@@ -10,19 +10,21 @@
   <%= render 'shared/phase_indicator' %>
   <%= render 'layouts/header' %>
   
-  <main id="wrapper" role="main">
-    <header class="page-header group">
-      <h1>
-        <span>Service</span> 
-        Recover Property:<br />
-        Make a possession claim online
-      </h1>
-    </header>
+  <div id="wrapper">
+    <main role="main">
+      <header class="page-header group">
+        <h1>
+          <span>Service</span> 
+          Recover Property:<br />
+          Make a possession claim online
+        </h1>
+      </header>
 
-    <%= render 'layouts/messages' %>
-    <%= yield %>
-    
-  </main>
+      <%= render 'layouts/messages' %>
+      <%= yield %>
+      
+    </main>
+  </div>
 
   <%= render'shared/footer' %>
 
