@@ -25,12 +25,12 @@ describe Person do
   end
 
   it 'selects a pre-seeded user at random' do
-    user = Claimant.create_random
+    user = Claimant.at_random
     assert user.type == 'Claimant'
   end
 
   it 'find all claims started by a user' do
-    user = Person.create_random
+    user = Person.at_random
 
     assert user.claims.size == 0
 
