@@ -23,8 +23,14 @@
         <%= f.input_field :street_1, :label => 'Street' %>
         <span class='icon-container' style='display:none' />
       <% end %>
-      <%= f.input :street_2, label: false %>
-      <%= f.input :street_3, label: false %>
+
+      <%= f.input :street_2 do %>
+        <%= f.input_field :street_2, :label => ' ' %>
+      <% end %>
+
+      <%= f.input :street_3 do %>
+        <%= f.input_field :street_3, :label => ' ' %>
+      <% end %>
       <%= f.input :town %>
       <%= f.input :county %>
     <% end %>
