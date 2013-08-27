@@ -1,0 +1,37 @@
+@import "_colours";
+@import "_typography";
+@import "design-patterns/_buttons.scss";
+@import "claims-vars";
+
+.panel-default {
+  @include panel-style;
+  padding: 20px 90px 20px 90px;
+  margin: 10px 0px 10px 0px;
+}
+
+.panel-error {
+  @include panel-style(#F2DEDE,#EED3D7);
+  padding: 5px 5px 5px 5px;
+  color: #BB4A48;
+  text-align: center;
+}
+
+.panel-info {
+  background-color: #dfe0e2;
+  padding: 15px 15px 15px 15px;
+  margin: 15px 0px 15px 0px;
+}
+
+#claims-list {
+  list-style-type: none;
+  list-style-image: none;
+}
+#claims-list .claim-item {
+  list-style-type: none;
+  margin-bottom: 40px;
+  margin-top: 25px;
+}
+
+.save-close-panel {
+  margin: 30px 0px 10px;
+}

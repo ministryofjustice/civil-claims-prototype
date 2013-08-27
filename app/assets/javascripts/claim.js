@@ -3,7 +3,7 @@ window.claim = window.claim || {}
 $(document).ready(function() {
 
   // usernav dropdown
-  $('.dropdown a').on('click', function (e) {
+  $('.dropdown > a').on('click', function (e) {
     $(this).parent().toggleClass('open');
   });
 

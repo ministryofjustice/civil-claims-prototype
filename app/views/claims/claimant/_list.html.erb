@@ -1,38 +1,38 @@
 <ul id="claims-list">
   <% claims.each do |claim| %>
-    <li class="claim-item">
-      <div class="labeled-content">
-        <div class="content-label">Claim Ref #</div>
-        <div class="content block"><%= claim.id %></div>
-      </div>
+    <li class="claim-item panel-default">
+      <span class="labeled-content">
+        <span class="content-label">Claim Ref #</span>
+        <span class="content block"><%= claim.id %></span>
+      </span>
 
-      <div class="labeled-content">
-        <div class="content-label">Landlord<%= "s" if claim.claimants.count>1 %></div>
-        <div class="content block">
+      <span class="labeled-content">
+        <span class="content-label">Landlord<%= "s" if claim.claimants.count>1 %></span>
+        <span class="content block">
           <% claim.claimants.each do |claimant| %>
             <%= "#{claimant.title} #{claimant.full_name}".strip %> <br>
           <% end %>
-        </div>
-      </div>
+        </span>
+      </span>
 
-      <div class="labeled-content">
-        <div class="content-label">Tenant<%= "s" if claim.defendants.count>1 %></div>
-        <div class="content block">
+      <span class="labeled-content">
+        <span class="content-label">Tenant<%= "s" if claim.defendants.count>1 %></span>
+        <span class="content block">
           <% claim.defendants.each do |defendant| %>
             <%= "#{defendant.title} #{defendant.full_name}".strip %><br>
           <% end %>
-        </div>
-      </div>
+        </span>
+      </span>
 
-      <div class="labeled-content">
-        <div class="content-label">Property</div>
-        <div class="content block">
+      <span class="labeled-content">
+        <span class="content-label">Property</span>
+        <span class="content block">
           <%= claim.address_for_possession.street_1 %> <br>
           <%= claim.address_for_possession.street_2 %> <br>
           <%= claim.address_for_possession.town %> <br>
           <%= claim.address_for_possession.postcode %> <br>
-        </div>
-      </div>
+        </span>
+      </span>
 
       
       <details id="claims-item-status">
