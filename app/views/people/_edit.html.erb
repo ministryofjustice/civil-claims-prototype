@@ -50,8 +50,7 @@
     <%= render partial: "addresses/edit", formats: [:html], locals: {claim: claim, person: person, address: person.address, options: options} %>
 
     <%# Save / Cancel / Remove %>
-    <div class='btn-toolbar'>
-      <div class='btn-group'>
+    <div class='buttons'>
         <%= button_tag(type: 'submit', name: 'commit', value: 'save', class: "button") do %>
           <%= options[:save_button_text] || 'Save details' %>
         <% end %>
@@ -59,10 +58,9 @@
         <% unless options.has_key? :no_cancel %>
           <%= f.submit :Cancel, :class => 'button-secondary' %>
         <% end %>
-      </div>
-      <div class='btn-group' style = 'margin-left:11em'>
+
         <% if options.has_key? :show_remove_button %>
-          <%= f.submit :Remove, :class => "button-warning" %>
+          <%= f.submit :Remove, :class => "button-warning float" %>
         <% end %>
       </div>
     </div>
