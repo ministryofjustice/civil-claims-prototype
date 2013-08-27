@@ -2,6 +2,7 @@
 @import "_typography";
 @import "design-patterns/_buttons.scss";
 @import "claims-vars";
+@import "claims-mixins";
 
 .panel-default {
   @include panel-style;
