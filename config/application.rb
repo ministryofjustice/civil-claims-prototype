@@ -49,11 +49,11 @@ module CivilClaims
       claims-global.css
       claims-layout.css
       claims-components.css
-      claims-usernav.css
-      claims-tabs.css
-      claims-panels.css
-      claims-forms.css
-      claims-elements.css
+      components/claims-usernav.css
+      components/claims-tabs.css
+      components/claims-panels.css
+      components/claims-forms.css
+      components/claims-elements.css
 
       gov-static/gov-ie.js
     )
