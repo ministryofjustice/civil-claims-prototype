@@ -1,13 +1,6 @@
 require 'spec_helper'
 
 describe Person do
-  it 'can be / has been seeded' do
-    Claimant.all.each do |u|
-      assert u.class == Claimant
-    end
-    assert Staff.all.count == 1
-  end
-
   it 'can be factory generated' do
     assert FactoryGirl.create(:person)
   end

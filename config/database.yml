@@ -1,19 +1,14 @@
 development:
-#   adapter: postgresql
-#   database: pcol_dev
-#   host: localhost
   adapter: sqlite3
   database: db/development.sqlite3
   pool: 5
   timeout: 5000
 
 test:
-#   adapter: postgresql
-#   database: pcol_test
-  pool: 5
-  timeout: 5000
   adapter: sqlite3
   database: db/test.sqlite3
+  pool: 5
+  timeout: 5000
 
 production:
   adapter: postgresql
