@@ -1,4 +1,4 @@
-<%= simple_form_for( [claim, person], url: claim_person_url(claim, person), remote: true, html: { :id => 'edit-person-'+person.id.to_s, :class => 'form-horizontal edit-person'  } ) do |f| %>
+<%= simple_form_for( [claim, person], url: claim_person_path(claim, person), remote: true, html: { :id => 'edit-person-'+person.id.to_s, :class => 'form-horizontal edit-person'  } ) do |f| %>
   <% if options.has_key? :delete_on_cancel %>
     <input type='hidden' name='delete_on_cancel' />
   <% end %>
