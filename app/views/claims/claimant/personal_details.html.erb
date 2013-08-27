@@ -20,7 +20,7 @@
       <h3>Tenant details</h3>
       <%= render :partial => 'people/display', :locals => {claim: @claim, person_type: 'defendant'} %>
 
-      <h3>Address for possession</h3>
+      <h3>Property details</h3>
       <% address = @claim.address_for_possession %>
       <% options = { :show_edit_link => true } %>
       <% if address.postcode.blank? %> 
