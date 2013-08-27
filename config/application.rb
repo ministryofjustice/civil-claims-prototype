@@ -46,6 +46,10 @@ module CivilClaims
       gov-static/gov-fonts-ie8.css
       gov-static/gov-print.css
       moj-base.css
+      claims-global.css
+      claims-layout.css
+      claims-components.css
+
       gov-static/gov-ie.js
     )
   end
