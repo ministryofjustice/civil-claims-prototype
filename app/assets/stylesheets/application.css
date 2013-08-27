@@ -11,7 +11,9 @@
  
  *= require_self
  *= require moj-base
- *= require claim
+ *= require claims-global
+ *= require claims-layout
+ *= require claims-components
  */
 
 /*

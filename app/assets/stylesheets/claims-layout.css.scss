@@ -1,0 +1,26 @@
+main {
+  max-width: 1020px;
+  margin: auto;
+
+  header, article, p.lead {
+    max-width: 960px;
+    margin: auto;
+  }
+
+  p.lead {
+    margin-bottom: 2em;
+  }
+}
+
+article {
+  > h3 {
+    margin-top: 30px;
+  }
+  section {
+    max-width: 850px;
+    margin: auto;
+    padding-bottom: 20px;
+  }
+}
+
+

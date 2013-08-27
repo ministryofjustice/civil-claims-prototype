@@ -1,0 +1,111 @@
+@import "_colours";
+@import "_typography";
+@import "design-patterns/_buttons.scss";
+
+div.user-data { 
+  border-bottom: 1px solid #ccc;
+  max-width: 960px;
+  padding: 0 30px;
+  background-color: #fff;
+  margin: 0 auto;
+  > ul.nav { 
+    float: right; 
+    > li > a {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+  } 
+}
+
+.navbar {
+  ul {
+    padding: 0;
+    margin: 10px 0;
+  }
+
+  li {
+    display: inline;
+
+    a {
+      padding: 0 10px;
+      text-decoration: underline;
+
+      &:hover {
+        color: #333;
+        text-decoration: none;
+      }
+    }
+
+    &.dropdown {
+      a {
+        .caret {
+          border-bottom-color: #777777;
+          border-top: 4px solid #777777;
+          border-left: 4px solid transparent;
+          border-right: 4px solid transparent;
+          content: "";
+          display: inline-block;
+          height: 0;
+          margin-left: 2px;
+          vertical-align: middle;
+          width: 0;
+        }
+      }
+    }
+
+    ul {
+      display: none;
+    }
+
+    &.open {
+      a {
+        color: #555;
+        background-color: #d5d5d5;
+      }
+      ul {
+        background-clip: padding-box;
+        background-color: #FFFFFF;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        border-radius: 0;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.176);
+        display: block;
+        list-style: none outside none;
+        margin: 10px 0 0 0;
+        min-width: 160px;
+        padding: 5px 0;
+        position: absolute;
+        z-index: 1000;
+
+        li {
+          display: block;
+
+          a {
+            background-color: transparent;
+            color: #777;
+            padding: 3px 10px;
+            display: block;
+            text-decoration: none;
+            color: $black;
+
+            &:hover {
+              background-color: #d5d5d5;
+            }
+
+            &.current_role {
+              font-weight: bold;
+            }
+          }
+
+          &.divider {
+            border-top: 1px solid #eee;
+            margin: 5px 0 10px;
+          }
+        }
+      }
+    }
+  }
+
+  a {
+    color: #777;
+  }
+}

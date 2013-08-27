@@ -1,0 +1,251 @@
+@import "_colours";
+@import "_typography";
+@import "design-patterns/_buttons.scss";
+@import "claims-vars";
+
+
+
+// CLAIMS STATUS
+
+#claims-list{
+  li {
+    margin-bottom: 20px;
+  }
+  .claim-item {
+    @extend .panel-default;
+    margin-top: 25px;
+    margin-bottom: 40px;
+    
+    .content-label{
+      font-weight: bold;
+    }
+    
+    #claim-item-action-buttons{
+      margin: 25px 0px 10px 0px;
+    }
+    #claims-item-status-label{
+      @extend details;
+    }
+  }
+}
+
+#claims-item-status {
+  position: relative;
+  summary{
+    text-decoration: none;
+    display: inline-block;
+    #claims-item-status-label{
+      display: inline;
+      text-decoration: underline;
+    }
+    #claims-item-status-header{
+      margin-left: 105px;
+      text-decoration: none;
+      color: #000;
+      &:hover{
+        color: #000;
+      }
+    }
+  }
+
+  #claims-item-status-content{
+    position: relative;
+    margin-left: 150px;
+    margin-top: 15px;
+
+// hey hey refactor this span
+    #claims-item-status-content-list{
+      
+      span {
+        position: inline;
+        margin-right: 10px;
+
+        font-size: 12px;
+        font-weight: bold;
+        line-height: 1;
+        color: #fff;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: baseline;
+        
+        background-color: #01A75F;
+        border-radius: 9999px;
+      }
+
+      li {
+        list-style-type: none;
+        list-style-image: none;
+      }
+
+      .claims-item-status-item-yes span { padding: 4px 6px; }
+      .claims-item-status-item-no span { 
+        background-color: $grey-3;
+        padding: 4px 11px; 
+      }
+
+    }
+  }
+
+}
+
+
+
+// LARGE STEPS
+
+ol.large-steps, ul.large-steps {
+  list-style-type: none;
+  position: relative;
+
+  li {
+    position: relative;        
+    padding-left: 15px;
+    margin: 40px 0;
+
+    a {
+      display: block;
+    }
+    
+    img {
+      margin-left: 60px;
+      vertical-align: top;
+    }
+    
+    div {
+      display: inline-block;
+      width: 50%;
+    
+      span {
+        position: absolute;
+        display:inline-block;
+        left: -25px;
+        top: 0;
+        padding: 5px 8px;
+
+        font-size: 12px;
+        font-weight: bold;
+        line-height: 1;
+        color: #fff;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        
+        background-color: #000;
+        border-radius: 20px;
+      }
+
+      .step-title {
+        font-weight: bold;
+      }
+
+    }
+  }
+}
+
+
+
+// SECONDARY NAV
+nav#secondary {
+  padding: 0px 30px;
+  border-bottom: 2px solid #ccc;
+  margin-bottom: 20px;
+  ol {
+    list-style: decimal inside none;
+    margin: 0px 0px -2px 0px;
+    counter-reset: pos;
+    li {
+      display: inline-block;
+      margin-left:-4px;
+      a {
+        font-size:16px;
+        color: #555;
+        border-bottom: 2px solid #ccc;
+        padding: 0px 8px 10px 12px;
+        display: block;
+        &:before {
+          counter-increment: pos;
+          content: counter(pos) ".";
+          float: left;
+          margin-left: -2px;
+        }
+        &:hover { 
+          text-decoration: none;
+          cursor: default;
+        }
+        &.active {
+          border-bottom: 2px solid #7fb299;
+          font-weight: bold;
+        }
+        &.active:before {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+
+
+// PERSON
+
+.person, article .address.well.address-editor {// I know. horrible.
+  padding-left: 6em;
+  margin-bottom: -1px;
+  .name {
+    font-weight: bold;
+  }
+}
+
+.person .filler {
+  height: 20px; display:block;
+}
+
+.person.particulars {
+  background-color: #d7edeb; border-color: #b5d5d0;
+}
+
+.claimant, .defendant, .address-for-possession, .particulars {
+  background-repeat: no-repeat;
+  background-position: 18px 20px;
+  background-size: 63px 68px;
+  border-width: 1px 0;
+  border-style: solid;
+}
+
+.claimant {
+  background-color: #d5edea;
+  background-image: image-url('claimant.png');
+  border-color: #bddcd6;
+}
+
+.defendant {
+  background-color: #fde4d6;
+  background-image: image-url('defendant.png');
+  border-color: #f49365;
+  background-size: 52px 68px;
+  background-position: 24px 20px;
+}
+
+.address-for-possession {
+  background-color: #d5e8f2;
+  background-image: image-url('address.png');
+  border-color: #308bc4;
+  background-size: 58px 63px;
+  background-position: 20px 20px;
+
+  .address-linear {
+    font-weight: bold;
+  }
+
+  &> span {
+    display:block;
+  }
+}
+
+
+
+// ADDRESS
+
+.address-linear {
+  span:after { content: ",  "; }
+  span:last-child:after { content: ""; }
+}
