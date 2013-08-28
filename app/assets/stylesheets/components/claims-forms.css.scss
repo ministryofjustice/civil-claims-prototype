@@ -208,3 +208,53 @@ form.add-additional-person {
     position:relative;
   }
 }
+
+
+.person .filler {
+  height: 20px;
+  display:block;
+}
+
+.person.particulars { background-color: #d7edeb; border-color: #b5d5d0; }
+
+#statement-of-truth {
+  form.edit_claim {
+    margin-top: 30px; 
+    .claim_signature {
+      margin-top:40px;
+      margin-bottom:40px;
+
+      label {
+        width: auto;
+        font-weight: bold;
+        padding-left: 20px;
+        vertical-align: middle;
+        input {
+          margin-left: -20px;
+          float: left;
+        }
+      }
+    }
+    .warning span {
+      font-family: validators;
+      color: red;
+      float: left;
+      font-size: 27px;
+      margin-right: 20px;
+      margin-top: 5px;
+    }
+  }
+
+  h2 {
+    margin: 50px 0 10px 0;
+  }
+  h4 {
+    font-weight: bold; margin-top: 20px;
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+  .particulars span {
+    display: block;
+  }
+}

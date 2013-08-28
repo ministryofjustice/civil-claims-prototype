@@ -43,4 +43,9 @@ describe Person do
 
     assert user.claims.size == count
   end
+
+  it 'finds a preseeded UserJourney person' do
+    user = Claimant.find_by :uj => true
+    assert user.type == 'Claimant'
+  end
 end

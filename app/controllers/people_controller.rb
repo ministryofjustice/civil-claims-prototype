@@ -9,11 +9,11 @@ class PeopleController < ApplicationController
 
       case params[:role]
       when 'claimant'
-        flash[:notice] = 'Logged in as a claimant.'
-        session[:user] = Claimant.at_random.id
+        session[:user] = Claimant.find_by( uj: true ).id
       when 'defendant'
-        flash[:notice] = 'Logged in as a defendant.'
-        session[:user] = Defendant.at_random.id
+        new_user = Defendant.find_by( uj: true ).dup
+        new_user.save
+        session[:user] = new_user.id
       when 'staff'
         flash[:notice] = "Logged in as Court Staff."
         session[:user] = Staff.at_random.id

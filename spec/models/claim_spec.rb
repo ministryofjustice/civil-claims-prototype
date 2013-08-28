@@ -40,4 +40,9 @@ describe Claim do
     assert @claim.save
     assert @claim.defenses.size == 1
   end
+
+  it 'can build a claim as per the user journey' do
+    @claim.create_as_per_user_journey
+    assert @claim.save
+  end
 end

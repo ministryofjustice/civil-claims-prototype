@@ -2,12 +2,13 @@ class DefencesController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
   def show_login
-  	@claims = Claim.all
   	render "claims/defence/login"
   end
 
   def login
-    @claim = Claim.find(params[:claim_id])
+    @claim = Claim.new.create_as_per_user_journey
+    @claim.save
+
     redirect_to claim_defence_path @claim
   end
 
@@ -46,7 +47,7 @@ class DefencesController < ApplicationController
     render "claims/defence/preview" 
   end
 
-  def confirmation
+  def confirm
     @claim = @claim || Claim.find(params[:claim_id])
     session[:referer] = 'confirmation'
     render "claims/defence/confirmation" 

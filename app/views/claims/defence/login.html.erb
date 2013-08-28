@@ -1,14 +1,7 @@
 <h1> Login here please</h1>
 <br>
 
-<h3>Login to one of these claims</h3>
+<h3>Login</h3>
 <form action="/claims/defence"  method="post">
-  <div class="panel-default">
-    <select name="claim_id" id="select-claim">
-      <% @claims.each do |claim| %>
-      <option value="<%= claim.id %>">claim <%= claim.id %></option>
-    <% end %>
-    </select>
-  </div>
   <button class="button">Login</button>
 </form>
