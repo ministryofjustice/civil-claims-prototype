@@ -165,7 +165,7 @@ ActiveRecord::Schema.define(version: 20130828140636) do
     t.datetime "updated_at"
     t.string   "dx_number"
     t.string   "dx_exchange"
-    t.boolean  "seeded",      default: false
+    t.boolean  "uj",          default: false
   end
 
   create_table "steps_already_taken_answers", force: true do |t|

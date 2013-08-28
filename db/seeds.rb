@@ -17,8 +17,9 @@ Claimant.create({
     town: 'London',
     postcode: 'SW1 1SZ'
   }),
-  seeded: true
+  uj: true
 })
+
 Defendant.create({
   title: 'Mr',
   full_name: 'Louis Robert Stevenson',
@@ -31,7 +32,8 @@ Defendant.create({
     town: 'London',
     postcode: 'SE26 6UP'
   }),
-  seeded: true
+  uj: true
 })
+
 Staff.create(Person.generate)
 Judge.create(Person.generate)
