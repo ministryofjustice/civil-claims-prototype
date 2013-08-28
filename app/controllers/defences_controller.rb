@@ -1,5 +1,4 @@
 class DefencesController < ApplicationController
-  skip_before_filter :verify_authenticity_token
 
   def show_login
   	render "claims/defence/login"
