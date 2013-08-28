@@ -42,7 +42,7 @@ class DefencesController < ApplicationController
     render "claims/defence/preview" 
   end
 
-  def confirm
+  def confirmation
     @claim = @claim || Claim.find(params[:claim_id])
     render "claims/defence/confirmation" 
   end

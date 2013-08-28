@@ -9,7 +9,7 @@ module DefenceHelper
       { :text => 'About the claim', :path => 'about_claim' },
       { :text => 'About you', :path => 'about_defence' },
       { :text => 'Preview and submit', :path => 'preview' },
-      { :text => 'Confirmation', :path => 'confirm' }
+      { :text => 'Confirmation', :path => 'confirmation' }
     ]
   end
 
