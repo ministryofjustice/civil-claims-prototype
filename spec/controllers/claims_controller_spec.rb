@@ -3,7 +3,7 @@ require 'spec_helper'
 describe ClaimsController do
   it 'should create a Claim' do
     assert_difference 'Claim.count' do
-      session[:user] = Person.at_random.id
+      session[:user] = Claimant.at_random.id
       post :create
     end
 
