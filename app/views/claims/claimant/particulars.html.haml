@@ -1,0 +1,140 @@
+= render_claimant_navigation
+
+.content-wrap
+  .page-header
+    %h1 Step 2 of 6 - Claim particulars
+
+  %section#edit-claim
+
+    %p Add all details you have about the claim and upload further information if required.
+    %a.fake-link About adding claim particulars
+
+  = simple_form_for @claim, url: claim_path(@claim) do |f|
+
+    %article{:role => 'article'}
+      / GROUNDS FOR POSSESSION
+      %section#grounds-for-possession
+        %h3 Grounds for possession
+        .panel-default
+
+          .striped-choice
+            %div
+              = f.check_box :non_payment_of_rent
+              = f.label :non_payment_of_rent, "Non payment of rent"
+            %div
+              = f.check_box :anti_social_behaviour
+              = f.label :anti_social_behaviour, "Anti-social behaviour"
+            %div
+              = f.check_box :property_misuse
+              = f.label :property_misuse, "Misuse of property"
+            %div
+              = f.check_box :other_breach_of_tenancy, :onClick => "toggle_panel(this,'other-breach');"
+              = f.label :other_breach_of_tenancy, "Other breach of tenancy"
+            %div#other-breach{:hidden => @claim.other_breach_of_tenancy? ? false : true}
+              Please specify
+              = f.text_area :other_breach, :rows => 3
+          %a.fake-link More about grounds for possession
+
+      / STEPS ALREADY TAKEN
+      %section#steps-taken
+        %h3 Steps already taken
+        .panel-default
+          %strong Types of notice served
+
+          .striped-choice
+            %div
+              = f.check_box :notice_to_quit, :onClick => "toggle_panel(this, 'notice-served-date');"
+              = f.label :notice_to_quit, "Notice to quit"
+
+          #notice-served-date.all-inline{:hidden => @claim.notice_to_quit? ? false : true }
+            %div= f.label :notice_served_date, "Date notice served"
+            %div= f.date_field :notice_served_date
+
+          .striped-choice
+            %div
+              = f.check_box :lease_breach
+              = f.label :lease_breach, "Breach of lease"
+            %div
+              = f.check_box :seeking_possetion
+              = f.label :seeking_possetion, "Seeking possesion"
+            %div
+              = f.check_box :other_recovery_steps_taken, :onClick => "toggle_panel(this,'other-recovery-steps');"
+              = f.label :other_recovery_steps_taken, "Other recovery steps taken"
+            %div#other-recovery-steps{:hidden => @claim.other_recovery_steps_taken? ? false : true}
+              = f.text_area :other_recovery_steps, :rows => 3
+              = f.label :other_recovery_steps, "Please specify"
+          %a.fake-link More types of notices
+
+      / THE NEXT STEPS
+      %section#next-steps
+        %h3 Next steps
+        .panel-default
+          .striped-choice
+            %div
+              = f.check_box :claim_rental_arrears, :onClick => "toggle_panel(this,'rental-arrears');"
+              = f.label :claim_rental_arrears, "Claim rent arrears"
+            %div
+              = f.check_box :lease_forfeiture
+              = f.label :lease_forfeiture, "Forfeiture of the lease"
+
+          %details{:open => @claim.includes_human_rights_issues? ? true : false }
+            %summary Does, or will, the claim include any issues under the human rights act 1998
+            .striped-choice
+              %div
+                = f.check_box :includes_human_rights_issues
+                = f.label :includes_human_rights_issues, "Yes, I want to claim under the human rights act"
+
+      / ABOUT THE TENANCY
+      %section#about-tenancy
+        %h3 About the tenancy
+        .panel-default
+          
+          .labeled-content
+            .content-label
+              = f.label :tenancy_type
+            .content-block
+              = f.input :tenancy_type, label: false, collection: [["Assured shorthold tenancy", "assured-shorhold-tenancy"], ["Assured tenancy", "assured-tenancy"], ["Regulated tenancy", "regulated-tenancy"]], selected: f.object.tenancy_type || "assured-shorhold-tenancy"
+                
+              %a.fake-linkMore about tenancy types
+
+          .labeled-content
+            .content-label= f.label :tenancy_start_date
+            .content-block
+              = f.date_field :tenancy_start_date, :label => false
+
+          .labeled-content
+            .content-label= f.label :rental_amount
+            .content
+              .money-input
+                %strong &pound;
+                %div= f.text_field :rental_amount, :label => false,required: true
+
+          %div
+            %strong Rent frequency
+            .striped-choice
+              %div
+                = f.radio_button(:payment_frequency, 'monthly', :checked =>true)
+                = f.label :payment_frequency_monthly, 'Monthly'
+              %div
+                = f.radio_button :payment_frequency, 'fortnightly'
+                = f.label :payment_frequency_fortnightly, 'Fortnightly'
+              %div
+                = f.radio_button :payment_frequency, 'week'
+                = f.label :payment_frequency_week, 'Week'
+
+      / RENTAL ARREARS
+      = render partial: 'arrears/show', :locals => { f: f } 
+
+
+      / OTHER INFORMATION
+      %section
+        %h3 Other information
+        .panel-default
+          %p Any other information you would like to give about the claim
+          = f.text_area :other_information, :rows => 3
+
+      / SUPPORTING DOCUMENTTION
+      = render partial: 'attachments/show', :locals => { f: f }
+      
+      = form_for @claim do |f|
+        = render :partial => 'claims/claimant/save_continue', :locals => {f: f}

@@ -83,6 +83,7 @@ $(document).ready(function() {
   // click the Find Address link, see what happens
   $('#edit-claim').on('click', '.find-uk-address', function(evt) {
     evt.preventDefault();
+    console.log('!!');
     if($(this).hasClass('disabled')) {
       return false;
     }
@@ -91,7 +92,7 @@ $(document).ready(function() {
 
     $.ajax($(this).attr('href'), { 'data': { 'postcode': postcode } }).done(function(data, textStatus, jqXHR) {
       that.parents('form').find('.pick_address').remove();
-      that.parents('.control-group').after(data);
+      that.parents('.form-row').after(data);
     });
 
   });
