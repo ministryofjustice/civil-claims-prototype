@@ -91,7 +91,7 @@ $(document).ready(function() {
 
     $.ajax($(this).attr('href'), { 'data': { 'postcode': postcode } }).done(function(data, textStatus, jqXHR) {
       that.parents('form').find('.pick_address').remove();
-      that.parents('.control-group').after(data);
+      that.parents('.form-row').after(data);
     });
 
   });

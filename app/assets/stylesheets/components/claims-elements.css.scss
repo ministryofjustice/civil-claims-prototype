@@ -249,3 +249,34 @@ nav#secondary {
   span:after { content: ",  "; }
   span:last-child:after { content: ""; }
 }
+
+
+// COURT ADDRESS
+.court-badge {
+  > div {
+    float: left;
+  }
+  .court-address {
+    width: 55%;
+    padding: 0 5% 0 0;
+
+    span {
+      display: block;
+      &.dx {
+        margin: 20px 0;
+      }
+    }
+    h3 {
+      font-weight: bold;
+      border-bottom: 1px solid #c8c8c8;
+    }
+  }
+  .court-map {
+    width: 40%;
+    padding-top: 27px;
+
+    img {
+      display: block;
+    }
+  }
+}
