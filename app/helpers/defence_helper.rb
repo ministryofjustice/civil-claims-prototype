@@ -14,15 +14,15 @@ module DefenceHelper
   end
 
   def get_defence_next_navigation_path( referer )
-    current_page = -1
-    defence_navigation_linkdata.each_with_index do |lnk, i|
-      if lnk[:path] == session[:referer]
-        current_page = i
-      elsif current_page > -1
-        return url_for( controller: 'defences', action: lnk[:path], only_path: true )
-      end
+    link_data = defence_navigation_linkdata
+
+    current_page_index = link_data.index{|lnk| lnk[:path] == session[:referer]}
+    if current_page_index
+      return url_for( controller: 'defences', action: link_data[(current_page_index + 1).modulo(link_data.length)][:path], only_path: true )
+    else
+      return root_path
     end
-    return root_path
+
   end
 
 
