@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130828105950) do
+ActiveRecord::Schema.define(version: 20130828140636) do
 
   create_table "addresses", force: true do |t|
     t.string   "street_1"
@@ -165,6 +165,7 @@ ActiveRecord::Schema.define(version: 20130828105950) do
     t.datetime "updated_at"
     t.string   "dx_number"
     t.string   "dx_exchange"
+    t.boolean  "seeded",      default: false
   end
 
   create_table "steps_already_taken_answers", force: true do |t|
