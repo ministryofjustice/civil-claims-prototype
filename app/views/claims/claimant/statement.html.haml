@@ -1,0 +1,52 @@
+= render_claimant_navigation
+
+%article
+  %h1 Step 4 of 6 - Statement of truth
+  %p Please read through all the information that you have provided and ensure that to the best of your knowledge it is all correct. If anything is incorrect please go to the relevent section and update it.
+  %section#statement-of-truth
+    %h2 Landlord/s
+    - @claim.claimants.each do |claimant|
+      - options = {}
+      - options[:class] = 'claimant person well clearfix no-edit'
+      = render :partial => 'people/show', :locals => { person: claimant, options: options, claim: @claim }
+    %h2 Tenant/s
+    - @claim.defendants.each do |defendant|
+      - options = {}
+      - options[:class] = 'defendant person well clearfix'
+      = render :partial => 'people/show', :locals => { person: defendant, options: options, claim: @claim }
+    %h2 Address for possession
+    - address = @claim.address_for_possession
+    - options = {}
+    = render :partial => 'addresses/view_address_for_possession', :locals => { claim: @claim, address: address, options: options }
+    %h2 Claim particulars
+    .person.well.clearfix.particulars
+      %h4 Grounds for possession
+      - if @claim.non_payment_of_rent
+        %span Non payment of rent
+      - if @claim.anti_social_behaviour
+        %span Anti-social behaviour
+      - if @claim.property_misuse
+        %span Property misuse
+      - if @claim.other_breach_of_tenancy
+        %span
+          Other breach of tenancy: #{@claim.other_breach}
+      - if @claim.notice_to_quit
+        %h4 Notices served
+        %span
+          Notice to quit served on #{@claim.notice_served_date.strftime('%e %B %Y')}
+      - if @claim.tenancy_type
+        %h4 Tenancy type
+        %span= @claim.tenancy_type
+      - if @claim.tenancy_start_date
+        %h4 Tenancy start date
+        %span= @claim.tenancy_start_date.strftime('%e %B %Y')
+      - if @claim.rental_amount
+        %h4 Rental amount
+        %span &pound;#{@claim.rental_amount.to_s} #{@claim.payment_frequency}
+    = simple_form_for @claim, :class => 'form-horizontal' do |f|
+      = f.input :signature, :label => false, :inline_label => "I believe that the facts stated in this claim (and any attached documents) are to the best of my knowledge true and correct."
+      .well.warning
+        %p
+          %span> "
+          A person who completes a statement of truth without an honest belief in the truth of the given information is liable to proceedings for contempt of court.
+      = render :partial => 'claims/claimant/save_continue', :locals => {f: f}
