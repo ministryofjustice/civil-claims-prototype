@@ -1,4 +1,4 @@
-class DefenceController < ApplicationController
+class DefencesController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
   def show_login
@@ -12,8 +12,15 @@ class DefenceController < ApplicationController
   end
 
   def index
-  	
+    @claim = @claim || Claim.find(params[:claim_id])
+    @user = @user || Person.find(session[:user])
+
   	render "claims/defence/index"
-  	
   end
+
+  def view
+    @claim = @claim || Claim.find(params[:claim_id])
+    render "claims/defence/view" 
+  end
+
 end

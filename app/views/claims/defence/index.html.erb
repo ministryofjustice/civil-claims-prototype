@@ -1,3 +1,12 @@
+<div class="panel-default">
+  <p>Hey you: <strong><%= @user.full_name %></strong></p>
+  <p>Id: <strong><%= @user.id %></strong></p>
+</div>
+
+
+<div class="panel-default">
+  Claim id is: <strong><%= @claim.id %></strong>
+</div>
 
 <p>The landlord of the property you live in has started a repossession claim against you.</p>
 <div class="panel-default"> We stronly advise that you do not ignore the claim...</div>
@@ -7,13 +16,14 @@
 <ul>
 	<li>
 		<p><strong>view the claim</strong></p>
-		<button class="button">View claim</button>
+    <%= link_to "View claim", view_claim_defence_path, :class=>"button" %> 
+    <a href="/claims/3/defence/view">view</a>
 	</li>
 	<li>
 		<p><strong>make a defence in regards to the claim</strong></p>
 		<button class="button">Start defence</button>
 	</li>
-	<li>attend the court hearing</li>
+	<li><strong>attend the court hearing</strong></li>
 </ul>
 
 <br>
