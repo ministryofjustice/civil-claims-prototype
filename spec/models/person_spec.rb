@@ -30,7 +30,7 @@ describe Person do
   end
 
   it 'find all claims started by a user' do
-    user = Person.at_random
+    user = Claimant.at_random
 
     assert user.claims.size == 0
 
