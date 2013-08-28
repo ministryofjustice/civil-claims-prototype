@@ -51,6 +51,8 @@ CivilClaims::Application.routes.draw do
       get 'preview'
       get 'confirmation'
 
+      patch 'update'
+
     end
 
   end
