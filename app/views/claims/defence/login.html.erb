@@ -1,7 +1,22 @@
-<h1> Login here please</h1>
-<br>
+<p class='lead'>Your landlord or mortgage lender is taking court action against you to repossess your home.</p>
+<p class='lead'>For details and to find out what to do next, log in using your name and the password sent to you by email or text.</p>
+<article>
+  <section>
+    <h3>Sign in</h3>
+    <div class='moj-panel'>
+      <form class='simple_form'>
+        <div class="form-row clearfix string optional full_name">
+          <label class="string optional control-label" for="full_name">Full name</label>
+          <input class="string required" id="full_name" maxlength="255" name="full_name" required="required" size="255" type="text">
+          <span class="icon-container" style="display:none"></span>
+        </div>
 
-<h3>Login</h3>
-<form action="/claims/defence"  method="post">
-  <button class="button">Login</button>
-</form>
+        <div class="form-row clearfix string optional security_token">
+          <label class="string optional control-label" for="security_token">Security Token</label>
+          <input class="string required" id="security_token" maxlength="255" name="security_token" required="required" size="255" type="text">
+          <span class="icon-container" style="display:none"></span>
+        </div>
+      </form>
+      <a class='button' href='<%= defense_login_path %>'>Login</a>
+  </section>
+</article>

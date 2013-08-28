@@ -16,7 +16,7 @@ CivilClaims::Application.routes.draw do
   get 'address/picker' => 'address#picker', as: :address_picker
 
   get 'claims/defence' => 'defences#show_login'
-  post 'claims/defence' => 'defences#login'
+  get 'claims/defence/login' => 'defences#login', as: :defense_login
 
   resources :claims do
     member do
