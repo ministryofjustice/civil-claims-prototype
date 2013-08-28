@@ -4,12 +4,6 @@ module ClaimHelper
     editors[person.id]
   end
 
-  def nav_link( action, text )
-    link_to_unless_current text, :action => action do
-      link_to text, '#', :class => 'active'
-    end
-  end
-
   def login_link_to_role( role )
     url = '/login_as/' + role
     content = role.titleize
@@ -36,7 +30,7 @@ module ClaimHelper
   end
 
   def render_claimant_navigation
-    render :partial => 'claims/claimant/navigation', :locals => { :links => claimant_navigation_linkdata }
+    render :partial => 'shared/navigation', :locals => { :links => claimant_navigation_linkdata }
   end
 
   def get_next_navigation_path( referer )

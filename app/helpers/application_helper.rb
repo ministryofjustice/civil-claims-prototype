@@ -16,4 +16,10 @@ module ApplicationHelper
     render :partial => 'shared/inline_date', :locals => {f: form, date_field: date_field_symbol }
   end
 
+  def nav_link( action, text )
+    link_to_unless_current text, :action => action do
+      link_to text, '#', :class => 'active'
+    end
+  end
+
 end
