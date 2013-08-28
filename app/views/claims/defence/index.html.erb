@@ -17,11 +17,12 @@
 	<li>
 		<p><strong>view the claim</strong></p>
     <%= link_to "View claim", view_claim_defence_path, :class=>"button" %> 
-    <a href="/claims/3/defence/view">view</a>
 	</li>
 	<li>
 		<p><strong>make a defence in regards to the claim</strong></p>
+    <!-- check if defence is there and change to continue? -->
 		<button class="button">Start defence</button>
+    <%= link_to "Start defence", defence_personal_details_claim_defence_path, :class=>"button" %>
 	</li>
 	<li><strong>attend the court hearing</strong></li>
 </ul>

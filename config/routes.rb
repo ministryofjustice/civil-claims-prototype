@@ -45,6 +45,12 @@ CivilClaims::Application.routes.draw do
     resource :defence do
       get '/' => 'defences#index'
       get 'view'
+      get 'personal-details', to: 'defences#personal_details', as: :defence_personal_details
+      get 'about-the-claim', to: 'defences#about_claim', as: :defence_about_claim
+      get 'about-you', to: 'defences#about_defence', as: :defence_about_defence
+      get 'preview', to: 'defences#preview'
+      get 'confirmation', to: 'defences#confirm'
+
     end
 
   end
