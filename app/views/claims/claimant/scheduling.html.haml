@@ -1,0 +1,15 @@
+= render_claimant_navigation
+%article
+  %h2 Step 3 of 6 - Court scheduling
+  %p Based on court availability and the postcode you are claiming possession of, your hearing will take place in the following court or tribunal on the following day.
+  
+  %section.court-hearing-details-time
+    - date = (Date.today + 3.weeks)
+    %h3
+      %strong= date.strftime("%A %-d %B")
+      at
+      %strong 10:30am
+  %section
+    = render :partial => 'shared/lambeth_court'
+    = form_for @claim do |f|
+      = render :partial => 'claims/claimant/save_continue', :locals => {f: f}
