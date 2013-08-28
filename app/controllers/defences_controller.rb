@@ -47,7 +47,7 @@ class DefencesController < ApplicationController
     render "claims/defence/preview" 
   end
 
-  def confirm
+  def confirmation
     @claim = @claim || Claim.find(params[:claim_id])
     session[:referer] = 'confirmation'
     render "claims/defence/confirmation" 
