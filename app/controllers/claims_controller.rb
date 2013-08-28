@@ -6,7 +6,7 @@ class ClaimsController < ApplicationController
     when 'claimant'
       render 'claims/claimant/index'
     when 'defendant'
-      render 'claims/defendant/index'
+      redirect_to claims_defence_path
     when 'staff'
       render 'claims/staff/index'
     when 'judge'
