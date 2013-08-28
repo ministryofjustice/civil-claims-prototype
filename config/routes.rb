@@ -15,6 +15,9 @@ CivilClaims::Application.routes.draw do
   
   get 'address/picker' => 'address#picker', as: :address_picker
 
+  get 'claims/defence' => 'defences#show_login'
+  post 'claims/defence' => 'defences#login'
+
   resources :claims do
     member do
       get '/' => 'claims#personal_details', as: :show_claim
@@ -28,7 +31,9 @@ CivilClaims::Application.routes.draw do
       patch 'address_for_possession', to: 'claims#address', as: :address_for_possession
 
       get 'delete'
+
     end
+
     resources :people do
       get 'editor', on: :member
       resources :address do
@@ -36,6 +41,18 @@ CivilClaims::Application.routes.draw do
         get 'copy_address_of_first', on: :member
       end
     end
+
+    resource :defence do
+      get '/' => 'defences#index'
+      get 'view'
+      get 'personal-details', to: 'defences#personal_details', as: :defence_personal_details
+      get 'about-the-claim', to: 'defences#about_claim', as: :defence_about_claim
+      get 'about-you', to: 'defences#about_defence', as: :defence_about_defence
+      get 'preview', to: 'defences#preview'
+      get 'confirmation', to: 'defences#confirm'
+
+    end
+
   end
 
 end
