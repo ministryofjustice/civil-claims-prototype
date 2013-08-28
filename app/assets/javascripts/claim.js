@@ -83,7 +83,6 @@ $(document).ready(function() {
   // click the Find Address link, see what happens
   $('#edit-claim').on('click', '.find-uk-address', function(evt) {
     evt.preventDefault();
-    console.log('!!');
     if($(this).hasClass('disabled')) {
       return false;
     }
