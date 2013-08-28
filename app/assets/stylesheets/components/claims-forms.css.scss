@@ -258,3 +258,16 @@ form.add-additional-person {
     display: block;
   }
 }
+
+.payment-details-wrap{
+  border-bottom: 1px solid $default-panel-border-color;
+  margin-bottom: 10px;
+  .payment-details{
+    padding: 10px 40px 20px 40px;
+  }
+}
+
+#card-security-code{
+  display: inline-block;
+  width: 130px;
+}

@@ -280,3 +280,26 @@ nav#secondary {
     }
   }
 }
+
+
+
+// CLAIM FEE
+#claim-fee{
+  display: block;
+  padding: 20px 0;
+  margin: 20px 0px;
+  background-color: #1fa398;
+  text-align: center;
+  h1 {
+    @include core-36;
+    color: #fff;
+    font-weight: bold;
+    margin: 0;
+    zoom: 120%;
+  }
+  h3 {
+    @include core-24;
+    color: #fff;
+    margin: 0;
+  }
+}
