@@ -22,7 +22,7 @@ class DefencesController < ApplicationController
     render "claims/defence/view" 
   end
 
-  def personaldetails
+  def personal_details
     @claim = @claim || Claim.find(params[:claim_id])
     render "claims/defence/personal_details" 
   end
