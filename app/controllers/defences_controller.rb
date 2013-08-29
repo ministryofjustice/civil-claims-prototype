@@ -1,7 +1,7 @@
 class DefencesController < ApplicationController
 
   def show_login
-    @user = Defendant.find(session[:user])
+    @user = @user || Defendant.find(session[:user])
   	render "claims/defence/login"
   end
 
@@ -25,6 +25,13 @@ class DefencesController < ApplicationController
 
   def personal_details
     @claim = @claim || Claim.find(params[:claim_id])
+    if @claim.defenses.size==0 then
+      new_defense = Defense.new
+      new_defense.owner= @user
+      @claim.defenses << new_defense
+      @claim.save
+    end
+
     session[:referer] = 'personal_details'
     render "claims/defence/personal_details" 
   end
