@@ -1,0 +1,21 @@
+%article
+  %h2.lead Repossession case no. #{@claim.id}
+  %p.lead
+    Issued on #{ @claim.created_at.strftime('%A %-d %B') }
+
+  %section
+    %h3 Landlord
+    - options = { class: "person claimant" }
+    - @claim.claimants.each do |person|
+      = render partial: "people/show", locals: { options: options, person: person }
+
+  %section
+    %h3 Tenant
+    - options = { class: "person defendant" }
+    - @claim.defendants.each do |person|
+      = render partial: "people/show", locals: { options: options, person: person }
+
+  %section
+    %h3 Property
+    - options = { class: "person address-for-possession" }
+    = render partial: 'addresses/view_address_for_possession', :locals => { claim: @claim, address: @claim.address_for_possession, options: {} }    

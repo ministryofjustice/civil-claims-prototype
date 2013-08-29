@@ -4,6 +4,10 @@ class Person < ActiveRecord::Base
 
   scope :randomly, -> { order("RANDOM()") }
 
+  def display_name
+    "#{self.title} #{self.full_name}".strip
+  end
+  
   def self.at_random
     randomly.first
   end

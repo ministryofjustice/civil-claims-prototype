@@ -1,6 +1,15 @@
 class Address < ActiveRecord::Base
   attr_accessor :show_editor
 
+  def full_address
+    address = []
+    %w(street_1 street_2 street_3 town postcode).each do |ln|
+      next if self.send(ln).blank?
+      address << self.send(ln)
+    end
+    address
+  end
+
   def copy_from address_to_copy_from
     self.street_1 = address_to_copy_from[:street_1]
     self.street_2 = address_to_copy_from[:street_2]

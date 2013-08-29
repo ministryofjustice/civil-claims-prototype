@@ -20,7 +20,7 @@ class DefencesController < ApplicationController
   end
 
   def view
-    @page_title = nil
+    no_page_title
     @claim = @claim || Claim.find(params[:claim_id])
     render "claims/defence/view" 
   end
@@ -71,6 +71,10 @@ class DefencesController < ApplicationController
   
   def page_title 
     @page_title = "View repossession claim<br />and file a defence".html_safe
+  end
+
+  def no_page_title
+    @page_title = nil
   end
 
 end

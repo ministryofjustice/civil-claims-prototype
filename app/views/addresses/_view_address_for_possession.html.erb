@@ -2,11 +2,11 @@
   <div class='address-linear'>
     <%= render :partial => 'addresses/show', :locals => {address: address} %>
   </div>
-  <% unless claim.property_type.blank? %><span><%= claim.property_type.titleize %> property</span><% end %>
-  <% unless claim.resident_type.blank? %><span><%= claim.resident_type.humanize %></span><% end %>
+  <% unless claim.property_type.blank? %><div><%= claim.property_type.titleize %> property</div><% end %>
+  <% unless claim.resident_type.blank? %><div><%= claim.resident_type.humanize %></div><% end %>
   <% if options.has_key? :show_edit_link %>
-    <span><%= link_to "View/edit details", claim_address_editor_url( claim, address ), :remote => true  %>
-  <% else %>
-    <span class='filler'></span>
+    <div>
+      <%= link_to "View/edit details", claim_address_editor_url( claim, address ), :remote => true  %>
+    </div>
   <% end %>
 </div>
