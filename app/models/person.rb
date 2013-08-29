@@ -7,7 +7,11 @@ class Person < ActiveRecord::Base
   def display_name
     "#{self.title} #{self.full_name}".strip
   end
-  
+
+  def extended_contact_details
+    %w(phone mobile email).reject{|x| self.send(x).blank? }.map {|x| self.send(x) }
+  end
+
   def self.at_random
     randomly.first
   end

@@ -2,12 +2,7 @@ class Address < ActiveRecord::Base
   attr_accessor :show_editor
 
   def full_address
-    address = []
-    %w(street_1 street_2 street_3 town postcode).each do |ln|
-      next if self.send(ln).blank?
-      address << self.send(ln)
-    end
-    address
+    %w(street_1 street_2 street_3 town postcode).reject{|x| self.send(x).blank? }.map {|x| self.send(x) }
   end
 
   def copy_from address_to_copy_from
