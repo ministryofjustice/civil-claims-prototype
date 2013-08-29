@@ -4,6 +4,13 @@
   %span.name= person.display_name
   .address-linear
     = render partial: 'addresses/show', formats: [:html], locals: { address: person.address }
+  - if options.has_key? :show_extended_contact_details
+    - unless person.phone.blank?
+      %div= person.phone
+    - unless person.mobile.blank?
+      %div= person.mobile
+    - unless person.email.blank?
+      %div= person.email
   - if options.has_key? :show_edit_link
     .toggle-editor
       = link_to "View/edit details", editor_claim_person_path( claim, person ), remote: true
