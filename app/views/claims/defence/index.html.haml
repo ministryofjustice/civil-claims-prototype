@@ -1,0 +1,68 @@
+%p.lead 
+  The landlord 
+  %strong= @claim.claimants.first.full_name 
+  is taking you to court to repossess your home at 
+  %strong 121 Elm Park Road, London SQ1 1SZ
+
+-# here be dragons
+%article
+  
+  %section
+    %p 
+      %strong What to do next
+      %br
+      Follow the instructions below to avoid loosing your home:
+  
+    %ol.moj-large-steps
+      %li.moj-large-step
+        %div
+          %span.step-number 1
+          %p.step-title View the case
+          %p View details of the court action against you
+          = link_to "View case", view_claim_defence_path, :class => "button"
+        %img{:alt => "Step 1", :src => image_url('claim-steps/step1.png')}/
+      %li.moj-large-step
+        %div
+          %span.step-number 2
+          %p.step-title Start a defence
+          %p Fill in the online form to say why you should keep your home
+          = link_to "Start defence", defence_personal_details_claim_defence_path, :class => "button"
+        %img{:alt => "Step 1", :src => image_url('claim-steps/step1.png')}/
+      %li.moj-large-step
+        %div
+          %span.step-number 3
+          %p.step-title Start a defence
+          %p 
+            Go to the hearing at
+            %strong Lambeth County Court
+            on
+            %strong 21 August
+            at
+            %strong 10:30am.
+            A judge will decide on your case.
+            %br
+            %a.fake-link Find out more about the hearing
+        %img{:alt => "Step 3", :src => image_url('claim-steps/step1.png')}/
+
+
+
+
+
+  %section
+    %h3 Quick questions
+    %p
+      Here are some answers to common questions. You'll find lots more guidance on the
+      decisions you need to make and the informaiton you need to add as you progress.
+      %details
+        %summary I've just received repossession claim against me what should I do?
+        %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, accusantium quos earum explicabo autem atque non enim aliquid sit labore? Id, nemo, atque veritatis explicabo quis quibusdam provident minima a.
+      %details
+        %summary What is a repossession claim?
+        %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, illum, voluptatum, ipsa, natus placeat incidunt veritatis accusantium modi officia quisquam fuga harum excepturi aut iste maiores cumque dolorem impedit officiis!
+      %details
+        %summary I don't have a computer, how am I able to view the claim and file a defence?
+        %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, accusantium, quae, consequatur, veritatis temporibus delectus eveniet laudantium dolores hic aliquam ab blanditiis totam quisquam perspiciatis quos. Aperiam soluta cumque aliquid?
+      %details
+        %summary Do I have to go to court?
+        %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore, id, voluptatum, culpa, cumque blanditiis provident fugit quo sunt fuga aliquam ab nihil impedit facilis voluptates assumenda sint beatae pariatur laudantium.
+
