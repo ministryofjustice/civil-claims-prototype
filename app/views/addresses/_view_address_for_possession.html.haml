@@ -1,0 +1,12 @@
+%div{ class: "address-for-possession person", id: "address-#{address.id}" }
+  .address-linear
+    = render :partial => 'addresses/show', :locals => {address: address}
+  - unless claim.property_type.blank?
+    %div
+      = "#{claim.property_type.titleize} property"
+  - unless claim.resident_type.blank?
+    %div
+      = claim.resident_type.humanize
+  - if options.has_key? :show_edit_link
+    %div
+      = link_to "View/edit details", claim_address_editor_url( claim, address ), remote: true

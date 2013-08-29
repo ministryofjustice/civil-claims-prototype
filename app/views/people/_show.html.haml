@@ -1,4 +1,4 @@
-%div{ class: options[:class], id: "person-#{person.id}" }
+%div{ class: "person #{options[:class]}", id: "person-#{person.id}" }
   - if options[:title]
     %h5= options[:title]
   %span.name= person.display_name
