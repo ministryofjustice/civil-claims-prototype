@@ -9,12 +9,10 @@
     - claim.arrears.each do |ar|
       %tr
         %td.left-align= ar.due_date.strftime('%d/%m/%Y')
-        %td.pounds= number_with_precision( ar.amount, strip_insignificant_zeros: true )
-        %td.pounds= number_with_precision( ar.paid, strip_insignificant_zeros: true )
-        %td.pounds= number_with_precision( ar.amount, strip_insignificant_zeros: true )
+        %td.pounds= pp_currency( ar.amount )
+        %td.pounds= pp_currency( ar.paid )
+        %td.pounds= pp_currency( ar.amount )
   %tfoot
     %tr
       %td.left-align{ colspan: 3 } Total arrears
-      - rental_amount = claim.rental_amount || 0
-      - arrears_total_amount = (rental_amount * claim.arrears.count) - claim.arrears.sum(:paid)
-      %td.pounds= number_with_precision( arrears_total_amount, strip_insignificant_zeros: true )
+      %td.pounds= pp_currency( claim.total_rental_arrears )

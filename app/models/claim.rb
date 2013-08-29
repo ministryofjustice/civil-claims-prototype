@@ -11,6 +11,10 @@ class Claim < ActiveRecord::Base
   accepts_nested_attributes_for :attachments, :allow_destroy => true
   accepts_nested_attributes_for :arrears, :allow_destroy => true
 
+  def total_rental_arrears
+    (self.rental_amount || 0) * self.arrears.count - self.arrears.sum(:paid)
+  end
+
   def grounds_for_possesion
     grounds = []
     grounds << "Non payment of rent" if self.non_payment_of_rent
