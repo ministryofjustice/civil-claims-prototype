@@ -1,6 +1,7 @@
 class DefencesController < ApplicationController
 
   def show_login
+    @user = Defendant.find(session[:user])
   	render "claims/defence/login"
   end
 
