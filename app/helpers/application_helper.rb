@@ -21,17 +21,4 @@ module ApplicationHelper
       link_to text, '#', :class => 'active'
     end
   end
-
-  def get_header_message
-    if 'defences' == params[:controller]
-      h1 = "View repossession claim" 
-      h2 = "and file a defence"
-    else
-      h1 = "Recover Property:"
-      h2 = "Make a possession claim online"
-    end
-    
-    "#{h1}<br />#{h2}".html_safe
-  end
-
 end

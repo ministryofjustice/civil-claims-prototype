@@ -134,60 +134,44 @@ nav#secondary {
 
 // PERSON
 
-.person, article .address.well.address-editor {// I know. horrible.
-  padding-left: 6em;
+.person {
+  min-height: 68px;
+  padding: 20px 0 15px 100px;
   margin-bottom: -1px;
-  .name {
-    font-weight: bold;
-  }
-}
 
-.person .filler {
-  height: 20px; display:block;
-}
-
-.person.particulars {
-  background-color: #d7edeb; border-color: #b5d5d0;
-}
-
-.claimant, .defendant, .address-for-possession, .particulars {
-  background-repeat: no-repeat;
-  background-position: 18px 20px;
-  background-size: 63px 68px;
   border-width: 1px 0;
   border-style: solid;
-}
 
-.claimant {
-  background-color: #d5edea;
-  background-image: image-url('claimant.png');
-  border-color: #bddcd6;
-}
+  background-repeat: no-repeat;
+  background-position: 10px 4px;
+  background-size: 80px;
 
-.defendant {
-  background-color: #fde4d6;
-  background-image: image-url('defendant.png');
-  border-color: #f49365;
-  background-size: 52px 68px;
-  background-position: 24px 20px;
-}
-
-.address-for-possession {
-  background-color: #d5e8f2;
-  background-image: image-url('address.png');
-  border-color: #308bc4;
-  background-size: 58px 63px;
-  background-position: 20px 20px;
-
-  .address-linear {
-    font-weight: bold;
+  .name { font-weight: bold; }
+  .filler { 
+    height: 20px; 
+    display:block; 
   }
 
-  &> span {
-    display:block;
+  &.claimant {
+    background-color: #d5edea;
+    border-color: #bddcd6;
+    background-image: image-url('avatar_landlord.png');
+  }
+
+  &.defendant {
+    background-color: #fde4d6;
+    border-color: #f49365;
+    background-image: image-url('avatar_tenant.png');
+  }
+
+  &.address-for-possession {
+    background-color: #d5e8f2;
+    border-color: #308bc4;
+    background-image: image-url('avatar_property.png');
+
+    .address-linear { font-weight: bold; }
   }
 }
-
 
 
 // ADDRESS
@@ -228,6 +212,22 @@ nav#secondary {
   }
 }
 
+// PARTICULARS
+.particulars-horizontal {
+  h4 {
+    display: inline-block;
+    width: 30%;
+    font-weight: bold;
+    font-size: 16px;
+
+    &:first-child { margin-top: 0px; }
+  }
+  span {
+    display: inline-block;
+    width: 60%;
+  }
+
+}
 
 
 // CLAIM FEE
