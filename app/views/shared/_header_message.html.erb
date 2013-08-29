@@ -1,3 +1,5 @@
-<header class="page-header group">
-  <h1><span>Service</span><%= msg %></h1>
-</header>
+<% unless @page_title.blank? %>
+  <header class="page-header group">
+    <h1><span>Service</span><%= @page_title %></h1>
+  </header>
+<% end %>

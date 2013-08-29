@@ -1,4 +1,5 @@
 class DefencesController < ApplicationController
+  before_action :page_title
 
   def show_login
     @user = Defendant.find(session[:user])
@@ -19,6 +20,7 @@ class DefencesController < ApplicationController
   end
 
   def view
+    @page_title = nil
     @claim = @claim || Claim.find(params[:claim_id])
     render "claims/defence/view" 
   end
@@ -62,10 +64,13 @@ class DefencesController < ApplicationController
   end
 
   private
-    def next_navigation_path
-      view_context.get_defence_next_navigation_path request.referer
-    end
+
+  def next_navigation_path
+    view_context.get_defence_next_navigation_path request.referer
+  end
   
-  
+  def page_title 
+    @page_title = "View repossession claim<br />and file a defence".html_safe
+  end
 
 end
