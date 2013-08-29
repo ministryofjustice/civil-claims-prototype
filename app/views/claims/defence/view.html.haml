@@ -24,3 +24,9 @@
     %h3 Claim particulars
     - options = { class: 'horizontal' }
     = render partial: "claims/shared/particulars/view", locals: { claim: @claim, options: options }
+
+  - if @claim.arrears.size > 0
+    %section
+      %h3 Rent arrears
+      = render partial: "arrears/read_only", locals: { claim: @claim }
+

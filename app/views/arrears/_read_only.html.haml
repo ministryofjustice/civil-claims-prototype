@@ -1,0 +1,20 @@
+%table.moj-table
+  %thead
+    %tr
+      %th.left-align Rent due on
+      %th Rental amount
+      %th Amount paid
+      %th Arrears
+  %tbody
+    - claim.arrears.each do |ar|
+      %tr
+        %td.left-align= ar.due_date.strftime('%d/%m/%Y')
+        %td.pounds= number_with_precision( ar.amount, strip_insignificant_zeros: true )
+        %td.pounds= number_with_precision( ar.paid, strip_insignificant_zeros: true )
+        %td.pounds= number_with_precision( ar.amount, strip_insignificant_zeros: true )
+  %tfoot
+    %tr
+      %td.left-align{ colspan: 3 } Total arrears
+      - rental_amount = claim.rental_amount || 0
+      - arrears_total_amount = (rental_amount * claim.arrears.count) - claim.arrears.sum(:paid)
+      %td.pounds= number_with_precision( arrears_total_amount, strip_insignificant_zeros: true )

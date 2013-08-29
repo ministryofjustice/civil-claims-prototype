@@ -250,3 +250,37 @@ nav#secondary {
     margin: 0;
   }
 }
+
+// TABLES
+
+table.moj-table {
+  width: 100%;
+  margin: 0;
+
+  .pounds:before { content: "\00a3"; }
+
+  tr {
+    td, th { text-align: right; background: none; border: dotted 1px #b8c6cc; }
+    td.left-align, th.left-align { text-align: left; }
+    td, th { border-left-style: dotted; border-right-style: dotted; }
+
+    th:first-child, td:first-child { border-left: none; }
+    th:last-child, td:last-child { border-right: none; }
+  }
+
+  tfoot { 
+    border-style: solid; 
+    border-color: #b7b7b7;
+    border-width: 1px;
+    border-left: none;
+    border-right: none;
+
+    td { font-weight: bold; }
+  }
+
+  tbody {
+    tr:nth-child(odd)  { background-color: #fff; }
+    tr:nth-child(even) { background-color: #f8f8f8; }
+  }
+  thead, tfoot { background-color: #f8f8f8; }
+} 
