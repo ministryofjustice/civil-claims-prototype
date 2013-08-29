@@ -29,6 +29,16 @@
   }
 }
 
+#claims-list {
+  list-style-type: none;
+  list-style-image: none;
+}
+#claims-list .claim-item {
+  list-style-type: none;
+  margin-bottom: 40px;
+  margin-top: 25px;
+}
+
 #claims-item-status {
   position: relative;
   summary{

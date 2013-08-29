@@ -30,3 +30,8 @@
       %h3 Rent arrears
       = render partial: "arrears/read_only", locals: { claim: @claim }
 
+  - if @claim.attachments.size > 0
+    %section
+      %h3 Supporting documentation
+      - @claim.attachments.each do |attachment|
+        %p.moj-panel= attachment.file_name
