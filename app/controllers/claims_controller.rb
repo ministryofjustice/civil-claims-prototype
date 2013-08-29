@@ -1,5 +1,6 @@
 class ClaimsController < ApplicationController
   skip_before_action :pretend_to_authenticate, only: [:delete_all]
+  before_action :page_title
 
   def home
     case session[:role]
@@ -102,4 +103,10 @@ class ClaimsController < ApplicationController
   def next_navigation_path
     view_context.get_next_navigation_path request.referer
   end
+
+  def page_title 
+    @page_title = "Recover Property:<br />Make a possession claim online".html_safe
+  end
+
+
 end
