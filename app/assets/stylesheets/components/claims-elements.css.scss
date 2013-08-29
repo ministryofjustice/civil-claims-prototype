@@ -90,59 +90,6 @@
 
 
 
-// LARGE STEPS
-
-ol.large-steps, ul.large-steps {
-  list-style-type: none;
-  position: relative;
-
-  li {
-    position: relative;        
-    padding-left: 15px;
-    margin: 40px 0;
-
-    a {
-      display: block;
-    }
-    
-    img {
-      margin-left: 60px;
-      vertical-align: top;
-    }
-    
-    div {
-      display: inline-block;
-      width: 50%;
-    
-      span {
-        position: absolute;
-        display:inline-block;
-        left: -25px;
-        top: 0;
-        padding: 5px 8px;
-
-        font-size: 12px;
-        font-weight: bold;
-        line-height: 1;
-        color: #fff;
-        text-align: center;
-        white-space: nowrap;
-        vertical-align: middle;
-        
-        background-color: #000;
-        border-radius: 20px;
-      }
-
-      .step-title {
-        font-weight: bold;
-      }
-
-    }
-  }
-}
-
-
-
 // SECONDARY NAV
 nav#secondary {
   padding: 0px 30px;
