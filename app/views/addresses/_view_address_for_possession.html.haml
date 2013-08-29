@@ -1,4 +1,4 @@
-%div{ class: "address-for-possession person", id: "address-#{address.id}" }
+.address-for-possession.person{ id: "address-#{address.id}" }
   .address-linear
     = render :partial => 'addresses/show', :locals => {address: address}
   - unless claim.property_type.blank?
