@@ -31,14 +31,24 @@
   padding:30px 20px 30px 100px;
 }
 
-p.moj-panel { 
+h4.moj-panel { 
   font-size: 17px;
+  font-weight: bold;
   padding-top: 14px; 
   padding-bottom: 10px;
+  margin: 0 0 10px 0;
 }
 
 .save-close-panel {
   margin: 30px 0px 10px;
+
+  .secondary-group {
+    float: right;
+
+    a, button {
+      margin-left: 20px;
+    }
+  }
 }
 
 .court-hearing-details-time {
