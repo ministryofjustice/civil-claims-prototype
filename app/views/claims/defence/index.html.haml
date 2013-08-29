@@ -6,13 +6,20 @@
 
 -# here be dragons
 %article
-  
+  -# this should check against the current user for his defence
+  - has_defences = (@claim.defenses.size > 0)
+  - if has_defences
+    %ul#defences-index-tabs.nav.nav-tabs
+      %li.submit
+        %a{"data-toggle" => "tab", :href => "#new"} Start a new claim
+      %li.active.list
+        %a{"data-toggle" => "tab", :href => "#list"} Your claims
+  - else
+    %h2 What to do next
+
+
   %section
-    %p 
-      %strong What to do next
-      %br
-      Follow the instructions below to avoid loosing your home:
-  
+    %p Follow the instructions below to avoid loosing your home:
     %ol.moj-large-steps
       %li.moj-large-step
         %div
@@ -20,14 +27,14 @@
           %p.step-title View the case
           %p View details of the court action against you
           = link_to "View case", view_claim_defence_path, :class => "button"
-        %img{:alt => "Step 1", :src => image_url('claim-steps/step1.png')}/
+        %img{:alt => "Step 1", :src => image_url('defence-steps/step1.png')}/
       %li.moj-large-step
         %div
           %span.step-number 2
           %p.step-title Start a defence
           %p Fill in the online form to say why you should keep your home
           = link_to "Start defence", defence_personal_details_claim_defence_path, :class => "button"
-        %img{:alt => "Step 1", :src => image_url('claim-steps/step1.png')}/
+        %img{:alt => "Step 1", :src => image_url('defence-steps/step2.png')}/
       %li.moj-large-step
         %div
           %span.step-number 3
@@ -42,10 +49,7 @@
             A judge will decide on your case.
             %br
             %a.fake-link Find out more about the hearing
-        %img{:alt => "Step 3", :src => image_url('claim-steps/step1.png')}/
-
-
-
+        %img{:alt => "Step 3", :src => image_url('defence-steps/step3.png')}/
 
 
   %section
