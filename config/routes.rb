@@ -22,8 +22,8 @@ CivilClaims::Application.routes.draw do
   resources :claims do
     member do
       get '/' => 'claims#personal_details', as: :show_claim
-      get 'particulars'
-      get 'scheduling'
+      get 'case_details'
+      get 'court_booking'
       get 'statement'
       get 'fees'
       get 'confirmation'

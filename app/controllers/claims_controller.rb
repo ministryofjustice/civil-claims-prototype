@@ -49,16 +49,16 @@ class ClaimsController < ApplicationController
     render 'claims/claimant/personal_details'
   end
 
-  def particulars
+  def case_details
     @claim = Claim.find(params[:id])
-    session[:referer] = 'particulars'
-    render 'claims/claimant/particulars'
+    session[:referer] = 'case_details'
+    render 'claims/claimant/case_details'
   end
 
-  def scheduling
+  def court_booking
     @claim = Claim.find(params[:id])
     session[:referer] = 'scheduling'
-    render 'claims/claimant/scheduling'
+    render 'claims/claimant/court_booking'
   end
 
   def statement

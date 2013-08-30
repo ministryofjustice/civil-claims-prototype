@@ -1,14 +1,17 @@
 %p.lead
-  You can take court action to repossess a property in you are owed money
-  for rent or a mortage, and the tenant or mortgagee holder won't pay.
+  Use this online form to repossess a property if your tenant doesn’t pay their rent, breaks the tenancy agreement or refuses to move out.
+%p.lead 
+  You must have good reasons for evicting a tenant and usually have to give them notice to leave.
+  %br
+  = link_to "More about giving notice", '#'
 %article
   - has_claims = (@user.claims.size > 0)
   - if has_claims
     %ul#claims-index-tabs.nav.nav-tabs
       %li.submit
-        %a{"data-toggle" => "tab", :href => "#new"} Start a new claim
+        %a{"data-toggle" => "tab", :href => "#new"} Start a new case
       %li.active.list
-        %a{"data-toggle" => "tab", :href => "#list"} Your claims
+        %a{"data-toggle" => "tab", :href => "#list"} Your cases
   - else
     %h2 Start a new claim
   %section#start-continue-claim
@@ -19,29 +22,3 @@
       - tab_class = has_claims ? 'tab-pane active' : 'tab-pane'
       #list{:class => tab_class}
         = render partial: 'claims/claimant/list', locals: {claims: @user.claims}
-  %section#start-continue-claim-disclaimer
-    %h3 Before you begin
-    %p
-      If you are making your first possession claim online, here are a few things you need to
-      know and to think about. These help topics are a good place to start.
-      %details
-        %summary What is involved with making a claim
-        %p
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia, a, nobis id illo consequatur earum iusto deserunt commodi. Vitae, ullam sapiente fugit optio culpa quaerat delectus illum accusantium accusamus sed.
-      %details
-        %summary What to expect
-        %p
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, repellat, nulla facere unde veritatis iusto tenetur quidem ipsam fugiat beatae porro esse quis! Id, esse, at corporis vel eveniet placeat.
-    %h3 Quick questions
-    %p
-      Here are some answers to common questions. You'll find lots more guidance on
-      the decisions you need to make and the information you need to add as you progress
-      through a claim.
-      %details
-        %summary How much does it cost to make a claim?
-        %p
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia, a, nobis id illo consequatur earum iusto deserunt commodi. Vitae, ullam sapiente fugit optio culpa quaerat delectus illum accusantium accusamus sed.
-      %details
-        %summary How long does it take for the claim to finish?
-        %p
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, repellat, nulla facere unde veritatis iusto tenetur quidem ipsam fugiat beatae porro esse quis! Id, esse, at corporis vel eveniet placeat.

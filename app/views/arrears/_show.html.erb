@@ -1,8 +1,8 @@
 <section id="rental-arrears" <%= "hidden" unless @claim.claim_rental_arrears %> >
-  <h3>Rental arrears</h3>
+  <h3>Unpaid rent</h3>
+  <p>Enter the details of unpaid rental payments below, or <a href-'#'>attach a file</a>.</p>
   
   <div class="panel-default">
-    <strong>Add rental arrears</strong>
     
     <div class="labeled-content">
       <div class="content-label">Rent due on</div>
@@ -41,21 +41,19 @@
               <% end %>
             </select>
           </div>
-          <div id="arrears-add-item"> <%= button_to_add_fields "arrears", "Add arrears", f, :arrears %></div>
+          <div id="arrears-add-item"> <%= button_to_add_fields "arrears", "Add more unpaid rental payments", f, :arrears %></div>
         </div> 
 
         <details>
-          <summary>Did the defendant/s make any partial payments?</summary>
+          <summary>Did the tenant(s) pay part of the rent?</summary>
           <div class="all-inline">
-            <strong>&pound</strong>
+            <strong>&pound;</strong>
             <div class="default-box-width">
               <input id="arrears-month-contribution" type="text" />
             </div>
           </div>
         </details>
       </div>
-
-      <div id="about-rental-arrears"><a class="fake-link">About adding rental arrears</a></div>
     </div>
     
     <div id="rental-arrears-error" class="panel-error" hidden></div>
@@ -103,7 +101,7 @@
     <div class="striped-choice">
       <div>
         <%= f.check_box :defendent_to_pay_for_claim %>
-        <%= f.label :defendent_to_pay_for_claim, "Do you want to request that the defendent/s pay the cost of the claim" %>
+        <%= f.label :defendent_to_pay_for_claim, "Do you want to ask for the tenant(s) to pay for the cost of the case?" %>
       </div>
     </div> 
   </div>

@@ -21,10 +21,10 @@ module ClaimHelper
   def claimant_navigation_linkdata
     link_data = [
       { :text => 'Personal details', :path => 'personal_details' },
-      { :text => 'Claim particulars', :path => 'particulars' },
-      { :text => 'Court scheduling', :path => 'scheduling' },
-      { :text => 'Statement of truth', :path => 'statement' },
-      { :text => 'Fees & payment', :path => 'fees' },
+      { :text => 'Case details', :path => 'case_details' },
+      { :text => 'Court booking', :path => 'court_booking' },
+      { :text => 'Confirm details', :path => 'statement' },
+      { :text => 'Pay court fee', :path => 'fees' },
       { :text => 'Confirmation', :path => 'confirmation' }
     ]
   end
