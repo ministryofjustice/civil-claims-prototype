@@ -21,4 +21,8 @@ module ApplicationHelper
       link_to text, '#', :class => 'active'
     end
   end
+
+  def pp_currency( num )
+    number_with_precision( num, strip_insignificant_zeros: true, delimiter: ',' )
+  end
 end

@@ -1,0 +1,18 @@
+%table.moj-table
+  %thead
+    %tr
+      %th.left-align Rent due on
+      %th Rental amount
+      %th Amount paid
+      %th Arrears
+  %tbody
+    - claim.arrears.each do |ar|
+      %tr
+        %td.left-align= ar.due_date.strftime('%d/%m/%Y')
+        %td.pounds= pp_currency( ar.amount )
+        %td.pounds= pp_currency( ar.paid )
+        %td.pounds= pp_currency( ar.amount )
+  %tfoot
+    %tr
+      %td.left-align{ colspan: 3 } Total arrears
+      %td.pounds= pp_currency( claim.total_rental_arrears )
