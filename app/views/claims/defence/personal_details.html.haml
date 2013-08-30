@@ -13,25 +13,24 @@
         .panel-default
 
           / Contact Details
-          .form-row.clearfix
-            %details
-              %summary If current address is different from above add contact address
-              .form-row.clearfix
-                %label{:for => 'defendant_street1'} Street 1
-                %input#defendant_street1{:type => 'text', :value => ''}
-                %span.icon-container{:style => 'display: none'}
+          %details
+            %summary.form-row If current address is different from above add contact address
+            .form-row.clearfix
+              %label{:for => 'defendant_street1'} Street 1
+              %input#defendant_street1{:type => 'text', :value => ''}
+              %span.icon-container{:style => 'display: none'}
 
-              .form-row.clearfix
-                %label{:for => 'defendant_street2'} Street 2
-                %input#defendant_street2{:type => 'text', :value => ''}
-                %span.icon-container{:style => 'display: none'}
+            .form-row.clearfix
+              %label{:for => 'defendant_street2'} Street 2
+              %input#defendant_street2{:type => 'text', :value => ''}
+              %span.icon-container{:style => 'display: none'}
 
-              .form-row.clearfix
-                %label{:for => 'defendant_street3'} Street 3
-                %input#defendant_street3{:type => 'text', :value => ''}
-                %span.icon-container{:style => 'display: none'}
+            .form-row.clearfix
+              %label{:for => 'defendant_street3'} Street 3
+              %input#defendant_street3{:type => 'text', :value => ''}
+              %span.icon-container{:style => 'display: none'}
 
-              / etc..
+            / etc..
 
           .form-row.clearfix
             %label{:for => 'defendant_phone'} Phone
@@ -47,6 +46,13 @@
             %label{:for => 'defendant_email'} Email
             %input#defendant_email{:type => 'text', :value => 'lrstevenson@hotmail.co.uk'}
             %span.icon-container{:style => 'display: none'}
+
+          / Solicitor
+          %details
+            %summary.form-row This defence is being completed by a solicitor on behalf of the tenant
+            %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer purus dolor, semper ut sapien non, mattis fermentum purus. Sed tincidunt varius tortor sit amet malesuada. Integer vitae orci at magna laoreet vulputate. Aliquam ac tincidunt nisl.
+
+          
 
 
 
