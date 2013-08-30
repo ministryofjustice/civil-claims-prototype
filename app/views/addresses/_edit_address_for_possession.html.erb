@@ -1,6 +1,6 @@
 <%= simple_form_for claim, :url => address_for_possession_claim_path( claim), :remote => true, :html => { :id => "edit-address-#{address.id}", :class => 'form-horizontal' } do |f| %>
   
-  <div class='address-editor address well clearfix'>
+  <div class='moj-panel clearfix'>
     <% options = {} %>
     <% options[:address_for_possesion] = true %>
     <% options[:not_the_first] = true %>
