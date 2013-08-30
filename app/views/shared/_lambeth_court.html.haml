@@ -1,0 +1,14 @@
+.court-badge.clearfix
+  .court-address
+    %h3 Lambeth County Court
+    %span Court House
+    %span Cleaver Street
+    %span Kennington Road
+    %span London
+    %span SE11 4DZ
+    %span.dx DX 145020 Kennington 2
+    = link_to 'View full court details', 'https://courttribunalfinder.service.gov.uk/courts/lambeth-county-court?from=se114dz', target: '_blank', class: 'button'
+      
+  .court-map
+    = image_tag "lambeth-court-map.jpg"
+    = link_to "View a larger version of the map", 'http://goo.gl/maps/XF2zk', target: '_blank'

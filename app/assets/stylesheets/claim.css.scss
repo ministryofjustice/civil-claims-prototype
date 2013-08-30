@@ -486,44 +486,6 @@ form.add-additional-person {
   margin-bottom: 20px;
 }
 
-.claimant, .defendant, .address-for-possession, .particulars {
-  background-repeat: no-repeat;
-  background-position: 18px 20px;
-  background-size: 63px 68px;
-  border-width: 1px 0;
-  border-style: solid;
-}
-
-.claimant {
-  background-color: #d5edea;
-  background-image: image-url('claimant.png');
-  border-color: #bddcd6;
-}
-
-.defendant {
-  background-color: #fde4d6;
-  background-image: image-url('defendant.png');
-  border-color: #f49365;
-  background-size: 52px 68px;
-  background-position: 24px 20px;
-}
-
-.address-for-possession {
-  background-color: #d5e8f2;
-  background-image: image-url('address.png');
-  border-color: #308bc4;
-  background-size: 58px 63px;
-  background-position: 20px 20px;
-
-  .address-linear {
-    font-weight: bold;
-  }
-
-  &> span {
-    display:block;
-  }
-}
-
 #edit-claim h3 { margin-top: 40px; }
 
 .button{

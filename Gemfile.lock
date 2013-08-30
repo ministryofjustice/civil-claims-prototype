@@ -1,4 +1,15 @@
 GIT
+  remote: git://github.com/nadarei/nkss-rails.git
+  revision: 15e1a992111a46c7e3c37c59747c1a62d6ae19f2
+  specs:
+    nkss-rails (0.0.1)
+      bluecloth
+      ffaker
+      haml
+      kss
+      rails (>= 3.2.0)
+
+GIT
   remote: git://github.com/sporkrb/spork-rails.git
   revision: 3224f84d8c31fcb0894e9a43f6c3ac67e3aa0d71
   specs:
@@ -44,6 +55,7 @@ GEM
     arel (4.0.0)
     assert_difference (0.5.0)
     atomic (1.1.12)
+    bluecloth (2.2.0)
     builder (3.1.4)
     childprocess (0.3.9)
       ffi (~> 1.0, >= 1.0.11)
@@ -64,6 +76,7 @@ GEM
     factory_girl_rails (4.2.1)
       factory_girl (~> 4.2.0)
       railties (>= 3.0.0)
+    ffaker (1.18.0)
     ffi (1.9.0)
     formatador (0.2.4)
     govuk_frontend_toolkit (0.33.0)
@@ -104,6 +117,7 @@ GEM
       railties (>= 3.1.0)
     json (1.8.0)
     kgio (2.8.0)
+    kss (0.4.0)
     libv8 (3.11.8.17)
     listen (1.2.3)
       rb-fsevent (>= 0.9.3)
@@ -231,6 +245,7 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails
   moj_frontend_toolkit_gem!
+  nkss-rails!
   pg
   rails (= 4.0.0)
   rails_12factor
