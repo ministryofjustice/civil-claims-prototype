@@ -19,7 +19,12 @@ article {
   section {
     max-width: 850px;
     margin: auto;
-    padding-bottom: 20px;
+    padding-bottom: 40px;
+
+    > h3 {
+      margin-top: 0;
+      margin-bottom: 0px;
+    }
   }
 }
 

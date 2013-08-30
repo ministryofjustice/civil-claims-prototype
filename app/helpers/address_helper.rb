@@ -1,12 +1,4 @@
 module AddressHelper
-  def print_address_line( lineitem )
-    unless ( lineitem.nil? || lineitem.empty? )
-      "<span class='address'>#{lineitem}</span>"
-    else
-      ''
-    end
-  end
-
   def generate_random_addresses( postcode )
     addresses = [];
     15.times do

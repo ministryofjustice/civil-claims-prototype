@@ -8,9 +8,8 @@
     %p Add all details you have about the claim and upload further information if required.
     %a.fake-link About adding claim particulars
 
-  = simple_form_for @claim, url: claim_path(@claim) do |f|
+    = simple_form_for @claim, url: claim_path(@claim) do |f|
 
-    %article{:role => 'article'}
       / GROUNDS FOR POSSESSION
       %section#grounds-for-possession
         %h3 Grounds for possession
