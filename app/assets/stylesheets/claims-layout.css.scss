@@ -2,7 +2,7 @@ main {
   max-width: 1020px;
   margin: auto;
 
-  header, article, p.lead {
+  > * {
     max-width: 960px;
     margin: auto;
   }

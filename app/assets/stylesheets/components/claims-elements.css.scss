@@ -2,6 +2,7 @@
 @import "_typography";
 @import "design-patterns/_buttons.scss";
 @import "claims-vars";
+@import "claims-mixins";
 
 
 
@@ -99,15 +100,22 @@
 }
 
 
+/*
+## Primary Navigation
+Horizontal nav links
 
-// SECONDARY NAV
-nav#secondary {
+Styleguide 2.1
+*/
+
+nav.primary {
   padding: 0px 30px;
   border-bottom: 2px solid #ccc;
   margin-bottom: 20px;
-  ol {
+  > ol {
+    @include clearfix;
     list-style: decimal inside none;
     margin: 0px 0px -2px 0px;
+    padding: 0;
     counter-reset: pos;
     li {
       display: inline-block;
@@ -118,6 +126,7 @@ nav#secondary {
         border-bottom: 2px solid #ccc;
         padding: 0px 8px 10px 12px;
         display: block;
+        text-decoration: none;
         &:before {
           counter-increment: pos;
           content: counter(pos) ".";

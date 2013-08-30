@@ -1,0 +1,4 @@
+%nav.primary
+  %ol
+    - links.each do |link|
+      %li= nav_link link[:path], link[:text]
