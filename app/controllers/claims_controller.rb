@@ -105,7 +105,7 @@ class ClaimsController < ApplicationController
   end
 
   def page_title 
-    @page_title = "Recover Property:<br />Make a possession claim online".html_safe
+    @page_title = "Repossess a property:<br />make a possession claim".html_safe
   end
 
 

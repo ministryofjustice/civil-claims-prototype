@@ -24,6 +24,10 @@ class Claim < ActiveRecord::Base
     grounds
   end
 
+  def get_people_of_type( type )
+    self.send(type.pluralize)
+  end
+
 
   def setup_linked_records( user )
     self.owner = user
