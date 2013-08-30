@@ -61,6 +61,8 @@ group :development do
   gem 'spork', '1.0.0rc3'
   gem 'spork-rails', :github => 'sporkrb/spork-rails'
   gem 'guard-spork'
+
+  gem 'nkss-rails', github: 'nadarei/nkss-rails'
 end
 
 group :development, :test do
