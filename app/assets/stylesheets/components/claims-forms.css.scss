@@ -2,9 +2,11 @@
 @import "_typography";
 @import "design-patterns/_buttons.scss";
 @import "claims-vars";
+@import "claims-mixins";
 
 // generic
 .form-row {
+  @include clearfix;
   clear: both;
   margin-bottom: 10px;
 
