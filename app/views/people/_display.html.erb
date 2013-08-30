@@ -23,6 +23,6 @@
     <%= render partial: 'people/show', locals: {claim: claim, person: person, options: options} %>
   <% end %>
 <% end %>
-<% unless editor_showing %>
+<% unless editor_showing || defined?(noadd) && noadd %>
   <%= render :partial => 'people/add', formats: [:html], :locals => {claim: @claim, person_type: person_type} %>
 <% end %>

@@ -27,6 +27,7 @@ class DefencesController < ApplicationController
 
   def personal_details
     @claim = @claim || Claim.find(params[:claim_id])
+    @editors = session['editors'] || {}
     session[:referer] = 'personal_details'
     render "claims/defence/personal_details" 
   end
