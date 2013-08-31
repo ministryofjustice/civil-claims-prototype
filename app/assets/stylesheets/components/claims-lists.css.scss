@@ -46,14 +46,10 @@
   }
 }
 
-.claims-list {
-  list-style-type: none;
-  list-style-image: none;
-  padding: 0px;
-}
 
 .claims-item-status {
   position: relative;
+  
   summary{
     text-decoration: none;
     
@@ -80,15 +76,18 @@
 
     .content-list{
       list-style-type: none;
+      list-style-image: none;
       list-style-position: inside;
       padding-left: 0px;
     }
       
     .status-item-yes {
-      list-style-image: image-url('status_on.png');
+      background: image-url('status_on.png') no-repeat center left;
+      padding: 1px 0px 1px 30px;
     }
     .status-item-no  { 
-      list-style-image: image-url('status_off.png');
+      background: image-url('status_off.png') no-repeat center left;
+      padding: 1px 0px 1px 30px;
     }
   }
 
