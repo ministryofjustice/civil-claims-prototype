@@ -27,6 +27,7 @@ class DefencesController < ApplicationController
 
   def personal_details
     @claim = @claim || Claim.find(params[:claim_id])
+    # until we have a nice save
     if @claim.defenses.size==0 then
       new_defense = Defense.new
       new_defense.owner= @user
@@ -34,6 +35,7 @@ class DefencesController < ApplicationController
       @claim.save
     end
 
+    @editors = session['editors'] || {}
     session[:referer] = 'personal_details'
     render "claims/defence/personal_details" 
   end
