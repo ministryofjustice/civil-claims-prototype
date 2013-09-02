@@ -29,6 +29,7 @@
       = f.input :signature, :label => false, :inline_label => "I believe that the facts stated in this claim (and any attached documents) are to the best of my knowledge true and correct."
       .well.warning
         %p
-          %span "
+          / quote character rendered as warning sign using font "validators"
+          %span &quot;
           A person who completes a statement of truth without an honest belief in the truth of the given information is liable to proceedings for contempt of court.
       = render :partial => 'claims/claimant/save_continue', :locals => {f: f}
