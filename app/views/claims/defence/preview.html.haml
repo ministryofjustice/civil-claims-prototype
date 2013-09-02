@@ -1,0 +1,107 @@
+= render_defence_navigation
+
+%article
+  %h2 Step 4 of 5 - Preview and submit
+  %p.lead All the details of your defence. Please check all details are correct and then complete the statement of truth at the bottom. After submission you will still be able to login and view and edit this defence.
+
+  %section
+    %h3 Personal details
+    = render :partial => 'people/display', :locals => {claim: @claim, person_type: 'defendant', noadd: true}
+
+  %section
+    %h3 About the claim
+    .moj-panel
+      %ul.plain
+        %li 
+          I
+          %strong agree
+          with what is said about the property and the tenancy agreement in the
+          %a{:href => '#'} Claim particulars
+          \.
+        %li
+          I
+          %strong received
+          the notice to quit from the landlord on
+          %strong 11 June 2013
+          \.
+        %li
+          I
+          %strong agree
+          that there are arrears of rent as stated in the
+          %a{:href => '#'} Claim particulars
+          \.
+        %li
+          I
+          %strong have not
+          paid any money to my landlord since the claim was issued.
+        %li
+          I
+          %strong have not
+          come to any agreement with my landlord about the repayment of arrears.
+        %li
+          I
+          %strong do not
+          have a money or other type of claim against the landlord.
+
+  %section
+    %h3 Bank balances
+    .moj-panel
+      %ul.plain
+        %li
+          %span.item Bank account balance
+          %span.value
+            %strong &pound;470
+        %li
+          %span.item Savings account balance
+          %span.value
+            %strong &pound;250
+
+  %section
+    %h3 Money in
+    .moj-panel
+      %ul.plain
+        %li
+          %span.item Present circumstances
+          %span.value Employed
+        %li
+          %span.item Total income
+          %span.value
+            %strong &pound;1850
+
+  %section
+    %h3 Money out
+    .moj-panel
+      %ul.plain
+        %li
+          %span.item Regular expenses
+          %span.value &pound;375
+        %li
+          %span.item Loans and credit cards
+          %span.value &pound;267.87
+        %li
+          %span.item
+            %strong Total
+          %span.value
+            %strong &pound;642.87
+
+  %section
+    %h3 Circumstances
+    .moj-panel
+      %ul.plain
+        %li
+          If an order for repossession were to be made you
+          %strong would
+          have somewhere else to live.
+        %li
+          You would be able to move on
+          %strong 8 September 2013
+
+  %section
+    = simple_form_for @claim, :class => 'form-horizontal' do |f|
+      = f.input :signature, :label => false, :inline_label => "I believe that the facts stated in this defence (and any attached documents) are to the best of my knowledge true and correct."
+      .well.warning
+        %p
+          / quote character rendered as warning sign using font "validators"
+          %span &quot;
+          A person who completes a statement of truth without an honest belief in the truth of the given information is liable to proceedings for contempt of court.
+      = render :partial => 'claims/defence/save_continue', :locals => {f: f}

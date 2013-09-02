@@ -54,6 +54,7 @@ class DefencesController < ApplicationController
 
   def preview
     @claim = @claim || Claim.find(params[:claim_id])
+    @editors = session['editors'] || {}
     session[:referer] = 'preview'
     render "claims/defence/preview" 
   end
