@@ -3,8 +3,7 @@
   %strong= @claim.claimants.first.full_name 
   is taking you to court to repossess your home at 
   %strong 121 Elm Park Road, London SQ1 1SZ
-
--# here be dragons
+  
 %article
   -# this should check against the current user for his defence
   - has_defences = (@claim.defenses.size > 0)
