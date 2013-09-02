@@ -7,7 +7,7 @@
   = simple_form_for @defense, :url => { :action => "update" } do |f|
     %section
       .moj-panel
-        %div
+        %div.panel-component
           %p 
             Do you agree with what is said about the property and the tenancy agreement in the 
             %a.fake-link claim particulars
@@ -21,7 +21,7 @@
               = f.label :agree_with_tenancy_agreement_statement_false, 'No'
         
 
-        %div
+        %div.panel-component
           %p Did you receive the notice to quit from the landlord?
           .striped-choice
             %div
@@ -31,7 +31,7 @@
               = f.radio_button :received_notice_to_quit, 'false'
               = f.label :received_notice_to_quit_false, 'No'
 
-        %div
+        %div.panel-component
           %p
             Do you agree that there are arrears of the rent as stated in the
             %a.fake-link claim particulars
@@ -44,7 +44,7 @@
               = f.radio_button :agree_with_rent_arrears, 'false'
               = f.label :agree_with_rent_arrears_false, 'No'
 
-        %div
+        %div.panel-component
           %p
             Have you paid any money to your landlord since
             %strong Wednesday 11 July 2013 (hardcoded)
@@ -57,7 +57,7 @@
               = f.radio_button :paid_money_since_claim_brought, 'false'
               = f.label :paid_money_since_claim_brought_false, 'No'
         
-        %div
+        %div.panel-component
           %p
             Have you come to any agreement with your landlord about repaying the arrears since
             %strong Wednesday 11 July 2013 (hardcoded)
@@ -71,7 +71,7 @@
               = f.label :agreement_to_repay_arrears_false, 'No'
         
 
-        %div
+        %div.panel-component
           %p Do you have a money or other type of claim against the landlord?
           .striped-choice
             %div
@@ -83,7 +83,7 @@
 
 
         %div
-          Do you have any comment about anything elase in the
+          %p Do you have any comment about anything elase in the
           %a.fake-link claim particulars
           ?
           = f.text_area :comments_on_particulars, :rows => 5
