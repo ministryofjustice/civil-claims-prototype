@@ -65,10 +65,12 @@ class DefencesController < ApplicationController
   end
 
   def update
+    # update claim defence
     if 'Save & Continue' == params[:commit]
       redirect_to next_navigation_path
     elsif 'Close' == params[:commit]
-      redirect_to root_path
+      @claim = @claim || Claim.find(params[:claim_id])
+      redirect_to claim_defence_path @claim
     end
   end
 

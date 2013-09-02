@@ -9,7 +9,7 @@ CivilClaims::Application.routes.draw do
 
   # relax, it's a prototype.
   
-  get "claims/delete_all" => "claims#delete_all"
+  get 'claims/delete_all' => 'claims#delete_all'
   get 'login_as/:role' => 'people#login', as: :login
 
   get 'claims/:claim_id/address/:id/edit' => 'address#editor', as: :claim_address_editor
@@ -28,7 +28,7 @@ CivilClaims::Application.routes.draw do
       get 'fees'
       get 'confirmation'
 
-      patch "update", as: :update_claim
+      patch 'update', as: :update_claim
       patch 'address_for_possession', to: 'claims#address', as: :address_for_possession
 
       get 'delete'
