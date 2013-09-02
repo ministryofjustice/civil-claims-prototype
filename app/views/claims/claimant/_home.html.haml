@@ -3,52 +3,57 @@
 %ol#new-claim-step-list.moj-large-steps
   %li.moj-large-step
     %div
-      %span.moj-large-step-number 1
+      %span.step-number 1
       %p.step-title Confirm people involved
       %p
         The details of all the parties involved in the claim - any claimants and defendants
+        %br/
         %a.fake-link More about defendants and claimants
     %img{:alt => "Step 1", :src => image_url('claim-steps/step1.png')}/
   %li.moj-large-step
     %div
-      %span.moj-large-step-number 2
+      %span.step-number 2
       %p.step-title Details of claim
       %p
         All the claim particulars including address of possession,
         grounds for possession, details of tenancy and the defendants
+        %br/
         %a.fake-link More about claim details
     %img{:alt => "Step 2", :src => image_url('claim-steps/step2.png')}/
   %li.moj-large-step
     %div
-      %span.moj-large-step-number 3
+      %span.step-number 3
       %p.step-title Court scheduling
       %p
         Based on the postcode of the property you are claiming
         possession of, you will be given a specific court and hearing time
+        %br/
         %a.fake-link More about making a statement of truth
     %img{:alt => "Step 3", :src => image_url('claim-steps/step3.png')}/
   %li.moj-large-step
     %div
-      %span.moj-large-step-number 4
+      %span.step-number 4
       %p.step-title Statement of truth
       %p
         Confirm that all details of case being brought are correct
+        %br/
         %a.fake-link More about making a statement of truth
     %img{:alt => "Step 4", :src => image_url('claim-steps/step4.png')}/
   %li.moj-large-step
     %div
-      %span.moj-large-step-number 5
+      %span.step-number 5
       %p.step-title Fee payment
       %p When everything is correct and you are ready to pay the &pound;100 fee
     %img{:alt => "Step 5", :src => image_url('claim-steps/step5.png')}/
   %li.moj-large-step
     %div
-      %span.moj-large-step-number 6
+      %span.step-number 6
       %p.step-title Confirmation and next steps
       %div
         %p
           Get confirmation of which court and when, what you will
           need to bring to court and what happens next
+          %br/
           %a.fake-link More about what happens next
     %img{:alt => "Step 6", :src => image_url('claim-steps/step6.png')}/
 = form_tag(claims_path, method: "post") do

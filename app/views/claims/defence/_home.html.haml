@@ -1,0 +1,31 @@
+%p Follow the instructions below to avoid loosing your home:
+%ol.moj-large-steps
+  %li.moj-large-step
+    %div
+      %span.step-number 1
+      %p.step-title View the case
+      %p View details of the court action against you
+      = link_to "View case", view_claim_defence_path, :class => "button"
+    %img{:alt => "Step 1", :src => image_url('defence-steps/step1.png')}/
+  %li.moj-large-step
+    %div
+      %span.step-number 2
+      %p.step-title Start a defence
+      %p Fill in the online form to say why you should keep your home
+      = link_to "Start defence", defence_personal_details_claim_defence_path, :class => "button"
+    %img{:alt => "Step 1", :src => image_url('defence-steps/step2.png')}/
+  %li.moj-large-step
+    %div
+      %span.step-number 3
+      %p.step-title Start a defence
+      %p 
+        Go to the hearing at
+        %strong Lambeth County Court
+        on
+        %strong= (Date.today + 3.weeks).strftime("%A %-d %B")
+        at
+        %strong 10:30am.
+        A judge will decide on your case.
+        %br/
+        %a.fake-link Find out more about the hearing
+    %img{:alt => "Step 3", :src => image_url('defence-steps/step3.png')}/

@@ -6,21 +6,21 @@
 
 .panel-default {
   @include panel-style;
-  padding: 20px 90px 20px 90px;
-  margin: 10px 0px 10px 0px;
+  padding: 20px 90px;
+  margin: 10px 0px;
 }
 
 .panel-error {
   @include panel-style(#F2DEDE,#EED3D7);
-  padding: 5px 5px 5px 5px;
+  padding: 5px;
   color: #BB4A48;
   text-align: center;
 }
 
 .panel-info {
   background-color: #dfe0e2;
-  padding: 15px 15px 15px 15px;
-  margin: 15px 0px 15px 0px;
+  padding: 15px;
+  margin: 15px 0px;
 }
 
 /*
