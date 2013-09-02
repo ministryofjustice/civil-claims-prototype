@@ -6,18 +6,26 @@
     
     = toggle_inline_help_link('About claimants and defendants', 'Porro nihil nec cu. Ut ludus omnium dissentiunt mei, his at populo semper. Eu iusto tibique pri, ad sit modo antiopam maiestatis, commune delicata dissentias vel ea. An has odio habemus ancillae, an per animal fastidii tacimates, duo tritani mandamus delicatissimi ex.')
 
-    %h3 Landlord details
-    = display_landlords( @claim )
+    = simple_form_for @claim do |form|
 
-    %h3 Tenant details
-    = display_tenants( @claim )
+      %h3 Landlord details
+      = render partial: "people/claimants/edit_primary_claimant", locals: {claimant: @claim.primary_claimant}
+      - @claim.additional_claimants.each do |claimant|
+        = render partial: "people/claimants/edit_additional_claimant", locals: { claimant: claimant }
+      = submit_tag 'Add another landlord', :class => "button-secondary"
 
-    %h3 Property details
-    - address = @claim.address_for_possession
-    - options = { :show_edit_link => true }
-    - if address.postcode.blank?
-      = render :partial => 'addresses/edit_address_for_possession', :locals => { claim: @claim, address: address }
-    - else
-      = render :partial => 'addresses/view_address_for_possession', :locals => { claim: @claim, address: address, options: options }
-    = form_for @claim do |f|
-      = render :partial => 'claims/claimant/save_continue', :locals => {f: f}
+
+      %h3 Tenant details
+      = render partial: "people/defendants/edit_primary_defendant", locals: { defendant: @claim.primary_defendant }
+      - @claim.additional_defendants.each do |defendant|
+        = render partial: "people/defendants/edit_addition_defendant", locals: { defendant: defendant }
+
+      %h3 Property details
+      - address = @claim.address_for_possession
+      - options = { :show_edit_link => true }
+      - if address.postcode.blank?
+        = render :partial => 'addresses/edit_address_for_possession', :locals => { claim: @claim, address: address }
+      - else
+        = render :partial => 'addresses/view_address_for_possession', :locals => { claim: @claim, address: address, options: options }
+      
+      = render partial: 'claims/claimant/save_continue', locals: {f: form}

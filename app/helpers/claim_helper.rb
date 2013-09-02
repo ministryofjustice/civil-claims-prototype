@@ -4,6 +4,19 @@ module ClaimHelper
     editors[person.id]
   end
 
+  def show_dx_controls( person )
+    !(person.dx_number.blank? && person.dx_exchange.blank?)
+  end
+
+  def dx_controls( person )
+    markup = ''
+    simple_fields_for person do |f|
+      markup = capture { f.input :dx_number, :label => 'DX number' }
+      markup << capture { f.input :dx_exchange, :label => 'DX exchange' }
+    end
+    markup
+  end
+
   def login_link_to_role( role )
     url = '/login_as/' + role
     content = role.titleize

@@ -28,6 +28,22 @@ class Claim < ActiveRecord::Base
     self.send(type.pluralize)
   end
 
+  def primary_claimant
+    self.claimants.first
+  end
+
+  def additional_claimants
+    self.claimants.drop(1)
+  end
+
+  def primary_defendant
+    self.defendants.first
+  end
+
+  def additional_defendants
+    self.defendants.drop(1)
+  end
+
 
   def setup_linked_records( user )
     self.owner = user

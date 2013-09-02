@@ -1,14 +1,14 @@
 module PersonHelper
   def display_landlords( claim )
-    display( claim, 'claimant' )
+    show( claim, 'claimant' )
   end
 
   def display_tenants( claim )
-    display( claim, 'defendant' )
+    show( claim, 'defendant' )
   end
 
 
-  def display(claim, person_type)
+  def show(claim, person_type)
     people = claim.get_people_of_type( person_type )
     editor_showing = false
 

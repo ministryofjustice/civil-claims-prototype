@@ -2,6 +2,8 @@ class ClaimsController < ApplicationController
   skip_before_action :pretend_to_authenticate, only: [:delete_all]
   before_action :page_title
 
+  decorates_assigned :claim
+
   def home
     case session[:role]
     when 'claimant'
@@ -21,7 +23,7 @@ class ClaimsController < ApplicationController
   end
 
   def create
-    @claim = Claim.new
+    @claim = Claim.new.decorate
     @user = @user || Person.find(session[:user])
     @claim.setup_linked_records( @user )
     @claim.save
@@ -30,20 +32,22 @@ class ClaimsController < ApplicationController
   end
 
   def update
-    claim = Claim.find(params[:id])
+    @claim = Claim.find(params[:id])
     params.permit!
-    claim.update_attributes params[:claim]
+    @claim.update_attributes params[:claim]
  
     if 'Save & Continue' == params[:commit]
       redirect_to next_navigation_path
     elsif 'Close' == params[:commit]
       redirect_to root_path
+    elsif 'Add another landlord' == params[:commit]
+      @claim.claimants << Claimant.new( address: Address.new )
+      render 'claims/claimant/personal_details'
     end
   end
 
   def personal_details
     @claim = Claim.find(params[:id], :include => [{:claimants => :address}, {:defendants => :address}])
-
     @editors = session['editors'] || {}
     session[:referer] = 'personal_details'
     render 'claims/claimant/personal_details'
