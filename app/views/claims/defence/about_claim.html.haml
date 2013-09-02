@@ -1,0 +1,94 @@
+= render_defence_navigation
+
+%article
+  %h2 Step 2 of 5 - About the claim
+  %p.lead Add the details of the disputes within the claim and all other related details
+
+  = simple_form_for @defense, :url => { :action => "update" } do |f|
+    %section
+      .moj-panel
+        %div
+          %p 
+            Do you agree with what is said about the property and the tenancy agreement in the 
+            %a.fake-link claim particulars
+            ?
+          .striped-choice
+            %div
+              = f.radio_button :agree_with_tenancy_agreement_statement, "true"
+              = f.label :agree_with_tenancy_agreement_statement_true, 'Yes'
+            %div
+              = f.radio_button :agree_with_tenancy_agreement_statement, 'false'
+              = f.label :agree_with_tenancy_agreement_statement_false, 'No'
+        
+
+        %div
+          %p Did you receive the notice to quit from the landlord?
+          .striped-choice
+            %div
+              = f.radio_button :received_notice_to_quit, "true"
+              = f.label :received_notice_to_quit_true, 'Yes'
+            %div
+              = f.radio_button :received_notice_to_quit, 'false'
+              = f.label :received_notice_to_quit_false, 'No'
+
+        %div
+          %p
+            Do you agree that there are arrears of the rent as stated in the
+            %a.fake-link claim particulars
+            ?
+          .striped-choice
+            %div
+              = f.radio_button :agree_with_rent_arrears, "true"
+              = f.label :agree_with_rent_arrears_true, 'Yes'
+            %div
+              = f.radio_button :agree_with_rent_arrears, 'false'
+              = f.label :agree_with_rent_arrears_false, 'No'
+
+        %div
+          %p
+            Have you paid any money to your landlord since
+            %strong Wednesday 11 July 2013 (hardcoded)
+            when the claim was issued?
+          .striped-choice
+            %div
+              = f.radio_button :paid_money_since_claim_brought, "true"
+              = f.label :paid_money_since_claim_brought_true, 'Yes'
+            %div
+              = f.radio_button :paid_money_since_claim_brought, 'false'
+              = f.label :paid_money_since_claim_brought_false, 'No'
+        
+        %div
+          %p
+            Have you come to any agreement with your landlord about repaying the arrears since
+            %strong Wednesday 11 July 2013 (hardcoded)
+            when the claim was issued?
+          .striped-choice
+            %div
+              = f.radio_button :agreement_to_repay_arrears, "true"
+              = f.label :agreement_to_repay_arrears_true, 'Yes'
+            %div
+              = f.radio_button :agreement_to_repay_arrears, 'false'
+              = f.label :agreement_to_repay_arrears_false, 'No'
+        
+
+        %div
+          %p Do you have a money or other type of claim against the landlord?
+          .striped-choice
+            %div
+              = f.radio_button :has_claim_against_landlord, "true"
+              = f.label :has_claim_against_landlord_true, 'Yes'
+            %div
+              = f.radio_button :has_claim_against_landlord, 'false'
+              = f.label :has_claim_against_landlord_false, 'No'
+
+
+        %div
+          Do you have any comment about anything elase in the
+          %a.fake-link claim particulars
+          ?
+          = f.text_area :comments_on_particulars, :rows => 5
+          
+
+
+
+    = render :partial => 'claims/defence/save_continue', :locals => {f: f}
