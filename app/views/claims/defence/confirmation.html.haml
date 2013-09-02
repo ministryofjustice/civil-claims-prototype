@@ -1,10 +1,10 @@
-= render_claimant_navigation
+= render_defence_navigation
 %article
-  %h1 Step 6 of 6 - Confirmation
-  %p Your claim has been submitted successfully and the claim fee has been paid.
+  %h1 Step 5 of 5 - Confirmation
+  %p Thank you for submitting your defence.
   %p
-    You can view full details of this claim under
-    %a.fake-link your claims
+    You can view full details of this defence under
+    %a.fake-link the claim
     in your
     %a.fake-link account
   %p#reference-number
@@ -25,7 +25,7 @@
       = render :partial => 'shared/lambeth_court'
   %section#what-next
     %h2#what-next-title What happens next
-    %p We'll send the tenant details of your court action.
+    %p We'll send the details of your defence to the court.
     %p
       The tenant has until
       %strong= (Date.today + 2.weeks).strftime("%-d %B %Y")
