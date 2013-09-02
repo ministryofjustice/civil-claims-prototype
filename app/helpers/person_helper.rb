@@ -30,17 +30,23 @@ module PersonHelper
       
         editor_showing = true 
         
-        concat( render partial: 'people/edit', locals: {claim: claim, person: person, options: options} )
+        return capture do
+          render partial: 'people/edit', locals: {claim: claim, person: person, options: options}
+        end
 
       else 
         options[:class] << "#{person.type.downcase}" 
         options[:show_edit_link] = true 
-        concat( render partial: 'people/show', locals: {claim: claim, person: person, options: options} )
+        return capture do
+          render partial: 'people/show', locals: {claim: claim, person: person, options: options}
+        end
       end 
     end 
 
     unless editor_showing || defined?(noadd) && noadd 
-      concat( render :partial => 'people/add', formats: [:html], :locals => {claim: @claim, person_type: person_type} )
+      return capture do
+        render :partial => 'people/add', formats: [:html], :locals => {claim: @claim, person_type: person_type}
+      end
     end 
   end
 end
