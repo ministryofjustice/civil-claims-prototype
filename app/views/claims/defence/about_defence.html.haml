@@ -1,0 +1,6 @@
+= render_defence_navigation
+
+%h1 About you
+
+= form_for @claim, :url => { :action => "update" } do |f|
+	= render :partial => 'claims/defence/save_continue', :locals => {f: f}
