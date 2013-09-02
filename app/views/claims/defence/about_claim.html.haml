@@ -28,11 +28,14 @@
           %p Did you receive the notice to quit from the landlord?
           .striped-choice
             %div
-              = f.radio_button :received_notice_to_quit, "true"
+              = f.radio_button :received_notice_to_quit, "true", :onClick => "show_panel('received-notice-to-quit');"
               = f.label :received_notice_to_quit_true, 'Yes'
             %div
-              = f.radio_button :received_notice_to_quit, 'false'
+              = f.radio_button :received_notice_to_quit, 'false', :onClick => "hide_panel('received-notice-to-quit');"
               = f.label :received_notice_to_quit_false, 'No'
+          %div#received-notice-to-quit.component-details{:hidden => @defense.received_notice_to_quit ? false : true}
+            = f.label :date_received_notice_to_quit, "Notice to quit received"
+            = f.date_field :date_received_notice_to_quit
 
         %div.panel-component
           %p
