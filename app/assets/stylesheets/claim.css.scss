@@ -1,4 +1,4 @@
-// Place all the styles related to the Claim controller here.
+x// Place all the styles related to the Claim controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
@@ -15,7 +15,7 @@ $link-color-hover: #1D97FF;
 
 $selected-item-background-color: #D5E9F4;
 
-$button-border-radius: 0px;
+$button-border-radius: 4px;
 $button-primary-color: #01A75F;
 $button-secondary-color: $grey-3;
 $button-warning-color: $red;
@@ -78,14 +78,10 @@ a.toggle-visible:before {
 
 main { padding-top: 12px; }
 
-header {
-  img { max-width: none; } // bootstrap override to work with header+footer gov.uk css
-  a#proposition-name { float: right; }
-}
-
 div.user-data { 
   border-bottom: 1px solid #ccc;
-  max-width: 940px;
+  max-width: 960px;
+  padding: 0 30px;
   background-color: #fff;
   margin: 0 auto;
   > ul.nav { 
@@ -101,79 +97,129 @@ div.user-data {
   margin: 0 auto;
   max-width: 1020px;
   position: relative;
-  padding: 0 2em;
+  padding: 0 30px;
 
   .row {
-    margin-left: 2em;
-    margin-right: 2em;
+    margin-left: 30px;
+    margin-right: 30px;
   }
 }
 
 .indent { text-indent: 10px;}
 
+.navbar {
+  ul {
+    padding: 0;
+    margin: 10px 0;
+  }
 
-.alpha #phase-notice p {
-  padding: 0.5em 2em;
-  max-width: 940px;
-  margin: 0 auto;
-  font-size: 1.6rem;
-  background: #d53880;
-  color: #fff;
-}
+  li {
+    display: inline;
 
-.alpha #proposition-name small {
-  vertical-align: 3px;
-  margin-left: 10px;
-  padding: 3px 5px 1px;
-  background-color: #d53880;
-  font-family: "nta",Arial,sans-serif;
-  font-size: 16px;
-  line-height: 1.25;
-  font-weight: 300;
-  text-transform: none;
-  color: #fff;
-  font-weight: bold;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  -webkit-font-smoothing: subpixel-antialiased;
-}
+    a {
+      padding: 0 10px;
+      text-decoration: underline;
 
-#main-content .page-header { border: none; }
-
-header.page-header {
-  margin: 0;
-  border: none;
-  hgroup h1 {
-    font-family: "nta",Arial,sans-serif;
-    font-size: 48px;
-    line-height: 1.04167;
-    font-weight: 400;
-    text-transform: none;
-    font-weight: 700;
-    color: #0b0c0c;
-
-    span {
-      font-size: 27px;
-      line-height: 1;
-      font-weight: 400;
-      display: block;
-      margin-bottom: 0.25em;
-      text-shadow: none;
-      color: #6f777b;
+      &:hover {
+        color: #333;
+        text-decoration: none;
+      }
     }
 
-    strong {
-      font-size: 17px;
-      background: #d53880;
-      color: #fff;
-      vertical-align: middle;
-      padding: 2px 7px;
+    &.dropdown {
+      a {
+        .caret {
+          border-bottom-color: #777777;
+          border-top: 4px solid #777777;
+          border-left: 4px solid transparent;
+          border-right: 4px solid transparent;
+          content: "";
+          display: inline-block;
+          height: 0;
+          margin-left: 2px;
+          vertical-align: middle;
+          width: 0;
+        }
+      }
+    }
+
+    ul {
+      display: none;
+    }
+
+    &.open {
+      a {
+        color: #555;
+        background-color: #d5d5d5;
+      }
+      ul {
+        background-clip: padding-box;
+        background-color: #FFFFFF;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        border-radius: 0;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.176);
+        display: block;
+        list-style: none outside none;
+        margin: 10px 0 0 0;
+        min-width: 160px;
+        padding: 5px 0;
+        position: absolute;
+        z-index: 1000;
+
+        li {
+          display: block;
+
+          a {
+            background-color: transparent;
+            color: #777;
+            padding: 3px 10px;
+            display: block;
+            text-decoration: none;
+            color: $black;
+
+            &:hover {
+              background-color: #d5d5d5;
+            }
+          }
+
+          &.divider {
+            border-top: 1px solid #eee;
+            margin: 5px 0 10px;
+
+          }
+        }
+      }
+    }
+  }
+
+  a {
+    color: #777;
+  }
+}
+
+.nav-tabs {
+  list-style-type: none;
+  margin: 0;
+
+  li {
+    margin-bottom: -1px;
+
+    a {
+      // border-radius: 4px 4px 0 0;
+      margin-bottom: 0;
+      text-decoration: none;
+    }
+
+    &.active {
+      a {
+        border-color: #ddd #ddd transparent;
+      }
     }
   }
 }
 
 nav#secondary {
-  padding: 0px 2em;
+  padding: 0px 30px;
   border-bottom: 2px solid #ccc;
   margin-bottom: 20px;
   ol {
@@ -211,9 +257,40 @@ nav#secondary {
   }
 }
 
-#footer { 
-  margin-top: 20px; 
-  .footer-wrapper { max-width: 940px; }
+
+#edit-claim form {
+  input {
+    display:inline-block;
+    box-shadow: none;
+  }
+  input:focus:invalid {
+    color: #555555;
+    border-color: #73b9ef;
+    -webkit-box-shadow: 0px 0px 3px 2px rgba(115, 185, 239, 0.3);
+  }
+  input:focus {
+    border-color: #73b9ef;
+    -webkit-box-shadow: 0px 0px 3px 2px rgba(115, 185, 239, 0.3);
+  }
+  input.tabbed-out:invalid {
+    color: red;
+    border-color: red;
+    -webkit-box-shadow: 0px 0px 3px 2px rgba(255, 0, 0, 0.3);
+  }
+  input.tabbed-out:valid + span.icon-container:after {
+    content: 'y';
+    color: green;
+  }
+  input.tabbed-out:invalid + span.icon-container:after {
+    content: 'n';
+    color: red;
+  }
+  input + span.icon-container:after {
+    font-family: 'validators';
+    top:3px;
+    left:-27px;
+    position:relative;
+  }
 }
 
 #user-nav a.current_role { font-weight: bold;}
@@ -408,44 +485,6 @@ iframe { border: none; }
 form.add-additional-person {
   margin-top: 21px;
   margin-bottom: 20px;
-}
-
-.claimant, .defendant, .address-for-possession, .particulars {
-  background-repeat: no-repeat;
-  background-position: 18px 20px;
-  background-size: 63px 68px;
-  border-width: 1px 0;
-  border-style: solid;
-}
-
-.claimant {
-  background-color: #d5edea;
-  background-image: image-url('claimant.png');
-  border-color: #bddcd6;
-}
-
-.defendant {
-  background-color: #fde4d6;
-  background-image: image-url('defendant.png');
-  border-color: #f49365;
-  background-size: 52px 68px;
-  background-position: 24px 20px;
-}
-
-.address-for-possession {
-  background-color: #d5e8f2;
-  background-image: image-url('address.png');
-  border-color: #308bc4;
-  background-size: 58px 63px;
-  background-position: 20px 20px;
-
-  .address-linear {
-    font-weight: bold;
-  }
-
-  &> span {
-    display:block;
-  }
 }
 
 #edit-claim h3 { margin-top: 40px; }
@@ -694,23 +733,6 @@ h2.info-notice {
 
 }
 
-.panel-file-upload{
-  @include panel-style(#D5EEEA);
-
-  padding: 15px 5px 15px 5px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-
-  a{
-    margin-left: 5px;
-  }
-
-  input {
-    float: right;
-    margin-right:5px;
-  }
-}
-
 #arrears-table{
   margin-top: 25px;
 }
@@ -781,27 +803,132 @@ h2.info-notice {
 }
 
 .content-wrap{
-  padding: 0px 30px 0 30px;
+  padding: 0 30px 0 30px;
 }
 
 #start-continue-claim{
   margin-top: 50px;
 }
 
-#new-claim-step-list {
-  list-style-type: none;
-  li {
-    // display: block;
-    // height: 150px; //use this one
-
-    height: 90px;
-    margin: 10px 0 10px 0;
-  }
-
-}
 
 a.disabled {
   opacity: 0.5;
   &:hover { text-decoration: none; cursor: default; }
+}
+
+#start-new-claim-buttons {
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.tab-content{
+  margin-bottom: 30px;
+
+  .tab-pane {
+    border-color: #ddd;
+    display: none;
+
+    &.active {
+      display: block;
+    }
+  }
+}
+
+#start-continue-claim-disclaimer{
+  padding-top: 20px;
+  border-top: 1px solid $default-panel-border-color;
+  div {
+    padding-top: 20px;
+    padding-bottom: 10px;
+  }
+}
+
+#claims-list{
+  .claim-item {
+    @extend .panel-default;
+    margin-top: 25px;
+    margin-bottom: 40px;
+    
+    .content-label{
+      font-weight: bold;
+    }
+    
+    #claim-item-action-buttons{
+      margin: 25px 0px 10px 0px;
+    }
+    #claims-item-status-label{
+      @extend details;
+    }
+  }
+}
+
+#claims-item-status {
+  position: relative;
+  summary{
+    text-decoration: none;
+    display: inline-block;
+    #claims-item-status-label{
+      display: inline;
+      text-decoration: underline;
+    }
+    #claims-item-status-header{
+      margin-left: 105px;
+      text-decoration: none;
+      color: #000;
+      &:hover{
+        color: #000;
+      }
+    }
+  }
+
+  #claims-item-status-content{
+    position: relative;
+    margin-left: 150px;
+    margin-top: 15px;
+
+// hey hey refactor this span
+    #claims-item-status-content-list{
+      
+      span {
+        position: inline;
+        margin-right: 10px;
+
+        font-size: 12px;
+        font-weight: bold;
+        line-height: 1;
+        color: #fff;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: baseline;
+        
+        background-color: #01A75F;
+        border-radius: 9999px;
+      }
+
+      .claims-item-status-item-yes span { padding: 4px 6px; }
+      .claims-item-status-item-no span { 
+        background-color: $grey-3;
+        padding: 4px 11px; 
+      }
+
+    }
+  }
+}
+
+.panel-file-upload{
+  @include panel-style(#D5EEEA);
+
+  padding: 15px 5px 15px 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+
+  a{
+    margin-left: 5px;
+  }
+
+  input {
+    float: right;
+    margin-right:5px;
+  }
 }
 

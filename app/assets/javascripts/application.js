@@ -12,11 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require twitter/bootstrap
 //= require turbolinks
-//= require_tree .
 //= require jquery.ui.effect-highlight
 //= require validator
+//= require claim
 
 // want to hide something different then TR then add attribute to fn
 remove_fields = function(link, association) {
@@ -132,5 +131,3 @@ show_payment_panel = function(panel_id){
   
   $('#'+panel_id).show();
 };
-
-

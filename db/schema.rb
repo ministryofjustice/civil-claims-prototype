@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130807140855) do
+ActiveRecord::Schema.define(version: 20130828140636) do
 
   create_table "addresses", force: true do |t|
     t.string   "street_1"
@@ -28,9 +28,18 @@ ActiveRecord::Schema.define(version: 20130807140855) do
     t.date     "due_date"
     t.decimal  "amount"
     t.decimal  "paid"
-    t.integer  "claim_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "arrears_claims", id: false, force: true do |t|
+    t.integer "claim_id",  null: false
+    t.integer "arrear_id", null: false
+  end
+
+  create_table "arrears_defenses", id: false, force: true do |t|
+    t.integer "defense_id", null: false
+    t.integer "arrear_id",  null: false
   end
 
   create_table "attachments", force: true do |t|
@@ -60,7 +69,7 @@ ActiveRecord::Schema.define(version: 20130807140855) do
     t.string   "tenancy_type"
     t.date     "tenancy_start_date"
     t.decimal  "rental_amount"
-    t.string   "payment_frequency"
+    t.string   "payment_frequency",            default: "monthly"
     t.decimal  "unpaid_rent_per_day"
     t.boolean  "defendent_to_pay_for_claim"
     t.string   "other_information"
@@ -69,6 +78,54 @@ ActiveRecord::Schema.define(version: 20130807140855) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "signature"
+  end
+
+  create_table "defenses", force: true do |t|
+    t.integer  "claim_id"
+    t.integer  "owner_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "agree_with_tenancy_agreement_statement"
+    t.text     "comments_on_tenancy_agreement_statement"
+    t.boolean  "received_notice_to_quit"
+    t.date     "date_received_notice_to_quit"
+    t.boolean  "agree_with_rent_arrears"
+    t.decimal  "statement_of_arrears"
+    t.boolean  "paid_money_since_claim_brought"
+    t.boolean  "agreement_to_repay_arrears"
+    t.decimal  "repayment_amount"
+    t.string   "repayment_frequency"
+    t.boolean  "request_to_consider_repayments_by_installment"
+    t.boolean  "has_claim_against_landlord"
+    t.string   "claim_case_number"
+    t.text     "comments_on_particulars"
+    t.decimal  "current_account_balance"
+    t.boolean  "dont_have_current_account"
+    t.decimal  "savings_account_balance"
+    t.boolean  "dont_have_savings_account"
+    t.boolean  "employed"
+    t.boolean  "universal_credit"
+    t.decimal  "income"
+    t.decimal  "pension"
+    t.decimal  "child_benefit"
+    t.decimal  "other_monies_in"
+    t.boolean  "in_arrears_in_monthly_outgoings"
+    t.boolean  "loans_or_credit_cards"
+    t.boolean  "loans_arrears"
+    t.text     "loans_arrears_details"
+    t.boolean  "currently_paying_court_orders_or_fines"
+    t.boolean  "behind_on_fine_payments"
+    t.text     "fine_payments_details"
+    t.boolean  "has_dependent_children"
+    t.integer  "dependents_under_11",                           default: 0
+    t.integer  "dependents_11_to_15",                           default: 0
+    t.integer  "dependents_16_to_17",                           default: 0
+    t.integer  "dependents_18_and_over",                        default: 0
+    t.boolean  "has_other_dependents"
+    t.text     "details_of_other_dependents"
+    t.text     "details_of_circumstances"
+    t.boolean  "has_somewhere_else_to_live"
+    t.date     "move_in_date_for_other_property"
   end
 
   create_table "grounds_for_possession_answers", force: true do |t|
@@ -80,6 +137,19 @@ ActiveRecord::Schema.define(version: 20130807140855) do
     t.integer  "claim_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "monthly_expenses", force: true do |t|
+    t.string  "name"
+    t.decimal "amount"
+    t.integer "defense_id"
+  end
+
+  create_table "monthly_payments", force: true do |t|
+    t.string  "reference"
+    t.decimal "balance"
+    t.decimal "cost_per_month"
+    t.integer "defense_id"
   end
 
   create_table "people", force: true do |t|
@@ -95,6 +165,7 @@ ActiveRecord::Schema.define(version: 20130807140855) do
     t.datetime "updated_at"
     t.string   "dx_number"
     t.string   "dx_exchange"
+    t.boolean  "uj",          default: false
   end
 
   create_table "steps_already_taken_answers", force: true do |t|

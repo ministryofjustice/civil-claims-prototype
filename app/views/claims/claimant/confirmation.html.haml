@@ -1,0 +1,32 @@
+= render_claimant_navigation
+%article
+  %h1 Confirmation
+  %p You have successfully paid the court fee and booked a court hearing to repossess your property.
+  %p
+    You can view full details of this case in 
+    = link_to 'your account', '#' 
+  %p#reference-number
+    Your reference is:
+    %strong= @claim.id
+  #confirmation-view-print-buttons
+    .button View the case
+    #confirmation-print-receipt.button-secondary Print receipt
+  %section#hearing-details
+    %h2 Hearing details
+    .court-hearing-details-time
+      - date = (Date.today + 3.weeks)
+      %h3
+        %strong= date.strftime("%A %-d %B")
+        at
+        %strong 10:30am
+    = render :partial => 'shared/lambeth_court'
+  %section#what-next
+    %h2#what-next-title What happens next
+    %p We'll send the tenant details of your court action.
+    %p
+      The tenant has until
+      %strong= (Date.today + 2.weeks).strftime("%-d %B %Y")
+      to respond.
+    %p
+      A judge will decide on the case at the hearing on
+      %strong #{date.strftime("%-d %B %Y")}.

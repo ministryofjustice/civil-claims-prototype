@@ -1,0 +1,24 @@
+%p.lead
+  Use this online form to repossess a property if your tenant doesn’t pay their rent, breaks the tenancy agreement or refuses to move out.
+%p.lead 
+  You must have good reasons for evicting a tenant and usually have to give them notice to leave.
+  %br
+  = link_to "More about giving notice", '#'
+%article
+  - has_claims = (@user.claims.size > 0)
+  - if has_claims
+    %ul#claims-index-tabs.nav.nav-tabs
+      %li.submit
+        %a{"data-toggle" => "tab", :href => "#new"} Start a new case
+      %li.active.list
+        %a{"data-toggle" => "tab", :href => "#list"} Your cases
+  - else
+    %h2 Start a new claim
+  %section#start-continue-claim
+    .tab-content
+      - tab_class = has_claims ? 'tab-pane' : 'tab-pane active'
+      #new{:class => tab_class}
+        = render partial: 'claims/claimant/home'
+      - tab_class = has_claims ? 'tab-pane active' : 'tab-pane'
+      #list{:class => tab_class}
+        = render partial: 'claims/claimant/list', locals: {claims: @user.claims}

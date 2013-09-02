@@ -1,5 +1,6 @@
-<% options[:class] = 'person well clearfix ' + options[:type] %>
+<% options[:class] = options[:type] %>
 viewHTML = '<%=j render partial: "people/show", formats: [:html], locals: {claim: claim, person: person, options: options}  %>';
-$('<%= "#edit-person-#{person.id.to_s}" %>').replaceWith(viewHTML).effect('highlight');
+$('<%= "#edit-person-#{person.id.to_s}" %>').replaceWith(viewHTML);
+$('<%= "#edit-person-#{person.id.to_s}" %>').effect('highlight');
 buttonHTML = '<%=j render partial: "people/add", formats: [:html], locals: {claim: claim, person_type: person.type} %>';
 $('.person.<%= options[:type] %>').last().after(buttonHTML);

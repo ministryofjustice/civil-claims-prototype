@@ -9,9 +9,10 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  
- *= require twitter/bootstrap
- *= require gds-header-footer-only
  *= require_self
- *= require_tree .
  *= require validator
+ *= require moj-base
+ *= require claims-global
+ *= require claims-layout
+ *= require claims-components
  */

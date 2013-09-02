@@ -1,37 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>CivilClaims</title>
+  <%= render "shared/head", :title => Rails.configuration.app_title, :noapp => true %>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <link rel="icon" href="/favicon.png">
-  <%= csrf_meta_tags %>
 </head>
-<body class='alpha'>
+<body class='<%= Rails.configuration.phase %>'>
+  <%= render 'shared/header', :proposition => 'Repossess a property' %>
+  <%= render 'shared/phase_indicator' %>
   <%= render 'layouts/header' %>
   
-  <main role="main">
-    <div class="container" id='main-content'>
-      <div class="content">
-        <div class="row">
-          <header class="page-header group">
-            <hgroup class="full-width">
-              <h1>
-                <span>Service</span> 
-                Recover Property:<br />
-                Make a possession claim online <strong>ALPHA</strong>
-              </h1>
-            </hgroup>
-          </header>
-        </div>
+  <div id="wrapper">
+    <main role="main">
+      <%= render partial: 'shared/header_message' %>
+      <%= render 'layouts/messages' %>
+      <%= yield %>
+      
+    </main>
+  </div>
 
-        <%= render 'layouts/messages' %>
-        <%= yield %>
-      </div>
-    </div>
-  </main>
-
-  <%= render'layouts/footer' %>
+  <%= render'shared/footer' %>
 
 </body>
 </html>

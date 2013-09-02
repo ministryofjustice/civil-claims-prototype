@@ -1,0 +1,340 @@
+@import "_colours";
+@import "_typography";
+@import "design-patterns/_buttons.scss";
+@import "claims-vars";
+@import "claims-mixins";
+
+
+
+// CLAIMS STATUS
+
+#claims-list{
+  li {
+    margin-bottom: 20px;
+  }
+  .claim-item {
+    @extend .panel-default;
+    margin-top: 25px;
+    margin-bottom: 40px;
+    
+    .content-label{
+      font-weight: bold;
+    }
+    
+    #claim-item-action-buttons{
+      margin: 25px 0px 10px 0px;
+    }
+    #claims-item-status-label{
+      @extend details;
+    }
+  }
+}
+
+#claims-list {
+  list-style-type: none;
+  list-style-image: none;
+}
+#claims-list .claim-item {
+  list-style-type: none;
+  margin-bottom: 40px;
+  margin-top: 25px;
+}
+
+#claims-item-status {
+  position: relative;
+  summary{
+    text-decoration: none;
+    display: inline-block;
+    #claims-item-status-label{
+      display: inline;
+      text-decoration: underline;
+    }
+    #claims-item-status-header{
+      margin-left: 105px;
+      text-decoration: none;
+      color: #000;
+      &:hover{
+        color: #000;
+      }
+    }
+  }
+
+  #claims-item-status-content{
+    position: relative;
+    margin-left: 150px;
+    margin-top: 15px;
+
+// hey hey refactor this span
+    #claims-item-status-content-list{
+      
+      span {
+        position: inline;
+        margin-right: 10px;
+
+        font-size: 12px;
+        font-weight: bold;
+        line-height: 1;
+        color: #fff;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: baseline;
+        
+        background-color: #01A75F;
+        border-radius: 9999px;
+      }
+
+      li {
+        list-style-type: none;
+        list-style-image: none;
+      }
+
+      .claims-item-status-item-yes span { padding: 4px 6px; }
+      .claims-item-status-item-no span { 
+        background-color: $grey-3;
+        padding: 4px 11px; 
+      }
+
+    }
+  }
+
+}
+
+
+/*
+## Primary Navigation
+Horizontal nav links
+
+Styleguide 2.1
+*/
+
+nav.primary {
+  padding: 0px 30px;
+  border-bottom: 2px solid #ccc;
+  margin-bottom: 20px;
+  > ol {
+    @include clearfix;
+    list-style: decimal inside none;
+    margin: 0px 0px -2px 0px;
+    padding: 0;
+    counter-reset: pos;
+    li {
+      display: inline-block;
+      margin-left:-4px;
+      a {
+        font-size:16px;
+        color: #555;
+        border-bottom: 2px solid #ccc;
+        padding: 0px 8px 10px 12px;
+        display: block;
+        text-decoration: none;
+        &:before {
+          counter-increment: pos;
+          content: counter(pos) ".";
+          float: left;
+          margin-left: -2px;
+          margin-right: 5px;
+        }
+        &:hover { 
+          text-decoration: none;
+          cursor: default;
+        }
+        &.active {
+          border-bottom: 2px solid #7fb299;
+          font-weight: bold;
+        }
+        &.active:before {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+
+
+/*
+## Contact Details and Address panel
+
+claimant               - indicates a landlord
+defendant              - indicates a tenant
+address-for-possession - indicates a property
+
+Styleguide 1.4
+*/
+
+.person {
+  min-height: 68px;
+  padding: 20px 0 15px 100px;
+  margin-bottom: -1px;
+
+  border-width: 1px 0;
+  border-style: solid;
+
+  background-repeat: no-repeat;
+  background-position: 10px 4px;
+  background-size: 80px;
+
+  .name { font-weight: bold; }
+  .filler { 
+    height: 20px; 
+    display:block; 
+  }
+
+  &.claimant {
+    background-color: #d5edea;
+    border-color: #bddcd6;
+    background-image: image-url('avatar_landlord.png');
+  }
+
+  &.defendant {
+    background-color: #fde4d6;
+    border-color: #f49365;
+    background-image: image-url('avatar_tenant.png');
+  }
+
+  &.address-for-possession {
+    background-color: #d5e8f2;
+    border-color: #308bc4;
+    background-image: image-url('avatar_property.png');
+
+    .address-linear { font-weight: bold; }
+  }
+}
+
+
+/*
+## Inline address
+Serialize an address, and add commas between elements.
+
+Styleguide 1.3
+*/
+
+.address-linear {
+  span:after { content: ",  "; }
+  span:last-child:after { content: ""; }
+}
+
+
+/*
+## Court Location
+Display a block of court info from courtfinder
+
+Styleguide 1.1
+*/
+
+.court-badge {
+  > div {
+    float: left;
+  }
+  .court-address {
+    width: 55%;
+    padding: 0 5% 0 0;
+
+    span {
+      display: block;
+      &.dx {
+        margin: 20px 0;
+      }
+    }
+    h3 {
+      font-weight: bold;
+      border-bottom: 1px solid #c8c8c8;
+    }
+  }
+  .court-map {
+    width: 40%;
+    padding-top: 27px;
+
+    img {
+      display: block;
+      border: 1px solid #9c9e9d;
+    }
+  }
+}
+
+// PARTICULARS
+.particulars-horizontal {
+  h4 {
+    display: inline-block;
+    width: 30%;
+    font-weight: bold;
+    font-size: 16px;
+
+    &:first-child { margin-top: 0px; }
+  }
+  span {
+    display: inline-block;
+    width: 60%;
+  }
+
+}
+
+
+// CLAIM FEE
+#claim-fee{
+  display: block;
+  padding: 20px 0;
+  margin: 20px 0px;
+  background-color: #1fa398;
+  text-align: center;
+  h1 {
+    @include core-36;
+    color: #fff;
+    font-weight: bold;
+    margin: 0;
+    zoom: 120%;
+  }
+  h3 {
+    @include core-24;
+    color: #fff;
+    margin: 0;
+  }
+}
+
+/*
+## Tables for tabular data
+This is an example.
+
+Styleguide 1.2.
+*/
+
+table.moj-table {
+  width: 100%;
+  margin: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
+
+  .pounds:before { content: "\00a3"; }
+
+  tr {
+    td, th { 
+      text-align: right; 
+      background: none; 
+      border: dotted 1px #b8c6cc;
+      padding: 0.7em 0.5em 0.7em 1em;
+      border-left-style: dotted; 
+      border-right-style: dotted; 
+    }
+
+    td.left-align, th.left-align { text-align: left; }
+
+    th:first-child, td:first-child { border-left: none; }
+    th:last-child, td:last-child { border-right: none; }
+  }
+
+  tfoot { 
+    border-style: solid; 
+    border-color: #b7b7b7;
+    border-width: 1px;
+    border-left: none;
+    border-right: none;
+
+    td { font-weight: bold; }
+  }
+
+  tbody {
+    tr:nth-child(odd)  { background-color: #fff; }
+    tr:nth-child(even) { background-color: #f8f8f8; }
+  }
+  thead, tfoot { background-color: #f8f8f8; }
+} 

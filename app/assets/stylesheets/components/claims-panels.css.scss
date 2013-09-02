@@ -1,0 +1,70 @@
+@import "_colours";
+@import "_typography";
+@import "design-patterns/_buttons.scss";
+@import "claims-vars";
+@import "claims-mixins";
+
+.panel-default {
+  @include panel-style;
+  padding: 20px 90px 20px 90px;
+  margin: 10px 0px 10px 0px;
+}
+
+.panel-error {
+  @include panel-style(#F2DEDE,#EED3D7);
+  padding: 5px 5px 5px 5px;
+  color: #BB4A48;
+  text-align: center;
+}
+
+.panel-info {
+  background-color: #dfe0e2;
+  padding: 15px 15px 15px 15px;
+  margin: 15px 0px 15px 0px;
+}
+
+/*
+## Standard content panel
+
+Styleguide 1.5
+*/
+
+.moj-panel {
+  background-color: #f8f8f8;
+  border-width: 1px 0px;
+  border-style: solid;
+  border-color: #c8c8c8;
+  padding:30px 20px 30px 100px;
+}
+
+h4.moj-panel { 
+  font-size: 17px;
+  font-weight: bold;
+  padding-top: 14px; 
+  padding-bottom: 10px;
+  margin: 0 0 10px 0;
+}
+
+.save-close-panel {
+  margin: 30px 0px 10px;
+
+  .secondary-group {
+    float: right;
+
+    a, button {
+      margin-left: 20px;
+    }
+  }
+}
+
+.court-hearing-details-time {
+  @include panel-style;
+  padding: 25px 0;
+  margin: 0 auto 20px;
+  text-align: center;
+
+  h3 {
+    @include core-24;
+    margin: 0;
+  }
+}

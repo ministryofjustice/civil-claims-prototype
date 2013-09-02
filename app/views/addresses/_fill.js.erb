@@ -1,0 +1,3 @@
+var address = <%= address.to_json.html_safe %>;
+var container = $('#address-<%= address.id %>');
+claim.address.populate(container, address);

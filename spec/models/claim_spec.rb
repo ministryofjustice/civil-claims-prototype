@@ -6,7 +6,7 @@ describe Claim do
   end
 
   it 'has an owner' do
-    @claim.owner = Person.create_random
+    @claim.owner = Claimant.create_random
     assert @claim.save
   end
 
@@ -29,4 +29,20 @@ describe Claim do
     assert @claim.save
   end
 
+  it 'landlord can attach arrears' do
+    assert @claim.arrears << Arrear.create
+    assert @claim.save
+    assert @claim.arrears.size == 1
+  end
+
+  it 'can have multiple defenses' do
+    assert @claim.defenses << Defense.create
+    assert @claim.save
+    assert @claim.defenses.size == 1
+  end
+
+  it 'can build a claim as per the user journey' do
+    @claim.create_as_per_user_journey
+    assert @claim.save
+  end
 end

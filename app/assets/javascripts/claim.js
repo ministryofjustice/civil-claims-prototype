@@ -1,14 +1,31 @@
 
 $(document).ready(function() {
 
-  $('#claims-index-tabs li.submit a').click(function (e) {
-    e.preventDefault();
-    $(this).tab('show');
+  // usernav dropdown
+  $('.dropdown > a').on('click', function (e) {
+    $(this).parent().toggleClass('open');
   });
 
-  $('#claims-index-tabs li.list a').click(function (e) {
+  // tabs
+  $('#claims-index-tabs a').on('click', function (e) {
+    var $this = $(this),
+        tabs = $this.closest('ul').find('li'),
+        tabpanes = $('.tab-pane'),
+        i = $this.closest('ul').find('li').index($this.closest('li')),
+        x;
+
     e.preventDefault();
-    $(this).tab('show');
+    this.blur();
+
+    for (x = 0; x < tabs.length; x++) {
+      if(x === i) {
+        $(tabs[x]).addClass('active');
+        $(tabpanes[x]).show();
+      } else {
+        $(tabs[x]).removeClass('active');
+        $(tabpanes[x]).hide();
+      }
+    }
   });
 
   $('.inline-help .toggle-help').click(function(e) {
@@ -40,7 +57,7 @@ $(document).ready(function() {
 
     $.ajax($(this).attr('href'), { 'data': { 'postcode': postcode } }).done(function(data, textStatus, jqXHR) {
       that.parents('form').find('.pick_address').remove();
-      that.parents('.control-group').after(data);
+      that.parents('.form-row').after(data);
     });
 
   });
@@ -63,21 +80,66 @@ $(document).ready(function() {
     var picker = $(this).parents('.control-group');
     var address = $(this).find('option:selected').data('address');
 
-    // are we showing the editable address form?
-    if(address_element.find('.address_street_1 input').length == 0 ) {
-
-      // the tragic downside of framework generated javascript is that I'm too
-      // lazy to find a better way of triggering this behaviour
-      address_element.find('.manual-address').click(); 
-
-      setTimeout(function(){
-        populate_address(master_form.find('.address-container'),address);
-      }, 150); // callbacks are hard, let's just wait.
-
-    } else {
-      populate_address(address_element, address);
-    }
+    claim.address.populate(master_form, address);
   });
 
 });
 
+claim.validate = function(form) {
+  form = $(form);
+  var ready_to_go = form[0].checkValidity();
+  var address_fields = 0;
+  var field_names = ['address_street_1', 'address_street_2', 'address_street_3','address_town', 'address_county'];
+
+  address_fields = field_names.map(function(f) { 
+    if( form.find( 'input#'+f).length && form.find( 'input#'+f).val().length ) { return 1; }
+    return 0;
+  }).reduce(function(a, b) { return a + b; });
+
+  if(address_fields < 2) {
+    ready_to_go = false;
+    if(form.find('input#address_street_1').length && !form.find('input#address_street_1').val().length) {
+      form.find('input#address_street_1').attr('required', 'required').get(0).setCustomValidity('Not gonna happen');
+    }
+  } else {
+    form.find('input#address_street_1').removeAttr('required').get(0).setCustomValidity('');
+  }
+  
+  if( ready_to_go ) {
+    form.find("button[value='save']").removeAttr('disabled');
+  } else {
+    form.find("button[value='save']").attr('disabled', 'disabled');
+  }
+};
+
+claim.address = {
+  populate: function(container, address) {
+
+    // are we showing the editable address form?
+    if(container.find('.address_street_1 input').length == 0 ) {
+
+      // the tragic downside of framework generated javascript is that I'm too
+      // lazy to find a better way of triggering this behaviour
+      container.find('.manual-address').click(); 
+
+      setTimeout(function(){
+        claim.address.feels_dirty(container, address);
+        window.claim.validate(container.parents('form')); 
+      }, 150); // callbacks are hard, let's just wait.
+
+    } else {
+      claim.address.feels_dirty(container, address);
+      //window.claim.validate(container.parents('form')); 
+    }
+  },
+
+  feels_dirty: function(container, address) {
+    container.find('.address_street_1 input').val(address.street_1);
+    container.find('.address_street_2 input').val(address.street_2);
+    container.find('.address_street_3 input').val(address.street_3);
+    container.find('.address_town input').val(address.town);
+    container.find('.address_county input').val(address.county);
+    container.find('.address_postcode input').val(address.postcode);
+  },
+
+};

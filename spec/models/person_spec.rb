@@ -1,13 +1,6 @@
 require 'spec_helper'
 
 describe Person do
-  it 'can be / has been seeded' do
-    Claimant.all.each do |u|
-      assert u.class == Claimant
-    end
-    assert Staff.all.count == 1
-  end
-
   it 'can be factory generated' do
     assert FactoryGirl.create(:person)
   end
@@ -37,7 +30,7 @@ describe Person do
   end
 
   it 'find all claims started by a user' do
-    user = Person.at_random
+    user = Claimant.at_random
 
     assert user.claims.size == 0
 
@@ -49,5 +42,10 @@ describe Person do
     end
 
     assert user.claims.size == count
+  end
+
+  it 'finds a preseeded UserJourney person' do
+    user = Claimant.find_by :uj => true
+    assert user.type == 'Claimant'
   end
 end

@@ -1,0 +1,14 @@
+<p class='lead'>Your landlord or mortgage lender is taking court action against you to repossess your home.</p>
+<p class='lead'>For details and to find out what to do next, log in using your name and the password sent to you by email or text.</p>
+<article>
+  <section>
+    <h3>Sign in</h3>
+    <div class='moj-panel'>
+      <%= simple_form_for @user, :url => defense_login_path, :method => :post do |f| %>
+        <%= f.input :full_name, as: :fake %>
+        <%= f.input :security_token, as: :fake %>
+
+        <%= f.submit 'Login', :class => "button" %>
+      <% end %>
+  </section>
+</article>

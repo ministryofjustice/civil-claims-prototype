@@ -1,0 +1,22 @@
+%div{ class: "moj-panel particulars-#{options[:class]}" }
+  - grounds = claim.grounds_for_possesion
+  - if grounds.size > 0
+    %h4 Why you want the propety back
+    - grounds.each do |g|
+      %span= g
+
+  - if @claim.notice_to_quit
+    %h4 Notices given
+    %span= "Notice to quit served on #{claim.notice_served_date.strftime('%e %B %Y')}"
+
+  - if @claim.tenancy_type
+    %h4 Tenancy type
+    %span= claim.tenancy_type.humanize.gsub(/-/, ' ')
+
+  - if claim.tenancy_start_date
+    %h4 Tenancy start date
+    %span= claim.tenancy_start_date.strftime('%e %B %Y')
+
+  - if claim.rental_amount
+    %h4 Rental amount
+    %span &pound;#{claim.rental_amount.to_s} #{claim.payment_frequency}

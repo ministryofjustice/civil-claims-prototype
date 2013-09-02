@@ -1,0 +1,34 @@
+= render_claimant_navigation
+
+%article
+  %h1 Step 4 of 6 - Confirm details
+  %p Please read through the information you have provided to ensure it’s all correct. 
+  %section#statement-of-truth
+    %h2 Landlord/s
+    - @claim.claimants.each do |claimant|
+      - options = {}
+      - options[:class] = 'claimant person well clearfix no-edit'
+      = render :partial => 'people/show', :locals => { person: claimant, options: options, claim: @claim }
+
+    %h2 Tenant/s
+    - @claim.defendants.each do |defendant|
+      - options = {}
+      - options[:class] = 'defendant person well clearfix'
+      = render :partial => 'people/show', :locals => { person: defendant, options: options, claim: @claim }
+
+    %h2 Address for possession
+    - address = @claim.address_for_possession
+    - options = {}
+    = render :partial => 'addresses/view_address_for_possession', :locals => { claim: @claim, address: address, options: options }
+
+    %h2 Case details
+    - options = { class: 'vertical' }
+    = render partial: 'claims/shared/particulars/view', locals: { claim: @claim, options: options }
+
+    = simple_form_for @claim, :class => 'form-horizontal' do |f|
+      = f.input :signature, :label => false, :inline_label => "I believe that the facts stated in this claim (and any attached documents) are to the best of my knowledge true and correct."
+      .well.warning
+        %p
+          %span
+          A person who completes a statement of truth without an honest belief in the truth of the given information is liable to proceedings for contempt of court.
+      = render :partial => 'claims/claimant/save_continue', :locals => {f: f}

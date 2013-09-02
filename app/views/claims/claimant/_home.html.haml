@@ -1,0 +1,54 @@
+%p
+  Follow the steps below:
+%ol#new-claim-step-list.moj-large-steps
+  %li.moj-large-step
+    %div
+      %span.moj-large-step-number 1
+      %p.step-title Personal details
+      %p
+        Fill in contact details for the landlord and tenant or tenants.
+    %img{:alt => "Step 1", :src => image_url('claim-steps/step1.png')}/
+  %li.moj-large-step
+    %div
+      %span.moj-large-step-number 2
+      %p.step-title Case details
+      %p
+        Say why you want the property back and add details of the tenancy.
+    %img{:alt => "Step 2", :src => image_url('claim-steps/step2.png')}/
+  %li.moj-large-step
+    %div
+      %span.moj-large-step-number 3
+      %p.step-title Court booking
+      %p
+        There is usually a court hearing: find out where and when your case will be heard.
+    %img{:alt => "Step 3", :src => image_url('claim-steps/step3.png')}/
+  %li.moj-large-step
+    %div
+      %span.moj-large-step-number 4
+      %p.step-title Confirm details
+      %p
+        Check all the details and confirm they are correct.
+    %img{:alt => "Step 4", :src => image_url('claim-steps/step4.png')}/
+  %li.moj-large-step
+    %div
+      %span.moj-large-step-number 5
+      %p.step-title Pay court fee
+      %p Pay a &pound;100 court fee using a debit or credit card.
+    %img{:alt => "Step 5", :src => image_url('claim-steps/step5.png')}/
+  %li.moj-large-step
+    %div
+      %span.moj-large-step-number 6
+      %p.step-title Confirmation
+      %div
+        %p We'll confirm we’re dealing with your case and tell you what happens next. 
+    %img{:alt => "Step 6", :src => image_url('claim-steps/step6.png')}/
+
+= form_tag(claims_path, method: "post") do
+  = submit_tag "Start a new case", class: "big button"
+
+%section
+  %h3 Before you begin
+  %p The form will take about 20 minutes to complete.
+  %p You will have to pay a £100 court fee.
+  %p You may have to go to a court hearing afterwards.
+  %p The whole process usually takes at least 12 weeks.

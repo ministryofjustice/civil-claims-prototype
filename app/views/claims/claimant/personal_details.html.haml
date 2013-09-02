@@ -1,0 +1,23 @@
+= render_claimant_navigation
+%article
+  %h2 Step 1 of 6 - Personal details
+  %section#edit-claim
+    %p Fill in contact details for the landlord and tenant(s), including the address of the property you want to repossess.
+    
+    = toggle_inline_help_link('About claimants and defendants', 'Porro nihil nec cu. Ut ludus omnium dissentiunt mei, his at populo semper. Eu iusto tibique pri, ad sit modo antiopam maiestatis, commune delicata dissentias vel ea. An has odio habemus ancillae, an per animal fastidii tacimates, duo tritani mandamus delicatissimi ex.')
+
+    %h3 Landlord details
+    = display_landlords( @claim )
+
+    %h3 Tenant details
+    = display_tenants( @claim )
+
+    %h3 Property details
+    - address = @claim.address_for_possession
+    - options = { :show_edit_link => true }
+    - if address.postcode.blank?
+      = render :partial => 'addresses/edit_address_for_possession', :locals => { claim: @claim, address: address }
+    - else
+      = render :partial => 'addresses/view_address_for_possession', :locals => { claim: @claim, address: address, options: options }
+    = form_for @claim do |f|
+      = render :partial => 'claims/claimant/save_continue', :locals => {f: f}

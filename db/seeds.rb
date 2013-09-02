@@ -16,8 +16,24 @@ Claimant.create({
     street_1: '121 Elm Park Road',
     town: 'London',
     postcode: 'SW1 1SZ'
-    })
-  })
-Defendant.create(Person.generate)
+  }),
+  uj: true
+})
+
+Defendant.create({
+  title: 'Mr',
+  full_name: 'Louis Robert Stevenson',
+  phone: '0208 123 6789',
+  mobile: '07765 912673',
+  email: 'lrsteveson@hotmail.co.uk',
+  address: Address.create({
+    street_1: 'Flat 3',
+    street_2: '92 Crystal Palace Park Road',
+    town: 'London',
+    postcode: 'SE26 6UP'
+  }),
+  uj: true
+})
+
 Staff.create(Person.generate)
 Judge.create(Person.generate)

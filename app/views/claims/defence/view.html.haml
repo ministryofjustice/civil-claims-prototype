@@ -1,0 +1,51 @@
+%article
+  %h2.lead Repossession case no. #{@claim.id}
+  %p.lead
+    Issued on #{ @claim.created_at.strftime('%-d %B %Y') }
+
+  %section
+    %h3 Landlord
+    - options = { class: "person claimant" }
+    - @claim.claimants.each do |person|
+      = render partial: "people/show", locals: { options: options, person: person }
+
+  %section
+    %h3 Tenant
+    - options = { class: "person defendant", show_extended_contact_details: true }
+    - @claim.defendants.each do |person|
+      = render partial: "people/show", locals: { options: options, person: person }
+
+  %section
+    %h3 Property
+    - options = { class: "person address-for-possession" }
+    = render partial: 'addresses/view_address_for_possession', :locals => { claim: @claim, address: @claim.address_for_possession, options: {} }
+
+  %section
+    %h3 Claim particulars
+    - options = { class: 'horizontal' }
+    = render partial: "claims/shared/particulars/view", locals: { claim: @claim, options: options }
+
+  - if @claim.arrears.size > 0
+    %section
+      %h3 Rent arrears
+      = render partial: "arrears/read_only", locals: { claim: @claim }
+
+  - if @claim.attachments.size > 0
+    %section
+      %h3 Supporting documentation
+      - @claim.attachments.each do |attachment|
+        %h4.moj-panel= attachment.file_name
+
+  %section
+    %h3 Status
+    %span Hearing scheduled
+    %section.moj-panel
+      = render partial: 'claims/shared/scheduled_hearing'
+      = render partial: "shared/lambeth_court"
+
+.save-close-panel
+  = link_to 'Start defence', defence_personal_details_claim_defence_path, :class => 'button'
+  .secondary-group
+    = link_to 'Download and print claim', '#', :class => 'button-secondary'
+    = link_to 'Close', claim_defence_path, :class => 'button-secondary'
+

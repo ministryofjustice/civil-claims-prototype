@@ -1,12 +1,13 @@
 class ClaimsController < ApplicationController
   skip_before_action :pretend_to_authenticate, only: [:delete_all]
+  before_action :page_title
 
   def home
     case session[:role]
     when 'claimant'
       render 'claims/claimant/index'
     when 'defendant'
-      render 'claims/defendant/index'
+      redirect_to claims_defence_path
     when 'staff'
       render 'claims/staff/index'
     when 'judge'
@@ -48,16 +49,16 @@ class ClaimsController < ApplicationController
     render 'claims/claimant/personal_details'
   end
 
-  def particulars
+  def case_details
     @claim = Claim.find(params[:id])
-    session[:referer] = 'particulars'
-    render 'claims/claimant/particulars'
+    session[:referer] = 'case_details'
+    render 'claims/claimant/case_details'
   end
 
-  def scheduling
+  def court_booking
     @claim = Claim.find(params[:id])
     session[:referer] = 'scheduling'
-    render 'claims/claimant/scheduling'
+    render 'claims/claimant/court_booking'
   end
 
   def statement
@@ -102,4 +103,10 @@ class ClaimsController < ApplicationController
   def next_navigation_path
     view_context.get_next_navigation_path request.referer
   end
+
+  def page_title 
+    @page_title = "Repossess a property:<br />make a possession claim".html_safe
+  end
+
+
 end

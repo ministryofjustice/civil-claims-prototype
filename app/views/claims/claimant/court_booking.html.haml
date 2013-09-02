@@ -1,0 +1,12 @@
+= render_claimant_navigation
+%article
+  %h2 Step 3 of 6 - Court booking
+  %p Your case will be heard at the court below on:
+  
+  %section.moj-panel
+    = render partial: 'claims/shared/scheduled_hearing'
+  %section.moj-panel
+    = render partial: 'shared/lambeth_court'
+
+  = form_for @claim do |f|
+    = render partial: 'claims/claimant/save_continue', locals: {f: f}

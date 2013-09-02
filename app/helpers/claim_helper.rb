@@ -4,12 +4,6 @@ module ClaimHelper
     editors[person.id]
   end
 
-  def nav_link( action, text )
-    link_to_unless_current text, :action => action do
-      link_to text, '#', :class => 'active'
-    end
-  end
-
   def login_link_to_role( role )
     url = '/login_as/' + role
     content = role.titleize
@@ -27,16 +21,16 @@ module ClaimHelper
   def claimant_navigation_linkdata
     link_data = [
       { :text => 'Personal details', :path => 'personal_details' },
-      { :text => 'Claim particulars', :path => 'particulars' },
-      { :text => 'Court scheduling', :path => 'scheduling' },
-      { :text => 'Statement of truth', :path => 'statement' },
-      { :text => 'Fees & payment', :path => 'fees' },
+      { :text => 'Case details', :path => 'case_details' },
+      { :text => 'Court booking', :path => 'court_booking' },
+      { :text => 'Confirm details', :path => 'statement' },
+      { :text => 'Pay court fee', :path => 'fees' },
       { :text => 'Confirmation', :path => 'confirmation' }
     ]
   end
 
   def render_claimant_navigation
-    render :partial => 'claims/claimant/navigation', :locals => { :links => claimant_navigation_linkdata }
+    render :partial => 'shared/navigation', :locals => { :links => claimant_navigation_linkdata }
   end
 
   def get_next_navigation_path( referer )
