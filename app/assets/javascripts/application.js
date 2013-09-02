@@ -17,7 +17,7 @@
 //= require claim
 
 // want to hide something different then TR then add attribute to fn
-remove_fields = function(link, association) {
+var remove_fields = function(link, association) {
   $(link).prev('input[type=hidden]').val('1');
   
   if(association==="arrears"){
@@ -37,7 +37,7 @@ remove_fields = function(link, association) {
   }
 };
 
-add_fields = function(link, association, content) {
+var add_fields = function(link, association, content) {
   var errors="";
 
   var new_id = new Date().getTime();
@@ -97,25 +97,34 @@ add_fields = function(link, association, content) {
 
 };
 
-toggle_panel = function (checkbox, panel_id){
+var toggle_panel = function (checkbox, panel_id){
   $('#'+panel_id).toggle('fast');
 };
 
+var show_panel = function( panel_id ){
+  $('#'+panel_id).show('fast');
+};
+
+var hide_panel = function( panel_id ){
+  $('#'+panel_id).hide('fast');
+};
+
+
 // this will format date in edible format for simple_forms
-format_date_form = function(date) { 
+var format_date_form = function(date) {
   return date.getFullYear()+'-'+
     ('0' + (date.getMonth()+1)).slice(-2) +'-'+
     ('0' + date.getDate()).slice(-2);
 };
 
 // this will format date to display
-format_date = function(date) { 
+var format_date = function(date) {
   return ('0' + date.getDate()).slice(-2) + '/' +
     ('0' + (date.getMonth()+1)).slice(-2) + '/' +
     date.getFullYear();
 };
 
-get_random_filename = function(){
+var get_random_filename = function(){
   var filenames = 
     ["Crystal palace park road.pdf",
     "Tenancy Agreement July 2010.doc",
@@ -123,7 +132,7 @@ get_random_filename = function(){
   return filenames[Math.floor(Math.random() * filenames.length)];
 };
 
-show_payment_panel = function(panel_id){
+var show_payment_panel = function(panel_id){
   $('#credit-card-details').hide();
   $('#paypal-details').hide();
   $('#worldpay-details').hide();

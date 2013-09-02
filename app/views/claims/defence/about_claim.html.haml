@@ -14,11 +14,14 @@
             ?
           .striped-choice
             %div
-              = f.radio_button :agree_with_tenancy_agreement_statement, "true"
+              = f.radio_button :agree_with_tenancy_agreement_statement, "true", :onClick => "hide_panel('comments-on-tenancy-agreement-statement');"
               = f.label :agree_with_tenancy_agreement_statement_true, 'Yes'
             %div
-              = f.radio_button :agree_with_tenancy_agreement_statement, 'false'
+              = f.radio_button :agree_with_tenancy_agreement_statement, 'false', :onClick => "show_panel('comments-on-tenancy-agreement-statement');"
               = f.label :agree_with_tenancy_agreement_statement_false, 'No'
+          %div#comments-on-tenancy-agreement-statement.component-details{:hidden => @defense.agree_with_tenancy_agreement_statement ? true : false}
+            = f.label :comments_on_tenancy_agreement_statement, "Set your own reasons"
+            = f.text_area :comments_on_tenancy_agreement_statement, :rows => 5
         
 
         %div.panel-component
