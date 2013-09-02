@@ -1,8 +1,9 @@
 %p.lead 
   The landlord 
-  %strong= @claim.claimants.first.full_name 
+  %strong= @claim.claimants.first.full_name
   is taking you to court to repossess your home at 
-  %strong 121 Elm Park Road, London SQ1 1SZ
+  %strong.address-linear
+    = render partial: 'addresses/show', locals: { address: @claim.address_for_possession }
   
 %article
   -# this should check against the current user for his defence
