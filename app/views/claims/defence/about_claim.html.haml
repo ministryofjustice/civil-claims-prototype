@@ -45,10 +45,16 @@
           .striped-choice
             %div
               = f.radio_button :agree_with_rent_arrears, "true"
-              = f.label :agree_with_rent_arrears_true, 'Yes'
+              = f.label :agree_with_rent_arrears_true, 'Yes', :onClick => "hide_panel('agree-with-rent-arrears');"
             %div
               = f.radio_button :agree_with_rent_arrears, 'false'
-              = f.label :agree_with_rent_arrears_false, 'No'
+              = f.label :agree_with_rent_arrears_false, 'No', :onClick => "show_panel('agree-with-rent-arrears');"
+          %div#agree-with-rent-arrears.component-details{:hidden => @defense.agree_with_rent_arrears ? true : false}
+            = f.label :statement_of_arrears, "Please state how much you believe the arrears to be"
+            %br/
+            %strong &pound
+            = f.text_field :statement_of_arrears
+            
 
         %div.panel-component
           %p
