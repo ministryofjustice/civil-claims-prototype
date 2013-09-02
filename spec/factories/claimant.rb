@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :person do
+  factory :claimant do
     address
     full_name "joe bloggs"
     phone     "+44 (0)207 12345678"
