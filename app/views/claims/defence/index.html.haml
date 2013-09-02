@@ -1,0 +1,44 @@
+%p.lead 
+  The landlord 
+  %strong= @claim.claimants.first.full_name 
+  is taking you to court to repossess your home at 
+  %strong 121 Elm Park Road, London SQ1 1SZ
+  
+%article
+  -# this should check against the current user for his defence
+  - has_defences = (@claim.defenses.size > 0)
+  - if has_defences
+    %ul.claims-index-tabs.nav.nav-tabs
+      %li.submit
+        %a.is-active-tab{"data-toggle" => "tab", :href => "#new"} What to do
+      %li.active.list
+        %a.is-active-tab{"data-toggle" => "tab", :href => "#list"} Your defence
+  - else
+    %h2 What to do next
+  %section#start-continue-defence
+    .tab-content
+      - tab_class = has_defences ? 'tab-pane' : 'tab-pane active'
+      #new{:class => tab_class}
+        = render partial: 'claims/defence/home'
+      - tab_class = has_defences ? 'tab-pane active' : 'tab-pane'
+      #list{:class => tab_class}
+        = render partial: 'claims/defence/list', locals: {claims: @user.claims}
+
+  %section
+    %h3 Quick questions
+    %p
+      Here are some answers to common questions. You'll find lots more guidance on the
+      decisions you need to make and the informaiton you need to add as you progress.
+      %details
+        %summary I've just received repossession claim against me what should I do?
+        %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, accusantium quos earum explicabo autem atque non enim aliquid sit labore? Id, nemo, atque veritatis explicabo quis quibusdam provident minima a.
+      %details
+        %summary What is a repossession claim?
+        %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, illum, voluptatum, ipsa, natus placeat incidunt veritatis accusantium modi officia quisquam fuga harum excepturi aut iste maiores cumque dolorem impedit officiis!
+      %details
+        %summary I don't have a computer, how am I able to view the claim and file a defence?
+        %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, accusantium, quae, consequatur, veritatis temporibus delectus eveniet laudantium dolores hic aliquam ab blanditiis totam quisquam perspiciatis quos. Aperiam soluta cumque aliquid?
+      %details
+        %summary Do I have to go to court?
+        %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore, id, voluptatum, culpa, cumque blanditiis provident fugit quo sunt fuga aliquam ab nihil impedit facilis voluptates assumenda sint beatae pariatur laudantium.
+

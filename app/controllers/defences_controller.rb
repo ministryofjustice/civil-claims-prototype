@@ -2,7 +2,7 @@ class DefencesController < ApplicationController
   before_action :page_title
 
   def show_login
-    @user = Defendant.find(session[:user])
+    @user = @user || Defendant.find(session[:user])
   	render "claims/defence/login"
   end
 
@@ -27,6 +27,14 @@ class DefencesController < ApplicationController
 
   def personal_details
     @claim = @claim || Claim.find(params[:claim_id])
+    # until we have a nice save
+    if @claim.defenses.size==0 then
+      new_defense = Defense.new
+      new_defense.owner= @user
+      @claim.defenses << new_defense
+      @claim.save
+    end
+
     @editors = session['editors'] || {}
     session[:referer] = 'personal_details'
     render "claims/defence/personal_details" 
@@ -57,10 +65,12 @@ class DefencesController < ApplicationController
   end
 
   def update
+    # update claim defence
     if 'Save & Continue' == params[:commit]
       redirect_to next_navigation_path
     elsif 'Close' == params[:commit]
-      redirect_to root_path
+      @claim = @claim || Claim.find(params[:claim_id])
+      redirect_to claim_defence_path @claim
     end
   end
 

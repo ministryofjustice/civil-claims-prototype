@@ -4,11 +4,11 @@
 %article
   - has_claims = (@user.claims.size > 0)
   - if has_claims
-    %ul#claims-index-tabs.nav.nav-tabs
+    %ul.claims-index-tabs.nav.nav-tabs
       %li.submit
-        %a{"data-toggle" => "tab", :href => "#new"} Start a new claim
+        %a.is-active-tab{"data-toggle" => "tab", :href => "#new"} Start a new claim
       %li.active.list
-        %a{"data-toggle" => "tab", :href => "#list"} Your claims
+        %a.is-active-tab{"data-toggle" => "tab", :href => "#list"} Your claims
   - else
     %h2 Start a new claim
   %section#start-continue-claim
