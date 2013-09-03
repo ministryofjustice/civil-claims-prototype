@@ -50,7 +50,7 @@ class DefencesController < ApplicationController
   end
 
   def preview
-    @claim = @claim || Claim.find(params[:claim_id])
+    @claim = get_current_claim
     @editors = session['editors'] || {}
     session[:referer] = 'preview'
     render "claims/defence/preview" 
@@ -95,7 +95,7 @@ class DefencesController < ApplicationController
     end
 
     def defense_params
-      params.require(:defense).permit!
+      params.require(:defense).permit! if params.has_key? :defense
     end
 
 end

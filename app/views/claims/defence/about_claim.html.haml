@@ -8,98 +8,83 @@
     %section
       .moj-panel
         %div.panel-component
-          %p 
-            Do you agree with what is said about the property and the tenancy agreement in the 
-            %a.fake-link claim particulars
-            ?
-          .striped-choice
-            %div
-              = f.radio_button :agree_with_tenancy_agreement_statement, "true", :onClick => "hide_panel('comments-on-tenancy-agreement-statement');"
-              = f.label :agree_with_tenancy_agreement_statement_true, 'Yes'
-            %div
-              = f.radio_button :agree_with_tenancy_agreement_statement, 'false', :onClick => "show_panel('comments-on-tenancy-agreement-statement');"
-              = f.label :agree_with_tenancy_agreement_statement_false, 'No'
-          %div#comments-on-tenancy-agreement-statement.component-details{:hidden => @defense.agree_with_tenancy_agreement_statement ? true : false}
+          = f.input :agree_with_tenancy_agreement_statement, |
+            label: "Do you agree with what is said about the property and the tenancy agreement in the <a class='fake-link'>claim particulars</a>?".html_safe, |
+            as: :radio_buttons
+          %div#comments-on-tenancy-agreement-statement.component-details
             = f.label :comments_on_tenancy_agreement_statement, "Set your own reasons"
             = f.text_area :comments_on_tenancy_agreement_statement, :rows => 5
         
+        %div.panel-component
+          = f.input :received_notice_to_quit, |
+            label: "Did you receive the notice to quit from the landlord?", |
+            as: :radio_buttons
+          %div#received-notice-to-quit.component-details
+            = f.input :date_received_notice_to_quit, label: "Notice to quit received"
 
         %div.panel-component
-          %p Did you receive the notice to quit from the landlord?
-          .striped-choice
-            %div
-              = f.radio_button :received_notice_to_quit, "true", :onClick => "show_panel('received-notice-to-quit');"
-              = f.label :received_notice_to_quit_true, 'Yes'
-            %div
-              = f.radio_button :received_notice_to_quit, 'false', :onClick => "hide_panel('received-notice-to-quit');"
-              = f.label :received_notice_to_quit_false, 'No'
-          %div#received-notice-to-quit.component-details{:hidden => @defense.received_notice_to_quit ? false : true}
-            = f.label :date_received_notice_to_quit, "Notice to quit received"
-            = f.date_field :date_received_notice_to_quit
-
-        %div.panel-component
-          %p
-            Do you agree that there are arrears of the rent as stated in the
-            %a.fake-link claim particulars
-            ?
-          .striped-choice
-            %div
-              = f.radio_button :agree_with_rent_arrears, "true"
-              = f.label :agree_with_rent_arrears_true, 'Yes', :onClick => "hide_panel('agree-with-rent-arrears');"
-            %div
-              = f.radio_button :agree_with_rent_arrears, 'false'
-              = f.label :agree_with_rent_arrears_false, 'No', :onClick => "show_panel('agree-with-rent-arrears');"
-          %div#agree-with-rent-arrears.component-details{:hidden => @defense.agree_with_rent_arrears ? true : false}
+          = f.input :agree_with_rent_arrears, |
+            label: "Do you agree that there are arrears of the rent as stated in the <a class='fake-link'>claim particulars</a>?".html_safe, |
+            as: :radio_buttons
+          %div#agree-with-rent-arrears.component-details
             = f.label :statement_of_arrears, "Please state how much you believe the arrears to be"
             %br/
             %strong &pound
             = f.text_field :statement_of_arrears
             
+        %div.panel-component
+          = f.input :paid_money_since_claim_brought, |
+            label: "Have you paid any money to your landlord since <strong>Wednesday 11 July 2013 (hardcoded)</strong> when the claim was issued?".html_safe, |
+            as: :radio_buttons
+          %div#paid-money-since-claim-brought.component-details
+            .form-row
+              %label{:for => "paid-since-claim-select-day" } Date amount paid
+              %select#paid-since-claim-select-day.date
+                %option
+                - for day in 1..31 
+                  %option{:value => day}                   
+                    =day
+              %select#paid-since-claim-select-month.date
+                %option
+                %option{:value => 1} January
+                %option{:value => 2} February
+                %option{:value => 3} March
+                %option{:value => 4} April
+                %option{:value => 5} May
+                %option{:value => 6} June
+                %option{:value => 7} July
+                %option{:value => 8} August
+                %option{:value => 9} September
+                %option{:value => 10} October
+                %option{:value => 11} November
+                %option{:value => 12} December
+              %select#paid-since-claim-select-year.date
+                %option
+                - for year in 2009..2013
+                  %option{:value => year}
+                    = year
+            .form-row
+              %label{:for => "paid-since-claim-amount"} Payment amount
+              %strong &pound
+              %input#paid-since-claim-amount{:type => "text"}
+            %span.button Add another line
+ 
+        %div.panel-component
+          = f.input :agreement_to_repay_arrears, |
+            label: "Have you come to any agreement with your landlord about repaying the arrears since <strong>Wednesday 11 July 2013 (hardcoded)</strong> when the claim was issued?".html_safe, |
+            as: :radio_buttons
+          %div#agreement-to-repay-arrears.component-details
+            %p Here be dragons
 
         %div.panel-component
-          %p
-            Have you paid any money to your landlord since
-            %strong Wednesday 11 July 2013 (hardcoded)
-            when the claim was issued?
-          .striped-choice
-            %div
-              = f.radio_button :paid_money_since_claim_brought, "true"
-              = f.label :paid_money_since_claim_brought_true, 'Yes'
-            %div
-              = f.radio_button :paid_money_since_claim_brought, 'false'
-              = f.label :paid_money_since_claim_brought_false, 'No'
-        
-        %div.panel-component
-          %p
-            Have you come to any agreement with your landlord about repaying the arrears since
-            %strong Wednesday 11 July 2013 (hardcoded)
-            when the claim was issued?
-          .striped-choice
-            %div
-              = f.radio_button :agreement_to_repay_arrears, "true"
-              = f.label :agreement_to_repay_arrears_true, 'Yes'
-            %div
-              = f.radio_button :agreement_to_repay_arrears, 'false'
-              = f.label :agreement_to_repay_arrears_false, 'No'
-        
-
-        %div.panel-component
-          %p Do you have a money or other type of claim against the landlord?
-          .striped-choice
-            %div
-              = f.radio_button :has_claim_against_landlord, "true"
-              = f.label :has_claim_against_landlord_true, 'Yes'
-            %div
-              = f.radio_button :has_claim_against_landlord, 'false'
-              = f.label :has_claim_against_landlord_false, 'No'
-
+          = f.input :has_claim_against_landlord, label: "Do you have a money or other type of claim against the landlord?", |
+            as: :radio_buttons
+          %div#has-claim-against-landlord.component-details
+            %p Here be dragons
 
         %div
-          %p Do you have any comment about anything elase in the
-          %a.fake-link claim particulars
-          ?
-          = f.text_area :comments_on_particulars, :rows => 5
-          
+          = f.label :comments_on_particulars, "Do you have any comment about anything else in the <a class='fake-link'>claim particulars</a>?".html_safe
+          = f.text_area :comments_on_particulars, rows: 5
 
 
 
