@@ -6,26 +6,41 @@
     
     = toggle_inline_help_link('About claimants and defendants', 'Porro nihil nec cu. Ut ludus omnium dissentiunt mei, his at populo semper. Eu iusto tibique pri, ad sit modo antiopam maiestatis, commune delicata dissentias vel ea. An has odio habemus ancillae, an per animal fastidii tacimates, duo tritani mandamus delicatissimi ex.')
 
-    = simple_form_for @claim do |form|
+    = simple_form_for @claim, url: personal_details_claim_path( @claim ) do |form|
 
       %h3 Landlord details
-      = render partial: "people/claimants/edit_primary_claimant", locals: {claimant: @claim.primary_claimant}
+      = render partial: "people/claimants/edit_primary_claimant", locals: {form: form, claimant: @claim.primary_claimant}
       - @claim.additional_claimants.each do |claimant|
-        = render partial: "people/claimants/edit_additional_claimant", locals: { claimant: claimant }
+        = render partial: "people/claimants/edit_additional_claimant", locals: {form: form, claimant: claimant }
       = submit_tag 'Add another landlord', :class => "button-secondary"
 
 
       %h3 Tenant details
       = render partial: "people/defendants/edit_primary_defendant", locals: { defendant: @claim.primary_defendant }
       - @claim.additional_defendants.each do |defendant|
-        = render partial: "people/defendants/edit_addition_defendant", locals: { defendant: defendant }
+        = render partial: "people/defendants/edit_additional_defendant", locals: { defendant: defendant }
+      = submit_tag 'Add another tenant', :class => "button-secondary"
 
       %h3 Property details
-      - address = @claim.address_for_possession
-      - options = { :show_edit_link => true }
-      - if address.postcode.blank?
-        = render :partial => 'addresses/edit_address_for_possession', :locals => { claim: @claim, address: address }
-      - else
-        = render :partial => 'addresses/view_address_for_possession', :locals => { claim: @claim, address: address, options: options }
-      
+      .moj-panel
+        = render :partial => 'addresses/address_for_possession/edit', :locals => { address: @claim.address_for_possession }
+
+        .form-group.striped-radios
+          %h4 Type of property
+          %div
+            = form.radio_button(:property_type, 'residential')
+            = label_tag :claim_property_type_residential, 'Residential'
+          %div
+            = form.radio_button :property_type, 'commercial'
+            = label_tag :claim_property_type_commercial, 'Commercial'
+
+        .form-group.striped-radios
+          %h4 Who is in the property?
+          %div
+            = form.radio_button :resident_type, 'private tenant'
+            = label_tag :claim_resident_type_private_tenant, 'Private Tenant'
+          %div
+            = form.radio_button :resident_type, 'squatter'
+            = label_tag :claim_resident_type_squatter, 'Squatter'
+     
       = render partial: 'claims/claimant/save_continue', locals: {f: form}

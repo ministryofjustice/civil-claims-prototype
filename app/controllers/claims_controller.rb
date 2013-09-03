@@ -35,14 +35,29 @@ class ClaimsController < ApplicationController
     @claim = Claim.find(params[:id])
     params.permit!
     @claim.update_attributes params[:claim]
- 
-    if 'Save & Continue' == params[:commit]
+
+    case params[:commit]
+    when 'Save & Continue'
       redirect_to next_navigation_path
-    elsif 'Close' == params[:commit]
+    when 'Close'
       redirect_to root_path
-    elsif 'Add another landlord' == params[:commit]
+    end
+  end
+
+  def post_personal_details
+    @claim = Claim.find(params[:id])
+
+    case params[:commit]
+    when 'Save & Continue'
+      redirect_to next_navigation_path
+    when 'Close'
+      redirect_to root_path
+    when 'Add another landlord'
       @claim.claimants << Claimant.new( address: Address.new )
-      render 'claims/claimant/personal_details'
+      redirect_to @claim
+    when 'Add another tenant'
+      @claim.defendants << Defendant.new( address: Address.new )
+      redirect_to @claim
     end
   end
 

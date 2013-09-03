@@ -22,13 +22,13 @@ CivilClaims::Application.routes.draw do
   resources :claims do
     member do
       get '/' => 'claims#personal_details', as: :show_claim
+      patch 'personal_details', to: 'claims#post_personal_details'
       get 'case_details'
       get 'court_booking'
       get 'statement'
       get 'fees'
       get 'confirmation'
 
-      patch "update", as: :update_claim
       patch 'address_for_possession', to: 'claims#address', as: :address_for_possession
 
       get 'delete'

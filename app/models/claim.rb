@@ -47,11 +47,9 @@ class Claim < ActiveRecord::Base
 
   def setup_linked_records( user )
     self.owner = user
-    self.claimants << Claimant.new(user.attributes.except('type', 'id'))
+    self.claimants << Claimant.create(user.attributes.except('type', 'id'))
 
-    defendant = Defendant.new
-    defendant.address = Address.new
-    self.defendants << defendant
+    self.defendants << Defendant.new( address: Address.new )
 
     self.address_for_possession = Address.new
   end
