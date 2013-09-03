@@ -2,7 +2,6 @@ class ClaimsController < ApplicationController
   skip_before_action :pretend_to_authenticate, only: [:delete_all]
   before_action :page_title
 
-  decorates_assigned :claim
 
   def home
     case session[:role]
