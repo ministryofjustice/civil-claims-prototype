@@ -74,13 +74,24 @@
             label: "Have you come to any agreement with your landlord about repaying the arrears since <strong>Wednesday 11 July 2013 (hardcoded)</strong> when the claim was issued?".html_safe, |
             as: :radio_buttons
           %div#agreement-to-repay-arrears.component-details
-            %p Here be dragons
+            %h5 temp- if yes
+            = f.input :repayment_amount, as: :string, label: "Payment amount"
+            = f.input :repayment_frequency, as: :radio_buttons, collection: [["Per month", "montly"], ["Per week", "weekly"]]
+            %h5 temp- if no
+            = f.input :request_to_consider_repayments_by_installment, |
+              label: "Do you want the court to consider allowing you to pay arrears in installments?", |
+              as: :radio_buttons
+            %div#request-to-consider-repayments-by-installment.component-details
+              How much can you afford to pay in addition to the current rent?
+              = f.input :installment_amount, as: :string, label: "Payment amount"
+              = f.input :installment_frequency, as: :radio_buttons, collection: [["Per month", "montly"], ["Per week", "weekly"]]
+
 
         %div.panel-component
           = f.input :has_claim_against_landlord, label: "Do you have a money or other type of claim against the landlord?", |
             as: :radio_buttons
           %div#has-claim-against-landlord.component-details
-            %p Here be dragons
+            = f.input :claim_case_number, label: "Case number"
 
         %div
           = f.label :comments_on_particulars, "Do you have any comment about anything else in the <a class='fake-link'>claim particulars</a>?".html_safe
