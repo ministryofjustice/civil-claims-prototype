@@ -14,19 +14,19 @@ class DefencesController < ApplicationController
   end
 
   def index
-    @claim = @claim || Claim.find(params[:claim_id])
+    @claim = get_current_claim
     @user = @user || Defendant.find(session[:user])
   	render "claims/defence/index"
   end
 
   def view
     no_page_title
-    @claim = @claim || Claim.find(params[:claim_id])
+    @claim = get_current_claim
     render "claims/defence/view" 
   end
 
   def personal_details
-    @claim = @claim || Claim.find(params[:claim_id])
+    @claim = get_current_claim
     if get_current_defense.nil?
       @user = Defendant.find(session[:user])
       @claim.defenses.create(owner: @user)
@@ -44,7 +44,7 @@ class DefencesController < ApplicationController
   end
 
   def about_defence
-    @claim = @claim || Claim.find(params[:claim_id])
+    @claim = get_current_claim
     session[:referer] = 'about_defence'
     render "claims/defence/about_defence" 
   end
@@ -63,8 +63,7 @@ class DefencesController < ApplicationController
   end
 
   def update
-    params.permit!
-    get_current_defense.update_attributes params[:defense]
+    get_current_defense.update_attributes defense_params
 
     if 'Save & Continue' == params[:commit]
       redirect_to next_navigation_path
@@ -87,8 +86,16 @@ class DefencesController < ApplicationController
       @page_title = nil
     end
 
+    def get_current_claim
+      @claim || Claim.find(params[:claim_id])
+    end
+
     def get_current_defense
       @defense || Defense.find_by(claim_id: params[:claim_id], owner_id: session[:user])
+    end
+
+    def defense_params
+      params.require(:defense).permit!
     end
 
 end
