@@ -1,0 +1,77 @@
+.panel-default
+  %span.labeled-content
+    %span.content-label Claim Ref #
+    %span.content-block= @claim.id
+  %span.labeled-content
+    %span.content-label
+      Landlord#{"s" if @claim.claimants.count>1}
+    %span.content-block
+      - @claim.claimants.each do |claimant|
+        = "#{claimant.title} #{claimant.full_name}".strip
+        %br/
+  %span.labeled-content
+    %span.content-label
+      Tenant#{"s" if @claim.defendants.count>1}
+    %span.content-block
+      - @claim.defendants.each do |defendant|
+        = "#{defendant.title} #{defendant.full_name}".strip
+        %br/
+  %span.labeled-content
+    %span.content-label Property
+    %span.content-block
+      = @claim.address_for_possession.street_1
+      %br/
+      = @claim.address_for_possession.street_2
+      %br/
+      = @claim.address_for_possession.town
+      %br/
+      = @claim.address_for_possession.postcode
+      %br/
+  %details.claims-item-status
+    %summary
+      %span.status-label Case status
+      %span.status-header Hearing scheaduled
+    .status-content
+      %strong>
+        =(Date.today + 3.weeks).strftime("%A %-d %B") 
+      at 
+      %strong 10:30am
+      %br/
+      Lambeth County Court
+      %br/
+      Court House
+      %br/
+      Cleaver Street
+      %br/
+      Kennington Road
+      %br/
+      London
+      %br/
+      SE11 4DZ
+  = link_to "View case", view_claim_defence_path, :class => "button"
+
+  %details.claims-item-status
+    %summary
+      %span.status-label Status
+      - has_personal_details = true
+      - has_about_claim = true
+      - has_about_defence = false
+      - has_signature = false
+
+      - percentage = 0 + (has_personal_details ? 25:0) + (has_about_claim ? 25:0) + (has_signature ? 25:0)
+      %span.status-header
+        50% complete and not yet submitted
+    .status-content
+      %ul.content-list
+        %li{:class => "status-item-#{(has_personal_details ? 'yes':'no')}"}
+          Personal details
+        %li{:class => "status-item-#{(has_about_claim ? 'yes':'no')}"}
+          About the claim
+        %li{:class => "status-item-#{(has_about_defence ? 'yes':'no')}"}
+          About you
+        %li{:class => "status-item-#{(has_signature ? 'yes':'no')}"}
+          Statement of truth
+
+  #claim-item-action-buttons
+    %span= link_to 'Continue defence', defence_personal_details_claim_defence_path, :class => 'button'
+    %span.button-warning Delete defence

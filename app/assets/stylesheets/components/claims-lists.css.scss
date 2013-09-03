@@ -1,3 +1,25 @@
+.plain {
+  list-style-type: none;
+  list-style-image: none;
+  padding-left: 0;
+  li {
+    list-style-type: none;
+    list-style-image: none;
+    padding-left: 0;
+  }
+  .moj-panel > & {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+li {
+  span.item {
+    display: inline-block;
+    width: 200px;
+  }
+}
+
 
 .moj-large-steps {
   list-style-type: none;
@@ -16,13 +38,15 @@
     
     > div {
       display: inline-block;
+      margin-top: 20px;
       width: 50%;
     }
 
-    .moj-large-step-number {
+    .step-number {
       position: absolute;
       display:inline-block;
       left: -25px;
+      top: 20px;
       padding: 5px 8px;
 
       font-size: 12px;
@@ -41,6 +65,52 @@
       font-weight: bold;
     }
 
-    
   }
+}
+
+
+.claims-item-status {
+  position: relative;
+  
+  summary{
+    text-decoration: none;
+    
+    .status-label{
+      display: inline-block;
+      text-decoration: underline;
+      width: 22%;
+    }
+
+    .status-header{
+      text-decoration: none;
+      color: #000;
+      &:hover{
+        color: #000;
+      }
+    }
+  }
+
+  .status-content{
+    position: relative;
+    margin-left: 25.5%;
+    margin-top: 10px;
+    padding-left: 0px;
+
+    .content-list{
+      list-style-type: none;
+      list-style-image: none;
+      list-style-position: inside;
+      padding-left: 0px;
+    }
+      
+    .status-item-yes {
+      background: image-url('status_on.png') no-repeat center left;
+      padding: 1px 0px 1px 30px;
+    }
+    .status-item-no  { 
+      background: image-url('status_off.png') no-repeat center left;
+      padding: 1px 0px 1px 30px;
+    }
+  }
+
 }

@@ -7,7 +7,7 @@ $(document).ready(function() {
   });
 
   // tabs
-  $('#claims-index-tabs a').on('click', function (e) {
+  $('.claims-index-tabs a.is-active-tab').on('click', function (e) {
     var $this = $(this),
         tabs = $this.closest('ul').find('li'),
         tabpanes = $('.tab-pane'),
