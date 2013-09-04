@@ -1,3 +1,4 @@
+var claim = window.claim || {}
 
 $(document).ready(function() {
 
