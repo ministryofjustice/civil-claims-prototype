@@ -3,6 +3,12 @@ module DefenceHelper
     render :partial => 'shared/navigation', :locals => { :links => defence_navigation_linkdata }
   end
 
+  def address_fields( address )
+    capture do
+      render partial: "addresses/address_for_possession/edit", locals: {address: address}
+    end
+  end
+
   def defence_navigation_linkdata
     link_data = [
       { :text => 'Personal details', :path => 'personal_details' },
