@@ -3,6 +3,7 @@ class DefencesController < ApplicationController
 
   def show_login
     @user = @user || Defendant.find(session[:user])
+    @hide_user_nav = true
   	render "claims/defence/login"
   end
 
