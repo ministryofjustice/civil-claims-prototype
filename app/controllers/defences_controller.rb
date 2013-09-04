@@ -15,64 +15,61 @@ class DefencesController < ApplicationController
   end
 
   def index
-    @claim = @claim || Claim.find(params[:claim_id])
-    @user = @user || Person.find(session[:user])
-  	render "claims/defence/index"
+    get_current_claim
+    @user = @user || Defendant.find(session[:user])
+    render "claims/defence/index"
   end
 
   def view
     no_page_title
-    @claim = @claim || Claim.find(params[:claim_id])
-    render "claims/defence/view" 
+    get_current_claim
+    render "claims/defence/view"
   end
 
   def personal_details
-    @claim = @claim || Claim.find(params[:claim_id])
-    # until we have a nice save
-    if @claim.defenses.size==0 then
-      new_defense = Defense.new
-      new_defense.owner= @user
-      @claim.defenses << new_defense
-      @claim.save
+    get_current_claim
+    if get_current_defense.nil?
+      @user = Defendant.find(session[:user])
+      @claim.defenses.create(owner: @user)
     end
 
     @editors = session['editors'] || {}
     session[:referer] = 'personal_details'
-    render "claims/defence/personal_details" 
+    render "claims/defence/personal_details"
   end
 
   def about_claim
-    @claim = @claim || Claim.find(params[:claim_id])
+    get_current_defense
     session[:referer] = 'about_claim'
-    render "claims/defence/about_claim" 
+    render "claims/defence/about_claim"
   end
 
   def about_defence
-    @claim = @claim || Claim.find(params[:claim_id])
+    get_current_claim
     session[:referer] = 'about_defence'
-    render "claims/defence/about_defence" 
+    render "claims/defence/about_defence"
   end
 
   def preview
-    @claim = @claim || Claim.find(params[:claim_id])
+    get_current_claim
     @editors = session['editors'] || {}
     session[:referer] = 'preview'
-    render "claims/defence/preview" 
+    render "claims/defence/preview"
   end
 
   def confirmation
-    @claim = @claim || Claim.find(params[:claim_id])
+    get_current_claim
     session[:referer] = 'confirmation'
-    render "claims/defence/confirmation" 
+    render "claims/defence/confirmation"
   end
 
   def update
-    # update claim defence
+    update_current_claim_from_parameters
+
     if 'Save & Continue' == params[:commit]
       redirect_to next_navigation_path
     elsif 'Close' == params[:commit]
-      @claim = @claim || Claim.find(params[:claim_id])
-      redirect_to claim_defence_path @claim
+      redirect_to claim_defence_path params[:claim_id]
     end
   end
 
@@ -81,13 +78,29 @@ class DefencesController < ApplicationController
   def next_navigation_path
     view_context.get_defence_next_navigation_path request.referer
   end
-  
-  def page_title 
+
+  def page_title
     @page_title = "View repossession claim<br />and file a defence".html_safe
   end
 
   def no_page_title
     @page_title = nil
+  end
+
+  def get_current_claim
+    @claim = @claim || Claim.find(params[:claim_id])
+  end
+
+  def get_current_defense
+    @defense = @defense || Defense.find_by(claim_id: params[:claim_id], owner_id: session[:user])
+  end
+
+  def defense_params
+    params.require(:defense).permit! if params.has_key? :defense
+  end
+
+  def update_current_claim_from_parameters
+    get_current_defense.update_attributes defense_params
   end
 
 end
