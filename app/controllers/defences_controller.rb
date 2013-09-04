@@ -75,10 +75,6 @@ class DefencesController < ApplicationController
 
   private
 
-  def next_navigation_path
-    view_context.get_defence_next_navigation_path request.referer
-  end
-
   def page_title
     @page_title = "View repossession claim<br />and file a defence".html_safe
   end

@@ -25,4 +25,21 @@ module ApplicationHelper
   def pp_currency( num )
     number_with_precision( num, strip_insignificant_zeros: true, delimiter: ',' )
   end
+
+  def get_next_navigation_path( referer )
+    current_page = -1
+    linkdata.each_with_index do |lnk, i|
+      if lnk[:path] == session[:referer]
+        current_page = i
+      elsif current_page > -1
+        return url_for( controller: controller.controller_name  , action: lnk[:path], only_path: true )
+      end
+    end
+    return root_path
+  end
+
+  def render_local_navigation
+    render :partial => 'shared/navigation', :locals => { :links => linkdata }
+  end
+
 end

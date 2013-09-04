@@ -51,7 +51,7 @@ CivilClaims::Application.routes.draw do
       get 'about-the-claim', to: 'defences#about_claim'
       get 'about-you', to: 'defences#about_defence'
       get 'preview'
-      get 'confirmation'
+      get 'confirmation', to: 'defences#confirmation'
 
       patch 'update'
 

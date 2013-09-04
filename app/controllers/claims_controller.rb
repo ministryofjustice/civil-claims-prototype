@@ -118,10 +118,6 @@ class ClaimsController < ApplicationController
 
   private
 
-  def next_navigation_path
-    view_context.get_next_navigation_path request.referer
-  end
-
   def page_title 
     @page_title = "Repossess a property:<br />make a possession claim".html_safe
   end

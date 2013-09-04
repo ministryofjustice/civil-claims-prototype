@@ -1,4 +1,4 @@
-= render_defence_navigation
+= render_local_navigation
 
 %article
   %h2 Step 4 of 5 - Preview and submit
@@ -98,7 +98,7 @@
           %strong 8 September 2013
 
   %section
-    = simple_form_for @claim, :class => 'form-horizontal' do |f|
+    = simple_form_for @claim, :url => { :action => "update" }, :class => 'form-horizontal' do |f|
       = f.input :signature, label: "I believe that the facts stated in this defence (and any attached documents) are to the best of my knowledge true and correct."
       .well.warning
         %p
