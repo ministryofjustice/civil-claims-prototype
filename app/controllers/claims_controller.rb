@@ -22,7 +22,7 @@ class ClaimsController < ApplicationController
   end
 
   def create
-    @claim = Claim.new.decorate
+    @claim = Claim.new
     @user = @user || Person.find(session[:user])
     @claim.setup_linked_records( @user )
     @claim.save
@@ -52,10 +52,10 @@ class ClaimsController < ApplicationController
     when 'Close'
       redirect_to root_path
     when 'Add another landlord'
-      @claim.claimants << Claimant.new( address: Address.new )
+      @claim.claimants << Claimant.new
       redirect_to @claim
     when 'Add another tenant'
-      @claim.defendants << Defendant.new( address: Address.new )
+      @claim.defendants << Defendant.new
       redirect_to @claim
     end
   end

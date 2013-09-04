@@ -1,8 +1,19 @@
 class Person < ActiveRecord::Base
   belongs_to :claim
-  belongs_to :address
 
   scope :randomly, -> { order("RANDOM()") }
+
+  def address= address
+    self.address_id = address.id
+  end
+
+  def address
+    if self.address_id
+      Address.find(self.address_id) 
+    else
+      Address.new
+    end
+  end
 
   def display_name
     "#{self.title} #{self.full_name}".strip
