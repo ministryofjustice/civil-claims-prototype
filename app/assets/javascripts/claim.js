@@ -104,12 +104,8 @@ var initPage = function(){
 
 };
 
-$(function() {
-  initPage();
-});
-$(window).bind('page:change', function() {
-  initPage();
-});
+$(document).ready(initPage);
+$(window).bind('page:change', initPage);
 
 claim.validate = function(form) {
   form = $(form);

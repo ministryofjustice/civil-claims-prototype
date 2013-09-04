@@ -18,7 +18,7 @@
             %div
               = f.radio_button :agree_with_tenancy_agreement_statement, 'false', :class => "js-panel-component-details-show"
               = f.label :agree_with_tenancy_agreement_statement_false, 'No'
-          .component-details{ :class => ('element-invisible' if @defense.agree_with_tenancy_agreement_statement)}
+          .component-details{ :class => ('element-invisible' if (@defense.agree_with_tenancy_agreement_statement.nil? || @defense.agree_with_tenancy_agreement_statement))}
             = f.input :comments_on_tenancy_agreement_statement, input_html: {:rows => 5}, label: "Set your own reasons"
         
         .panel-component
@@ -44,7 +44,7 @@
             %div
               = f.radio_button :agree_with_rent_arrears, 'false', :class => "js-panel-component-details-show"
               = f.label :agree_with_rent_arrears_false, 'No'
-          .component-details{ :class => ('element-invisible' if @defense.agree_with_rent_arrears)}
+          .component-details{ :class => ('element-invisible' if (@defense.agree_with_rent_arrears.nil? || @defense.agree_with_rent_arrears))}
             = f.label :statement_of_arrears, "Please state how much you believe the arrears to be"
             %br/
             %strong &pound
@@ -108,7 +108,7 @@
           .component-details{ :class => ('element-invisible' unless @defense.agreement_to_repay_arrears)}
             = f.input :repayment_amount, as: :string, label: "Payment amount"
             = f.input :repayment_frequency, as: :radio_buttons, collection: [["Per month", "montly"], ["Per week", "weekly"]]
-          .component-details.panel-component{ :class => ('element-invisible' if @defense.agreement_to_repay_arrears)}
+          .component-details.panel-component{ :class => ('element-invisible' if (@defense.agreement_to_repay_arrears.nil? || @defense.agreement_to_repay_arrears))}
             Do you want the court to consider allowing you to pay arrears in installments?
             .striped-choice
               %div
