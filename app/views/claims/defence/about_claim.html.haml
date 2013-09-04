@@ -7,26 +7,30 @@
   = simple_form_for @defense, :url => { :action => "update" } do |f|
     %section
       .moj-panel
-        %div.panel-component
-          = f.input :agree_with_tenancy_agreement_statement, |
-            label: "Do you agree with what is said about the property and the tenancy agreement in the <a class='fake-link'>claim particulars</a>?".html_safe, |
-            as: :radio_buttons
-          %div#comments-on-tenancy-agreement-statement.component-details
-            = f.label :comments_on_tenancy_agreement_statement, "Set your own reasons"
-            = f.text_area :comments_on_tenancy_agreement_statement, :rows => 5
+        .panel-component
+          Do you agree with what is said about the property and the tenancy agreement in the <a class='fake-link'>claim particulars</a>?"
+          .striped-choice
+            %div
+              = f.radio_button :agree_with_tenancy_agreement_statement, 'true', :class => "js-panel-component-details-hide"
+              = f.label :agree_with_tenancy_agreement_statement_true, 'Yes'
+            %div
+              = f.radio_button :agree_with_tenancy_agreement_statement, 'false', :class => "js-panel-component-details-show"
+              = f.label :agree_with_tenancy_agreement_statement_false, 'No'
+          .component-details{ :class => ('element-invisible' if @defense.agree_with_tenancy_agreement_statement)}
+            = f.input :comments_on_tenancy_agreement_statement, input_html: {:rows => 5}, label: "Set your own reasons"
         
-        %div.panel-component
+        .panel-component
           = f.input :received_notice_to_quit, |
             label: "Did you receive the notice to quit from the landlord?", |
             as: :radio_buttons
-          %div#received-notice-to-quit.component-details
+          .component-details
             = f.input :date_received_notice_to_quit, label: "Notice to quit received"
 
-        %div.panel-component
+        .panel-component
           = f.input :agree_with_rent_arrears, |
             label: "Do you agree that there are arrears of the rent as stated in the <a class='fake-link'>claim particulars</a>?".html_safe, |
             as: :radio_buttons
-          %div#agree-with-rent-arrears.component-details
+          .component-details
             = f.label :statement_of_arrears, "Please state how much you believe the arrears to be"
             %br/
             %strong &pound
@@ -36,7 +40,7 @@
           = f.input :paid_money_since_claim_brought, |
             label: "Have you paid any money to your landlord since <strong>Wednesday 11 July 2013 (hardcoded)</strong> when the claim was issued?".html_safe, |
             as: :radio_buttons
-          %div#paid-money-since-claim-brought.component-details
+          .component-details
             .form-row
               %label{:for => "paid-since-claim-select-day" } Date amount paid
               %select#paid-since-claim-select-day.date
@@ -69,28 +73,29 @@
               %input#paid-since-claim-amount{:type => "text"}
             %span.button Add another line
  
-        %div.panel-component
+        .panel-component
           = f.input :agreement_to_repay_arrears, |
             label: "Have you come to any agreement with your landlord about repaying the arrears since <strong>Wednesday 11 July 2013 (hardcoded)</strong> when the claim was issued?".html_safe, |
             as: :radio_buttons
-          %div#agreement-to-repay-arrears.component-details
+          .component-details
             %h5 temp- if yes
             = f.input :repayment_amount, as: :string, label: "Payment amount"
             = f.input :repayment_frequency, as: :radio_buttons, collection: [["Per month", "montly"], ["Per week", "weekly"]]
+
             %h5 temp- if no
             = f.input :request_to_consider_repayments_by_installment, |
               label: "Do you want the court to consider allowing you to pay arrears in installments?", |
               as: :radio_buttons
-            %div#request-to-consider-repayments-by-installment.component-details
+            .component-details
               How much can you afford to pay in addition to the current rent?
               = f.input :installment_amount, as: :string, label: "Payment amount"
               = f.input :installment_frequency, as: :radio_buttons, collection: [["Per month", "montly"], ["Per week", "weekly"]]
 
 
-        %div.panel-component
+        .panel-component
           = f.input :has_claim_against_landlord, label: "Do you have a money or other type of claim against the landlord?", |
             as: :radio_buttons
-          %div#has-claim-against-landlord.component-details
+          .component-details
             = f.input :claim_case_number, label: "Case number"
 
         %div

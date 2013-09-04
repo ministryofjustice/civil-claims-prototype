@@ -106,6 +106,14 @@ $(document).ready(function() {
     claim.address.populate(master_form, address);
   });
 
+  $('.js-panel-component-details-show').on('click', function(event){
+    $('.js-panel-component-details-show').parent().parent().next().removeClass('element-invisible');
+  });
+
+  $('.js-panel-component-details-hide').on('click', function(event){
+    $('.js-panel-component-details-show').parent().parent().next().addClass('element-invisible');
+  });
+
 });
 
 
