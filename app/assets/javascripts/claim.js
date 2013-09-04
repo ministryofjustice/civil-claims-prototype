@@ -1,3 +1,4 @@
+var claim = window.claim || {}
 
 var initPage = function(){
   // usernav dropdown
