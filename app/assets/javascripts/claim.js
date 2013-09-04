@@ -1,6 +1,5 @@
 
-$(document).ready(function() {
-
+var initPage = function(){
   // usernav dropdown
   $('.dropdown > a').on('click', function (e) {
     $(this).parent().toggleClass('open');
@@ -83,6 +82,7 @@ $(document).ready(function() {
     claim.address.populate(master_form, address);
   });
 
+
   // kinda bad ;)
   $('.js-panel-component-details-show').on('click', function(event){
     var panels = $(event.target).parent().parent().nextAll('.component-details');
@@ -101,6 +101,13 @@ $(document).ready(function() {
     }
   });
 
+};
+
+$(function() {
+  initPage();
+});
+$(window).bind('page:change', function() {
+  initPage();
 });
 
 claim.validate = function(form) {
