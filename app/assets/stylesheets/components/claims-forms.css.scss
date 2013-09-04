@@ -234,17 +234,19 @@ form.add-additional-person {
 .claim_signature {
   margin-top:40px;
   margin-bottom:40px;
-
+  
+  input {
+    margin-left: 0px;
+    margin-top: -45px;
+    float: left;
+  }
   label {
     width: auto;
     font-weight: bold;
     padding-left: 20px;
     vertical-align: middle;
-    input {
-      margin-left: -20px;
-      float: left;
-    }
   }
+  
 }
 .warning span {
   font-family: validators;

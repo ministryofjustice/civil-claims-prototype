@@ -98,7 +98,7 @@
 
   %section
     = simple_form_for @claim, :class => 'form-horizontal' do |f|
-      = f.input :signature, :label => false, :inline_label => "I believe that the facts stated in this defence (and any attached documents) are to the best of my knowledge true and correct."
+      = f.input :signature, label: "I believe that the facts stated in this defence (and any attached documents) are to the best of my knowledge true and correct."
       .well.warning
         %p
           / quote character rendered as warning sign using font "validators"
