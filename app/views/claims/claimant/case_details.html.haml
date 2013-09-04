@@ -1,24 +1,23 @@
 = render_claimant_navigation
 
 %article
-  %h2 Step 2 of 6 - Claim particulars
+  %h2 Step 2 of 6 - Case details
+  %p.lead Say why you want the property back, add details of the tenancy, and attach any supporting documents.
 
   %section#edit-claim
 
-    %p Add all details you have about the claim and upload further information if required.
-    %a.fake-link About adding claim particulars
 
     = simple_form_for @claim, url: claim_path(@claim) do |f|
 
       / GROUNDS FOR POSSESSION
       %section#grounds-for-possession
-        %h3 Grounds for possession
+        %h3 Why you want to property back
         .panel-default
 
           .striped-choice
             %div
               = f.check_box :non_payment_of_rent
-              = f.label :non_payment_of_rent, "Non payment of rent"
+              = f.label :non_payment_of_rent, "Unpaid rent"
             %div
               = f.check_box :anti_social_behaviour
               = f.label :anti_social_behaviour, "Anti-social behaviour"
@@ -29,15 +28,15 @@
               = f.check_box :other_breach_of_tenancy, :onClick => "toggle_panel(this,'other-breach');"
               = f.label :other_breach_of_tenancy, "Other breach of tenancy"
             %div#other-breach{:hidden => @claim.other_breach_of_tenancy? ? false : true}
-              Please specify
+              Please give details
               = f.text_area :other_breach, :rows => 3
-          %a.fake-link More about grounds for possession
+          %a.fake-link More about reasons for repossession
 
       / STEPS ALREADY TAKEN
       %section#steps-taken
         %h3 Steps already taken
         .panel-default
-          %strong Types of notice served
+          %h4 What kind of notice did you send them?
 
           .striped-choice
             %div
@@ -67,13 +66,14 @@
       %section#next-steps
         %h3 Next steps
         .panel-default
+          %h4 What would you like to do next?
           .striped-choice
             %div
               = f.check_box :claim_rental_arrears, :onClick => "toggle_panel(this,'rental-arrears');"
-              = f.label :claim_rental_arrears, "Claim rent arrears"
+              = f.label :claim_rental_arrears, "Reclaim unpaid rent"
             %div
               = f.check_box :lease_forfeiture
-              = f.label :lease_forfeiture, "Forfeiture of the lease"
+              = f.label :lease_forfeiture, "End the tenancy"
 
           %details{:open => @claim.includes_human_rights_issues? ? true : false }
             %summary Does, or will, the claim include any issues under the human rights act 1998
@@ -128,7 +128,7 @@
       %section
         %h3 Other information
         .panel-default
-          %p Any other information you would like to give about the claim
+          %p Give any other information you would like the court to know about your case.
           = f.text_area :other_information, :rows => 3
 
       / SUPPORTING DOCUMENTTION

@@ -1,0 +1,23 @@
+.moj-panel.edit-person
+  %h3 Add an additional tenant
+  = simple_fields_for defendant do |sf|
+    = sf.input :full_name, placeholder: 'e.g. John Smith'
+    = sf.input :phone
+    = sf.input :mobile
+    = sf.input :email
+
+      = simple_fields_for defendant.address do |sff|
+        - classes = 'address'
+        - classes << ' valid' if defendant.address.valid?
+        %div{ class: classes }
+          = sff.input :street_1, label: 'Street'
+          = sff.input :street_2, label: nil
+          = sff.input :street_3, label: nil
+          = sff.input :town
+          = sff.input :county
+
+        = sff.input :postcode do
+          = sff.input_field :postcode, class: 'postcode', required: true
+          - classes = 'button-secondary find-uk-address' 
+          - classes << ' disabled' if defendant.address.postcode.blank? 
+          = link_to 'Find UK Address', '/address/picker', :class => classes

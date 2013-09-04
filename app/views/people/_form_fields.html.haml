@@ -1,0 +1,7 @@
+= simple_fields_for person do |sf|
+  = sf.input :full_name, placeholder: 'e.g. John Smith'
+  = sf.input :phone
+  = sf.input :mobile
+  = sf.input :email
+
+  = render partial: "addresses/edit", formats: [:html], locals: {claim: claim, person: person, address: person.address, options: options} 

@@ -1,60 +1,55 @@
 %p
-  To submit a new claim follow the steps below:
+  Follow the steps below:
 %ol#new-claim-step-list.moj-large-steps
   %li.moj-large-step
     %div
-      %span.step-number 1
-      %p.step-title Confirm people involved
+      %span.moj-large-step-number 1
+      %p.step-title Personal details
       %p
-        The details of all the parties involved in the claim - any claimants and defendants
-        %br/
-        %a.fake-link More about defendants and claimants
+        Fill in contact details for the landlord and tenant or tenants.
     %img{:alt => "Step 1", :src => image_url('claim-steps/step1.png')}/
   %li.moj-large-step
     %div
-      %span.step-number 2
-      %p.step-title Details of claim
+      %span.moj-large-step-number 2
+      %p.step-title Case details
       %p
-        All the claim particulars including address of possession,
-        grounds for possession, details of tenancy and the defendants
-        %br/
-        %a.fake-link More about claim details
+        Say why you want the property back and add details of the tenancy.
     %img{:alt => "Step 2", :src => image_url('claim-steps/step2.png')}/
   %li.moj-large-step
     %div
-      %span.step-number 3
-      %p.step-title Court scheduling
+      %span.moj-large-step-number 3
+      %p.step-title Court booking
       %p
-        Based on the postcode of the property you are claiming
-        possession of, you will be given a specific court and hearing time
-        %br/
-        %a.fake-link More about making a statement of truth
+        There is usually a court hearing: find out where and when your case will be heard.
     %img{:alt => "Step 3", :src => image_url('claim-steps/step3.png')}/
   %li.moj-large-step
     %div
-      %span.step-number 4
-      %p.step-title Statement of truth
+      %span.moj-large-step-number 4
+      %p.step-title Confirm details
       %p
-        Confirm that all details of case being brought are correct
-        %br/
-        %a.fake-link More about making a statement of truth
+        Check all the details and confirm they are correct.
     %img{:alt => "Step 4", :src => image_url('claim-steps/step4.png')}/
   %li.moj-large-step
     %div
-      %span.step-number 5
-      %p.step-title Fee payment
-      %p When everything is correct and you are ready to pay the &pound;100 fee
+      %span.moj-large-step-number 5
+      %p.step-title Pay court fee
+      %p Pay a &pound;100 court fee using a debit or credit card.
     %img{:alt => "Step 5", :src => image_url('claim-steps/step5.png')}/
   %li.moj-large-step
     %div
-      %span.step-number 6
-      %p.step-title Confirmation and next steps
+      %span.moj-large-step-number 6
+      %p.step-title Confirmation
       %div
-        %p
-          Get confirmation of which court and when, what you will
-          need to bring to court and what happens next
-          %br/
-          %a.fake-link More about what happens next
+        %p We'll confirm we’re dealing with your case and tell you what happens next. 
+
     %img{:alt => "Step 6", :src => image_url('claim-steps/step6.png')}/
+
 = form_tag(claims_path, method: "post") do
-  = submit_tag "Start a new claim", class: "big button"
+  = submit_tag "Start a new case", class: "big button"
+
+%section
+  %h3 Before you begin
+  %p The form will take about 20 minutes to complete.
+  %p You will have to pay a £100 court fee.
+  %p You may have to go to a court hearing afterwards.
+  %p The whole process usually takes at least 12 weeks.

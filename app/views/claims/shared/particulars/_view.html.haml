@@ -1,12 +1,12 @@
 %div{ class: "moj-panel particulars-#{options[:class]}" }
   - grounds = claim.grounds_for_possesion
   - if grounds.size > 0
-    %h4 Grounds for possession
+    %h4 Why you want the propety back
     - grounds.each do |g|
       %span= g
 
   - if @claim.notice_to_quit
-    %h4 Notices served
+    %h4 Notices given
     %span= "Notice to quit served on #{claim.notice_served_date.strftime('%e %B %Y')}"
 
   - if @claim.tenancy_type

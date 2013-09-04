@@ -1,0 +1,27 @@
+.moj-panel.edit-person
+  = form.simple_fields_for claimant do |sf|
+    = sf.input :full_name, placeholder: 'e.g. John Smith'
+    = sf.input :phone
+    = sf.input :mobile
+    = sf.input :email
+
+    - if (show_dx_controls claimant )
+      = dx_controls
+    - else
+      = toggle_inline_help_link( 'Do they have a DX number?', dx_controls( claimant ) )
+
+      = sf.simple_fields_for [claimant, claimant.address] do |sff|
+        - classes = 'address'
+        - classes << ' valid' if claimant.address.valid?
+        %div{ class: classes }
+          = sff.input :street_1, label: 'Street'
+          = sff.input :street_2, label: nil
+          = sff.input :street_3, label: nil
+          = sff.input :town
+          = sff.input :county
+
+        = sff.input :postcode do
+          = sff.input_field :postcode, class: 'postcode', required: true
+          - classes = 'button-secondary find-uk-address' 
+          - classes << ' disabled' if claimant.address.postcode.blank? 
+          = link_to 'Find UK Address', '/address/picker', :class => classes

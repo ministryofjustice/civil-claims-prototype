@@ -25,14 +25,32 @@ class Claim < ActiveRecord::Base
     grounds
   end
 
+  def get_people_of_type( type )
+    self.send(type.pluralize)
+  end
+
+  def primary_claimant
+    self.claimants.first
+  end
+
+  def additional_claimants
+    self.claimants.drop(1)
+  end
+
+  def primary_defendant
+    self.defendants.first
+  end
+
+  def additional_defendants
+    self.defendants.drop(1)
+  end
+
 
   def setup_linked_records( user )
     self.owner = user
-    self.claimants << Claimant.new(user.attributes.except('type', 'id'))
+    self.claimants << Claimant.create(user.attributes.except('type', 'id'))
 
-    defendant = Defendant.new
-    defendant.address = Address.new
-    self.defendants << defendant
+    self.defendants << Defendant.new( address: Address.new )
 
     self.address_for_possession = Address.new
   end

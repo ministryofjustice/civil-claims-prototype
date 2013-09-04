@@ -1,16 +1,18 @@
 class Address < ActiveRecord::Base
   attr_accessor :show_editor
 
+  validates_format_of :postcode, with: /\A[A-Za-z]{1,2}[0-9]{1,2}[A-Za-z]? ?[0-9][A-Za-z]{2}\z/
+
   def full_address
     %w(street_1 street_2 street_3 town postcode).reject{|x| self.send(x).blank? }.map {|x| self.send(x) }
   end
 
-  def copy_from address_to_copy_from
-    self.street_1 = address_to_copy_from[:street_1]
-    self.street_2 = address_to_copy_from[:street_2]
-    self.street_3 = address_to_copy_from[:street_3]
-    self.town     = address_to_copy_from[:town]
-    self.postcode = address_to_copy_from[:postcode]
+  def copy_from other
+    self.street_1 = other[:street_1]
+    self.street_2 = other[:street_2]
+    self.street_3 = other[:street_3]
+    self.town     = other[:town]
+    self.postcode = other[:postcode]
     self.save
   end
 

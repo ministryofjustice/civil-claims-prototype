@@ -4,15 +4,15 @@
       %th.left-align Rent due on
       %th Rental amount
       %th Amount paid
-      %th Arrears
+      %th Unpaid rent
   %tbody
     - claim.arrears.each do |ar|
       %tr
-        %td.left-align= ar.due_date.strftime('%d/%m/%Y')
+        %td.left-align= ar.due_date.strftime('%d %b %Y')
         %td.pounds= pp_currency( ar.amount )
         %td.pounds= pp_currency( ar.paid )
         %td.pounds= pp_currency( ar.amount )
   %tfoot
     %tr
-      %td.left-align{ colspan: 3 } Total arrears
+      %td.left-align{ colspan: 3 } Total
       %td.pounds= pp_currency( claim.total_rental_arrears )

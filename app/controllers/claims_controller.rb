@@ -2,6 +2,7 @@ class ClaimsController < ApplicationController
   skip_before_action :pretend_to_authenticate, only: [:delete_all]
   before_action :page_title
 
+
   def home
     case session[:role]
     when 'claimant'
@@ -30,35 +31,52 @@ class ClaimsController < ApplicationController
   end
 
   def update
-    claim = Claim.find(params[:id])
+    @claim = Claim.find(params[:id])
     params.permit!
-    claim.update_attributes params[:claim]
- 
-    if 'Save & Continue' == params[:commit]
+    @claim.update_attributes params[:claim]
+
+    case params[:commit]
+    when 'Save & Continue'
       redirect_to next_navigation_path
-    elsif 'Close' == params[:commit]
+    when 'Close'
       redirect_to root_path
+    end
+  end
+
+  def post_personal_details
+    @claim = Claim.find(params[:id])
+
+    case params[:commit]
+    when 'Save & Continue'
+      redirect_to next_navigation_path
+    when 'Close'
+      redirect_to root_path
+    when 'Add another landlord'
+      @claim.claimants << Claimant.new
+      redirect_to @claim
+    when 'Add another tenant'
+      @claim.defendants << Defendant.new
+      redirect_to @claim
     end
   end
 
   def personal_details
     @claim = Claim.find(params[:id], :include => [{:claimants => :address}, {:defendants => :address}])
-
     @editors = session['editors'] || {}
     session[:referer] = 'personal_details'
     render 'claims/claimant/personal_details'
   end
 
-  def particulars
+  def case_details
     @claim = Claim.find(params[:id])
-    session[:referer] = 'particulars'
-    render 'claims/claimant/particulars'
+    session[:referer] = 'case_details'
+    render 'claims/claimant/case_details'
   end
 
-  def scheduling
+  def court_booking
     @claim = Claim.find(params[:id])
     session[:referer] = 'scheduling'
-    render 'claims/claimant/scheduling'
+    render 'claims/claimant/court_booking'
   end
 
   def statement
@@ -105,7 +123,7 @@ class ClaimsController < ApplicationController
   end
 
   def page_title 
-    @page_title = "Recover Property:<br />Make a possession claim online".html_safe
+    @page_title = "Repossess a property:<br />make a possession claim".html_safe
   end
 
 

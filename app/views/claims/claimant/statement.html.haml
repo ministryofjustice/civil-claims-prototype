@@ -1,8 +1,8 @@
 = render_claimant_navigation
 
 %article
-  %h1 Step 4 of 6 - Statement of truth
-  %p Please read through all the information that you have provided and ensure that to the best of your knowledge it is all correct. If anything is incorrect please go to the relevent section and update it.
+  %h1 Step 4 of 6 - Confirm details
+  %p Please read through the information you have provided to ensure it’s all correct. 
   %section#statement-of-truth
     %h2 Landlord/s
     - @claim.claimants.each do |claimant|
@@ -21,7 +21,7 @@
     - options = {}
     = render :partial => 'addresses/view_address_for_possession', :locals => { claim: @claim, address: address, options: options }
 
-    %h2 Claim particulars
+    %h2 Case details
     - options = { class: 'vertical' }
     = render partial: 'claims/shared/particulars/view', locals: { claim: @claim, options: options }
 

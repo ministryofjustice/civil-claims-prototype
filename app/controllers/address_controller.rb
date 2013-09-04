@@ -51,6 +51,6 @@ class AddressController < ApplicationController
     else
       addresses = view_context.generate_random_addresses( params[:postcode] )
     end
-    render :partial => 'addresses/picker', :locals => { addresses: addresses }
+    render :partial => 'addresses/address_picker/picker', :locals => { addresses: addresses }
   end
 end

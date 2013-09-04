@@ -1,4 +1,3 @@
-window.claim = window.claim || {}
 
 $(document).ready(function() {
 
@@ -46,40 +45,7 @@ $(document).ready(function() {
       }));
     }
   });
-
-  // enable CSS validation once user tabs out of form field.  
-  $('#edit-claim').on('blur', 'form.edit-person input', function(event) {
-    if($(this).attr('required') || $(this).val().length ) {
-      $(this).addClass('tabbed-out'); // register the interaction
-      $(this).siblings('.icon-container').css('display', 'inline');
-    } else {  // no validation indicator if field is optional & blank
-      $(this).siblings('.icon-container').css('display', 'none');
-    }
-  });
-
-  // enable html5 validation checking of the edit-person form
-  $('#edit-claim').on('keyup', 'form.edit-person input', function(event) {
-    claim.validate($(this).parents('form'));
-  });
-
-  $('form.edit-person').each(function(i, el) {
-    claim.validate(el);
-  });
-
-  // when postcode is valid, enable Find Address link
-  var validate_postcode_for_address_picker = function(evt) {
-    if(this.validity.valid) {
-      $(this).siblings('.find-uk-address').removeClass('disabled');
-    } else {
-      $(this).siblings('.find-uk-address').addClass('disabled');
-    }
-  }
-  $('#edit-claim').on('keyup', '.postcode', validate_postcode_for_address_picker);
-
-  $('#edit-claim').on('click', 'a.disabled', function(evt) {
-    evt.preventDefault;
-  });
-
+  
   // click the Find Address link, see what happens
   $('#edit-claim').on('click', '.find-uk-address', function(evt) {
     evt.preventDefault();
@@ -95,6 +61,17 @@ $(document).ready(function() {
     });
 
   });
+
+  var populate_address = function(container, address) {
+    container.find('.address_street_1 input').val(address.street_1);
+    container.find('.address_street_2 input').val(address.street_2);
+    container.find('.address_street_3 input').val(address.street_3);
+    container.find('.address_town input').val(address.town);
+    container.find('.address_county input').val(address.county);
+    container.find('.address_postcode input').val(address.postcode);
+
+    address_form_validator(container.parents('form')); 
+  };
 
   // filthy address picker business
   $('#edit-claim').on('change', '.pick_address', function(event) {
@@ -125,8 +102,6 @@ $(document).ready(function() {
   });
 
 });
-
-
 
 claim.validate = function(form) {
   form = $(form);

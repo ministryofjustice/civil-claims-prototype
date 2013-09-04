@@ -65,6 +65,12 @@ form {
   }
 }
 
+.edit-person {
+  details summary {
+    margin:0 0 10px 160px;
+  }
+}
+
 .address-editor .form-group {
   &> div {
     padding:4px 10px;
@@ -139,6 +145,11 @@ form.add-additional-person {
   .button-group {
     margin:20px 0;
   }
+}
+
+.js-enabled {
+  .address { display: none; }
+  .address.valid { display: block; }
 }
 
 #edit-claim form {
