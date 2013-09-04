@@ -1,0 +1,141 @@
+= render_defence_navigation
+
+%article
+  %h2 Step 2 of 5 - About the claim
+  %p.lead Add the details of the disputes within the claim and all other related details
+
+  = simple_form_for @defense, :url => { :action => "update" } do |f|
+    %section
+      .moj-panel
+        .panel-component
+          Do you agree with what is said about the property and the tenancy agreement in the 
+          %a.fake-link claim particulars
+          ?
+          .striped-choice
+            %div
+              = f.radio_button :agree_with_tenancy_agreement_statement, 'true', :class => "js-panel-component-details-hide"
+              = f.label :agree_with_tenancy_agreement_statement_true, 'Yes'
+            %div
+              = f.radio_button :agree_with_tenancy_agreement_statement, 'false', :class => "js-panel-component-details-show"
+              = f.label :agree_with_tenancy_agreement_statement_false, 'No'
+          .component-details{ :class => ('element-invisible' if (@defense.agree_with_tenancy_agreement_statement.nil? || @defense.agree_with_tenancy_agreement_statement))}
+            = f.input :comments_on_tenancy_agreement_statement, input_html: {:rows => 5}, label: "Set your own reasons"
+        
+        .panel-component
+          Did you receive the notice to quit from the landlord?
+          .striped-choice
+            %div
+              = f.radio_button :received_notice_to_quit, 'true', :class => "js-panel-component-details-show"
+              = f.label :received_notice_to_quit_true, 'Yes'
+            %div
+              = f.radio_button :received_notice_to_quit, 'false', :class => "js-panel-component-details-hide"
+              = f.label :received_notice_to_quit_false, 'No'
+          .component-details{ :class => ('element-invisible' unless @defense.received_notice_to_quit)}
+            = f.input :date_received_notice_to_quit, label: "Notice to quit received"
+
+        .panel-component
+          Do you agree that there are arrears of the rent as stated in the 
+          %a.fake-link claim particulars
+          ?
+          .striped-choice
+            %div
+              = f.radio_button :agree_with_rent_arrears, 'true', :class => "js-panel-component-details-hide"
+              = f.label :agree_with_rent_arrears_true, 'Yes'
+            %div
+              = f.radio_button :agree_with_rent_arrears, 'false', :class => "js-panel-component-details-show"
+              = f.label :agree_with_rent_arrears_false, 'No'
+          .component-details{ :class => ('element-invisible' if (@defense.agree_with_rent_arrears.nil? || @defense.agree_with_rent_arrears))}
+            = f.label :statement_of_arrears, "Please state how much you believe the arrears to be"
+            %br/
+            %strong &pound
+            = f.text_field :statement_of_arrears
+            
+        .panel-component
+          Have you paid any money to your landlord since 
+          %strong Wednesday 11 July 2013 (hardcoded)
+          when the claim was issued?
+          .striped-choice
+            %div
+              = f.radio_button :paid_money_since_claim_brought, 'true', :class => "js-panel-component-details-show"
+              = f.label :paid_money_since_claim_brought_true, 'Yes'
+            %div
+              = f.radio_button :paid_money_since_claim_brought, 'false', :class => "js-panel-component-details-hide"
+              = f.label :paid_money_since_claim_brought_false, 'No'
+          .component-details{ :class => ('element-invisible' unless @defense.paid_money_since_claim_brought)}
+            .form-row
+              %label{:for => "paid-since-claim-select-day" } Date paid
+              %select#paid-since-claim-select-day.date
+                %option
+                - for day in 1..31 
+                  %option{:value => day}                   
+                    =day
+              %select#paid-since-claim-select-month.date
+                %option
+                %option{:value => 1} January
+                %option{:value => 2} February
+                %option{:value => 3} March
+                %option{:value => 4} April
+                %option{:value => 5} May
+                %option{:value => 6} June
+                %option{:value => 7} July
+                %option{:value => 8} August
+                %option{:value => 9} September
+                %option{:value => 10} October
+                %option{:value => 11} November
+                %option{:value => 12} December
+              %select#paid-since-claim-select-year.date
+                %option
+                - for year in 2009..2013
+                  %option{:value => year}
+                    = year
+            .form-row
+              %label{:for => "paid-since-claim-amount"} Payment amount
+              %strong &pound
+              %input#paid-since-claim-amount{:type => "text"}
+            %span.button Add another line
+ 
+        .panel-component
+          Have you come to any agreement with your landlord about repaying the arrears since 
+          %strong Wednesday 11 July 2013 (hardcoded)
+          when the claim was issued?
+          .striped-choice
+            %div
+              = f.radio_button :agreement_to_repay_arrears, 'true', :class => "js-panel-component-details-show"
+              = f.label :agreement_to_repay_arrears_true, 'Yes'
+            %div
+              = f.radio_button :agreement_to_repay_arrears, 'false', :class => "js-panel-component-details-hide"
+              = f.label :agreement_to_repay_arrears_false, 'No'
+          .component-details{ :class => ('element-invisible' unless @defense.agreement_to_repay_arrears)}
+            = f.input :repayment_amount, as: :string, label: "Payment amount"
+            = f.input :repayment_frequency, as: :radio_buttons, collection: [["Per month", "montly"], ["Per week", "weekly"]]
+          .component-details.panel-component{ :class => ('element-invisible' if (@defense.agreement_to_repay_arrears.nil? || @defense.agreement_to_repay_arrears))}
+            Do you want the court to consider allowing you to pay arrears in installments?
+            .striped-choice
+              %div
+                = f.radio_button :request_to_consider_repayments_by_installment, 'true', :class => "js-panel-component-details-show"
+                = f.label :request_to_consider_repayments_by_installment_true, 'Yes'
+              %div
+                = f.radio_button :request_to_consider_repayments_by_installment, 'false', :class => "js-panel-component-details-hide"
+                = f.label :request_to_consider_repayments_by_installment_false, 'No'
+            .component-details.panel-component{ :class => ('element-invisible' unless @defense.request_to_consider_repayments_by_installment)}
+              How much can you afford to pay in addition to the current rent?
+              = f.input :installment_amount, as: :string, label: "Payment amount"
+              = f.input :installment_frequency, as: :radio_buttons, collection: [["Per month", "montly"], ["Per week", "weekly"]]
+
+        .panel-component
+          Do you have a money or other type of claim against the landlord?
+          .striped-choice
+            %div
+              = f.radio_button :has_claim_against_landlord, 'true', :class => "js-panel-component-details-show"
+              = f.label :has_claim_against_landlord_true, 'Yes'
+            %div
+              = f.radio_button :has_claim_against_landlord, 'false', :class => "js-panel-component-details-hide"
+              = f.label :has_claim_against_landlord_false, 'No'
+          .component-details{ :class => ('element-invisible' unless @defense.has_claim_against_landlord)}
+            = f.input :claim_case_number, label: "Case number"
+
+        %div
+          = f.label :comments_on_particulars, "Do you have any comment about anything else in the <a class='fake-link'>claim particulars</a>?".html_safe
+          = f.input :comments_on_particulars, input_html: {:rows => 5}, label: false
+
+    = render :partial => 'claims/defence/save_continue', :locals => {f: f}
