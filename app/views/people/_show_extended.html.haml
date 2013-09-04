@@ -1,0 +1,13 @@
+%div{ class: "person #{options[:class]}", id: "person-#{person.id}" }
+
+  %span.name= person.display_name
+
+  .address-linear
+    = render partial: 'addresses/show', formats: [:html], locals: { address: person.address }
+  
+  - unless person.phone.blank?
+    %div= person.phone
+  - unless person.mobile.blank?
+    %div= person.mobile
+  - unless person.email.blank?
+    %div= person.email

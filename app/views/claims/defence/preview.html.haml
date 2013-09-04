@@ -6,8 +6,7 @@
 
   %section
     %h3 Personal details
-    - options = { class: 'defendant', show_extended_contact_details: true }
-    = render :partial => 'people/show', :locals => {person: @claim.primary_defendant, options: options }
+    = render :partial => 'people/show_extended', :locals => {person: @claim.primary_defendant, options: {class: 'defendant'} }
 
   %section
     %h3 About the claim
