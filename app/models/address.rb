@@ -1,4 +1,5 @@
 class Address < ActiveRecord::Base
+  belongs_to :addressable, polymorphic: true
   attr_accessor :show_editor
 
   validates_format_of :postcode, with: /\A[A-Za-z]{1,2}[0-9]{1,2}[A-Za-z]? ?[0-9][A-Za-z]{2}\z/

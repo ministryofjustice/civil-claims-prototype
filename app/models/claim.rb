@@ -5,7 +5,7 @@ class Claim < ActiveRecord::Base
   has_many :defenses, :dependent => :destroy
   has_and_belongs_to_many :arrears
 
-  belongs_to :address_for_possession, :class_name => 'Address'
+  has_one :address_for_possession, as: :addressable
   belongs_to :owner, :class_name => 'Claimant'
 
   accepts_nested_attributes_for :attachments, :allow_destroy => true
@@ -49,9 +49,7 @@ class Claim < ActiveRecord::Base
     self.owner = user
     self.claimants << Claimant.create(user.attributes.except('type', 'id'))
 
-    self.defendants << Defendant.new( address: Address.new )
-
-    self.address_for_possession = Address.new
+    self.defendants << Defendant.new
   end
 
   def create_as_per_user_journey

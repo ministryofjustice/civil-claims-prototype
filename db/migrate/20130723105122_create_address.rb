@@ -9,6 +9,7 @@ class CreateAddress < ActiveRecord::Migration
       t.string :town
       t.string :county
       t.string :postcode
+      t.references :addressable, polymorphic: true
 
       t.timestamps
     end

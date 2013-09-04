@@ -8,7 +8,6 @@ class CreatePeople < ActiveRecord::Migration
       t.string :email
 
       t.string :type
-      t.references :address
       t.references :claim
       t.timestamps
     end

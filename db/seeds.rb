@@ -6,33 +6,31 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Claimant.create({
-  title: 'Mr',
+c = Claimant.create({
   full_name: 'John Smith Reynolds',
   phone: '+44 (0)207 613 4431',
   mobile: '+44 (0)7792 685998',
   email: 'jsreynolds@btconnect.com',
-  address: Address.create({
-    street_1: '121 Elm Park Road',
-    town: 'London',
-    postcode: 'SW1 1SZ'
-  }),
   uj: true
 })
+c.create_address({
+  street_1: '121 Elm Park Road',
+  town: 'London',
+  postcode: 'SW1 1SZ'
+})
 
-Defendant.create({
-  title: 'Mr',
+d = Defendant.create({
   full_name: 'Louis Robert Stevenson',
   phone: '0208 123 6789',
   mobile: '07765 912673',
   email: 'lrsteveson@hotmail.co.uk',
-  address: Address.create({
-    street_1: 'Flat 3',
-    street_2: '92 Crystal Palace Park Road',
-    town: 'London',
-    postcode: 'SE26 6UP'
-  }),
   uj: true
+})
+d.create_address({
+  street_1: 'Flat 3',
+  street_2: '92 Crystal Palace Park Road',
+  town: 'London',
+  postcode: 'SE26 6UP'
 })
 
 Staff.create(Person.generate)

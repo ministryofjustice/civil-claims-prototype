@@ -1,19 +1,8 @@
 class Person < ActiveRecord::Base
   belongs_to :claim
+  has_one :address, as: :addressable
 
   scope :randomly, -> { order("RANDOM()") }
-
-  def address= address
-    self.address_id = address.id
-  end
-
-  def address
-    if self.address_id
-      Address.find(self.address_id) 
-    else
-      Address.new
-    end
-  end
 
   def display_name
     "#{self.title} #{self.full_name}".strip
@@ -38,10 +27,8 @@ class Person < ActiveRecord::Base
   def self.generate
     {
       :full_name  => "#{Random.firstname} #{Random.lastname}",
-      :title      => %w(Mr Mrs Miss Ms Dr).sample,
       :phone      => Random.phone,
       :email      => Random.email,
-      :address    => Address.create_random
     }
   end
 end

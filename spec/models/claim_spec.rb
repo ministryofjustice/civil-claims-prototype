@@ -25,7 +25,7 @@ describe Claim do
   end
 
   it 'has an address for repossession' do
-    @claim.address_for_possession = Address.create_random
+    @claim.create_address_for_possession Address.generate
     assert @claim.save
   end
 
