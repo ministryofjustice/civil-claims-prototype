@@ -106,12 +106,22 @@ $(document).ready(function() {
     claim.address.populate(master_form, address);
   });
 
+  // kinda bad ;)
   $('.js-panel-component-details-show').on('click', function(event){
-    $('.js-panel-component-details-show').parent().parent().next().removeClass('element-invisible');
+    var panels = $(event.target).parent().parent().nextAll('.component-details');
+    $(panels[0]).removeClass('element-invisible');
+    if(panels[1]){
+      $(panels[1]).addClass('element-invisible');
+    }
+
   });
 
   $('.js-panel-component-details-hide').on('click', function(event){
-    $('.js-panel-component-details-show').parent().parent().next().addClass('element-invisible');
+    var panels = $(event.target).parent().parent().nextAll('.component-details');
+    $(panels[0]).addClass('element-invisible');
+    if(panels[1]){
+      $(panels[1]).removeClass('element-invisible');
+    }
   });
 
 });
