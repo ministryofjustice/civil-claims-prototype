@@ -16,6 +16,7 @@ class DefencesController < ApplicationController
 
   def index
     get_current_claim
+    get_current_defense
     @user = @user || Defendant.find(session[:user])
     render "claims/defence/index"
   end
