@@ -160,7 +160,7 @@
               &pound;
               1,850 per month
 
-    / MONEY OUT
+    / DEPENDANTS
     %section
       %h3 Dependants
       .moj-panel
@@ -187,5 +187,27 @@
               = f.label :has_other_dependents_false, "No"
           .component-details{ :class => ('element-invisible' unless @defense.has_other_dependents) }
             %h5 boom
+
+
+    / CIRCUMSTANCES
+    %section
+      %h3 Circumstances
+      .moj-panel
+        = f.label :details_of_circumstances, "Give details of any circumstances which led to you being in arrears of rent. If you can tell us about problems like divorce, separation, redundancy, bereavement, illness or bankrupcy it will help us fully understand the defence. Also provide any other reason why you think any date for repossession should be delayed."
+        = f.input :details_of_circumstances, label: false, :input_html => { :rows => 5 }
+
+        .panel-component
+          %p If an order for repossession was to be made would you have somewhere else to live?
+          .striped-choice
+            %div
+              = f.radio_button :has_somewhere_else_to_live, 'true', :class => "js-panel-component-details-show"
+              = f.label :has_somewhere_else_to_live_true, 'Yes'
+            %div
+              = f.radio_button :has_somewhere_else_to_live, 'false', :class => "js-panel-component-details-hide"
+              = f.label :has_somewhere_else_to_live_false, "No"
+          .component-details{ :class => ('element-invisible' unless @defense.has_somewhere_else_to_live) }
+            %h5 boom
+
+
 
     = render :partial => 'claims/defence/save_continue', :locals => {f: f}
