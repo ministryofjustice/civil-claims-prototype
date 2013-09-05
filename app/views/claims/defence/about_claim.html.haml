@@ -5,7 +5,10 @@
   %p.lead Add the details of the disputes within the claim and all other related details
 
   = simple_form_for @defense, :url => { :action => "update" } do |f|
+    
+    / ABOUT THE CLAIM
     %section
+      %h3 About the claim
       .moj-panel
         .panel-component
           Do you agree with what is said about the property and the tenancy agreement in the 
@@ -14,10 +17,10 @@
           .striped-choice
             %div
               = f.radio_button :agree_with_tenancy_agreement_statement, 'true', :class => "js-panel-component-details-hide"
-              = f.label :agree_with_tenancy_agreement_statement_true, 'Yes'
+              = f.label :agree_with_tenancy_agreement_statement_true, 'Yes, I agree'
             %div
               = f.radio_button :agree_with_tenancy_agreement_statement, 'false', :class => "js-panel-component-details-show"
-              = f.label :agree_with_tenancy_agreement_statement_false, 'No'
+              = f.label :agree_with_tenancy_agreement_statement_false, "No, I don't agree"
           .component-details{ :class => ('element-invisible' if (@defense.agree_with_tenancy_agreement_statement.nil? || @defense.agree_with_tenancy_agreement_statement))}
             = f.input :comments_on_tenancy_agreement_statement, input_html: {:rows => 5}, label: "Set your own reasons"
         
@@ -49,7 +52,12 @@
             %br/
             %strong &pound
             = f.text_field :statement_of_arrears
-            
+        
+
+    / ABOUT THE TENANCY
+    %section
+      %h3 About the tenancy
+      .moj-panel
         .panel-component
           Have you paid any money to your landlord since 
           %strong Wednesday 11 July 2013
