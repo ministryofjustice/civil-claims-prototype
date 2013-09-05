@@ -94,7 +94,8 @@
             %strong
               &pound;
               1,850 per month
-
+    
+    / MONEY OUT
     %section
       %h3 Money out
       .moj-panel
@@ -102,38 +103,63 @@
           Regular expenses &ndash; List all of your regular monthly outgoings
           %br/
           %span.supplementary (does not include any payments made by other members of your household)
+        = f.simple_fields_for :monthly_expenses do |fmexp|
+          .labeled-content
+            .content-label
+              %label{:for => 'money-out-expense-'+fmexp.object.id.to_s} 
+                = fmexp.object.name
+            .content
+              .money-input
+                %strong &pound;
+                %div
+                  = fmexp.input :amount, :label => false, as: :string, :input_html => {:id => 'money-out-expense-'+fmexp.object.id.to_s, :class => 'small'}
+                  
+        %span.button Add another expense
+        
+        .panel-component
+          %p Are you in arrears on any regular monthly outgoings?
+          .striped-choice
+            %div
+              = f.radio_button :in_arrears_in_monthly_outgoings, 'true', :class => "js-panel-component-details-show"
+              = f.label :in_arrears_in_monthly_outgoings_true, 'Yes'
+            %div
+              = f.radio_button :in_arrears_in_monthly_outgoings, 'false', :class => "js-panel-component-details-hide"
+              = f.label :in_arrears_in_monthly_outgoings_false, "No"
+          .component-details{ :class => ('element-invisible' unless @defense.in_arrears_in_monthly_outgoings) }
+            %h5 boom
+
+        .panel-component
+          %p Do you have any loan or credits debts?
+          .striped-choice
+            %div
+              = f.radio_button :loans_or_credit_cards, 'true', :class => "js-panel-component-details-show"
+              = f.label :loans_or_credit_cards_true, 'Yes'
+            %div
+              = f.radio_button :loans_or_credit_cards, 'false', :class => "js-panel-component-details-hide"
+              = f.label :loans_or_credit_cards_false, "No"
+          .component-details{ :class => ('element-invisible' unless @defense.loans_or_credit_cards) }
+            %h5 boom
+
+        .panel-component
+          %p Are you currently paying any court orders or fines?
+          .striped-choice
+            %div
+              = f.radio_button :currently_paying_court_orders_or_fines, 'true', :class => "js-panel-component-details-show"
+              = f.label :currently_paying_court_orders_or_fines_true, 'Yes'
+            %div
+              = f.radio_button :currently_paying_court_orders_or_fines, 'false', :class => "js-panel-component-details-hide"
+              = f.label :currently_paying_court_orders_or_fines_false, "No"
+          .component-details{ :class => ('element-invisible' unless @defense.currently_paying_court_orders_or_fines) }
+            %h5 boom
+        
         .labeled-content
           .content-label
-            %label{:for => 'moneyout-counciltax'} Council tax
+            %strong Total money out
           .content
-            .money-input
-              %strong &pound;
-              %div
-                %input#moneyout-counciltax.small{:type => 'text'}
-        .labeled-content
-          .content-label
-            %label{:for => 'moneyout-gas'} Gas
-          .content
-            .money-input
-              %strong &pound;
-              %div
-                %input#moneyout-gas.small{:type => 'text'}
-        .labeled-content
-          .content-label
-            %label{:for => 'moneyout-electricity'} Electricity
-          .content
-            .money-input
-              %strong &pound;
-              %div
-                %input#moneyout-electricity.small{:type => 'text'}
-        .labeled-content
-          .content-label
-            %label{:for => 'moneyout-water'} Water
-          .content
-            .money-input
-              %strong &pound;
-              %div
-                %input#moneyout-water.small{:type => 'text'}
+            %strong
+              &pound;
+              1,850 per month
+
 
 
     = render :partial => 'claims/defence/save_continue', :locals => {f: f}
