@@ -46,22 +46,38 @@
     margin-left: 2px;
   }
 
-}
+  // striped yes/no radio buttons
+  &.radio_buttons{
+    label{
+      float: none;
+      width: auto;
+    }
 
-// striped radio buttons
-.form-row.radio_buttons{
-  label{
-    float: none;
-    width: auto;
+    &> label{
+      display: block;
+    }
+    
+    .radio{
+      display: block;
+      @include striped-choice;
+    }
   }
 
-  &> label{
-    display: block;
-  }
-  
-  .radio{
-    display: block;
-    @include striped-choice;
+  // for checkboxes with the check on the left side
+  // just quickly for now 
+  &.reversed {
+    position: relative;
+    &> input[type=checkbox] {
+      position: absolute;
+      left: 0px;
+      top: 3px;
+    }
+    &> label {
+      width: auto;
+      padding-left: 20px;
+      vertical-align: middle;
+
+    }
   }
 }
 
