@@ -5,9 +5,12 @@ class Claim < ActiveRecord::Base
   has_many :defenses, :dependent => :destroy
   has_and_belongs_to_many :arrears
 
-  has_one :address_for_possession, as: :addressable
+  has_one :address, as: :addressable
   belongs_to :owner, :class_name => 'Claimant'
 
+  accepts_nested_attributes_for :claimants
+  accepts_nested_attributes_for :defendants
+  accepts_nested_attributes_for :address
   accepts_nested_attributes_for :attachments, :allow_destroy => true
   accepts_nested_attributes_for :arrears, :allow_destroy => true
 
@@ -22,6 +25,14 @@ class Claim < ActiveRecord::Base
     grounds << "Property misuse" if self.property_misuse
     grounds << self.other_breach if self.other_breach_of_tenancy
     grounds
+  end
+
+  def address_for_possession
+    self.address
+  end
+
+  def address_for_possession=( address )
+    self.address = address
   end
 
   def get_people_of_type( type )
@@ -44,12 +55,9 @@ class Claim < ActiveRecord::Base
     self.defendants.drop(1)
   end
 
-
-  def setup_linked_records( user )
-    self.owner = user
-    self.claimants << Claimant.create(user.attributes.except('type', 'id'))
-
-    self.defendants << Defendant.new
+  def before_create( record )
+    self.defendants.create
+    self.build_address
   end
 
   def create_as_per_user_journey
@@ -59,7 +67,7 @@ class Claim < ActiveRecord::Base
     self.owner = landlord
     self.claimants << landlord
     self.defendants << tenant
-    self.address_for_possession = tenant.address
+    self.address = tenant.address
 
     self.property_type = 'residential'
     self.resident_type = 'private tenant'

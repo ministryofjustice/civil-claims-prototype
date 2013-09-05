@@ -1,16 +1,17 @@
 .moj-panel.edit-person
-  = form.simple_fields_for claimant do |sf|
+  = form.simple_fields_for "claimants[]", claimant do |sf|
+    = sf.input :id, as: :hidden
     = sf.input :full_name, placeholder: 'e.g. John Smith'
     = sf.input :phone
     = sf.input :mobile
     = sf.input :email
 
     - if (show_dx_controls claimant )
-      = dx_controls
+      = dx_controls( sf claimant )
     - else
-      = toggle_inline_help_link( 'Do they have a DX number?', dx_controls( claimant ) )
+      = toggle_inline_help_link( 'Do they have a DX number?', dx_controls( sf ) )
 
-      = sf.simple_fields_for [claimant, claimant.address] do |sff|
+      = simple_fields_for "claimants[#{claimant.id}][address]", claimant.address do |sff|
         - classes = 'address'
         - classes << ' valid' if claimant.address.valid?
         %div{ class: classes }

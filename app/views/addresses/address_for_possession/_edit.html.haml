@@ -1,4 +1,7 @@
-.address-container{ id: 'address-' + address.id.to_s }
+- if address.nil?
+  .address-container
+- else
+  .address-container{ id: 'address-' + address.id.to_s }
   = simple_fields_for( address ) do |f|
 
     = f.input :street_1, label: 'Street'

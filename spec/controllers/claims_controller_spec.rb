@@ -41,7 +41,7 @@ describe ClaimsController do
       end
       it 'should render the personal_details page' do
         patch :post_personal_details, id: @claim.id, commit: 'Add another landlord'
-        assert_redirected_to @claim
+        assert_template 'claims/claimant/personal_details'
       end
     end
 
@@ -53,7 +53,7 @@ describe ClaimsController do
       end
       it 'should render the personal_details page' do
         patch :post_personal_details, id: @claim.id, commit: 'Add another tenant'
-        assert_redirected_to @claim
+        assert_template 'claims/claimant/personal_details'
       end
     end
   end

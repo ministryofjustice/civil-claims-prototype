@@ -2,6 +2,8 @@ class Person < ActiveRecord::Base
   belongs_to :claim
   has_one :address, as: :addressable
 
+  accepts_nested_attributes_for :address
+
   scope :randomly, -> { order("RANDOM()") }
 
   def display_name
@@ -22,6 +24,23 @@ class Person < ActiveRecord::Base
   
   def self.create_random
     self.create(generate)
+  end
+
+  def self.upcreate(params, type)
+    p = nil
+    if params[:id] && (p = self.find_by_id params[:id])
+      if params[:address]
+        p.address.update_attributes(params[:address])
+        params.except! :address
+      end
+      p.update_attributes(params)
+    else
+      a = params[:address]
+      params.except! :address
+      p = self.create(params)
+      p.create_address a
+    end
+    p
   end
 
   def self.generate

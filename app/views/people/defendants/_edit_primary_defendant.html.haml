@@ -1,11 +1,12 @@
 .moj-panel.edit-person
-  = simple_fields_for defendant do |sf|
+  = form.simple_fields_for "defendants[]", defendant, child_index: 999 do |sf|
+    = sf.input :id, as: :hidden
     = sf.input :full_name, placeholder: 'e.g. John Smith'
     = sf.input :phone
     = sf.input :mobile
     = sf.input :email
 
-    = simple_fields_for defendant.address do |sff|
+    = simple_fields_for "defendants[#{defendant.id}][address]", defendant.address, child_index: 999 do |sff|
       - classes = 'address'
       - classes << ' valid' if defendant.address.valid?
       %div{ class: classes }

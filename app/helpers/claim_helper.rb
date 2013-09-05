@@ -8,12 +8,9 @@ module ClaimHelper
     !(person.dx_number.blank? && person.dx_exchange.blank?)
   end
 
-  def dx_controls( person )
-    markup = ''
-    simple_fields_for person do |f|
-      markup = capture { f.input :dx_number, :label => 'DX number' }
-      markup << capture { f.input :dx_exchange, :label => 'DX exchange' }
-    end
+  def dx_controls( form_builder )
+    markup = capture { form_builder.input :dx_number, :label => 'DX number' }
+    markup << capture { form_builder.input :dx_exchange, :label => 'DX exchange' }
     markup
   end
 

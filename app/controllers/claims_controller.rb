@@ -24,7 +24,8 @@ class ClaimsController < ApplicationController
   def create
     @claim = Claim.new
     @user = @user || Person.find(session[:user])
-    @claim.setup_linked_records( @user )
+    @claim.owner = @user
+    @claim.claimants << @user
     @claim.save
 
     redirect_to claim_path @claim
@@ -45,6 +46,31 @@ class ClaimsController < ApplicationController
 
   def post_personal_details
     @claim = Claim.find(params[:id])
+    require 'pp'
+    params.permit!
+    params[:claim][:claimants].each do |p|
+      pp p
+      if p[1][:id].blank?
+        @claim.claimants << Claimant.upcreate(p[1], 'claimant')
+        @claim.save
+      else
+        Claimant.upcreate(p[1], 'claimant')
+      end
+    end
+    params[:claim][:defendants].each do |p|
+      pp p
+      if p[1][:id].blank?
+        @claim.defendants << Defendant.upcreate(p[1], 'defendant')
+        @claim.save
+      else
+        Defendant.upcreate(p[1], 'defendant')
+      end
+    end
+
+    params[:claim] = params[:claim].except!(:claimants, :defendants)
+    @claim.update_attributes params[:claim]
+
+    raise 'hell'
 
     case params[:commit]
     when 'Save & Continue'
@@ -52,17 +78,30 @@ class ClaimsController < ApplicationController
     when 'Close'
       redirect_to root_path
     when 'Add another landlord'
-      @claim.claimants << Claimant.new
-      redirect_to @claim
+      c = Claimant.new
+      c.save(validate: false)
+      c.create_address
+      @claim.claimants << c
+      render 'claims/claimant/personal_details'
     when 'Add another tenant'
-      @claim.defendants << Defendant.new
-      redirect_to @claim
+      d = Defendant.new
+      d.save(validate: false)
+      d.create_address
+      @claim.defendants << d
+      render 'claims/claimant/personal_details'
     end
   end
 
   def personal_details
     @claim = Claim.find(params[:id], :include => [{:claimants => :address}, {:defendants => :address}])
     @editors = session['editors'] || {}
+    if @claim.defendants.empty?
+      @claim.defendants.build
+      @claim.primary_defendant.build_address
+    end
+    if @claim.address.nil?
+      @claim.build_address
+    end
     session[:referer] = 'personal_details'
     render 'claims/claimant/personal_details'
   end
@@ -81,14 +120,12 @@ class ClaimsController < ApplicationController
 
   def statement
     @claim = Claim.find(params[:id], :include => [{:claimants => :address}, {:defendants => :address}])
-    @claim.address_for_possession ||= Address.new 
     session[:referer] = 'statement'
     render 'claims/claimant/statement'
   end
 
   def fees
     @claim = Claim.find(params[:id])
-    @claim.address_for_possession ||= Address.new
     session[:referer] = 'fees'
     render 'claims/claimant/fees'
   end
@@ -103,13 +140,13 @@ class ClaimsController < ApplicationController
     claim = Claim.find_by_id(params[:id])
     params.permit!
     claim.update_attributes params[:claim]
-    claim.address_for_possession.update_attributes params[:address]
+    claim.address.update_attributes params[:address]
     claim.save
     
     respond_to do |format|
       format.html { redirect_to :back }
       format.js { 
-        address = claim.address_for_possession
+        address = claim.address
         options = { :show_edit_link => true }
         render :partial => 'addresses/view_address_for_possession', :format => [:js], :locals => {claim: claim, address: address, options: options}
       }

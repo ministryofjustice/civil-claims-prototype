@@ -9,14 +9,14 @@
         Landlord#{"s" if claim.claimants.count>1}
       %span.content-block
         - claim.claimants.each do |claimant|
-          = "#{claimant.title} #{claimant.full_name}".strip
+          = claimant.full_name
           %br/
     %span.labeled-content
       %span.content-label
         Tenant#{"s" if claim.defendants.count>1}
       %span.content-block
         - claim.defendants.each do |defendant|
-          = "#{defendant.title} #{defendant.full_name}".strip
+          = defendant.full_name
           %br/
     %span.labeled-content
       %span.content-label Property
