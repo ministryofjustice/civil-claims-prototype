@@ -40,19 +40,19 @@
       %h3 Money in
       .moj-panel
         %p What are your present circumstances?
-        = f.input :employed, label: "Employed", :wrapper_html => {:class => 'reversed'}
-        = f.input :universal_credit, label: "Universal credit", :wrapper_html => {:class => 'reversed'}
-        = f.input :no_income, label: "No income", :wrapper_html => {:class => 'reversed'}
-
+        / = f.input :employed, label: "Employed", :wrapper_html => {:class => 'reversed'}
+        / = f.input :universal_credit, label: "Universal credit", :wrapper_html => {:class => 'reversed'}
+        / = f.input :no_income, label: "No income", :wrapper_html => {:class => 'reversed'}
         .striped-choice
           %div
-            %input#moneyin-receiving{:type => "checkbox"}
-            %label{:for => "moneyin-receiving"}
-              Universal credit
-              %span.supplementary (applied for or receiving)
+            = f.radio_button(:present_circumstances, 'employed')
+            = f.label :present_circumstances_employed, 'Employed'
           %div
-            %input#moneyin-noincome{:type => "checkbox"}/
-            %label{:for => "moneyin-noincome"} No income
+            = f.radio_button :present_circumstances, 'universal_credit'
+            = f.label :present_circumstances_universal_credit, 'Universal credit'
+          %div
+            = f.radio_button :present_circumstances, 'no_income'
+            = f.label :present_circumstances_no_income, 'No income'
 
         %p Please provide all figures of the money coming in per month
         .labeled-content
