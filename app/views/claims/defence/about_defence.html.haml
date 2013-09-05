@@ -207,7 +207,15 @@
               = f.label :has_somewhere_else_to_live_false, "No"
           .component-details{ :class => ('element-invisible' unless @defense.has_somewhere_else_to_live) }
             %h5 boom
-
+    
+    / SUPPORTING DOCUMENTATION
+    %section
+      %h3 Supporting documentation
+      .moj-panel
+        %p Attach any documentation to support your defense
+        %p 
+          %a.fake-link About supporting documentation
+        %span.button Attach documents
 
 
     = render :partial => 'claims/defence/save_continue', :locals => {f: f}
