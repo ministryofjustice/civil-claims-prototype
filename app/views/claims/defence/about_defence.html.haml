@@ -11,9 +11,6 @@
       %h3 Bank accounts
       .moj-panel
         %p What are the balance of your bank accounts?
-        
-        
-
         .labeled-content
           .content-label
             %label{:for => 'current-account'} Current account
@@ -28,8 +25,6 @@
                 E.g. -20 for &pound;20 overdrawn
             .clear
               = f.input :dont_have_current_account, label: "I don't have a current account", :wrapper_html => {:class => 'reversed'}
-
-
         .labeled-content
           .content-label
             %label{:for => 'savings-account'} Savings account
@@ -40,17 +35,18 @@
                 = f.input :savings_account_balance, :label => false, as: :string, :input_html => {:id => 'savings-account', :class => 'small'}
             .clear
               = f.input :dont_have_savings_account, label: "I don't have a savings account", :wrapper_html => {:class => 'reversed'}
-
+    / MONEY IN
     %section
       %h3 Money in
       .moj-panel
         %p What are your present circumstances?
+        = f.input :employed, label: "Employed", :wrapper_html => {:class => 'reversed'}
+        = f.input :universal_credit, label: "Universal credit", :wrapper_html => {:class => 'reversed'}
+        = f.input :no_income, label: "No income", :wrapper_html => {:class => 'reversed'}
+
         .striped-choice
           %div
-            %input#moneyin-employed{:type => "checkbox"}/
-            %label{:for => "moneyin-employed"} Employed
-          %div
-            %input#moneyin-receiving{:type => "checkbox"}/
+            %input#moneyin-receiving{:type => "checkbox"}
             %label{:for => "moneyin-receiving"}
               Universal credit
               %span.supplementary (applied for or receiving)
@@ -66,7 +62,7 @@
             .money-input
               %strong &pound;
               %div
-                %input#moneyin-income.small{:type => 'text'}
+                = f.input :income, :label => false, as: :string, :input_html => {:id => 'moneyin-income', :class => 'small'}
         .labeled-content
           .content-label
             %label{:for => 'moneyin-pension'} Pension
@@ -74,7 +70,7 @@
             .money-input
               %strong &pound;
               %div
-                %input#moneyin-pension.small{:type => 'text'}
+                = f.input :pension, :label => false, as: :string, :input_html => {:id => 'moneyin-pension', :class => 'small'}
         .labeled-content
           .content-label
             %label{:for => 'moneyin-childbenefit'} Child benefit
@@ -82,7 +78,7 @@
             .money-input
               %strong &pound;
               %div
-                %input#moneyin-childbenefit.small{:type => 'text'}
+                = f.input :child_benefit, :label => false, as: :string, :input_html => {:id => 'moneyin-childbenefit', :class => 'small'}
         .labeled-content
           .content-label
             %label{:for => 'moneyin-other'} Other money in
@@ -90,7 +86,7 @@
             .money-input
               %strong &pound;
               %div
-                %input#moneyin-other.small{:type => 'text'}
+                = f.input :other_monies_in, :label => false, as: :string, :input_html => {:id => 'moneyin-other', :class => 'small'}
         .labeled-content
           .content-label
             %strong Total money in
