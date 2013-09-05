@@ -160,6 +160,32 @@
               &pound;
               1,850 per month
 
+    / MONEY OUT
+    %section
+      %h3 Dependants
+      .moj-panel
+        .panel-component
+          %p Have you got any dependant children?
+          .striped-choice
+            %div
+              = f.radio_button :has_dependent_children, 'true', :class => "js-panel-component-details-show"
+              = f.label :has_dependent_children_true, 'Yes'
+            %div
+              = f.radio_button :has_dependent_children, 'false', :class => "js-panel-component-details-hide"
+              = f.label :has_dependent_children_false, "No"
+          .component-details{ :class => ('element-invisible' unless @defense.has_dependent_children) }
+            %h5 boom
 
+        .panel-component
+          %p Are there any other dependants in the property you are responsible for?
+          .striped-choice
+            %div
+              = f.radio_button :has_other_dependents, 'true', :class => "js-panel-component-details-show"
+              = f.label :has_other_dependents_true, 'Yes'
+            %div
+              = f.radio_button :has_other_dependents, 'false', :class => "js-panel-component-details-hide"
+              = f.label :has_other_dependents_false, "No"
+          .component-details{ :class => ('element-invisible' unless @defense.has_other_dependents) }
+            %h5 boom
 
     = render :partial => 'claims/defence/save_continue', :locals => {f: f}
