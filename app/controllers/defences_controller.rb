@@ -47,6 +47,7 @@ class DefencesController < ApplicationController
 
   def about_defence
     get_current_claim
+    get_current_defense
     session[:referer] = 'about_defence'
     render "claims/defence/about_defence"
   end
