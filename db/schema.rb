@@ -109,6 +109,8 @@ ActiveRecord::Schema.define(version: 20130904113311) do
     t.boolean  "dont_have_savings_account"
     t.boolean  "employed"
     t.boolean  "universal_credit"
+    t.boolean  "no_income"
+    t.string   "no_income_details"
     t.decimal  "income"
     t.decimal  "pension"
     t.decimal  "child_benefit"

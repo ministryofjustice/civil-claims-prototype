@@ -67,6 +67,8 @@
   // just quickly for now 
   &.reversed {
     position: relative;
+    min-height: 30px;
+    height: 30px;
     &> input[type=checkbox] {
       position: absolute;
       left: 0px;
@@ -76,9 +78,9 @@
       width: auto;
       padding-left: 20px;
       vertical-align: middle;
-
     }
   }
+
 }
 
 form {

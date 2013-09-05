@@ -42,6 +42,8 @@ class CreateDefense < ActiveRecord::Migration
 
       t.boolean :employed
       t.boolean :universal_credit
+      t.boolean :no_income
+      t.string :no_income_details
 
       t.decimal :income
       t.decimal :pension
