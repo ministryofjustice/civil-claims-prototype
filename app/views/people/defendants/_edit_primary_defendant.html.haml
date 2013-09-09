@@ -9,19 +9,18 @@
     = df.input :email
 
     = df.simple_fields_for :address do |dff|
-      - has_valid_address = defendant.address.present? && dff.object.valid? && !dff.object.street_1.blank?
       = dff.input :postcode do
         = dff.input_field :postcode, class: "postcode", required: true
         - classes = 'button-secondary find-uk-address' 
         - classes << ' disabled' if dff.object.postcode.blank? 
         = link_to 'Find UK Address', '/address/picker', :class => classes
 
-        - unless has_valid_address
+        - if (is_additional_defendant)
           = button_tag( name: 'same-address-as-first-tenant', value: df.object.id, class: 'button-secondary' ) do
             = content_tag(:span, 'Same address as first tenant')
 
 
-      %div.address{ class: ("element-invisible" unless has_valid_address) }
+      %div.address{ class: ("element-invisible" unless dff.object.is_valid?) }
         = dff.input :street_1, label: 'Street'
         = dff.input :street_2, :label => nil
         = dff.input :street_3, :label =>""

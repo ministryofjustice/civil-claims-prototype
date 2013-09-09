@@ -8,6 +8,10 @@ class Address < ActiveRecord::Base
     %w(street_1 street_2 street_3 town postcode).reject{|x| self.send(x).blank? }.map {|x| self.send(x) }
   end
 
+  def is_valid?
+    (self.valid? && !self.street_1.blank?)
+  end
+
   def copy_from other
     self.street_1 = other[:street_1]
     self.street_2 = other[:street_2]

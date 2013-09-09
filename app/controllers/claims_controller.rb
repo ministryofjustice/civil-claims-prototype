@@ -56,7 +56,6 @@ class ClaimsController < ApplicationController
 
     if params.has_key? 'destroy'
       Person.delete(params[:destroy])
-
       @claim = Claim.find(params[:id])
       redirect_to personal_details_claim_path @claim
       return
@@ -64,34 +63,23 @@ class ClaimsController < ApplicationController
 
     @claim = Claim.find(params[:id])
 
-    # params[:claim] = params[:claim].permit!
-
-    # @claim.update_attributes(params[:claim])
-    # .except!(:claimants, :defendants).permit!
     params.permit!
     pp params
 
+    # why doesn't it work normally?
+    @claim.address.update_attributes params[:claim][:address]
+    params[:claim].except!(:address)
     @claim.update_attributes params[:claim]
-    
 
-
-    # if params[:claim].has_key? :claimants_attributes
-    #   params[:claim][:claimants_attributes].each do |p|
-        
-    #     # @claim.claimants.new(p)
-    #   end
-    # end
 
     case params[:commit]
     when 'Save & Continue'
-
       # redirect_to next_navigation_path
       redirect_to personal_details_claim_path @claim
     when 'Close'
-      # redirect_to root_path
-      # render 'claims/claimant/personal_details'
+      redirect_to root_path
     when 'Add another landlord'
-      address = Address.create()
+      address = Address.create
       @claim.claimants.create(:address => address)
       redirect_to personal_details_claim_path @claim
     when 'Add another tenant'
@@ -99,10 +87,9 @@ class ClaimsController < ApplicationController
       @claim.defendants.create(:address => address)
       redirect_to personal_details_claim_path @claim
     when 'Same address as first claimant'
-      
+      redirect_to personal_details_claim_path @claim
     else
-      render 'claims/claimant/personal_details'
-
+      redirect_to personal_details_claim_path @claim
     end
 
   end
@@ -115,6 +102,7 @@ class ClaimsController < ApplicationController
     end
     if @claim.address.nil?
       @claim.build_address
+      @claim.save
     end
     session[:referer] = 'personal_details'
     render 'claims/claimant/personal_details'

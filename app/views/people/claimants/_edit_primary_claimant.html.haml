@@ -15,21 +15,19 @@
       = cf.input :dx_exchange
 
     = cf.simple_fields_for :address do |cff|
-      - has_valid_address = claimant.address.present? && cff.object.valid? && !cff.object.street_1.blank?
       = cff.input :postcode do
         = cff.input_field :postcode, class: "postcode", required: true
         - classes = 'button-secondary find-uk-address' 
         - classes << ' disabled' if cff.object.postcode.blank? 
         = link_to 'Find UK Address', '/address/picker', :class => classes
 
-        - unless has_valid_address
-          %br/
+        - if is_additional_claimant
           = submit_tag "Same address as first tenant", :class => "button-secondary"
 
-      %div.address{ class: ("element-invisible" unless has_valid_address) }
-        = cff.input :street_1, label: 'Street'
+      %div.address{ class: ("element-invisible" unless cff.object.is_valid?) }
+        = cff.input :street_1, label: 'Street', class: 'street_1'
         = cff.input :street_2, :label => nil
-        = cff.input :street_3, :label =>""
+        = cff.input :street_3, :label => nil
         = cff.input :town
         = cff.input :county
         = cff.input :postcode

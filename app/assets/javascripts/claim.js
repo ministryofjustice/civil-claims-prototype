@@ -1,5 +1,3 @@
-var claim = window.claim || {}
-
 var initPage = function(){
   // usernav dropdown
   $('.dropdown > a').on('click', function (e) {
@@ -62,26 +60,24 @@ var initPage = function(){
 
   });
 
-  var populate_address = function(container, address) {
-    container.find('.address_street_1 input').val(address.street_1);
-    container.find('.address_street_2 input').val(address.street_2);
-    container.find('.address_street_3 input').val(address.street_3);
-    container.find('.address_town input').val(address.town);
-    container.find('.address_county input').val(address.county);
-    container.find('.address_postcode input').val(address.postcode);
-
-    address_form_validator(container.parents('form')); 
-  };
-
-  // filthy address picker business
+  // handle selection from the address picker
   $('#edit-claim').on('change', '.pick_address', function(event) {
-    var master_form = $(this).parents('form');
-    var address_element = master_form.find('.address-container');
-    var picker = $(this).parents('.control-group');
+    var container = $(this).parents('.edit-person');
     var address = $(this).find('option:selected').data('address');
 
-    claim.address.populate(master_form, address);
+    container.find('.address').removeClass('element-invisible').addClass('expando');
+    populate_address(container, address);
   });
+
+
+  var populate_address = function(container, address) {
+    container.find("[class*='street_1'] input").val(address.street_1);
+    container.find("[class*='street_2'] input").val(address.street_2);
+    container.find("[class*='street_3'] input").val(address.street_3);
+    container.find("[class*='town'] input").val(address.town);
+    container.find("[class*='county'] input").val(address.county);
+    container.find("[class*='postcode'] input").val(address.postcode);
+  };
 
 
   // kinda bad ;)
@@ -106,62 +102,3 @@ var initPage = function(){
 
 $(document).ready(initPage);
 $(window).bind('page:change', initPage);
-
-claim.validate = function(form) {
-  form = $(form);
-  var ready_to_go = form[0].checkValidity();
-  var address_fields = 0;
-  var field_names = ['address_street_1', 'address_street_2', 'address_street_3','address_town', 'address_county'];
-
-  address_fields = field_names.map(function(f) { 
-    if( form.find( 'input#'+f).length && form.find( 'input#'+f).val().length ) { return 1; }
-    return 0;
-  }).reduce(function(a, b) { return a + b; });
-
-  if(address_fields < 2) {
-    ready_to_go = false;
-    if(form.find('input#address_street_1').length && !form.find('input#address_street_1').val().length) {
-      form.find('input#address_street_1').attr('required', 'required').get(0).setCustomValidity('Not gonna happen');
-    }
-  } else {
-    form.find('input#address_street_1').removeAttr('required').get(0).setCustomValidity('');
-  }
-  
-  if( ready_to_go ) {
-    form.find("button[value='save']").removeAttr('disabled');
-  } else {
-    form.find("button[value='save']").attr('disabled', 'disabled');
-  }
-};
-
-claim.address = {
-  populate: function(container, address) {
-
-    // are we showing the editable address form?
-    if(container.find('.address_street_1 input').length == 0 ) {
-
-      // the tragic downside of framework generated javascript is that I'm too
-      // lazy to find a better way of triggering this behaviour
-      container.find('.manual-address').click(); 
-
-      setTimeout(function(){
-        claim.address.feels_dirty(container, address);
-        window.claim.validate(container.parents('form')); 
-      }, 150); // callbacks are hard, let's just wait.
-
-    } else {
-      claim.address.feels_dirty(container, address);
-      //window.claim.validate(container.parents('form')); 
-    }
-  },
-
-  feels_dirty: function(container, address) {
-    container.find('.address_street_1 input').val(address.street_1);
-    container.find('.address_street_2 input').val(address.street_2);
-    container.find('.address_street_3 input').val(address.street_3);
-    container.find('.address_town input').val(address.town);
-    container.find('.address_county input').val(address.county);
-    container.find('.address_postcode input').val(address.postcode);
-  },
-
-};

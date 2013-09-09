@@ -28,7 +28,7 @@ module ApplicationHelper
 
   def get_next_navigation_path( referer )
     current_page = -1
-    linkdata.each_with_index do |lnk, i|
+    @linkdata.each_with_index do |lnk, i|
       if lnk[:path] == session[:referer]
         current_page = i
       elsif current_page > -1

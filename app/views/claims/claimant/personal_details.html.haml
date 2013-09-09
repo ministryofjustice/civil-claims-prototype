@@ -25,7 +25,7 @@
 
       %h3 Property details
       .moj-panel
-        = render :partial => 'addresses/address_for_possession/edit', :locals => { address: @claim.address_for_possession }
+        = render :partial => 'addresses/address_for_possession/edit', :locals => { claim_form: claim_form, address: @claim.address }
 
         .form-group.striped-radios
           %h4 Type of property
