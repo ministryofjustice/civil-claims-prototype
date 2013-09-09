@@ -22,7 +22,7 @@
         = link_to 'Find UK Address', '/address/picker', :class => classes
 
         - if is_additional_claimant
-          = button_tag( name: 'same-address-as-first-landlord', value: cf.object.id, class: 'post-link formalise' ) do
+          = button_tag( name: 'same-address-as-first-landlord', value: cff.object.id, class: 'post-link formalise' ) do
             = content_tag(:span, 'Same address as first landlord')
 
       %div.address{ class: ("element-invisible" unless cff.object.is_valid?) }

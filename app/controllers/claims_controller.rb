@@ -74,13 +74,15 @@ class ClaimsController < ApplicationController
 
 
     if params.has_key? 'same-address-as-first-tenant'
-      t = Person.find(params['same-address-as-first-tenant'])
-      t.address = @claim.primary_defendant.address.dup
-      t.save
+      a = Address.find(params['same-address-as-first-tenant'])
+      a.copy_from @claim.primary_defendant.address
+      a.save
+      @claim.reload
     elsif params.has_key? 'same-address-as-first-landlord'
-      t = Person.find(params['same-address-as-first-landlord'])
-      t.address = @claim.primary_claimant.address.dup
-      t.save
+      a = Address.find(params['same-address-as-first-landlord'])
+      a.copy_from @claim.primary_claimant.address
+      a.save
+      @claim.reload
     end
 
 
