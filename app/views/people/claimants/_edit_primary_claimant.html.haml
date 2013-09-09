@@ -18,8 +18,9 @@
       - has_valid_address = claimant.address.present? && cff.object.valid? && !cff.object.street_1.blank?
       = cff.input :postcode do
         = cff.input_field :postcode, class: "postcode", required: true
-        = button_tag( name: 'find-address', value: cf.object.id, class: 'button-secondary find-uk-address' ) do
-          = content_tag(:span, "Find UK Address")
+        - classes = 'button-secondary find-uk-address' 
+        - classes << ' disabled' if cff.object.postcode.blank? 
+        = link_to 'Find UK Address', '/address/picker', :class => classes
 
         - unless has_valid_address
           %br/
