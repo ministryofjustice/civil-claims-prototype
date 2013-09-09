@@ -16,6 +16,11 @@
     width: 160px;
   }
 
+  select.date {
+    width: auto;
+    display: inline-block;
+  }
+
   input[type=text], input[type=tel], input[type=email], select { 
     width: 20em;
     min-height: 30px;

@@ -44,8 +44,7 @@
               = f.label :notice_to_quit, "Notice to quit"
 
           #notice-served-date.all-inline{:hidden => @claim.notice_to_quit? ? false : true }
-            %div= f.label :notice_served_date, "Date notice served"
-            %div= f.date_field :notice_served_date
+            = f.input :notice_served_date, start_year: Date.today.year-5, end_year: Date.today.year, order: [:day, :month, :year], label: "Date notice served"
 
           .striped-choice
             %div
@@ -99,6 +98,8 @@
             .content-label= f.label :tenancy_start_date
             .content-block
               = f.date_field :tenancy_start_date, :label => false
+
+          = f.input :tenancy_start_date, start_year: Date.today.year-5, end_year: Date.today.year, order: [:day, :month, :year]
 
           .labeled-content
             .content-label= f.label :rental_amount
