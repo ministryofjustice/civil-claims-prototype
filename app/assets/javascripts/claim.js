@@ -65,6 +65,7 @@ var initPage = function(){
     var container = $(this).parents('.edit-person');
     var address = $(this).find('option:selected').data('address');
 
+    container.find('.address').removeClass('element-invisible').addClass('expando');
     populate_address(container, address);
   });
 
