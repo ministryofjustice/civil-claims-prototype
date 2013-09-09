@@ -1,3 +1,9 @@
+@import "_colours";
+@import "_typography";
+@import "design-patterns/_buttons.scss";
+@import "claims-vars";
+@import "claims-mixins";
+
 .plain {
   list-style-type: none;
   list-style-image: none;
@@ -86,9 +92,7 @@ li {
     padding-left: 0px;
 
     .content-list{
-      list-style-type: none;
-      list-style-image: none;
-      list-style-position: inside;
+      @include reset-list;
       padding-left: 0px;
     }
       
@@ -101,5 +105,32 @@ li {
       padding: 1px 0px 1px 30px;
     }
   }
+}
+
+.attachment-list{
+  padding-left: 0;
+  @include reset-list;
+
+  .attachment-element{
+    @include panel-style(#D5EEEA);
+    padding: 15px;
+    margin: 5px 0 5px;
+
+    ul, ol {
+      padding-left: 0;
+    }
+
+    input {
+      float: right;
+    }
+  }
 
 }
+
+
+
+
+
+
+
+

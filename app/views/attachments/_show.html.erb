@@ -9,7 +9,7 @@
    
     <div id="attachments-section">
       <%= button_to_add_fields "attachments", "Attach documents", f, :attachments %>
-      <ul id="attachments-list">
+      <ul id="attachments-list" class="attachment-list">
         <%= f.simple_fields_for :attachments do |builder| %>
           <%= render "attachments/attachment_fields", :f => builder %>
         <% end %>  
