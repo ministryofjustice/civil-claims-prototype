@@ -68,7 +68,7 @@ class Claim < ActiveRecord::Base
     self.owner = landlord
     self.claimants << landlord
     self.defendants << tenant
-    self.address = tenant.address
+    self.create_address( tenant.address )
 
     self.property_type = 'residential'
     self.resident_type = 'private tenant'
