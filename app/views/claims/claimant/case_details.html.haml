@@ -94,12 +94,7 @@
                 
               %a.fake-linkMore about tenancy types
 
-          .labeled-content
-            .content-label= f.label :tenancy_start_date
-            .content-block
-              = f.date_field :tenancy_start_date, :label => false
-
-          = f.input :tenancy_start_date, start_year: Date.today.year-5, end_year: Date.today.year, order: [:day, :month, :year]
+          = f.input :tenancy_start_date, start_year: Date.today.year-25, end_year: Date.today.year, order: [:day, :month, :year]
 
           .labeled-content
             .content-label= f.label :rental_amount

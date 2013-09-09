@@ -21,6 +21,12 @@ class ClaimsController < ApplicationController
     redirect_to root_path
   end
 
+  def show
+    @claim = Claim.find(params[:id])
+    redirect_to personal_details_claim_path @claim
+  end
+
+
   def create
 
     @user = @user || Person.find(session[:user])

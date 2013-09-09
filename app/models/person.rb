@@ -7,7 +7,7 @@ class Person < ActiveRecord::Base
   scope :randomly, -> { order("RANDOM()") }
 
   def display_name
-    "#{self.title} #{self.full_name}".strip
+    self.full_name
   end
 
   def extended_contact_details
