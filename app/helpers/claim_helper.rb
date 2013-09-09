@@ -4,8 +4,8 @@ module ClaimHelper
     editors[person.id]
   end
 
-  def show_dx_controls( person )
-    !(person.dx_number.blank? && person.dx_exchange.blank?)
+  def show_dx_controls_for( person )
+    person.dx_number.present? || person.dx_exchange.present?
   end
 
   def dx_controls( form_builder )

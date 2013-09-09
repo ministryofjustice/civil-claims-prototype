@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require jquery.ui.effect-highlight
-//= require validator
+
 //= require claim
 
 // want to hide something different then TR then add attribute to fn

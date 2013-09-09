@@ -63,6 +63,9 @@ group :development do
   gem 'guard-spork'
 
   gem 'nkss-rails', github: 'nadarei/nkss-rails'
+
+  gem "better_errors"
+  gem "binding_of_caller"
 end
 
 group :development, :test do
