@@ -49,7 +49,7 @@ var add_fields = function(link, association, content) {
     $('#rental-arrears-error').hide();
     
     var rent = $('#claim_rental_amount').val() || 0;
-    var contribution = $('#arrears-month-contribution').val() || 0;
+    var contribution = $('.js-arrears-month-contribution').val() || 0;
     
     var rent_due_on_data=[
       parseInt($('#arrears-select-year').val()),
@@ -90,6 +90,8 @@ var add_fields = function(link, association, content) {
       var total_arrears = parseFloat($('#arrears-total-amount input').val()) + arrear_value;
       $('#arrears-total-amount input').val(total_arrears);
       $('#arrears-total-amount-text').text('\u00A3'+total_arrears.toFixed(1));
+
+      $('.js-arrears-month-contribution').val(null);
     }
   } else if(association=="attachments"){
     var file_name=get_random_filename;
