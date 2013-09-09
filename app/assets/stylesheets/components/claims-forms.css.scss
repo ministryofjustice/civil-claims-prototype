@@ -42,8 +42,11 @@ form {
 }
 
 .edit-person {
-  details summary {
-    margin:0 0 10px 160px;
+  details {
+    margin-top: 10px;
+    summary {
+      margin-left: 160px;
+    }
   }
 }
 
@@ -181,10 +184,10 @@ form.add-additional-person {
   }
 }
 
-.js-enabled {
-  .address { display: none; }
-  .address.valid { display: block; }
-}
+// .js-enabled {
+//   .address { display: none; }
+//   .address.valid { display: block; }
+// }
 
 #edit-claim form {
   input {

@@ -1,8 +1,8 @@
 class Person < ActiveRecord::Base
   belongs_to :claim
-  has_one :address, as: :addressable
+  has_one :address, :as => :addressable, :dependent => :destroy
 
-  accepts_nested_attributes_for :address
+  accepts_nested_attributes_for :address, :allow_destroy => true
 
   scope :randomly, -> { order("RANDOM()") }
 

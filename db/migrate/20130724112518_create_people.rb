@@ -7,6 +7,9 @@ class CreatePeople < ActiveRecord::Migration
       t.string :mobile
       t.string :email
 
+      t.string :dx_number
+      t.string :dx_exchange
+
       t.string :type
       t.references :claim
       t.timestamps

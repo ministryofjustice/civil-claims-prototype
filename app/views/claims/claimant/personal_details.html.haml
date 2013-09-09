@@ -6,41 +6,15 @@
     
     = toggle_inline_help_link('About claimants and defendants', 'Porro nihil nec cu. Ut ludus omnium dissentiunt mei, his at populo semper. Eu iusto tibique pri, ad sit modo antiopam maiestatis, commune delicata dissentias vel ea. An has odio habemus ancillae, an per animal fastidii tacimates, duo tritani mandamus delicatissimi ex.')
 
-    = simple_form_for @claim, url: personal_details_claim_path( @claim ) do |form|
+    = simple_form_for @claim, url: personal_details_claim_path( @claim ) do |claim_form|
 
       %h3 Landlord details
-      = render partial: "people/claimants/edit_primary_claimant", locals: {form: form, claimant: @claim.primary_claimant}
-      - @claim.additional_claimants.each do |claimant|
-        = render partial: "people/claimants/edit_additional_claimant", locals: {form: form, claimant: claimant }
+      = render partial: "people/claimants/edit_primary_claimant", locals: {claim_form: claim_form, claimant: @claim.primary_claimant}
+      / - @claim.additional_claimants.each do |claimant|
+      / = render partial: "people/claimants/edit_additional_claimant", locals: {claim_form: claim_form, claimant: claimant }
       = submit_tag 'Add another landlord', :class => "button-secondary"
 
 
-      %h3 Tenant details
-      = render partial: "people/defendants/edit_primary_defendant", locals: {form: form,  defendant: @claim.primary_defendant }
-      - @claim.additional_defendants.each do |defendant|
-        = render partial: "people/defendants/edit_additional_defendant", locals: {form: form,  defendant: defendant }
-      = submit_tag 'Add another tenant', :class => "button-secondary"
-
-      %h3 Property details
-      .moj-panel
-        = render :partial => 'addresses/address_for_possession/edit', :locals => { address: @claim.address_for_possession }
-
-        .form-group.striped-radios
-          %h4 Type of property
-          %div
-            = form.radio_button(:property_type, 'residential')
-            = label_tag :claim_property_type_residential, 'Residential'
-          %div
-            = form.radio_button :property_type, 'commercial'
-            = label_tag :claim_property_type_commercial, 'Commercial'
-
-        .form-group.striped-radios
-          %h4 Who is in the property?
-          %div
-            = form.radio_button :resident_type, 'private tenant'
-            = label_tag :claim_resident_type_private_tenant, 'Private Tenant'
-          %div
-            = form.radio_button :resident_type, 'squatter'
-            = label_tag :claim_resident_type_squatter, 'Squatter'
+      
      
-      = render partial: 'claims/claimant/save_continue', locals: {f: form}
+      = render partial: 'claims/claimant/save_continue', locals: {f: claim_form}

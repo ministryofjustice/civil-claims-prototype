@@ -22,14 +22,16 @@ class ClaimsController < ApplicationController
   end
 
   def create
-    @claim = Claim.new
+
     @user = @user || Person.find(session[:user])
-    @claim.owner = @user
+    @claim = Claim.new(:owner => @user)
     @claim.claimants << @user
     @claim.save
 
-    redirect_to claim_path @claim
+    redirect_to personal_details_claim_path @claim
   end
+
+
 
   def update
     @claim = Claim.find(params[:id])
@@ -45,59 +47,60 @@ class ClaimsController < ApplicationController
   end
 
   def post_personal_details
+    return render :text => params
+
     @claim = Claim.find(params[:id])
-    require 'pp'
+
+    # params[:claim] = params[:claim].permit!
+
+    # @claim.update_attributes(params[:claim])
+    # .except!(:claimants, :defendants).permit!
     params.permit!
-    params[:claim][:claimants].each do |p|
-      pp p
-      if p[1][:id].blank?
-        @claim.claimants << Claimant.upcreate(p[1], 'claimant')
-        @claim.save
-      else
-        Claimant.upcreate(p[1], 'claimant')
-      end
-    end
-    params[:claim][:defendants].each do |p|
-      pp p
-      if p[1][:id].blank?
-        @claim.defendants << Defendant.upcreate(p[1], 'defendant')
-        @claim.save
-      else
-        Defendant.upcreate(p[1], 'defendant')
-      end
-    end
-
-    params[:claim] = params[:claim].except!(:claimants, :defendants)
     @claim.update_attributes params[:claim]
+    
 
-    raise 'hell'
+
+    # if params[:claim].has_key? :claimants_attributes
+    #   params[:claim][:claimants_attributes].each do |p|
+        
+    #     # @claim.claimants.new(p)
+    #   end
+    # end
 
     case params[:commit]
     when 'Save & Continue'
-      redirect_to next_navigation_path
+
+      # redirect_to next_navigation_path
+      render 'claims/claimant/personal_details'
     when 'Close'
-      redirect_to root_path
+      # redirect_to root_path
+      # render 'claims/claimant/personal_details'
+      render :text => params
     when 'Add another landlord'
-      c = Claimant.new
-      c.save(validate: false)
-      c.create_address
-      @claim.claimants << c
+      address = Address.create()
+      claimant = @claim.claimants.create(:full_name => 'claimant', :address => address)
       render 'claims/claimant/personal_details'
     when 'Add another tenant'
-      d = Defendant.new
-      d.save(validate: false)
-      d.create_address
-      @claim.defendants << d
+      # d = Defendant.new
+      # d.save(validate: false)
+      # d.create_address
+      # @claim.defendants << d
       render 'claims/claimant/personal_details'
+    when 'Same address as first claimant'
+      render :text => "asdfafss"
+      
     end
+
+    render :text => "asdfafss"
   end
 
   def personal_details
-    @claim = Claim.find(params[:id], :include => [{:claimants => :address}, {:defendants => :address}])
+    @claim = Claim.find(params[:id])
+    # , :include => [{:claimants => :address}, {:defendants => :address}])
     @editors = session['editors'] || {}
     if @claim.defendants.empty?
-      @claim.defendants.build
-      @claim.primary_defendant.build_address
+      defendant = @claim.defendants.new(address: Address.new)
+      # defendant.address.new
     end
     if @claim.address.nil?
       @claim.build_address
@@ -136,22 +139,23 @@ class ClaimsController < ApplicationController
     render 'claims/claimant/confirmation'
   end
 
-  def address
-    claim = Claim.find_by_id(params[:id])
-    params.permit!
-    claim.update_attributes params[:claim]
-    claim.address.update_attributes params[:address]
-    claim.save
+  # def address
+  #   claim = Claim.find_by_id(params[:id])
+  #   params.permit!
+  #   claim.update_attributes params[:claim]
+  #   claim.address.update_attributes params[:address]
+  #   claim.save
     
-    respond_to do |format|
-      format.html { redirect_to :back }
-      format.js { 
-        address = claim.address
-        options = { :show_edit_link => true }
-        render :partial => 'addresses/view_address_for_possession', :format => [:js], :locals => {claim: claim, address: address, options: options}
-      }
-    end
-  end
+  #   respond_to do |format|
+  #     format.html { redirect_to :back }
+  #     format.js { 
+  #       address = claim.address
+  #       options = { :show_edit_link => true }
+  #       render :partial => 'addresses/view_address_for_possession', :format => [:js], :locals => {claim: claim, address: address, options: options}
+  #     }
+  #   end
+  #   # render :text => 'sdf'
+  # end
 
   private
 
@@ -162,6 +166,5 @@ class ClaimsController < ApplicationController
   def page_title 
     @page_title = "Repossess a property:<br />make a possession claim".html_safe
   end
-
 
 end
