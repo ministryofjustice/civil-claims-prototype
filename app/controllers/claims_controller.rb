@@ -1,6 +1,6 @@
 class ClaimsController < ApplicationController
   skip_before_action :pretend_to_authenticate, only: [:delete_all]
-  before_action :page_title
+  before_action :page_title, :page_links
 
 
   def home
@@ -96,11 +96,9 @@ class ClaimsController < ApplicationController
 
   def personal_details
     @claim = Claim.find(params[:id])
-    # , :include => [{:claimants => :address}, {:defendants => :address}])
     @editors = session['editors'] || {}
     if @claim.defendants.empty?
       defendant = @claim.defendants.new(address: Address.new)
-      # defendant.address.new
     end
     if @claim.address.nil?
       @claim.build_address
@@ -161,6 +159,22 @@ class ClaimsController < ApplicationController
 
   def page_title 
     @page_title = "Repossess a property:<br />make a possession claim".html_safe
+  end
+
+
+  def page_links
+    @linkdata = linkdata
+  end
+
+  def linkdata
+    [
+      { :text => 'Personal details', :path => 'personal_details' },
+      { :text => 'Case details', :path => 'case_details' },
+      { :text => 'Court booking', :path => 'court_booking' },
+      { :text => 'Confirm details', :path => 'statement' },
+      { :text => 'Pay court fee', :path => 'fees' },
+      { :text => 'Confirmation', :path => 'confirmation' }
+    ]
   end
 
 end

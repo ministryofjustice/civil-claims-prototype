@@ -39,7 +39,7 @@ module ApplicationHelper
   end
 
   def render_local_navigation
-    render :partial => 'shared/navigation', :locals => { :links => linkdata }
+    render :partial => 'shared/navigation', :locals => { :links => @linkdata }
   end
 
 end

@@ -28,14 +28,4 @@ module ClaimHelper
     render :partial => 'shared/inline_help', :locals => {link_text: link_text, help_content: help_content }
   end
 
-  def linkdata
-    [
-      { :text => 'Personal details', :path => 'personal_details' },
-      { :text => 'Case details', :path => 'case_details' },
-      { :text => 'Court booking', :path => 'court_booking' },
-      { :text => 'Confirm details', :path => 'statement' },
-      { :text => 'Pay court fee', :path => 'fees' },
-      { :text => 'Confirmation', :path => 'confirmation' }
-    ]
-  end
 end

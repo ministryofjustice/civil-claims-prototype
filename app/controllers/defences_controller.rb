@@ -1,5 +1,5 @@
 class DefencesController < ApplicationController
-  before_action :page_title
+  before_action :page_title, :page_links
 
   def show_login
     @user = @user || Defendant.find(session[:user])
@@ -99,5 +99,19 @@ class DefencesController < ApplicationController
   def update_current_claim_from_parameters
     get_current_defense.update_attributes defense_params
   end
+
+  def page_links
+    @linkdata = linkdata
+  end
+
+  def linkdata
+    [
+      { :text => 'Personal details', :path => 'personal_details' },
+      { :text => 'About the case', :path => 'about_claim' },
+      { :text => 'About you', :path => 'about_defence' },
+      { :text => 'Preview and submit', :path => 'preview' },
+      { :text => 'Confirmation', :path => 'confirmation' }
+    ]
+  end  
 
 end
