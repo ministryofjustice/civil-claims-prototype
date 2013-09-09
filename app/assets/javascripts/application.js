@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require jquery.ui.effect-highlight
 //= require validator
+//= require addresses
 
 //= require claim
 
