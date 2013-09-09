@@ -46,9 +46,7 @@
           <summary>Did the tenant(s) pay part of the rent?</summary>
           <div class="all-inline">
             <strong>&pound;</strong>
-            <div class="default-box-width">
-              <input id="arrears-month-contribution" type="text" />
-            </div>
+            <input id="arrears-month-contribution" type="text" />
           </div>
         </details>
       </div>
@@ -93,7 +91,7 @@
     <%= f.label :unpaid_rent_per_day, "Unpaid rent should be calculated at" %>
     <div class="all-inline">
       <strong>&pound</strong>
-      <div class="default-box-width"><%= f.text_field :unpaid_rent_per_day, :label => false %></div>
+      <%= f.text_field :unpaid_rent_per_day, :label => false %>
       a day
     </div>
     <div class="striped-choice">
