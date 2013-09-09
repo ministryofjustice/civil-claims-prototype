@@ -92,7 +92,7 @@
             .content-block
               = f.input :tenancy_type, label: false, collection: [["Assured shorthold tenancy", "assured-shorhold-tenancy"], ["Assured tenancy", "assured-tenancy"], ["Regulated tenancy", "regulated-tenancy"]], selected: f.object.tenancy_type || "assured-shorhold-tenancy"
                 
-              %a.fake-linkMore about tenancy types
+              %a.fake-link More about tenancy types
 
           = f.input :tenancy_start_date, start_year: Date.today.year-25, end_year: Date.today.year, order: [:day, :month, :year]
 
