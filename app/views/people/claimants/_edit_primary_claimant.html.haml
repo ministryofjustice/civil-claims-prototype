@@ -27,9 +27,9 @@
           = submit_tag "Same address as first tenant", :class => "button-secondary"
 
       %div.address{ class: ("element-invisible" unless has_valid_address) }
-        = cff.input :street_1, label: 'Street'
+        = cff.input :street_1, label: 'Street', class: 'street_1'
         = cff.input :street_2, :label => nil
-        = cff.input :street_3, :label =>""
+        = cff.input :street_3, :label => nil
         = cff.input :town
         = cff.input :county
         = cff.input :postcode

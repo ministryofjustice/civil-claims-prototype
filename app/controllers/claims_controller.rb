@@ -71,6 +71,9 @@ class ClaimsController < ApplicationController
     params.permit!
     pp params
 
+    @claim.address.update_attributes params[:claim][:address]
+    params[:claim].except!(:address)
+
     @claim.update_attributes params[:claim]
     
 

@@ -1,18 +1,17 @@
 - if address.nil?
-  .address-container
+  .address-container.edit-person
 - else
-  .address-container{ id: 'address-' + address.id.to_s }
-  = simple_fields_for( address ) do |f|
+  .address-container.edit-person{ id: 'address-' + address.id.to_s }
+    = claim_form.simple_fields_for( address ) do |f|
 
-    = f.input :street_1, label: 'Street'
-    = f.input :street_2, class: 'hide-label'
-    = f.input :street_3, class: 'hide-label'
-    = f.input :town
-    = f.input :county
-  
-
-    = f.input :postcode do
-      = f.input_field :postcode, class: 'postcode'
-      - classes = 'button-secondary find-uk-address'
-      - classes << ' disabled' if address.postcode.blank?
-      = link_to 'Find UK Address', '/address/picker', :class => classes
+      = f.input :street_1, label: 'Street'
+      = f.input :street_2, label: nil
+      = f.input :street_3, label: nil
+      = f.input :town
+      = f.input :county
+    
+      = f.input :postcode do
+        = f.input_field :postcode, class: 'postcode'
+        - classes = 'button-secondary find-uk-address'
+        - classes << ' disabled' if address.postcode.blank?
+        = link_to 'Find UK Address', '/address/picker', :class => classes
