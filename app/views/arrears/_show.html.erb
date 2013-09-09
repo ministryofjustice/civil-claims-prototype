@@ -8,15 +8,14 @@
       <div class="content-label">Rent due on</div>
       <div class="content">
         <div class="all-inline">
-          <div>
+
             <select id="arrears-select-day">
               <option />
               <% for day in 1..31 %>
                 <option value="<%= day %>"><%= day %></option>
               <% end %>
             </select>
-          </div>
-          <div>
+
             <select id="arrears-select-month">
               <option />
               <option value="1">January</option>
@@ -32,16 +31,15 @@
               <option value="11">November</option>
               <option value="12">December</option>
             </select>
-          </div>
-          <div>
+ 
             <select id="arrears-select-year">
               <option />
               <% for year in 2009..2013 %>
                 <option value="<%= year %>"><%= year %></option>
               <% end %>
             </select>
-          </div>
-          <div id="arrears-add-item"> <%= button_to_add_fields "arrears", "Add more unpaid rental payments", f, :arrears %></div>
+
+          <%= button_to_add_fields "arrears", "Add more unpaid rental payments", f, :arrears %>
         </div> 
 
         <details>
