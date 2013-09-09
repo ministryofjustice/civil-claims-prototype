@@ -10,17 +10,11 @@
     = simple_form_for @claim, url: personal_details_claim_path( @claim ) do |claim_form|
 
       %h3 Landlord details
-      = render partial: "people/claimants/edit_primary_claimant", locals: {claim_form: claim_form, claimant: @claim.primary_claimant}
-      / - @claim.additional_claimants.each do |claimant|
-      / = render partial: "people/claimants/edit_additional_claimant", locals: {claim_form: claim_form, claimant: claimant }
+      = render partial: "people/claimants/edit_primary_claimant", locals: {claim_form: claim_form}
       = submit_tag 'Add another landlord', :class => "button-secondary"
 
-    
-
       %h3 Tenant details
-      = render partial: "people/defendants/edit_primary_defendant", locals: {claim_form: claim_form,  defendant: @claim.primary_defendant }
-      / - @claim.additional_defendants.each do |defendant|
-      /   = render partial: "people/defendants/edit_additional_defendant", locals: {form: claim_form,  defendant: defendant }
+      = render partial: "people/defendants/edit_primary_defendant", locals: {claim_form: claim_form}
       = submit_tag 'Add another tenant', :class => "button-secondary"
 
       %h3 Property details

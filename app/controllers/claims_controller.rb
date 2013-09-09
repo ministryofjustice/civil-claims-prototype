@@ -57,6 +57,7 @@ class ClaimsController < ApplicationController
     if params.has_key? 'destroy'
       Person.delete(params[:destroy])
       @claim = Claim.find(params[:id])
+      pp params
       redirect_to personal_details_claim_path @claim
       return
     end
@@ -72,6 +73,17 @@ class ClaimsController < ApplicationController
     @claim.update_attributes params[:claim]
 
 
+    if params.has_key? 'same-address-as-first-tenant'
+      t = Person.find(params['same-address-as-first-tenant'])
+      t.address = @claim.primary_defendant.address.dup
+      t.save
+    elsif params.has_key? 'same-address-as-first-landlord'
+      t = Person.find(params['same-address-as-first-landlord'])
+      t.address = @claim.primary_claimant.address.dup
+      t.save
+    end
+
+
     case params[:commit]
     when 'Save & Continue'
       # redirect_to next_navigation_path
@@ -79,14 +91,13 @@ class ClaimsController < ApplicationController
     when 'Close'
       redirect_to root_path
     when 'Add another landlord'
+      logger.debug('adding another landlord')
       address = Address.create
-      @claim.claimants.create(:address => address)
+      @claim.claimants << Claimant.create(:address => address)
       redirect_to personal_details_claim_path @claim
     when 'Add another tenant'
       address = Address.create
       @claim.defendants.create(:address => address)
-      redirect_to personal_details_claim_path @claim
-    when 'Same address as first claimant'
       redirect_to personal_details_claim_path @claim
     else
       redirect_to personal_details_claim_path @claim

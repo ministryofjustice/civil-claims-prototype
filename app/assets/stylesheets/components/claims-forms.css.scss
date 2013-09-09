@@ -27,6 +27,7 @@
     height: 30px;
     padding-top:4px;
     padding-bottom:4px;
+    padding-left:10px;
 
     &.title  {
       width: 6em;   
@@ -74,6 +75,7 @@ form {
 .edit-person {
   details {
     margin-top: 10px;
+    margin-bottom: 10px;
     summary {
       margin-left: 160px;
     }
@@ -119,6 +121,22 @@ textarea {
   color: $grey-1;
 }
 
+button.post-link {
+  background:none !important;
+  border:none; 
+  padding:0 !important;
+  color:#069;
+  cursor:pointer;
+
+  &:hover { text-decoration:underline; }
+}
+
+form .formalise {
+  margin-top:10px;
+  margin-left:160px;
+}
+
+
 
 // specific
 
@@ -127,37 +145,13 @@ form.add-additional-person {
   margin-bottom: 20px;
 }
 
-.edit-person, .address-container {
+.edit-person {
   margin-top: 20px;
   margin-bottom: 20px;
+  .postcode { display: inline-block;  width: 7.5em; }
+  a.find-uk-address { display: inline-block; margin-left: 20px; }
 
   .btn-danger { margin-left: 21em; }
-}
-
-.address-container {
-  .address_postcode {
-    .postcode { display: inline-block;  width: 7.5em; }
-  }
-  a.find-uk-address { display: inline-block; margin-left: 10px; }
-  
-  .inline-help {
-    margin-bottom: 5px;
-    a.toggle-help  { font-size: 80%; margin-left: 160px; }
-  }
-
-  .manual-address, .copy-address {
-    display: inline-block;
-    margin-left: 10em;
-    margin-bottom: 10px;
-  }
-
-  .manual-address {
-    width: 100%;
-  }
-
-  .button-group {
-    margin:20px 0;
-  }
 }
 
 // .js-enabled {

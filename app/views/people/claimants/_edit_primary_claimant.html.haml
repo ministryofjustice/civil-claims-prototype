@@ -22,7 +22,8 @@
         = link_to 'Find UK Address', '/address/picker', :class => classes
 
         - if is_additional_claimant
-          = submit_tag "Same address as first tenant", :class => "button-secondary"
+          = button_tag( name: 'same-address-as-first-landlord', value: cf.object.id, class: 'post-link formalise' ) do
+            = content_tag(:span, 'Same address as first landlord')
 
       %div.address{ class: ("element-invisible" unless cff.object.is_valid?) }
         = cff.input :street_1, label: 'Street', class: 'street_1'
@@ -32,9 +33,9 @@
         = cff.input :county
         = cff.input :postcode
 
-      -if is_additional_claimant
-        = button_tag( name: 'destroy', value: cff.object.id, class: 'button-warning' ) do
-          = content_tag(:span, 'Remove')
+    -if is_additional_claimant
+      = button_tag( name: 'destroy', value: cf.object.id, class: 'button-warning' ) do
+        = content_tag(:span, 'Remove')
 
 
 

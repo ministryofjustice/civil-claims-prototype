@@ -8,7 +8,7 @@ describe ClaimsController do
         post :create
       end
 
-      assert_redirected_to claim_path( assigns :claim )
+      assert_redirected_to personal_details_claim_path( assigns :claim )
     end
   end
 
