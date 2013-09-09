@@ -24,10 +24,11 @@ li {
 .moj-large-steps {
   list-style-type: none;
   position: relative;
+  padding-left: 0;
 
   .moj-large-step {
     position: relative;        
-    padding-left: 15px;
+    padding-left: 25px;
     margin: 40px 0;
     
     > img {
@@ -40,34 +41,22 @@ li {
       display: inline-block;
       margin-top: 20px;
       width: 50%;
-    }
-
-    .step-number {
-      position: absolute;
-      display:inline-block;
-      left: -25px;
-      top: 20px;
-      padding: 5px 8px;
-
-      font-size: 12px;
-      font-weight: bold;
-      line-height: 1;
-      color: #fff;
-      text-align: center;
-      white-space: nowrap;
-      vertical-align: middle;
-      
-      background-color: #000;
-      border-radius: 20px;
+      padding-left: 10px;
     }
 
     .step-title {
       font-weight: bold;
     }
 
+    &.number-1{ background: image-url('icon-step-1.png') no-repeat 0 20px; }
+    &.number-2{ background: image-url('icon-step-2.png') no-repeat 0 20px; }
+    &.number-3{ background: image-url('icon-step-3.png') no-repeat 0 20px; }
+    &.number-4{ background: image-url('icon-step-4.png') no-repeat 0 20px; }
+    &.number-5{ background: image-url('icon-step-5.png') no-repeat 0 20px; }
+    &.number-6{ background: image-url('icon-step-6.png') no-repeat 0 20px; }
+
   }
 }
-
 
 .claims-item-status {
   position: relative;
