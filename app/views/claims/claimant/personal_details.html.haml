@@ -18,9 +18,9 @@
     
 
       %h3 Tenant details
-      = render partial: "people/defendants/edit_primary_defendant", locals: {form: claim_form,  defendant: @claim.primary_defendant }
-      - @claim.additional_defendants.each do |defendant|
-        = render partial: "people/defendants/edit_additional_defendant", locals: {form: claim_form,  defendant: defendant }
+      = render partial: "people/defendants/edit_primary_defendant", locals: {claim_form: claim_form,  defendant: @claim.primary_defendant }
+      / - @claim.additional_defendants.each do |defendant|
+      /   = render partial: "people/defendants/edit_additional_defendant", locals: {form: claim_form,  defendant: defendant }
       = submit_tag 'Add another tenant', :class => "button-secondary"
 
       %h3 Property details

@@ -53,7 +53,14 @@ class ClaimsController < ApplicationController
   end
 
   def post_personal_details
-    return render :text => params
+
+    if params.has_key? 'destroy'
+      Person.delete(params[:destroy])
+
+      @claim = Claim.find(params[:id])
+      redirect_to personal_details_claim_path @claim
+      return
+    end
 
     @claim = Claim.find(params[:id])
 
@@ -62,6 +69,8 @@ class ClaimsController < ApplicationController
     # @claim.update_attributes(params[:claim])
     # .except!(:claimants, :defendants).permit!
     params.permit!
+    pp params
+
     @claim.update_attributes params[:claim]
     
 
@@ -77,27 +86,25 @@ class ClaimsController < ApplicationController
     when 'Save & Continue'
 
       # redirect_to next_navigation_path
-      render 'claims/claimant/personal_details'
+      redirect_to personal_details_claim_path @claim
     when 'Close'
       # redirect_to root_path
       # render 'claims/claimant/personal_details'
-      render :text => params
     when 'Add another landlord'
       address = Address.create()
-      claimant = @claim.claimants.create(:full_name => 'claimant', :address => address)
-      render 'claims/claimant/personal_details'
+      @claim.claimants.create(:address => address)
+      redirect_to personal_details_claim_path @claim
     when 'Add another tenant'
-      # d = Defendant.new
-      # d.save(validate: false)
-      # d.create_address
-      # @claim.defendants << d
-      render 'claims/claimant/personal_details'
+      address = Address.create
+      @claim.defendants.create(:address => address)
+      redirect_to personal_details_claim_path @claim
     when 'Same address as first claimant'
-      render :text => "asdfafss"
       
+    else
+      render 'claims/claimant/personal_details'
+
     end
 
-    render :text => "asdfafss"
   end
 
   def personal_details

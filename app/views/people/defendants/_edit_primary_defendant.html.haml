@@ -1,24 +1,31 @@
-.moj-panel.edit-person
-  - id = defendant.id || defendant.object_id
-  = form.simple_fields_for "defendants[]", defendant do |sf|
-    = sf.input :id, as: :hidden
-    = sf.input :full_name, placeholder: 'e.g. John Smith'
-    = sf.input :phone
-    = sf.input :mobile
-    = sf.input :email
+= claim_form.simple_fields_for :defendants do |df|
+  - is_additional_defendant = df.index > 0
+  .moj-panel.edit-person
+    - if (is_additional_defendant) 
+      %strong Add an additional tenant
+    = df.input :full_name, placeholder: "e.g. John Smith"
+    = df.input :phone
+    = df.input :mobile
+    = df.input :email
 
-    = simple_fields_for "defendants[#{id}][address]", defendant.address do |sff|
-      - classes = 'address'
-      - classes << ' valid' if defendant.address.valid?
-      %div{ class: classes }
-        = sff.input :street_1, label: 'Street'
-        = sff.input :street_2, label: nil
-        = sff.input :street_3, label: nil
-        = sff.input :town
-        = sff.input :county
+    = df.simple_fields_for :address do |dff|
+      - has_valid_address = defendant.address.present? && dff.object.valid? && !dff.object.street_1.blank?
+      = dff.input :postcode do
+        = dff.input_field :postcode, class: "postcode", required: true
+        = submit_tag "Find UK Address", class: "button-secondary find-uk-address" 
 
-      = sff.input :postcode do
-        = sff.input_field :postcode, class: 'postcode', required: true
-        - classes = 'button-secondary find-uk-address' 
-        - classes << ' disabled' if defendant.address.postcode.blank? 
-        = link_to 'Find UK Address', '/address/picker', :class => classes
+        - unless has_valid_address
+          = submit_tag "Same address as first tenant", :class => "button-secondary"
+
+
+      %div.address{ class: ("element-invisible" unless has_valid_address) }
+        = dff.input :street_1, label: 'Street'
+        = dff.input :street_2, :label => nil
+        = dff.input :street_3, :label =>""
+        = dff.input :town
+        = dff.input :county
+        = dff.input :postcode
+
+    -if is_additional_defendant
+      = button_tag( name: 'destroy', value: df.object.id, class: 'button-warning' ) do
+        = content_tag(:span, 'Remove')

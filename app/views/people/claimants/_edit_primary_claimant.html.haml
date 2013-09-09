@@ -3,10 +3,12 @@
   .moj-panel.edit-person
     - if (is_additional_claimant) 
       %strong Add an additional landlord
+
     = cf.input :full_name, placeholder: "e.g. John Smith"
     = cf.input :phone
     = cf.input :mobile
     = cf.input :email
+
     %details{ :open => show_dx_controls_for(cf.object) }
       %summary Do they have a DX number?
       = cf.input :dx_number
@@ -16,15 +18,12 @@
       - has_valid_address = claimant.address.present? && cff.object.valid? && !cff.object.street_1.blank?
       = cff.input :postcode do
         = cff.input_field :postcode, class: "postcode", required: true
-        = submit_tag "Find UK Address", class: "button-secondary find-uk-address" 
+        = button_tag( name: 'find-address', value: cf.object.id, class: 'button-secondary find-uk-address' ) do
+          = content_tag(:span, "Find UK Address")
 
         - unless has_valid_address
           %br/
-          = submit_tag "Same address as first claimant", :class => "button-secondary"
-          %br/
-          %a.fake-link{ :class => "js-enter-address-manually" } Enter address manually
-
-      
+          = submit_tag "Same address as first tenant", :class => "button-secondary"
 
       %div.address{ class: ("element-invisible" unless has_valid_address) }
         = cff.input :street_1, label: 'Street'
@@ -33,8 +32,11 @@
         = cff.input :town
         = cff.input :county
         = cff.input :postcode
-    -if is_additional_claimant
-      %span.button-warning Remove
+
+      -if is_additional_claimant
+        = button_tag( name: 'destroy', value: cff.object.id, class: 'button-warning' ) do
+          = content_tag(:span, 'Remove')
+
 
 
 
