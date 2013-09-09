@@ -17,11 +17,7 @@
   %section#hearing-details
     %h2 Hearing details
     .court-hearing-details-time
-      - date = (Date.today + 3.weeks)
-      %h3
-        %strong= date.strftime("%A %-d %B")
-        at
-        %strong 10:30am
+      = render partial: 'claims/shared/scheduled_hearing'
     .moj-panel
       = render :partial => 'shared/lambeth_court'
   %section#what-next
@@ -33,4 +29,4 @@
       to respond.
     %p
       A judge will decide on the case at the hearing on
-      %strong #{date.strftime("%-d %B %Y")}.
+      %strong #{(Date.today + 3.weeks).strftime("%-d %B %Y")}.
