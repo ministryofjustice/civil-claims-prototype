@@ -23,6 +23,12 @@
   margin: 15px 0px;
 }
 
+.button-panel {
+  .button, .button-secondary {
+    margin-right: 40px;
+  }
+}
+
 /*
 ## Standard content panel
 
@@ -35,6 +41,13 @@ Styleguide 1.5
   border-style: solid;
   border-color: #c8c8c8;
   padding:30px 20px 30px 100px;
+  .panel-component{
+    margin-bottom: 45px;
+    
+    .component-details{
+      padding-left: 35px;
+    }
+  }
 }
 
 h4.moj-panel { 

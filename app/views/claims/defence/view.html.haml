@@ -1,24 +1,24 @@
 %article
-  %h2.lead Repossession case no. #{@claim.id}
+  %h2.lead Repossession case no. RL7MG3LJ
   %p.lead
     Issued on #{ @claim.created_at.strftime('%-d %B %Y') }
 
   %section
     %h3 Landlord
-    - options = { class: "person claimant" }
+    - options = { class: "claimant" }
     - @claim.claimants.each do |person|
       = render partial: "people/show", locals: { options: options, person: person }
 
   %section
     %h3 Tenant
-    - options = { class: "person defendant", show_extended_contact_details: true }
+    - options = { class: "defendant", show_extended_contact_details: true }
     - @claim.defendants.each do |person|
       = render partial: "people/show", locals: { options: options, person: person }
 
   %section
     %h3 Property
-    - options = { class: "person address-for-possession" }
-    = render partial: 'addresses/view_address_for_possession', :locals => { claim: @claim, address: @claim.address_for_possession, options: {} }
+    - options = { class: "address-for-possession" }
+    = render partial: 'addresses/address_for_possession/view', :locals => { claim: @claim, address: @claim.address_for_possession, options: {} }
 
   %section
     %h3 Claim particulars
@@ -31,10 +31,12 @@
       = render partial: "arrears/read_only", locals: { claim: @claim }
 
   - if @claim.attachments.size > 0
-    %section
+    %section.attachments
       %h3 Supporting documentation
       - @claim.attachments.each do |attachment|
-        %h4.moj-panel= attachment.file_name
+        %h4.moj-panel
+          = attachment.file_name
+          %span.button.right View
 
   %section
     %h3 Status

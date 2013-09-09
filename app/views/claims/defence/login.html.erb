@@ -6,9 +6,9 @@
     <div class='moj-panel'>
       <%= simple_form_for @user, :url => defense_login_path, :method => :post do |f| %>
         <%= f.input :full_name, as: :fake %>
-        <%= f.input :security_token, as: :fake %>
+        <%= f.input :password, as: :fake %>
 
-        <%= f.submit 'Login', :class => "button" %>
+        <%= f.submit 'Sign in', :class => "button" %>
       <% end %>
   </section>
 </article>

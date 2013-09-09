@@ -1,0 +1,142 @@
+= render_local_navigation
+
+%article
+  %h2 About you
+  %p.lead An opportunity to tell the courts about your financial situation, the more information you can provide, the more opportunity for you to get help and guidance.
+
+  %section
+    %h3 Bank accounts
+    .moj-panel
+      %p What are the balance of your bank accounts?
+      .labeled-content
+        .content-label
+          %label{:for => 'current-account'} Current account
+        .content
+          .money-input
+            %strong &pound;
+            %div
+              %input#current-account.small{:type => 'text'}
+            .help-text
+              If overdrawn add a minus.
+              %br/
+              E.g. -20 for &pound;20 overdrawn
+          .clear
+            %input#no-current-account{:type => 'checkbox'}
+            %label{:for => 'no-current-account'} I don't have a current account
+
+      .labeled-content
+        .content-label
+          %label{:for => 'savings-account'} Savings account
+        .content
+          .money-input
+            %strong &pound;
+            %div
+              %input#savings-account.small{:type => 'text'}
+          %div
+            %input#no-savings-account{:type => 'checkbox'}
+            %label{:for => 'no-savings-account'} I don't have a savings account
+
+  %section
+    %h3 Money in
+    .moj-panel
+      %p What are your present circumstances?
+      .striped-choice
+        %div
+          %input#moneyin-employed{:type => "checkbox"}/
+          %label{:for => "moneyin-employed"} Employed
+        %div
+          %input#moneyin-receiving{:type => "checkbox"}/
+          %label{:for => "moneyin-receiving"}
+            Universal credit
+            %span.supplementary (applied for or receiving)
+
+      %p Please provide all figures of the money coming in per month
+      .labeled-content
+        .content-label
+          %label{:for => 'moneyin-income'} Income
+        .content
+          .money-input
+            %strong &pound;
+            %div
+              %input#moneyin-income.small{:type => 'text'}
+      .labeled-content
+        .content-label
+          %label{:for => 'moneyin-pension'} Pension
+        .content
+          .money-input
+            %strong &pound;
+            %div
+              %input#moneyin-pension.small{:type => 'text'}
+      .labeled-content
+        .content-label
+          %label{:for => 'moneyin-childbenefit'} Child benefit
+        .content
+          .money-input
+            %strong &pound;
+            %div
+              %input#moneyin-childbenefit.small{:type => 'text'}
+      .labeled-content
+        .content-label
+          %label{:for => 'moneyin-other'} Other money in
+        .content
+          .money-input
+            %strong &pound;
+            %div
+              %input#moneyin-other.small{:type => 'text'}
+      .labeled-content
+        .content-label
+          %strong Total money in
+        .content
+          %strong
+            &pound;
+            1,850 per month
+
+  %section
+    %h3 Money out
+    .moj-panel
+      %p
+        Regular expenses &ndash; List all of your regular monthly outgoings
+        %br/
+        %span.supplementary (does not include any payments made by other members of your household)
+      .labeled-content
+        .content-label
+          %label{:for => 'moneyout-counciltax'} Council tax
+        .content
+          .money-input
+            %strong &pound;
+            %div
+              %input#moneyout-counciltax.small{:type => 'text'}
+      .labeled-content
+        .content-label
+          %label{:for => 'moneyout-gas'} Gas
+        .content
+          .money-input
+            %strong &pound;
+            %div
+              %input#moneyout-gas.small{:type => 'text'}
+      .labeled-content
+        .content-label
+          %label{:for => 'moneyout-electricity'} Electricity
+        .content
+          .money-input
+            %strong &pound;
+            %div
+              %input#moneyout-electricity.small{:type => 'text'}
+      .labeled-content
+        .content-label
+          %label{:for => 'moneyout-water'} Water
+        .content
+          .money-input
+            %strong &pound;
+            %div
+              %input#moneyout-water.small{:type => 'text'}
+
+      / blah blah blah...
+
+
+
+
+
+
+  = form_for @claim, :url => { :action => "update" } do |f|
+    = render :partial => 'claims/defence/save_continue', :locals => {f: f}

@@ -1,6 +1,6 @@
+var claim = window.claim || {}
 
-$(document).ready(function() {
-
+var initPage = function(){
   // usernav dropdown
   $('.dropdown > a').on('click', function (e) {
     $(this).parent().toggleClass('open');
@@ -83,7 +83,29 @@ $(document).ready(function() {
     claim.address.populate(master_form, address);
   });
 
-});
+
+  // kinda bad ;)
+  $('.js-panel-component-details-show').on('click', function(event){
+    var panels = $(event.target).parent().parent().nextAll('.component-details');
+    $(panels[0]).removeClass('element-invisible');
+    if(panels[1]){
+      $(panels[1]).addClass('element-invisible');
+    }
+
+  });
+
+  $('.js-panel-component-details-hide').on('click', function(event){
+    var panels = $(event.target).parent().parent().nextAll('.component-details');
+    $(panels[0]).addClass('element-invisible');
+    if(panels[1]){
+      $(panels[1]).removeClass('element-invisible');
+    }
+  });
+
+};
+
+$(document).ready(initPage);
+$(window).bind('page:change', initPage);
 
 claim.validate = function(form) {
   form = $(form);

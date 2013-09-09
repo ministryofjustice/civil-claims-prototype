@@ -13,6 +13,7 @@ class Claim < ActiveRecord::Base
   accepts_nested_attributes_for :address, :allow_destroy => true
   accepts_nested_attributes_for :attachments, :allow_destroy => true
   accepts_nested_attributes_for :arrears, :allow_destroy => true
+  accepts_nested_attributes_for :defenses, :allow_destroy => true
 
   def total_rental_arrears
     (self.rental_amount || 0) * self.arrears.count - self.arrears.sum(:paid)

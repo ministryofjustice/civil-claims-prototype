@@ -98,6 +98,8 @@ ActiveRecord::Schema.define(version: 20130904113311) do
     t.decimal  "repayment_amount"
     t.string   "repayment_frequency"
     t.boolean  "request_to_consider_repayments_by_installment"
+    t.decimal  "installment_amount"
+    t.string   "installment_frequency"
     t.boolean  "has_claim_against_landlord"
     t.string   "claim_case_number"
     t.text     "comments_on_particulars"

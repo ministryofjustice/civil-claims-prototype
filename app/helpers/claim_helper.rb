@@ -28,8 +28,8 @@ module ClaimHelper
     render :partial => 'shared/inline_help', :locals => {link_text: link_text, help_content: help_content }
   end
 
-  def claimant_navigation_linkdata
-    link_data = [
+  def linkdata
+    [
       { :text => 'Personal details', :path => 'personal_details' },
       { :text => 'Case details', :path => 'case_details' },
       { :text => 'Court booking', :path => 'court_booking' },
@@ -37,21 +37,5 @@ module ClaimHelper
       { :text => 'Pay court fee', :path => 'fees' },
       { :text => 'Confirmation', :path => 'confirmation' }
     ]
-  end
-
-  def render_claimant_navigation
-    render :partial => 'shared/navigation', :locals => { :links => claimant_navigation_linkdata }
-  end
-
-  def get_next_navigation_path( referer )
-    current_page = -1
-    claimant_navigation_linkdata.each_with_index do |lnk, i|
-      if lnk[:path] == session[:referer]
-        current_page = i
-      elsif current_page > -1
-        return url_for( controller: 'claims', action: lnk[:path], only_path: true )
-      end
-    end
-    return root_path
   end
 end

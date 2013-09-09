@@ -53,4 +53,5 @@ class AddressController < ApplicationController
     end
     render :partial => 'addresses/address_picker/picker', :locals => { addresses: addresses }
   end
+
 end

@@ -1,50 +1,22 @@
-= render_defence_navigation
+= render_local_navigation
+
 %article
   %h2 Step 1 of 5 - Personal details
   %p.lead Add your personal details as they appear on the form
     
   %section
-    = render :partial => 'people/display', :locals => {claim: @claim, person_type: 'defendant', noadd: true}
+    = render :partial => 'people/show', :locals => {person: @claim.primary_defendant, options: {class: 'defendant'}}
 
-  = form_for @claim, :url => { :action => "update" } do |f|
+  = simple_form_for @claim.primary_defendant, :url => { :action => "update" } do |f|
     %section
       %h3 Contact details
       .panel-default
 
-        / Contact Details
-        %details
-          %summary.form-row If current address is different from above add contact address
-          .form-row
-            %label{:for => 'defendant_street1'} Street 1
-            %input#defendant_street1{:type => 'text', :value => ''}
-            %span.icon-container{:style => 'display: none'}
+        = toggle_inline_help_link( 'If current address is different from above add contact address', address_fields( @claim.primary_defendant.address ) )
 
-          .form-row
-            %label{:for => 'defendant_street2'} Street 2
-            %input#defendant_street2{:type => 'text', :value => ''}
-            %span.icon-container{:style => 'display: none'}
-
-          .form-row
-            %label{:for => 'defendant_street3'} Street 3
-            %input#defendant_street3{:type => 'text', :value => ''}
-            %span.icon-container{:style => 'display: none'}
-
-          / etc..
-
-        .form-row
-          %label{:for => 'defendant_phone'} Phone
-          %input#defendant_phone{:type => 'text', :value => '020 8123 6789'}
-          %span.icon-container{:style => 'display: none'}
-
-        .form-row
-          %label{:for => 'defendant_mobile'} Mobile
-          %input#defendant_mobile{:type => 'text', :value => '07765 912673'}
-          %span.icon-container{:style => 'display: none'}
-
-        .form-row
-          %label{:for => 'defendant_email'} Email
-          %input#defendant_email{:type => 'text', :value => 'lrstevenson@hotmail.co.uk'}
-          %span.icon-container{:style => 'display: none'}
+        = f.input :phone
+        = f.input :mobile
+        = f.input :email
 
         / Solicitor
         %details

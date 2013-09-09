@@ -1,4 +1,4 @@
-= render_defence_navigation
+= render_local_navigation
 
 %article
   %h2 Step 4 of 5 - Preview and submit
@@ -6,7 +6,7 @@
 
   %section
     %h3 Personal details
-    = render :partial => 'people/display', :locals => {claim: @claim, person_type: 'defendant', noadd: true}
+    = render :partial => 'people/show_extended', :locals => {person: @claim.primary_defendant, options: {class: 'defendant'} }
 
   %section
     %h3 About the claim
@@ -62,7 +62,8 @@
       %ul.plain
         %li
           %span.item Present circumstances
-          %span.value Employed
+          %span.value 
+            %strong Employed
         %li
           %span.item Total income
           %span.value
@@ -97,8 +98,8 @@
           %strong 8 September 2013
 
   %section
-    = simple_form_for @claim, :class => 'form-horizontal' do |f|
-      = f.input :signature, :label => false, :inline_label => "I believe that the facts stated in this defence (and any attached documents) are to the best of my knowledge true and correct."
+    = simple_form_for @claim, :url => { :action => "update" }, :class => 'form-horizontal' do |f|
+      = f.input :signature, label: "I believe that the facts stated in this defence (and any attached documents) are to the best of my knowledge true and correct."
       .well.warning
         %p
           / quote character rendered as warning sign using font "validators"

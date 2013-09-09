@@ -38,6 +38,30 @@
       margin-left: 160px;
     }
   }
+  
+  // for date selectors
+  select.date {
+    width: auto;
+    margin-left: 2px;
+  }
+
+}
+
+// striped radio buttons
+.form-row.radio_buttons{
+  label{
+    float: none;
+    width: auto;
+  }
+
+  &> label{
+    display: block;
+  }
+  
+  .radio{
+    display: block;
+    @include striped-choice;
+  }
 }
 
 form {
@@ -45,6 +69,7 @@ form {
     margin-top: 40px;
   }
 }
+
 
 .edit-person {
   details {
@@ -71,69 +96,12 @@ form {
   margin: 10px 0;
 }
 
-.striped-radios div {
-
-  position: relative;
-  z-index: 0;
-
-  input {
-    display: block;
-    height: 2em;
-    margin-top: 0px;
-  }
-
-  input[type="radio"]:checked + label {
-    background-color: #d9edf7;
-  }
-
-  label {
-    position: absolute;
-
-    padding-top: 9px;
-    padding-left: 34px;
-
-    z-index: -1;
-    
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
-  }
-}
 
 .striped-choice {
   position: relative;
   
   div {
-    position: relative;
-    z-index: 0;
-
-    input[type="radio"], input[type="checkbox"]{
-      display: block-inline;
-      height: 2.0em;
-      margin-left: 10px;
-    }
-
-    input[type="radio"]:checked + label, input[type="checkbox"]:checked + label {
-      background-color: $selected-item-background-color;
-    }
-
-    label {
-      position: absolute;
-
-      padding-top: 8px;
-      padding-left: 35px;
-      cursor: pointer;
-
-      font-weight: normal;
-
-      z-index: -1;
-      
-      top:0px;
-      left:0;
-      right:0;
-      bottom:0;
-    }
+    @include striped-choice;
   }
 }
 
@@ -147,6 +115,9 @@ textarea {
   }
 }
 
+.supplementary {
+  color: $grey-1;
+}
 
 
 // specific
@@ -272,17 +243,19 @@ form.add-additional-person {
 .claim_signature {
   margin-top:40px;
   margin-bottom:40px;
-
+  
+  input {
+    margin-left: 0px;
+    margin-top: -45px;
+    float: left;
+  }
   label {
     width: auto;
     font-weight: bold;
     padding-left: 20px;
     vertical-align: middle;
-    input {
-      margin-left: -20px;
-      float: left;
-    }
   }
+  
 }
 .warning span {
   font-family: validators;
