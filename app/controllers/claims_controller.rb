@@ -129,7 +129,7 @@ class ClaimsController < ApplicationController
 
   def court_booking
     @claim = Claim.find(params[:id])
-    session[:referer] = 'scheduling'
+    session[:referer] = 'court_booking'
     render 'claims/claimant/court_booking'
   end
 
