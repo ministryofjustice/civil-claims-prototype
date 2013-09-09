@@ -21,14 +21,17 @@
     %span.labeled-content
       %span.content-label Property
       %span.content-block
-        = claim.address_for_possession.street_1
-        %br/
-        = claim.address_for_possession.street_2
-        %br/
-        = claim.address_for_possession.town
-        %br/
-        = claim.address_for_possession.postcode
-        %br/
+        - if claim.address_for_possession.present?
+          = claim.address_for_possession.street_1
+          %br/
+          = claim.address_for_possession.street_2
+          %br/
+          = claim.address_for_possession.town
+          %br/
+          = claim.address_for_possession.postcode
+          %br/
+        - else 
+          N/A
     %details.claims-item-status
       %summary
         %span.status-label Status
@@ -51,5 +54,5 @@
             Fees & payments
 
     #claim-item-action-buttons
-      %span= link_to 'Continue', claim_path(claim), :class => 'button'
+      %span= link_to 'Continue', personal_details_claim_path(claim), :class => 'button'
       %span= link_to 'Delete', delete_claim_path(claim), :class=> 'button-warning'

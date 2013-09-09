@@ -159,12 +159,12 @@ ActiveRecord::Schema.define(version: 20130904113311) do
     t.string   "phone"
     t.string   "mobile"
     t.string   "email"
+    t.string   "dx_number"
+    t.string   "dx_exchange"
     t.string   "type"
     t.integer  "claim_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "dx_number"
-    t.string   "dx_exchange"
     t.boolean  "uj",          default: false
   end
 

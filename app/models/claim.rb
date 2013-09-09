@@ -5,12 +5,12 @@ class Claim < ActiveRecord::Base
   has_many :defenses, :dependent => :destroy
   has_and_belongs_to_many :arrears
 
-  has_one :address, as: :addressable
+  has_one :address, :as => :addressable, :dependent => :destroy
   belongs_to :owner, :class_name => 'Claimant'
 
   accepts_nested_attributes_for :claimants
   accepts_nested_attributes_for :defendants
-  accepts_nested_attributes_for :address
+  accepts_nested_attributes_for :address, :allow_destroy => true
   accepts_nested_attributes_for :attachments, :allow_destroy => true
   accepts_nested_attributes_for :arrears, :allow_destroy => true
 
