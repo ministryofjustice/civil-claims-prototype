@@ -1,3 +1,5 @@
+require 'pp'
+
 class ClaimsController < ApplicationController
   skip_before_action :pretend_to_authenticate, only: [:delete_all]
   before_action :page_title, :page_links
@@ -57,7 +59,6 @@ class ClaimsController < ApplicationController
     if params.has_key? 'destroy'
       Person.delete(params[:destroy])
       @claim = Claim.find(params[:id])
-      pp params
       redirect_to personal_details_claim_path @claim
       return
     end
@@ -65,7 +66,6 @@ class ClaimsController < ApplicationController
     @claim = Claim.find(params[:id])
 
     params.permit!
-    pp params
 
     # why doesn't it work normally?
     @claim.address.update_attributes params[:claim][:address]
