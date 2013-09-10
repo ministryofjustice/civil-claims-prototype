@@ -39,9 +39,8 @@ class CreateDefense < ActiveRecord::Migration
       t.boolean :dont_have_savings_account
 
       # money in
-
-      t.boolean :employed
-      t.boolean :universal_credit
+      t.string :present_circumstances
+      t.string :no_income_details
 
       t.decimal :income
       t.decimal :pension

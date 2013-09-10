@@ -11,7 +11,8 @@
   margin-bottom: 10px;
 
   label {
-    float: left;
+    display: inline-block;
+    vertical-align: baseline;
     text-align: left;
     width: 160px;
   }
@@ -21,8 +22,7 @@
     display: inline-block;
   }
 
-  input[type=text], input[type=tel], input[type=email], select { 
-    width: 20em;
+  input[type=text], input[type=tel], input[type=email], input[type=currency], select { 
     min-height: 30px;
     height: 30px;
     padding-top:4px;
@@ -46,23 +46,41 @@
     margin-left: 2px;
   }
 
-}
+  // striped yes/no radio buttons
+  &.radio_buttons{
+    label{
+      float: none;
+      width: auto;
+    }
 
-// striped radio buttons
-.form-row.radio_buttons{
-  label{
-    float: none;
-    width: auto;
+    &> label{
+      display: block;
+    }
+    
+    .radio{
+      display: block;
+      @include striped-choice;
+    }
   }
 
-  &> label{
-    display: block;
+  // for checkboxes with the check on the left side
+  // just quickly for now 
+  &.reversed {
+    position: relative;
+    min-height: 30px;
+    height: 30px;
+    &> input[type=checkbox] {
+      position: absolute;
+      left: 0px;
+      top: 3px;
+    }
+    &> label {
+      width: auto;
+      padding-left: 20px;
+      vertical-align: middle;
+    }
   }
-  
-  .radio{
-    display: block;
-    @include striped-choice;
-  }
+
 }
 
 form {
