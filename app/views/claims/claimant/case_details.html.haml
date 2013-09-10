@@ -109,8 +109,8 @@
                 = f.radio_button :payment_frequency, 'fortnightly'
                 = f.label :payment_frequency_fortnightly, 'Fortnightly'
               %div
-                = f.radio_button :payment_frequency, 'week'
-                = f.label :payment_frequency_week, 'Week'
+                = f.radio_button :payment_frequency, 'weekly'
+                = f.label :payment_frequency_week, 'Weekly'
 
       / RENTAL ARREARS
       = render partial: 'arrears/show', :locals => { f: f } 

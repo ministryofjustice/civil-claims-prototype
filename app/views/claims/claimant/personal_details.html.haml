@@ -4,8 +4,6 @@
   %h2 Step 1 of 6 - Personal details
   %section#edit-claim
     %p Fill in contact details for the landlord and tenant(s), including the address of the property you want to repossess.
-    
-    = toggle_inline_help_link('About claimants and defendants', 'Porro nihil nec cu. Ut ludus omnium dissentiunt mei, his at populo semper. Eu iusto tibique pri, ad sit modo antiopam maiestatis, commune delicata dissentias vel ea. An has odio habemus ancillae, an per animal fastidii tacimates, duo tritani mandamus delicatissimi ex.')
 
     = simple_form_for @claim, url: personal_details_claim_path( @claim ) do |claim_form|
 
@@ -34,7 +32,7 @@
           %h4 Who is in the property?
           %div
             = claim_form.radio_button :resident_type, 'private tenant'
-            = label_tag :claim_resident_type_private_tenant, 'Private Tenant'
+            = label_tag :claim_resident_type_private_tenant, 'Tenant'
           %div
             = claim_form.radio_button :resident_type, 'squatter'
             = label_tag :claim_resident_type_squatter, 'Squatter'

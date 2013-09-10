@@ -4,7 +4,7 @@
     - if (is_additional_claimant) 
       %strong Add an additional landlord
 
-    = cf.input :full_name, placeholder: "e.g. John Smith"
+    = cf.input :full_name, placeholder: "eg John Smith"
     = cf.input :phone
     = cf.input :mobile
     = cf.input :email
@@ -15,6 +15,13 @@
       = cf.input :dx_exchange
 
     = cf.simple_fields_for :address do |cff|
+      .address{ class: ("element-invisible" unless cff.object.is_valid?) }
+        = cff.input :street_1, label: 'Street', class: 'street_1'
+        = cff.input :street_2, :label => '&nbsp;'
+        = cff.input :street_3, :label => '&nbsp;'
+        = cff.input :town
+        = cff.input :county
+
       = cff.input :postcode do
         = cff.input_field :postcode, class: "postcode", required: true
         - classes = 'button-secondary find-uk-address' 
@@ -24,14 +31,6 @@
         - if is_additional_claimant
           = button_tag( name: 'same-address-as-first-landlord', value: cff.object.id, class: 'post-link formalise' ) do
             = content_tag(:span, 'Same address as first landlord')
-
-      %div.address{ class: ("element-invisible" unless cff.object.is_valid?) }
-        = cff.input :street_1, label: 'Street', class: 'street_1'
-        = cff.input :street_2, :label => nil
-        = cff.input :street_3, :label => nil
-        = cff.input :town
-        = cff.input :county
-        = cff.input :postcode
 
     -if is_additional_claimant
       = button_tag( name: 'destroy', value: cf.object.id, class: 'button-warning' ) do

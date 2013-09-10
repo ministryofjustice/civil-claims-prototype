@@ -39,7 +39,7 @@
               <% end %>
             </select>
 
-          <%= button_to_add_fields "arrears", "Add more unpaid rental payments", f, :arrears %>
+          <%= button_to_add_fields "arrears", "Add unpaid rent", f, :arrears %>
         </div> 
 
         <details>
@@ -61,13 +61,13 @@
             <th id="rent-date-header">Rent due on</th>
             <th>Rental amount</th>
             <th>Amount paid</th>
-            <th>Arrears</th>
+            <th>Unpaid rent</th>
             <th class="arrears-cols-button"></th>
           </tr>
         </thead>
         <tfoot>
           <tr class="table-footer">
-            <td id="arrears-total-label" colspan="3">Total arrears</td>
+            <td id="arrears-total-label" colspan="3">Total</td>
             <td id="arrears-total-amount">
               <% rental_amount = @claim.rental_amount || 0 %>
               <% arrears_total_amount = (rental_amount * @claim.arrears.count)- @claim.arrears.sum(:paid) %>
