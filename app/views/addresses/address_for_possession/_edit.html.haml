@@ -14,7 +14,7 @@
       = f.input_field :postcode, class: 'postcode'
       - classes = 'button-secondary find-uk-address'
       - classes << ' disabled' if address.postcode.blank?
-      = link_to 'Find UK Address', '/address/picker', :class => classes
+      = link_to 'Find UK address', '/address/picker', :class => classes
 
     = button_tag( name: 'same-address-as-first-tenant', value: f.object.id, class: 'post-link formalise' ) do
       = content_tag(:span, 'Same address as first tenant')

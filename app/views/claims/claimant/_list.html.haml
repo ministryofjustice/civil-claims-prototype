@@ -2,7 +2,7 @@
 - claims.each do |claim|
   .panel-default
     %span.labeled-content
-      %span.content-label Claim Ref #
+      %span.content-label Case reference number
       %span.content-block= claim.id
     %span.labeled-content
       %span.content-label
@@ -40,18 +40,18 @@
         - has_signature = claim.signature
         - percentage = 0 + (has_personal_details ? 25:0) + (has_particulars ? 25:0) + (has_signature ? 25:0)
         %span.status-header
-          Claim form #{percentage}% complete and not yet submitted
+          Form #{percentage}% complete
       .status-content
         %ul.content-list
           %li{:class => "status-item-#{(has_personal_details ? 'yes':'no')}"}
             Personal details
           %li{:class => "status-item-#{(has_particulars ? 'yes':'no')}"}
-            Claim particulars
+            Case details
           %li{:class => "status-item-#{(has_signature ? 'yes':'no')}"}
-            Statement of truth
+            Confirm details
           %li.status-item-no
             %span>
-            Fees & payments
+            Pay court fee
 
     #claim-item-action-buttons
       %span= link_to 'Continue', personal_details_claim_path(claim), :class => 'button'
