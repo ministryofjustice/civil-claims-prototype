@@ -2,8 +2,8 @@
 
 %article
   %h2 Step 1 of 6 - Personal details
+  %p.lead Fill in contact details for the landlord and tenant(s), including the address of the property you want to repossess.
   %section#edit-claim
-    %p Fill in contact details for the landlord and tenant(s), including the address of the property you want to repossess.
 
     = simple_form_for @claim, url: personal_details_claim_path( @claim ) do |claim_form|
 

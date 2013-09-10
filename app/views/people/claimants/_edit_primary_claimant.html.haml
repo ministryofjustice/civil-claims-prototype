@@ -2,7 +2,7 @@
   - is_additional_claimant = cf.index > 0
   .moj-panel.edit-person
     - if (is_additional_claimant) 
-      %strong Add an additional landlord
+      %strong Add another landlord
 
     = cf.input :full_name, placeholder: "eg John Smith"
     = cf.input :phone
@@ -11,11 +11,11 @@
 
     %details{ :open => show_dx_controls_for(cf.object) }
       %summary Do they have a DX number?
-      = cf.input :dx_number
-      = cf.input :dx_exchange
+      = cf.input :dx_number, label: 'DX number'
+      = cf.input :dx_exchange, label: 'DX exchange'
 
     = cf.simple_fields_for :address do |cff|
-      .address.expander{ class: ("element-invisible" unless cff.object.is_valid?) }
+      .address{ class: ("element-invisible expander" unless cff.object.is_valid?) }
         = cff.input :street_1, label: 'Street', class: 'street_1'
         = cff.input :street_2, :label => '&nbsp;'
         = cff.input :street_3, :label => '&nbsp;'
@@ -28,9 +28,9 @@
         - classes << ' disabled' if cff.object.postcode.blank? 
         = link_to 'Find UK address', '/address/picker', :class => classes
 
-        - if is_additional_claimant
-          = button_tag( name: 'same-address-as-first-landlord', value: cff.object.id, class: 'post-link formalise' ) do
-            = content_tag(:span, 'Same address as first landlord')
+      - if is_additional_claimant
+        = button_tag( name: 'same-address-as-first-landlord', value: cff.object.id, class: 'post-link formalise' ) do
+          = content_tag(:span, 'Same address as first landlord')
 
     -if is_additional_claimant
       = button_tag( name: 'destroy', value: cf.object.id, class: 'button-warning' ) do

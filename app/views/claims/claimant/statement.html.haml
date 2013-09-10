@@ -16,7 +16,7 @@
       - options[:class] = 'defendant person well clearfix'
       = render :partial => 'people/show', :locals => { person: defendant, options: options, claim: @claim }
 
-    %h2 Address for possession
+    %h2 Property details
     - address = @claim.address_for_possession
     - options = {}
     = render :partial => 'addresses/address_for_possession/view', :locals => { claim: @claim, address: address, options: options }
