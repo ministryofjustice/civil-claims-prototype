@@ -11,7 +11,8 @@
   margin-bottom: 10px;
 
   label {
-    float: left;
+    display: inline-block;
+    vertical-align: baseline;
     text-align: left;
     width: 160px;
   }
