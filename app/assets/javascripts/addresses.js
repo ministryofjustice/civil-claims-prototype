@@ -25,6 +25,15 @@
     populate_address(container, address);
   });
 
+  // enter address manually
+  var markup = $("<button class='post-link formalise enter-address-manually'>Enter address manually</a>");
+  $('.address.element-invisible').siblings('[class*=postcode]').after(markup);
+  $('body').on('click', '.enter-address-manually', function(evt) {
+    evt.preventDefault();
+    $(this).siblings('.address.element-invisible').removeClass('element-invisible').addClass('expando');
+    $(this).remove();
+  });
+
 
   var populate_address = function(container, address) {
     container.find("[class*='street_1'] input").val(address.street_1);
@@ -37,4 +46,5 @@
 };
 
 $(document).ready(scriptify_addresses);
-$(window).bind('page:change', scriptify_addresses);
+// these functions handle their own live eventing
+// $(window).bind('page:change', scriptify_addresses);

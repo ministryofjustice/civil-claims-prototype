@@ -254,6 +254,17 @@ table.moj-table {
   clip: rect(1px, 1px, 1px, 1px);
 }
 
+.expander {
+  max-height: 0px;
+  transition-property: max-height;
+  transition-duration: 0.5s;
+  transition-delay: 0s;
+  transition-timing-function: ease-in-out;
+  overflow: hidden;
+}
+
+.expando { max-height: 1000px; }
+
 .before-you-begin{
   margin-top: 40px;
 }

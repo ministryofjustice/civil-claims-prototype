@@ -15,7 +15,7 @@
       = cf.input :dx_exchange
 
     = cf.simple_fields_for :address do |cff|
-      .address{ class: ("element-invisible" unless cff.object.is_valid?) }
+      .address.expander{ class: ("element-invisible" unless cff.object.is_valid?) }
         = cff.input :street_1, label: 'Street', class: 'street_1'
         = cff.input :street_2, :label => '&nbsp;'
         = cff.input :street_3, :label => '&nbsp;'
