@@ -20,7 +20,7 @@
         = dff.input_field :postcode, class: "postcode", required: true
         - classes = 'button-secondary find-uk-address' 
         - classes << ' disabled' if dff.object.postcode.blank? 
-        = link_to 'Find UK Address', '/address/picker', :class => classes
+        = link_to 'Find UK address', '/address/picker', :class => classes
 
         - if (is_additional_defendant)
           = button_tag( name: 'same-address-as-first-tenant', value: dff.object.id, class: 'post-link formalise' ) do

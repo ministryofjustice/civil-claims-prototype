@@ -9,11 +9,11 @@
   - if has_claims
     %ul.claims-index-tabs.nav.nav-tabs
       %li.submit
-        %a.is-active-tab{"data-toggle" => "tab", :href => "#new"} Start a new claim
+        %a.is-active-tab{"data-toggle" => "tab", :href => "#new"} Start a new case
       %li.active.list
-        %a.is-active-tab{"data-toggle" => "tab", :href => "#list"} Your claims
+        %a.is-active-tab{"data-toggle" => "tab", :href => "#list"} Your cases
   - else
-    %h2 Start a new claim
+    %h2 Start a new case
   %section#start-continue-claim
     .tab-content
       - tab_class = has_claims ? 'tab-pane' : 'tab-pane active'
