@@ -30,6 +30,14 @@ CivilClaims::Application.configure do
   config.assets.compile = false
 
   config.assets.paths << Rails.root.join('app', 'assets', 'stylesheets', 'components')
+  config.assets.precompile += %w(
+    components/claims-elements.css
+    components/claims-forms.css
+    components/claims-lists.css
+    components/claim-panels.css
+    components/claim-tabs.css
+    components/claim-usernav.css
+    )
 
   # Generate digests for assets URLs.
   config.assets.digest = true
