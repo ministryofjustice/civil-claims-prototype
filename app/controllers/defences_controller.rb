@@ -29,6 +29,8 @@ class DefencesController < ApplicationController
 
   def personal_details
     get_current_claim
+
+    # to the post
     if get_current_defense.nil?
       @user = Defendant.find(session[:user])
       @claim.defenses.create(owner: @user)

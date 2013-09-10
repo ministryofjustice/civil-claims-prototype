@@ -11,9 +11,11 @@ class PeopleController < ApplicationController
       when 'claimant'
         session[:user] = Claimant.find_by( uj: true ).id
       when 'defendant'
-        new_user = Defendant.find_by( uj: true ).dup
-        new_user.save
-        session[:user] = new_user.id
+        source_defendant = Defendant.find_by( uj: true )
+        new_defendant = source_defendant.dup
+        new_defendant.address = source_defendant.address.dup 
+        new_defendant.save
+        session[:user] = new_defendant.id
       when 'staff'
         flash[:notice] = "Logged in as Court Staff."
         session[:user] = Staff.at_random.id

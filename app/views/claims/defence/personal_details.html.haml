@@ -12,11 +12,7 @@
       %h3 Contact details
       .panel-default
         %input{ type: 'hidden', name: 'personal_details', value: 'true'}
-
         = f.simple_fields_for :owner do |sf|
-          = debug sf.object
-          = debug Person.find(sf.object.id).address
-
           %details
             %summary{ :'aria-expanded' => false } If current address is different from above add contact address
             %p
@@ -28,11 +24,11 @@
                     = sff.input :street_3, label: '&nbsp;'
                     = sff.input :town
                     = sff.input :county
-          
-                    = sff.input :postcode do
-                      = cf.input_field :postcode, class: 'postcode'
+                    
+                    = sff.input :postcode do 
+                      = sff.input_field :postcode, class: 'postcode'
                       - classes = 'button-secondary find-uk-address'
-                      - classes << ' disabled' if address.postcode.blank?
+                      - classes << ' disabled' if sff.object.postcode.blank?
                       = link_to 'Find UK Address', '/address/picker', :class => classes
 
           = sf.input :phone
