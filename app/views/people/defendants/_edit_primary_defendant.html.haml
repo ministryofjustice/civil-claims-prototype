@@ -2,14 +2,14 @@
   - is_additional_defendant = df.index > 0
   .moj-panel.edit-person
     - if (is_additional_defendant) 
-      %strong Add an additional tenant
+      %strong Add another tenant
     = df.input :full_name, placeholder: "eg John Smith"
     = df.input :phone
     = df.input :mobile
     = df.input :email
 
     = df.simple_fields_for :address do |dff|
-      .address.expander{ class: ("element-invisible" unless dff.object.is_valid?) }
+      .address{ class: ("element-invisible expander" unless dff.object.is_valid?) }
         = dff.input :street_1, label: 'Street'
         = dff.input :street_2, :label => '&nbsp;'
         = dff.input :street_3, :label => "&nbsp;"

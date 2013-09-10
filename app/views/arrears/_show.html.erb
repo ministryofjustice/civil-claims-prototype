@@ -55,7 +55,7 @@
     <div id="rental-arrears-error" class="panel-error" hidden></div>
     
     <div>
-      <table id="arrears-table" class="govuk-table" <%= "hidden" if @claim.arrears.empty? %> >
+      <table id="arrears-table" class="moj-table" <%= "hidden" if @claim.arrears.empty? %> >
         <thead>
           <tr>
             <th id="rent-date-header">Rent due on</th>
@@ -90,9 +90,9 @@
   <div id="unpaid-rent-calculation" class="panel-default">
     <%= f.label :unpaid_rent_per_day, "Unpaid rent should be calculated at" %>
     <div class="all-inline">
-      <strong>&pound</strong>
+      <strong>&pound;</strong>
       <%= f.text_field :unpaid_rent_per_day, :label => false %>
-      a day
+      per day
     </div>
     <div class="striped-choice">
       <div>

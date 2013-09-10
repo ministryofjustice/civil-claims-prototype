@@ -10,6 +10,7 @@ main {
   p.lead {
     margin-bottom: 2em;
     max-width: 75%;
+    font-size: 19px;
   }
 }
 
@@ -27,6 +28,7 @@ article {
       margin-bottom: 0px;
     }
   }
+  p { font-size: inherit; }
 }
 
 
