@@ -34,7 +34,7 @@ class DefencesController < ApplicationController
     if get_current_defense.nil?
       @user = Defendant.find(session[:user])
       @defense = @claim.defenses.create(owner: @user)
-      @defense.fill_basic_montly_expenses!
+      @defense.fill_basic_monthly_expenses!
     end
 
     @editors = session['editors'] || {}

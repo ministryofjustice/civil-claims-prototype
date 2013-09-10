@@ -21,8 +21,7 @@
     display: inline-block;
   }
 
-  input[type=text], input[type=tel], input[type=email], select { 
-    width: 20em;
+  input[type=text], input[type=tel], input[type=email], input[type=currency], select { 
     min-height: 30px;
     height: 30px;
     padding-top:4px;

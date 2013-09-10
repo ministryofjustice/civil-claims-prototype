@@ -25,6 +25,8 @@
                 E.g. -20 for &pound;20 overdrawn
             .clear
               = f.input :dont_have_current_account, label: "I don't have a current account", :wrapper_html => {:class => 'reversed'}
+        
+
         .labeled-content
           .content-label
             %label{:for => 'savings-account'} Savings account
@@ -40,9 +42,6 @@
       %h3 Money in
       .moj-panel
         %p What are your present circumstances?
-        / = f.input :employed, label: "Employed", :wrapper_html => {:class => 'reversed'}
-        / = f.input :universal_credit, label: "Universal credit", :wrapper_html => {:class => 'reversed'}
-        / = f.input :no_income, label: "No income", :wrapper_html => {:class => 'reversed'}
         .striped-choice
           %div
             = f.radio_button(:present_circumstances, 'employed')
@@ -55,38 +54,11 @@
             = f.label :present_circumstances_no_income, 'No income'
 
         %p Please provide all figures of the money coming in per month
-        .labeled-content
-          .content-label
-            %label{:for => 'moneyin-income'} Income
-          .content
-            .money-input
-              %strong &pound;
-              %div
-                = f.input :income, :label => false, as: :string, :input_html => {:id => 'moneyin-income', :class => 'small'}
-        .labeled-content
-          .content-label
-            %label{:for => 'moneyin-pension'} Pension
-          .content
-            .money-input
-              %strong &pound;
-              %div
-                = f.input :pension, :label => false, as: :string, :input_html => {:id => 'moneyin-pension', :class => 'small'}
-        .labeled-content
-          .content-label
-            %label{:for => 'moneyin-childbenefit'} Child benefit
-          .content
-            .money-input
-              %strong &pound;
-              %div
-                = f.input :child_benefit, :label => false, as: :string, :input_html => {:id => 'moneyin-childbenefit', :class => 'small'}
-        .labeled-content
-          .content-label
-            %label{:for => 'moneyin-other'} Other money in
-          .content
-            .money-input
-              %strong &pound;
-              %div
-                = f.input :other_monies_in, :label => false, as: :string, :input_html => {:id => 'moneyin-other', :class => 'small'}
+        = f.input :income, :label => "Income", as: :currency, :input_html => {:class => 'small'}
+        = f.input :pension, :label => "Pension", as: :currency
+        = f.input :child_benefit, :label => "Child benefit", as: :currency
+        = f.input :other_monies_in, :label => "Other money in", as: :currency
+
         .labeled-content
           .content-label
             %strong Total money in
@@ -104,16 +76,9 @@
           %br/
           %span.supplementary (does not include any payments made by other members of your household)
         = f.simple_fields_for :monthly_expenses do |fmexp|
-          .labeled-content
-            .content-label
-              %label{:for => 'money-out-expense-'+fmexp.object.id.to_s} 
-                = fmexp.object.name
-            .content
-              .money-input
-                %strong &pound;
-                %div
-                  = fmexp.input :amount, :label => false, as: :string, :input_html => {:id => 'money-out-expense-'+fmexp.object.id.to_s, :class => 'small'}
-                  
+          = fmexp.input :amount, :label => fmexp.object.name, as: :currency
+          
+          
         %span.button Add another expense
         
         .panel-component
