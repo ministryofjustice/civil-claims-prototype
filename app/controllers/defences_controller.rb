@@ -33,7 +33,8 @@ class DefencesController < ApplicationController
     # to the post
     if get_current_defense.nil?
       @user = Defendant.find(session[:user])
-      @claim.defenses.create(owner: @user)
+      @defense = @claim.defenses.create(owner: @user)
+      @defense.fill_basic_monthly_expenses!
     end
 
     @editors = session['editors'] || {}
@@ -49,6 +50,7 @@ class DefencesController < ApplicationController
 
   def about_defence
     get_current_claim
+    get_current_defense
     session[:referer] = 'about_defence'
     render "claims/defence/about_defence"
   end

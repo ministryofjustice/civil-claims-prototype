@@ -91,13 +91,9 @@
               %a.fake-link More about tenancy types
 
           = f.input :tenancy_start_date, start_year: Date.today.year-25, end_year: Date.today.year, order: [:day, :month, :year]
-
-          .labeled-content
-            .content-label= f.label :rental_amount
-            .content
-              .money-input
-                %strong &pound;
-                %div= f.text_field :rental_amount, :label => false,required: true
+          
+          = f.input :rental_amount, label: "Rental amount", as: :currency, required: true
+  
 
           %div
             %strong Rent frequency

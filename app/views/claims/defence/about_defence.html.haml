@@ -1,142 +1,186 @@
 = render_local_navigation
 
 %article
-  %h2 About you
+  %h2 Step 3 of 5 - About you
   %p.lead An opportunity to tell the courts about your financial situation, the more information you can provide, the more opportunity for you to get help and guidance.
 
-  %section
-    %h3 Bank accounts
-    .moj-panel
-      %p What are the balance of your bank accounts?
-      .labeled-content
-        .content-label
-          %label{:for => 'current-account'} Current account
-        .content
-          .money-input
-            %strong &pound;
-            %div
-              %input#current-account.small{:type => 'text'}
-            .help-text
-              If overdrawn add a minus.
-              %br/
-              E.g. -20 for &pound;20 overdrawn
-          .clear
-            %input#no-current-account{:type => 'checkbox'}
-            %label{:for => 'no-current-account'} I don't have a current account
+  = simple_form_for @defense, :url => { :action => "update" } do |f|
+    
+    / BANK ACCOUNTS
+    %section
+      %h3 Bank accounts
+      .moj-panel
+        %p What are the balance of your bank accounts?
+        .labeled-content
+          .content-label
+            %label{:for => 'current-account'} Current account
+          .content
+            .money-input
+              %strong &pound;
+              %div
+                = f.input :current_account_balance, :label => false, as: :string, :input_html => {:id => 'current-account', :class => 'small'}
+              .help-text
+                If overdrawn add a minus.
+                %br/
+                E.g. -20 for &pound;20 overdrawn
+            .clear
+              = f.input :dont_have_current_account, label: "I don't have a current account", :wrapper_html => {:class => 'reversed'}
+        
 
-      .labeled-content
-        .content-label
-          %label{:for => 'savings-account'} Savings account
-        .content
-          .money-input
-            %strong &pound;
-            %div
-              %input#savings-account.small{:type => 'text'}
+        .labeled-content
+          .content-label
+            %label{:for => 'savings-account'} Savings account
+          .content
+            .money-input
+              %strong &pound;
+              %div
+                = f.input :savings_account_balance, :label => false, as: :string, :input_html => {:id => 'savings-account', :class => 'small'}
+            .clear
+              = f.input :dont_have_savings_account, label: "I don't have a savings account", :wrapper_html => {:class => 'reversed'}
+    / MONEY IN
+    %section
+      %h3 Money in
+      .moj-panel
+        %p What are your present circumstances?
+        .striped-choice
           %div
-            %input#no-savings-account{:type => 'checkbox'}
-            %label{:for => 'no-savings-account'} I don't have a savings account
+            = f.radio_button(:present_circumstances, 'employed')
+            = f.label :present_circumstances_employed, 'Employed'
+          %div
+            = f.radio_button :present_circumstances, 'universal_credit'
+            = f.label :present_circumstances_universal_credit, 'Universal credit'
+          %div
+            = f.radio_button :present_circumstances, 'no_income'
+            = f.label :present_circumstances_no_income, 'No income'
 
-  %section
-    %h3 Money in
-    .moj-panel
-      %p What are your present circumstances?
-      .striped-choice
-        %div
-          %input#moneyin-employed{:type => "checkbox"}/
-          %label{:for => "moneyin-employed"} Employed
-        %div
-          %input#moneyin-receiving{:type => "checkbox"}/
-          %label{:for => "moneyin-receiving"}
-            Universal credit
-            %span.supplementary (applied for or receiving)
+        %p Please provide all figures of the money coming in per month
+        = f.input :income, :label => "Income", as: :currency, :input_html => {:class => 'small'}
+        = f.input :pension, :label => "Pension", as: :currency
+        = f.input :child_benefit, :label => "Child benefit", as: :currency
+        = f.input :other_monies_in, :label => "Other money in", as: :currency
 
-      %p Please provide all figures of the money coming in per month
-      .labeled-content
-        .content-label
-          %label{:for => 'moneyin-income'} Income
-        .content
-          .money-input
-            %strong &pound;
+        .labeled-content
+          .content-label
+            %strong Total money in
+          .content
+            %strong
+              &pound;
+              1,850 per month
+    
+    / MONEY OUT
+    %section
+      %h3 Money out
+      .moj-panel
+        %p
+          Regular expenses &ndash; List all of your regular monthly outgoings
+          %br/
+          %span.supplementary (does not include any payments made by other members of your household)
+        = f.simple_fields_for :monthly_expenses do |fmexp|
+          = fmexp.input :amount, :label => fmexp.object.name, as: :currency
+          
+          
+        %span.button Add another expense
+        
+        .panel-component
+          %p Are you in arrears on any regular monthly outgoings?
+          .striped-choice
             %div
-              %input#moneyin-income.small{:type => 'text'}
-      .labeled-content
-        .content-label
-          %label{:for => 'moneyin-pension'} Pension
-        .content
-          .money-input
-            %strong &pound;
+              = f.radio_button :in_arrears_in_monthly_outgoings, 'true', :class => "js-panel-component-details-show"
+              = f.label :in_arrears_in_monthly_outgoings_true, 'Yes'
             %div
-              %input#moneyin-pension.small{:type => 'text'}
-      .labeled-content
-        .content-label
-          %label{:for => 'moneyin-childbenefit'} Child benefit
-        .content
-          .money-input
-            %strong &pound;
+              = f.radio_button :in_arrears_in_monthly_outgoings, 'false', :class => "js-panel-component-details-hide"
+              = f.label :in_arrears_in_monthly_outgoings_false, "No"
+          .component-details{ :class => ('element-invisible' unless @defense.in_arrears_in_monthly_outgoings) }
+            %h5 boom
+
+        .panel-component
+          %p Do you have any loan or credits debts?
+          .striped-choice
             %div
-              %input#moneyin-childbenefit.small{:type => 'text'}
-      .labeled-content
-        .content-label
-          %label{:for => 'moneyin-other'} Other money in
-        .content
-          .money-input
-            %strong &pound;
+              = f.radio_button :loans_or_credit_cards, 'true', :class => "js-panel-component-details-show"
+              = f.label :loans_or_credit_cards_true, 'Yes'
             %div
-              %input#moneyin-other.small{:type => 'text'}
-      .labeled-content
-        .content-label
-          %strong Total money in
-        .content
-          %strong
-            &pound;
-            1,850 per month
+              = f.radio_button :loans_or_credit_cards, 'false', :class => "js-panel-component-details-hide"
+              = f.label :loans_or_credit_cards_false, "No"
+          .component-details{ :class => ('element-invisible' unless @defense.loans_or_credit_cards) }
+            %h5 boom
 
-  %section
-    %h3 Money out
-    .moj-panel
-      %p
-        Regular expenses &ndash; List all of your regular monthly outgoings
-        %br/
-        %span.supplementary (does not include any payments made by other members of your household)
-      .labeled-content
-        .content-label
-          %label{:for => 'moneyout-counciltax'} Council tax
-        .content
-          .money-input
-            %strong &pound;
+        .panel-component
+          %p Are you currently paying any court orders or fines?
+          .striped-choice
             %div
-              %input#moneyout-counciltax.small{:type => 'text'}
-      .labeled-content
-        .content-label
-          %label{:for => 'moneyout-gas'} Gas
-        .content
-          .money-input
-            %strong &pound;
+              = f.radio_button :currently_paying_court_orders_or_fines, 'true', :class => "js-panel-component-details-show"
+              = f.label :currently_paying_court_orders_or_fines_true, 'Yes'
             %div
-              %input#moneyout-gas.small{:type => 'text'}
-      .labeled-content
-        .content-label
-          %label{:for => 'moneyout-electricity'} Electricity
-        .content
-          .money-input
-            %strong &pound;
+              = f.radio_button :currently_paying_court_orders_or_fines, 'false', :class => "js-panel-component-details-hide"
+              = f.label :currently_paying_court_orders_or_fines_false, "No"
+          .component-details{ :class => ('element-invisible' unless @defense.currently_paying_court_orders_or_fines) }
+            %h5 boom
+        
+        .labeled-content
+          .content-label
+            %strong Total money out
+          .content
+            %strong
+              &pound;
+              1,850 per month
+
+    / DEPENDANTS
+    %section
+      %h3 Dependants
+      .moj-panel
+        .panel-component
+          %p Have you got any dependant children?
+          .striped-choice
             %div
-              %input#moneyout-electricity.small{:type => 'text'}
-      .labeled-content
-        .content-label
-          %label{:for => 'moneyout-water'} Water
-        .content
-          .money-input
-            %strong &pound;
+              = f.radio_button :has_dependent_children, 'true', :class => "js-panel-component-details-show"
+              = f.label :has_dependent_children_true, 'Yes'
             %div
-              %input#moneyout-water.small{:type => 'text'}
+              = f.radio_button :has_dependent_children, 'false', :class => "js-panel-component-details-hide"
+              = f.label :has_dependent_children_false, "No"
+          .component-details{ :class => ('element-invisible' unless @defense.has_dependent_children) }
+            %h5 boom
 
-      / blah blah blah...
+        .panel-component
+          %p Are there any other dependants in the property you are responsible for?
+          .striped-choice
+            %div
+              = f.radio_button :has_other_dependents, 'true', :class => "js-panel-component-details-show"
+              = f.label :has_other_dependents_true, 'Yes'
+            %div
+              = f.radio_button :has_other_dependents, 'false', :class => "js-panel-component-details-hide"
+              = f.label :has_other_dependents_false, "No"
+          .component-details{ :class => ('element-invisible' unless @defense.has_other_dependents) }
+            %h5 boom
 
 
+    / CIRCUMSTANCES
+    %section
+      %h3 Circumstances
+      .moj-panel
+        = f.label :details_of_circumstances, "Give details of any circumstances which led to you being in arrears of rent. If you can tell us about problems like divorce, separation, redundancy, bereavement, illness or bankrupcy it will help us fully understand the defence. Also provide any other reason why you think any date for repossession should be delayed."
+        = f.input :details_of_circumstances, label: false, :input_html => { :rows => 5 }
+
+        .panel-component
+          %p If an order for repossession was to be made would you have somewhere else to live?
+          .striped-choice
+            %div
+              = f.radio_button :has_somewhere_else_to_live, 'true', :class => "js-panel-component-details-show"
+              = f.label :has_somewhere_else_to_live_true, 'Yes'
+            %div
+              = f.radio_button :has_somewhere_else_to_live, 'false', :class => "js-panel-component-details-hide"
+              = f.label :has_somewhere_else_to_live_false, "No"
+          .component-details{ :class => ('element-invisible' unless @defense.has_somewhere_else_to_live) }
+            %h5 boom
+    
+    / SUPPORTING DOCUMENTATION
+    %section
+      %h3 Supporting documentation
+      .moj-panel
+        %p Attach any documentation to support your defense
+        %p 
+          %a.fake-link About supporting documentation
+        %span.button Attach documents
 
 
-
-
-  = form_for @claim, :url => { :action => "update" } do |f|
     = render :partial => 'claims/defence/save_continue', :locals => {f: f}
