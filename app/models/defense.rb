@@ -3,6 +3,7 @@ class Defense < ActiveRecord::Base
   belongs_to :owner, :class_name => 'Defendant'
   has_many :monthly_expenses, :dependent => :destroy
 
+  accepts_nested_attributes_for :owner
   accepts_nested_attributes_for :monthly_expenses, :allow_destroy => true
 
   def fill_basic_montly_expenses!
