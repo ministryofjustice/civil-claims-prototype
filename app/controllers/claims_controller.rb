@@ -88,8 +88,7 @@ class ClaimsController < ApplicationController
 
     case params[:commit]
     when 'Save & Continue'
-      # redirect_to next_navigation_path
-      redirect_to personal_details_claim_path @claim
+      redirect_to next_navigation_path
     when 'Close'
       redirect_to root_path
     when 'Add another landlord'
