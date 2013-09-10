@@ -3,17 +3,13 @@
 %article
   %h2 Step 2 of 6 - Case details
   %p.lead Say why you want the property back, add details of the tenancy, and attach any supporting documents.
-
   %section#edit-claim
-
-
     = simple_form_for @claim, url: claim_path(@claim) do |f|
 
       / GROUNDS FOR POSSESSION
       %section#grounds-for-possession
-        %h3 Why you want to property back
+        %h3 Why you want the property back
         .panel-default
-
           .striped-choice
             %div
               = f.check_box :non_payment_of_rent
