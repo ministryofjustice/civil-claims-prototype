@@ -5,6 +5,9 @@ class ApplicationController < ActionController::Base
   before_action :pretend_to_authenticate
 
   def pretend_to_authenticate
+    if !Claimant.any?
+      raise "No claimants were found in DB"
+    end
 
     bypass = session.has_key? :bypass_auth
     logged_in = (session.has_key? :user) && (session[:user].to_i > 0 )
