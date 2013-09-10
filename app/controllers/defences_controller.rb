@@ -69,7 +69,7 @@ class DefencesController < ApplicationController
   def update
     update_from_parameters
 
-    if 'Save & Continue' == params[:commit]
+    if 'Save and continue' == params[:commit]
       redirect_to next_navigation_path
     elsif 'Close' == params[:commit]
       redirect_to claim_defence_path params[:claim_id]
