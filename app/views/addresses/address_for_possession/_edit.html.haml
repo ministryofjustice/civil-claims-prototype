@@ -3,7 +3,7 @@
 
   = claim_form.simple_fields_for( address ) do |f|
 
-    .address{ class: ("element-invisible" unless address.is_valid?) }
+    .address.expander{ class: ("element-invisible" unless address.is_valid?) }
       = f.input :street_1, label: 'Street'
       = f.input :street_2, label: '&nbsp;'
       = f.input :street_3, label: '&nbsp;'
