@@ -29,6 +29,11 @@ describe Defendant do
     it 'email address is well formed' do
       expect( create(:defendant, email: 'text@domain')).to be_valid
     end
+
+    it 'has an address' do
+      expect(create(:defendant).address).to_not be_nil
+      pp create(:defendant).address
+    end
   end
 
 end

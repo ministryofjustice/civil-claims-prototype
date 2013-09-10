@@ -1,21 +1,20 @@
-- if address.nil?
-  .address-container.edit-person
-- else
-  .address-container.edit-person{ id: 'address-' + address.id.to_s }
-    = claim_form.simple_fields_for( address ) do |f|
+- address = address || Address.new
+.address-container.edit-person{ id: 'address-' + address.id.to_s }
 
-      %div.address{ class: ("element-invisible" unless address.is_valid?) }
-        = f.input :street_1, label: 'Street'
-        = f.input :street_2, label: nil
-        = f.input :street_3, label: nil
-        = f.input :town
-        = f.input :county
-    
-      = f.input :postcode do
-        = f.input_field :postcode, class: 'postcode'
-        - classes = 'button-secondary find-uk-address'
-        - classes << ' disabled' if address.postcode.blank?
-        = link_to 'Find UK Address', '/address/picker', :class => classes
+  = claim_form.simple_fields_for( address ) do |f|
 
-      = button_tag( name: 'same-address-as-first-tenant', value: f.object.id, class: 'post-link formalise' ) do
-        = content_tag(:span, 'Same address as first tenant')
+    .address{ class: ("element-invisible" unless address.is_valid?) }
+      = f.input :street_1, label: 'Street'
+      = f.input :street_2, label: '&nbsp;'
+      = f.input :street_3, label: '&nbsp;'
+      = f.input :town
+      = f.input :county
+  
+    = f.input :postcode do
+      = f.input_field :postcode, class: 'postcode'
+      - classes = 'button-secondary find-uk-address'
+      - classes << ' disabled' if address.postcode.blank?
+      = link_to 'Find UK Address', '/address/picker', :class => classes
+
+    = button_tag( name: 'same-address-as-first-tenant', value: f.object.id, class: 'post-link formalise' ) do
+      = content_tag(:span, 'Same address as first tenant')

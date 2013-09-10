@@ -56,6 +56,10 @@ class Claim < ActiveRecord::Base
     self.defendants.drop(1)
   end
 
+  def primary_defense
+    self.defenses.first
+  end
+
   def before_create( record )
     self.defendants.create
     self.build_address

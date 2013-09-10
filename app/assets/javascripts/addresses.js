@@ -1,7 +1,7 @@
  var scriptify_addresses = function() { 
   
   // click the Find Address link, see what happens
-  $('#edit-claim').on('click', '.find-uk-address', function(evt) {
+  $('body').on('click', '.find-uk-address', function(evt) {
     evt.preventDefault();
     if($(this).hasClass('disabled')) {
       return false;
@@ -17,7 +17,7 @@
   });
 
   // handle selection from the address picker
-  $('#edit-claim').on('change', '.pick_address', function(event) {
+  $('body').on('change', '.pick_address', function(event) {
     var container = $(this).parents('.edit-person');
     var address = $(this).find('option:selected').data('address');
 

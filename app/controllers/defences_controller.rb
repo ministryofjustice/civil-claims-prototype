@@ -65,7 +65,7 @@ class DefencesController < ApplicationController
   end
 
   def update
-    update_current_claim_from_parameters
+    update_from_parameters
 
     if 'Save & Continue' == params[:commit]
       redirect_to next_navigation_path
@@ -92,11 +92,28 @@ class DefencesController < ApplicationController
     @defense = @defense || Defense.find_by(claim_id: params[:claim_id], owner_id: session[:user])
   end
 
+  def get_current_defendant
+    @defendant = Person.find(session[:user])
+  end
+
   def defense_params
     params.require(:defense).permit! if params.has_key? :defense
   end
 
-  def update_current_claim_from_parameters
+  def update_from_parameters
+    pp params
+    if params.has_key? :personal_details
+      update_current_defendant_from_parameters
+    else
+      update_current_defense_from_parameters
+    end
+  end
+
+  def update_current_defendant_from_parameters
+    get_current_defendant.update_attributes defense_params[:defendant]
+  end
+
+  def update_current_defense_from_parameters
     get_current_defense.update_attributes defense_params
   end
 

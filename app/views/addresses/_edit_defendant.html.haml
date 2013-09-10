@@ -1,0 +1,17 @@
+- address = address || Address.new
+.address-container.edit-person{ id: 'address-' + address.id.to_s }
+
+  = claim_form.simple_fields_for :address do |cf|
+
+    .address{ class: ("element-invisible" unless address.is_valid?) }
+      = cf.input :street_1, label: 'Street'
+      = cf.input :street_2, label: '&nbsp;'
+      = cf.input :street_3, label: '&nbsp;'
+      = cf.input :town
+      = cf.input :county
+  
+    = cf.input :postcode do
+      = cf.input_field :postcode, class: 'postcode'
+      - classes = 'button-secondary find-uk-address'
+      - classes << ' disabled' if address.postcode.blank?
+      = link_to 'Find UK Address', '/address/picker', :class => classes
