@@ -55,9 +55,9 @@
 
         %p Please provide all figures of the money coming in per month
         = f.input :income, :label => "Income", as: :currency, :input_html => {:class => 'small'}
-        = f.input :pension, :label => "Pension", as: :currency
-        = f.input :child_benefit, :label => "Child benefit", as: :currency
-        = f.input :other_monies_in, :label => "Other money in", as: :currency
+        = f.input :pension, :label => "Pension", as: :currency, :input_html => {:class => 'small'}
+        = f.input :child_benefit, :label => "Child benefit", as: :currency, :input_html => {:class => 'small'}
+        = f.input :other_monies_in, :label => "Other money in", as: :currency, :input_html => {:class => 'small'}
 
         .labeled-content
           .content-label
@@ -76,7 +76,7 @@
           %br/
           %span.supplementary (does not include any payments made by other members of your household)
         = f.simple_fields_for :monthly_expenses do |fmexp|
-          = fmexp.input :amount, :label => fmexp.object.name, as: :currency
+          = fmexp.input :amount, :label => fmexp.object.name, as: :currency, :input_html => {:class => 'small'}
           
           
         %span.button Add another expense
@@ -92,18 +92,18 @@
               = f.label :in_arrears_in_monthly_outgoings_false, "No"
           .component-details{ :class => ('element-invisible' unless @defense.in_arrears_in_monthly_outgoings) }
             .form-row.clearfix.currency 
-              %label.control-label{ :for => "money-out-arrear" } Arrear
-              %input.string.small{ :id => "money-out-arrear", :type => "currency"}
+              %label.control-label{ :for => "money-out-arrears-arrear" } Arrear
+              %input.string.small{ :id => "money-out-arrears-arrear", :type => "text" }
             
             .form-row
-              %label.currency.control-label{ :for => "money-out-balance" } Balance
+              %label.currency.control-label{ :for => "money-out-arrears-balance" } Balance
               %strong &pound
-              %input.string.currency.small{ :id => "money-out-balance", :type => "currency"}
+              %input.string.currency.small{ :id => "money-out-arrears-balance", :type => "currency"}
 
             .form-row
-              %label.currency.control-label{ :for => "money-out-costpermonth" } Cost per month
+              %label.currency.control-label{ :for => "money-out-arrears-costpermonth" } Cost per month
               %strong &pound
-              %input.string.currency.small{ :id => "money-out-costpermonth", :type => "currency"}
+              %input.string.currency.small{ :id => "money-out-arrears-costpermonth", :type => "currency"}
             %span.button Add another arrear
 
         .panel-component
@@ -116,7 +116,43 @@
               = f.radio_button :loans_or_credit_cards, 'false', :class => "js-panel-component-details-hide"
               = f.label :loans_or_credit_cards_false, "No"
           .component-details{ :class => ('element-invisible' unless @defense.loans_or_credit_cards) }
-            %h5 boom
+            .form-row.clearfix.currency 
+              %label.control-label{ :for => "money-out-loans-loancreditcard" } Loan/credit card
+              %input.string.small{ :id => "money-out-loans-loancreditcard", :type => "text" }
+            
+            .form-row
+              %label.currency.control-label{ :for => "money-out-loans-balance" } Balance
+              %strong &pound
+              %input.string.currency.small{ :id => "money-out-loans-balance", :type => "currency"}
+
+            .form-row
+              %label.currency.control-label{ :for => "money-out-loans-costpermonth" } Cost per month
+              %strong &pound
+              %input.string.currency.small{ :id => "money-out-loans-costpermonth", :type => "currency"}
+            %span.button Add another debt
+
+            .panel-component
+              %p Are you in arrears on these fines?
+              .striped-choice
+                %div
+                  = f.radio_button :loans_arrears, 'true', :class => "js-panel-component-details-show"
+                  = f.label :loans_arrears_true, 'Yes'
+                %div
+                  = f.radio_button :loans_arrears, 'false', :class => "js-panel-component-details-hide"
+                  = f.label :loans_arrears_false, "No"
+              .component-details{ :class => ('element-invisible' unless @defense.loans_arrears) }
+                = f.label :loans_arrears_details, "Please give details"
+                = f.input :loans_arrears_details, label: false, :input_html => { :rows => 5 }
+
+
+
+
+
+
+
+
+
+
 
         .panel-component
           %p Are you currently paying any court orders or fines?
@@ -128,7 +164,58 @@
               = f.radio_button :currently_paying_court_orders_or_fines, 'false', :class => "js-panel-component-details-hide"
               = f.label :currently_paying_court_orders_or_fines_false, "No"
           .component-details{ :class => ('element-invisible' unless @defense.currently_paying_court_orders_or_fines) }
-            %h5 boom
+            .form-row.clearfix.currency 
+              %label.control-label{ :for => "money-out-ordersfines-caseno" } Case no.
+              %input.string.small{ :id => "money-out-ordersfines-caseno", :type => "text" }
+            
+            .form-row
+              %label.currency.control-label{ :for => "money-out-ordersfines-balance" } Balance
+              %strong &pound
+              %input.string.currency.small{ :id => "money-out-ordersfines-balance", :type => "currency"}
+
+            .form-row
+              %label.currency.control-label{ :for => "money-out-ordersfines-costpermonth" } Cost per month
+              %strong &pound
+              %input.string.currency.small{ :id => "money-out-ordersfines-costpermonth", :type => "currency"}
+            %span.button Add another court order or fine
+
+            .panel-component
+              %p Are you in arrears on these fines?
+              .striped-choice
+                %div
+                  = f.radio_button :behind_on_fine_payments, 'true', :class => "js-panel-component-details-show"
+                  = f.label :behind_on_fine_payments_true, 'Yes'
+                %div
+                  = f.radio_button :behind_on_fine_payments, 'false', :class => "js-panel-component-details-hide"
+                  = f.label :behind_on_fine_payments_false, "No"
+              .component-details{ :class => ('element-invisible' unless @defense.behind_on_fine_payments) }
+                = f.label :fine_payments_details, "Please give details"
+                = f.input :fine_payments_details, label: false, :input_html => { :rows => 5 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         
         .labeled-content
           .content-label
