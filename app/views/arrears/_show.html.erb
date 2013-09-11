@@ -55,7 +55,7 @@
     <div id="rental-arrears-error" class="panel-error" hidden></div>
     
     <div>
-      <table id="arrears-table" class="moj-table" <%= "hidden" if @claim.arrears.empty? %> >
+      <table id="arrears-table" class="moj-table editable" <%= "hidden" if @claim.arrears.empty? %> >
         <thead>
           <tr>
             <th id="rent-date-header">Rent due on</th>
@@ -66,8 +66,8 @@
           </tr>
         </thead>
         <tfoot>
-          <tr class="table-footer">
-            <td id="arrears-total-label" colspan="3">Total</td>
+          <tr>
+            <td colspan="3">Total</td>
             <td id="arrears-total-amount">
               <% rental_amount = @claim.rental_amount || 0 %>
               <% arrears_total_amount = (rental_amount * @claim.arrears.count)- @claim.arrears.sum(:paid) %>

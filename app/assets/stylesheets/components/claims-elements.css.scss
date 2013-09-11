@@ -222,6 +222,10 @@ table.moj-table {
       border-left-style: dotted; 
       border-right-style: dotted; 
     }
+    th {
+      border-top: 1px solid #b7b7b7;
+      border-bottom: 1px solid #b7b7b7;
+    }
 
     td.left-align, th.left-align { text-align: left; }
 
@@ -229,21 +233,34 @@ table.moj-table {
     th:last-child, td:last-child { border-right: none; }
   }
 
+
+  thead { background-color: #f8f8f8; }
+
   tfoot { 
     border-style: solid; 
     border-color: #b7b7b7;
     border-width: 1px;
     border-left: none;
     border-right: none;
+    background-color: #f8f8f8;
 
-    td { font-weight: bold; }
+    td { 
+      font-weight: bold; 
+      border-left: none;
+      border-right: none;
+    }
   }
 
   tbody {
     tr:nth-child(odd)  { background-color: #fff; }
     tr:nth-child(even) { background-color: #f8f8f8; }
   }
-  thead, tfoot { background-color: #f8f8f8; }
+
+  &.editable {
+    tfoot{
+    background-color: #d5eeea;
+  }
+  }
 } 
 
 .element-invisible {

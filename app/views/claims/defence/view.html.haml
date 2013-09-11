@@ -27,7 +27,7 @@
 
   - if @claim.arrears.size > 0
     %section
-      %h3 Rent arrears
+      %h3 Unpaid rent
       = render partial: "arrears/read_only", locals: { claim: @claim }
 
   - if @claim.attachments.size > 0

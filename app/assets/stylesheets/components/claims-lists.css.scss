@@ -112,7 +112,7 @@ li {
   @include reset-list;
 
   .attachment-element{
-    @include panel-style(#D5EEEA);
+    @include panel-style(#d5eeea);
     padding: 15px;
     margin: 5px 0 5px;
     ul, ol {
