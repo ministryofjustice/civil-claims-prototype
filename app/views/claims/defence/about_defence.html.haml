@@ -202,8 +202,13 @@
               = f.radio_button :has_dependent_children, 'false', :class => "js-panel-component-details-hide"
               = f.label :has_dependent_children_false, "No"
           .component-details{ :class => ('element-invisible' unless @defense.has_dependent_children) }
-            %h5 boom
-
+            .form-row
+              %label Children
+              = f.input :dependents_under_11, collection:[0,1,2,3,4,5,6,7], selected: "0", label: "Under 11yrs"
+              = f.input :dependents_11_to_15, collection:[0,1,2,3,4,5,6,7], selected: "0", label: "11-15yrs"
+              = f.input :dependents_16_to_17, collection:[0,1,2,3,4,5,6,7], selected: "0", label: "16-17yrs"
+              = f.input :dependents_18_and_over, collection:[0,1,2,3,4,5,6,7], selected: "0", label: "18yrs and over"
+              
         .panel-component
           %p Are there any other dependants in the property you are responsible for?
           .striped-choice
@@ -214,8 +219,8 @@
               = f.radio_button :has_other_dependents, 'false', :class => "js-panel-component-details-hide"
               = f.label :has_other_dependents_false, "No"
           .component-details{ :class => ('element-invisible' unless @defense.has_other_dependents) }
-            %h5 boom
-
+            = f.label :details_of_other_dependents, "Please give details"
+            = f.input :details_of_other_dependents, label: false, :input_html => { :rows => 5 }
 
     / CIRCUMSTANCES
     %section
@@ -234,7 +239,8 @@
               = f.radio_button :has_somewhere_else_to_live, 'false', :class => "js-panel-component-details-hide"
               = f.label :has_somewhere_else_to_live_false, "No"
           .component-details{ :class => ('element-invisible' unless @defense.has_somewhere_else_to_live) }
-            %h5 boom
+            %label{ :for => "move-in-date-for-other-property" } When would you be able to move in?
+            = f.input :move_in_date_for_other_property, label: false, :input_html => { :id =>"move-in-date-for-other-property" }
     
     / SUPPORTING DOCUMENTATION
     %section
