@@ -11,6 +11,7 @@ class PeopleController < ApplicationController
       when 'claimant'
         source_claimant = Claimant.find_by( uj: true )
         new_claimant = source_claimant.dup
+        new_claimant.uj = false
         new_claimant.address = source_claimant.address.dup
         new_claimant.save
         session[:user] = new_claimant.id
@@ -18,6 +19,7 @@ class PeopleController < ApplicationController
       when 'defendant'
         source_defendant = Defendant.find_by( uj: true )
         new_defendant = source_defendant.dup
+        new_defendant.uj = false
         new_defendant.address = source_defendant.address.dup 
         new_defendant.save
         session[:user] = new_defendant.id
