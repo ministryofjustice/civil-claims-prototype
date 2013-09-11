@@ -13,8 +13,8 @@
       .panel-default
         %input{ type: 'hidden', name: 'personal_details', value: 'true'}
         = f.simple_fields_for :owner do |sf|
-          %details.view-case-contact-details
-            %summary{ :'aria-expanded' => false } If current address is different from above add contact address
+          %details
+            %summary.form-row{ :'aria-expanded' => false } If current address is different from above add contact address
             %p
               = sf.simple_fields_for :address do |sff|
                 .address-container.edit-person{ id: 'address-' + sff.object.id.to_s }
@@ -36,7 +36,7 @@
           = sf.input :email
 
         / Solicitor
-        %details.view-case-contact-details
+        %details
           %summary.form-row This defence is being completed by a solicitor on behalf of the tenant
           .form-row
             %label{ :for => "solicitor-name" } Solicitor name
