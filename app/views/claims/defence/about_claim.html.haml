@@ -38,7 +38,7 @@
 
         .panel-component
           Do you agree that there are arrears of the rent as stated in the 
-          %a.fake-link case particulars
+          %a.fake-link case details
           ?
           .striped-choice
             %div
@@ -143,7 +143,7 @@
             = f.input :claim_case_number, label: "Case number"
 
         %div
-          = f.label :comments_on_particulars, "Do you have any comment about anything else in the <a class='fake-link'>case particulars</a>?".html_safe
+          = f.label :comments_on_particulars, "Do you have any comment about anything else in the <a class='fake-link'>case details</a>?".html_safe
           = f.input :comments_on_particulars, input_html: {:rows => 5}, label: false
 
     = render :partial => 'shared/save_continue'

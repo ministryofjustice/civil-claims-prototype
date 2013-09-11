@@ -11,7 +11,7 @@
 }
 
 .panel-error {
-  @include panel-style(#F2DEDE,#EED3D7);
+  @include panel-style(#f2dede,#eed3d7);
   padding: 5px;
   color: #BB4A48;
   text-align: center;
@@ -27,6 +27,12 @@
   .button, .button-secondary, input {
     margin-right: 40px;
   }
+}
+
+.moj-panel-warning {
+  background-color: #dfe0e2;
+  padding: 2px 20px 2px 15px;
+  margin: 5px 0;
 }
 
 /*
