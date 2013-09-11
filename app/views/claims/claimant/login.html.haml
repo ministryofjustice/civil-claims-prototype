@@ -8,7 +8,7 @@
   %section
     %h3 Sign in
     .moj-panel
-      = simple_form_for @user, :url => '/login', :method => :post do |f|
+      = simple_form_for @user, :url => root_path, :method => :post do |f|
         = f.input :full_name, as: :fake
         = f.input :password, as: :fake
 

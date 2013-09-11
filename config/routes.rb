@@ -7,6 +7,7 @@ CivilClaims::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'claims#home'
 
+  post '/' => 'claims#home'
   # relax, it's a prototype.
   
   get 'claims/delete_all' => 'claims#delete_all'
@@ -16,7 +17,6 @@ CivilClaims::Application.routes.draw do
   
   get 'address/picker' => 'address#picker', as: :address_picker
   get 'login' => 'claims#login'
-  post 'login' => 'claims#home'
   get 'claims/defence' => 'defences#show_login'
   post 'claims/defence/login' => 'defences#login', as: :defense_login
 
