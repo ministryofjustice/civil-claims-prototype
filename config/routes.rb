@@ -15,7 +15,8 @@ CivilClaims::Application.routes.draw do
   get 'claims/:claim_id/address/:id/edit' => 'address#editor', as: :claim_address_editor
   
   get 'address/picker' => 'address#picker', as: :address_picker
-
+  get 'login' => 'claims#login'
+  post 'login' => 'claims#home'
   get 'claims/defence' => 'defences#show_login'
   post 'claims/defence/login' => 'defences#login', as: :defense_login
 

@@ -1,0 +1,15 @@
+%div
+  %p.lead
+    Use this online form to repossess a property if your tenant doesn’t pay their rent, breaks the tenancy agreement or refuses to move out.
+  %p.lead 
+    You must have good reasons for evicting a tenant and usually have to give them notice to leave.
+
+%article
+  %section
+    %h3 Sign in
+    .moj-panel
+      = simple_form_for @user, :url => '/login', :method => :post do |f|
+        = f.input :full_name, as: :fake
+        = f.input :password, as: :fake
+
+        = f.submit 'Sign in', :class => "button"

@@ -9,23 +9,29 @@ class PeopleController < ApplicationController
 
       case params[:role]
       when 'claimant'
-        session[:user] = Claimant.find_by( uj: true ).id
+        source_claimant = Claimant.find_by( uj: true )
+        new_claimant = source_claimant.dup
+        new_claimant_address = source_claimant.address.dup
+        new_claimant.save
+        session[:user] = new_claimant.id
+        redirect_to '/login'
       when 'defendant'
         source_defendant = Defendant.find_by( uj: true )
         new_defendant = source_defendant.dup
         new_defendant.address = source_defendant.address.dup 
         new_defendant.save
         session[:user] = new_defendant.id
+        redirect_to :root
       when 'staff'
         flash[:notice] = "Logged in as Court Staff."
         session[:user] = Staff.at_random.id
+        redirect_to :root
       when 'judge'
         flash[:notice] = "Logged in as a Judge."
         session[:user] = Judge.at_random.id
+        redirect_to :root
       end
     end
-
-    redirect_to :root
   end
 
   def update

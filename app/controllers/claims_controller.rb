@@ -39,6 +39,9 @@ class ClaimsController < ApplicationController
     redirect_to personal_details_claim_path @claim
   end
 
+  def login
+    render 'claims/claimant/login'
+  end
 
 
   def update
