@@ -75,7 +75,7 @@ class Claim < ActiveRecord::Base
     self.address = tenant.address.dup
 
     self.property_type = 'residential'
-    self.resident_type = 'private tenant'
+    self.resident_type = 'tenant'
 
     self.non_payment_of_rent = true 
     self.anti_social_behaviour = false 
