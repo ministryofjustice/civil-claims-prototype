@@ -47,7 +47,7 @@ class ClaimsController < ApplicationController
     @claim.update_attributes params[:claim]
 
     case params[:commit]
-    when 'Save & Continue'
+    when 'Save and continue'
       redirect_to next_navigation_path
     when 'Close'
       redirect_to root_path
