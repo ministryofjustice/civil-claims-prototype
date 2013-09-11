@@ -11,7 +11,7 @@ class PeopleController < ApplicationController
       when 'claimant'
         source_claimant = Claimant.find_by( uj: true )
         new_claimant = source_claimant.dup
-        new_claimant_address = source_claimant.address.dup
+        new_claimant.address = source_claimant.address.dup
         new_claimant.save
         session[:user] = new_claimant.id
         redirect_to '/login'
