@@ -32,7 +32,6 @@ describe Defendant do
 
     it 'has an address' do
       expect(create(:defendant).address).to_not be_nil
-      pp create(:defendant).address
     end
   end
 
