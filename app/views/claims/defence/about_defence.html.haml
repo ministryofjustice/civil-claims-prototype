@@ -204,10 +204,10 @@
           .component-details{ :class => ('element-invisible' unless @defense.has_dependent_children) }
             .form-row
               %label Children
-              = f.input :dependents_under_11, collection:[0,1,2,3,4,5,6,7], selected: "0", label: "Under 11yrs"
-              = f.input :dependents_11_to_15, collection:[0,1,2,3,4,5,6,7], selected: "0", label: "11-15yrs"
-              = f.input :dependents_16_to_17, collection:[0,1,2,3,4,5,6,7], selected: "0", label: "16-17yrs"
-              = f.input :dependents_18_and_over, collection:[0,1,2,3,4,5,6,7], selected: "0", label: "18yrs and over"
+              = f.input :dependents_under_11, collection: 0..7, priority: 0, include_blank: false, label: "Under 11yrs"
+              = f.input :dependents_11_to_15, collection: 0..7, priority: 0, include_blank: false, label: "11-15yrs"
+              = f.input :dependents_16_to_17, collection: 0..7, priority: 0, include_blank: false, label: "16-17yrs"
+              = f.input :dependents_18_and_over, collection: 0..7, priority: 0, include_blank: false, label: "18yrs and over"
               
         .panel-component
           %p Are there any other dependants in the property you are responsible for?
