@@ -146,4 +146,4 @@
           = f.label :comments_on_particulars, "Do you have any comment about anything else in the <a class='fake-link'>case particulars</a>?".html_safe
           = f.input :comments_on_particulars, input_html: {:rows => 5}, label: false
 
-    = render :partial => 'claims/defence/save_continue', :locals => {f: f}
+    = render :partial => 'shared/save_continue'
