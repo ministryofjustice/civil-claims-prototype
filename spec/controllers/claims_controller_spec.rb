@@ -28,14 +28,14 @@ describe ClaimsController do
 
     context 'Save & Continue' do
       it 'should redirect to the next page in sequence' do
-        patch :post_personal_details, id: @claim.id, commit: 'Save & Continue', claim: @claim.attributes
+        patch :post_personal_details, id: @claim.id, commit: 'save-and-continue', claim: @claim.attributes
         assert_redirected_to case_details_claim_path( @claim )
       end
     end
 
     context 'Close' do
       it 'should redirect to the index page' do
-        patch :post_personal_details, id: @claim.id, commit: 'Close', claim: @claim.attributes
+        patch :post_personal_details, id: @claim.id, commit: 'close', claim: @claim.attributes
         assert_redirected_to root_path
       end
     end
