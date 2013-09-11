@@ -30,11 +30,8 @@ class ClaimsController < ApplicationController
 
 
   def create
-
     @user = @user || Person.find(session[:user])
-    @claim = Claim.new(:owner => @user)
-    @claim.claimants << @user
-    @claim.save
+    @claim = Claim.create(:owner => @user, :claimants => [@user])
 
     redirect_to personal_details_claim_path @claim
   end
@@ -95,13 +92,10 @@ class ClaimsController < ApplicationController
     when 'close'
       redirect_to root_path
     when 'Add another landlord'
-      logger.debug('adding another landlord')
-      address = Address.create
-      @claim.claimants << Claimant.create(:address => address)
+      @claim.claimants.create(:address => Address.create)
       redirect_to personal_details_claim_path @claim
     when 'Add another tenant'
-      address = Address.create
-      @claim.defendants.create(:address => address)
+      @claim.defendants.create(:address => Address.create)
       redirect_to personal_details_claim_path @claim
     else
       redirect_to personal_details_claim_path @claim
@@ -153,44 +147,26 @@ class ClaimsController < ApplicationController
     render 'claims/claimant/confirmation'
   end
 
-  # def address
-  #   claim = Claim.find_by_id(params[:id])
-  #   params.permit!
-  #   claim.update_attributes params[:claim]
-  #   claim.address.update_attributes params[:address]
-  #   claim.save
-    
-  #   respond_to do |format|
-  #     format.html { redirect_to :back }
-  #     format.js { 
-  #       address = claim.address
-  #       options = { :show_edit_link => true }
-  #       render :partial => 'addresses/view_address_for_possession', :format => [:js], :locals => {claim: claim, address: address, options: options}
-  #     }
-  #   end
-  #   # render :text => 'sdf'
-  # end
-
   private
 
-  def page_title 
-    @page_title = "Repossess a property:<br />make a possession claim".html_safe
-  end
+    def page_title 
+      @page_title = "Repossess a property:<br />make a possession claim".html_safe
+    end
 
 
-  def page_links
-    @linkdata = linkdata
-  end
+    def page_links
+      @linkdata = linkdata
+    end
 
-  def linkdata
-    [
-      { :text => 'Personal details', :path => 'personal_details' },
-      { :text => 'Case details', :path => 'case_details' },
-      { :text => 'Court booking', :path => 'court_booking' },
-      { :text => 'Confirm details', :path => 'statement' },
-      { :text => 'Pay court fee', :path => 'fees' },
-      { :text => 'Confirmation', :path => 'confirmation' }
-    ]
-  end
+    def linkdata
+      [
+        { :text => 'Personal details', :path => 'personal_details' },
+        { :text => 'Case details', :path => 'case_details' },
+        { :text => 'Court booking', :path => 'court_booking' },
+        { :text => 'Confirm details', :path => 'statement' },
+        { :text => 'Pay court fee', :path => 'fees' },
+        { :text => 'Confirmation', :path => 'confirmation' }
+      ]
+    end
 
 end

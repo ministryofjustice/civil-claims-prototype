@@ -6,6 +6,12 @@ class Person < ActiveRecord::Base
 
   scope :randomly, -> { order("RANDOM()") }
 
+  def deep_dup
+    deep_duplicate = self.dup
+    deep_duplicate.address = self.address.dup
+    deep_duplicate
+  end
+
   def display_name
     self.full_name
   end

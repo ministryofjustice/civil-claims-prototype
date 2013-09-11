@@ -48,4 +48,18 @@ describe Person do
     user = Claimant.find_by :uj => true
     assert user.type == 'Claimant'
   end
+
+  it 'should create deep duplicate of itself' do
+    source_person = Person.first
+    sut_person = source_person.deep_dup
+
+    assert sut_person
+    assert sut_person.address
+
+    sut_person.id.should_not eq(source_person.id)
+    sut_person.full_name.should eq(source_person.full_name)
+
+    sut_person.address.id.should_not eq(source_person.address.id)
+    sut_person.address.street_1.should eq(source_person.address.street_1)
+  end
 end
