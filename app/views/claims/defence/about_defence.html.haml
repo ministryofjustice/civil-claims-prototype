@@ -89,16 +89,16 @@
               = f.radio_button :in_arrears_in_monthly_outgoings, 'false', :class => "js-panel-component-details-hide"
               = f.label :in_arrears_in_monthly_outgoings_false, "No"
           .component-details{ :class => ('element-invisible' unless @defense.in_arrears_in_monthly_outgoings) }
-            .form-row.clearfix.currency 
+            .form-row.clearfix 
               %label.control-label{ :for => "money-out-arrears-arrear" } Arrear
               %input.string.small{ :id => "money-out-arrears-arrear", :type => "text" }
             
-            .form-row
+            .form-row.clearfix.currency
               %label.currency.control-label{ :for => "money-out-arrears-balance" } Balance
               %strong &pound
               %input.string.currency.small{ :id => "money-out-arrears-balance", :type => "currency"}
 
-            .form-row
+            .form-row.clearfix.currency
               %label.currency.control-label{ :for => "money-out-arrears-costpermonth" } Cost per month
               %strong &pound
               %input.string.currency.small{ :id => "money-out-arrears-costpermonth", :type => "currency"}
@@ -114,16 +114,16 @@
               = f.radio_button :loans_or_credit_cards, 'false', :class => "js-panel-component-details-hide"
               = f.label :loans_or_credit_cards_false, "No"
           .component-details{ :class => ('element-invisible' unless @defense.loans_or_credit_cards) }
-            .form-row.clearfix.currency 
+            .form-row.clearfix
               %label.control-label{ :for => "money-out-loans-loancreditcard" } Loan/credit card
               %input.string.small{ :id => "money-out-loans-loancreditcard", :type => "text" }
             
-            .form-row
+            .form-row.clearfix.currency
               %label.currency.control-label{ :for => "money-out-loans-balance" } Balance
               %strong &pound
               %input.string.currency.small{ :id => "money-out-loans-balance", :type => "currency"}
 
-            .form-row
+            .form-row.clearfix.currency
               %label.currency.control-label{ :for => "money-out-loans-costpermonth" } Cost per month
               %strong &pound
               %input.string.currency.small{ :id => "money-out-loans-costpermonth", :type => "currency"}
@@ -152,16 +152,16 @@
               = f.radio_button :currently_paying_court_orders_or_fines, 'false', :class => "js-panel-component-details-hide"
               = f.label :currently_paying_court_orders_or_fines_false, "No"
           .component-details{ :class => ('element-invisible' unless @defense.currently_paying_court_orders_or_fines) }
-            .form-row.clearfix.currency 
+            .form-row.clearfix
               %label.control-label{ :for => "money-out-ordersfines-caseno" } Case no.
               %input.string.small{ :id => "money-out-ordersfines-caseno", :type => "text" }
             
-            .form-row
+            .form-row.clearfix.currency
               %label.currency.control-label{ :for => "money-out-ordersfines-balance" } Balance
               %strong &pound
               %input.string.currency.small{ :id => "money-out-ordersfines-balance", :type => "currency"}
 
-            .form-row
+            .form-row.clearfix.currency
               %label.currency.control-label{ :for => "money-out-ordersfines-costpermonth" } Cost per month
               %strong &pound
               %input.string.currency.small{ :id => "money-out-ordersfines-costpermonth", :type => "currency"}

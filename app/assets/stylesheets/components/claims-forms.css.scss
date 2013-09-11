@@ -9,12 +9,19 @@
   @include clearfix;
   clear: both;
   margin-bottom: 10px;
-
+  
   label {
     display: inline-block;
     vertical-align: baseline;
     text-align: left;
     width: 160px;
+  }
+
+  &.currency {
+    label {
+      // better way please
+      width: 148px;
+    }
   }
 
   select.date {
@@ -84,6 +91,8 @@
       vertical-align: middle;
     }
   }
+
+
 
 }
 
