@@ -24,10 +24,9 @@
       %br
       = "&pound;#{pp_currency(claim.unpaid_rent_per_day)} per day".html_safe
 
-  - if claim.rental_amount
-    %h4 Case cost
-    %span 
-      £100 
-      - if claim.defendent_to_pay_for_claim 
-        (request for tenant to pay) 
+  %h4 Case cost
+  %span 
+    £100 
+    - if claim.defendent_to_pay_for_claim 
+      (request for tenant to pay) 
 
