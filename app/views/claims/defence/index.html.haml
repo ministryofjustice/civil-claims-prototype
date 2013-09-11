@@ -1,4 +1,6 @@
-%p.lead 
+%div
+  %p.lead 
+
   The landlord 
   %strong= @claim.claimants.first.full_name
   is taking you to court to
@@ -25,21 +27,4 @@
       #list{:class => tab_class}
         = render partial: 'claims/defence/list', locals: {claims: @user.claims}
 
-  %section
-    %h3 Quick questions
-    %p
-      Here are some answers to common questions. You'll find lots more guidance on the
-      decisions you need to make and the informaiton you need to add as you progress.
-      %details
-        %summary I've just received repossession claim against me what should I do?
-        %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, accusantium quos earum explicabo autem atque non enim aliquid sit labore? Id, nemo, atque veritatis explicabo quis quibusdam provident minima a.
-      %details
-        %summary What is a repossession claim?
-        %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, illum, voluptatum, ipsa, natus placeat incidunt veritatis accusantium modi officia quisquam fuga harum excepturi aut iste maiores cumque dolorem impedit officiis!
-      %details
-        %summary I don't have a computer, how am I able to view the claim and file a defence?
-        %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, accusantium, quae, consequatur, veritatis temporibus delectus eveniet laudantium dolores hic aliquam ab blanditiis totam quisquam perspiciatis quos. Aperiam soluta cumque aliquid?
-      %details
-        %summary Do I have to go to court?
-        %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore, id, voluptatum, culpa, cumque blanditiis provident fugit quo sunt fuga aliquam ab nihil impedit facilis voluptates assumenda sint beatae pariatur laudantium.
-
+  

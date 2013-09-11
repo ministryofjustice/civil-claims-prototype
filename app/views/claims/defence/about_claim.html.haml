@@ -1,18 +1,18 @@
 = render_local_navigation
 
 %article
-  %h2 Step 2 of 5 - About the claim
-  %p.lead Add the details of the disputes within the claim and all other related details
+  %h2 Step 2 of 5 - About the case
+  %p.lead Add the details of the disputes within the case and all other related details
 
   = simple_form_for @defense, :url => { :action => "update" } do |f|
     
-    / ABOUT THE CLAIM
+    / ABOUT THE CASE
     %section
-      %h3 About the claim
+      %h3 About the case
       .moj-panel
         .panel-component
           Do you agree with what is said about the property and the tenancy agreement in the 
-          %a.fake-link claim particulars
+          %a.fake-link case details
           ?
           .striped-choice
             %div
@@ -38,7 +38,7 @@
 
         .panel-component
           Do you agree that there are arrears of the rent as stated in the 
-          %a.fake-link claim particulars
+          %a.fake-link case particulars
           ?
           .striped-choice
             %div
@@ -61,7 +61,7 @@
         .panel-component
           Have you paid any money to your landlord since 
           %strong Wednesday 11 July 2013
-          when the claim was issued?
+          when the case was issued?
           .striped-choice
             %div
               = f.radio_button :paid_money_since_claim_brought, 'true', :class => "js-panel-component-details-show"
@@ -105,7 +105,7 @@
         .panel-component
           Have you come to any agreement with your landlord about repaying the arrears since 
           %strong Wednesday 11 July 2013
-          when the claim was issued?
+          when the case was issued?
           .striped-choice
             %div
               = f.radio_button :agreement_to_repay_arrears, 'true', :class => "js-panel-component-details-show"
@@ -114,7 +114,7 @@
               = f.radio_button :agreement_to_repay_arrears, 'false', :class => "js-panel-component-details-hide"
               = f.label :agreement_to_repay_arrears_false, 'No'
           .component-details{ :class => ('element-invisible' unless @defense.agreement_to_repay_arrears)}
-            = f.input :repayment_amount, as: :string, label: "Payment amount"
+            = f.input :repayment_amount, as: :currency, label: "Payment amount"
             = f.input :repayment_frequency, as: :radio_buttons, collection: [["Per month", "montly"], ["Per week", "weekly"]]
           .component-details.panel-component{ :class => ('element-invisible' if (@defense.agreement_to_repay_arrears.nil? || @defense.agreement_to_repay_arrears))}
             Do you want the court to consider allowing you to pay arrears in installments?
@@ -127,11 +127,11 @@
                 = f.label :request_to_consider_repayments_by_installment_false, 'No'
             .component-details.panel-component{ :class => ('element-invisible' unless @defense.request_to_consider_repayments_by_installment)}
               How much can you afford to pay in addition to the current rent?
-              = f.input :installment_amount, as: :string, label: "Payment amount"
+              = f.input :installment_amount, as: :currency, label: "Payment amount"
               = f.input :installment_frequency, as: :radio_buttons, collection: [["Per month", "montly"], ["Per week", "weekly"]]
 
         .panel-component
-          Do you have a money or other type of claim against the landlord?
+          Do you have a money or other type of case against the landlord?
           .striped-choice
             %div
               = f.radio_button :has_claim_against_landlord, 'true', :class => "js-panel-component-details-show"
@@ -143,7 +143,7 @@
             = f.input :claim_case_number, label: "Case number"
 
         %div
-          = f.label :comments_on_particulars, "Do you have any comment about anything else in the <a class='fake-link'>claim particulars</a>?".html_safe
+          = f.label :comments_on_particulars, "Do you have any comment about anything else in the <a class='fake-link'>case particulars</a>?".html_safe
           = f.input :comments_on_particulars, input_html: {:rows => 5}, label: false
 
     = render :partial => 'claims/defence/save_continue', :locals => {f: f}

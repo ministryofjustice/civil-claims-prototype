@@ -13,7 +13,7 @@
       .panel-default
         %input{ type: 'hidden', name: 'personal_details', value: 'true'}
         = f.simple_fields_for :owner do |sf|
-          %details
+          %details.view-case-contact-details
             %summary{ :'aria-expanded' => false } If current address is different from above add contact address
             %p
               = sf.simple_fields_for :address do |sff|
@@ -36,9 +36,11 @@
           = sf.input :email
 
         / Solicitor
-        %details
+        %details.view-case-contact-details
           %summary.form-row This defence is being completed by a solicitor on behalf of the tenant
-          %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer purus dolor, semper ut sapien non, mattis fermentum purus. Sed tincidunt varius tortor sit amet malesuada. Integer vitae orci at magna laoreet vulputate. Aliquam ac tincidunt nisl.
+          .form-row
+            %label{ :for => "solicitor-name" } Solicitor name
+            %input{ :id=> "Solicitor-name", :type=>"text"}
 
   
     = render :partial => 'claims/defence/save_continue', :locals => {f: f}

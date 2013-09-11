@@ -77,8 +77,6 @@
           %span.supplementary (does not include any payments made by other members of your household)
         = f.simple_fields_for :monthly_expenses do |fmexp|
           = fmexp.input :amount, :label => fmexp.object.name, as: :currency, :input_html => {:class => 'small'}
-          
-          
         %span.button Add another expense
         
         .panel-component
@@ -144,16 +142,6 @@
                 = f.label :loans_arrears_details, "Please give details"
                 = f.input :loans_arrears_details, label: false, :input_html => { :rows => 5 }
 
-
-
-
-
-
-
-
-
-
-
         .panel-component
           %p Are you currently paying any court orders or fines?
           .striped-choice
@@ -191,31 +179,6 @@
               .component-details{ :class => ('element-invisible' unless @defense.behind_on_fine_payments) }
                 = f.label :fine_payments_details, "Please give details"
                 = f.input :fine_payments_details, label: false, :input_html => { :rows => 5 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         
         .labeled-content
           .content-label

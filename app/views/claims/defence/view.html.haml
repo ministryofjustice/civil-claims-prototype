@@ -21,7 +21,7 @@
     = render partial: 'addresses/address_for_possession/view', :locals => { claim: @claim, address: @claim.address_for_possession, options: {} }
 
   %section
-    %h3 Claim particulars
+    %h3 Case details
     - options = { class: 'horizontal' }
     = render partial: "claims/shared/particulars/view", locals: { claim: @claim, options: options }
 

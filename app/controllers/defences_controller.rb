@@ -81,7 +81,7 @@ class DefencesController < ApplicationController
   private
 
   def page_title
-    @page_title = "View repossession claim<br />and file a defence".html_safe
+    @page_title = "View repossession case<br />and file a defence".html_safe
   end
 
   def no_page_title
