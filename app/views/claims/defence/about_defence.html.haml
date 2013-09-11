@@ -91,7 +91,20 @@
               = f.radio_button :in_arrears_in_monthly_outgoings, 'false', :class => "js-panel-component-details-hide"
               = f.label :in_arrears_in_monthly_outgoings_false, "No"
           .component-details{ :class => ('element-invisible' unless @defense.in_arrears_in_monthly_outgoings) }
-            %h5 boom
+            .form-row.clearfix.currency 
+              %label.control-label{ :for => "money-out-arrear" } Arrear
+              %input.string.small{ :id => "money-out-arrear", :type => "currency"}
+            
+            .form-row
+              %label.currency.control-label{ :for => "money-out-balance" } Balance
+              %strong &pound
+              %input.string.currency.small{ :id => "money-out-balance", :type => "currency"}
+
+            .form-row
+              %label.currency.control-label{ :for => "money-out-costpermonth" } Cost per month
+              %strong &pound
+              %input.string.currency.small{ :id => "money-out-costpermonth", :type => "currency"}
+            %span.button Add another arrear
 
         .panel-component
           %p Do you have any loan or credits debts?
