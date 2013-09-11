@@ -161,17 +161,20 @@ Styleguide 1.1
 
 // PARTICULARS
 .particulars-horizontal {
+  position: relative;
   h4 {
     display: inline-block;
     width: 30%;
     font-weight: bold;
     font-size: 16px;
+    vertical-align: top;
 
     &:first-child { margin-top: 0px; }
   }
   span {
     display: inline-block;
     width: 60%;
+    margin-top: 1.5em;
   }
 
 }
