@@ -160,10 +160,11 @@ button.post-link {
   background:none !important;
   border:none; 
   padding:0 !important;
-  color:#069;
+  color:#2E3191;
   cursor:pointer;
+  text-decoration: underline;
 
-  &:hover { text-decoration:underline; }
+  &:hover { color: #2e8aca; }
 }
 
 form .formalise {
