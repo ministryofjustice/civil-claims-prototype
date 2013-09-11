@@ -7,13 +7,13 @@
     %h2 Landlord/s
     - @claim.claimants.each do |claimant|
       - options = {}
-      - options[:class] = 'claimant person well clearfix no-edit'
+      - options[:class] = 'claimant'
       = render :partial => 'people/show', :locals => { person: claimant, options: options, claim: @claim }
 
     %h2 Tenant/s
     - @claim.defendants.each do |defendant|
       - options = {}
-      - options[:class] = 'defendant person well clearfix'
+      - options[:class] = 'defendant'
       = render :partial => 'people/show', :locals => { person: defendant, options: options, claim: @claim }
 
     %h2 Property details

@@ -49,6 +49,8 @@ class ClaimsController < ApplicationController
     case params[:commit]
     when 'Save and continue'
       redirect_to next_navigation_path
+    when 'Make payment and submit claim'
+      redirect_to next_navigation_path
     when 'Close'
       redirect_to root_path
     end

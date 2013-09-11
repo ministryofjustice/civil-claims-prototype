@@ -7,35 +7,38 @@
 
     = simple_form_for @claim, url: personal_details_claim_path( @claim ) do |claim_form|
 
-      %h3 Landlord details
-      = render partial: "people/claimants/edit_primary_claimant", locals: {claim_form: claim_form}
-      = submit_tag 'Add another landlord', :class => "button-secondary"
+      %section
+        %h3 Landlord details
+        = render partial: "people/claimants/edit_primary_claimant", locals: {claim_form: claim_form}
+        = submit_tag 'Add another landlord', :class => "button-secondary"
 
-      %h3 Tenant details
-      = render partial: "people/defendants/edit_primary_defendant", locals: {claim_form: claim_form}
-      = submit_tag 'Add another tenant', :class => "button-secondary"
+      %section
+        %h3 Tenant details
+        = render partial: "people/defendants/edit_primary_defendant", locals: {claim_form: claim_form}
+        = submit_tag 'Add another tenant', :class => "button-secondary"
 
-      %h3 Property details
-      .moj-panel
-        = render :partial => 'addresses/address_for_possession/edit', :locals => { claim_form: claim_form, address: @claim.address }
+      %section
+        %h3 Property details
+        .moj-panel
+          = render :partial => 'addresses/address_for_possession/edit', :locals => { claim_form: claim_form, address: @claim.address }
 
-        .form-group.striped-choice
-          %h4 Type of property
-          %div
-            = claim_form.radio_button(:property_type, 'residential')
-            = label_tag :claim_property_type_residential, 'Residential'
-          %div
-            = claim_form.radio_button :property_type, 'commercial'
-            = label_tag :claim_property_type_commercial, 'Commercial'
+          .form-group.striped-choice
+            %h4 Type of property
+            %div
+              = claim_form.radio_button(:property_type, 'residential')
+              = label_tag :claim_property_type_residential, 'Residential'
+            %div
+              = claim_form.radio_button :property_type, 'commercial'
+              = label_tag :claim_property_type_commercial, 'Commercial'
 
-        .form-group.striped-choice
-          %h4 Who is in the property?
-          %div
-            = claim_form.radio_button :resident_type, 'private tenant'
-            = label_tag :claim_resident_type_private_tenant, 'Tenant'
-          %div
-            = claim_form.radio_button :resident_type, 'squatter'
-            = label_tag :claim_resident_type_squatter, 'Squatter'
+          .form-group.striped-choice
+            %h4 Who is in the property?
+            %div
+              = claim_form.radio_button :resident_type, 'private tenant'
+              = label_tag :claim_resident_type_private_tenant, 'Tenant'
+            %div
+              = claim_form.radio_button :resident_type, 'squatter'
+              = label_tag :claim_resident_type_squatter, 'Squatter'
       
      
       = render partial: 'claims/claimant/save_continue', locals: {f: claim_form}
