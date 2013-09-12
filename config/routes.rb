@@ -1,6 +1,7 @@
 CivilClaims::Application.routes.draw do
 
-  mount Nkss::Engine => '/styleguides' if Rails.env.development?
+  
+  mount Nkss::Engine => '/styleguides' # if Rails.env.development?
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
