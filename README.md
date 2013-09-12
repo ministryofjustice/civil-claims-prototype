@@ -62,3 +62,14 @@ cd ~/Sites/civil-claims
 rails s
 ```
 
+# Updating to the latest version
+
+- On the command-line
+
+```
+cd ~/Sites/civil-claims  
+git pull  
+bundle install  
+rake db:drop db:migrate db:seed  
+rails s
+```
