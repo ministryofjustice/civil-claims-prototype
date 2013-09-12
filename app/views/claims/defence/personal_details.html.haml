@@ -27,7 +27,7 @@
                     
                     = sff.input :postcode do 
                       = sff.input_field :postcode, class: 'postcode'
-                      - classes = 'button-secondary find-uk-address'
+                      - classes = 'button find-uk-address'
                       - classes << ' disabled' if sff.object.postcode.blank?
                       = link_to 'Find UK address', '/address/picker', :class => classes
 

@@ -37,6 +37,7 @@ class ClaimsController < ApplicationController
   end
 
   def login
+    hide_user_nav
     render 'claims/claimant/login'
   end
 
@@ -148,6 +149,10 @@ class ClaimsController < ApplicationController
   end
 
   private
+
+    def hide_user_nav
+      @hide_user_nav = true
+    end
 
     def page_title 
       @page_title = "Repossess a property:<br />make a possession claim".html_safe

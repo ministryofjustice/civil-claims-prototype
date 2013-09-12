@@ -13,8 +13,6 @@
         %a.is-active-tab{"data-toggle" => "tab", :href => "#new"} Start a new case
       %li.active.list
         %a.is-active-tab{"data-toggle" => "tab", :href => "#list"} Your cases
-  - else
-    %h2 Start a new case
   %section#start-continue-claim
     .tab-content
       - tab_class = has_claims ? 'tab-pane' : 'tab-pane active'

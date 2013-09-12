@@ -12,7 +12,7 @@
   
     = f.input :postcode do
       = f.input_field :postcode, class: 'postcode'
-      - classes = 'button-secondary find-uk-address'
+      - classes = 'button find-uk-address'
       - classes << ' disabled' if address.postcode.blank?
       = link_to 'Find UK address', '/address/picker', :class => classes
 

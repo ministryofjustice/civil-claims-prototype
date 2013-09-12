@@ -66,9 +66,6 @@
             %div
               = f.check_box :claim_rental_arrears, :onClick => "toggle_panel(this,'rental-arrears');"
               = f.label :claim_rental_arrears, "Reclaim unpaid rent"
-            %div
-              = f.check_box :lease_forfeiture
-              = f.label :lease_forfeiture, "End the tenancy"
 
           %details{:open => @claim.includes_human_rights_issues? ? true : false }
             %summary Does, or will, the claim include any issues under the human rights act 1998

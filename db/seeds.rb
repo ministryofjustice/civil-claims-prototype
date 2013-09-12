@@ -8,8 +8,8 @@
 
 c = Claimant.create({
   full_name: 'John Smith Reynolds',
-  phone: '+44 (0)207 613 4431',
-  mobile: '+44 (0)7792 685998',
+  phone: '0207 613 4431',
+  mobile: '07792 685998',
   email: 'jsreynolds@btconnect.com',
   uj: true
 })
