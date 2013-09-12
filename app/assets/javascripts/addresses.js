@@ -26,7 +26,7 @@
   });
 
   // enter address manually
-  var markup = $("<button class='post-link formalise enter-address-manually'>Enter address manually</a>");
+  var markup = $("<button class='post-link formalise enter-address-manually'>Enter address manually</button>");
   $('.address.element-invisible').siblings('[class*=postcode]').after(markup);
   $('body').on('click', '.enter-address-manually', function(evt) {
     evt.preventDefault();
