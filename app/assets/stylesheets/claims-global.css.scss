@@ -70,6 +70,9 @@ article li {
   }
 }
 
+button {
+  -webkit-font-smoothing: inherit; /* http://stackoverflow.com/questions/13556481/font-smoothing-not-applied-to-buttons/13638485#13638485 */
+}
 
 .well {
   @include well-style;
