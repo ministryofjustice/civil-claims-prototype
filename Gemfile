@@ -49,6 +49,9 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'simple_form', '>= 3.0.0.rc'
 
+
+gem 'nkss-rails', github: 'nadarei/nkss-rails'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
@@ -62,7 +65,6 @@ group :development do
   gem 'spork-rails', :github => 'sporkrb/spork-rails'
   gem 'guard-spork'
 
-  gem 'nkss-rails', github: 'nadarei/nkss-rails'
 
   gem "better_errors"
   gem "binding_of_caller"
