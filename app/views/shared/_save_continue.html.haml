@@ -1,8 +1,8 @@
 .button-panel
-  = button_tag( name: 'commit', value: 'save-and-continue', class: 'button' ) do
+  = button_tag( name: 'commit', value: 'save-and-continue', class: 'big button' ) do
     - text = defined?( button_text ) ? button_text : 'Continue'
     = content_tag(:span, text)
-  = button_tag( name: 'commit', value: 'close', class: 'button-secondary' ) do
+  = button_tag( name: 'commit', value: 'close', class: 'big button-secondary' ) do
     = content_tag(:span, 'Save and close')
 
         
