@@ -105,7 +105,21 @@
             margin: 0;
         }
         
+        /* Step 3 specific */
 
+        .court-hearing-details-time {
+            margin-top: 2em;
+        }
+        .court-badge .court-address {
+            width: 100%;
+        }
+        .court-badge .court-map {
+            width: 100%;
+            margin-bottom: 1em;
+            img {
+                margin-bottom: 1em;
+            }
+        }
         
         /* EXTENDING PATTERN LIB */
 
