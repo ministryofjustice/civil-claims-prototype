@@ -48,7 +48,7 @@ Styleguide 1.5
   border-style: solid;
   border-color: #c8c8c8;
   padding:30px 20px 30px 100px;
-  .panel-component{
+  &>.panel-component{
     margin-bottom: 45px;
     
     .component-details{
