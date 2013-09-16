@@ -17,12 +17,12 @@
         = render partial: "people/defendants/edit_primary_defendant", locals: {claim_form: claim_form}
         = submit_tag 'Add another tenant', :class => "button-secondary"
 
-      %section
+      %section.property_details
         %h3 Property details
         .moj-panel
           = render :partial => 'addresses/address_for_possession/edit', :locals => { claim_form: claim_form, address: @claim.address }
 
-          .form-group.striped-choice
+          .form-group.striped-choice.property_type
             %h4 Type of property
             %div
               = claim_form.radio_button(:property_type, 'residential')
@@ -31,7 +31,7 @@
               = claim_form.radio_button :property_type, 'commercial'
               = label_tag :claim_property_type_commercial, 'Commercial'
 
-          .form-group.striped-choice
+          .form-group.striped-choice.tenant_type
             %h4 Who is in the property?
             %div
               = claim_form.radio_button :resident_type, 'tenant'
