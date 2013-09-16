@@ -75,7 +75,8 @@
             margin: 1em 0;
         }
         .form-row label {
-            width: 100%;
+            width: auto;
+            display: block;
             margin: 0 20px;
         }
         .form-row input.postcode[type="text"], .form-row input.postcode[type="tel"], .form-row input.postcode[type="email"], .form-row input.postcode[type="currency"], .form-row select.postcode {
@@ -141,6 +142,11 @@
         #statement-of-truth .person {
             background-image: none;
             padding: 10px 20px;
+            margin: 0 -20px;
+        }
+        #statement-of-truth .particulars-vertical h4, #statement-of-truth .particulars-vertical span {
+            margin-left: 20px;
+            margin-right: 20px;
         }
         
         /* EXTENDING PATTERN LIB */
