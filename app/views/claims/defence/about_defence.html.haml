@@ -60,31 +60,36 @@
     %section
       %h3 Money in
       .moj-panel
-        %p What are your present circumstances?
-        .striped-choice
-          %div
-            = f.radio_button(:present_circumstances, 'employed')
-            = f.label :present_circumstances_employed, 'Employed'
-          %div
-            = f.radio_button :present_circumstances, 'universal_credit'
-            = f.label :present_circumstances_universal_credit, 'Universal credit'
-          %div
-            = f.radio_button :present_circumstances, 'no_income'
-            = f.label :present_circumstances_no_income, 'No income'
+        .panel-component
+          %p What are your present circumstances?
+          .striped-choice
+            %div
+              = f.radio_button :present_circumstances, 'employed', :class => "js-panel-component-details-show"
+              = f.label :present_circumstances_employed, 'Employed'
+            %div
+              = f.radio_button :present_circumstances, 'universal_credit', :class => "js-panel-component-details-show"
+              = f.label :present_circumstances_universal_credit, 'Universal credit'
+            %div
+              = f.radio_button :present_circumstances, 'no_income', :class => "js-panel-component-details-hide"
+              = f.label :present_circumstances_no_income, 'No income'
+          .component-details{ :class => ('element-invisible' unless f.object.has_money_in?) }
+            %p Please provide all figures of the money coming in per month
+            = f.input :income, :label => "Income", as: :currency, :input_html => {:class => 'small'}
+            = f.input :pension, :label => "Pension", as: :currency, :input_html => {:class => 'small'}
+            = f.input :child_benefit, :label => "Child benefit", as: :currency, :input_html => {:class => 'small'}
+            = f.input :other_monies_in, :label => "Other money in", as: :currency, :input_html => {:class => 'small'}
+            .labeled-content
+              .content-label
+                %strong Total money in
+              .content
+                %strong
+                  &pound;
+                  1,850 per month
 
-        %p Please provide all figures of the money coming in per month
-        = f.input :income, :label => "Income", as: :currency, :input_html => {:class => 'small'}
-        = f.input :pension, :label => "Pension", as: :currency, :input_html => {:class => 'small'}
-        = f.input :child_benefit, :label => "Child benefit", as: :currency, :input_html => {:class => 'small'}
-        = f.input :other_monies_in, :label => "Other money in", as: :currency, :input_html => {:class => 'small'}
-
-        .labeled-content
-          .content-label
-            %strong Total money in
-          .content
-            %strong
-              &pound;
-              1,850 per month
+          / this is a guess over here - there is no design around this 
+          .component-details{ :class => ('element-invisible' if !f.object.has_money_in?) }
+            %label{ :id => "no-income-details" } Please give details
+            %textarea{ :id => "no-income-details", :type => "text", :rows => 5 }
     
     / MONEY OUT
     %section

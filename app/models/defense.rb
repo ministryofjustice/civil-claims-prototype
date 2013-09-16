@@ -17,4 +17,8 @@ class Defense < ActiveRecord::Base
     )
   end
 
+  def has_money_in?
+    ['employed', 'universal_credit'].include? self.present_circumstances
+  end
+
 end
