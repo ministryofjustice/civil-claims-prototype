@@ -33,7 +33,7 @@
             display: none;
         }
         #wrapper { 
-            width: 280px;
+            min-width: 280px;
             margin: 0 20px;
 
             header h1 {
@@ -41,7 +41,8 @@
             }
         }
         .form-row input[type="text"], .form-row input[type="tel"], .form-row input[type="email"], .form-row input[type="currency"], .form-row select {
-            width: 264px;
+            width: 82%;
+            margin-left: 20px;
         }
         input[type="text"], input[type="search"] {
             font-size: 16px;
@@ -62,6 +63,10 @@
         }
         .moj-panel {
             padding: 0;
+            margin: 0 -20px;
+        }
+        .button-secondary {
+            margin-top: 1em;
         }
         .claim_claimants_full_name, .claim_defendants_full_name {
             margin-top: 1em;
@@ -70,13 +75,14 @@
             margin: 1em 0;
         }
         .form-row label {
-            width: 180px;
+            width: 100%;
+            margin: 0 20px;
         }
         .form-row input.postcode[type="text"], .form-row input.postcode[type="tel"], .form-row input.postcode[type="email"], .form-row input.postcode[type="currency"], .form-row select.postcode {
             width: 5.5em;
         }
         form .enter-address-manually {
-            margin: 1em 0;
+            margin: 1em 20px;
         }
         .property_details .moj-panel {
             margin-top: 20px;
@@ -84,11 +90,17 @@
         .property_details .address-container, .property_details .tenant_type {
             display:none;
         }
-        .property_details .property_type h4 {
-            margin-top: 1em;
+        .property_details .property_type {
+            h4 {
+                margin: 0 20px;
+                margin-top: 1em;
+            }
+            div {
+                margin: 0 20px;
+            }
         }
         .button-panel .big.button {
-            margin-bottom: 1.5em;
+            margin-bottom: 0.5em;
         }
 
         main p {
@@ -108,10 +120,13 @@
         /* Step 3 specific */
 
         .court-hearing-details-time {
-            margin-top: 2em;
+            margin: 2em -20px;
         }
-        .court-badge .court-address {
-            width: 100%;
+        .court-badge {
+            margin: 0 20px;
+            .court-address {
+                width: 100%;
+            }
         }
         .court-badge .court-map {
             width: 100%;
@@ -119,6 +134,13 @@
             img {
                 margin-bottom: 1em;
             }
+        }
+
+        /* Step 4 specific */
+
+        #statement-of-truth .person {
+            background-image: none;
+            padding: 10px 20px;
         }
         
         /* EXTENDING PATTERN LIB */
