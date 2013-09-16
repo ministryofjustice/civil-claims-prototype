@@ -45,6 +45,7 @@
         }
         input[type="text"], input[type="search"] {
             font-size: 16px;
+            min-width: 0;
         }
         footer {
             display: none;
@@ -62,7 +63,33 @@
         .moj-panel {
             padding: 0;
         }
-
+        .claim_claimants_full_name, .claim_defendants_full_name {
+            margin-top: 1em;
+        }
+        .edit-person details summary {
+            margin: 1em 0;
+        }
+        .form-row label {
+            width: 180px;
+        }
+        .form-row input.postcode[type="text"], .form-row input.postcode[type="tel"], .form-row input.postcode[type="email"], .form-row input.postcode[type="currency"], .form-row select.postcode {
+            width: 5.5em;
+        }
+        form .enter-address-manually {
+            margin: 1em 0;
+        }
+        .property_details .moj-panel {
+            margin-top: 20px;
+        }
+        .property_details .address-container, .property_details .tenant_type {
+            display:none;
+        }
+        .property_details .property_type h4 {
+            margin-top: 1em;
+        }
+        .button-panel .big.button {
+            margin-bottom: 1.5em;
+        }
 
         main p {
 
