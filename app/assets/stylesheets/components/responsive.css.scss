@@ -41,7 +41,7 @@
             }
         }
         .form-row input[type="text"], .form-row input[type="tel"], .form-row input[type="email"], .form-row input[type="currency"], .form-row select {
-            width: 82%;
+            width: auto;
             margin-left: 20px;
         }
         input[type="text"], input[type="search"] {
@@ -52,12 +52,23 @@
             display: none;
         }
 
-        /* Page 1 specific */
+        /* Sign-in page */
+
+        .edit_claimant {
+            .claimant_full_name {
+                margin-top: 10px;
+            }
+            input.button {
+                margin: 10px 0 20px 20px;
+            }
+        }
+
+        /* Start page specific */
         #start-continue-claim {
             padding-bottom: 0;
         }
 
-        /* Page 2 specific */
+        /* Step 1 specific */
         nav.primary {
             display: none;
         }
@@ -117,6 +128,35 @@
         }
         .tab-content {
             margin: 0;
+        }
+
+        /* Step 2 specific */
+
+        #about-tenancy .panel-default {
+            .labeled-content {
+                .content-label {
+                    display: block;
+                    width: 100%;
+                }
+                .content-block {
+                    width: 100%;
+
+                    .select.optional {
+                        margin-left: 0;
+                    }
+                }
+            }
+            .claim_tenancy_start_date label {
+                margin: 0;
+            }
+            .claim_rental_amount {
+                label {
+                    margin: 0;
+                }
+                input {
+                    margin-left: 5px;
+                }
+            }
         }
         
         /* Step 3 specific */
