@@ -35,7 +35,7 @@ describe Person do
     assert user.claims.size == 0
 
     count = rand(1..10)
-    count.times do 
+    count.times do
       c = Claim.create
       c.owner = user
       c.save
@@ -56,10 +56,10 @@ describe Person do
     assert sut_person
     assert sut_person.address
 
-    sut_person.id.should_not eq(source_person.id)
-    sut_person.full_name.should eq(source_person.full_name)
+    expect(sut_person.id).to_not eq(source_person.id)
+    expect(sut_person.full_name).to eq(source_person.full_name)
 
-    sut_person.address.id.should_not eq(source_person.address.id)
-    sut_person.address.street_1.should eq(source_person.address.street_1)
+    expect(sut_person.address.id).to_not eq(source_person.address.id)
+    expect(sut_person.address.street_1).to eq(source_person.address.street_1)
   end
 end
