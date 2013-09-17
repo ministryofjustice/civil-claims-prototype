@@ -74,7 +74,7 @@
       = succeed "." do
         %a.fake-link terms and conditions
     .striped-choice
-      %div
+      .ts-and-cs
         %input#tnc-agreement{:type => "checkbox"}/
         %label{:for => "tnc-agreement"} I agree to terms and conditions of this service
     = form_for @claim do |f|

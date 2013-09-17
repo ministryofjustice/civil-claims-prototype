@@ -62,8 +62,9 @@
             display: none;
         }
         .moj-panel {
-            padding: 0;
-            margin: 0 -20px;
+            padding: 0 40px 0 0;
+            margin: 0 0 0 -20px;
+            width: 100%;
         }
         .button-secondary {
             margin-top: 1em;
@@ -72,7 +73,7 @@
             margin-top: 1em;
         }
         .edit-person details summary {
-            margin: 1em 0;
+            margin: 1em 0 1em 20px;
         }
         .form-row label {
             width: auto;
@@ -142,17 +143,71 @@
         #statement-of-truth .person {
             background-image: none;
             padding: 10px 20px;
-            margin: 0 -20px;
+            margin-left: -20px;
+            width: 100%;
         }
         #statement-of-truth .particulars-vertical h4, #statement-of-truth .particulars-vertical span {
             margin-left: 20px;
             margin-right: 20px;
         }
+        .claim-signature label {
+            margin: 0;
+        }
+
+        /* Step 5 specific */
+
+        #claim-fee {
+            margin: 20px 0 20px -20px;
+            padding: 20px 40px 20px 0;
+            display: block;
+            width: 100%;
+        }
+        .panel-default {
+            margin-left: -20px;
+            padding: 20px;
+            display: block;
+            width: 100%;
+        }
+        .payment-details-wrap {
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+
+            .payment-details {
+                padding: 0;
+
+                .labeled-content {
+                    .content-label, .content-block {
+                        display: block;
+                        width: 100%;
+
+                        .fake-link {
+                            margin-left: 20px;
+                        }
+                    }
+                    #card-number {
+                        width: 270px;
+                    }
+                }
+            }
+        }
+        #fees {
+            .panel-info {
+                margin-top: 0;
+            }
+            .striped-choice .ts-and-cs {
+                margin-bottom: 35px;
+                label {
+                    padding-top: 6px;
+                }
+            }
+        }
+
         
         /* EXTENDING PATTERN LIB */
 
         .button.big, .button-secondary.big {
             width: 100%;
+            margin-right: 0;
         }
      
         #new-claim-step-list {
