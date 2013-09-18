@@ -1,0 +1,30 @@
+!!!
+%html
+  %head
+    :javascript
+      document.documentElement.className += " js-enabled";
+    = render "shared/head", :title => Rails.configuration.app_title, :noapp => true
+    = stylesheet_link_tag    "application", media: "all"
+    = stylesheet_link_tag    "vendor/fullcalendar", media: "all"
+    = stylesheet_link_tag    "staff", media: "all"
+  %body{:class => Rails.configuration.phase}
+    = render 'shared/header', :proposition => 'Civil Claims - Staff'
+    = render 'shared/phase_indicator'
+    = render 'layouts/header'
+    #wrapper
+      %main{:role => "main"}
+        
+        %header.page-header.group
+          %h1
+            %span Service
+            Civil Claims: Court Calendar
+
+        = yield
+
+    = render'shared/footer'
+
+    = javascript_include_tag "application"
+    = javascript_include_tag "vendor/fullcalendar.min"
+    = javascript_include_tag "moj"
+    = javascript_include_tag "calendar"
+    = javascript_include_tag "main"
