@@ -1,7 +1,7 @@
 class Claim < ActiveRecord::Base
   has_many :claimants
   has_many :defendants
-  has_many :attachments, :dependent => :destroy
+  has_many :attachments, :as => :attachable, :dependent => :destroy
   has_many :defenses, :dependent => :destroy
   has_and_belongs_to_many :arrears
 

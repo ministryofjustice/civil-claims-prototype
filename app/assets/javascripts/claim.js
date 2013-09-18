@@ -46,8 +46,9 @@ var initPage = function(){
   
 
   // kinda bad ;)
-  $('.js-panel-component-details-show').on('click', function(event){
-    var panels = $(event.target).parent().parent().nextAll('.component-details');
+  // change this to html5 data- attribute passing an id
+  $('.js-panel-component-details-show').on('click', function(e){
+    var panels = $(e.target).parent().parent().nextAll('.component-details');
     $(panels[0]).removeClass('element-invisible');
     if(panels[1]){
       $(panels[1]).addClass('element-invisible');
@@ -55,13 +56,31 @@ var initPage = function(){
 
   });
 
-  $('.js-panel-component-details-hide').on('click', function(event){
-    var panels = $(event.target).parent().parent().nextAll('.component-details');
+  $('.js-panel-component-details-hide').on('click', function(e){
+    var panels = $(e.target).parent().parent().nextAll('.component-details');
     $(panels[0]).addClass('element-invisible');
     if(panels[1]){
       $(panels[1]).removeClass('element-invisible');
     }
   });
+
+
+  $('.js-add-attachment').bind('ajax:complete', function(e, data, status, xhr) {
+    console.log(e);
+    console.log(data);
+    console.log(status);
+    console.log(xhr);
+
+    // if (status == "success"){
+    //   $('.js-supporting-documents-panel').append(data.responseText);
+    // }
+
+    if (status =="error"){
+      $('#errors').append(data.responseText);
+    }
+
+  });
+
 
 };
 

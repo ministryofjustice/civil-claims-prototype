@@ -10,7 +10,7 @@
     = render partial: 'addresses/show', locals: { address: @claim.address_for_possession }
   
 %article
-  - if @defense.present?
+  - if @defence.present?
     %ul.claims-index-tabs.nav.nav-tabs
       %li.submit
         %a.is-active-tab{"data-toggle" => "tab", :href => "#new"} What to do
@@ -20,10 +20,10 @@
     %h2 What to do next
   %section#start-continue-defence
     .tab-content
-      - tab_class = @defense.present? ? 'tab-pane' : 'tab-pane active'
+      - tab_class = @defence.present? ? 'tab-pane' : 'tab-pane active'
       #new{:class => tab_class}
         = render partial: 'claims/defence/home'
-      - tab_class = @defense.present? ? 'tab-pane active' : 'tab-pane'
+      - tab_class = @defence.present? ? 'tab-pane active' : 'tab-pane'
       #list{:class => tab_class}
         = render partial: 'claims/defence/list', locals: {claims: @user.claims}
 

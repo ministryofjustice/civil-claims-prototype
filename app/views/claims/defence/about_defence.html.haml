@@ -4,7 +4,7 @@
   %h2 Step 3 of 5 - About you
   %p.lead An opportunity to tell the courts about your financial situation, the more information you can provide, the more opportunity for you to get help and guidance.
 
-  = simple_form_for @defense, :url => { :action => "update" } do |f|
+  = simple_form_for @defence, :url => { :action => "update" } do |f|
     / CIRCUMSTANCES
     %section
       %h3 Circumstances
@@ -21,7 +21,7 @@
             %div
               = f.radio_button :has_somewhere_else_to_live, 'false', :class => "js-panel-component-details-hide"
               = f.label :has_somewhere_else_to_live_false, "No"
-          .component-details{ :class => ('element-invisible' unless @defense.has_somewhere_else_to_live) }
+          .component-details{ :class => ('element-invisible' unless @defence.has_somewhere_else_to_live) }
             %label{ :for => "move-in-date-for-other-property" } When would you be able to move in?
             = f.input :move_in_date_for_other_property, label: false, :input_html => { :id =>"move-in-date-for-other-property" }
     
@@ -112,7 +112,7 @@
             %div
               = f.radio_button :in_arrears_in_monthly_outgoings, 'false', :class => "js-panel-component-details-hide"
               = f.label :in_arrears_in_monthly_outgoings_false, "No"
-          .component-details{ :class => ('element-invisible' unless @defense.in_arrears_in_monthly_outgoings) }
+          .component-details{ :class => ('element-invisible' unless @defence.in_arrears_in_monthly_outgoings) }
             .form-row.clearfix 
               %label.control-label{ :for => "money-out-arrears-arrear" } Arrear
               %input.string.small{ :id => "money-out-arrears-arrear", :type => "text" }
@@ -137,7 +137,7 @@
             %div
               = f.radio_button :loans_or_credit_cards, 'false', :class => "js-panel-component-details-hide"
               = f.label :loans_or_credit_cards_false, "No"
-          .component-details{ :class => ('element-invisible' unless @defense.loans_or_credit_cards) }
+          .component-details{ :class => ('element-invisible' unless @defence.loans_or_credit_cards) }
             .form-row.clearfix
               %label.control-label{ :for => "money-out-loans-loancreditcard" } Loan/credit card
               %input.string.small{ :id => "money-out-loans-loancreditcard", :type => "text" }
@@ -162,7 +162,7 @@
                 %div
                   = f.radio_button :loans_arrears, 'false', :class => "js-panel-component-details-hide"
                   = f.label :loans_arrears_false, "No"
-              .component-details{ :class => ('element-invisible' unless @defense.loans_arrears) }
+              .component-details{ :class => ('element-invisible' unless @defence.loans_arrears) }
                 = f.label :loans_arrears_details, "Please give details"
                 = f.input :loans_arrears_details, label: false, :input_html => { :rows => 5 }
 
@@ -175,7 +175,7 @@
             %div
               = f.radio_button :currently_paying_court_orders_or_fines, 'false', :class => "js-panel-component-details-hide"
               = f.label :currently_paying_court_orders_or_fines_false, "No"
-          .component-details{ :class => ('element-invisible' unless @defense.currently_paying_court_orders_or_fines) }
+          .component-details{ :class => ('element-invisible' unless @defence.currently_paying_court_orders_or_fines) }
             .form-row.clearfix
               %label.control-label{ :for => "money-out-ordersfines-caseno" } Case no.
               %input.string.small{ :id => "money-out-ordersfines-caseno", :type => "text" }
@@ -200,7 +200,7 @@
                 %div
                   = f.radio_button :behind_on_fine_payments, 'false', :class => "js-panel-component-details-hide"
                   = f.label :behind_on_fine_payments_false, "No"
-              .component-details{ :class => ('element-invisible' unless @defense.behind_on_fine_payments) }
+              .component-details{ :class => ('element-invisible' unless @defence.behind_on_fine_payments) }
                 = f.label :fine_payments_details, "Please give details"
                 = f.input :fine_payments_details, label: false, :input_html => { :rows => 5 }
         
@@ -225,7 +225,7 @@
             %div
               = f.radio_button :has_dependent_children, 'false', :class => "js-panel-component-details-hide"
               = f.label :has_dependent_children_false, "No"
-          .component-details{ :class => ('element-invisible' unless @defense.has_dependent_children) }
+          .component-details{ :class => ('element-invisible' unless @defence.has_dependent_children) }
             .form-row
               %label Children
               = f.input :dependents_under_11, collection: 0..7, priority: 0, include_blank: false, label: "Under 11yrs"
@@ -242,19 +242,24 @@
             %div
               = f.radio_button :has_other_dependents, 'false', :class => "js-panel-component-details-hide"
               = f.label :has_other_dependents_false, "No"
-          .component-details{ :class => ('element-invisible' unless @defense.has_other_dependents) }
+          .component-details{ :class => ('element-invisible' unless @defence.has_other_dependents) }
             = f.label :details_of_other_dependents, "Please give details"
             = f.input :details_of_other_dependents, label: false, :input_html => { :rows => 5 }
 
     
     / SUPPORTING DOCUMENTATION
+
     %section
       %h3 Supporting documentation
       .moj-panel
         %p Attach any documentation to support your defense
         %p 
           %a.fake-link About supporting documentation
-        %span.button Attach documents
 
+        = link_to "Attach documents", claim_attachments_path(type: 'defence'), :remote => true, :method => :post, :class => "button" 
+
+        .js-supporting-documents-panel
+          - @defence.attachments.each do |attachment|
+            = render partial: "attachments/attachment", :locals => { attachment: attachment, type: 'defence' }
 
     = render :partial => 'shared/save_continue'

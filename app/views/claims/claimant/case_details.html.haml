@@ -117,6 +117,21 @@
           = f.text_area :other_information, :rows => 3
 
       / SUPPORTING DOCUMENTTION
-      = render partial: 'attachments/show', :locals => { f: f }
+
+      %section
+        %h3 Supporting documentation
+        .moj-panel
+          %p 
+            Attach any documents that support your case, such as the tenancy agreement or the ‘notice to quit’. Type of files supported include pdf, doc, open office, jpg, png, and many others. 
+          %p
+            %a.fake-link About supporting documentation
+          = link_to "Attach documents", claim_attachments_path(claim_id: @claim.id, type: 'claim'), :remote => true, :method => :post, :class => "button" 
+        
+          .js-supporting-documents-panel
+            - @claim.attachments.each do |attachment|
+              = render partial: "attachments/attachment", :locals => { attachment: attachment, type: 'claim' }
+
+
+
       
       = render :partial => 'shared/save_continue'
