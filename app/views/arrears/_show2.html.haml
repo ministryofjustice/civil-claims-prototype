@@ -21,5 +21,20 @@
         - for year in 2009..2013
           %option{ :value => year } 
             = year
-      %a fasdf
+      %span.button Add unpaid rent
+      
+      %details
+        %summary 
+          %span.status-header Did the tenant(s) pay part of the rent?
+        %span.content-list
+          %strong &pound;
+          %input.small{ :type => "text"}
 
+      %h3 arrears table
+  .moj-panel
+    = f.label :unpaid_rent_per_day, "Unpaid rent should be calculated at"
+    %strong &pound;
+    = f.input :unpaid_rent_per_day, :label => false, as: :currency, :input_html => { :class => 'small' }
+    per day
+    .striped-choice
+      = f.input :defendent_to_pay_for_claim, label: "Do you want to ask for the tenant(s) to pay for the cost of the case?"
