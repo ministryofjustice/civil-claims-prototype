@@ -23,26 +23,24 @@
               .labeled-content
                 .content-label Expiry date
                 #card-payment-expiry-date.content-block.all-inline
-                  %div
-                    %select#card-payment-month
-                      %option
-                      %option{:value => "1"} January
-                      %option{:value => "2"} February
-                      %option{:value => "3"} March
-                      %option{:value => "4"} April
-                      %option{:value => "5"} May
-                      %option{:value => "6"} June
-                      %option{:value => "7"} July
-                      %option{:value => "8"} August
-                      %option{:value => "9"} September
-                      %option{:value => "10"} October
-                      %option{:value => "11"} November
-                      %option{:value => "12"} December
-                  %div
-                    %select#card-payment-year
-                      %option
-                        - for year in 2013..2016
-                          %option{:value => year}= year
+                  %select#card-payment-month
+                    %option
+                    %option{:value => "1"} January
+                    %option{:value => "2"} February
+                    %option{:value => "3"} March
+                    %option{:value => "4"} April
+                    %option{:value => "5"} May
+                    %option{:value => "6"} June
+                    %option{:value => "7"} July
+                    %option{:value => "8"} August
+                    %option{:value => "9"} September
+                    %option{:value => "10"} October
+                    %option{:value => "11"} November
+                    %option{:value => "12"} December
+                  %select#card-payment-year
+                    %option
+                      - for year in 2013..2016
+                        %option{:value => year}= year
               .labeled-content
                 .content-label Security code (cvs)
                 .content-block.all-inline

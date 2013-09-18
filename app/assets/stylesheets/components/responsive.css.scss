@@ -41,7 +41,7 @@
             }
         }
         .form-row input[type="text"], .form-row input[type="tel"], .form-row input[type="email"], .form-row input[type="currency"], .form-row select {
-            width: auto;
+            width: 95%;
             margin-left: 20px;
         }
         input[type="text"], input[type="search"] {
@@ -54,8 +54,8 @@
 
         /* Sign-in page */
 
-        .edit_claimant {
-            .claimant_full_name {
+        .edit_claimant, .edit_defendant {
+            .claimant_full_name, .defendant_full_name {
                 margin-top: 10px;
             }
             input.button {
@@ -66,6 +66,11 @@
         /* Start page specific */
         #start-continue-claim {
             padding-bottom: 0;
+        }
+
+        /* Your Cases page */
+        #start-continue-claim {
+            
         }
 
         /* Step 1 specific */
@@ -155,6 +160,7 @@
                 }
                 input {
                     margin-left: 5px;
+                    width: auto;
                 }
             }
         }
@@ -227,6 +233,11 @@
                     #card-number {
                         width: 270px;
                     }
+                    #card-payment-expiry-date select {
+                        min-height: 30px;
+                        height: 30px;
+                        padding: 5px 0 4px 8px;
+                    }
                 }
             }
         }
@@ -236,6 +247,7 @@
             }
             .striped-choice .ts-and-cs {
                 margin-bottom: 35px;
+
                 label {
                     padding-top: 6px;
                 }
