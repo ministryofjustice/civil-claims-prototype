@@ -1,0 +1,530 @@
+%article
+
+  .controls
+    %ul
+      %li.toggle
+        %a.listview.current{:href => '#', :title => 'List view'} List view
+      %li.toggle
+        %a.calendarview{:href => '#', :title => 'Calendar view'} Calendar view
+      %li.new
+        %a.button{:href => '#'} Start a new claim
+
+  %details
+    %summary Filter list
+    .filters.cf
+      %ul
+        %li
+          %label
+            %input.courtbox{:type => 'checkbox', :checked => 'checked'}
+            Courtroom 1
+        %li
+          %label
+            %input.courtbox{:type => 'checkbox', :checked => 'checked'}
+            Courtroom 2
+        %li
+          %label
+            %input.courtbox{:type => 'checkbox', :checked => 'checked'}
+            Courtroom 3
+        %li
+          %label
+            %input.courtbox{:type => 'checkbox', :checked => 'checked'}
+            Courtroom 4
+        %li
+          %label
+            %input.courtbox{:type => 'checkbox', :checked => 'checked'}
+            Courtroom 5
+        %li
+          %label
+            %input.courtbox{:type => 'checkbox', :checked => 'checked'}
+            Courtroom 6
+      %ul
+        %li
+          %label
+            %input{:type => 'checkbox', :checked => 'checked'}
+            specified money claims
+        %li
+          %label
+            %input{:type => 'checkbox', :checked => 'checked'}
+            unspecified money claims
+        %li
+          %label
+            %input{:type => 'checkbox', :checked => 'checked'}
+            repossession claims
+        %li
+          %label
+            %input{:type => 'checkbox', :checked => 'checked'}
+            insolvency petitions
+        %li
+          %label
+            %input{:type => 'checkbox', :checked => 'checked'}
+            non-money claims
+
+  .calendar
+
+  %ul.daynav
+    %li.control.prev
+      %a{:href => '#'} &lsaquo;
+    %li
+      %h2 Today
+    %li.control.next
+      %a{:href => '#'} &rsaquo;
+
+  %ul.expandnav
+    %li.expand
+      %a{:href => '#'} Expand all
+    %li /
+    %li.collapse
+      %a{:href => '#'} Collapse all
+
+  .courts.accordion
+
+    .court
+      .header
+        %h3
+          %a{:href => '#'} Courtroom 1
+      .body
+        %h4
+          %strong Morning
+          10:00
+        %table
+          %tr
+            %td.number
+              %a{:href => '#'} 2D9KUVVE
+            %td.claimant L B Southwark
+            %td.versus v
+            %td.defendant Tom Quinn
+            %td.duration 10 mins
+            %td.type Application
+          %tr
+            %td.number
+              %a{:href => '#'} 82BKP68C
+            %td.claimant Wentworth Housing
+            %td.versus v
+            %td.defendant Adam Carter
+            %td.duration 10 mins
+            %td.type Application
+          %tr.stay
+            %td{:colspan => 6}
+              Stay of eviction
+          %tr
+            %td.number
+              %a{:href => '#'} UNFTG4V6
+            %td.claimant Chelsea Mortgages
+            %td.versus v
+            %td.defendant Ros Myers
+            %td.duration 10 mins
+            %td.type Application
+          %tr.stay
+            %td{:colspan => 6}
+              Stay of eviction
+          %tr
+            %td.number
+              %a{:href => '#'} XF48CPQE
+            %td.claimant L B Lambeth
+            %td.versus v
+            %td.defendant Lucas North
+            %td.duration 5 mins
+            %td.type Rent repossession
+        %h4
+          %strong Afternoon
+          14:00
+        %table
+          %tr
+            %td.number
+              %a{:href => '#'} 99ZR9HEZ
+            %td.claimant Shawn Clark LLP
+            %td.versus v
+            %td.defendant Tariq Masood
+            %td.duration 30 mins
+            %td.type CMC
+          %tr
+            %td.number
+              %a{:href => '#'} SQFK68PH
+            %td.claimant Oliver Mace
+            %td.versus v
+            %td.defendant
+              Harry Pierce
+              %br/
+              Eastend Cars
+              %br/
+              Durham Insurance PLC
+            %td.duration 45 mins
+            %td.type CMC
+          %tr.footer
+            %td{:colspan => 6}
+              15 mins reading time
+
+    .court
+      .header
+        %h3
+          %a{:href => '#'} Courtroom 2
+      .body
+        %h4
+          %strong Morning
+          10:30
+        %table
+          %tr
+            %td.number
+              %a{:href => '#'} DB93M3BA
+            %td.claimant L B Lambeth
+            %td.versus v
+            %td.defendant Adebowale Afolayan
+            %td.duration 6 hrs
+            %td.type Trial (multi-track) Day 1 of 2
+
+    .court
+      .header
+        %h3
+          %a{:href => '#'} Courtroom 3
+      .body
+        %h4
+          %strong Morning
+          10:00
+        %table
+          %tr
+            %td.number
+              %a{:href => '#'} LM47ZQUY
+            %td.claimant Caitlin Moriarty
+            %td.versus v
+            %td.defendant Merten Kahler
+            %td.duration 3 hrs
+            %td.type Trial (small claim)
+          %tr.footer
+            %td{:colspan => 6}
+              30 weeks = 14 Sep 2013
+        %h4
+          %strong Afternoon
+          14:00
+        %table
+          %tr
+            %td.number
+              %a{:href => '#'} J5VX95E7
+            %td.claimant Jean Martin
+            %td.versus v
+            %td.defendant Stephen John Russell
+            %td.duration 1 hr
+            %td.type Injunction
+
+    .court
+      .header
+        %h3
+          %a{:href => '#'} Courtroom 4
+      .body
+        %h4
+          %strong Morning
+          10:00
+        %table
+          %tr
+            %td.number
+              %a{:href => '#'} S4F5EPUV
+            %td.claimant L B Lambeth
+            %td.versus v
+            %td.defendant Diego Pedro Silva
+            %td.duration 5 mins
+            %td.type Rent repossession
+          %tr
+            %td.number
+              %a{:href => '#'} 2XMEGTRF
+            %td.claimant L B Southwark
+            %td.versus v
+            %td.defendant Josephine Carol Lowe
+            %td.duration 5 mins
+            %td.type Rent repossession
+          %tr
+            %td.number
+              %a{:href => '#'} 956JHDK0
+            %td.claimant Southern Housing Group Ltd
+            %td.versus v
+            %td.defendant Katherine Jane Pierce
+            %td.duration 5 mins
+            %td.type Rent repossession
+          %tr
+            %td.number
+              %a{:href => '#'} HG6T48IK
+            %td.claimant L B Southwark
+            %td.versus v
+            %td.defendant Bodege Dumi Afolayan
+            %td.duration 5 mins
+            %td.type Rent repossession
+          %tr
+            %td.number
+              %a{:href => '#'} ANYW457T
+            %td.claimant L B Southwark
+            %td.versus v
+            %td.defendant Suzanne Beth Hunter
+            %td.duration 5 mins
+            %td.type Rent repossession
+          %tr
+            %td.number
+              %a{:href => '#'} LKI8UYT5
+            %td.claimant L B Southwark
+            %td.versus v
+            %td.defendant Ann O'Brien
+            %td.duration 5 mins
+            %td.type Rent repossession
+          %tr
+            %td.number
+              %a{:href => '#'} FG6743RD
+            %td.claimant L B Southwark
+            %td.versus v
+            %td.defendant Chuks Chunweuba
+            %td.duration 5 mins
+            %td.type Rent repossession
+          %tr
+            %td.number
+              %a{:href => '#'} 4REFUI87
+            %td.claimant Forever Sutton Homes Ltd
+            %td.versus v
+            %td.defendant Hong Shun Hai Yu
+            %td.duration 5 mins
+            %td.type Rent repossession
+          %tr
+            %td.number
+              %a{:href => '#'} MMU90LOP
+            %td.claimant Apex Horizons Ltd
+            %td.versus v
+            %td.defendant Brendan Henderson
+            %td.duration 5 mins
+            %td.type Rent repossession
+          %tr
+            %td.number
+              %a{:href => '#'} K287GHTS
+            %td.claimant L B Lambeth
+            %td.versus v
+            %td.defendant Michael Keith Sanders
+            %td.duration 5 mins
+            %td.type Rent repossession
+          %tr
+            %td.number
+              %a{:href => '#'} LLK67YU1
+            %td.claimant L B Lambeth
+            %td.versus v
+            %td.defendant Alemayehu Olufemi
+            %td.duration 5 mins
+            %td.type Rent repossession
+          %tr
+            %td.number
+              %a{:href => '#'} VKT457HJ
+            %td.claimant L B Lambeth
+            %td.versus v
+            %td.defendant Johan Juhani Klasson
+            %td.duration 5 mins
+            %td.type Rent repossession
+          %tr
+            %td.number
+              %a{:href => '#'} WS7HJU82
+            %td.claimant L B Lambeth
+            %td.versus v
+            %td.defendant Emily Rose Davis
+            %td.duration 5 mins
+            %td.type Rent repossession
+          %tr
+            %td.number
+              %a{:href => '#'} HYJUKI7W
+            %td.claimant Southbank Homes
+            %td.versus v
+            %td.defendant Carol Wanda Foster
+            %td.duration 5 mins
+            %td.type Rent repossession
+          %tr
+            %td.number
+              %a{:href => '#'} 4REFUI87
+            %td.claimant Forever Sutton Homes Ltd
+            %td.versus v
+            %td.defendant Hong Shun Hai Yu
+            %td.duration 5 mins
+            %td.type Rent repossession
+          %tr
+            %td.number
+              %a{:href => '#'} MMU90LOP
+            %td.claimant Apex Horizons Ltd
+            %td.versus v
+            %td.defendant Brendan Henderson
+            %td.duration 5 mins
+            %td.type Rent repossession
+          %tr
+            %td.number
+              %a{:href => '#'} K287GHTS
+            %td.claimant L B Lambeth
+            %td.versus v
+            %td.defendant Michael Keith Sanders
+            %td.duration 5 mins
+            %td.type Rent repossession
+          %tr
+            %td.number
+              %a{:href => '#'} LLK67YU1
+            %td.claimant L B Lambeth
+            %td.versus v
+            %td.defendant Alemayehu Olufemi
+            %td.duration 5 mins
+            %td.type Rent repossession
+          %tr
+            %td.number
+              %a{:href => '#'} VKT457HJ
+            %td.claimant L B Lambeth
+            %td.versus v
+            %td.defendant Johan Juhani Klasson
+            %td.duration 5 mins
+            %td.type Rent repossession
+          %tr
+            %td.number
+              %a{:href => '#'} WS7HJU82
+            %td.claimant L B Lambeth
+            %td.versus v
+            %td.defendant Emily Rose Davis
+            %td.duration 5 mins
+            %td.type Rent repossession
+          %tr
+            %td.number
+              %a{:href => '#'} HYJUKI7W
+            %td.claimant Southbank Homes
+            %td.versus v
+            %td.defendant Carol Wanda Foster
+            %td.duration 5 mins
+            %td.type Rent repossession
+
+    .court
+      .header
+        %h3
+          %a{:href => '#'} Courtroom 5
+      .body
+        %h4
+          %strong Morning
+          10:00
+        %table
+          %tr
+            %td.number
+              %a{:href => '#'} 4EMEKY72
+            %td.claimant L B Southwark
+            %td.versus v
+            %td.defendant Chinedu Afolayan
+            %td.duration 30 mins
+            %td.type CMC
+          %tr
+            %td.number
+              %a{:href => '#'} L97S3RQ6
+            %td.claimant The Fosters Partnership Ltd
+            %td.versus v
+            %td.defendant Tai Hui Min Huang
+            %td.duration 10 mins
+            %td.type Rent repossession
+          %tr.footer
+            %td{:colspan => 6}
+              ADJ
+          %tr
+            %td.number
+              %a{:href => '#'} MQF2A9C7
+            %td.claimant L B Lambeth
+            %td.versus v
+            %td.defendant Rosendo Puerta Ciriaco Juanito Peña
+            %td.duration 15 mins
+            %td.type Application
+          %tr.footer
+            %td{:colspan => 6}
+              ADJ
+          %tr
+            %td.number
+              %a{:href => '#'} 4CUJPFSL
+            %td.claimant Lilimanjaro Ltd
+            %td.versus v
+            %td.defendant Yasu Tarou Mizushima
+            %td.duration 30 mins
+            %td.type Directions
+          %tr
+            %td.number
+              %a{:href => '#'} 6HAWWVG3
+            %td.claimant Southwestern Housing Group
+            %td.versus v
+            %td.defendant Séamus Rowan McCormick
+            %td.duration 15 mins
+            %td.type Application
+          %tr.footer
+            %td{:colspan => 6}
+              6 yr WRT
+        %h4
+          %strong Afternoon
+          12:30
+        %table
+          %tr
+            %td.number
+              %a{:href => '#'} 2D8HNU6Y
+            %td.claimant Kiyoshu Tsukuda
+            %td.versus v
+            %td.defendant Archdales Ltd
+            %td.duration 30 mins
+            %td.type Application
+          %tr
+            %td.number
+              %a{:href => '#'} 96SVN5Y6
+            %td.claimant Brian Harris
+            %td.versus v
+            %td.defendant Florentino Barnhill
+            %td.duration 1hr 30 mins
+            %td.type Trial (Civil)
+          %tr
+            %td.number
+              %a{:href => '#'} 43LR4S39
+            %td.claimant Min Shui Bai
+            %td.versus v
+            %td.defendant
+              Yevgenia Petrov
+              %br/
+              Aglaya Konstantinov
+            %td.duration 30 mins
+            %td.type Application
+
+    .court
+      .header
+        %h3
+          %a{:href => '#'} Courtroom 6
+      .body
+        %h4
+          %strong Morning
+          10:00
+        %table
+          %tr
+            %td.number
+              %a{:href => '#'} 4EMEKY72
+            %td.claimant Ekene Udo Babatunde
+            %td.versus v
+            %td.defendant Airlin Corporate Sales Ltd
+            %td.duration 2 hrs
+            %td.type Trial (small claim)
+          %tr.footer
+            %td{:colspan => 6}
+              Deft says settles 16.7 = faxed to Woolwich
+          %tr
+            %td.number
+              %a{:href => '#'} L97S3RQ6
+            %td.claimant Relative Space Ltd
+            %td.versus v
+            %td.defendant William Roy Cooper
+            %td.duration 1 hr
+            %td.type Trial (small claim)
+          %tr.footer
+            %td{:colspan => 6}
+              Woolwich cases
+        %h4
+          %strong Afternoon
+          14:00
+        %table
+          %tr
+            %td.number
+              %a{:href => '#'} XN7WK47S
+            %td.claimant Cityside Housing
+            %td.versus v
+            %td.defendant Dean Gary Monk
+            %td.duration 15 mins
+            %td.type Trespassers
+          %tr
+            %td.number
+              %a{:href => '#'} S3RQ6L97
+            %td.claimant L B Southwark
+            %td.versus v
+            %td.defendant Anuja Kala Tamboli
+            %td.duration 45 mins
+            %td.type Allocation hearing
+          %tr.footer
+            %td{:colspan => 6}
+              To be heard with clmt's appn
+

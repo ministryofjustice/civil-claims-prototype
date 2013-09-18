@@ -12,7 +12,7 @@ class ClaimsController < ApplicationController
     when 'defendant'
       redirect_to claims_defence_path
     when 'staff'
-      render 'claims/staff/index'
+      render 'claims/staff/index', :layout => 'staff'
     when 'judge'
       render 'claims/judge/index'
     end
