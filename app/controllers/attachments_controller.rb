@@ -7,6 +7,8 @@ class AttachmentsController < ApplicationController
     @claim_id = params[:claim_id]
     @new_attachment = @attachment_parent.attachments.create
 
+    # @rendered = (render_to_string partial: "attachments/attachment", :locals => {claim_id: @claim_id, attachment: @new_attachment, type: @type}).html_safe
+
     respond_to do |format|
       format.html { redirect_to claim_defence_path(claim_id: params[:claim_id]) }
       format.js

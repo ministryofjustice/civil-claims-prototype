@@ -45,9 +45,8 @@ CivilClaims::Application.routes.draw do
       end
     end
 
-    resources :attachments do
-
-    end
+    resources :attachments
+    resources :arrears
 
     resource :defence do
       get '/' => 'defences#index'
