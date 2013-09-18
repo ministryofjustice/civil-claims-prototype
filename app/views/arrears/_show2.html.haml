@@ -1,0 +1,25 @@
+%section{ :class => ("element-hidden" unless @claim.claim_rental_arrears)}
+  %h3 Unpaid rent
+  %p
+    Enter the details of unpaid rental payments below, or 
+    %a.fake-link attach a file
+  .moj-panel
+    .form-row
+      %label{ :for => "arrears-select-day" } Rent due on
+      %select.date{ :id => "arreats-select-day" } 
+        %option
+        - for day in 1..31
+          %option{ :value => day } 
+            = day
+      %select.date
+        %option
+        -for month in 1..12
+          %option{ :value => month}
+            = Date::MONTHNAMES[month]
+      %select.date
+        %option
+        - for year in 2009..2013
+          %option{ :value => year } 
+            = year
+      %a fasdf
+

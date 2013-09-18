@@ -106,8 +106,9 @@
                 = f.label :payment_frequency_week, 'Weekly'
 
       / RENTAL ARREARS
-      = render partial: 'arrears/show', :locals => { f: f } 
-
+      = render partial: 'arrears/show', :locals => { f: f }
+      
+      = render partial: 'arrears/show2', :locals => { f: f } 
 
       / OTHER INFORMATION
       %section
@@ -125,13 +126,10 @@
             Attach any documents that support your case, such as the tenancy agreement or the ‘notice to quit’. Type of files supported include pdf, doc, open office, jpg, png, and many others. 
           %p
             %a.fake-link About supporting documentation
-          = link_to "Attach documents", claim_attachments_path(claim_id: @claim.id, type: 'claim'), :remote => true, :method => :post, :class => "button" 
-        
+          = link_to "Attach documents", claim_attachments_path(claim_id: @claim.id, type: 'claim'), :remote => true, :method => :post, :class => "button"       
           .js-supporting-documents-panel
             - @claim.attachments.each do |attachment|
               = render partial: "attachments/attachment", :locals => { claim_id: @claim.id, attachment: attachment, type: 'claim' }
 
 
-
-      
       = render :partial => 'shared/save_continue'
