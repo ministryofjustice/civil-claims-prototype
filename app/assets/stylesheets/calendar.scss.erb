@@ -1,0 +1,397 @@
+@import 'colours';
+
+a:focus {
+  background-color: inherit;
+}
+
+main {
+  margin: auto;
+  max-width: 1020px;
+}
+
+main > header {
+  max-width: 960px;
+  margin: auto;
+}
+
+article {
+  max-width: 960px;
+  margin: auto;
+
+  .controls {
+    float: right;
+    margin-bottom: 20px;
+    margin-top: -20px;
+
+    ul {
+      list-style-type: none;
+      list-style-image: none;
+      padding: 0;
+
+      li {
+        float: left;
+        padding: 0;
+
+        &.toggle {
+          display: block;
+          width: 53px;
+          height: 44px;
+          margin-left: 10px;
+
+          a {
+            padding: 0;
+            display: block;
+            width: 53px;
+            height: 44px;
+            background-image: url(<%= asset_path 'calendar/mode-toggle.png' %>);
+            background-repeat: no-repeat;
+            text-indent: -999em;
+
+            &.listview {
+              background-position: 0 0;
+
+              &.current {
+                background-position: -53px 0;
+              }
+            }
+            &.calendarview {
+              background-position: 0 -44px;
+
+              &.current {
+                background-position: -53px -44px;
+              }
+            }
+          }
+        }
+
+        &.new {
+          margin-left: 20px;
+
+          a {
+            font-size: 24px;
+          }
+        }
+      }
+    }
+  }
+
+  details {
+    summary {
+      padding-top: 15px;
+      font-size: 19px;
+      color: #2e3191;
+      float: left;
+      cursor: pointer;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  .filters {
+    clear: both;
+    background-color: #d5ecea;
+    padding: 10px 50px;
+    margin-bottom: 20px;
+
+    ul {
+      list-style-type: none;
+      list-style-image: none;
+      padding: 0;
+      float: left;
+      margin-left: 40px;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+
+  table {
+    width: 100%;
+    margin: 0;
+  }
+
+  td {
+    border: none;
+  }
+
+  .calendar {
+    width: 100%;
+    min-height: 200px;
+    clear: both;
+    position: absolute;
+    left: -1000px;
+    top: -1000px;
+
+    &.show {
+      position: relative;
+      left: auto;
+      top: auto;
+    }
+
+    table {
+      margin: auto;
+    }
+    tr {
+      td {
+        background-color: #fff;
+      }
+    }
+
+    .fc-header {
+      td {
+        background: #000;
+
+        .fc-button, h2 {
+          color: #fff;
+          margin: 12px 0;
+          vertical-align: middle;
+        }
+      }
+
+      h2 {
+        font-size: 32px;
+        font-weight: normal;
+      }
+
+      .fc-button {
+        box-shadow: none;
+        border: none;
+        background: none;
+        padding-top: 2px;
+      }
+
+      .fc-text-arrow {
+        font-size: 50px;
+      }
+    }
+
+    .fc-content {
+      .fc-today {
+        border: 1px solid #666;
+      }
+
+      .fc-state-highlight {
+        border: 2px solid #f00;
+      }
+
+      tbody {
+        .fc-sun, .fc-sat {
+          background: url(<%= asset_path 'calendar/day-disabled.gif' %>);
+          color: #bfc1c3;
+        }
+
+        .fc-mon, .fc-tue, .fc-wed, .fc-thu, .fc-fri {
+          &:hover {
+            background-color: #f8f8f8;
+          }
+        }
+      }
+      thead {
+        th {
+          background-color: #fff;
+          padding: 1em 0;
+        }
+      }
+    }
+  }
+
+  .expandnav {
+    float: right;
+
+    li {
+      list-style-type: none;
+      list-style-image: none;
+      padding: 0 0 0 5px;
+      display: inline-block;
+      font-size: 14px;
+    }
+
+    a {
+      color: $grey-1;
+      text-decoration: none;
+
+      &:hover {
+        color: $black;
+      }
+    }
+  }
+
+  .daynav {
+    clear: both;
+    background-color: #000;
+    position: relative;
+    text-align: center;
+    padding: 0;
+    margin: 0 0 10px 0;
+
+    li {
+      line-height: 64px;
+      list-style-type: none;
+      list-style-image: none;
+      padding: 0;
+      vertical-align: middle;
+
+      &.control {
+        position: absolute;
+        top: -13px;
+        font-size: 50px;
+        padding: 0 15px;
+        font-family: "Courier New", Courier, monospace;
+        font-weight: bold;
+      }
+
+      &.prev {
+        left: 0;
+      }
+      &.next {
+        right: 0;
+      }
+
+      a {
+        color: #fff;
+        text-decoration: none;
+      }
+
+      h2 {
+        color: #fff;
+        line-height: 64px;
+        vertical-align: middle;
+        font-size: 32px;
+        font-weight: normal;
+      }
+    }
+  }
+
+  .courts {
+    margin-top: 10px;
+    clear: both;
+  }
+
+  .court {
+    margin-bottom: 20px;
+
+    h3 {
+      text-align: center;
+      line-height: 55px;
+      vertical-align: middle;
+      background-color: #1ea298;
+      font-size: 24px;
+      margin: 0;
+
+      a {
+        text-decoration: none;
+        color: #fff;
+        display: block;
+        margin: 0 20px;
+
+        .js-enabled & {
+          background-image: url(<%= asset_path 'calendar/accordion-collapse.png' %>);
+          background-position: right center;
+          background-repeat: no-repeat;
+        }
+      }
+    }
+    h4 {
+      font-size: 19px;
+      font-weight: normal;
+      line-height: 37px;
+      background-color: #d5ecea;
+      border-bottom: 1px solid #95d0cb;
+      text-align: center;
+      margin: 0;
+    }
+    &.closed {
+      .body {
+        display: none;
+      }
+
+      h3 {
+        background-color: #f8f8f8;
+        font-weight: normal;
+
+        a {
+          color: $black;
+
+          .js-enabled & {
+            background-image: url(<%= asset_path 'calendar/accordion-expand.png' %>);
+            background-position: right center;
+            background-repeat: no-repeat;
+          }
+        }
+
+        &:hover {
+          background-color: #f0f0f0;
+
+          a {
+            text-decoration: underline;
+          }  
+        }
+      }
+    }
+    table {
+      margin: 0;
+
+      tr {
+        td {
+          background-color: transparent;
+          border-bottom: 1px solid #c2c2c2;
+          cursor: pointer;
+
+          &.number {
+            width: 130px;
+          }
+
+          &.claimant {
+            width: 180px;
+          }
+
+          &.versus {
+            width: 28px;
+            color: #6f777b;
+          }
+
+          &.defendant {
+            width: 230px;
+          }
+
+          &.duration {
+            width: 100px;
+            color: #6f777b;
+          }
+
+          &.type {
+            color: #6f777b;
+          }
+        }
+        &:hover {
+          td {
+            background-color: #f0f0f0;
+
+            a {
+              color: #2788cc;
+            }
+          }
+        }
+        &.stay, &.footer {
+          td {
+            padding-left: 50px;
+            background-color: #f8f8f8;
+            color: #6f777b;
+            background-image: url(<%= asset_path 'calendar/note.png' %>);
+            background-repeat: no-repeat;
+            background-position: 25px center;
+          }
+
+          &:hover {
+            td {
+              background-color: #f8f8f8;
+            }
+          }
+        }  
+      }
+    }
+  }
+}
