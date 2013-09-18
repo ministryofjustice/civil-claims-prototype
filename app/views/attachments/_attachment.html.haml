@@ -1,3 +1,3 @@
 .attachment-panel{ :class => "is-attachment-" + attachment.id.to_s}
   = attachment.file_name
-  = link_to "Remove", claim_attachment_path(id: attachment.id, type: type), :remote => true, :method => :delete, :class => "button-warning js-remove-attachment" 
+  = link_to "Remove", claim_attachment_path(claim_id: claim_id, id: attachment.id, type: type), :remote => true, :method => :delete, :class => "button-warning js-remove-attachment" 

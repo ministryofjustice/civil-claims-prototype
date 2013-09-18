@@ -260,6 +260,6 @@
 
         .js-supporting-documents-panel
           - @defence.attachments.each do |attachment|
-            = render partial: "attachments/attachment", :locals => { attachment: attachment, type: 'defence' }
+            = render partial: "attachments/attachment", :locals => { claim_id: @defence.claim_id, attachment: attachment, type: 'defence' }
 
     = render :partial => 'shared/save_continue'

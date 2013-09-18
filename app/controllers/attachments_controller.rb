@@ -3,9 +3,9 @@ class AttachmentsController < ApplicationController
   before_action :get_attachment_parent_by_type_from_params
 
   def create 
-    @new_attachment = Attachment.create
     @type = params[:type]
-    @attachment_parent.attachments << @new_attachment
+    @claim_id = params[:claim_id]
+    @new_attachment = @attachment_parent.attachments.create
 
     respond_to do |format|
       format.html { redirect_to claim_defence_path(claim_id: params[:claim_id]) }
@@ -14,7 +14,7 @@ class AttachmentsController < ApplicationController
   end
 
   def destroy
-    @attachment_id = params[:id]    
+    @attachment_id = params[:id]
     @attachment_parent.attachments.find_by(@attachment_id).delete
 
     respond_to do |format|

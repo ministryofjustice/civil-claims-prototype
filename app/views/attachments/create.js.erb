@@ -1,1 +1,1 @@
-$('.js-supporting-documents-panel').append('<%=j render partial: "attachments/attachment", formats: [:html], :locals => {attachment: @new_attachment, type: @type} %>');
+$('.js-supporting-documents-panel').append('<%=j render partial: "attachments/attachment", formats: [:html], :locals => {claim_id: @claim_id, attachment: @new_attachment, type: @type} %>');

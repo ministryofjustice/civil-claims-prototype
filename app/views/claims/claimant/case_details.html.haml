@@ -129,7 +129,7 @@
         
           .js-supporting-documents-panel
             - @claim.attachments.each do |attachment|
-              = render partial: "attachments/attachment", :locals => { attachment: attachment, type: 'claim' }
+              = render partial: "attachments/attachment", :locals => { claim_id: @claim.id, attachment: attachment, type: 'claim' }
 
 
 
