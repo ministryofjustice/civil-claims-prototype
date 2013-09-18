@@ -4,7 +4,7 @@
   %h2 Step 2 of 5 - About the case
   %p.lead Add the details of the disputes within the case and all other related details
 
-  = simple_form_for @defense, :url => { :action => "update" } do |f|
+  = simple_form_for @defence, :url => { :action => "update" } do |f|
     
     / ABOUT THE CASE
     %section
@@ -21,7 +21,7 @@
             %div
               = f.radio_button :agree_with_tenancy_agreement_statement, 'false', :class => "js-panel-component-details-show"
               = f.label :agree_with_tenancy_agreement_statement_false, "No, I don't agree"
-          .component-details{ :class => ('element-invisible' if (@defense.agree_with_tenancy_agreement_statement.nil? || @defense.agree_with_tenancy_agreement_statement))}
+          .component-details{ :class => ('element-invisible' if (@defence.agree_with_tenancy_agreement_statement.nil? || @defence.agree_with_tenancy_agreement_statement))}
             = f.input :comments_on_tenancy_agreement_statement, input_html: {:rows => 5}, label: "Set your own reasons"
         
         .panel-component
@@ -33,7 +33,7 @@
             %div
               = f.radio_button :received_notice_to_quit, 'false', :class => "js-panel-component-details-hide"
               = f.label :received_notice_to_quit_false, 'No'
-          .component-details{ :class => ('element-invisible' unless @defense.received_notice_to_quit)}
+          .component-details{ :class => ('element-invisible' unless @defence.received_notice_to_quit)}
             = f.input :date_received_notice_to_quit, label: "Notice to quit received"
 
         .panel-component
@@ -47,7 +47,7 @@
             %div
               = f.radio_button :agree_with_rent_arrears, 'false', :class => "js-panel-component-details-show"
               = f.label :agree_with_rent_arrears_false, 'No'
-          .component-details{ :class => ('element-invisible' if (@defense.agree_with_rent_arrears.nil? || @defense.agree_with_rent_arrears))}
+          .component-details{ :class => ('element-invisible' if (@defence.agree_with_rent_arrears.nil? || @defence.agree_with_rent_arrears))}
             = f.label :statement_of_arrears, "Please state how much you believe the arrears to be"
             %br/
             %strong &pound
@@ -69,7 +69,7 @@
             %div
               = f.radio_button :paid_money_since_claim_brought, 'false', :class => "js-panel-component-details-hide"
               = f.label :paid_money_since_claim_brought_false, 'No'
-          .component-details{ :class => ('element-invisible' unless @defense.paid_money_since_claim_brought)}
+          .component-details{ :class => ('element-invisible' unless @defence.paid_money_since_claim_brought)}
             .form-row
               %label{:for => "paid-since-claim-select-day" } Date paid
               %select#paid-since-claim-select-day.date
@@ -113,10 +113,10 @@
             %div
               = f.radio_button :agreement_to_repay_arrears, 'false', :class => "js-panel-component-details-hide"
               = f.label :agreement_to_repay_arrears_false, 'No'
-          .component-details{ :class => ('element-invisible' unless @defense.agreement_to_repay_arrears)}
+          .component-details{ :class => ('element-invisible' unless @defence.agreement_to_repay_arrears)}
             = f.input :repayment_amount, as: :currency, label: "Payment amount"
             = f.input :repayment_frequency, as: :radio_buttons, collection: [["Per month", "montly"], ["Per week", "weekly"]]
-          .component-details.panel-component{ :class => ('element-invisible' if (@defense.agreement_to_repay_arrears.nil? || @defense.agreement_to_repay_arrears))}
+          .component-details.panel-component{ :class => ('element-invisible' if (@defence.agreement_to_repay_arrears.nil? || @defence.agreement_to_repay_arrears))}
             Do you want the court to consider allowing you to pay arrears in installments?
             .striped-choice
               %div
@@ -125,7 +125,7 @@
               %div
                 = f.radio_button :request_to_consider_repayments_by_installment, 'false', :class => "js-panel-component-details-hide"
                 = f.label :request_to_consider_repayments_by_installment_false, 'No'
-            .component-details.panel-component{ :class => ('element-invisible' unless @defense.request_to_consider_repayments_by_installment)}
+            .component-details.panel-component{ :class => ('element-invisible' unless @defence.request_to_consider_repayments_by_installment)}
               How much can you afford to pay in addition to the current rent?
               = f.input :installment_amount, as: :currency, label: "Payment amount"
               = f.input :installment_frequency, as: :radio_buttons, collection: [["Per month", "montly"], ["Per week", "weekly"]]
@@ -139,7 +139,7 @@
             %div
               = f.radio_button :has_claim_against_landlord, 'false', :class => "js-panel-component-details-hide"
               = f.label :has_claim_against_landlord_false, 'No'
-          .component-details{ :class => ('element-invisible' unless @defense.has_claim_against_landlord)}
+          .component-details{ :class => ('element-invisible' unless @defence.has_claim_against_landlord)}
             = f.input :claim_case_number, label: "Case number"
 
         %div

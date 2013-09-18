@@ -32,7 +32,6 @@ CivilClaims::Application.routes.draw do
       get 'confirmation'
 
       patch 'update', as: :update_claim
-      patch 'address_for_possession', to: 'claims#address', as: :address_for_possession
 
       get 'delete'
 
@@ -46,6 +45,10 @@ CivilClaims::Application.routes.draw do
       end
     end
 
+    resources :attachments do
+
+    end
+
     resource :defence do
       get '/' => 'defences#index'
       get 'view'
@@ -56,6 +59,7 @@ CivilClaims::Application.routes.draw do
       get 'confirmation', to: 'defences#confirmation'
 
       patch 'update'
+
 
     end
 

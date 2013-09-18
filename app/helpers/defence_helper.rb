@@ -1,3 +1,0 @@
-module DefenceHelper
-
-end

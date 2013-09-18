@@ -28,4 +28,6 @@ module ClaimHelper
     render :partial => 'shared/inline_help', :locals => {link_text: link_text, help_content: help_content }
   end
 
+
+
 end

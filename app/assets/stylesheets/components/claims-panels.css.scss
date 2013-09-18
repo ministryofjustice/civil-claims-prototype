@@ -90,5 +90,18 @@ h4.moj-panel {
   }
 }
 
+.attachment-panel {
+  @include panel-style(#D5EEEA);
+
+  padding: 15px 5px 15px 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+
+  input, a {
+    float: right;
+    margin-right:5px;
+  }
+}
+
 
 
