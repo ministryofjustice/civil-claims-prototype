@@ -92,13 +92,13 @@ moj.Modules.calendar = (function() {
 
     $expandAll.on( 'click', function() {
       $( courts ).each( function() {
-        $(this).removeClass( 'closed' );
+        $( this ).removeClass( 'closed' );
       } );
     } );
 
     $collapseAll.on( 'click', function() {
       $( courts ).each( function() {
-        $(this).addClass( 'closed' );
+        $( this ).addClass( 'closed' );
       } );
     } );
 
@@ -136,7 +136,7 @@ moj.Modules.calendar = (function() {
 
   newDate = function( date ) {
     dispdate = date;
-    $currDate.text( $.fullCalendar.formatDate(date, 'dddd d MMMM yyyy') );
+    $currDate.text( $.fullCalendar.formatDate( date, 'dddd d MMMM yyyy') );
   };
 
   lz = function( n ) {
@@ -148,15 +148,15 @@ moj.Modules.calendar = (function() {
     dispdate.setDate(dispdate.getDate() + n);
     if( dispdate.getDay() === 0 || dispdate.getDay() === 6 ) {
       // you've nudged into a weekend, so skip ahead 2 more days to escape
-      dispdate.setDate(dispdate.getDate() + ( n * 2 ) );
+      dispdate.setDate( dispdate.getDate() + ( n * 2 ) );
     }
     $cal.fullCalendar( 'gotoDate', dispdate );
 
-    ds = dispdate.getFullYear() + '-' + ( lz(dispdate.getMonth() + 1 )) + '-' + lz(dispdate.getDate());
+    ds = dispdate.getFullYear() + '-' + ( lz( dispdate.getMonth() + 1 ) ) + '-' + lz( dispdate.getDate() );
 
     $( '.fc-day' ).each( function() {
       var $this = $( this );
-      if( $this.data('date') === ds ) {
+      if( $this.data( 'date' ) === ds ) {
         $this.trigger( 'click' );
       }
     } );
