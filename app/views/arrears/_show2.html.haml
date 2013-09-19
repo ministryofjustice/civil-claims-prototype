@@ -21,8 +21,7 @@
         - for year in 2009..2013
           %option{ :value => year } 
             = year
-      %span.button Add unpaid rent
-      = link_to "Add unpaid rent", claim_arrears_path(@claim), :remote => true, :method => :post, :class => "button" 
+      = link_to "Add unpaid rent", claim_arrears_path(@claim), :remote => true, :method => :post, :class => "button js-add-arrear" 
 
       
       %details
