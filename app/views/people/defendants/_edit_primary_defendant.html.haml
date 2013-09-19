@@ -3,18 +3,18 @@
   .moj-panel.edit-person
     - if (is_additional_defendant) 
       %strong Add another tenant
-    = df.input :full_name, placeholder: "eg John Smith"
-    = df.input :phone
-    = df.input :mobile
-    = df.input :email
+    = df.input :full_name, input_html: { class: 'mob-input-width' }, placeholder: "eg John Smith"
+    = df.input :phone, input_html: { class: 'mob-input-width' }
+    = df.input :mobile, input_html: { class: 'mob-input-width' }
+    = df.input :email, input_html: { class: 'mob-input-width' }
 
     = df.simple_fields_for :address do |dff|
       .address{ class: ("element-invisible expander" unless dff.object.is_valid?) }
-        = dff.input :street_1, label: 'Street'
-        = dff.input :street_2, :label => '&nbsp;'
-        = dff.input :street_3, :label => "&nbsp;"
-        = dff.input :town
-        = dff.input :county
+        = dff.input :street_1, input_html: { class: 'mob-input-width' }, label: 'Street'
+        = dff.input :street_2, input_html: { class: 'mob-input-width' }, :label => '&nbsp;'
+        = dff.input :street_3, input_html: { class: 'mob-input-width' }, :label => "&nbsp;"
+        = dff.input :town, input_html: { class: 'mob-input-width' }
+        = dff.input :county, input_html: { class: 'mob-input-width' }
 
       = dff.input :postcode do
         = dff.input_field :postcode, class: "postcode", required: true

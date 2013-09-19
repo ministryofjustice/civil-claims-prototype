@@ -1,17 +1,17 @@
 = render_local_navigation
 %article
-  %h1 Confirmation
-  %p You have successfully paid the court fee and booked a court hearing to repossess your property.
-  %p
+  %h2 Confirmation
+  %p.lead You have successfully paid the court fee and booked a court hearing to repossess your property.
+  %p.lead
     You can view full details of this case in 
     = link_to 'your account', '#' 
-  %p#reference-number
+  %p#reference-number.lead
     Your reference is:
     %strong RL7MG3LJ
 
   .button-panel
-    .big.button View the case
-    .big.button-secondary Print receipt
+    %button.big.button View the case
+    %button.big.button-secondary Print receipt
     
   %section#hearing-details
     %h2 Hearing details

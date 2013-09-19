@@ -4,23 +4,23 @@
     - if (is_additional_claimant) 
       %strong Add another landlord
 
-    = cf.input :full_name, placeholder: "eg John Smith"
-    = cf.input :phone
-    = cf.input :mobile
-    = cf.input :email
+    = cf.input :full_name, input_html: { class: 'mob-input-width' }, placeholder: "eg John Smith"
+    = cf.input :phone, input_html: { class: 'mob-input-width' }
+    = cf.input :mobile, input_html: { class: 'mob-input-width' }
+    = cf.input :email, input_html: { class: 'mob-input-width' }
 
     %details{ :open => show_dx_controls_for(cf.object) }
       %summary Do they have a DX number?
-      = cf.input :dx_number, label: 'DX number'
-      = cf.input :dx_exchange, label: 'DX exchange'
+      = cf.input :dx_number, input_html: { class: 'mob-input-width' }, label: 'DX number'
+      = cf.input :dx_exchange, input_html: { class: 'mob-input-width' }, label: 'DX exchange'
 
     = cf.simple_fields_for :address do |cff|
       .address{ class: ("element-invisible expander" unless cff.object.is_valid?) }
-        = cff.input :street_1, label: 'Street', class: 'street_1'
-        = cff.input :street_2, :label => '&nbsp;'
-        = cff.input :street_3, :label => '&nbsp;'
-        = cff.input :town
-        = cff.input :county
+        = cff.input :street_1, input_html: { class: 'mob-input-width' }, label: 'Street', class: 'street_1'
+        = cff.input :street_2, input_html: { class: 'mob-input-width' }, :label => '&nbsp;'
+        = cff.input :street_3, input_html: { class: 'mob-input-width' }, :label => '&nbsp;'
+        = cff.input :town, input_html: { class: 'mob-input-width' }
+        = cff.input :county, input_html: { class: 'mob-input-width' }
 
       = cff.input :postcode do
         = cff.input_field :postcode, class: "postcode", required: true
