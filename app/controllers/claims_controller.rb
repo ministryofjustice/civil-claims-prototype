@@ -148,6 +148,11 @@ class ClaimsController < ApplicationController
     render 'claims/claimant/confirmation'
   end
 
+  def case
+    render 'claims/staff/case', :layout => 'staff'
+  end
+
+
   private
 
     def hide_user_nav

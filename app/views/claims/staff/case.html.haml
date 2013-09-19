@@ -1,0 +1,132 @@
+%header.page-header.group.case
+  %h2
+    %strong Case number
+    = params[:claim_id]
+
+  %ul.cf
+    %li.status
+      %strong Status
+      hearing scheduled
+    %li.action
+      %a{:href => '#'} Reschedule
+
+  .hearingDate
+    %h3
+      %strong Wednesday 21 August 2013
+      at
+      %strong 10:30am
+
+.js-tabs
+  %ul.js-tabs
+    %li.is-active
+      %a{:href => '#casetab'} Case
+    %li
+      %a{:href => '#defencetab'} Defence
+
+  .js-tabs-content
+    
+    %article.tab#casetab
+
+      %section
+        %h2 Landlord
+        .person.claimant
+          %span.name John Smith Reynolds
+          .address-linear
+            %span 121 Elm Park Road
+            %span London
+            %span SW1 1SZ
+            %span UK
+          %div 02072471201
+          %div 07973542443
+          %div john_reynolds@btinternet.com
+
+      %section
+        %h2 Tenant
+        .person.defendant
+          %span.name Louis Robert Stevenson
+          .address-linear
+            %span Flat 3
+            %span 92 Crystal Palace Park Road
+            %span London
+            %span SE26 6UP
+            %span UK
+          %div 20281236789
+          %div 07765912673
+          %div lrstevenson@hotmail.co.uk
+
+      %section
+        %h2 Property
+        .person.address-for-possession
+          .address-linear
+            %span Flat 3
+            %span 92 Crystal Palace Park Road
+            %span London
+            %span SE26 6UP
+            %span UK
+          %div Residential
+          %div Tenant
+
+      %section
+        %h2 Case details
+        .moj-panel.particulars-horizontal
+          %h4 Why do you want the property back
+          %span Non-payment of rent
+          %h4 Notices given
+          %span Notice to quit served 11 June 2013
+          %h4 Next stages
+          %span Reclaim unpaid rent
+          %h4 Tenancy type
+          %span Assured shorthold tenancy
+          %h4 Tenancy start date
+          %span 10 September 2010
+          %h4 Rental amount
+          %span
+            &pound;950 per month
+            %br/
+            &pound;32 per day
+          %h4 Claim cost
+          %span &pound;100 (request for tenant to pay)
+
+      %section
+        %h2 Unpaid rent
+        %table.moj-table
+          %thead
+            %tr
+              %th.left-align Rent due on
+              %th Rental amount
+              %th Amount paid
+              %th Unpaid rent
+          %tbody
+            %tr
+              %td.left-align 10 Apr 2013
+              %td.pounds 950
+              %td.pounds 0
+              %td.pounds 950
+            %tr
+              %td.left-align 10 May 2013
+              %td.pounds 950
+              %td.pounds 0
+              %td.pounds 950
+            %tr
+              %td.left-align 10 Jun 2013
+              %td.pounds 950
+              %td.pounds 0
+              %td.pounds 950
+          %tfoot
+            %tr
+              %td.left-align{:colspan => 3} Total
+              %td.pounds 2,850
+
+      %section.attachments
+        %h2 Supporting documentation
+        %h4.moj-panel
+          Tenancy Agreement July 2010.doc       
+          %span.button.right View
+        %h4.moj-panel
+          Crystal palace park road.pdf    
+          %span.button.right View
+
+
+
+    / %article.tab#defencetab
+    /   %h2 DEFENCE

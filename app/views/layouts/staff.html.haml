@@ -13,11 +13,6 @@
     = render 'layouts/header'
     #wrapper
       %main{:role => "main"}
-        
-        %header.page-header.group
-          %h1
-            %span Service
-            Civil Claims: Court Calendar
 
         = yield
 
@@ -26,5 +21,6 @@
     = javascript_include_tag "application"
     = javascript_include_tag "vendor/fullcalendar.min"
     = javascript_include_tag "moj"
+    = javascript_include_tag "modules/moj.tabs"
     = javascript_include_tag "calendar"
     = javascript_include_tag "main"
