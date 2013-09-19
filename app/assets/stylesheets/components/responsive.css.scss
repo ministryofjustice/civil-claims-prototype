@@ -1,0 +1,411 @@
+/* #Tablet (Portrait)
+================================================== */
+
+    /* Note: Design for a width of 768px */
+
+    @media only screen and (min-width: 768px) and (max-width: 959px) {
+        
+        }
+
+
+/*  #Mobile (Portrait)
+================================================== */
+
+    /* Note: Design for a width of 320px */
+
+    @media only screen and (max-width: 767px) {
+        
+        /* All pages */
+        body.alpha #wrapper {
+            border: none;
+        }
+        .header-proposition {
+            display: none;
+        }
+        #user-nav .dropdown {
+            display: none;
+        }
+        #wrapper {
+            min-width: 320px;
+            margin: 0;
+
+            header h1 {
+                margin: 0;
+            }
+        }
+        header.page-header {
+            margin: 0 20px;
+        }
+        article {
+            h2 {
+                font-size: 24px;
+                margin: 1.2em 20px 0.4em;
+            }
+            h3 {
+                font-size: 20px;
+                margin: 0 20px;
+            }
+        }
+        main p {
+
+            &.lead {
+                max-width: 100%;
+                margin: 1em 20px;
+            }
+            &.not-mobile {
+                display: none;
+            }
+        }
+        .form-row input[type="text"], .form-row input[type="tel"], .form-row input[type="email"], .form-row input[type="currency"], .form-row select {
+            width: 100%;
+            margin: 0;
+        }
+        input[type="text"], input[type="search"] {
+            font-size: 16px;
+            min-width: 0;
+        }
+        footer {
+            display: none;
+        }
+        .button-secondary {
+            margin: 1em 20px 0 20px;
+        }
+        .button-panel {
+            margin: 0 20px;
+
+            .button.big, .button-secondary.big {
+                width: 100%;
+                margin: 1em 0 0;
+            }
+            .big.button {
+                margin-bottom: 0.5em;
+            }
+        }
+        .moj-panel {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+
+            .form-row {
+                margin: 0 20px;
+            }
+        }
+        .form-row label {
+            width: auto;
+            display: block;
+            margin: 0;
+        }
+        .form-row input.mob-input-width {
+            box-sizing: border-box; /* css3 rec */
+            behavior: url("boxsizing.htc"); /* ie6/7 */
+            -ms-box-sizing: border-box; /* ie8 */
+            -moz-box-sizing: border-box; /* ff2+ */
+            -webkit-box-sizing: border-box; /* safari3+ */
+            -khtml-box-sizing: border-box; /* konqueror */
+            height: 40px;
+        }
+
+        /* Sign-in page */
+
+        .edit_claimant, .edit_defendant {
+            .claimant_full_name, .defendant_full_name {
+                margin-top: 10px;
+            }
+            input.button {
+                margin: 10px 0 20px 20px;
+            }
+        }
+        
+        /* Start page specific */
+
+        #start-continue-claim {
+            margin: 0 20px;
+            padding-bottom: 0;
+
+            .tab-content {
+                margin: 0;
+
+                .before-you-begin {
+                    padding-bottom: 0;
+                    margin: 40px 0 0;
+
+                    h3 {
+                        margin: 0;
+                    }
+                }
+            }
+        }
+        .moj-large-steps .moj-large-step {
+            margin: 0;
+
+            > img {
+                display: none;
+            }
+
+            > div {
+                width: 96%;
+                margin-top: 23px;
+            }
+        }
+        .moj-large-steps .moj-large-step.number-1 {
+            background: url("/assets/icon-step-1.png") no-repeat scroll 0 10px transparent;
+        }
+        .moj-large-step.number-1 div {
+            margin-top: 13px;
+        }
+        .button.big, .button-secondary.big {
+            width: 100%;
+            margin-right: 0;
+        }
+        #new-claim-step-list {
+            margin-top: 0;
+        }
+
+        /* Page 1 specific */
+        
+        nav.primary {
+            display: none;
+        }
+        .edit-person {
+            padding-bottom: 20px;
+        }        
+       
+        .edit-person details summary {
+            margin: 1em 0 0 20px;
+        }
+        .form-row label {
+            width: auto;
+            display: block;
+            margin: 1em 0 0;
+        }
+        .address {
+            .claim_claimants_address_street_2, .claim_claimants_address_street_3 {
+                label {
+                    margin-top: 0;
+                }
+            }
+        }
+        .form-row input.postcode[type="text"], .form-row input.postcode[type="tel"], .form-row input.postcode[type="email"], .form-row input.postcode[type="currency"], .form-row select.postcode {
+            width: 6.5em;
+        }
+        form .enter-address-manually {
+            margin: 1em 20px 0;
+        }
+        .button-warning {
+            margin: 20px 20px 0;
+        }
+        .property_details .address-container, .property_details .tenant_type {
+            display:none;
+        }
+        .property_details .property_type {
+            h4 {
+                margin: 0 20px;
+                margin-top: 1em;
+            }
+            div {
+                margin: 0 20px;
+            }
+        }           
+
+        /* Step 2 specific */
+        
+        #steps-taken h4, #next-steps h4 {
+            margin-top: 0.5em;
+        }
+
+        #about-tenancy .panel-default {
+            .labeled-content {
+                margin: 0 20px 10px;
+
+                .content-label {
+                    display: block;
+                    width: 100%;
+                }
+                .content-block {
+                    width: 100%;
+
+                    .select.optional {
+                        margin-left: 0;
+                    }
+                    .fake-link {
+                        margin: 0;
+                    }
+                }
+            }
+            .claim_tenancy_start_date {
+                margin: 0 20px 10px;
+
+                label {
+                    margin: 0;
+                }
+            }
+            .claim_rental_amount {
+                margin: 0 20px 10px;
+
+                label {
+                    margin: 0;
+                }
+                input {
+                    margin-left: 5px;
+                    width: auto;
+                }
+            }
+            .rent-frequency strong {
+                margin-left: 20px;
+            }
+        }
+        .panel-default {
+            .fake-link, h4, details summary {
+                margin-left: 20px; 
+            }
+        }
+        #other-info .panel-default {
+            p {
+                margin: 0 20px;
+            }
+            div {
+                margin: 10px 20px;
+            }
+        }
+        #attachments .panel-default {
+            p {
+                margin: 20px 20px;
+
+                a {
+                    margin-left: 0;
+                }
+            }
+            #attachments-section {
+                margin-left: 20px;
+            }
+        }
+        
+        /* Step 3 specific */
+
+        .court-hearing-details-time h3 {
+            margin: 0 20px;
+        }
+        .court-badge {
+            margin: 0 20px;
+
+            .court-address {
+                width: 100%;
+
+                h3 {
+                    margin: 20px 0;
+                    padding-bottom: 5px;
+                }
+            }
+        }
+        .court-badge .court-map {
+            width: 100%;
+            margin-bottom: 1em;
+            img {
+                margin-bottom: 1em;
+            }
+        }
+
+        /* Step 4 specific */
+
+        #statement-of-truth {
+            h2 {
+                margin: 50px 0 10px 20px;
+            }
+            .person {
+                background-image: none;
+                padding: 20px 0;
+                width: 100%;
+
+                .name, .address-linear {
+                    margin: 0 20px;
+                }
+            }
+        }
+        #statement-of-truth .particulars-vertical h4, #statement-of-truth .particulars-vertical span {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+        .claim_signature {
+            margin: 40px 20px;
+
+            label {
+                margin: 0;
+            }
+            input {
+                margin-top: -55px;
+            }
+        }
+
+        /* Step 5 specific */
+
+        #claim-fee {
+            display: block;
+            width: 100%;
+        }
+        .panel-default {
+            padding: 20px 0;
+
+            .striped-choice {
+                margin: 0 20px;
+            }
+        }
+        .payment-details-wrap {
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+
+            .payment-details {
+                padding: 0;
+
+                .labeled-content {
+                    .content-label, .content-block {
+                        display: block;
+                        width: 100%;
+
+                        .fake-link {
+                            margin-left: 20px;
+                        }
+                    }
+                    #card-number {
+                        width: 270px;
+                    }
+                    #card-payment-expiry-date select {
+                        min-height: 30px;
+                        height: 30px;
+                        padding: 5px 0 4px 8px;
+                    }
+                }
+            }
+        }
+        #fees {
+            .panel-info {
+                margin-top: 0;
+            }
+            .striped-choice .ts-and-cs {
+                margin-bottom: 35px;
+
+                label {
+                    padding-top: 6px;
+                }
+            }
+        }
+
+        /* Page 6 specific */
+
+        #what-next p {
+            margin: 0.2em 20px;
+        }
+
+
+    }
+
+
+/* #Mobile (Landscape)
+================================================== */
+
+    /* Note: Design for a width of 480px */
+
+    @media only screen and (min-width: 480px) and (max-width: 767px) {
+        
+        
+    }
+

@@ -1,7 +1,7 @@
 = render_local_navigation
 %article
-  %h1 Step 5 of 6 - Pay court fee
-  %p Enter your credit or debit card details to pay the fee for starting the court case.
+  %h2 Step 5 of 6 - Pay court fee
+  %p.lead Enter your credit or debit card details to pay the fee for starting the court case.
   %section#fees
     #claim-fee
       %h3 Court fee
@@ -23,26 +23,24 @@
               .labeled-content
                 .content-label Expiry date
                 #card-payment-expiry-date.content-block.all-inline
-                  %div
-                    %select#card-payment-month
-                      %option
-                      %option{:value => "1"} January
-                      %option{:value => "2"} February
-                      %option{:value => "3"} March
-                      %option{:value => "4"} April
-                      %option{:value => "5"} May
-                      %option{:value => "6"} June
-                      %option{:value => "7"} July
-                      %option{:value => "8"} August
-                      %option{:value => "9"} September
-                      %option{:value => "10"} October
-                      %option{:value => "11"} November
-                      %option{:value => "12"} December
-                  %div
-                    %select#card-payment-year
-                      %option
-                        - for year in 2013..2016
-                          %option{:value => year}= year
+                  %select#card-payment-month
+                    %option
+                    %option{:value => "1"} January
+                    %option{:value => "2"} February
+                    %option{:value => "3"} March
+                    %option{:value => "4"} April
+                    %option{:value => "5"} May
+                    %option{:value => "6"} June
+                    %option{:value => "7"} July
+                    %option{:value => "8"} August
+                    %option{:value => "9"} September
+                    %option{:value => "10"} October
+                    %option{:value => "11"} November
+                    %option{:value => "12"} December
+                  %select#card-payment-year
+                    %option
+                      - for year in 2013..2016
+                        %option{:value => year}= year
               .labeled-content
                 .content-label Security code (cvs)
                 .content-block.all-inline
@@ -74,7 +72,7 @@
       = succeed "." do
         %a.fake-link terms and conditions
     .striped-choice
-      %div
+      .ts-and-cs
         %input#tnc-agreement{:type => "checkbox"}/
         %label{:for => "tnc-agreement"} I agree to terms and conditions of this service
     = form_for @claim do |f|

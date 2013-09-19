@@ -1,6 +1,11 @@
 class PeopleController < ApplicationController
   skip_before_action :pretend_to_authenticate, only: [:login]
 
+  def choose_your_own_adventure
+    hide_user_nav
+    render 'people/role_selector'
+  end
+
   def login
     if %w(claimant defendant staff judge).include? params[:role] 
       reset_session
@@ -149,5 +154,11 @@ class PeopleController < ApplicationController
   def hide_editor
     super(params[:id].to_i)
   end
+
+  private
+
+    def hide_user_nav
+      @hide_user_nav = true
+    end
 
 end

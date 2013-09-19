@@ -12,6 +12,8 @@ CivilClaims::Application.routes.draw do
   # relax, it's a prototype.
   
   get 'claims/delete_all' => 'claims#delete_all'
+
+  get 'login_as' => 'people#choose_your_own_adventure', as: :role_select
   get 'login_as/:role' => 'people#login', as: :login
 
   get 'claims/:claim_id/address/:id/edit' => 'address#editor', as: :claim_address_editor
