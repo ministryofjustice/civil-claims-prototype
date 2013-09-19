@@ -1,0 +1,72 @@
+@import 'colours';
+
+.js-tabs {
+  ul {
+    list-style-type: none;
+    list-style-image: none;
+    padding: 0;
+    border-bottom: 1px solid #bfc1c3;
+
+    li {
+      display: inline-block;
+      font-size: 24px;
+      font-weight: bold;
+      background-color: #dee0e2;
+      margin: 3px;
+      vertical-align: bottom;
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      a {
+        color: #2d2e93;
+        text-decoration: none;
+        padding: 4px 40px;
+      }
+
+      &.is-active {
+        border: 1px solid #bfc1c3;
+        border-bottom: 1px solid #fff;
+        margin-bottom: -1px;
+        padding-top: 5px;
+        background-color: transparent;
+
+        a {
+          padding: 2px 40px 6px;
+        }
+      }
+    }
+  }
+}
+
+header.case {
+  margin-top: 30px;
+
+  ul {
+    clear: both;
+    margin: 30px 0 0;
+    list-style-type: none;
+    list-style-image: none;
+    padding: 0;
+
+    .status {
+      float: left;
+    }
+    .action {
+      float: right;
+    }
+  }
+
+  .hearingDate {
+    padding: 25px 50px;
+    margin: 0 0 20px;
+    background-color: #d5e8f3;
+    border-top: 1px solid #96c6e2;
+    border-bottom: 1px solid #96c6e2;
+
+    h3 {
+      font-size: 32px;
+    }
+  }
+}

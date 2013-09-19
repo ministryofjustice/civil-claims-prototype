@@ -21,6 +21,8 @@ CivilClaims::Application.routes.draw do
   get 'claims/defence' => 'defences#show_login'
   post 'claims/defence/login' => 'defences#login', as: :defense_login
 
+  get 'claims/staff/case/:claim_id' => 'claims#case', as: :staff_case_view
+
   resources :claims do
     member do
       get 'personal_details'
