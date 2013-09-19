@@ -43,7 +43,7 @@ article {
             display: block;
             width: 53px;
             height: 44px;
-            background-image: url(<%= asset_path 'calendar/mode-toggle.png' %>);
+            background-image: image-url('calendar/mode-toggle.png');
             background-repeat: no-repeat;
             text-indent: -999em;
 
@@ -179,7 +179,7 @@ article {
 
       tbody {
         .fc-sun, .fc-sat {
-          background: url(<%= asset_path 'calendar/day-disabled.gif' %>);
+          background: image-url('calendar/day-disabled.gif');
           color: #bfc1c3;
         }
 
@@ -288,7 +288,7 @@ article {
         margin: 0 20px;
 
         .js-enabled & {
-          background-image: url(<%= asset_path 'calendar/accordion-collapse.png' %>);
+          background-image: image-url('calendar/accordion-collapse.png');
           background-position: right center;
           background-repeat: no-repeat;
         }
@@ -316,7 +316,7 @@ article {
           color: $black;
 
           .js-enabled & {
-            background-image: url(<%= asset_path 'calendar/accordion-expand.png' %>);
+            background-image: image-url('calendar/accordion-expand.png');
             background-position: right center;
             background-repeat: no-repeat;
           }
@@ -380,7 +380,7 @@ article {
             padding-left: 50px;
             background-color: #f8f8f8;
             color: #6f777b;
-            background-image: url(<%= asset_path 'calendar/note.png' %>);
+            background-image: image-url('calendar/note.png');
             background-repeat: no-repeat;
             background-position: 25px center;
           }
