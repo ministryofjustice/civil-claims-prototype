@@ -92,7 +92,7 @@
           = f.input :rental_amount, label: "Rental amount", as: :currency, required: true
   
 
-          %div
+          .rent-frequency
             %strong Rent frequency
             .striped-choice
               %div
@@ -110,11 +110,12 @@
 
 
       / OTHER INFORMATION
-      %section
+      %section#other-info
         %h3 Other information
         .panel-default
           %p Give any other information you would like the court to know about your case.
-          = f.text_area :other_information, :rows => 3
+          %div
+            = f.text_area :other_information, :rows => 3
 
       / SUPPORTING DOCUMENTTION
       = render partial: 'attachments/show', :locals => { f: f }
