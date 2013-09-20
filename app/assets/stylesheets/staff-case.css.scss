@@ -1,5 +1,41 @@
+.button, .button:visited {
+  background-color: #DCDCDC;
+  box-shadow: 0 3px 0 #959595;
+  color: #2E2E2E;
+
+  margin-right: 8px;
+
+  h4 & {
+    font-weight: normal;
+  }
+
+  &.right {
+    margin-right: 0;
+  }
+
+  &.primary {
+    background-color: #00a75e;
+    box-shadow: 0 3px 0 #000000;
+    color: #FFFFFF;
+  }
+
+  &:hover {
+    background-color: #7fb299;
+    color: #fff;
+  }
+
+  &.button-warning, &.button-warning:visited {
+    background-color: #B10E1E;
+    color: #fff;
+    box-shadow: 0 2px 0 #6A0812;
+    &:hover {
+      background-color: #990C1A;
+    }
+  }
+}
+
 .js-tabs {
-  ul {
+  > ul {
     list-style-type: none;
     list-style-image: none;
     padding: 0;
@@ -34,6 +70,13 @@
           padding: 2px 40px 6px;
         }
       }
+    }
+  }
+  .tab {
+    display: none;
+
+    &.is-active {
+      display: block;
     }
   }
 }
