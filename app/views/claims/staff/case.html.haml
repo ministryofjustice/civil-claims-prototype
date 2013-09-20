@@ -17,8 +17,8 @@
       %strong 10:30am
 
 .js-tabs
-  %ul.js-tabs
-    %li.is-active
+  %ul.js-tabs-nav
+    %li
       %a{:href => '#casetab'} Case
     %li
       %a{:href => '#defencetab'} Defence
@@ -121,12 +121,119 @@
         %h2 Supporting documentation
         %h4.moj-panel
           Tenancy Agreement July 2010.doc       
-          %span.button.right View
+          %span.button.primary.right View
         %h4.moj-panel
           Crystal palace park road.pdf    
-          %span.button.right View
+          %span.button.primary.right View
 
 
 
-    / %article.tab#defencetab
-    /   %h2 DEFENCE
+    %article.tab#defencetab
+      
+      %section
+        %h2 Tenant
+        .person.defendant
+          %span.name Louis Robert Stevenson
+          .address-linear
+            %span Flat 3
+            %span 92 Crystal Palace Park Road
+            %span London
+            %span SE26 6UP
+            %span UK
+          %div 20281236789
+          %div 07765912673
+          %div lrstevenson@hotmail.co.uk
+
+      %section
+        %h2 About the claim
+        .moj-panel
+          %ul.plain
+            %li 
+              I
+              %strong agree
+              with what is said about the property and the tenancy agreement in the
+              %a{:href => '#'} Case details
+              \.
+            %li
+              I
+              %strong received
+              the notice to quit from the landlord on
+              %strong 11 June 2013
+              \.
+            %li
+              I
+              %strong agree
+              that there are arrears of rent as stated in the
+              %a{:href => '#'} Case details
+              \.
+            %li
+              I
+              %strong have not
+              paid any money to my landlord since the claim was issued.
+            %li
+              I
+              %strong have not
+              come to any agreement with my landlord about the repayment of arrears.
+            %li
+              I
+              %strong do not
+              have a money or other type of claim against the landlord.
+
+      %section
+        %h2 Bank balances
+        .moj-panel
+          %ul.plain
+            %li
+              %span.item Bank account balance
+              %span.value
+                %strong &pound;470
+            %li
+              %span.item Savings account balance
+              %span.value
+                %strong &pound;250
+
+      %section
+        %h2 Money in
+        .moj-panel
+          %ul.plain
+            %li
+              %span.item Present circumstances
+              %span.value 
+                %strong Employed
+            %li
+              %span.item Total income
+              %span.value
+                %strong &pound;1850
+
+      %section
+        %h2 Money out
+        .moj-panel
+          %ul.plain
+            %li
+              %span.item Regular expenses
+              %span.value &pound;375
+            %li
+              %span.item Loans and credit cards
+              %span.value &pound;267.87
+            %li
+              %span.item
+                %strong Total
+              %span.value
+                %strong &pound;642.87
+
+      %section
+        %h2 Circumstances
+        .moj-panel
+          %ul.plain
+            %li
+              If an order for repossession were to be made, I
+              %strong would
+              have somewhere else to live.
+            %li
+              I would be able to move on
+              %strong 8 September 2013
+
+    %article
+      .right.buttons
+        %a.button{:href => '#'} Download and print case
+        %a.button{:href => '#'} Close
