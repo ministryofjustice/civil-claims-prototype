@@ -57,28 +57,12 @@
               = f.label :other_recovery_steps, "Please specify"
           %a.fake-link More types of notices
 
-      / THE NEXT STEPS
-      %section#next-steps
-        %h3 Next steps
-        .panel-default
-          %h4 What would you like to do next?
-          .striped-choice
-            %div
-              = f.check_box :claim_rental_arrears, :onClick => "toggle_panel(this,'rental-arrears');"
-              = f.label :claim_rental_arrears, "Reclaim unpaid rent"
 
-          %details{:open => @claim.includes_human_rights_issues? ? true : false }
-            %summary Does, or will, the claim include any issues under the human rights act 1998
-            .striped-choice
-              %div
-                = f.check_box :includes_human_rights_issues
-                = f.label :includes_human_rights_issues, "Yes, I want to claim under the human rights act"
-
+        
       / ABOUT THE TENANCY
       %section#about-tenancy
         %h3 About the tenancy
         .panel-default
-          
           .labeled-content
             .content-label
               = f.label :tenancy_type
@@ -116,6 +100,13 @@
           %p Give any other information you would like the court to know about your case.
           %div
             = f.text_area :other_information, :rows => 3
+
+          %details{:open => @claim.includes_human_rights_issues? ? true : false }
+            %summary Does, or will, the claim include any issues under the human rights act 1998
+            .striped-choice
+              %div
+                = f.check_box :includes_human_rights_issues
+                = f.label :includes_human_rights_issues, "Yes, I want to claim under the human rights act"
 
       / SUPPORTING DOCUMENTTION
       = render partial: 'attachments/show', :locals => { f: f }
