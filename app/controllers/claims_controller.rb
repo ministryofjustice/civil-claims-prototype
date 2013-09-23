@@ -172,7 +172,7 @@ class ClaimsController < ApplicationController
       [
         { :text => 'Personal details', :path => 'personal_details' },
         { :text => 'Case details', :path => 'case_details' },
-        { :text => 'Court booking', :path => 'court_booking' },
+        { :text => 'County Court', :path => 'court_booking' },
         { :text => 'Confirm details', :path => 'statement' },
         { :text => 'Pay court fee', :path => 'fees' },
         { :text => 'Confirmation', :path => 'confirmation' }
