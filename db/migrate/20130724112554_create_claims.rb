@@ -17,7 +17,7 @@ class CreateClaims < ActiveRecord::Migration
       t.boolean :other_recovery_steps_taken
       t.text :other_recovery_steps
 
-      t.boolean :claim_rental_arrears
+      t.boolean :claim_rental_arrears, :default => true
       t.boolean :lease_forfeiture
       t.boolean :includes_human_rights_issues
 
