@@ -7,8 +7,8 @@
     %h3 Sign in
     .moj-panel
       = simple_form_for @user, :url => defense_login_path, :method => :post do |f| 
-        = f.input :full_name, as: :fake
-        = f.input :password, as: :fake
+        = f.input :full_name, input_html: { class: 'mob-input-width' }, as: :fake
+        = f.input :password, input_html: { class: 'mob-input-width' }, as: :fake
         = f.submit 'Sign in', :class => "button"
 
     .moj-panel-warning

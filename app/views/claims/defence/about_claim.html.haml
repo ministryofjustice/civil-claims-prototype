@@ -142,7 +142,7 @@
           .component-details{ :class => ('element-invisible' unless @defense.has_claim_against_landlord)}
             = f.input :claim_case_number, label: "Case number"
 
-        %div
+        %div.defense-comments
           = f.label :comments_on_particulars, "Do you have any comment about anything else in the <a class='fake-link'>case details</a>?".html_safe
           = f.input :comments_on_particulars, input_html: {:rows => 5}, label: false
 

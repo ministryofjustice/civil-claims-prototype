@@ -4,11 +4,11 @@
   %h2 Step 4 of 5 - Preview and submit
   %p.lead All the details of your defence. Please check all details are correct and then complete the statement of truth at the bottom. After submission you will still be able to login and view and edit this defence.
 
-  %section
+  %section#personal-details
     %h3 Personal details
     = render :partial => 'people/show_extended', :locals => {person: @claim.primary_defendant, options: {class: 'defendant'} }
 
-  %section
+  %section#about-the-claim
     %h3 About the claim
     .moj-panel
       %ul.plain
@@ -43,7 +43,7 @@
           %strong do not
           have a money or other type of claim against the landlord.
 
-  %section
+  %section#bank-balances
     %h3 Bank balances
     .moj-panel
       %ul.plain
@@ -56,7 +56,7 @@
           %span.value
             %strong &pound;250
 
-  %section
+  %section#money-in
     %h3 Money in
     .moj-panel
       %ul.plain
@@ -69,7 +69,7 @@
           %span.value
             %strong &pound;1850
 
-  %section
+  %section#money-out
     %h3 Money out
     .moj-panel
       %ul.plain
@@ -85,7 +85,7 @@
           %span.value
             %strong &pound;642.87
 
-  %section
+  %section#circumstances
     %h3 Circumstances
     .moj-panel
       %ul.plain

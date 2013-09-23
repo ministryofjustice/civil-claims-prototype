@@ -104,6 +104,12 @@
             -khtml-box-sizing: border-box; /* konqueror */
             height: 40px;
         }
+        .moj-panel-warning {
+            background: url("/assets/warning.png") no-repeat scroll 20px 20px #DFE0E2;
+            padding-left: 60px;
+        }
+
+    /* Claimant pages */
 
         /* Sign-in page */
 
@@ -395,6 +401,167 @@
             margin: 0.2em 20px;
         }
 
+    /* Defendant pages */
+
+        /*  */
+
+        #start-continue-defence {
+            margin: 0;
+
+            .tab-content {
+                margin: 0;
+            
+                p {
+                    margin: 0.75em 20px;
+                }
+                li {
+                    margin: 0 20px;
+                    p {
+                        margin: 0;
+                    }
+                    a.button {
+                        margin: 10px 0 0 -30px;
+                        text-align: center;
+                    }
+                    &.number-3 .fake-link {
+                        margin-top: 10px;
+                        display: block;
+                    }
+                }
+            }
+        }
+
+        /* Step 1 specific */
+
+        .person.defendant {
+            background-image: none;
+            padding: 20px 0;
+            width: 100%;
+
+            .name, .address-linear {
+                margin: 0 20px;
+            }
+        }
+        form.edit_defense {
+            details {
+                summary {
+                    padding: 0;
+                }
+                .address .form-row {
+                    margin: 0 20px;
+
+                    &.defense_owner_address_street_2, &.defense_owner_address_street_3 {
+                        label {
+                            margin-top: 0;
+                        }
+                    }
+                }
+                .solicitor {
+                    margin: 10px 0 0 20px;
+                }
+                .solicitor-name {
+                    margin: 0 20px;
+                }
+            }
+            .defense_owner_phone, .defense_owner_mobile, .defense_owner_email {
+                margin: 0 20px;
+            }
+        }
+
+        /* Page 2 - About Claim - specific */
+
+        .moj-panel .panel-component {
+            margin: 20px;
+        }
+        .defense-comments {
+            margin: 0 20px 20px;
+
+            .form-row {
+                margin: 0;
+            }
+        }
+
+        /* Page 3 - About You - specific */
+
+        #circumstances .moj-panel {
+            .defense-circumstances {
+                margin: 20px 20px;
+                display: block;
+            }
+            .panel-component p {
+                margin: 0 0 10px 0;
+            }
+        }
+        #bank-accounts .moj-panel {
+            p {
+                margin: 20px 20px;
+            }
+            .labeled-content {
+                margin: 20px 20px;
+
+                .content-label {
+                    width: 100%;
+                }
+            }
+            .form-row {
+                margin: 0;
+            }
+        }
+        #money-in .moj-panel {
+            p {
+                margin: 20px;
+            }
+            .striped-choice {
+                margin-left: 20px;
+            }
+            .labeled-content {
+                margin-left: 20px;
+
+                .content-label {
+                    width: 34%;
+                }
+            }
+        }
+        #money-out .moj-panel {
+            p {
+                margin: 20px;
+            }
+            .button {
+                margin: 20px 0 0 20px;
+            }
+            .panel-component {
+                margin-left: 0;
+
+                .striped-choice {
+                    margin-left: 20px;
+                }
+            }
+            .labeled-content {
+                margin-left: 20px;
+
+                .content-label {
+                    width: 34%;
+                }
+            }
+        }
+        #support-doc .moj-panel {
+            p {
+                margin: 20px;
+            }
+            .button {
+                margin: 0 0 20px 20px;
+            }
+        }
+
+        /* Page 4 - Preview - specific */
+        
+        //#personal-details .defendant
+
+        #about-the-claim, #bank-balances, #money-in, #money-out, #circumstances {
+            li {
+                margin: 20px 20px;
+            }
+        }
 
     }
 

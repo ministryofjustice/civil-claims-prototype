@@ -19,11 +19,11 @@
               = sf.simple_fields_for :address do |sff|
                 .address-container.edit-person{ id: 'address-' + sff.object.id.to_s }
                   .address{ class: ("element-invisible" unless sff.object.is_valid?) }
-                    = sff.input :street_1, label: 'Street'
-                    = sff.input :street_2, label: '&nbsp;'
-                    = sff.input :street_3, label: '&nbsp;'
-                    = sff.input :town
-                    = sff.input :county
+                    = sff.input :street_1, input_html: { class: 'mob-input-width' }, label: 'Street'
+                    = sff.input :street_2, input_html: { class: 'mob-input-width' }, label: '&nbsp;'
+                    = sff.input :street_3, input_html: { class: 'mob-input-width' }, label: '&nbsp;'
+                    = sff.input :town, input_html: { class: 'mob-input-width' }
+                    = sff.input :county, input_html: { class: 'mob-input-width' }
                     
                     = sff.input :postcode do 
                       = sff.input_field :postcode, class: 'postcode'
@@ -31,16 +31,16 @@
                       - classes << ' disabled' if sff.object.postcode.blank?
                       = link_to 'Find UK address', '/address/picker', :class => classes
 
-          = sf.input :phone
-          = sf.input :mobile
-          = sf.input :email
+          = sf.input :phone, input_html: { class: 'mob-input-width' }
+          = sf.input :mobile, input_html: { class: 'mob-input-width' }
+          = sf.input :email, input_html: { class: 'mob-input-width' }
 
         / Solicitor
         %details
-          %summary.form-row This defence is being completed by a solicitor on behalf of the tenant
-          .form-row
+          %summary.form-row.solicitor This defence is being completed by a solicitor on behalf of the tenant
+          .form-row.solicitor-name
             %label{ :for => "solicitor-name" } Solicitor name
-            %input{ :id=> "Solicitor-name", :type=>"text"}
+            %input{ :id=> "solicitor-name", :class=> "mob-input-width", :type=>"text"}
 
   
     = render :partial => 'shared/save_continue'

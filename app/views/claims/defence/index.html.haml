@@ -1,13 +1,12 @@
-%div
-  %p.lead 
-
-  The landlord 
-  %strong= @claim.claimants.first.full_name
-  is taking you to court to
-  %br
-  repossess your home at 
-  %strong.address-linear
-    = render partial: 'addresses/show', locals: { address: @claim.address_for_possession }
+%div.repossession-details
+  %p.lead
+    The landlord 
+    %strong= @claim.claimants.first.full_name
+    is taking you to court to
+    %br
+    repossess your home at 
+    %strong.address-linear
+      = render partial: 'addresses/show', locals: { address: @claim.address_for_possession }
   
 %article
   - if @defense.present?

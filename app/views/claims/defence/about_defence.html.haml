@@ -6,10 +6,10 @@
 
   = simple_form_for @defense, :url => { :action => "update" } do |f|
     / CIRCUMSTANCES
-    %section
+    %section#circumstances
       %h3 Circumstances
       .moj-panel
-        = f.label :details_of_circumstances, "Give details of any circumstances which led to you being in arrears of rent. If you can tell us about problems like divorce, separation, redundancy, bereavement, illness or bankrupcy it will help us fully understand the defence. Also provide any other reason why you think any date for repossession should be delayed."
+        = f.label :details_of_circumstances, "Give details of any circumstances which led to you being in arrears of rent. If you can tell us about problems like divorce, separation, redundancy, bereavement, illness or bankrupcy it will help us fully understand the defence. Also provide any other reason why you think any date for repossession should be delayed.", :class => 'defense-circumstances'
         = f.input :details_of_circumstances, label: false, :input_html => { :rows => 5 }
 
         .panel-component
@@ -26,7 +26,7 @@
             = f.input :move_in_date_for_other_property, label: false, :input_html => { :id =>"move-in-date-for-other-property" }
     
     / BANK ACCOUNTS
-    %section
+    %section#bank-accounts
       %h3 Bank accounts
       .moj-panel
         %p What are the balance of your bank accounts?
@@ -43,7 +43,9 @@
                 %br/
                 E.g. -20 for &pound;20 overdrawn
             .clear
-              = f.input :dont_have_current_account, label: "I don't have a current account", :wrapper_html => {:class => 'reversed'}
+              /= f.input :dont_have_current_account, label: "I don't have a current account", :wrapper_html => {:class => 'reversed'}
+              = f.input :dont_have_current_account
+              = f.label :dont_have_current_account, "I don't have a current account"
         
 
         .labeled-content
@@ -57,7 +59,7 @@
             .clear
               = f.input :dont_have_savings_account, label: "I don't have a savings account", :wrapper_html => {:class => 'reversed'}
     / MONEY IN
-    %section
+    %section#money-in
       %h3 Money in
       .moj-panel
         %p What are your present circumstances?
@@ -87,7 +89,7 @@
               1,850 per month
     
     / MONEY OUT
-    %section
+    %section#money-out
       %h3 Money out
       .moj-panel
         %p
@@ -243,7 +245,7 @@
 
     
     / SUPPORTING DOCUMENTATION
-    %section
+    %section#support-doc
       %h3 Supporting documentation
       .moj-panel
         %p Attach any documentation to support your defense
