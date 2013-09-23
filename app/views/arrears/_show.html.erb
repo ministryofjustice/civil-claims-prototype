@@ -1,8 +1,9 @@
 <section id="rental-arrears">
   <h3>Unpaid rent</h3>
-  <p>Enter the details of unpaid rental payments below, or <a href-'#'>attach a file</a>.</p>
+  <p>Two ways to add details of unpaid rent, either</p>
   
   <div class="panel-default">
+    <h5>Enter unpaid rent amounts</h5>
     
     <div class="labeled-content">
       <div class="content-label">Rent due on</div>
@@ -83,6 +84,19 @@
           <% end %>
         </tbody>
       </table>
+    </div>
+
+    <h5>or enter the total due and 
+      <% markup = add_fields_markup(f, :attachments, 'attachments') %>
+      <% scope = "$('#attachments-section > input')" %>
+      <% js = add_fields_onclick(scope, :attachments, markup) %>
+      <a class='fake-link' onClick="<%= js %>">attach a file</a>
+    </h5>
+
+    <div class='labeled-content'>
+      <label>Total due</label>
+      <strong>&pound;</strong>
+      <input />
     </div>
     
   </div>

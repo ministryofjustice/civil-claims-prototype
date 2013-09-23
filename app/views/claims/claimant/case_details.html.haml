@@ -97,7 +97,11 @@
       %section#other-info
         %h3 Other information
         .panel-default
-          %p Give any other information you would like the court to know about your case.
+          %p 
+            Give any other information you would like the court to know about your case, or
+            - markup = add_fields_markup(f, :attachments, 'attachments')
+            - scope = "$('#attachments-section > input')"
+            %a.fake-link{id: 'other-info-attach-file', onclick: add_fields_onclick(scope, :attachments, markup)} attach a file
           %div
             = f.text_area :other_information, :rows => 3
 
