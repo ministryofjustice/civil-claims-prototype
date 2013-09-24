@@ -5,19 +5,18 @@ module ApplicationHelper
   end
 
   def add_fields_onclick(scope, association, fields)
-    # "add_fields(#{scope}, \"#{association}\", \"#{escape_javascript(fields)}\")"
     js = "add_fields(#{scope}, '#{association}', '#{escape_javascript(fields)}');"
   end
 
-  def add_fields_markup(form, association, directory)
+  def add_fields_markup(form, association, directory, failname=nil)
     new_object = form.object.class.reflect_on_association(association).klass.new
     fields = form.fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
-      render "#{directory}/#{association.to_s.singularize}_fields", :f => builder
+      render "#{directory}/#{association.to_s.singularize}_fields", f: builder, file_name: failname
     end
   end
 
-  def button_to_add_fields(directory, name, form, association, scope='this')
-    fields = add_fields_markup(form, association, directory)
+  def button_to_add_fields(directory, name, form, association, scope='this', filename=nil)
+    fields = add_fields_markup(form, association, directory, filename)
     button_to_function(name, add_fields_onclick('this', association, fields) , class: "button")
   end
 

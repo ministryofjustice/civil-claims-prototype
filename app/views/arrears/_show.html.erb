@@ -3,7 +3,7 @@
   <p>Two ways to add details of unpaid rent, either</p>
   
   <div class="panel-default">
-    <h5>Enter unpaid rent amounts</h5>
+    <h4>Enter unpaid rent amounts</h4>
     
     <div class="labeled-content">
       <div class="content-label">Rent due on</div>
@@ -86,12 +86,17 @@
       </table>
     </div>
 
-    <h5>or enter the total due and 
-      <% markup = add_fields_markup(f, :attachments, 'attachments') %>
-      <% scope = "$('#attachments-section > input')" %>
-      <% js = add_fields_onclick(scope, :attachments, markup) %>
-      <a class='fake-link' onClick="<%= js %>">attach a file</a>
-    </h5>
+    <h4>or enter the total due and attach a file</h4>
+    <% scope = "$('#attachments-section > input')" %>
+    <% filename = 'rental_arrears.xls' %>
+    <div class='right-aligned-button-group'>
+      <%= button_to_add_fields('attachments', 'attach documents', f, :attachments, scope, filename) %>
+      <div class="striped-choice">
+        <input id="claim_notice_to_quit_attached" name="claim[notice_to_quit_attached]" type="checkbox">
+        <label for="claim_notice_to_quit">arrears files attached</label>
+      </div>
+    </div>
+  
 
     <div class='labeled-content'>
       <label>Total due</label>
