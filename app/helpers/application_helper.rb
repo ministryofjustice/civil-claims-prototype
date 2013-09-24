@@ -3,13 +3,21 @@ module ApplicationHelper
   def button_to_remove_fields(name, form, association)
     form.hidden_field(:_destroy) + button_to_function(name, "remove_fields(this,'#{association}')", class: "button-secondary")
   end
-  
-  def button_to_add_fields(directory, name, form, association)
+
+  def add_fields_onclick(scope, association, fields)
+    js = "add_fields(#{scope}, '#{association}', '#{escape_javascript(fields)}');"
+  end
+
+  def add_fields_markup(form, association, directory, failname=nil)
     new_object = form.object.class.reflect_on_association(association).klass.new
     fields = form.fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
-      render "#{directory}/#{association.to_s.singularize}_fields", :f => builder
+      render "#{directory}/#{association.to_s.singularize}_fields", f: builder, file_name: failname
     end
-    button_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")", class: "button")
+  end
+
+  def button_to_add_fields(directory, name, form, association, scope='this', filename=nil)
+    fields = add_fields_markup(form, association, directory, filename)
+    button_to_function(name, add_fields_onclick('this', association, fields) , class: "button")
   end
 
   def inline_date_input(form, date_field_symbol)
