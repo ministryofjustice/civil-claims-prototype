@@ -24,12 +24,24 @@ moj.Modules.calendar = (function() {
       dispdate,
       $currDate,
       $dayPrev,
-      $dayNext;
+      $dayNext,
+      $historyToggle,
+      $fullHistory;
 
   init = function() {
 
     cacheEls();
     bindEvents();
+
+    $( courts ).each( function( n ) {
+      if( n > 0 ) {
+        $( this ).addClass( 'closed' );
+      }
+    } );
+
+    if( document.location.hash === '#caldisplay=true' ) {
+      $( 'a.calendarview' ).trigger( 'click' );
+    }
     
     $cal.fullCalendar( {
       header:   {
@@ -56,16 +68,6 @@ moj.Modules.calendar = (function() {
     newDate( dispdate );
 
     displayCal( caldisplay );
-
-    $( courts ).each( function( n ) {
-      if( n > 0 ) {
-        $( this ).addClass( 'closed' );
-      }
-    } );
-
-    if( document.location.hash === '#caldisplay=true' ) {
-      $( 'a.calendarview' ).trigger( 'click' );
-    }
   };
 
   cacheEls = function() {
@@ -80,6 +82,8 @@ moj.Modules.calendar = (function() {
     $currDate = $( '.daynav h2' ).eq( 0 );
     $dayPrev = $( '.daynav .prev' );
     $dayNext = $( '.daynav .next' );
+    $historyToggle = $( '.toggle-history' ).eq( 0 );
+    $fullHistory = $( '.full-history' ).eq( 0 );
   };
 
   bindEvents = function() {
@@ -131,6 +135,11 @@ moj.Modules.calendar = (function() {
 
       $( courts[i] ).toggle();
 
+    } );
+
+    $historyToggle.on( 'click', function() {
+      $fullHistory.toggle();
+      $( this ).toggleClass( 'open' )
     } );
   };
 

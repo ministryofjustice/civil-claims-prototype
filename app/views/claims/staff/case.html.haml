@@ -5,16 +5,35 @@
 
   %ul.cf
     %li.status
+      %br/
       %strong Status
       hearing scheduled
     %li.action
       %a{:href => '#'} Reschedule
+      %br/
+      %a.toggle-history{:href => '#'} View all case history
 
   .hearingDate
     %h3
       %strong Wednesday 21 August 2013
       at
       %strong 10:30am
+    .full-history
+      %ul
+        %li
+          Tenant viewed claim and submitted defence
+          %span 12 July 2013
+        %li
+          Claimant added
+          %a{:href => '#'}
+            updated-rental-arrears.pdf
+          %span 10 July 2013
+        %li
+          Viewed by court admin staff at Lambeth County Court
+          %span 2 July 2013
+        %li
+          Claim submitted by John Smith Reynolds
+          %span 30 June 2013
 
 .js-tabs
   %ul.js-tabs-nav
@@ -50,7 +69,7 @@
             %span London
             %span SE26 6UP
             %span UK
-          %div 20281236789
+          %div 02081236789
           %div 07765912673
           %div lrstevenson@hotmail.co.uk
 

@@ -96,6 +96,7 @@ header.case {
     }
     .action {
       float: right;
+      text-align: right;
     }
   }
 
@@ -108,6 +109,42 @@ header.case {
 
     h3 {
       font-size: 32px;
+      text-align: center;
+    }
+  }
+
+  .full-history {
+    display: none;
+    background: transparent;
+    margin: 0;
+    padding: 0;
+
+    ul {
+      list-style-type: none;
+      list-style-image: none;
+
+      li {
+        list-style-image: image-url('calendar/note.png');
+        line-height: 2;
+        margin: 0 1em 0 2em;
+        
+        span {
+          float: right;
+        }
+      }
     }
   }
 }
+
+a.toggle-history {
+  padding-left: 21px;
+  background: image-url('calendar/arrow-closed.gif') left center no-repeat;
+  display: block;
+
+  &.open {
+    background-image: image-url('calendar/arrow-open.gif');
+    color: #2788cc;
+  }
+}
+
+
