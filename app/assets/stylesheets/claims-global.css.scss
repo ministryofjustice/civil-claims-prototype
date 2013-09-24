@@ -158,13 +158,15 @@ a.disabled {
 .awkward-and-temporary-layout {
   .right-aligned-button-group {
     float:right;
-    margin-top:1.5em;
+    margin-top:5px;
 
     &> .striped-choice { margin-top: 10px; }
   }
-  h4 { float:left; }
+  &> .form-row { float: left; }
+  h4 { float:left; margin-top: 5px; }
   .labeled-content { 
     float: left;
     clear: left;
   }
 }
+
