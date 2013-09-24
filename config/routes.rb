@@ -25,6 +25,8 @@ CivilClaims::Application.routes.draw do
 
   get 'claims/staff/case/:claim_id' => 'claims#case', as: :staff_case_view
 
+  get 'claims/before' => 'claims#before'
+
   resources :claims do
     member do
       get 'personal_details'

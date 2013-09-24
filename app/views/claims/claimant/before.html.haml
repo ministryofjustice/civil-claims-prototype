@@ -1,0 +1,36 @@
+%div
+  %p.lead
+    Welcome
+    %strong John Smith Reynolds,
+    thanks for signing up to the service.
+
+  %article
+    %form
+      %h2 Before you start
+
+      %p.lead To help us provide the right service and point you in the right direction as you seek to gain repossession of your property please answer the following questions:
+
+      %section
+        .moj-panel.edit-person
+          .form-group.striped-choice
+            %h4 Who I am
+            %div
+              = radio_button('claimant', 'landlord', true)
+              = label(:claimant, :landlord_true, 'I am the landlord and the owner of the property')
+            %div
+              = radio_button('claimant', 'landlord', false)
+              = label(:claimant, :landlord_false, 'I am acting on behalf of the landlord and the owner of the property')
+
+          .form-group.striped-choice
+            %h4 The property
+            %div
+              = radio_button('claimant', 'property', 'all')
+              = label(:claimant, :property_all, 'I want to seek repossession of the property and all rental arrears')
+            %div
+              = radio_button('claimant', 'property', 'fast')
+              = label(:claimant, :property_fast, 'I want to just seek repossession of the property (fastest method')
+            %div
+              = radio_button('claimant', 'property', 'interest')
+              = label(:claimant, :property_interest, 'I have a financial interest in the property')
+
+        %input.button.right{:type => 'submit', :value => 'Get started'}

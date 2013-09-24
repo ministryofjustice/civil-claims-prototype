@@ -152,6 +152,10 @@ class ClaimsController < ApplicationController
     render 'claims/staff/case', :layout => 'staff'
   end
 
+  def before
+    render 'claims/claimant/before'
+  end
+
 
   private
 
