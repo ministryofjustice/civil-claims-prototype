@@ -39,8 +39,15 @@
               = f.check_box :notice_to_quit, :onClick => "toggle_panel(this, 'notice-served-date');"
               = f.label :notice_to_quit, "Notice to quit"
 
-          #notice-served-date.all-inline{:hidden => @claim.notice_to_quit? ? false : true }
+          #notice-served-date.all-inline.awkward-and-temporary-layout.clearfix{:hidden => @claim.notice_to_quit? ? false : true }
             = f.input :notice_served_date, start_year: Date.today.year-5, end_year: Date.today.year, order: [:day, :month, :year], label: "Date notice served"
+            .right-aligned-button-group
+              - scope = "$('#attachments-section > input')"
+              - filename = 'notice_to_quit.odt'
+              = button_to_add_fields('attachments', 'attach documents', f, :attachments, scope, filename)
+              .striped-choice
+                %input{ type: "checkbox"}
+                %label{ for: "claim_notice_to_quit"} arrears files attached
 
           .striped-choice
             %div
@@ -97,7 +104,11 @@
       %section#other-info
         %h3 Other information
         .panel-default
-          %p Give any other information you would like the court to know about your case.
+          %p 
+            Give any other information you would like the court to know about your case, or
+            - markup = add_fields_markup(f, :attachments, 'attachments')
+            - scope = "$('#attachments-section > input')"
+            %a.fake-link{id: 'other-info-attach-file', onclick: add_fields_onclick(scope, :attachments, markup)} attach a file
           %div
             = f.text_area :other_information, :rows => 3
 

@@ -155,4 +155,18 @@ a.disabled {
 #proposition-name { float:right; }
 .attachments h4 span.right { margin-top: -6px; }
 
+.awkward-and-temporary-layout {
+  .right-aligned-button-group {
+    float:right;
+    margin-top:5px;
+
+    &> .striped-choice { margin-top: 10px; }
+  }
+  &> .form-row { float: left; }
+  h4 { float:left; margin-top: 5px; }
+  .labeled-content { 
+    float: left;
+    clear: left;
+  }
+}
 
