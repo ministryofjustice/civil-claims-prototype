@@ -86,22 +86,26 @@
       </table>
     </div>
 
-    <h4>or enter the total due and attach a file</h4>
-    <% scope = "$('#attachments-section > input')" %>
-    <% filename = 'rental_arrears.xls' %>
-    <div class='right-aligned-button-group'>
-      <%= button_to_add_fields('attachments', 'attach documents', f, :attachments, scope, filename) %>
-      <div class="striped-choice">
-        <input id="claim_notice_to_quit_attached" name="claim[notice_to_quit_attached]" type="checkbox">
-        <label for="claim_notice_to_quit">arrears files attached</label>
+    <hr />
+    <div class='awkward-and-temporary-layout clearfix'>
+      <h4>or enter the total due and attach a file</h4>
+      <% scope = "$('#attachments-section > input')" %>
+      <% filename = 'rental_arrears.xls' %>
+      <div class='right-aligned-button-group'>
+        <%= button_to_add_fields('attachments', 'attach documents', f, :attachments, scope, filename) %>
+        <div class="striped-choice">
+          <input id="claim_notice_to_quit_attached" name="claim[notice_to_quit_attached]" type="checkbox">
+          <label for="claim_notice_to_quit">arrears files attached</label>
+        </div>
       </div>
-    </div>
   
 
-    <div class='labeled-content'>
-      <label>Total due</label>
-      <strong>&pound;</strong>
-      <input />
+      <div class='labeled-content'>
+        <label>Total due</label>
+        <strong>&pound;</strong>
+        <input />
+      </div>
+
     </div>
     
   </div>
