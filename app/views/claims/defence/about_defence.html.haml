@@ -43,9 +43,7 @@
                 %br/
                 E.g. -20 for &pound;20 overdrawn
             .clear
-              /= f.input :dont_have_current_account, label: "I don't have a current account", :wrapper_html => {:class => 'reversed'}
-              = f.input :dont_have_current_account
-              = f.label :dont_have_current_account, "I don't have a current account"
+              = f.input :dont_have_current_account, label: "I don't have a current account", :wrapper_html => {:class => 'reversed'}
         
 
         .labeled-content

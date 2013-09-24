@@ -184,6 +184,12 @@
             display: block;
             margin: 1em 0 0;
         }
+        .form-row.reversed {
+            margin-top: 1em;
+            &> label {
+                margin-top:0;
+            }
+        }
         .address {
             .claim_claimants_address_street_2, .claim_claimants_address_street_3 {
                 label {
