@@ -106,6 +106,7 @@ summary.form-row{
   padding-left: 160px;
 }
 
+.all-inline input.button { margin-left: 15px; }
 
 .edit-person {
   details {
@@ -116,6 +117,8 @@ summary.form-row{
     }
   }
 }
+
+.panel-default details { margin-top: 10px; }
 
 .address-editor .form-group {
   &> div {
