@@ -3,8 +3,8 @@
 <head>
   <script>document.documentElement.className = "js-enabled";</script>
   <%= render "shared/head", :title => Rails.configuration.app_title, :noapp => true %>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "application", media: "all" %>
+  <%= javascript_include_tag "application" %>
 </head>
 <body class='<%= Rails.configuration.phase %>'>
   <%= render 'shared/header', :proposition => 'Repossess a property' %>
