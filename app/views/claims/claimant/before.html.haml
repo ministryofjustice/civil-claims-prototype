@@ -28,9 +28,9 @@
               = label(:claimant, :property_all, 'I want to seek repossession of the property and all rental arrears')
             %div
               = radio_button('claimant', 'property', 'fast')
-              = label(:claimant, :property_fast, 'I want to just seek repossession of the property (fastest method')
+              = label(:claimant, :property_fast, 'I want to just seek repossession of the property (fastest method)')
             %div
               = radio_button('claimant', 'property', 'interest')
               = label(:claimant, :property_interest, 'I have a financial interest in the property')
 
-        %input.button.right{:type => 'submit', :value => 'Get started'}
+        %a.button.right{href: root_path} Get started

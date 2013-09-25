@@ -18,6 +18,10 @@ class ClaimsController < ApplicationController
     end
   end
 
+  def before
+    render "claims/claimant/before"
+  end
+
   def delete
     Claim.find(params[:id]).delete
     redirect_to root_path
