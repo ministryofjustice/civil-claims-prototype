@@ -26,4 +26,12 @@ describe Defense do
 
     assert @d.monthly_expenses << e
   end
+
+  it 'can sum monthly expense total' do
+    3.times do 
+      @d.monthly_expenses << MonthlyExpense.create(name: 'blah', amount: 100)
+    end
+    puts @d.total_expenses
+    expect(@d.total_expenses).to eq 300
+  end
 end

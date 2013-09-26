@@ -48,4 +48,8 @@ class ApplicationController < ActionController::Base
   def next_navigation_path
     view_context.get_next_navigation_path request.referer
   end
+
+  def current_page
+    request.referer
+  end
 end

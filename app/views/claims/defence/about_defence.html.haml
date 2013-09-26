@@ -100,7 +100,7 @@
           %span.supplementary (does not include any payments made by other members of your household)
         = f.simple_fields_for :monthly_expenses do |fmexp|
           = fmexp.input :amount, :label => fmexp.object.name, as: :currency, :input_html => {:class => 'small'}
-        %span.button Add another expense
+        = link_to "Add another expense", new_expense_path( @defense ), class: 'button', id: 'add_new_expense', remote: true
         
         .panel-component
           %p Are you in arrears on any regular monthly outgoings?
@@ -207,7 +207,7 @@
           .content-label
             %strong Total regular expenses:
           .content
-            %strong
+            %strong.total.pounds= pp_currency @defense.total_expenses
               
 
     / DEPENDANTS

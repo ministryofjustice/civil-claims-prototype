@@ -1,0 +1,3 @@
+var expense = $.parseHTML("<%=j render partial: 'expenses/new', formats: [:html] %>");
+
+$('#money-out #add_new_expense').disable().after(expense);

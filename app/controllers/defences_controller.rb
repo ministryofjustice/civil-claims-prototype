@@ -71,7 +71,12 @@ class DefencesController < ApplicationController
   def update
     update_from_parameters
 
-    if 'save-and-continue' == params[:commit]
+    if 'submit_new_expense' == params[:commit]
+      defense = get_current_defense
+      defense.monthly_expenses << MonthlyExpense.create(name: params[:new_expense_name])
+      defense.save
+      redirect_to :back
+    elsif 'save-and-continue' == params[:commit]
       redirect_to next_navigation_path
     elsif 'close' == params[:commit]
       redirect_to claim_defence_path params[:claim_id]

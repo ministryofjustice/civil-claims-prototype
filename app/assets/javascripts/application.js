@@ -31,7 +31,7 @@ $(function() {
 
 // defense stuff
 $(function() {
-  $('#money-in').bind('keyup', 'input.currency', function() {
+  $('#money-in, #money-out').bind('keyup', 'input.currency', function() {
     var result = $(this).find('.total'),
     total = 0;
     console.log($(this).find('input.currency').length);
@@ -41,6 +41,7 @@ $(function() {
     result.html(accounting.formatNumber(total));
   });
 });
+
 
 // want to hide something different then TR then add attribute to fn
 var remove_fields = function(link, association) {

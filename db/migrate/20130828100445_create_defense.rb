@@ -42,10 +42,10 @@ class CreateDefense < ActiveRecord::Migration
       t.string :present_circumstances
       t.string :no_income_details
 
-      t.decimal :income
-      t.decimal :pension
-      t.decimal :child_benefit
-      t.decimal :other_monies_in
+      t.decimal :income, :default => 0
+      t.decimal :pension, :default => 0
+      t.decimal :child_benefit, :default => 0
+      t.decimal :other_monies_in, :default => 0
 
       # money out
 

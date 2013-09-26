@@ -170,3 +170,10 @@ a.disabled {
   }
 }
 
+#add_new_expense[disabled] {
+  display:none;
+}
+.new-expense {
+  margin-top: 10px;
+}
+
