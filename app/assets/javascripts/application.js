@@ -15,8 +15,32 @@
 //= require jquery.ui.effect-highlight
 //= require validator
 //= require addresses
+//= require accounting
 
 //= require claim
+
+
+// just adds a comma in the right place.
+$(function() {
+  $('input.currency').bind('keyup', function() {
+    var num = $(this).val(),
+    formatted_num = accounting.formatNumber(num); // how is this so painfully slow?
+    $(this).val(formatted_num);
+  });
+});
+
+// defense stuff
+$(function() {
+  $('#money-in').bind('keyup', 'input.currency', function() {
+    var result = $(this).find('.total'),
+    total = 0;
+    console.log($(this).find('input.currency').length);
+    $(this).find('input.currency').each(function() {
+      total += parseInt(accounting.unformat($(this).val()));
+    });
+    result.html(accounting.formatNumber(total));
+  });
+});
 
 // want to hide something different then TR then add attribute to fn
 var remove_fields = function(link, association) {

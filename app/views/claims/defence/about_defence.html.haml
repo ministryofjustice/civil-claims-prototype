@@ -57,7 +57,7 @@
             .clear
               = f.input :dont_have_savings_account, label: "I don't have a savings account", :wrapper_html => {:class => 'reversed'}
     / MONEY IN
-    %section
+    %section#money-in
       %h3 Money in
       .moj-panel
         .panel-component
@@ -82,7 +82,7 @@
               .content-label
                 %strong Total money in
               .content
-                %strong
+                %strong.total.pounds= pp_currency @defense.total_money_in
                   
 
           / this is a guess over here - there is no design around this 
@@ -91,7 +91,7 @@
             %textarea{ :id => "no-income-details", :type => "text", :rows => 5 }
     
     / MONEY OUT
-    %section
+    %section#money-out
       %h3 Money out
       .moj-panel
         %p

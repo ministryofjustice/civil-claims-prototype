@@ -6,6 +6,10 @@ class Defense < ActiveRecord::Base
   accepts_nested_attributes_for :owner
   accepts_nested_attributes_for :monthly_expenses, :allow_destroy => true
 
+  def total_money_in
+    income + pension + child_benefit + other_monies_in
+  end
+
   def fill_basic_monthly_expenses!
   	self.monthly_expenses.create(
       [

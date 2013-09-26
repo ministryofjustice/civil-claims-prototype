@@ -201,6 +201,8 @@ Styleguide 1.1
   }
 }
 
+.pounds:before { content: "\00a3"; }
+
 /*
 ## Tables for tabular data
 This is an example.
@@ -213,8 +215,6 @@ table.moj-table {
   margin: 0;
   border-collapse: collapse;
   border-spacing: 0;
-
-  .pounds:before { content: "\00a3"; }
 
   tr {
     td, th { 
