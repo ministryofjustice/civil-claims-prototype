@@ -40,7 +40,7 @@
               = f.label :notice_to_quit, "Notice to quit"
 
           #notice-served-date.all-inline.awkward-and-temporary-layout.clearfix{:hidden => @claim.notice_to_quit? ? false : true }
-            = f.input :notice_served_date, start_year: Date.today.year-5, end_year: Date.today.year, order: [:day, :month, :year], label: "Date notice served"
+            = f.input :notice_served_date, start_year: Date.today.year-5, end_year: Date.today.year, order: [:day, :month, :year], label: "Date notice served", required: true
             .right-aligned-button-group
               - scope = "$('#attachments-section > input')"
               - filename = 'notice_to_quit.odt'
@@ -78,9 +78,9 @@
                 
               %a.fake-link More about tenancy types
 
-          = f.input :tenancy_start_date, start_year: Date.today.year-25, end_year: Date.today.year, order: [:day, :month, :year]
+          = f.input :tenancy_start_date, start_year: Date.today.year-25, end_year: Date.today.year, order: [:day, :month, :year], include_blank: true
           
-          = f.input :rental_amount, label: "Rental amount", as: :currency, required: true
+          = f.input :rental_amount, label: "Rental amount", as: :currency
   
 
           .rent-frequency

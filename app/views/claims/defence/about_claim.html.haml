@@ -34,7 +34,7 @@
               = f.radio_button :received_notice_to_quit, 'false', :class => "js-panel-component-details-hide"
               = f.label :received_notice_to_quit_false, 'No'
           .component-details{ :class => ('element-invisible' unless @defense.received_notice_to_quit)}
-            = f.input :date_received_notice_to_quit, label: "Notice to quit received"
+            = f.input :date_received_notice_to_quit, label: "Notice to quit received", include_blank: true
 
         .panel-component
           Do you agree that there are arrears of the rent as stated in the 

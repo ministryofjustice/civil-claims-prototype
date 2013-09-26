@@ -21,8 +21,13 @@
     %h4 Rental amount
     %span
       = "&pound;#{pp_currency(claim.rental_amount)} #{claim.payment_frequency}".html_safe
-      %br
-      = "&pound;#{pp_currency(claim.unpaid_rent_per_day)} per day".html_safe
+      - unless claim.unpaid_rent_per_day.blank?
+        %br
+        = "&pound;#{pp_currency(claim.unpaid_rent_per_day)} per day".html_safe
+
+  - if claim.total_rental_arrears
+    %h4 Rental arrears
+    %span= "&pound;#{pp_currency(claim.total_rental_arrears)}".html_safe
 
   %h4 Case cost
   %span 
