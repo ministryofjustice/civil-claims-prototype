@@ -25,7 +25,7 @@ gem 'govuk_frontend_toolkit'
 gem 'moj_frontend_toolkit_gem', git: 'https://github.com/ministryofjustice/moj_frontend_toolkit_gem.git', tag: 'v0.0.40'
 
 # bootstrap 3
-gem 'therubyracer' 
+gem 'therubyracer'
 # gem 'less-rails-bootstrap', '~> 3.0.0.wip', github: 'sinfin/less-rails-bootstrap-3'
 
 # Use Uglifier as compressor for JavaScript assets
@@ -46,7 +46,6 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'simple_form', '>= 3.0.0.rc'
 
-
 gem 'nkss-rails', github: 'nadarei/nkss-rails'
 
 group :doc do
@@ -61,10 +60,6 @@ group :development do
   gem 'spork', '1.0.0rc3'
   gem 'spork-rails', :github => 'sporkrb/spork-rails'
   gem 'guard-spork'
-
-
-  gem "better_errors"
-  gem "binding_of_caller"
 end
 
 group :development, :test do
@@ -72,6 +67,12 @@ group :development, :test do
   gem "factory_girl_rails", "~> 4.0"
   gem 'sqlite3', '1.3.7'
   gem "assert_difference", "~> 0.5.0"
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'awesome_print'
+  gem 'hirb'
+  gem 'wirble'
+  gem 'wirb'
 end
 
 # it's a prototype after all
