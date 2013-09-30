@@ -27,9 +27,16 @@ $(function() {
     formatted_num = accounting.formatNumber(num); // how is this so painfully slow?
     $(this).val(formatted_num);
   });
+
+  $('form').submit(function(evt) {
+    $(this).find('input.currency').each(function() {
+      $(this).val(accounting.unformat($(this).val()));
+    });
+  });
 });
 
-// defense stuff
+
+// defense stuff - totals
 $(function() {
   $('#money-in, #money-out').bind('keyup', 'input.currency', function() {
     var result = $(this).find('.total'),
