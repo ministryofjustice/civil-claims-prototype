@@ -11,8 +11,10 @@ moj.Modules.calendar = (function() {
       nudgeDay,
       lz,
       displayCal,
+      toggleCourt,
 
       $cal,
+      $daynav,
       courts,
       courtboxes,
       triggers,
@@ -32,12 +34,6 @@ moj.Modules.calendar = (function() {
 
     cacheEls();
     bindEvents();
-
-    $( courts ).each( function( n ) {
-      if( n > 0 ) {
-        $( this ).addClass( 'closed' );
-      }
-    } );
 
     if( document.location.hash === '#caldisplay=true' ) {
       $( 'a.calendarview' ).trigger( 'click' );
@@ -72,6 +68,7 @@ moj.Modules.calendar = (function() {
 
   cacheEls = function() {
     $cal = $( '.calendar' ).eq( 0 );
+    $daynav = $( '.daynav' ).eq( 0 );
     courts = $( '.court' );
     courtboxes = $( '.filters input.courtbox' );
     triggers = $( '.court .header h3 a' );
@@ -90,19 +87,25 @@ moj.Modules.calendar = (function() {
     $( triggers ).on( 'click', function( e ) {
       var $this = $( this );
       e.preventDefault();
-      $this.closest( '.court' ).toggleClass( 'closed' );
+      toggleCourt( $this.closest( '.court' ) );
       this.blur();
     } );
 
     $expandAll.on( 'click', function() {
       $( courts ).each( function() {
-        $( this ).removeClass( 'closed' );
+        var $this = $( this );
+        if( $this.hasClass( 'closed' ) ) {
+          toggleCourt( $this );
+        }
       } );
     } );
 
     $collapseAll.on( 'click', function() {
       $( courts ).each( function() {
-        $( this ).addClass( 'closed' );
+        var $this = $( this );
+        if( !$this.hasClass( 'closed' ) ) {
+          toggleCourt( $this );
+        }
       } );
     } );
 
@@ -139,8 +142,25 @@ moj.Modules.calendar = (function() {
 
     $historyToggle.on( 'click', function() {
       $fullHistory.toggle();
-      $( this ).toggleClass( 'open' )
+      $( this ).toggleClass( 'open' );
     } );
+
+    $( '.court tr' ).on( 'click', function() {
+      document.location.href = $( this ).find( '.number a' ).attr( 'href' );
+    } );
+  };
+
+  toggleCourt = function( $court ) {
+    var $courtBody = $court.find( '.body' ).eq( 0 );
+
+    if( $court.hasClass( 'closed' ) ) {
+      $court.toggleClass( 'closed' );
+      $courtBody.slideDown( 100 );
+    } else {
+      $courtBody.slideUp( 100, function() {
+        $court.toggleClass( 'closed' );
+      } );
+    }
   };
 
   newDate = function( date ) {
@@ -174,8 +194,10 @@ moj.Modules.calendar = (function() {
   displayCal = function( show ) {
     if( show ) {
       $cal.addClass( 'show' );
+      $daynav.removeClass( 'show' );
     } else {
       $cal.removeClass( 'show' );
+      $daynav.addClass( 'show' );
     }
   };
 

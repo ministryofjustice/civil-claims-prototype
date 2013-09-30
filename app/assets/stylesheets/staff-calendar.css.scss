@@ -226,6 +226,11 @@ article {
     text-align: center;
     padding: 0;
     margin: 0 0 10px 0;
+    display: none;
+
+    &.show {
+      display: block;
+    }
 
     li {
       line-height: 64px;
@@ -304,9 +309,9 @@ article {
       margin: 0;
     }
     &.closed {
-      .body {
-        display: none;
-      }
+      // .body {
+      //   display: none;
+      // }
 
       h3 {
         background-color: #f8f8f8;
