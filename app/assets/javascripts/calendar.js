@@ -121,7 +121,7 @@ moj.Modules.calendar = (function() {
         $( viewtoggles ).toggleClass( 'current' );
         caldisplay = !caldisplay;
         displayCal( caldisplay );
-        document.location.hash = 'caldisplay='+caldisplay;
+        document.location.hash = 'caldisplay=' + caldisplay;
       }
     } );
 
@@ -136,7 +136,7 @@ moj.Modules.calendar = (function() {
       var $this = $( this ),
           i = $( courtboxes ).index( $this );
 
-      $( courts[i] ).toggle();
+      $( courts[ i ] ).toggle();
 
     } );
 
@@ -174,7 +174,7 @@ moj.Modules.calendar = (function() {
 
   nudgeDay = function( n ) {
     var ds;
-    dispdate.setDate(dispdate.getDate() + n);
+    dispdate.setDate( dispdate.getDate() + n );
     if( dispdate.getDay() === 0 || dispdate.getDay() === 6 ) {
       // you've nudged into a weekend, so skip ahead 2 more days to escape
       dispdate.setDate( dispdate.getDate() + ( n * 2 ) );
