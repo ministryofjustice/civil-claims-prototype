@@ -1,9 +1,0 @@
-<% if 'claimant' == person_type.downcase  %>
-  <% button_text = 'Add another landlord' %>
-<% elsif 'defendant' == person_type.downcase  %>
-  <% button_text = 'Add another tenant' %>
-<% end %>
-<%= form_tag(new_claim_person_path( claim ), :method => "get", :remote => true, :class => 'add-additional-person', :id => "add-additional-#{person_type.downcase}" ) do %>
-  <%= hidden_field_tag 'type', person_type.downcase %>
-  <%= submit_tag button_text, :class => "button-secondary" %>
-<% end %>
