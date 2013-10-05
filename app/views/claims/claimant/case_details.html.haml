@@ -40,7 +40,7 @@
               = f.label :notice_to_quit, "Notice to quit"
 
           #notice-served-date.all-inline.awkward-and-temporary-layout.clearfix{:hidden => @claim.notice_to_quit? ? false : true }
-            = f.input :notice_served_date, start_year: Date.today.year-5, end_year: Date.today.year, order: [:day, :month, :year], label: "Date notice served", required: true
+            = f.input :notice_served_date, start_year: Date.today.year-5, end_year: Date.today.year, order: [:day, :month, :year], label: "Date notice served", required: false
             .right-aligned-button-group
               - scope = "$('#attachments-section > input')"
               - filename = 'notice_to_quit.odt'
@@ -65,7 +65,7 @@
           %a.fake-link More types of notices
 
 
-        
+
       / ABOUT THE TENANCY
       %section#about-tenancy
         %h3 About the tenancy
@@ -75,13 +75,13 @@
               = f.label :tenancy_type
             .content-block
               = f.input :tenancy_type, label: false, collection: [["Assured shorthold tenancy", "assured-shorhold-tenancy"], ["Assured tenancy", "assured-tenancy"], ["Regulated tenancy", "regulated-tenancy"]], selected: f.object.tenancy_type || "assured-shorhold-tenancy"
-                
+
               %a.fake-link More about tenancy types
 
           = f.input :tenancy_start_date, start_year: Date.today.year-25, end_year: Date.today.year, order: [:day, :month, :year], include_blank: true
-          
+
           = f.input :rental_amount, label: "Rental amount", as: :currency
-  
+
 
           .rent-frequency
             %strong Rent frequency
@@ -97,14 +97,14 @@
                 = f.label :payment_frequency_week, 'Weekly'
 
       / RENTAL ARREARS
-      = render partial: 'arrears/show', :locals => { f: f } 
+      = render partial: 'arrears/show', :locals => { f: f }
 
 
       / OTHER INFORMATION
       %section#other-info
         %h3 Other information
         .panel-default
-          %p 
+          %p
             Give any other information you would like the court to know about your case, or
             - markup = add_fields_markup(f, :attachments, 'attachments')
             - scope = "$('#attachments-section > input')"
@@ -121,5 +121,5 @@
 
       / SUPPORTING DOCUMENTTION
       = render partial: 'attachments/show', :locals => { f: f }
-      
+
       = render :partial => 'shared/save_continue'
