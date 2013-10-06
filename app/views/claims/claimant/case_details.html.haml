@@ -40,7 +40,7 @@
               = f.label :notice_to_quit, "Notice to quit"
 
           #notice-served-date.all-inline.awkward-and-temporary-layout.clearfix{:hidden => @claim.notice_to_quit? ? false : true }
-            = f.input :notice_served_date, start_year: Date.today.year-5, end_year: Date.today.year, order: [:day, :month, :year], label: "Date notice served", required: false
+            = f.input :notice_served_date, :include_blank => true, :default => nil, order: [:day, :month, :year], label: "Date notice served", required: false
             .right-aligned-button-group
               - scope = "$('#attachments-section > input')"
               - filename = 'notice_to_quit.odt'
