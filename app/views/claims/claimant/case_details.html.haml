@@ -44,7 +44,7 @@
             .right-aligned-button-group
               - scope = "$('#attachments-section > input')"
               - filename = 'notice_to_quit.odt'
-              = button_to_add_fields('attachments', 'attach documents', f, :attachments, scope, filename)
+              = button_to_add_fields('attachments', 'attach notice to quit', f, :attachments, scope, filename)
               .striped-choice
                 %input{ type: "checkbox"}
                 %label{ for: "claim_notice_to_quit"} arrears files attached
