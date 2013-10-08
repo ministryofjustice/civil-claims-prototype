@@ -136,10 +136,35 @@ summary.form-row{
   margin: 10px 0;
 }
 
+.panel-default.cols {
+  * {
+    font-size: 19px;
+  }
+  h4 {
+    margin-top: 0;
+    float: left;
+    width: 170px;
+    margin-right: 20px;
+  }
+
+  fieldset {
+    padding-left: 190px;
+
+    legend {
+      width: 170px;
+      margin-left: -190px;
+      float: left;
+    }
+  }
+
+  .striped-choice {
+    max-width: 480px;
+  }
+}
 
 .striped-choice {
   position: relative;
-  
+
   div {
     @include striped-choice;
   }

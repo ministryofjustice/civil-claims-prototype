@@ -156,13 +156,24 @@ a.disabled {
 .attachments h4 span.right { margin-top: -6px; }
 
 .awkward-and-temporary-layout {
+  max-width: 480px;
+  
   .right-aligned-button-group {
     float:right;
     margin-top:5px;
 
     &> .striped-choice { margin-top: 10px; }
+    .button {
+      float: right;
+    }
   }
-  &> .form-row { float: left; }
+  &> .form-row {
+    float: left;
+    label {
+      width: auto;
+      margin-right: 10px;
+    }
+  }
   h4 { float:left; margin-top: 5px; }
   .labeled-content { 
     float: left;

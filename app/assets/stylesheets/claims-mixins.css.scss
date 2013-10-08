@@ -46,6 +46,7 @@
 @mixin striped-choice{
   position: relative;
   z-index: 0;
+  max-width: 670px;
   input[type="radio"], input[type="checkbox"]{
     display: block-inline;
     height: 2.0em;

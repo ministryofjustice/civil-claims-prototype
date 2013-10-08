@@ -8,61 +8,64 @@
 
       / GROUNDS FOR POSSESSION
       %section#grounds-for-possession
-        %h3 Why you want the property back
-        .panel-default
-          .striped-choice
-            %div
-              = f.check_box :non_payment_of_rent
-              = f.label :non_payment_of_rent, "Unpaid rent"
-            %div
-              = f.check_box :anti_social_behaviour
-              = f.label :anti_social_behaviour, "Anti-social behaviour"
-            %div
-              = f.check_box :property_misuse
-              = f.label :property_misuse, "Misuse of property"
-            %div
-              = f.check_box :other_breach_of_tenancy, :onClick => "toggle_panel(this,'other-breach');"
-              = f.label :other_breach_of_tenancy, "Other breach of tenancy"
-            %div#other-breach{:hidden => @claim.other_breach_of_tenancy? ? false : true}
-              Please give details
-              = f.text_area :other_breach, :rows => 3
-          %a.fake-link More about reasons for repossession
+        %h3 About the case
+        .panel-default.cols
+          %fieldset
+            %legend Your reasons for repossession
+            .striped-choice
+              %div
+                = f.check_box :non_payment_of_rent
+                = f.label :non_payment_of_rent, "Unpaid rent"
+              %div
+                = f.check_box :anti_social_behaviour
+                = f.label :anti_social_behaviour, "Anti-social behaviour"
+              %div
+                = f.check_box :property_misuse
+                = f.label :property_misuse, "Misuse of property"
+              %div
+                = f.check_box :other_breach_of_tenancy, :onClick => "toggle_panel(this,'other-breach');"
+                = f.label :other_breach_of_tenancy, "Other breach of tenancy"
+              %div#other-breach{:hidden => @claim.other_breach_of_tenancy? ? false : true}
+                Please give details
+                = f.text_area :other_breach, :rows => 3
+            %a.fake-link About reasons for repossession
 
       / STEPS ALREADY TAKEN
       %section#steps-taken
         %h3 Steps already taken
-        .panel-default
-          %h4 What kind of notice did you send them?
+        .panel-default.cols
+          %fieldset
+            %legend What kind of notice did you send them?
 
-          .striped-choice
-            %div
-              = f.check_box :notice_to_quit, :onClick => "toggle_panel(this, 'notice-served-date');"
-              = f.label :notice_to_quit, "Notice to quit"
+            .striped-choice
+              %div
+                = f.check_box :notice_to_quit, :onClick => "toggle_panel(this, 'notice-served-date');"
+                = f.label :notice_to_quit, "Notice to quit"
 
-          #notice-served-date.all-inline.awkward-and-temporary-layout.clearfix{:hidden => @claim.notice_to_quit? ? false : true }
-            = f.input :notice_served_date, start_year: Date.today.year-5, end_year: Date.today.year, order: [:day, :month, :year], label: "Date notice served", required: true
-            .right-aligned-button-group
-              - scope = "$('#attachments-section > input')"
-              - filename = 'notice_to_quit.odt'
-              = button_to_add_fields('attachments', 'attach documents', f, :attachments, scope, filename)
-              .striped-choice
-                %input{ type: "checkbox"}
-                %label{ for: "claim_notice_to_quit"} arrears files attached
+            #notice-served-date.all-inline.awkward-and-temporary-layout.clearfix{:hidden => @claim.notice_to_quit? ? false : true }
+              = f.input :notice_served_date, start_year: Date.today.year-5, end_year: Date.today.year, order: [:day, :month, :year], label: "Date notice served", required: true
+              .right-aligned-button-group
+                - scope = "$('#attachments-section > input')"
+                - filename = 'notice_to_quit.odt'
+                = button_to_add_fields('attachments', 'attach documents', f, :attachments, scope, filename)
+                .striped-choice
+                  %input{ type: "checkbox"}
+                  %label{ for: "claim_notice_to_quit"} arrears files attached
 
-          .striped-choice
-            %div
-              = f.check_box :lease_breach
-              = f.label :lease_breach, "Breach of lease"
-            %div
-              = f.check_box :seeking_possetion
-              = f.label :seeking_possetion, "Seeking possesion"
-            %div
-              = f.check_box :other_recovery_steps_taken, :onClick => "toggle_panel(this,'other-recovery-steps');"
-              = f.label :other_recovery_steps_taken, "Other recovery steps taken"
-            %div#other-recovery-steps{:hidden => @claim.other_recovery_steps_taken? ? false : true}
-              = f.text_area :other_recovery_steps, :rows => 3
-              = f.label :other_recovery_steps, "Please specify"
-          %a.fake-link More types of notices
+            .striped-choice
+              %div
+                = f.check_box :lease_breach
+                = f.label :lease_breach, "Breach of lease"
+              %div
+                = f.check_box :seeking_possetion
+                = f.label :seeking_possetion, "Seeking possesion"
+              %div
+                = f.check_box :other_recovery_steps_taken, :onClick => "toggle_panel(this,'other-recovery-steps');"
+                = f.label :other_recovery_steps_taken, "Other recovery steps taken"
+              %div#other-recovery-steps{:hidden => @claim.other_recovery_steps_taken? ? false : true}
+                = f.text_area :other_recovery_steps, :rows => 3
+                = f.label :other_recovery_steps, "Please specify"
+            %a.fake-link More types of notices
 
 
         

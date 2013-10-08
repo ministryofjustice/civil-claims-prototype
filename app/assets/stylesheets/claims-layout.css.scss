@@ -9,14 +9,25 @@ main {
 
   p.lead {
     margin-bottom: 2em;
-    max-width: 60%;
-    font-size: 19px;
+    font-size: 24px;
   }
 }
 
 article {
+  > p {
+    max-width: 850px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  > h2 {
+    font-size: 32px;
+    max-width: 850px;
+    margin-left: auto;
+    margin-right: auto;
+  }
   > h3 {
     margin-top: 30px;
+    font-weight: normal;
   }
   section {
     max-width: 850px;
@@ -26,6 +37,8 @@ article {
     > h3 {
       margin-top: 0;
       margin-bottom: 0px;
+      font-weight: normal;
+      font-size: 24px;
     }
   }
   p { font-size: inherit; }
