@@ -1,0 +1,119 @@
+%p.template-label.heading
+  Child elements of .container
+  %em (width: 960px)
+
+%p.template-label Progress nav
+
+%p With &lt;span&gt;s
+
+.container
+  %nav.progress
+    %ol
+      %li.active
+        %span Personal details
+      %li
+        %span Case details
+      %li
+        %span Confirm details
+      %li
+        %span Pay court fee
+      %li
+        %span Confirmation
+
+%p With &lt;a&gt;s
+
+.container
+  %nav.progress
+    %ol
+      %li.active
+        %a(href='#') Personal details
+      %li
+        %a(href='#') Case details
+      %li
+        %a(href='#') Confirm details
+      %li
+        %a(href='#') Pay court fee
+      %li
+        %a(href='#') Confirmation
+
+%p With completed steps
+
+.container
+  %nav.progress
+    %ol
+      %li.completed
+        %a(href='#') Personal details
+      %li.completed
+        %a(href='#') Case details
+      %li.active
+        %a(href='#') Confirm details
+      %li
+        %a(href='#') Pay court fee
+      %li
+        %a(href='#') Confirmation
+
+%p On last step
+
+.container
+  %nav.progress
+    %ol
+      %li.completed
+        %a(href='#') Personal details
+      %li.completed
+        %a(href='#') Case details
+      %li.completed
+        %a(href='#') Confirm details
+      %li.completed
+        %a(href='#') Pay court fee
+      %li.active
+        %a(href='#') Confirmation
+
+%p Mixed with &lt;a&gt;s for completed steps and &lt;span&gt;s for uncompleted steps
+
+.container
+  %nav.progress
+    %ol
+      %li.completed
+        %a(href='#') Personal details
+      %li.completed
+        %a(href='#') Case details
+      %li.active
+        %span Confirm details
+      %li
+        %span Pay court fee
+      %li
+        %span Confirmation
+
+%p.template-label.closed /Progress nav
+
+
+
+%p.template-label.heading
+  Child elements of &lt;section&gt; and equivalents
+  %em (width: 850px)
+
+%p.template-label Page intro (does not go inside &lt;section&gt;)
+
+%header.content-header
+  %h2 Step 1 - Personal details
+  %p Fill in the address of the property you want to repossess and contact details for the landlords and tenants.
+
+%p.template-label.closed /Page intro
+
+%p.template-label Typical address form panel
+
+%section.property-details
+  %h3.section-header Property details
+  .moj-panel
+    %form
+      .row
+        %label(for='postcode') Postcode
+        %input#postcode(type='text' name='postcode')
+      %fieldset
+        %legend Type of property
+        %input#property-residential(type='checkbox')
+        %label(for='property-residential') Residential
+        %input#property-commercial(type='checkbox')
+        %label(for='property-commercial') Commercial
+
+%p.template-label.closed /Typical address form panel

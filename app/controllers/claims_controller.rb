@@ -18,6 +18,10 @@ class ClaimsController < ApplicationController
     end
   end
 
+  def templates
+    render 'claims/claimant/templates', :layout => 'application-rebuild'
+  end
+
   def before
     render "claims/claimant/before"
   end

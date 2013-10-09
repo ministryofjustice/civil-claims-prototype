@@ -28,6 +28,8 @@ CivilClaims::Application.routes.draw do
   post 'claims/before' => 'claims#before'
   get 'claims/before' => 'claims#before'
 
+  get 'claims/templates' => 'claims#templates'
+
   get 'defense/:id/expense' => 'expense#new', as: :new_expense
 
   resources :claims do
