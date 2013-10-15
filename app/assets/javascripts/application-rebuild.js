@@ -16,4 +16,6 @@
 //= require moj
 //= require modules/moj.tabs
 //= require rebuild/usernav
+//= require rebuild/forms
+//= require rebuild/shame
 //= require main
