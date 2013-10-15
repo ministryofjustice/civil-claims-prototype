@@ -1,4 +1,17 @@
 @import "_colours"
+@import "rebuild/claims-mixins"
+
+input, input[type="text"], button, select, textarea
+  font-family: "nta", arial, sans-serif
+  font-size: 19px
+
+input[type="text"], textarea
+  padding: 5px 4px 2px
+  border: 1px solid $grey-2
+  color: $black
+
+button, .button
+  padding: 8px 12px 2px
 
 .section-header
   font-size: 19px
@@ -9,10 +22,132 @@
   border:
     top: 1px solid $grey-2
     bottom: 1px solid $grey-2
-  padding: 40px 0
+  padding: 40px 20px 40px 90px
+  font-size: 19px
+
+  button, .button
+    display: inline-block
 
   fieldset, .row
+    @include clearfix
+    clear: both
     margin-top: 40px
 
     &:first-child
       margin-top: 0
+
+    &.rel
+      margin-top: 15px
+
+    &.help-link
+      margin-top: 20px
+      padding-left: 190px
+
+  .row
+    min-width: 670px
+    &.divider
+      max-width: 670px
+      height: 0
+      overflow: hidden
+      border-bottom: 1px dotted #c2c2c2
+    label
+      width: 180px
+      display: inline-block
+      margin-right: 10px
+      line-height: 25px
+
+    input[type="text"]
+      width: 300px
+      display: inline-block
+      &.smalltext
+        width: 150px
+
+    select
+      width: 300px
+      &.small
+        width: 100px
+
+    textarea
+      width: 300px
+      height: 60px
+
+    input.has-button
+      margin: 0
+      + .button
+        margin: 0 0 0 10px
+
+  fieldset
+    padding-left: 190px
+
+    legend
+      width: 180px
+      margin-left: -190px
+      float: left
+      line-height: 25px
+
+    .row
+      margin-top: 15px
+      line-height: 1
+
+      &:first-child
+        margin-top: 0
+
+    > div
+      float: left
+
+    &.striped-choice
+
+      .row
+        margin-top: 5px
+        &:first-child
+          margin-top: 0
+    
+      legend
+        padding-top: 10px
+
+  .options
+    max-width: 480px
+    position: relative
+
+    .row
+      width: 480px
+      min-width: 0
+      position: relative
+      &.checked
+        background-color: $light-blue-25
+
+    input[type="checkbox"], input[type="radio"]
+      display: inline-block
+      height: 40px
+      margin-left: 10px
+
+    label
+      position: absolute
+      padding-left: 35px
+      padding-top: 10px
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+      cursor: pointer
+      width: auto
+
+details
+  &[open]
+    summary
+      color: $link-active-colour
+  p
+    margin-top: 0
+  .row:first-of-type
+    margin-top: 10px
+summary
+  padding-left: 190px
+  color: $link-colour
+  text-decoration: underline
+  cursor: pointer
+  &:focus
+    outline: none
+  &:hover
+    color: $link-active-colour
+
+
