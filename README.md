@@ -1,3 +1,7 @@
+# civil-claims alpha
+
+[![Code Climate](https://codeclimate.com/github/ministryofjustice/civil-claims.png)](https://codeclimate.com/github/ministryofjustice/civil-claims)
+
 # Installing the civil-claims alpha on OSX.
 
 - Install XCode from the mac App Store
