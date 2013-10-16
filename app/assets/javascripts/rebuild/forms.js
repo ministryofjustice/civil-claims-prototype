@@ -8,12 +8,15 @@ moj.Modules.forms = (function() {
       cacheEls,
       bindEvents,
       stripeElClick,
+      initStripeRows,
 
       stripeRows;
 
   init = function() {
     cacheEls();
     bindEvents();
+
+    initStripeRows();
   };
 
   cacheEls = function() {
@@ -30,10 +33,9 @@ moj.Modules.forms = (function() {
 
   stripeElClick = function( e ) {
     var $row = $( e.target ).closest( '.row' ),
-        $el = $row.find( 'input' ).eq( 0 ),
+        $el = $row.find( 'input[type="radio"], input[type="checkbox"]' ).eq( 0 ),
         elType = $el.attr( 'type' ),
-        elName,
-        buttons;
+        elName;
 
     if ( elType === 'radio') {
       elName = $el.attr( 'name' );
@@ -48,6 +50,17 @@ moj.Modules.forms = (function() {
         $row.removeClass( 'checked' );
       }  
     }
+  };
+
+  initStripeRows = function() {
+    $( stripeRows ).each( function(){
+      var $this = $( this ),
+          $el = $this.find( 'input[type="radio"], input[type="checkbox"]' ).eq( 0 );
+
+      if( $el[0].checked ) {
+        $this.addClass( 'checked' );
+      }
+    } );
   };
 
   // public

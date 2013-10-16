@@ -18,9 +18,7 @@ moj.Modules.temp = (function() {
   };
 
   bindEvents = function() {
-    // $( 'summary' ).on( 'focus', function() {
-    //   this.blur();
-    // } );
+    
   };
 
   // public
