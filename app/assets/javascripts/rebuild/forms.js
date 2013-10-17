@@ -40,14 +40,19 @@ moj.Modules.forms = (function() {
     if ( elType === 'radio') {
       elName = $el.attr( 'name' );
       $( 'input[name="' + elName + '"]' ).each( function() {
-        $( this ).closest( '.row' ).removeClass( 'checked' );
+        var $this = $( this );
+        $this.closest( '.row' ).removeClass( 'checked' );
+        $this.closest( '.has-extra' ).removeClass( 'show-extra' );
       } );
       $row.addClass( 'checked' );
+      $row.closest( '.has-extra' ).addClass( 'show-extra' );
     } else { // checkbox
       if( $el.is( ':checked' ) ) {
         $row.addClass( 'checked' );
+        $row.closest( '.has-extra' ).addClass( 'show-extra' );
       } else {
         $row.removeClass( 'checked' );
+        $row.closest( '.has-extra' ).removeClass( 'show-extra' );
       }  
     }
   };
@@ -59,6 +64,7 @@ moj.Modules.forms = (function() {
 
       if( $el[0].checked ) {
         $this.addClass( 'checked' );
+        $el.closest( '.has-extra' ).addClass( 'show-extra' );
       }
     } );
   };
