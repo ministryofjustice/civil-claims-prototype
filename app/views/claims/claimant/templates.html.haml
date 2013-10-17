@@ -132,7 +132,7 @@
           .row
             %input#property-who-squatters(type='radio' name='property-who')
             %label(for='property-who-squatters') Squatters
-      .row
+      .row.full
         %details
           %summary Would you like to provide a title number?
           .row
@@ -144,7 +144,7 @@
 
 %p.template-label-sub Landlord details panel
 
-%section.property-details
+%section.landlord-details
   %h3.section-header Landlord details
   .moj-panel
     %form
@@ -195,7 +195,7 @@
       .row.rel
         %label(for='landlord-email') Email
         %input#landlord-email(type='text' name='landlord-email' value='jsreynolds@btconnect.com')
-      .row.rel
+      .row.rel.full
         %details
           %summary I would like to provide a DX number
           .row
@@ -207,7 +207,7 @@
 
 %p.template-label-sub Tenant details panel
 
-%section.property-details
+%section.tenant-details
   %h3.section-header Tenant details
   .moj-panel
     %form
@@ -262,7 +262,7 @@
 
 %p.template-label-sub About the tenancy panel
 
-%section.property-details
+%section.about-tenancy
   %h3.section-header About the tenancy
   .moj-panel
     %form
@@ -357,12 +357,11 @@
             %option(value='1991') 1991
             %option(value='1990') 1990
       .row
-        %label Tenancy agreement
-        %a.button.primary(href='#') Attach tenancy agreement
+        %a.button.primary(href='#') Attach tenancy agreement files
 
 %p.template-label-sub Additional information panel
 
-%section.property-details
+%section.additional-information
   %h3.section-header Additional information
   .moj-panel
     %form
@@ -379,6 +378,45 @@
           %a(href='#') About attaching files
       .row.rel.full
         %a.button.primary(href='#') Attach files
+
+%p.template-label-sub About the case panel
+
+%section.about-case
+  %h3.section-header About the case
+  .moj-panel
+    %form
+      %fieldset.striped-choice
+        %legend Your reasons for repossession
+        .options
+          .row
+            %input#casereasons-unpaidrent(type='checkbox')
+            %label(for='casereasons-unpaidrent') Unpaid rent
+          .row
+            %input#casereasons-antisocial(type='checkbox')
+            %label(for='casereasons-antisocial') Anti-social behaviour
+          .row
+            %input#casereasons-misuse(type='checkbox')
+            %label(for='casereasons-misuse') Misuse of property
+          .has-extra
+            .row
+              %input#casereasons-other(type='checkbox')
+              %label(for='casereasons-other') Other breach of tenancy
+            .extra
+              %label(for='casereasons-other-detail') Please give details
+              %textarea#casereasons-other-detail(name='casereasons-other-detail')
+      .row.rel.help-link
+        %a(href='#') About reasons for repossession
+      %fieldset.striped-choice
+        %legend Did you send the tenants a notice?
+        .options
+          .row
+            %input#tenant-notice-yes(type='radio' name='tenant-notice')
+            %label(for='tenant-notice-yes') Yes
+          .row
+            %input#tenant-notice-no(type='radio' name='tenant-notice')
+            %label(for='tenant-notice-no') No
+      .row.rel.help-link
+        %a(href='#') About notices
 
 
 %p.template-label.closed /Form panels

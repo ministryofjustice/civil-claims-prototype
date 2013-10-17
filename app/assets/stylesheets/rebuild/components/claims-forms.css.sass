@@ -14,6 +14,9 @@ input[type="text"], textarea
 select, option
   color: $black
 
+label
+  cursor: pointer
+
 button, .button
   padding: 8px 12px 2px
   &.primary
@@ -67,15 +70,44 @@ button, .button
       margin-top: 20px
       padding-left: 190px
 
+  .has-extra
+    margin-top: 5px
+
+    .extra
+      display: none
+      label
+        position: relative
+        padding-left: 0
+        display: block
+      textarea
+        display: block
+        width: 470px
+        height: 100px
+
+    &.show-extra
+      background-color: $white
+      padding: 10px
+      margin-left: -10px
+      margin-right: -10px
+
+      .extra
+        display: block
+
+      
+
   .row
-    min-width: 670px
+    width: 480px
+    padding-left: 190px
+
     &.divider
-      max-width: 670px
+      width: 670px
       height: 0
       overflow: hidden
       border-bottom: 1px dotted #c2c2c2
 
     &.full
+      width: 670px
+      padding-left: 0
       p
         width: 670px
       textarea
@@ -91,6 +123,7 @@ button, .button
     label
       width: 180px
       display: inline-block
+      margin-left: -190px
       margin-right: 10px
       line-height: 25px
 
@@ -128,7 +161,7 @@ button, .button
       line-height: 25px
 
     .row
-      clear: none
+      clear: right
       margin-top: 15px
       line-height: 1
 
@@ -152,32 +185,34 @@ button, .button
       legend
         padding-top: 10px
 
-  .options
-    max-width: 480px
-    position: relative
-
     .row
       width: 480px
+      padding-left: 0
       min-width: 0
       position: relative
       &.checked
         background-color: $light-blue-25
 
-    input[type="checkbox"], input[type="radio"]
-      display: inline-block
-      height: 40px
-      margin-left: 10px
+      input[type="checkbox"], input[type="radio"]
+        display: inline-block
+        height: 40px
+        margin-left: 10px
 
-    label
-      position: absolute
-      padding-left: 35px
-      padding-top: 10px
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-      cursor: pointer
-      width: auto
+      label
+        position: absolute
+        padding-left: 35px
+        padding-top: 10px
+        left: 190px
+        right: 0
+        top: 0
+        bottom: 0
+        cursor: pointer
+        width: auto
+
+    .options
+      max-width: 480px
+      position: relative
+
 
 details
   &[open]
