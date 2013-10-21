@@ -9,18 +9,22 @@ moj.Modules.forms = (function() {
       bindEvents,
       stripeElClick,
       initStripeRows,
+      initTableScroll,
 
-      stripeRows;
+      stripeRows,
+      scrollTables;
 
   init = function() {
     cacheEls();
     bindEvents();
 
     initStripeRows();
+    initTableScroll();
   };
 
   cacheEls = function() {
     stripeRows = $( '.striped-choice .row' );
+    scrollTables = $( '.js-scrolltable' );
   };
 
   bindEvents = function() {
@@ -66,6 +70,15 @@ moj.Modules.forms = (function() {
         $this.addClass( 'checked' );
         $el.closest( '.has-extra' ).addClass( 'show-extra' );
       }
+    } );
+  };
+
+  initTableScroll = function() {
+    $( scrollTables ).each( function() {
+      console.log($(this));
+      $( this ).tableScroll( {
+        height: 400
+      } );
     } );
   };
 
