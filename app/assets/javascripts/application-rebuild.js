@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.effect-highlight
+//= require jquery.tablescroll
 //= require moj
 //= require modules/moj.tabs
 //= require rebuild/usernav

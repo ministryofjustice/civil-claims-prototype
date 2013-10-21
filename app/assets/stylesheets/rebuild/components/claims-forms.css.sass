@@ -10,6 +10,13 @@ input[type="text"], textarea
   padding: 5px 4px 2px
   border: 1px solid $grey-2
   color: $black
+  background: $white
+
+input[type="text"].pound
+  background-image: image-url('poundbg.png')
+  background-position: left center
+  background-repeat: no-repeat
+  padding-left: 40px
 
 select, option
   color: $black
@@ -41,15 +48,21 @@ button, .button
 
 
 .section-header
-  font-size: 19px
+  font-size: 24px
   letter-spacing: .005em
+  margin-bottom: 10px
+  a
+    font-size: 19px
+    letter-spacing: 0
+    margin-top: 4px
+
 
 .moj-panel
   background: $grey-4
   border:
     top: 1px solid $grey-2
     bottom: 1px solid $grey-2
-  padding: 40px 20px 40px 90px
+  padding: 40px 20px 40px 60px
   font-size: 19px
 
   button, .button
@@ -67,22 +80,41 @@ button, .button
       margin-top: 15px
 
     &.help-link
-      margin-top: 20px
-      padding-left: 190px
+      margin-top: 15px
+      padding-left: 220px
 
   .has-extra
     margin-top: 5px
 
     .extra
       display: none
+      .row
+        margin-top: 30px
+        width: 470px
+        &.rel
+          margin-top: 15px
+        &.divider
+          margin-left: 0
       label
         position: relative
         padding-left: 0
         display: block
+        margin-top: 20px
       textarea
         display: block
         width: 470px
         height: 100px
+      fieldset
+        width: 470px
+        padding: 0
+        margin-top: 30px
+        legend
+          float: none
+          margin-left: 0
+          padding-top: 0
+        &.date-picker
+          .row
+            margin-top: 5px
 
     &.show-extra
       background-color: $white
@@ -97,28 +129,41 @@ button, .button
 
   .row
     width: 480px
-    padding-left: 190px
+    padding-left: 220px
 
     &.divider
       width: 670px
       height: 0
+      padding-left: 0
+      margin-left: 30px
       overflow: hidden
       border-bottom: 1px dotted #c2c2c2
 
     &.full
       width: 670px
-      padding-left: 0
+      padding-left: 30px
+      &.table
+        width: 700px
+        padding-left: 0
       p
         width: 670px
       textarea
-        width: 670px
+        width: 660px
         height: 100px
       input + label
         width: auto
         margin-left: 10px
 
+    &.warning
+      background-color: $mellow-red-25
+      padding: 10px
+      width: 650px
+      margin-left: 30px
+
     p
       margin: 0 0 5px
+      &.nomargin
+        margin: 0
 
     label
       width: 180px
@@ -130,6 +175,9 @@ button, .button
     input[type="text"]
       width: 300px
       display: inline-block
+      &.pound
+        padding-left: 40px
+        width: 260px
       &.smalltext
         width: 150px
 
@@ -152,7 +200,7 @@ button, .button
         margin: 0 0 0 10px
 
   fieldset
-    padding-left: 190px
+    padding-left: 220px
 
     legend
       width: 180px
@@ -223,7 +271,7 @@ details
   .row:first-of-type
     margin-top: 10px
 summary
-  padding-left: 190px
+  padding-left: 220px
   color: $link-colour
   text-decoration: underline
   cursor: pointer
@@ -233,3 +281,82 @@ summary
     color: $link-active-colour
 
 
+.unpaid-rent-table, .tablescroll
+  width: 700px
+  table-layout: fixed
+  border-collapse: separate
+  td, th
+    text-align: right
+    background-color: $white
+    padding: 10px 15px
+    &.date
+      width: 145px
+      text-align: left
+    &.remove
+      width: 30px
+      text-align: center
+      padding: 0
+      overflow: hidden
+      background-color: $grey-3
+      a
+        padding: 5px
+        text-decoration: none
+        color: $grey-1
+        font-weight: bold
+        text-align: center
+        &:hover
+          color: $grey-3
+          background-color: $grey-1
+    &.amount, &.paid, &.unpaid
+      width: 135px
+  thead
+    th
+      border-bottom: 1px solid #b7b7b7
+  tfoot
+    td
+      text-align: left
+      font-weight: bold
+      border-top: 1px solid #b7b7b7
+  tbody
+    max-height: 200px
+    overflow-y: auto
+    td
+      border-top: 1px dotted #c2c2c2
+    tr:first-child
+      td
+        border: none
+  .unpaid
+    background-color: $turquoise-25
+    text-align: right
+  thead, tfoot
+    .blank
+      background-color: transparent
+      padding: 0
+
+.files
+  .file
+    line-height: 40px
+    margin-top: 5px
+    padding-left: 40px
+    background: $turquoise-25 image-url('attachment.png') 10px 6px no-repeat
+    clear: both
+    position: relative
+
+    &:first-child
+      margin-top: 0
+
+    a
+      position: absolute
+      right: 5px
+      top: 5px
+      width: 30px
+      height: 30px
+      line-height: 30px
+      text-align: center
+      color: $turquoise
+      text-decoration: none
+      padding: 0
+
+      &:hover
+        background-color: $turquoise
+        color: $turquoise-25
