@@ -2,6 +2,11 @@
 @import "_css3"
 @import "rebuild/claims-mixins"
 
+@mixin highlight-row
+  width: 640px
+  padding: 15px
+  margin-left: 30px
+
 input, input[type="text"], button, select, textarea
   font-family: "nta", arial, sans-serif
   font-size: 19px
@@ -65,6 +70,9 @@ button, .button
   padding: 40px 20px 40px 60px
   font-size: 19px
 
+  &.important
+    background-color: $yellow-25
+
   button, .button
     display: inline-block
 
@@ -90,7 +98,7 @@ button, .button
       display: none
       .row
         margin-top: 30px
-        width: 470px
+        width: 480px
         &.rel
           margin-top: 15px
         &.divider
@@ -147,30 +155,55 @@ button, .button
         padding-left: 0
       p
         width: 670px
+      label, .key
+        width: 670px
+        float: none
+        margin: 0
       textarea
         width: 660px
         height: 100px
+      input[type="checkbox"]
+        float: left
+        margin-top: 3px
       input + label
         width: auto
+        max-width: 630px
         margin-left: 10px
+      .row
+        padding-left: 190px
 
-    &.warning
-      background-color: $mellow-red-25
-      padding: 10px
-      width: 650px
-      margin-left: 30px
+      &.warning
+        @include highlight-row
+        background-color: $mellow-red-25
+
+      &.information
+        @include highlight-row
+        background-color: $grey-3
+
+      &.highlight
+        @include highlight-row
+        background-color: $white
 
     p
       margin: 0 0 5px
       &.nomargin
         margin: 0
 
-    label
+    label, .key
       width: 180px
+      float: left
       display: inline-block
       margin-left: -190px
       margin-right: 10px
       line-height: 25px
+
+    .key
+      .review &
+        color: $grey-1
+
+    .highlight
+      background-color: $white
+      padding: 15px
 
     input[type="text"]
       width: 300px
@@ -179,7 +212,8 @@ button, .button
         padding-left: 40px
         width: 260px
       &.smalltext
-        width: 150px
+        width: 132px
+        min-width: 132px
 
     select
       width: 300px
@@ -198,6 +232,10 @@ button, .button
       margin: 0
       + .button
         margin: 0 0 0 10px
+
+    .inline-help
+      display: inline-block
+      margin-left: 10px
 
   fieldset
     padding-left: 220px
@@ -271,7 +309,7 @@ details
   .row:first-of-type
     margin-top: 10px
 summary
-  padding-left: 220px
+  padding-left: 190px
   color: $link-colour
   text-decoration: underline
   cursor: pointer
@@ -282,9 +320,11 @@ summary
 
 
 .unpaid-rent-table, .tablescroll
-  width: 700px
+  width: 670px
   table-layout: fixed
   border-collapse: separate
+  .full.table &
+    width: 700px
   td, th
     text-align: right
     background-color: $white
@@ -299,10 +339,16 @@ summary
       overflow: hidden
       background-color: $grey-3
       a
-        padding: 5px
+        padding: 1px 4px
+        margin-left: 2px
         text-decoration: none
+        display: block
+        font-size: 30px
+        line-height: 34px
+        width: 18px
+        height: 30px
+        overflow: hidden
         color: $grey-1
-        font-weight: bold
         text-align: center
         &:hover
           color: $grey-3
@@ -334,29 +380,42 @@ summary
       padding: 0
 
 .files
-  .file
-    line-height: 40px
-    margin-top: 5px
-    padding-left: 40px
-    background: $turquoise-25 image-url('attachment.png') 10px 6px no-repeat
-    clear: both
-    position: relative
+  ul
+    list-style: none
+    margin: 10px 0 0
+    padding: 0
+    li
+      line-height: 40px
+      margin-top: 5px
+      padding-left: 40px
+      background: $turquoise-25 image-url('attachment.png') 10px 6px no-repeat
+      clear: both
+      position: relative
 
-    &:first-child
-      margin-top: 0
+      &:first-child
+        margin-top: 0
 
-    a
-      position: absolute
-      right: 5px
-      top: 5px
-      width: 30px
-      height: 30px
-      line-height: 30px
-      text-align: center
-      color: $turquoise
-      text-decoration: none
-      padding: 0
+      a
+        float: right
+        margin-right: 10px
 
-      &:hover
-        background-color: $turquoise
-        color: $turquoise-25
+        &.x
+          float: none
+          position: absolute
+          right: 5px
+          top: 5px
+          width: 30px
+          height: 30px
+          overflow: hidden
+          line-height: 36px
+          text-align: center
+          color: $turquoise
+          text-decoration: none
+          font-weight: normal
+          font-size: 32px
+          padding: 0
+          margin: 0
+
+          &:hover
+            background-color: $turquoise
+            color: $turquoise-25

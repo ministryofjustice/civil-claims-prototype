@@ -6,11 +6,14 @@ moj.Modules.temp = (function() {
 
   var init,
       cacheEls,
-      bindEvents;
+      bindEvents,
+      duffLinks;
 
   init = function() {
     cacheEls();
     bindEvents();
+
+    duffLinks();
   };
 
   cacheEls = function() {
@@ -19,6 +22,12 @@ moj.Modules.temp = (function() {
 
   bindEvents = function() {
     
+  };
+
+  duffLinks = function() {
+    $( 'a[href="#"]' ).on( 'click', function( e ) {
+      e.preventDefault();
+    } );
   };
 
   // public
