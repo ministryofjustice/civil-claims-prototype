@@ -6,7 +6,6 @@ nav.progress
   max-width: 960px
   
   ol
-    
     list-style-type: none
     padding: 0
     margin: 0
@@ -24,9 +23,15 @@ nav.progress
     display: table-cell
     font-size: 19px
     margin: 0
+    height: 53px
+    overflow: hidden
 
     a
       text-decoration: underline
+      display: block
+
+      &:hover
+        text-decoration: none
 
     &:first-child
       span, a
@@ -47,7 +52,6 @@ nav.progress
       color: $grey-1
       display: inline-block
       padding: 10px
-
       
 
       &:before
@@ -68,14 +72,14 @@ nav.progress
       background-color: $light-blue
       background-image: image-url('progress-chevrons.png')
       background-repeat: no-repeat
-      background-position: right 0
+      background-position: right top
       padding-right: 10px
 
       span, a
         color: $white
         background-image: image-url('progress-chevrons.png')
         background-repeat: no-repeat
-        background-position: left -53px
+        background-position: left bottom
         padding-left: 25px
 
 

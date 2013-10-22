@@ -65,8 +65,8 @@ moj.Modules.forms = (function() {
     $( stripeRows ).each( function(){
       var $this = $( this ),
           $el = $this.find( 'input[type="radio"], input[type="checkbox"]' ).eq( 0 );
-
-      if( $el[0].checked ) {
+          
+      if( $el.prop( 'checked' ) ) {
         $this.addClass( 'checked' );
         $el.closest( '.has-extra' ).addClass( 'show-extra' );
       }
