@@ -184,6 +184,10 @@ button, .button
         @include highlight-row
         background-color: $white
 
+    &.map
+      img
+        display: block
+
     p
       margin: 0 0 5px
       &.nomargin
@@ -419,3 +423,32 @@ summary
           &:hover
             background-color: $turquoise
             color: $turquoise-25
+
+.confirmation-intro
+  h1
+    text-align: center
+    padding-top: 70px
+    background: image-url('confirmation-tick.png') center top no-repeat
+    margin-bottom: 40px
+  h2
+    text-align: center
+    margin: 40px 0
+    padding: 20px 0 10px
+    font-size: 24px
+    font-weight: normal
+    background: $grey-4
+    border:
+      top: 1px solid $grey-2
+      bottom: 1px solid $grey-2
+
+    strong
+      display: block
+      font-size: 48px
+  p
+    text-align: center
+    margin: 0
+
+.next
+  font-size: 19px
+  h2
+    font-size: 32px
