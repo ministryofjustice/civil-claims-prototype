@@ -18,5 +18,6 @@
 //= require modules/moj.tabs
 //= require rebuild/usernav
 //= require rebuild/forms
+//= require rebuild/demo
 //= require rebuild/shame
 //= require main

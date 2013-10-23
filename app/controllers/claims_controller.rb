@@ -19,7 +19,23 @@ class ClaimsController < ApplicationController
   end
 
   def templates
-    render 'claims/claimant/templates', :layout => 'application-rebuild'
+    render 'claims/claimant/templates', :layout => 'application-rebuild-templates'
+  end
+
+  def demo_step1
+    render 'claims/claimant/demo_step1', :layout => 'application-rebuild'
+  end
+  def demo_step2
+    render 'claims/claimant/demo_step2', :layout => 'application-rebuild'
+  end
+  def demo_step3
+    render 'claims/claimant/demo_step3', :layout => 'application-rebuild'
+  end
+  def demo_step4
+    render 'claims/claimant/demo_step4', :layout => 'application-rebuild'
+  end
+  def demo_step5
+    render 'claims/claimant/demo_step5', :layout => 'application-rebuild'
   end
 
   def before
