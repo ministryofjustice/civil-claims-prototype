@@ -1190,3 +1190,122 @@
       We will never share any of the data or details you have provided in this form with anyone. See full details on our #{link_to 'privacy policy', '#'} and #{link_to 'terms and conditions', '#'}.
 
 %p.template-label.closed /Information panels (pay court fee page)
+
+
+%p.template-label Confirmation panels (confirmation page)
+
+%p.template-label-sub Confirmation intro - used in place of usual page intro on confirmation page
+
+%section.confirmation-intro
+  %h1 Your case has been submitted
+  %p We've sent you an email with all the details of your case.
+  %p You can track the status at any time in #{link_to 'your cases', '#'}.
+  %h2
+    Case number:
+    %strong 2D9KUVVE
+
+%p.template-label-sub Receipt panel
+
+%section.review
+  %h3.section-header
+    Receipt
+    %a.right(href='#') Print receipt
+  .moj-panel
+    .row
+      .key
+        Court fee
+      .value
+        &pound;100
+    .row
+      .key
+        Payment method
+      .value
+        VISA **** **** 1234
+    .row
+      .key
+        Payment date
+      .value
+        10 July 2013 at 13:30
+    .row.full
+      The charge will appear on your account as GOV-UK-REPOSSESSION
+
+%p.template-label-sub Case summary panel
+
+%section.review
+  %h3.section-header
+    Case summary
+    %a.right(href='#') View the case
+  .moj-panel
+    .row
+      .key
+        Property
+      .value
+        Flat 3
+        %br/
+        92 Crystal Palace Park Road
+        %br/
+        London
+        %br/
+        SE26 6UP
+    .row
+      .key
+        Landlord
+      .value
+        Mr John Smith Reynolds
+    .row
+      .key
+        Tenant
+      .value
+        Mr Louis Robert Stevenson
+
+%p.template-label-sub Hearing details panel
+
+%section.review
+  %h3.section-header
+    Hearing details
+    %a.right(href='#') View full court details
+  .moj-panel
+    .row
+      .key
+        Hearing date
+      .value
+        Wednesday 21 August 2013 at 10:30
+    .row
+      .key
+        Court
+      .value
+        Lambeth County Court
+    .row
+      .key
+        Address
+      .value
+        Court House
+        %br/
+        Cleaver Street
+        %br/
+        Kennington Road
+        %br/
+        London
+        %br/
+        SE11 4DZ
+    .row.full.map
+      = image_tag('lambeth-map2.png', alt: 'Lambeth County Court map')
+
+%p.template-label-sub What happens next
+
+%section.next
+  %h2 What happens next
+  %ul
+    %li
+      We'll send the tenant details of your court action
+    %li
+      The tenant has until
+      %strong 14 August 2013
+      to respond.
+    %li
+      A judge will decide on the case at the hearing on&nbsp;
+      %strong> 21 August 2013
+      \.
+  
+
+%p.template-label.closed /Confirmation panels (confirmation page)
