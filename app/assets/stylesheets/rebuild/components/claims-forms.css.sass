@@ -62,6 +62,9 @@ button, .button
     margin-top: 4px
 
 
+.sub-panel
+  padding-top: 40px
+
 .moj-panel
   background: $grey-4
   border:
@@ -87,6 +90,8 @@ button, .button
 
     &.rel
       margin-top: 15px
+      &:first-child
+        margin-top: 0
 
     &.help-link
       margin-top: 15px
@@ -194,7 +199,7 @@ button, .button
       &.nomargin
         margin: 0
 
-    label, .key
+    label, .row label, .key
       width: 180px
       float: left
       display: inline-block

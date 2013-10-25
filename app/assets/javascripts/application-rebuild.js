@@ -13,11 +13,15 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.effect-highlight
+//= require jquery.details.min
 //= require jquery.tablescroll
+//= require handlebars
+
 //= require moj
 //= require modules/moj.tabs
 //= require rebuild/usernav
 //= require rebuild/forms
+//= require rebuild/effects
 //= require rebuild/demo
 //= require rebuild/shame
 //= require main

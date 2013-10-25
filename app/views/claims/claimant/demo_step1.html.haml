@@ -21,8 +21,8 @@
   .moj-panel
     %form
       .row
-        %label(for='postcode')> Postcode
-        %input.has-button.smalltext#postcode(type='text' name='postcode')>
+        %label(for='property-postcode')> Postcode
+        %input.has-button.smalltext#property-postcode(type='text' name='property-postcode')>
         %a.button.primary.js-find-address> Find UK address
       .row.rel.help-link
         %a.js-manual-address(href='#') Enter address manually
@@ -59,7 +59,7 @@
     %form
       .row
         %label(for='landlord-numlandlords')> Number of landlords
-        %select.small#landlord-numlandlords(name='landlord-numlandlords')
+        %select.small#numlandlords(name='landlord-numlandlords')
           %option(value='1') 1
           %option(value='2') 2
           %option(value='3') 3
@@ -71,97 +71,84 @@
           %option(value='9') 9
           %option(value='10') 10
       .row.divider
-      .row
-        %label(for='landlord-title')> Title
-        %select.small#landlord-title(name='landlord-title')
-          %option(value='') select
-          %option(value='Mr') Mr
-          %option(value='Mrs') Mrs
-          %option(value='Miss') Miss
-          %option(value='Ms') Ms
-          %option(value='Dr') Dr
-          %option(value='Other') Other
-      .row.rel
-        %label(for='landlord-fullname')> Full name
-        %input#landlord-fullname(type='text' name='landlord-fullname')
-      .row.rel
-        %label(for='landlord-address')> Street
-        %textarea#landlord-address(name='landlord-address')
-      .row.rel
-        %label(for='landlord-town')> Town
-        %input#landlord-town(type='text' name='landlord-town')
-      .row.rel
-        %label(for='landlord-postcode')> Postcode
-        %input.has-button.smalltext#landlord-postcode(type='text' name='landlord-postcode')>
-        %a.button.primary.js-find-address> Find UK address
-      .row.rel
-        %label(for='landlord-phone')> Phone
-        %input#landlord-phone(type='text' name='landlord-phone')
-      .row.rel
-        %label(for='landlord-mobile')> Mobile
-        %input#landlord-mobile(type='text' name='landlord-mobile')
-      .row.rel
-        %label(for='landlord-email')> Email
-        %input#landlord-email(type='text' name='landlord-email')
-      .row.rel.full
-        %details
-          %summary I would like to provide a DX number
-          .row
-            %label(for='landlord-dxnumber') DX number
-            %input#landlord-dxnumber(type='text' name='landlord-dxnumber')
-          .row.rel
-            %label(for='landlord-dxexchange') DX exchange
-            %input#landlord-dxexchange(type='text' name='landlord-dxexchange')
+      .landlords-wrapper
 
 %section.tenant-details
   %h3.section-header Tenant details
   .moj-panel
     %form
-      .row
-        %label(for='tenant-numtenants') Number of tenants
-        %select.small#tenant-numtenants(name='tenant-numtenants')
-          %option(value='1') 1
-          %option(value='2') 2
-          %option(value='3') 3
-          %option(value='4') 4
-          %option(value='5') 5
-          %option(value='6') 6
-          %option(value='7') 7
-          %option(value='8') 8
-          %option(value='9') 9
-          %option(value='10') 10
-      .row.divider
-      .row
-        %label(for='tenant-title') Title
-        %select.small#tenant-title(name='tenant-title')
-          %option(value='') select
-          %option(value='Mr') Mr
-          %option(value='Mrs') Mrs
-          %option(value='Miss') Miss
-          %option(value='Ms') Ms
-          %option(value='Dr') Dr
-          %option(value='Other') Other
-      .row.rel
-        %label(for='tenant-fullname') Full name
-        %input#tenant-fullname(type='text' name='tenant-fullname' placeholder='e.g. John Smith')
-      %fieldset.striped-choice.rel
-        %legend Address
-        .options
-          .row
-            %input#tenant-location-inproperty(type='radio' name='tenant-location')
-            %label(for='tenant-location-inproperty') They are living in the property
-          .row
-            %input#tenant-location-elsewhere(type='radio' name='tenant-location')
-            %label(for='tenant-location-elsewhere') They are at another known address
-          .row
-            %input#tenant-location-unknown(type='radio' name='tenant-location')
-            %label(for='tenant-location-unknown') I don't know where they are
-      .row.rel
-        %label(for='tenant-phone') Phone
-        %input#tenant-phone(type='text' name='tenant-phone')
-      .row.rel
-        %label(for='tenant-mobile') Mobile
-        %input#tenant-mobile(type='text' name='tenant-mobile')
-      .row.rel
-        %label(for='tenant-email') Email
-        %input#tenant-email(type='text' name='tenant-email')
+      .tenant1
+        .row
+          %label(for='tenant-numtenants') Number of tenants
+          %select.small#numtenants(name='tenant-numtenants')
+            %option(value='1') 1
+            %option(value='2') 2
+            %option(value='3') 3
+            %option(value='4') 4
+            %option(value='5') 5
+            %option(value='6') 6
+            %option(value='7') 7
+            %option(value='8') 8
+            %option(value='9') 9
+            %option(value='10') 10
+        .row.divider
+        = render :partial => 'partials/tenant_form', :locals => {:grouping => 'tenant1'}
+
+
+%script#landlord-template(type='text/x-handlebars-template')
+  .sub-panel(class='landlord-form' id='{{grouping}}')
+    .row
+      %label(for='{{grouping}}-title')> Title
+      %select.small(name='{{grouping}}-title' id='{{grouping}}-title')
+        %option(value='') select
+        %option(value='Mr') Mr
+        %option(value='Mrs') Mrs
+        %option(value='Miss') Miss
+        %option(value='Ms') Ms
+        %option(value='Dr') Dr
+        %option(value='Other') Other
+    .row.rel
+      %label(for='{{grouping}}-fullname')> Full name
+      %input(type='text' name='{{grouping}}-fullname' id='{{grouping}}-fullname')
+    {{#unless additional}}
+    .row.rel.street
+      %label(for='{{grouping}}-address')> Street
+      %textarea(name='{{grouping}}-address' id='{{grouping}}-address')
+    .row.rel.town
+      %label(for='{{grouping}}-town')> Town
+      %input(type='text' name='{{grouping}}-town' id='{{grouping}}-town')
+    .row.rel.postcode
+      %label(for='{{grouping}}-postcode')> Postcode
+      %input.has-button.smalltext(type='text' name='{{grouping}}-postcode' id='{{grouping}}-postcode')>
+      %a.button.primary.js-find-address> Find UK address
+    {{/unless}}
+    {{#if additional}}
+    %fieldset.rel.striped-choice
+      %legend Address
+      .options
+        .row
+          %input(type='radio' name='{{grouping}}-address' id='{{grouping}}-address-same')
+          %label(for='{{grouping}}-address-same') Same as above
+        .row
+          %input(type='radio' name='{{grouping}}-address' id='{{grouping}}-address-different')
+          %label(for='{{grouping}}-address-different') At a different address
+    {{/if}}
+    .row.rel
+      %label(for='{{grouping}}-phone')> Phone
+      %input(type='text' name='{{grouping}}-phone' id='{{grouping}}-phone')
+    .row.rel
+      %label(for='{{grouping}}-mobile')> Mobile
+      %input(type='text' name='{{grouping}}-mobile' id='{{grouping}}-mobile')
+    .row.rel
+      %label(for='{{grouping}}-email')> Email
+      %input(type='text' name='{{grouping}}-email' id='{{grouping}}-email')
+    .row.rel.full
+      %details
+        %summary I would like to provide a DX number
+        .row
+          %label(for='{{grouping}}-dxnumber') DX number
+          %input(type='text' name='{{grouping}}-dxnumber' id='{{grouping}}-dxnumber')
+        .row.rel
+          %label(for='{{grouping}}-dxexchange') DX exchange
+          %input(type='text' name='{{grouping}}-dxexchange' id='{{grouping}}-dxexchange')
+

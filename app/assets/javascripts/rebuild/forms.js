@@ -20,6 +20,8 @@ moj.Modules.forms = (function() {
 
     initStripeRows();
     initTableScroll();
+
+    $( 'details' ).details();
   };
 
   cacheEls = function() {
@@ -28,10 +30,16 @@ moj.Modules.forms = (function() {
   };
 
   bindEvents = function() {
-    $( stripeRows ).each( function() {
-      $( this ).find( 'input[type="radio"], input[type="checkbox"], label' ).click( function( e ) {
+    // $( stripeRows ).each( function() {
+    //   $( this ).find( 'input[type="radio"], input[type="checkbox"], label' ).click( function( e ) {
+    //     stripeElClick( e );
+    //   } );
+    // } );
+
+    $( document ).on( 'click', 'input[type="radio"], input[type="checkbox"], label', function( e ) {
+      if( $( e.target ).closest( '.options' ).parent( '.striped-choice' ).length > 0 ) {
         stripeElClick( e );
-      } );
+      }
     } );
   };
 

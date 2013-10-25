@@ -175,14 +175,14 @@
       .row.rel
         %label(for='landlord-fullname')> Full name
         %input#landlord-fullname(type='text' name='landlord-fullname' value='John Smith Reynolds')
-      .row.rel
+      .row.rel.street
         %label(for='landlord-address')> Street
         %textarea#landlord-address(name='landlord-address')
           121 Elm Park Road
-      .row.rel
+      .row.rel.town
         %label(for='landlord-town')> Town
         %input#landlord-town(type='text' name='landlord-town' value='London')
-      .row.rel
+      .row.rel.postcode
         %label(for='landlord-postcode')> Postcode
         %input.has-button.smalltext#landlord-postcode(type='text' name='landlord-postcode')>
         %a.button.primary> Find UK address

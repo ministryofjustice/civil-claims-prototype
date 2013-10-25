@@ -22,6 +22,7 @@ class ClaimsController < ApplicationController
     render 'claims/claimant/templates', :layout => 'application-rebuild-templates'
   end
 
+  # stuff for demo only
   def demo_step1
     render 'claims/claimant/demo_step1', :layout => 'application-rebuild'
   end
@@ -37,6 +38,7 @@ class ClaimsController < ApplicationController
   def demo_step5
     render 'claims/claimant/demo_step5', :layout => 'application-rebuild'
   end
+  # /stuff for demo only
 
   def before
     render "claims/claimant/before"
