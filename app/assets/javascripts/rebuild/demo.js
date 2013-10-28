@@ -13,13 +13,19 @@ moj.Modules.demo = (function() {
       pickAddress,
       manualAddressFields,
       initTemplates,
+      changeLandlords,
+      changeTenants,
+      landlordTenantAddressRadioClick,
 
       //elements
       postcodeButtons,
       manualAddressLinks,
+      landlordAddressRadios,
+      tenantAddressRadios,
 
       //vars
       currLandlords = 1,
+      currTenants = 1,
 
       //data
       fakeAddresses = [
@@ -61,61 +67,50 @@ moj.Modules.demo = (function() {
       ];
 
   init = function() {
+    initTemplates();
+
     cacheEls();
     bindEvents();
-
-    initTemplates();
   };
 
   cacheEls = function() {
     postcodeButtons = $( '.js-find-address' );
     manualAddressLinks = $( '.js-manual-address' );
+    landlordAddressRadios = $( '.options.js-landlord-address input[type="radio"]' );
+    tenantAddressRadios = $( '.options.js-tenant-address input[type="radio"]' );
   };
 
   bindEvents = function() {
     $( postcodeButtons ).each( function() {
-      $( this ).on( 'click', function( e ) {
+      $( this ).unbind( 'click' ).on( 'click', function( e ) {
         e.preventDefault();
         getRandomAddresses( $( e.target ) );
       } );
     } );
 
     $( manualAddressLinks ).each( function() {
-      $( this ).on( 'click', function( e ) {
+      $( this ).unbind( 'click' ).on( 'click', function( e ) {
         e.preventDefault();
         manualAddressFields( $( e.target ) );
       } );
     } );
 
-    $( document ).on( 'change' , '.addressDropdown', function( e ) {
+    $( landlordAddressRadios ).add( tenantAddressRadios ).each( function() {
+      $( this ).unbind( 'click' ).on( 'click', function( e ) {
+        landlordTenantAddressRadioClick( $( e.target ) );
+      } );
+    } );
+
+    $( '.addressDropdown' ).unbind('change').on( 'change', function( e ) {
       pickAddress( $( e.target ) );
     } );
 
     $( '#numlandlords' ).on( 'change', function() {
-      var landlords = $( this ).val(),
-          x;
-      if( landlords < currLandlords ) {
-        console.log('remove');
-        // remove landlords
-        $( '.landlord-form' ).each( function( n ) {
-          var $this = $( this );
-          if( (n+1) > landlords ) {
-            console.log('remove '+n);
-            $this.remove();
-          }
-        } );
-      } else if( landlords > currLandlords ) {
-        // add landlords
-        for( x = currLandlords; x < landlords; x++ ) {
-          var lsource = $('#landlord-template').html(),
-              ltemplate = Handlebars.compile(lsource),
-              lcontext = {grouping: 'landlord'+x, additional: true};
+      changeLandlords( $( this ) );
+    } );
 
-          $( '.landlords-wrapper' ).append(ltemplate(lcontext));
-        }
-      }
-
-      currLandlords = landlords;
+    $( '#numtenants' ).on( 'change', function() {
+      changeTenants( $( this ) );
     } );
   };
 
@@ -131,6 +126,7 @@ moj.Modules.demo = (function() {
 
 
     $el.closest( '.row' ).after( html );
+    bindEvents();
 
     moj.Modules.effects.highlights();
   };
@@ -140,8 +136,10 @@ moj.Modules.demo = (function() {
   };
 
   pickAddress = function( $el ) {
+    console.log('pickAddress called');
+
     var address = fakeAddresses[ $el.val() ],
-        $panel = $el.closest( '.moj-panel' ),
+        $panel = $el.closest( '.sub-panel' ),
         $ddRow = $el.closest( '.row' ),
         $pcRow = $ddRow.prev(),
         html;
@@ -159,7 +157,7 @@ moj.Modules.demo = (function() {
   };
 
   manualAddressFields = function( $el ) {
-    var $panel = $el.closest( '.moj-panel' ),
+    var $panel = $el.closest( '.sub-panel' ),
         $pcRow = $el.closest( '.row' ).prev(),
         html;
 
@@ -168,16 +166,100 @@ moj.Modules.demo = (function() {
 
     $panel.find( '.row.street, .row.town' ).remove();
     $pcRow.addClass( 'rel' ).before( html );
+    $pcRow.addClass( 'highlight' ).find( 'input[type="text"]' ).val( '' );
+    // $el.closest( '.row' ).remove();
 
     moj.Modules.effects.highlights();
   };
 
-  initTemplates = function() {
-    var lsource = $('#landlord-template').html(),
-        ltemplate = Handlebars.compile(lsource),
-        lcontext = {grouping: 'landlord1'};
+  changeLandlords = function( $el ) {
+    var landlords = $el.val(),
+        x;
+    if( landlords < currLandlords ) {
+      // remove landlords
+      $( '.landlord-form' ).each( function( n ) {
+        var $this = $( this );
+        if( (n+1) > landlords ) {
+          $this.remove();
+        }
+      } );
+    } else if( landlords > currLandlords ) {
+      // add landlords
+      for( x = currLandlords; x < landlords; x++ ) {
+        var source = $('#landlord-template').html(),
+            template = Handlebars.compile(source),
+            context = {grouping: 'landlord'+(x+1), additional: true};
 
-    $( '.landlords-wrapper' ).append(ltemplate(lcontext));
+        $( '.landlords-wrapper' ).append(template(context));
+      }
+    }
+
+    currLandlords = landlords;
+
+    cacheEls();
+    bindEvents();
+  };
+
+  changeTenants = function( $el ) {
+    var tenants = $el.val(),
+        x;
+    if( tenants < currTenants ) {
+      // remove tenants
+      $( '.tenant-form' ).each( function( n ) {
+        var $this = $( this );
+        if( (n+1) > tenants ) {
+          $this.remove();
+        }
+      } );
+    } else if( tenants > currTenants ) {
+      // add tenants
+      for( x = currTenants; x < tenants; x++ ) {
+        var source = $('#tenant-template').html(),
+            template = Handlebars.compile(source),
+            context = {grouping: 'tenant'+(x+1), additional: true};
+
+        $( '.tenants-wrapper' ).append(template(context));
+      }
+    }
+
+    currTenants = tenants;
+
+    cacheEls();
+    bindEvents();
+  };
+
+  initTemplates = function() {
+    var lsource = $( '#landlord-template' ).html(),
+        ltemplate = Handlebars.compile( lsource ),
+        lcontext = { grouping: 'landlord1' },
+        tsource = $( '#tenant-template' ).html(),
+        ttemplate = Handlebars.compile( tsource ),
+        tcontext = { grouping: 'tenant1' };
+
+    $( '.landlords-wrapper' ).append( ltemplate( lcontext ) );
+    $( '.tenants-wrapper' ).append( ttemplate( tcontext ) );
+  };
+
+  landlordTenantAddressRadioClick = function( $el ) {
+    var source,
+        template,
+        context,
+        $fieldset = $el.closest( 'fieldset' ),
+        $panel = $el.closest( '.sub-panel' );
+
+    $panel.find( '.postcode-fragment-wrapper' ).remove();
+
+    if( $el.closest( '.row' ).hasClass( 'js-different' ) ) {
+      source = $( '#postcode-fragment' ).html();
+      template = Handlebars.compile( source );
+      context = { grouping: $panel .attr( 'id' ) };
+
+
+      $fieldset.after( template( context ) );
+
+      cacheEls();
+      bindEvents();
+    }
   };
 
   // public
