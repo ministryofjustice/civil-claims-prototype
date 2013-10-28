@@ -1,0 +1,54 @@
+.container
+  %nav.progress
+    %ol
+      %li
+        %a(href='/claims/demo_step1') Personal details
+      %li.active
+        %span Case details
+      %li
+        %span Confirm details
+      %li
+        %span Pay court fee
+      %li
+        %span Confirmation
+
+%header.content-header
+  %h2 Step 2 - Case details
+  %p Say why you want the property back, add details of the tenancy, and attach any supporting documents.
+
+  %section.about-case
+    %h3.section-header About the case
+    .moj-panel
+      %form
+        %fieldset.striped-choice
+          %legend Your reasons for repossession
+          .options
+            .row
+              %input#casereasons-unpaidrent(type='checkbox')
+              %label(for='casereasons-unpaidrent') Unpaid rent
+            .row
+              %input#casereasons-antisocial(type='checkbox')
+              %label(for='casereasons-antisocial') Anti-social behaviour
+            .row
+              %input#casereasons-misuse(type='checkbox')
+              %label(for='casereasons-misuse') Misuse of property
+            .has-extra
+              .row
+                %input#casereasons-other(type='checkbox')
+                %label(for='casereasons-other') Other breach of tenancy
+              .extra
+                %label(for='casereasons-other-detail') Please give details
+                %textarea#casereasons-other-detail(name='casereasons-other-detail')
+        .row.rel.help-link
+          %a(href='#') About reasons for repossession
+        %fieldset.striped-choice
+          %legend Did you send the tenants a notice?
+          .options
+            .row
+              %input#tenant-notice-yes(type='radio' name='tenant-notice')
+              %label(for='tenant-notice-yes') Yes
+            .row
+              %input#tenant-notice-no(type='radio' name='tenant-notice')
+              %label(for='tenant-notice-no') No
+        .row.rel.help-link
+          %a(href='#') About notices

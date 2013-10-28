@@ -136,8 +136,6 @@ moj.Modules.demo = (function() {
   };
 
   pickAddress = function( $el ) {
-    console.log('pickAddress called');
-
     var address = fakeAddresses[ $el.val() ],
         $panel = $el.closest( '.sub-panel' ),
         $ddRow = $el.closest( '.row' ),
