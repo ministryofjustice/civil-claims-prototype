@@ -83,7 +83,6 @@ moj.Modules.forms = (function() {
 
   initTableScroll = function() {
     $( scrollTables ).each( function() {
-      console.log($(this));
       $( this ).tableScroll( {
         height: 400
       } );

@@ -16,12 +16,19 @@ moj.Modules.demo = (function() {
       changeLandlords,
       changeTenants,
       landlordTenantAddressRadioClick,
+      jsDependClick,
+      ntqClick,
+      removeFile,
+      attachMiscFile,
+      addRentTableRow,
 
       //elements
       postcodeButtons,
       manualAddressLinks,
       landlordAddressRadios,
       tenantAddressRadios,
+      jsDepends,
+      ntqButton,
 
       //vars
       currLandlords = 1,
@@ -78,6 +85,8 @@ moj.Modules.demo = (function() {
     manualAddressLinks = $( '.js-manual-address' );
     landlordAddressRadios = $( '.options.js-landlord-address input[type="radio"]' );
     tenantAddressRadios = $( '.options.js-tenant-address input[type="radio"]' );
+    jsDepends = $( '.js-depend' );
+    ntqButton = $( '.js-noticetoquit' );
   };
 
   bindEvents = function() {
@@ -101,6 +110,12 @@ moj.Modules.demo = (function() {
       } );
     } );
 
+    $( jsDepends ).each( function() {
+      $( this ).change( function( e ) {
+        jsDependClick( $( e.target ) );
+      } );
+    } );
+
     $( '.addressDropdown' ).unbind('change').on( 'change', function( e ) {
       pickAddress( $( e.target ) );
     } );
@@ -111,6 +126,25 @@ moj.Modules.demo = (function() {
 
     $( '#numtenants' ).on( 'change', function() {
       changeTenants( $( this ) );
+    } );
+
+    $( ntqButton ).each( function() {
+      $( this ).on( 'click', function( e ) {
+        ntqClick( $( e.target ) );
+      } );
+    } );
+
+    $( document ).on( 'click', '.files li a.x', function( e ) {
+      e.preventDefault();
+      removeFile( $( e.target ) );
+    } );
+
+    $( '.js-unpaid-rent-attachfiles, .js-tenancyagreement-attachfiles, .js-additional-attachfiles' ).on( 'click', function( e ) {
+      attachMiscFile( $( e.target ) );
+    } );
+
+    $( '.js-add-unpaid-rent-row' ).on( 'click', function( e ) {
+      addRentTableRow( $( e.target ) );
     } );
   };
 
@@ -177,18 +211,18 @@ moj.Modules.demo = (function() {
       // remove landlords
       $( '.landlord-form' ).each( function( n ) {
         var $this = $( this );
-        if( (n+1) > landlords ) {
+        if( ( n + 1 ) > landlords ) {
           $this.remove();
         }
       } );
     } else if( landlords > currLandlords ) {
       // add landlords
       for( x = currLandlords; x < landlords; x++ ) {
-        var source = $('#landlord-template').html(),
-            template = Handlebars.compile(source),
-            context = {grouping: 'landlord'+(x+1), additional: true};
+        var source = $( '#landlord-template' ).html(),
+            template = Handlebars.compile( source ),
+            context = { grouping: 'landlord' + ( x + 1 ), additional: true };
 
-        $( '.landlords-wrapper' ).append(template(context));
+        $( '.landlords-wrapper' ).append( template( context ) );
       }
     }
 
@@ -205,18 +239,18 @@ moj.Modules.demo = (function() {
       // remove tenants
       $( '.tenant-form' ).each( function( n ) {
         var $this = $( this );
-        if( (n+1) > tenants ) {
+        if( ( n + 1 ) > tenants ) {
           $this.remove();
         }
       } );
     } else if( tenants > currTenants ) {
       // add tenants
       for( x = currTenants; x < tenants; x++ ) {
-        var source = $('#tenant-template').html(),
-            template = Handlebars.compile(source),
-            context = {grouping: 'tenant'+(x+1), additional: true};
+        var source = $( '#tenant-template' ).html(),
+            template = Handlebars.compile( source ),
+            context = { grouping: 'tenant' + ( x + 1 ), additional: true };
 
-        $( '.tenants-wrapper' ).append(template(context));
+        $( '.tenants-wrapper' ).append( template( context ) );
       }
     }
 
@@ -227,15 +261,28 @@ moj.Modules.demo = (function() {
   };
 
   initTemplates = function() {
-    var lsource = $( '#landlord-template' ).html(),
-        ltemplate = Handlebars.compile( lsource ),
-        lcontext = { grouping: 'landlord1' },
-        tsource = $( '#tenant-template' ).html(),
-        ttemplate = Handlebars.compile( tsource ),
-        tcontext = { grouping: 'tenant1' };
+    var lsource,
+        ltemplate,
+        lcontext,
+        tsource,
+        ttemplate,
+        tcontext;
 
-    $( '.landlords-wrapper' ).append( ltemplate( lcontext ) );
-    $( '.tenants-wrapper' ).append( ttemplate( tcontext ) );
+    if( $( '.landlords-wrapper' ).length ) {
+      lsource = $( '#landlord-template' ).html();
+      ltemplate = Handlebars.compile( lsource );
+      lcontext = { grouping: 'landlord1' };
+
+      $( '.landlords-wrapper' ).append( ltemplate( lcontext ) );
+    }
+
+    if( $( '.tenants-wrapper' ).length ) {
+      tsource = $( '#tenant-template' ).html();
+      ttemplate = Handlebars.compile( tsource );
+      tcontext = { grouping: 'tenant1' };
+
+      $( '.tenants-wrapper' ).append( ttemplate( tcontext ) );
+    }
   };
 
   landlordTenantAddressRadioClick = function( $el ) {
@@ -257,6 +304,77 @@ moj.Modules.demo = (function() {
 
       cacheEls();
       bindEvents();
+    }
+  };
+
+  jsDependClick = function( $el ) {
+    var groupname,
+        els,
+        x,
+        hidename,
+        showname;
+
+    if( $el.attr( 'type' ) === 'radio' ) {
+      groupname = $el.attr( 'name' );
+      els = $( 'input[name="' + groupname + '"]' );
+
+      for( x = 0; x < els.length; x++ ) {
+        hidename = $( els[ x ] ).data( 'depend' );
+        $( '.js-' + hidename ).hide();
+      }
+
+      showname = $el.data( 'depend' );
+      $( '.js-' + showname ).show();
+    } else {// checkbox
+      showname = $el.data( 'depend' );
+      if( $el.is( ':checked' ) ) {
+        $( '.js-' + showname ).show();
+      } else {
+        $( '.js-' + showname ).hide();
+      }
+    }
+  };
+
+  ntqClick = function( $el ) {
+    console.log('ntqClick');
+    var $list = $el.closest( '.row' ).siblings( '.files' ).find( 'ul' ).eq( 0 ),
+        els = $list.find( 'li' );
+
+    if( $list.data( 'show' ) !== true ) {
+      $( els[ 0 ] ).show();
+      $list.data( 'show', true );
+    } else {
+      $( els[ 0 ] ).clone().appendTo( $list );
+    }
+  };
+
+  removeFile = function( $el ) {
+    var $list = $el.closest( 'ul' );
+    $el.closest( 'li' ).hide();
+    if( $list.find( 'li' ).length === 0 ) {
+      $list.remove();
+    }
+  };
+
+  attachMiscFile = function( $el ) {
+    var $filesPanel = $el.closest( '.sub-panel' ).find( '.sub-panel' );
+
+    $filesPanel.show();
+    if( $filesPanel.data( 'show' ) === true ) {
+      $filesPanel.find( 'li:hidden' ).eq( 0 ).show();
+    } else {
+      $filesPanel.data( 'show', true );
+    }
+  };
+
+  addRentTableRow = function( $el ) {
+    var $tablePanel = $el.closest( '.sub-panel' ).find( '.sub-panel' );
+
+    $tablePanel.show();
+    if( $tablePanel.data( 'show' ) === true ) {
+      $tablePanel.find( 'tr:hidden' ).eq( 0 ).show();
+    } else {
+      $tablePanel.data( 'show', true );
     }
   };
 
