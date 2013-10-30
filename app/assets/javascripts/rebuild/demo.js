@@ -1,5 +1,5 @@
 /*jslint browser: true, evil: false, plusplus: true, white: true, indent: 2 */
-/*global moj, $ */
+/*global moj, $, Handlebars */
 
 moj.Modules.demo = (function() {
   "use strict";
@@ -206,7 +206,11 @@ moj.Modules.demo = (function() {
 
   changeLandlords = function( $el ) {
     var landlords = $el.val(),
-        x;
+        x,
+        source,
+        template,
+        context;
+
     if( landlords < currLandlords ) {
       // remove landlords
       $( '.landlord-form' ).each( function( n ) {
@@ -218,9 +222,9 @@ moj.Modules.demo = (function() {
     } else if( landlords > currLandlords ) {
       // add landlords
       for( x = currLandlords; x < landlords; x++ ) {
-        var source = $( '#landlord-template' ).html(),
-            template = Handlebars.compile( source ),
-            context = { grouping: 'landlord' + ( x + 1 ), additional: true };
+        source = $( '#landlord-template' ).html();
+        template = Handlebars.compile( source );
+        context = { grouping: 'landlord' + ( x + 1 ), additional: true };
 
         $( '.landlords-wrapper' ).append( template( context ) );
       }
@@ -234,7 +238,10 @@ moj.Modules.demo = (function() {
 
   changeTenants = function( $el ) {
     var tenants = $el.val(),
-        x;
+        x,
+        source,
+        template,
+        context;
     if( tenants < currTenants ) {
       // remove tenants
       $( '.tenant-form' ).each( function( n ) {
@@ -246,9 +253,9 @@ moj.Modules.demo = (function() {
     } else if( tenants > currTenants ) {
       // add tenants
       for( x = currTenants; x < tenants; x++ ) {
-        var source = $( '#tenant-template' ).html(),
-            template = Handlebars.compile( source ),
-            context = { grouping: 'tenant' + ( x + 1 ), additional: true };
+        source = $( '#tenant-template' ).html();
+        template = Handlebars.compile( source );
+        context = { grouping: 'tenant' + ( x + 1 ), additional: true };
 
         $( '.tenants-wrapper' ).append( template( context ) );
       }
@@ -336,7 +343,6 @@ moj.Modules.demo = (function() {
   };
 
   ntqClick = function( $el ) {
-    console.log('ntqClick');
     var $list = $el.closest( '.row' ).siblings( '.files' ).find( 'ul' ).eq( 0 ),
         els = $list.find( 'li' );
 
