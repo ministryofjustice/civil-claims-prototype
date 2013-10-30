@@ -1,10 +1,10 @@
 @import "_colours"
 
 div.user-data
-  border-bottom: 1px solid #ccc
+  border-bottom: 1px solid #c2c2c2
   max-width: 960px
   padding: 0 30px
-  background-color: #fff
+  background-color: $grey-4
   margin: 0 auto
   > ul.nav
     float: right 
@@ -16,14 +16,17 @@ div.user-data
   ul
     padding: 0
     margin: 10px 0
+    color: $black
+    font-size: 19px
   li
     display: inline
     a
       padding: 0 10px
       text-decoration: underline
+      color: $link-colour
       &:hover
-        color: #333
-        text-decoration: none
+        color: $link-hover-colour
+        text-decoration: underline
     &.dropdown
       a
         .caret
@@ -59,6 +62,8 @@ div.user-data
 
         li
           display: block
+          &.indent
+            padding: 3px 10px
           a
             background-color: transparent
             color: #777
