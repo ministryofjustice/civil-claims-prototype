@@ -29,6 +29,7 @@ CivilClaims::Application.routes.draw do
   get 'claims/before' => 'claims#before'
 
   get 'claims/templates' => 'claims#templates'
+  get 'claims/demo_start' => 'claims#demo_start'
   get 'claims/demo_step1' => 'claims#demo_step1'
   get 'claims/demo_step2' => 'claims#demo_step2'
   get 'claims/demo_step3' => 'claims#demo_step3'

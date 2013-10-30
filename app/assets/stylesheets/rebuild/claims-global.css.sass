@@ -13,6 +13,8 @@ body
 p
   margin: 0 0 1em 0
 
+h1, h2
+  letter-spacing: .005em // calculated via http://www.justinmarsan.com/blog/researches/2012/01/07/css-letter-spacing/
 
 a
   @include link-style
@@ -21,6 +23,13 @@ a
 main
   padding-top: 12px
 
+p.lead
+  font-size: 24px
+  padding-right: 100px
+  margin:
+    left: auto
+    right: auto
+
 
 button, .button
   &.primary
@@ -28,7 +37,10 @@ button, .button
 
 
 header h1
-  margin-bottom: 30px
+  font-size: 48px
+  margin:
+    right: 200px
+    bottom: 30px
 
 .user-data
   border-bottom: 1px solid #ccc

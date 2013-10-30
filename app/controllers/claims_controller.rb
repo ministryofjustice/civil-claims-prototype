@@ -23,6 +23,9 @@ class ClaimsController < ApplicationController
   end
 
   # stuff for demo only
+  def demo_start
+    render 'claims/claimant/demo_start', :layout => 'application-rebuild', :locals => { :includeheader => true }
+  end
   def demo_step1
     render 'claims/claimant/demo_step1', :layout => 'application-rebuild', :locals => { :includeheader => true }
   end
