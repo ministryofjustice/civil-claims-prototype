@@ -1,0 +1,9 @@
+%script#postcode-fragment(type='text/x-handlebars-template')
+  .postcode-fragment-wrapper.fragment-wrapper
+    .row.rel
+      %label(for='property-postcode')> Postcode
+      %input.has-button.smalltext(type='text' name='{{grouping}}-postcode' id='{{grouping}}-postcode')>
+      %a.button.primary.js-find-address> Find UK address
+    .row.rel.help-link
+      %a.js-manual-address(href='#') Enter address manually
+      

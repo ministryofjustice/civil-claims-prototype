@@ -1,0 +1,466 @@
+@import "_colours"
+@import "_css3"
+@import "rebuild/claims-mixins"
+
+@mixin highlight-row
+  width: 640px
+  padding: 15px
+  margin-left: 30px
+
+input, input[type="text"], button, select, textarea
+  font-family: "nta", arial, sans-serif
+  font-size: 19px
+
+input[type="text"], textarea
+  padding: 5px 4px 2px
+  border: 1px solid $grey-2
+  color: $black
+  background: $white
+
+input[type="text"].pound
+  background-image: image-url('poundbg.png')
+  background-position: left center
+  background-repeat: no-repeat
+  padding-left: 40px
+
+select, option
+  color: $black
+
+label
+  cursor: pointer
+
+button, .button
+  padding: 8px 12px 2px
+  display: inline-block
+  &.primary
+    background-color: #00a95d
+    @include box-shadow(#006137 0 2px 0 0)
+    &:hover
+      background-color: #00692f
+  &.secondary 
+    // why is this not in the toolkit?
+    background-color: $grey-3
+    color: $black
+    @include box-shadow(#b4babe 0 2px 0 0)
+    &:hover
+      background-color: $grey-2
+  &.large
+    font-size: 24px
+  &.chevron
+    background-image: image-url('icon-pointer.png')
+    background-repeat: no-repeat
+    background-position: right center
+    padding-right: 40px
+
+
+.section-header
+  font-size: 24px
+  letter-spacing: .005em
+  margin-bottom: 10px
+  a
+    font-size: 19px
+    letter-spacing: 0
+    margin-top: 4px
+
+.hide
+  display: none
+
+.sub-panel
+  padding-top: 40px
+
+.moj-panel
+  background: $grey-4
+  border:
+    top: 1px solid $grey-2
+    bottom: 1px solid $grey-2
+  padding: 40px 20px 40px 60px
+  margin-bottom: 50px
+  font-size: 19px
+
+  &.important
+    background-color: $yellow-25
+
+  fieldset, .row
+    @include clearfix
+    clear: both
+    margin-top: 40px
+
+    &:first-child
+      margin-top: 0
+
+    &.rel
+      margin-top: 15px
+      &:first-child
+        margin-top: 0
+
+    &.help-link
+      margin-top: 15px
+      padding-left: 220px
+
+  .has-extra
+    margin-top: 5px
+
+    .extra
+      display: none
+      .row
+        margin-top: 30px
+        width: 480px
+        &.rel
+          margin-top: 15px
+        &.divider
+          margin-left: 0
+      label
+        position: relative
+        padding-left: 0
+        display: block
+        margin-top: 20px
+      textarea
+        display: block
+        width: 470px
+        height: 100px
+      fieldset
+        width: 470px
+        padding: 0
+        margin-top: 30px
+        legend
+          float: none
+          margin-left: 0
+          padding-top: 0
+        &.date-picker
+          .row
+            margin-top: 5px
+
+    &.show-extra
+      background-color: $white
+      padding: 10px
+      margin-left: -10px
+      margin-right: -10px
+
+      .extra
+        display: block
+
+      
+
+  .row
+    width: 480px
+    padding-left: 220px
+
+    &.divider
+      width: 670px
+      height: 0
+      padding-left: 0
+      margin-left: 30px
+      overflow: hidden
+      border-bottom: 1px dotted #c2c2c2
+
+    &.full
+      width: 670px
+      padding-left: 30px
+      &.table
+        width: 700px
+        padding-left: 0
+      p
+        width: 670px
+      label, .key
+        width: 670px
+        float: none
+        margin: 0
+      textarea
+        width: 660px
+        height: 100px
+      input[type="checkbox"]
+        float: left
+        margin-top: 3px
+      input + label
+        width: auto
+        max-width: 630px
+        margin-left: 10px
+      .row
+        padding-left: 190px
+
+      &.warning
+        @include highlight-row
+        background-color: $mellow-red-25
+
+      &.information
+        @include highlight-row
+        background-color: $grey-3
+
+      &.highlight
+        @include highlight-row
+        background-color: $white
+
+    &.map
+      img
+        display: block
+
+    p
+      margin: 0 0 5px
+      &.nomargin
+        margin: 0
+
+    label, .row label, .key
+      width: 180px
+      float: left
+      display: inline-block
+      margin-left: -190px
+      margin-right: 10px
+      line-height: 25px
+
+    .key
+      .review &
+        color: $grey-1
+
+    .highlight
+      background-color: $white
+      padding: 15px
+
+    input[type="text"]
+      width: 300px
+      display: inline-block
+      &.pound
+        padding-left: 40px
+        width: 260px
+      &.smalltext
+        width: 132px
+        min-width: 132px
+
+    select
+      width: 300px
+      &.small
+        width: 100px
+      &.date-date, &.date-year
+        width: 80px
+      &.date-month
+        width: 130px
+
+    textarea
+      width: 300px
+      height: 60px
+
+    input.has-button
+      margin: 0
+      + .button
+        margin: 0 0 0 10px
+
+    .inline-help
+      display: inline-block
+      margin-left: 10px
+
+  fieldset
+    padding-left: 220px
+
+    legend
+      width: 180px
+      margin-left: -190px
+      float: left
+      line-height: 25px
+
+    .row
+      clear: right
+      margin-top: 15px
+      line-height: 1
+
+      &:first-child
+        margin-top: 0
+
+    > .row
+      &:first-of-type
+        margin-top: 0
+
+    > div
+      float: left
+
+    &.striped-choice
+
+      .row
+        margin-top: 5px
+        &:first-child
+          margin-top: 0
+    
+      legend
+        padding-top: 10px
+
+    .row
+      width: 480px
+      padding-left: 0
+      min-width: 0
+      position: relative
+      &.checked
+        background-color: $light-blue-25
+
+      input[type="checkbox"], input[type="radio"]
+        display: inline-block
+        height: 40px
+        margin-left: 10px
+
+      label
+        position: absolute
+        padding-left: 35px
+        padding-top: 10px
+        left: 190px
+        right: 0
+        top: 0
+        bottom: 0
+        cursor: pointer
+        width: auto
+
+    .options
+      max-width: 480px
+      position: relative
+
+
+details
+  &[open]
+    summary
+      color: $link-active-colour
+  p
+    margin-top: 0
+  .row:first-of-type
+    margin-top: 10px
+summary
+  padding-left: 190px
+  color: $link-colour
+  text-decoration: underline
+  cursor: pointer
+  &:focus
+    outline: none
+  &:hover
+    color: $link-active-colour
+
+
+.unpaid-rent-table, .tablescroll
+  width: 670px
+  table-layout: fixed
+  border-collapse: separate
+  .full.table &
+    width: 700px
+  td, th
+    text-align: right
+    background-color: $white
+    padding: 10px 15px
+    &.date
+      width: 145px
+      text-align: left
+    &.remove
+      width: 30px
+      text-align: center
+      padding: 0
+      overflow: hidden
+      background-color: $grey-3
+      a
+        padding: 1px 4px
+        margin-left: 2px
+        text-decoration: none
+        display: block
+        font-size: 30px
+        line-height: 34px
+        width: 18px
+        height: 30px
+        overflow: hidden
+        color: $grey-1
+        text-align: center
+        &:hover
+          color: $grey-3
+          background-color: $grey-1
+    &.amount, &.paid, &.unpaid
+      width: 135px
+  thead
+    th
+      border-bottom: 1px solid #b7b7b7
+  tfoot
+    td
+      text-align: left
+      font-weight: bold
+      border-top: 1px solid #b7b7b7
+  tbody
+    max-height: 200px
+    overflow-y: auto
+    td
+      border-top: 1px dotted #c2c2c2
+    tr:first-child
+      td
+        border: none
+  .unpaid
+    background-color: $turquoise-25
+    text-align: right
+  thead, tfoot
+    .blank
+      background-color: transparent
+      padding: 0
+
+.files
+  ul
+    list-style: none
+    margin: 10px 0 0
+    padding: 0
+    li
+      line-height: 40px
+      margin-top: 5px
+      padding-left: 40px
+      background: $turquoise-25 image-url('attachment.png') 10px 6px no-repeat
+      clear: both
+      position: relative
+
+      &:first-child
+        margin-top: 0
+
+      a
+        float: right
+        margin-right: 10px
+
+        &.x
+          float: none
+          position: absolute
+          right: 5px
+          top: 5px
+          width: 30px
+          height: 30px
+          overflow: hidden
+          line-height: 36px
+          text-align: center
+          color: $turquoise
+          text-decoration: none
+          font-weight: normal
+          font-size: 32px
+          padding: 0
+          margin: 0
+
+          &:hover
+            background-color: $turquoise
+            color: $turquoise-25
+
+.confirmation-intro
+  h1
+    text-align: center
+    padding-top: 70px
+    background: image-url('confirmation-tick.png') center top no-repeat
+    margin-bottom: 40px
+  h2
+    text-align: center
+    margin: 40px 0
+    padding: 20px 0 10px
+    font-size: 24px
+    font-weight: normal
+    background: $grey-4
+    border:
+      top: 1px solid $grey-2
+      bottom: 1px solid $grey-2
+
+    strong
+      display: block
+      font-size: 48px
+  p
+    text-align: center
+    margin: 0
+
+.next
+  font-size: 19px
+  h2
+    font-size: 32px
+
+.fragment-wrapper
+  padding-top: 15px
+
+.action-buttons
+  margin-bottom: 40px
