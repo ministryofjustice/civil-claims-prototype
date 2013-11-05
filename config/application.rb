@@ -49,6 +49,10 @@ module CivilClaims
       claims-global.css
       claims-layout.css
       claims-components.css
+      rebuild/claims-mixins
+      rebuild/claims-global
+      rebuild/claims-layout
+      rebuild/claims-components
 
       gov-static/gov-ie.js
     )
