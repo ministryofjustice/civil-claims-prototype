@@ -32,7 +32,6 @@ moj.Modules.effects = (function() {
   };
 
   highlights = function( options ) {
-    console.log('highlights called');
     var elclass = ( options && options.class ? options.class : 'highlight' ),
         els = $( '.' + elclass );
     
@@ -42,7 +41,6 @@ moj.Modules.effects = (function() {
   };
 
   highlight = function( $el, options ) {
-    console.log('highlight: '+$el.attr('id') );
     var elclass = ( options && options.class ? options.class : 'highlight' ),
         col = ( options && options.colour ? options.colour : '#ff9' ),
         duration = ( options && options.duration ? options.duration : 1500 ),
