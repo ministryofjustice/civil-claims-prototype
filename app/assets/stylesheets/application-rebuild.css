@@ -12,8 +12,5 @@
  *= require_self
  *= require validator
  *= require moj-base
- *= require rebuild/claims-mixins
- *= require rebuild/claims-global
- *= require rebuild/claims-layout
- *= require rebuild/claims-components
+ *= require_tree ./rebuild
  */
