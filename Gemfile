@@ -74,6 +74,7 @@ group :development, :test do
   gem 'hirb'
   gem 'wirble'
   gem 'wirb'
+  gem 'jazz_hands'
 end
 
 # it's a prototype after all
