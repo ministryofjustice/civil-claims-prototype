@@ -174,6 +174,7 @@ moj.Modules.demo = (function() {
         $panel = $el.closest( '.sub-panel' ),
         $ddRow = $el.closest( '.row' ),
         $pcRow = $ddRow.prev(),
+        $manualRow = $ddRow.next('.js-manual-address-row'),
         html;
 
     $pcRow.find( 'input[type="text"]' ).val( address.postcode );
@@ -184,6 +185,7 @@ moj.Modules.demo = (function() {
     $panel.find( '.row.street, .row.town' ).remove();
     $pcRow.addClass( 'rel highlight' ).before( html );
     $ddRow.remove();
+    $manualRow.remove();
 
     moj.Modules.effects.highlights();
   };
@@ -199,7 +201,7 @@ moj.Modules.demo = (function() {
     $panel.find( '.row.street, .row.town' ).remove();
     $pcRow.addClass( 'rel' ).before( html );
     $pcRow.addClass( 'highlight' ).find( 'input[type="text"]' ).val( '' );
-    // $el.closest( '.row' ).remove();
+    $el.closest( '.row' ).remove();
 
     moj.Modules.effects.highlights();
   };
