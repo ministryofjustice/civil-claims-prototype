@@ -1266,13 +1266,18 @@
       .value
         Mr Louis Robert Stevenson
 
-%p.template-label-sub Hearing details panel
+%p.template-label-sub Case status panel
 
 %section.review
   %h3.section-header
-    Hearing details
-    %a.right(href='#') View full court details
-  .moj-panel
+    Case status
+    %a.right(href='#') View case history
+  .moj-panel.highlight
+    .row
+      .key
+        Current status
+      .value
+        Hearing scheduled
     .row
       .key
         Hearing date
@@ -1296,6 +1301,9 @@
         London
         %br/
         SE11 4DZ
+    .row
+      .value
+        %a(href='#' rel='external') View full court details
     .row.full.map
       = image_tag('lambeth-map2.png', alt: 'Lambeth County Court map')
 
