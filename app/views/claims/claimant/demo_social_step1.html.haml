@@ -1,0 +1,200 @@
+.container
+  %nav.progress
+    %ol
+      %li.active
+        %span Personal details
+      %li
+        %span Case details
+      %li
+        %span Confirm details
+      %li
+        %span Pay court fee
+      %li
+        %span Confirmation
+
+%header.content-header
+  %h2 Step 1 - Personal details
+  %p Fill in the address of the property you want to repossess and contact details for the landlords and tenants.
+
+%section.property-details
+  %h3.section-header Property details
+  .moj-panel.sub-panel
+    %form
+      .row
+        %label(for='property-postcode')> Postcode
+        %input.has-button.smalltext#property-postcode(type='text' name='property-postcode')>
+        %a.button.primary.js-find-address> Find UK address
+      .row.rel.help-link.js-manual-address-row
+        %a.js-manual-address(href='#') Enter address manually
+      %fieldset.striped-choice
+        %legend Type of property
+        .options
+          .row
+            %input#property-residential(type='checkbox')
+            %label(for='property-residential') Residential
+          .row
+            %input#property-commercial(type='checkbox')
+            %label(for='property-commercial') Commercial
+      %fieldset.striped-choice
+        %legend Who is in the property?
+        .options
+          .row
+            %input#property-who-tenants(type='radio' name='property-who')
+            %label(for='property-who-tenants') Tenants
+          .row
+            %input#property-who-squatters(type='radio' name='property-who')
+            %label(for='property-who-squatters') Squatters
+      .row.full
+        %details
+          %summary Would you like to provide a title number?
+          .row
+            %label(for='title-number') Title number
+            %input.smalltext#title-number(type='text' name='title-number')
+          .row.rel.help-link
+            %a(href='#') About title numbers
+
+%section.landlord-details
+  %h3.section-header Landlord details
+  .moj-panel
+    %form
+      .row
+        %label(for='landlord-companyname')> Company name
+        %input(type='text' name='landlord-companyname' id='landlord-companyname')
+      .row.rel.street
+        %label(for='landlord-address')> Street
+        %textarea(name='landlord-address' id='landlord-address')
+      .row.rel.town
+        %label(for='landlord-town')> Town
+        %input(type='text' name='landlord-town' id='landlord-town')
+      .row.rel.postcode
+        %label(for='landlord-postcode')> Postcode
+        %input.has-button.smalltext(type='text' name='landlord-postcode' id='landlord-postcode')>
+        %a.button.primary.js-find-address> Find UK address
+      .row
+        %label(for='landlord-title')> Title
+        %select.small(name='landlord-title' id='landlord-title')
+          %option(value='') select
+          %option(value='Mr') Mr
+          %option(value='Mrs') Mrs
+          %option(value='Miss') Miss
+          %option(value='Ms') Ms
+          %option(value='Dr') Dr
+          %option(value='Other') Other
+      .row.rel
+        %label(for='landlord-fullname')> Full name
+        %input(type='text' name='landlord-fullname' id='landlord-fullname')
+      .row.rel
+        %label(for='landlord-phone')> Phone
+        %input(type='text' name='landlord-phone' id='landlord-phone')
+      .row.rel
+        %label(for='landlord-mobile')> Mobile
+        %input(type='text' name='landlord-mobile' id='landlord-mobile')
+      .row.rel
+        %label(for='landlord-email')> Email
+        %input(type='text' name='landlord-email' id='landlord-email')
+      .row.rel.full
+        %details
+          %summary Would you like to provide a DX number?
+          .row
+            %label(for='landlord-dxnumber') DX number
+            %input(type='text' name='landlord-dxnumber' id='landlord-dxnumber')
+          .row.rel
+            %label(for='landlord-dxexchange') DX exchange
+            %input(type='text' name='landlord-dxexchange' id='landlord-dxexchange')
+
+%section
+  %h3.section-header Managing agent
+  .moj-panel
+    %form
+      %fieldset.striped-choice
+        %legend Is there a managing agent?
+        .options
+          .row
+            %input#managing-egent-exists-yes.js-depend(type='radio' name='managing-egent-exists' data-depend='managing-agent')
+            %label(for='managing-egent-exists-yes') Yes
+          .row
+            %input#managing-egent-exists-no.js-depend(type='radio' name='managing-egent-exists')
+            %label(for='managing-egent-exists-no') No
+      .sub-panel.hide.js-managing-agent
+        .row
+          %label(for='managing-agent-companyname')> Company name
+          %input(type='text' name='managing-agent-companyname' id='managing-agent-companyname')
+        .row.rel.street
+          %label(for='managing-agent-address')> Street
+          %textarea(name='managing-agent-address' id='managing-agent-address')
+        .row.rel.town
+          %label(for='managing-agent-town')> Town
+          %input(type='text' name='managing-agent-town' id='managing-agent-town')
+        .row.rel.postcode
+          %label(for='managing-agent-postcode')> Postcode
+          %input.has-button.smalltext(type='text' name='managing-agent-postcode' id='managing-agent-postcode')>
+          %a.button.primary.js-find-address> Find UK address
+        .row
+          %label(for='managing-agent-title')> Title
+          %select.small(name='managing-agent-title' id='managing-agent-title')
+            %option(value='') select
+            %option(value='Mr') Mr
+            %option(value='Mrs') Mrs
+            %option(value='Miss') Miss
+            %option(value='Ms') Ms
+            %option(value='Dr') Dr
+            %option(value='Other') Other
+        .row.rel
+          %label(for='managing-agent-fullname')> Full name
+          %input(type='text' name='managing-agent-fullname' id='managing-agent-fullname')
+        .row.rel
+          %label(for='managing-agent-phone')> Phone
+          %input(type='text' name='managing-agent-phone' id='managing-agent-phone')
+        .row.rel
+          %label(for='managing-agent-mobile')> Mobile
+          %input(type='text' name='managing-agent-mobile' id='managing-agent-mobile')
+        .row.rel
+          %label(for='managing-agent-email')> Email
+          %input(type='text' name='managing-agent-email' id='managing-agent-email')
+        .row.rel.full
+          %details
+            %summary Would you like to provide a DX number?
+            .row
+              %label(for='managing-agent-dxnumber') DX number
+              %input(type='text' name='managing-agent-dxnumber' id='managing-agent-dxnumber')
+            .row.rel
+              %label(for='managing-agent-dxexchange') DX exchange
+              %input(type='text' name='managing-agent-dxexchange' id='managing-agent-dxexchange')
+
+
+%section.tenant-details
+  %h3.section-header Tenant details
+  .moj-panel
+    %form
+      .tenant1
+        .row
+          %label(for='tenant-numtenants') Number of tenants
+          %select.small#numtenants(name='tenant-numtenants')
+            %option(value='1') 1
+            %option(value='2') 2
+            %option(value='3') 3
+            %option(value='4') 4
+            %option(value='5') 5
+            %option(value='6') 6
+            %option(value='7') 7
+            %option(value='8') 8
+            %option(value='9') 9
+            %option(value='10') 10
+        .row.divider
+        .tenants-wrapper
+        / rendered by JS/handlebars
+
+%section
+  .action-buttons.cf
+    %a.button.primary.large.chevron.left(href='/claims/demo_social_step2') Continue to next step
+    %a.button.secondary.large.right(href='/claims/demo_social_step2') Save and come back later
+
+
+
+
+
+/ handlebars templates
+
+= render :partial => 'partials/tenant_form'
+
+= render :partial => 'partials/postcode_fragment'
