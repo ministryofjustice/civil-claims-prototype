@@ -1,0 +1,82 @@
+.container
+  %nav.progress
+    %ol
+      %li.completed
+        %a(href='/claims/demo_social_step1') Personal details
+      %li.completed
+        %a(href='/claims/demo_social_step2') Case details
+      %li.completed
+        %a(href='/claims/demo_social_step3') Confirm details
+      %li.active
+        %span Pay court fee
+      %li
+        %span Confirmation
+
+%header.content-header
+  %h2 Step 4 - Pay court fee
+  %p
+    Below is the hearing you could get if you pay the court fee now.
+    %br/
+    Choose how you want to pay the fee and enter your payment details.
+
+
+%section
+  %h3.section-header
+    Provisional hearing
+  .moj-panel.important
+    .row
+      .key
+        Hearing date
+      .value
+        Wednesday 21 August 2013 at 10:30
+    .row
+      .key
+        Court
+      .value
+        Bristol Civic Justice Centre
+
+%section
+  %h3.section-header
+    Payment details
+  .moj-panel
+    %form
+      .row
+        .key
+          Court fee
+        .value
+          &pound;100
+      .row
+        .key
+          Account name
+        .value
+          BristolCC
+      .row
+        .key
+          Sortcode
+        .value
+          50-44
+      .row
+        .key
+          Account number
+        .value
+          80044936
+      .row.divider
+      .row.full
+        %input#ask-tenent-to-pay(type='checkbox' name='ask-tenent-to-pay')
+        %label(for='ask-tenent-to-pay') Do you want to ask the tenant to pay for the cost of the case?
+
+%section
+  %h3.section-header
+    Agree to terms
+  .moj-panel
+    .row.full
+      %input#agree-terms(type='checkbox' name='agree-terms')
+      %label(for='agree-terms') I agree to the terms and conditions of this service.
+    .row.rel.full.information
+      We will never share any of the data or details you have provided in this form with anyone. See full details on our #{link_to 'privacy policy', '#'} and #{link_to 'terms and conditions', '#'}.
+      
+
+%section
+  .action-buttons.cf
+    %a.button.primary.large.chevron.left(href='/claims/demo_social_step5') Make payment and complete case
+    %a.button.secondary.large.right(href='/claims/demo_social_step5') Save and come back later
