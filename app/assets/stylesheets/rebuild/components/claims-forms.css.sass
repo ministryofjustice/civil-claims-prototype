@@ -317,13 +317,21 @@ button, .button
 
 
 details
-  &[open]
+  &[open], &.open
     summary
       color: $link-active-colour
   p
     margin-top: 0
   .row:first-of-type
     margin-top: 10px
+
+  .no-details &
+    summary
+      background: image-url('summary-arrow-closed.gif') 168px 6px no-repeat
+    &.open
+      summary
+        background-image: image-url('summary-arrow-open.gif')
+
 summary
   padding-left: 190px
   color: $link-colour

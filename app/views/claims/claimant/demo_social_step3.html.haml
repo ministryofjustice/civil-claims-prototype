@@ -1,0 +1,265 @@
+.container
+  %nav.progress
+    %ol
+      %li.completed
+        %a(href='/claims/demo_social_step1') Personal details
+      %li.completed
+        %a(href='/claims/demo_social_step2') Case details
+      %li.active
+        %span Confirm details
+      %li
+        %span Pay court fee
+      %li
+        %span Confirmation
+
+%header.content-header
+  %h2 Step 3 - Confirm details
+  %p Please read through the information you have provided to ensure it’s all correct.
+
+%section.review
+  %h3.section-header
+    Property details
+    %a.right(href='#') Make changes
+  .moj-panel
+    .row
+      .key
+        Address
+      .value
+        Flat 3
+        %br/
+        92 Crystal Palace Park Road
+        %br/
+        London
+        %br/
+        SE26 6UP
+    .row
+      .key
+        Type of property
+      .value
+        Residential
+    .row
+      .key
+        Who is in the property?
+      .value
+        Tenants
+
+%section.review
+  %h3.section-header
+    Landlord details
+    %a.right(href='#') Make changes
+  .moj-panel
+    .row
+      .key
+        Company name
+      .value
+        Bristol City Council
+    .row
+      .key
+        Address
+      .value
+        City Hall
+        %br/
+        College Green
+        %br/
+        Bristol
+        %br/
+        BS1 5TR
+    .row
+      .key
+        Full name
+      .value
+        Ms Julia Richards
+    .row
+      .key
+        Phone
+      .value
+        0115 915 5555
+    .row
+      .key
+        Mobile
+      .value
+        07783 294828
+    .row
+      .key
+        Email
+      .value
+        julia.richards@bristol.gov.uk
+
+%section.review
+  %h3.section-header
+    Managing agent details
+    %a.right(href='#') Make changes
+  .moj-panel
+    .row
+      .key
+        Company name
+      .value
+        Agents UK Ltd
+    .row
+      .key
+        Address
+      .value
+        113 Haywards Road
+        %br/
+        Bristol
+        %br/
+        BS3 5PD
+    .row
+      .key
+        Full name
+      .value
+        Mr Robert Robertson
+    .row
+      .key
+        Phone
+      .value
+        020 8345 6789
+    .row
+      .key
+        Mobile
+      .value
+        07798 346457
+    .row
+      .key
+        Email
+      .value
+        rob.robertson@agentsuk.com
+
+%section.review
+  %h3.section-header
+    Tenant details
+    %a.right(href='#') Make changes
+  .moj-panel
+    .row
+      .key
+        Name
+      .value
+        Mr Louis Robert Stevenson
+    .row
+      .key
+        Address
+      .value
+        Living in the property
+    .row
+      .key
+        Mobile
+      .value
+        07765 917673
+    .row
+      .key
+        Email
+      .value
+        lrstevenson@hotmail.co.uk
+
+%section.review
+  %h3.section-header
+    About the case
+    %a.right(href='#') Make changes
+  .moj-panel
+    .row
+      .key
+        Your reasons for repossession
+      .value
+        Unpaid rent
+    .row
+      .key
+        Notice sent
+      .value
+        Notice to quit
+        %br/
+        Sent 10 September 2013
+        .files
+          %ul
+            %li
+              Noticetoquit.pdf
+              %a(href='#') View
+
+%section.review
+  %h3.section-header
+    About the tenancy
+    %a.right(href='#') Make changes
+  .moj-panel
+    .row
+      .key
+        Tenancy type
+      .value
+        Assured shorthold tenancy
+    .row
+      .key
+        Tenancy start date
+      .value
+        18 September 2012
+        .files
+          %ul
+            %li
+              TenancyAgreement2012.pdf
+              %a(href='#') View
+
+%section.review
+  %h3.section-header
+    Unpaid rent
+    %a.right(href='#') Make changes
+  .moj-panel
+    .row
+      .key
+        Rent amount
+      .value
+        &pound;950 per month
+    .row
+      .key
+        Daily rent amount
+      .value
+        &pound;32 per day
+    .row
+      .key
+        Total unpaid rent
+      .value
+        &pound;2,850
+    .row.divider
+    .row.full.files
+      %ul
+        %li
+          RentStatement01567.xls
+          %a(href='#') View
+
+%section.review
+  %h3.section-header
+    Additional information
+    %a.right(href='#') Make changes
+  .moj-panel
+    .row.full
+      .key
+        Other information
+      .value.highlight
+        Lobortis augue sed tincidunt. Quisque posuere, est eget luctus interdum, nulla augue iaculis metus.
+    .row.full
+      .key
+        Attached files
+      .value.files
+        %ul
+          %li
+            Tenancyagreement.pdf
+            %a(href='#') View
+          %li
+            Letter_from_Lambeth_Council.doc
+            %a(href='#') View
+          %li
+            LettertoDefendant.doc
+            %a(href='#') View
+
+%section
+  %h3.section-header
+    Confirm details
+  .moj-panel
+    %form
+      .row.full
+        %input#confirm-details(type='checkbox' name='confirm-details')
+        %label(for='confirm-details') I believe that the facts stated in this case (and any attached documents) are to the best of my knowledge true and correct.
+      .row.rel.full.warning
+        A person who confirms these details without an honest belief in the truth of the given information is liable to proceedings for contempt of court.
+
+
+%section
+  .action-buttons.cf
+    %a.button.primary.large.chevron.left(href='/claims/demo_social_step4') Continue to next step
+    %a.button.secondary.large.right(href='/claims/demo_social_step4') Save and come back later

@@ -78,6 +78,8 @@ moj.Modules.demo = (function() {
 
     cacheEls();
     bindEvents();
+
+    $('html').addClass($.fn.details.support ? 'details' : 'no-details');
   };
 
   cacheEls = function() {
