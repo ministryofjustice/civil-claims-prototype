@@ -1,0 +1,37 @@
+@import "_colours"
+
+table.case-list
+  width: 100%
+  border-bottom: 1px solid #c2c2c2
+  margin-bottom: 40px
+  border-collapse: separate
+  
+  &.archived
+    td
+      color: $grey-1
+
+  &.incomplete
+    td
+      background-color: $yellow-25
+
+  tr
+    vertical-align: top
+
+    td
+      border-top: 1px solid #c2c2c2
+      font-size: 19px
+      padding: 10px 8px 8px
+
+      &.casenumber
+        width: 120px
+
+      &.actions
+        text-align: right
+        min-width: 120px
+
+        a.button
+          margin-left: 8px
+
+    &.odd
+      td
+        background-color: $grey-4

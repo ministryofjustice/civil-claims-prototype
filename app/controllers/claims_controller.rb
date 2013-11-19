@@ -61,6 +61,10 @@ class ClaimsController < ApplicationController
   def demo_social_step5
     render 'claims/claimant/demo_social_step5', :layout => 'application-rebuild', :locals => { :includeheader => false }
   end
+  
+  def demo_social_yourcases
+    render 'claims/claimant/demo_social_yourcases', :layout => 'application-rebuild', :locals => { :includeheader => false }
+  end
   # /stuff for demo only
 
   def before

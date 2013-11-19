@@ -1,4 +1,5 @@
 @import "_colours"
+@import "design-patterns/_buttons"
 @import "_css3"
 @import "rebuild/claims-mixins"
 
@@ -33,17 +34,11 @@ button, .button
   padding: 8px 12px 2px
   display: inline-block
   &.primary
-    background-color: #00a95d
-    @include box-shadow(#006137 0 2px 0 0)
-    &:hover
-      background-color: #00692f
-  &.secondary 
-    // why is this not in the toolkit?
-    background-color: $grey-3
-    color: $black
-    @include box-shadow(#b4babe 0 2px 0 0)
-    &:hover
-      background-color: $grey-2
+    @include button
+  &.secondary
+    @include button($grey-3)
+  &.warning
+    @include button(#b30816)
   &.large
     font-size: 24px
   &.chevron
@@ -51,6 +46,10 @@ button, .button
     background-repeat: no-repeat
     background-position: right center
     padding-right: 40px
+    &:hover
+      background-image: image-url('icon-pointer.png')
+      background-repeat: no-repeat
+      background-position: right center
 
 
 .section-header
