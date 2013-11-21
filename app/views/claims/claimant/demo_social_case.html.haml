@@ -11,13 +11,13 @@
       = params[:case_id]
 
 
-  .case-status.cf
+  .case-status.highlight.cf
     %p.left
       %span Case status
       Hearing scheduled on
       %strong 21 August 2013
     %p.right
-      %a(href='#') View details and case history
+      %a{:href => social_case_history_path(params[:case_id]) } View details and case history
 
 
 %section.review

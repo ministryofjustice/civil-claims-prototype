@@ -34,16 +34,25 @@ section.confirmation-intro
 
 
 .case-status
-  background-color: $light-blue-25
+  background-color: $grey-4
   border:
-    top: 1px solid $light-blue-50
-    bottom: 1px solid $light-blue-50
+    top: 1px solid #c2c2c2
+    bottom: 1px solid #c2c2c2
   padding: 15px 10px
   margin-bottom: 60px
 
+  &.highlight
+    background-color: $light-blue-25
+    border:
+      top: 1px solid $light-blue-50
+      bottom: 1px solid $light-blue-50
+
+    span
+      color: $grey-1
+
   p
     margin: 0
+
   span
-    color: $grey-1
     width: 130px
     display: inline-block

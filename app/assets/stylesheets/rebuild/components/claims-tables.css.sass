@@ -35,3 +35,38 @@ table.case-list
     &.odd
       td
         background-color: $grey-4
+
+table.status
+  width: 100%
+  font-size: 19px
+  border-collapse: separate
+  border-bottom: 1px solid #c2c2c2
+  margin-bottom: 40px
+
+  th, td
+    padding: 10px 10px 8px
+
+  th
+    text-align: left
+    font-weight: normal
+    border-top: 1px solid #c2c2c2
+    border-bottom: 1px solid #c2c2c2
+
+  td
+    border-top: 1px dotted #c2c2c2
+
+  tbody
+    tr:first-child
+      td
+        border-top: none
+
+    tr:nth-child(2n+1)
+      td
+        background-color: $grey-4
+
+  .attachments
+    text-align: right
+
+    a
+      padding-left: 40px
+      background: image-url('attachment.png') 10px 0 no-repeat
