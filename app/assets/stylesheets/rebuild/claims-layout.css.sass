@@ -1,3 +1,5 @@
+@import "_colours"
+
 main
   max-width: 1020px
   margin: auto
@@ -30,3 +32,27 @@ section.confirmation-intro
     letter-spacing: .005em // calculated via http://www.justinmarsan.com/blog/researches/2012/01/07/css-letter-spacing/
     margin-top: 0
 
+
+.case-status
+  background-color: $grey-4
+  border:
+    top: 1px solid #c2c2c2
+    bottom: 1px solid #c2c2c2
+  padding: 15px 10px
+  margin-bottom: 60px
+
+  &.highlight
+    background-color: $light-blue-25
+    border:
+      top: 1px solid $light-blue-50
+      bottom: 1px solid $light-blue-50
+
+    span
+      color: $grey-1
+
+  p
+    margin: 0
+
+  span
+    width: 130px
+    display: inline-block

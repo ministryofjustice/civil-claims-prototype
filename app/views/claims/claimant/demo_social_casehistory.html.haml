@@ -1,0 +1,114 @@
+%ul.breadcrumb
+  %li
+    %a(href='/') Home
+  %li
+    %a(href='/claims/demo_social_yourcases') Your cases
+
+%section
+  %header.page-header
+    %h1
+      Case history
+
+
+  .case-status.cf
+    %p.left
+      %span= params[:case_id]
+      92 Crystal Palace Park Road, London, SE26 6UP
+    %p.right
+      %a{:href => social_case_view_path(params[:case_id]) } View case
+
+
+%section.review
+  %h3.section-header
+    Case status
+  .moj-panel.highlight
+    .row
+      .key
+        Current status
+      .value
+        Hearing scheduled
+    .row
+      .key
+        Hearing date
+      .value
+        Wednesday 21 November 2013 at 10:30
+    .row
+      .key
+        Court
+      .value
+        Bristol Civil Justice Centre
+    .row
+      .key
+        Address
+      .value
+        2 Redcliff Street
+        %br/
+        Bristol
+        %br/
+        BS1 6GR
+    .row
+      .value
+        %a(href='#' rel='external') View full court details
+    .row.full.map
+      = image_tag('bristol-court-map.png', alt: 'Bristol Civic Justice Centre map')
+
+
+%section.review
+  %h3.section-header
+    Case status
+  %table.status
+    %thead
+      %tr
+        %th Date
+        %th From
+        %th Action
+        %th.attachments Attachments
+    %tbody
+      %tr
+        %td 21 May 2013
+        %td Court
+        %td Application for Warrant
+        %td.attachments
+          %a(href='#') View
+      %tr
+        %td 30 Apr 2013
+        %td Court
+        %td Suspended possession order
+        %td.attachments
+          %a(href='#') View
+      %tr
+        %td 8 Apr 2013
+        %td Court
+        %td Hearing relisted
+        %td.attachments
+          %a(href='#') View
+      %tr
+        %td 26 Mar 2013
+        %td Tenant
+        %td Witness statement added
+        %td.attachments
+          %a(href='#') View
+      %tr
+        %td 13 Mar 2013
+        %td Court
+        %td Case adjourned
+        %td.attachments
+          %a(href='#') View
+      %tr
+        %td 22 Feb 2013
+        %td Tenant
+        %td Defence added
+        %td.attachments
+          %a(href='#') View
+      %tr
+        %td 10 Jan 2013
+        %td Landlord
+        %td Hearing schedlued
+        %td.attachments
+          %a(href='#') View
+      %tr
+        %td 10 Jan 2013
+        %td Landlord
+        %td Case created
+        %td.attachments
+          %a(href='#') View

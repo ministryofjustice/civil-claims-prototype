@@ -1,0 +1,72 @@
+@import "_colours"
+
+table.case-list
+  width: 100%
+  border-bottom: 1px solid #c2c2c2
+  margin-bottom: 40px
+  border-collapse: separate
+  
+  &.archived
+    td
+      color: $grey-1
+
+  &.incomplete
+    td
+      background-color: $yellow-25
+
+  tr
+    vertical-align: top
+
+    td
+      border-top: 1px solid #c2c2c2
+      font-size: 19px
+      padding: 10px 8px 8px
+
+      &.casenumber
+        width: 120px
+
+      &.actions
+        text-align: right
+        min-width: 120px
+
+        a.button
+          margin-left: 8px
+
+    &.odd
+      td
+        background-color: $grey-4
+
+table.status
+  width: 100%
+  font-size: 19px
+  border-collapse: separate
+  border-bottom: 1px solid #c2c2c2
+  margin-bottom: 40px
+
+  th, td
+    padding: 10px 10px 8px
+
+  th
+    text-align: left
+    font-weight: normal
+    border-top: 1px solid #c2c2c2
+    border-bottom: 1px solid #c2c2c2
+
+  td
+    border-top: 1px dotted #c2c2c2
+
+  tbody
+    tr:first-child
+      td
+        border-top: none
+
+    tr:nth-child(2n+1)
+      td
+        background-color: $grey-4
+
+  .attachments
+    text-align: right
+
+    a
+      padding-left: 40px
+      background: image-url('attachment.png') 10px 0 no-repeat

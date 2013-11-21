@@ -1,0 +1,73 @@
+%ul.breadcrumb
+  %li
+    %a(href='/') Home
+
+%section
+  %header.page-header
+    %h1 Your cases
+    %p.lead View details and check the status of existing cases, and continue to complete cases which you have started.
+
+  .action-buttons.cf
+    %a.button.primary.large.chevron.left(href='/claims/demo_social_step1') Start a new case
+
+
+%section
+  %h2 Incomplete cases
+  %table.case-list.incomplete
+    %tr
+      %td Flat 3, 92 Crystal Palace Park Road, London, SE26 6UP
+      %td.actions
+        %a.button.primary(href='#') Continue
+        %a.button.warning(href='#') Delete
+        
+    %tr
+      %td 20 Talma Road, Liverpool, SW2 1AS
+      %td.actions
+        %a.button.primary(href='#') Continue
+        %a.button.warning(href='#') Delete
+
+  %h2 Cases in progress
+  %table.case-list
+    %tr.odd
+      %td.casenumber XF48CPQ
+      %td 6 Helix Gardens, London, SW2 2JP
+      %td.actions
+        %a{:href => social_case_view_path('XF48CPQ') } View case
+    %tr
+      %td.casenumber 99ZR9HEZ
+      %td 317C Clapham Road, London SW9 9BP
+      %td.actions
+        %a{:href => social_case_view_path('99ZR9HEZ') }View case
+    %tr.odd
+      %td.casenumber SQFK68PH
+      %td Flat C, 21 St. Michael's Road, Winchester, SW9 9BG
+      %td.actions
+        %a{:href => social_case_view_path('SQFK68PH') }View case
+
+  %h2 Archived cases
+  %table.case-list.archived
+    %tr.odd
+      %td.casenumber XF48CPQE
+      %td Stable House, Unit 2, 109 Burlington Avenue, Quite Long Address, Even Longer, Birmingham, SW6 9TF
+      %td.actions
+        %a{:href => social_case_view_path('XF48CPQE') }View case
+    %tr
+      %td.casenumber 99ZR9HEZ
+      %td 317C Clapham Road, London SW9 9BP 
+      %td.actions
+        %a{:href => social_case_view_path('99ZR9HEZ') }View case
+    %tr.odd
+      %td.casenumber SQFK68PH
+      %td Flat C, 21 St. Michael's Road, Winchester, SW9 9BG
+      %td.actions
+        %a{:href => social_case_view_path('SQFK68PH') }View case
+    %tr
+      %td.casenumber 2D9KUVVE
+      %td 10 Mayflower Street, SW9 9JZ
+      %td.actions
+        %a{:href => social_case_view_path('2D9KUVVE') }View case
+    %tr.odd
+      %td.casenumber XF48CPQE
+      %td 5 Jelf Road, London, SW2 1BG
+      %td.actions
+        %a{:href => social_case_view_path('XF48CPQE') }View case
