@@ -42,6 +42,7 @@ CivilClaims::Application.routes.draw do
   get 'claims/demo_social_step4' => 'claims#demo_social_step4'
   get 'claims/demo_social_step5' => 'claims#demo_social_step5'
   get 'claims/demo_social_yourcases' => 'claims#demo_social_yourcases'
+  get 'claims/demo_social_case/:case_id' => 'claims#demo_social_case', as: :social_case_view
 
   get 'defense/:id/expense' => 'expense#new', as: :new_expense
 
