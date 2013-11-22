@@ -2,7 +2,7 @@
   %li
     %a(href='/') Home
   %li
-    %a(href='/claims/demo_social_yourcases') Your cases
+    %a(href='/claims/demo/social_yourcases') Your cases
 
 %section
   %header.page-header
@@ -15,7 +15,7 @@
       %span= params[:case_id]
       92 Crystal Palace Park Road, London, SE26 6UP
     %p.right
-      %a{:href => social_case_view_path(params[:case_id]) } View case
+      %a{:href => '/claims/demo/social_case/'+params[:case_id] } View case
 
 
 %section.review

@@ -29,21 +29,9 @@ CivilClaims::Application.routes.draw do
   get 'claims/before' => 'claims#before'
 
   get 'claims/templates' => 'claims#templates'
-  get 'claims/demo_start' => 'claims#demo_start'
-  get 'claims/demo_step1' => 'claims#demo_step1'
-  get 'claims/demo_step2' => 'claims#demo_step2'
-  get 'claims/demo_step3' => 'claims#demo_step3'
-  get 'claims/demo_step4' => 'claims#demo_step4'
-  get 'claims/demo_step5' => 'claims#demo_step5'
-  get 'claims/demo_social_start' => 'claims#demo_social_start'
-  get 'claims/demo_social_step1' => 'claims#demo_social_step1'
-  get 'claims/demo_social_step2' => 'claims#demo_social_step2'
-  get 'claims/demo_social_step3' => 'claims#demo_social_step3'
-  get 'claims/demo_social_step4' => 'claims#demo_social_step4'
-  get 'claims/demo_social_step5' => 'claims#demo_social_step5'
-  get 'claims/demo_social_yourcases' => 'claims#demo_social_yourcases'
-  get 'claims/demo_social_case/:case_id' => 'claims#demo_social_case', as: :social_case_view
-  get 'claims/demo_social_casehistory/:case_id' => 'claims#demo_social_casehistory', as: :social_case_history
+
+  get 'claims/demo/:page' => 'claims#demo_handler'
+  get 'claims/demo/:page/:case_id' => 'claims#demo_handler'
 
   get 'defense/:id/expense' => 'expense#new', as: :new_expense
 
