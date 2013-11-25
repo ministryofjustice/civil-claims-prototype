@@ -24,11 +24,7 @@ class ClaimsController < ApplicationController
 
   # stuff for demo only
   def demo_handler
-    header = true
-    if ['step5', 'social_step5', 'social_yourcases', 'social_case', 'social_casehistory'].include?(params[:page])
-      header = false
-    end
-    render 'claims/demo/' + params[:page], :layout => 'application-rebuild', :locals => { :includeheader => header }
+    render 'claims/demo/' + params[:page], :layout => 'application-rebuild'
   end 
   # /stuff for demo only
 

@@ -13,9 +13,6 @@
       %main{:role => "main"}
         = render 'layouts/messages'
         
-        - if includeheader 
-          = render partial: 'shared/header_message_rebuild'
-        
         = yield
 
     = render'shared/footer'

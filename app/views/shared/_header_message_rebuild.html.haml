@@ -1,5 +1,7 @@
-- unless @page_title.blank?
-  %header.page-header.group
-    %h1
-      %span> Service
-      Start a property repossession case
+%header.page-header.group
+  %h1
+    %span> Service
+    = title
+  - if defined?(lead)
+    %p.lead
+      = lead
