@@ -116,6 +116,13 @@ button, .button
       top: 1px solid $light-blue-50
       bottom: 1px solid $light-blue-50
 
+  input[disabled="disabled"]
+    opacity: 1
+    background-color: $grey-4
+
+    &.pound
+      background-image: image-url('poundbg-disabled.png')
+
   fieldset, .row
     @include clearfix
     clear: both
