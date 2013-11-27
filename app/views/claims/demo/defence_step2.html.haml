@@ -1,0 +1,141 @@
+= render partial: 'shared/header_message_rebuild', :locals => {:title => "Property repossession: defence"}
+
+.container
+  %nav.progress
+    %ol
+      %li.completed
+        %a(href='/claims/demo/defence_step1') About the case
+      %li.active
+        %span About you
+      %li
+        %span Check details
+      %li
+        %span Confirmation
+
+%header.content-header
+  %h2 Step 2 - About you
+  %p Enter your personal details and tell us about your circumstances.
+
+%section
+  %h3.section-header Contact details
+  .moj-panel.sub-panel
+    .row
+      %label(for='defendant-title')> Title
+      %select.small(name='defendant-title' id='defendant-title')
+        %option(value='') select
+        %option(value='Mr') Mr
+        %option(value='Mrs') Mrs
+        %option(value='Miss') Miss
+        %option(value='Ms') Ms
+        %option(value='Dr') Dr
+        %option(value='Other') Other
+    .row.rel
+      %label(for='defendant-fullname')> Full name
+      %input(type='text' name='defendant-fullname' id='defendant-fullname')
+    .row.rel.street
+      %label(for='defendant-address')> Street
+      %textarea(name='defendant-address' id='defendant-address')
+    .row.rel.town
+      %label(for='defendant-town')> Town
+      %input(type='text' name='defendant-town' id='defendant-town')
+    .row.rel.postcode
+      %label(for='defendant-postcode')> Postcode
+      %input.has-button.smalltext(type='text' name='defendant-postcode' id='defendant-postcode')>
+      %a.button.primary.js-find-address> Find UK address
+    .row.rel
+      %label(for='defendant-phone')> Phone
+      %input(type='text' name='defendant-phone' id='defendant-phone')
+    .row.rel
+      %label(for='defendant-mobile')> Mobile
+      %input(type='text' name='defendant-mobile' id='defendant-mobile')
+    .row.rel
+      %label(for='defendant-email')> Email
+      %input(type='text' name='defendant-email' id='defendant-email')
+
+%section
+  %h3.section-header Your finances
+  .moj-panel
+    %fieldset.striped-choice.full
+      %legend Would you like to give details of your income and spending?
+      .options
+        .row
+          %input#give-finances-yes.js-depend(type='radio' name='give-finances' data-depend='financial-info')
+          %label(for='give-finances-yes') Yes
+        .row
+          %input#give-finances-no.js-depend(type='radio' name='give-finances')
+          %label(for='give-finances-no') No
+
+%section.hide.js-financial-info
+  %h3.section-header Bank balances
+  .moj-panel
+    .row
+      %label(for='current-account') Current account balance
+      %input#current-account.pound(type='text' name='current-account')
+    %fieldset.striped-choice.nomargin
+      .options
+        .row
+          %input#no-current-account.js-disable(type='checkbox' name='no-current-account' data-disable='current-account')
+          %label(for='no-current-account') I don't have a current account
+    .row
+      %label(for='savings-account') Savings account balance
+      %input#savings-account.pound(type='text' name='savings-account')
+    %fieldset.striped-choice.nomargin
+      .options
+        .row
+          %input#no-savings-account.js-disable(type='checkbox' name='no-savings-account' data-disable='savings-account')
+          %label(for='no-savings-account') I don't have a savings account
+    .row.rel
+      %a.help-link(href='#') About bank balances
+
+%section.hide.js-financial-info
+  %h3.section-header Money in
+  .moj-panel
+    %fieldset.striped-choice
+      %legend Are you working?
+      .options
+        .row
+          %input#working-yes(type='radio' name='working')
+          %label(for='working-yes') Yes
+        .row
+          %input#working-no(type='radio' name='working')
+          %label(for='working-no') No
+    .row.rel
+      %a.help-link(href='#') About working
+    %fieldset.striped-choice
+      %legend Are you receiving any benefits?
+      .options
+        .row
+          %input#benefits-yes(type='radio' name='benefits')
+          %label(for='benefits-yes') Yes
+        .row
+          %input#benefits-no(type='radio' name='benefits')
+          %label(for='benefits-no') No
+    .row.rel
+      %a.help-link(href='#') About benefits
+    %fieldset.striped-choice
+      %legend Are you receiving a state pension?
+      .options
+        .row
+          %input#state-pension-yes(type='radio' name='state-pension')
+          %label(for='state-pension-yes') Yes
+        .row
+          %input#state-pension-no(type='radio' name='state-pension')
+          %label(for='state-pension-no') No
+
+%section
+  %h3.section-header Your circumstances
+  .moj-panel
+    %fieldset.striped-choice.full
+      %legend Do you have any children or adults who depend on you for financial support<br>(e.g. a partner, grandchild or parent)?
+      .options
+        .row
+          %input#dependents-yes(type='radio' name='dependents')
+          %label(for='dependents-yes') Yes
+        .row
+          %input#dependents-no(type='radio' name='dependents')
+          %label(for='dependents-no') No
+
+%section
+  .action-buttons.cf
+    %a.button.primary.large.chevron.left(href='/claims/demo/defence_step3') Continue to next step
+    %a.button.secondary.large.right(href='/claims/demo/defence_step3') Save and come back later

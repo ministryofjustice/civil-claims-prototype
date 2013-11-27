@@ -3,16 +3,16 @@
 
   .action-buttons
     margin:
-      top: 60px
       bottom: 60px
   h2
-    font-size: 32px
+    font:
+      size: 32px
+      weight: bold
 
   ol.steps
     list-style-type: none
     padding: 0 0 60px
-    margin-bottom: 60px
-    border-bottom: 1px solid #c2c2c2
+    margin-bottom: 0
 
     li
       height: 90px
@@ -31,3 +31,21 @@
       strong
         padding-top: 20px
         display: block
+
+    &.defence
+      li
+        background-position: 0 -90px
+
+        &:nth-child(2)
+          background-position: 0 0
+        &:nth-child(3)
+          background-position: 0 -180px
+        &:nth-child(4)
+          background-position: 0 -360px
+
+main > .divider
+  width: 100%
+  height: 1px
+  overflow: hidden
+  margin-bottom: 60px
+  border-bottom: 1px solid #c2c2c2

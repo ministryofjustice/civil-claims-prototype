@@ -13,10 +13,10 @@ moj.Modules.demo = (function() {
       pickAddress,
       manualAddressFields,
       initTemplates,
-      changeLandlords,
       changeTenants,
-      landlordTenantAddressRadioClick,
+      tenantAddressRadioClick,
       jsDependClick,
+      jsDisableClick,
       ntqClick,
       removeFile,
       attachMiscFile,
@@ -25,13 +25,12 @@ moj.Modules.demo = (function() {
       //elements
       postcodeButtons,
       manualAddressLinks,
-      landlordAddressRadios,
       tenantAddressRadios,
       jsDepends,
       ntqButton,
+      jsDisable,
 
       //vars
-      currLandlords = 1,
       currTenants = 1,
 
       //data
@@ -79,61 +78,53 @@ moj.Modules.demo = (function() {
     cacheEls();
     bindEvents();
 
-    $('html').addClass($.fn.details.support ? 'details' : 'no-details');
+    $( 'html' ).addClass( $.fn.details.support ? 'details' : 'no-details' );
+
+    // TODO: check state of jsDepend and jsDisable elements on load, act accordingly
   };
 
   cacheEls = function() {
     postcodeButtons = $( '.js-find-address' );
     manualAddressLinks = $( '.js-manual-address' );
-    landlordAddressRadios = $( '.options.js-landlord-address input[type="radio"]' );
     tenantAddressRadios = $( '.options.js-tenant-address input[type="radio"]' );
     jsDepends = $( '.js-depend' );
+    jsDisable = $( '.js-disable' );
     ntqButton = $( '.js-noticetoquit' );
   };
 
   bindEvents = function() {
-    $( postcodeButtons ).each( function() {
-      $( this ).unbind( 'click' ).on( 'click', function( e ) {
-        e.preventDefault();
-        getRandomAddresses( $( e.target ) );
-      } );
+    $( postcodeButtons ).unbind( 'click' ).on( 'click', function( e ) {
+      e.preventDefault();
+      getRandomAddresses( $( e.target ) );
     } );
 
-    $( manualAddressLinks ).each( function() {
-      $( this ).unbind( 'click' ).on( 'click', function( e ) {
-        e.preventDefault();
-        manualAddressFields( $( e.target ) );
-      } );
+    $( manualAddressLinks ).unbind( 'click' ).on( 'click', function( e ) {
+      e.preventDefault();
+      manualAddressFields( $( e.target ) );
     } );
 
-    $( landlordAddressRadios ).add( tenantAddressRadios ).each( function() {
-      $( this ).unbind( 'click' ).on( 'click', function( e ) {
-        landlordTenantAddressRadioClick( $( e.target ) );
-      } );
+    $( tenantAddressRadios ).unbind( 'click' ).on( 'click', function( e ) {
+      tenantAddressRadioClick( $( e.target ) );
     } );
 
-    $( jsDepends ).each( function() {
-      $( this ).change( function( e ) {
-        jsDependClick( $( e.target ) );
-      } );
+    $( jsDepends ).change( function( e ) {
+      jsDependClick( $( e.target ) );
+    } );
+
+    $( jsDisable ).change( function( e ) {
+      jsDisableClick( $( e.target ) );
     } );
 
     $( '.addressDropdown' ).unbind('change').on( 'change', function( e ) {
       pickAddress( $( e.target ) );
     } );
 
-    $( '#numlandlords' ).on( 'change', function() {
-      changeLandlords( $( this ) );
-    } );
-
     $( '#numtenants' ).on( 'change', function() {
       changeTenants( $( this ) );
     } );
 
-    $( ntqButton ).each( function() {
-      $( this ).on( 'click', function( e ) {
-        ntqClick( $( e.target ) );
-      } );
+    $( ntqButton ).on( 'click', function( e ) {
+      ntqClick( $( e.target ) );
     } );
 
     $( document ).on( 'click', '.files li a.x', function( e ) {
@@ -159,7 +150,6 @@ moj.Modules.demo = (function() {
       html += '<option value="' + x + '">' + joinAddress( fakeAddresses[ x ] ) + '</option>';
     }
     html += '</select></div>';
-
 
     $el.closest( '.row' ).after( html );
     bindEvents();
@@ -206,38 +196,6 @@ moj.Modules.demo = (function() {
     $el.closest( '.row' ).remove();
 
     moj.Modules.effects.highlights();
-  };
-
-  changeLandlords = function( $el ) {
-    var landlords = $el.val(),
-        x,
-        source,
-        template,
-        context;
-
-    if( landlords < currLandlords ) {
-      // remove landlords
-      $( '.landlord-form' ).each( function( n ) {
-        var $this = $( this );
-        if( ( n + 1 ) > landlords ) {
-          $this.remove();
-        }
-      } );
-    } else if( landlords > currLandlords ) {
-      // add landlords
-      for( x = currLandlords; x < landlords; x++ ) {
-        source = $( '#landlord-template' ).html();
-        template = Handlebars.compile( source );
-        context = { grouping: 'landlord' + ( x + 1 ), additional: true };
-
-        $( '.landlords-wrapper' ).append( template( context ) );
-      }
-    }
-
-    currLandlords = landlords;
-
-    cacheEls();
-    bindEvents();
   };
 
   changeTenants = function( $el ) {
@@ -296,7 +254,7 @@ moj.Modules.demo = (function() {
     }
   };
 
-  landlordTenantAddressRadioClick = function( $el ) {
+  tenantAddressRadioClick = function( $el ) {
     var source,
         template,
         context,
@@ -343,6 +301,16 @@ moj.Modules.demo = (function() {
       } else {
         $( '.js-' + showname ).hide();
       }
+    }
+  };
+
+  jsDisableClick = function( $el ) {
+    var disableName = $el.data( 'disable' );
+
+    if( $el.is( ':checked' ) ) {
+      $( '#' + disableName ).addClass( 'disabled' ).attr( 'disabled', true );
+    } else {
+      $( '#' + disableName ).removeClass( 'disabled' ).attr( 'disabled', false );
     }
   };
 

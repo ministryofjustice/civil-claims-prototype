@@ -67,6 +67,37 @@ button, .button
 .sub-panel
   padding-top: 40px
 
+  &.extra
+    background: $white
+    width: 670px
+    margin:
+      left: 32px
+      top: 40px
+    padding: 0
+
+    .sub-panel
+      padding: 0
+
+      > .row
+        padding: 0 40px 40px
+
+    fieldset, fieldset.full
+      margin: 0
+      padding: 40px
+      border-top: 1px dotted #c2c2c2
+
+      &:first-child
+        border-top: none
+
+      legend
+        padding-top: 0
+
+      .options
+        max-width: 590px
+
+        .row
+          max-width: 590px
+
 .moj-panel
   background: $grey-4
   border:
@@ -90,7 +121,7 @@ button, .button
     clear: both
     margin-top: 40px
 
-    &:first-child
+    &:first-child, &.nomargin
       margin-top: 0
 
     &.rel
@@ -195,6 +226,14 @@ button, .button
         @include highlight-row
         background-color: $white
 
+      details.full
+        summary
+          padding-left: 26px
+          background-position: 2px 6px
+        label, input, textarea, .help-link
+          display: block
+          margin-top: 10px
+
     &.map
       img
         display: block
@@ -236,7 +275,7 @@ button, .button
         width: 100px
       &.date-date, &.date-year
         width: 80px
-      &.date-month
+      &.date-month, &.small
         width: 130px
 
     textarea
@@ -277,14 +316,36 @@ button, .button
       float: left
 
     &.striped-choice
+      .options
+        max-width: 670px
 
       .row
         margin-top: 5px
+
         &:first-child
           margin-top: 0
     
       legend
         padding-top: 10px
+
+    &.full
+      padding-left: 30px
+
+      legend
+        width: auto
+        margin-left: 0
+
+      .row
+        clear: both
+        margin-top: 5px
+        width: 670px
+
+        &:first-child
+          margin-top: 5px
+
+      details
+        summary
+          padding-left: 25px
 
     .row
       width: 480px
@@ -324,22 +385,30 @@ details
   .row:first-of-type
     margin-top: 10px
 
-  .no-details &
+
+.no-details
+  details
     summary
       background: image-url('summary-arrow-closed.gif') 168px 6px no-repeat
+    &.full
+      summary
+        background-position: 2px 6px
     &.open
       summary
         background-image: image-url('summary-arrow-open.gif')
+    
 
 summary
   padding-left: 190px
   color: $link-colour
   text-decoration: underline
   cursor: pointer
+
   &:focus
     outline: none
   &:hover
     color: $link-active-colour
+
 
 
 .unpaid-rent-table, .tablescroll
