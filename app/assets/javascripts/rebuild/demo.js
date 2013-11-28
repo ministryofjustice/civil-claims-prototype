@@ -80,7 +80,12 @@ moj.Modules.demo = (function() {
 
     $( 'html' ).addClass( $.fn.details.support ? 'details' : 'no-details' );
 
-    // TODO: check state of jsDepend and jsDisable elements on load, act accordingly
+    $( jsDepends ).filter( ':checked' ).each( function() {
+      jsDependClick( $( this ) );
+    } );
+    $( jsDisable ).filter( ':checked' ).each( function() {
+      jsDisableClick( $( this ) );
+    } );
   };
 
   cacheEls = function() {
