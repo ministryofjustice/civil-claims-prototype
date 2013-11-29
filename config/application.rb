@@ -57,6 +57,8 @@ module CivilClaims
       rebuild/components/claims-intro
       rebuild/components/claims-usernav
       rebuild/components/claims-progressnav
+      rebuild/components/claims-breadcrumb
+      rebuild/components/claims-tables
       
       gov-static/gov-ie.js
     )
