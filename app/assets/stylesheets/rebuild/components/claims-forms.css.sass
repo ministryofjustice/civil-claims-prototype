@@ -75,6 +75,9 @@ button, .button
       top: 40px
     padding: 0
 
+    &.rel
+      margin-top: 15px
+
     .sub-panel
       padding: 0
 
@@ -97,6 +100,8 @@ button, .button
 
         .row
           max-width: 590px
+    > .row
+      padding: 40px
 
 .moj-panel
   background: $grey-4
@@ -122,6 +127,14 @@ button, .button
 
     &.pound
       background-image: image-url('poundbg-disabled.png')
+
+  > h4
+    margin-left: 30px
+    font-weight: bold
+    margin-top: 40px
+
+    &:first-child, &.nomargin
+      margin-top: 0
 
   fieldset, .row
     @include clearfix
@@ -272,6 +285,17 @@ button, .button
     .key
       .review &
         color: $grey-1
+
+    .value
+      &.total
+        span
+          font-weight: bold
+          display: inline-block
+          &.pound
+            width: 30px
+            margin-left: 12px
+          &.total
+            width: 265px
 
     .highlight
       background-color: $white

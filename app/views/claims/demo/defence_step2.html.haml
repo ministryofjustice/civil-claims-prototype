@@ -64,6 +64,8 @@
         .row
           %input#give-finances-no.js-depend(type='radio' name='give-finances')
           %label(for='give-finances-no') No
+    .row.full.rel
+      %a.help-link(href='#') How we treat your financial information
 
 %section.hide.js-financial-info
   %h3.section-header Bank balances
@@ -102,7 +104,6 @@
     .row.rel
       %a.help-link(href='#') About working
 
-
     %fieldset.striped-choice
       %legend Are you receiving any benefits?
       .options.has-extra
@@ -112,10 +113,8 @@
         .row
           %input#benefits-no.js-depend(type='radio' name='benefits' data-extra='false')
           %label(for='benefits-no') No
-
         .row.rel
           %a.help-link(href='#') About benefits
-
         .extra.striped-choice
           %h4 Which benefits are you receiving?
           .row
@@ -148,9 +147,6 @@
           .row
             %input#benefit-other.js-depend(type='checkbox' data-depend='benefit-other')
             %label(for='benefit-other') Other benefits
-
-
-
     %fieldset.striped-choice
       %legend Are you receiving a state pension?
       .options
@@ -237,32 +233,176 @@
         %option(value='monthly') per month
         %option(value='weekly') per week
     .row
-      %label(for='other-money') Any other money in
-      %input#other-money.pound(type='text' name='other-money')
-      %select#other-money-frequency.small
+      %label(for='other-money-in') Any other money in
+      %input#other-money-in.pound(type='text' name='other-money-in')
+      %select#other-money-in-frequency.small
         %option(value='monthly') per month
         %option(value='weekly') per week
     .row
       .key
         %strong Total money in
-      .value
-        %span.total &pound;1850
+      .value.total
+        %span.pound &pound;
+        %span.total 1850
         %span.frequency per month
     .row
       %a.help-link(href='#') About money in
 
-%section
-  %h3.section-header Your circumstances
+
+%section.hide.js-financial-info
+  %h3.section-header Money out
+  .moj-panel
+    %h4 Household bills
+    .row
+      %label(for='council-tax') Council tax
+      %input#council-tax.pound(type='text' name='council-tax')
+      %select#council-tax-frequency.small
+        %option(value='monthly') per month
+        %option(value='weekly') per week
+    .row
+      %label(for='electricity') Electricity
+      %input#electricity.pound(type='text' name='electricity')
+      %select#electricity-frequency.small
+        %option(value='monthly') per month
+        %option(value='weekly') per week
+    .row
+      %label(for='gas') Gas
+      %input#gas.pound(type='text' name='gas')
+      %select#gas-frequency.small
+        %option(value='monthly') per month
+        %option(value='weekly') per week
+    .row
+      %label(for='water') Water
+      %input#water.pound(type='text' name='water')
+      %select#water-frequency.small
+        %option(value='monthly') per month
+        %option(value='weekly') per week
+    .row.divider
+    %h4 Travel expenses
+    .row
+      %label(for='public-transport') Public transport
+      %input#public-transport.pound(type='text' name='public-transport')
+      %select#public-transport-frequency.small
+        %option(value='monthly') per month
+        %option(value='weekly') per week
+    .row
+      %label(for='petrol') Petrol
+      %input#petrol.pound(type='text' name='petrol')
+      %select#petrol-frequency.small
+        %option(value='monthly') per month
+        %option(value='weekly') per week
+    .row
+      %label(for='car-expenses') Car expenses
+      %input#car-expenses.pound(type='text' name='car-expenses')
+      %select#car-expenses-frequency.small
+        %option(value='monthly') per month
+        %option(value='weekly') per week
+    .row.divider
+    %h4 Technology
+    .row
+      %label(for='internet') Internet
+      %input#internet.pound(type='text' name='internet')
+      %select#internet-frequency.small
+        %option(value='monthly') per month
+        %option(value='weekly') per week
+    .row
+      %label(for='mobile-phone') Mobile phone
+      %input#mobile-phone.pound(type='text' name='mobile-phone')
+      %select#mobile-phone-frequency.small
+        %option(value='monthly') per month
+        %option(value='weekly') per week
+    .row
+      %label(for='phone-line') Phone line
+      %input#phone-line.pound(type='text' name='phone-line')
+      %select#phone-line-frequency.small
+        %option(value='monthly') per month
+        %option(value='weekly') per week
+    .row
+      %label(for='tv-licence') TV licence
+      %input#tv-licence.pound(type='text' name='tv-licence')
+      %select#tv-licence-frequency.small
+        %option(value='monthly') per month
+        %option(value='weekly') per week
+    .row.divider
+    %h4 Living expenses
+    .row
+      %label(for='child-care') Child care costs
+      %input#child-care.pound(type='text' name='child-care')
+      %select#child-care-frequency.small
+        %option(value='monthly') per month
+        %option(value='weekly') per week
+    .row
+      %label(for='groceries') Groceries
+      %input#groceries.pound(type='text' name='groceries')
+      %select#groceries-frequency.small
+        %option(value='monthly') per month
+        %option(value='weekly') per week
+    .row
+      %label(for='pet-expenses') Pet expenses
+      %input#pet-expenses.pound(type='text' name='pet-expenses')
+      %select#pet-expenses-frequency.small
+        %option(value='monthly') per month
+        %option(value='weekly') per week
+    .row.divider
+    .row
+      %label(for='other-money-out') Any other money out
+      %input#other-money-out.pound(type='text' name='other-money-out')
+      %select#other-money-out-frequency.small
+        %option(value='monthly') per month
+        %option(value='weekly') per week
+    .row
+      .key
+        %strong Total money out
+      .value.total
+        %span.pound &pound;
+        %span.total 1850
+        %span.frequency per month
+    .row
+      %a.help-link(href='#') About money out
+
+%section.hide.js-financial-info
+  %h3.section-header Debts
   .moj-panel
     %fieldset.striped-choice.full
-      %legend Do you have any children or adults who depend on you for financial support<br>(e.g. a partner, grandchild or parent)?
+      %legend Do you have any loans or credit card debts?
       .options
         .row
-          %input#dependents-yes(type='radio' name='dependents')
-          %label(for='dependents-yes') Yes
+          %input#loans-credit-cards-yes.js-depend(type='radio' name='loans-credit-cards' data-depend='loanscc-detail')
+          %label(for='loans-credit-cards-yes') Yes
         .row
-          %input#dependents-no(type='radio' name='dependents')
-          %label(for='dependents-no') No
+          %input#loans-credit-cards-no.js-depend(type='radio' name='loans-credit-cards')
+          %label(for='loans-credit-cards-no') No
+    .sub-panel.extra.hide.rel.js-loanscc-detail
+      .row.full
+        %label(for='loanscc-total') Total owed in loans or credit card debts
+        %input#loanscc-total.pound(type='text' name='loanscc-total')
+    %fieldset.striped-choice.full
+      %legend Do you have any court orders or fines?
+      .options
+        .row
+          %input#court-orders-fines-yes.js-depend(type='radio' name='court-orders-fines' data-depend='court-orders-fines-detail')
+          %label(for='court-orders-fines-yes') Yes
+        .row
+          %input#court-orders-fines-no.js-depend(type='radio' name='court-orders-fines')
+          %label(for='court-orders-fines-no') No
+    .sub-panel.extra.hide.rel.js-court-orders-fines-detail
+      .row.full
+        %label(for='court-orders-fines-total') Total amount of court orders and fines
+        %input#court-orders-fines-total.pound(type='text' name='court-orders-fines-total')
+
+
+/ %section
+/   %h3.section-header Your circumstances
+/   .moj-panel
+/     %fieldset.striped-choice.full
+/       %legend Do you have any children or adults who depend on you for financial support<br>(e.g. a partner, grandchild or parent)?
+/       .options
+/         .row
+/           %input#dependents-yes(type='radio' name='dependents')
+/           %label(for='dependents-yes') Yes
+/         .row
+/           %input#dependents-no(type='radio' name='dependents')
+/           %label(for='dependents-no') No
 
 
 %section
