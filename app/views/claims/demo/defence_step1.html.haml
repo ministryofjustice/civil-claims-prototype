@@ -1,0 +1,197 @@
+= render partial: 'shared/header_message_rebuild', :locals => {:title => "Property repossession: defence"}
+
+.container
+  %nav.progress
+    %ol
+      %li.active
+        %span About the case
+      %li
+        %span About you
+      %li
+        %span Check details
+      %li
+        %span Confirmation
+
+%header.content-header
+  %h2 Step 1 - About the case
+  %p Read the case against you and give your side of the story.
+
+%section
+  %h3.section-header About the case
+  .moj-panel
+    %fieldset.striped-choice.full
+      %legend Have you fallen behind with the rent?
+      .options
+        .row
+          %input#behind-rent-yes.js-depend(type='radio' name='behind-rent' data-depend='rent-arrears')
+          %label(for='behind-rent-yes') Yes
+        .row
+          %input#behind-rent-no.js-depend(type='radio' name='behind-rent')
+          %label(for='behind-rent-no') No
+    .sub-panel.extra.hide.js-rent-arrears
+      %fieldset.striped-choice.full
+        %legend
+          The council says that the total amount of unpaid rent is <strong>&pound;2850</strong>.
+          %br/
+          Is this correct?
+        .options
+          .row
+            %input#arrears-correct-yes.js-depend(type='radio' name='arrears-correct')
+            %label(for='arrears-correct-yes') Yes
+          .row
+            %input#arrears-correct-no.js-depend(type='radio' name='arrears-correct' data-depend='incorrect-total')
+            %label(for='arrears-correct-no') No
+      .sub-panel.hide.js-incorrect-total
+        .row.full
+          %label(for='incorrect-total-figure') What do you think is the unpaid rent?
+          %input#incorrect-total-figure.pound(type='text' name='incorrect-total-figure')
+      %fieldset.striped-choice.full
+        %legend
+          Have you paid any money to the council since <strong>10 July 2013</strong>?
+        .options
+          .row
+            %input#made-payment-yes.js-depend(type='radio' name='made-payment' data-depend='money-paid')
+            %label(for='made-payment-yes') Yes
+          .row
+            %input#made-payment-no.js-depend(type='radio' name='made-payment')
+            %label(for='made-payment-no') No
+      .sub-panel.hide.js-money-paid
+        .row.full
+          %label(for='money-paid-amount') Total amount paid
+          %input#money-paid-amount.pound(type='text' name='money-paid-amount')
+      %fieldset.striped-choice.full
+        %legend
+          Have you agreed to pay the money you owe in installments?
+        .options
+          .row
+            %input#installments-yes.js-depend(type='radio' name='installments' data-depend='instalments')
+            %label(for='installments-yes') Yes
+          .row
+            %input#installments-no.js-depend(type='radio' name='installments' data-depend='could-afford')
+            %label(for='installments-no') No
+      .sub-panel.hide.js-instalments
+        .row.full
+          %label(for='instalments-amount') Payment amount
+          %input#instalments-amount.pound(type='text' name='instalments-amount')
+          %select#instalments-frequency.small
+            %option(value='monthly') per month
+            %option(value='weekly') per week
+      .sub-panel.hide.js-could-afford
+        .row.full
+          %label(for='suggested-instalments-amount') How much could you afford to pay on top of the current rent?
+          %input#suggested-instalments-amount.pound(type='text' name='suggested-instalments-amount')
+          %select#suggested-instalments-frequency.small
+            %option(value='monthly') per month
+            %option(value='weekly') per week
+    %fieldset.striped-choice.full
+      %legend
+        Has the council sent you a 'notice to quit'?
+        %br/
+        (a letter to say you must leave the property)
+      .options
+        .row
+          %input#notice-sent-yes.js-depend(type='radio' name='notice-sent' data-depend='notice-date')
+          %label(for='notice-sent-yes') Yes
+        .row
+          %input#notice-sent-no.js-depend(type='radio' name='notice-sent')
+          %label(for='notice-sent-no') No
+    .sub-panel.extra.hide.js-notice-date
+      %fieldset.full.date-picker
+        %legend When did you receive the notice?
+        .row
+          %select#noticesent-date.date-date
+            %option(value='') date
+            %option(value='1') 1
+            %option(value='2') 2
+            %option(value='3') 3
+            %option(value='4') 4
+            %option(value='5') 5
+            %option(value='6') 6
+            %option(value='7') 7
+            %option(value='8') 8
+            %option(value='9') 9
+            %option(value='10') 10
+            %option(value='11') 11
+            %option(value='12') 12
+            %option(value='13') 13
+            %option(value='14') 14
+            %option(value='15') 15
+            %option(value='16') 16
+            %option(value='17') 17
+            %option(value='18') 18
+            %option(value='19') 19
+            %option(value='20') 20
+            %option(value='21') 21
+            %option(value='22') 22
+            %option(value='23') 23
+            %option(value='24') 24
+            %option(value='25') 25
+            %option(value='26') 26
+            %option(value='27') 27
+            %option(value='28') 28
+            %option(value='29') 29
+            %option(value='30') 30
+            %option(value='31') 31
+          %select#noticesent-month.date-month
+            %option(value='') month
+            %option(value='January') January
+            %option(value='February') February
+            %option(value='March') March
+            %option(value='April') April
+            %option(value='May') May
+            %option(value='June') June
+            %option(value='July') July
+            %option(value='August') August
+            %option(value='September') September
+            %option(value='October') October
+            %option(value='November') November
+            %option(value='December') December
+          %select#noticesent-year.date-year
+            %option(value='') year
+            %option(value='2013') 2013
+            %option(value='2012') 2012
+            %option(value='2011') 2011
+            %option(value='2010') 2010
+            %option(value='2009') 2009
+            %option(value='2008') 2008
+            %option(value='2007') 2007
+            %option(value='2006') 2006
+            %option(value='2005') 2005
+            %option(value='2004') 2004
+            %option(value='2003') 2003
+            %option(value='2002') 2002
+            %option(value='2001') 2001
+            %option(value='2000') 2000
+            %option(value='1999') 1999
+            %option(value='1998') 1998
+            %option(value='1997') 1997
+            %option(value='1996') 1996
+            %option(value='1995') 1995
+            %option(value='1994') 1994
+            %option(value='1993') 1993
+            %option(value='1992') 1992
+            %option(value='1991') 1991
+            %option(value='1990') 1990
+    .row.full
+      %details.full
+        %summary Have you started a court case against the council about the property?
+        %label(for='case-number') Case number
+        %input#case-number(type='text' name='case-number')
+        %a.help-link(href='#') About other court cases
+    .row.full
+      %label(for='additional-info') Is there anything else you’d like to add about your case?
+      %textarea#additional-info
+
+%section
+  %h3.section-header Attachments
+  .moj-panel
+    .row.full
+      %p Attach any bills, receipts, files that support your defence
+      %a.button(href='#') Attach files
+    .row.full.rel
+      %a.help-link(href='#') About attaching files
+
+%section
+  .action-buttons.cf
+    %a.button.primary.large.chevron.left(href='/claims/demo/defence_step2') Continue to next step
+    %a.button.secondary.large.right(href='/claims/demo/defence_step2') Save and come back later

@@ -1,32 +1,96 @@
 = render partial: 'shared/header_message_rebuild', :locals => {:title => "Property repossession: defence"}
 
 .container.start
-  %p.lead Find out about the case against you and file a defence.
 
+  %section.review
+    %h3.section-header
+      The case
+      %a.right(href='#') View case
+    .moj-panel
+      .row
+        .key
+          Property
+        .value
+          Flat 3
+          %br/
+          92 Crystal Palace Park Road
+          %br/
+          London
+          %br/
+          SE26 6UP
+      .row
+        .key
+          Landlord
+        .value
+          Bristol City Council
+      .row
+        .key
+          Tenant
+        .value
+          Mr Louis Robert Stevenson
 
-%section.review
-  %h3.section-header
-    The case
-    %a.right(href='#') View case
-  .moj-panel
-    .row
-      .key
-        Property
-      .value
-        Flat 3
-        %br/
-        92 Crystal Palace Park Road
-        %br/
-        London
-        %br/
-        SE26 6UP
-    .row
-      .key
-        Landlord
-      .value
-        Bristol City Council
-    .row
-      .key
-        Tenant
-      .value
-        Mr Louis Robert Stevenson
+  %section.review
+    %h3.section-header
+      Case status
+    .moj-panel.highlight
+      .row
+        .key
+          Current status
+        .value
+          There will be a court hearing
+      .row
+        .key
+          Hearing date
+        .value
+          Wednesday 21 November 2013 at 10:30
+      .row
+        .key
+          Court
+        .value
+          Bristol Civil Justice Centre
+      .row
+        .key
+          Address
+        .value
+          2 Redcliff Street
+          %br/
+          Bristol
+          %br/
+          BS1 6GR
+      .row
+        .value
+          %a(href='https://courttribunalfinder.service.gov.uk/courts/bristol-civil-justice-centre' rel='external') View full court details
+      .row.full.map
+        = image_tag('bristol-court-map.png', alt: 'Bristol Civic Justice Centre map')
+
+  %h2 Guide to starting a defence
+
+  %ol.steps.defence
+    %li
+      %strong Step 1: About the case
+      View the case against you and give your side of the story.
+    %li
+      %strong Step 2: About you
+      Enter your personal details and tell us about your circumstances.
+    %li
+      %strong Step 3: Check details
+      Check that all the details are correct.
+    %li
+      %strong Step 4: Confirmation
+      We'll confirm we’ve received your defence and tell you what happens next.
+
+  .action-buttons.cf
+    %a.button.primary.large.chevron.left(href='/claims/demo/defence_step1') Start a defence
+
+.divider
+
+.container.start
+  %h2 Before you start
+
+  %ul
+    %li Speak to the council and try to come to an agreement.
+    %li The council must have sent you #{link_to 'notice to leave', '#'} before starting court action.
+    %li
+      The form will take about
+      %strong 20 minutes
+      to complete.

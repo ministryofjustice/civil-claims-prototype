@@ -54,17 +54,24 @@ moj.Modules.forms = (function() {
       $( 'input[name="' + elName + '"]' ).each( function() {
         var $this = $( this );
         $this.closest( '.row' ).removeClass( 'checked' );
-        $this.closest( '.has-extra' ).removeClass( 'show-extra' );
       } );
       $row.addClass( 'checked' );
-      $row.closest( '.has-extra' ).addClass( 'show-extra' );
+      if( $el.data( 'extra' ) ) {
+        $row.closest( '.has-extra' ).addClass( 'show-extra' );
+      } else {
+        $row.closest( '.has-extra' ).removeClass( 'show-extra' );
+      }
     } else { // checkbox
       if( $el.is( ':checked' ) ) {
         $row.addClass( 'checked' );
-        $row.closest( '.has-extra' ).addClass( 'show-extra' );
+        if( !$row.closest( '.extra' ).length ) {
+          $row.closest( '.has-extra' ).addClass( 'show-extra' );
+        }
       } else {
         $row.removeClass( 'checked' );
-        $row.closest( '.has-extra' ).removeClass( 'show-extra' );
+        if( !$row.closest( '.extra' ).length ) {
+          $row.closest( '.has-extra' ).removeClass( 'show-extra' );
+        }
       }  
     }
   };

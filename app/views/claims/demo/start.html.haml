@@ -1,7 +1,6 @@
-= render partial: 'shared/header_message_rebuild', :locals => {:title => "Property repossession"}
+= render partial: 'shared/header_message_rebuild', :locals => {:title => "Property repossession", :lead => "Use this online form to start the process of repossessing a property if your tenant doesn’t pay their rent, breaks the tenancy agreement or refuses to move out."}
 
 .container.start
-  %p.lead Use this online form to start the process of repossessing a property if your tenant doesn’t pay their rent, breaks the tenancy agreement or refuses to move out.
 
   .action-buttons.cf
     %a.button.primary.large.chevron.left(href='/claims/demo/step1') Start a new case
@@ -25,6 +24,9 @@
       %strong Step 5 - Confirmation
       We'll confirm we have your case and tell you what happens next.
 
+.divider
+
+.container.start
   %h2 Before you start
 
   %ul
