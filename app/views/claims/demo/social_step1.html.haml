@@ -28,32 +28,6 @@
         %a.button.primary.js-find-address> Find UK address
       .row.rel.help-link.js-manual-address-row
         %a.js-manual-address(href='#') Enter address manually
-      %fieldset.striped-choice
-        %legend Type of property
-        .options
-          .row
-            %input#property-residential(type='checkbox')
-            %label(for='property-residential') Residential
-          .row
-            %input#property-commercial(type='checkbox')
-            %label(for='property-commercial') Commercial
-      %fieldset.striped-choice
-        %legend Who is in the property?
-        .options
-          .row
-            %input#property-who-tenants(type='radio' name='property-who')
-            %label(for='property-who-tenants') Tenants
-          .row
-            %input#property-who-squatters(type='radio' name='property-who')
-            %label(for='property-who-squatters') Squatters
-      .row.full
-        %details
-          %summary Would you like to provide a title number?
-          .row
-            %label(for='title-number') Title number
-            %input.smalltext#title-number(type='text' name='title-number')
-          .row.rel.help-link
-            %a(href='#') About title numbers
 
 %section.landlord-details
   %h3.section-header Landlord details

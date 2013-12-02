@@ -23,27 +23,6 @@
   .moj-panel
     %form
       %fieldset.striped-choice
-        %legend Your reasons for repossession
-        .options
-          .row
-            %input#casereasons-unpaidrent.js-depend(type='checkbox' data-depend='unpaid-rent')
-            %label(for='casereasons-unpaidrent') Unpaid rent
-          .row
-            %input#casereasons-antisocial(type='checkbox')
-            %label(for='casereasons-antisocial') Anti-social behaviour
-          .row
-            %input#casereasons-misuse(type='checkbox')
-            %label(for='casereasons-misuse') Misuse of property
-          .has-extra
-            .row
-              %input#casereasons-other(type='checkbox')
-              %label(for='casereasons-other') Other breach of tenancy
-            .extra
-              %label(for='casereasons-other-detail') Please give details
-              %textarea#casereasons-other-detail(name='casereasons-other-detail')
-      .row.rel.help-link
-        %a(href='#') About reasons for repossession
-      %fieldset.striped-choice
         %legend Notices sent
         .options
           .has-extra
@@ -126,15 +105,6 @@
                     %option(value='1993') 1993
                     %option(value='1992') 1992
                     %option(value='1991') 1991
-                    %option(value='1990') 1990
-              .row
-                %a.button.primary.js-noticetoquit(href='#') Attach notice to quit files
-              .row.divider
-              .row.files
-                %ul
-                  %li.hide
-                    Noticetoquit.pdf
-                    %a.x(href='#') &times;
           .row
             %input#noticessent-breachoflease(type='checkbox')
             %label(for='noticessent-breachoflease') Breach of lease
@@ -148,8 +118,6 @@
             .extra
               %label(for='noticessent-other-detail') Please give details
               %textarea#noticessent-other-detail(name='noticessent-other-detail')
-      .row.rel.help-link
-        %a(href='#') About notices
 
 %section.about-tenancy
   %h3.section-header About the tenancy
@@ -167,8 +135,6 @@
           .row
             %input#tenancytype-regulated(type='radio' name='tenancytype')
             %label(for='tenancytype-regulated') Regulated tenancy
-      .row.rel.help-link
-        %a(href='#') About tenancy types
       %fieldset.date-picker
         %legend Tenancy start date
         .row
@@ -245,237 +211,6 @@
             %option(value='1992') 1992
             %option(value='1991') 1991
             %option(value='1990') 1990
-      .row
-        %a.button.primary.js-tenancyagreement-attachfiles(href='#') Attach tenancy agreement files
-      .sub-panel.files-wrapper.hide
-        .row.divider
-        .row.full.files
-          %ul
-            %li
-              %span TenancyAgreementApr2012.doc
-              %a.x(href='#') &times;
-            %li.hide
-              %span TenancyAgreementAmendsOct2012.doc
-              %a.x(href='#') &times;
-            %li.hide
-              %span TenancyAgreementAmendsJan2013.doc
-              %a.x(href='#') &times;
-
-%section.unpaid-rent.hide.js-unpaid-rent
-  %h3.section-header Unpaid rent
-  .moj-panel
-    %form
-      .row
-        %label(for='unpaidrent-amount') Rent amount
-        %input.pound#unpaidrent-amount(type='text' name='unpaidrent-amount')
-      %fieldset.striped-choice
-        %legend Rent frequency
-        .options
-          .row
-            %input#unpaidrent-rentfrequency-monthly(type='radio' name='unpaidrent-rentfrequency' checked='checked')
-            %label(for='unpaidrent-rentfrequency-monthly') Monthly
-          .row
-            %input#unpaidrent-rentfrequency-fortnightly(type='radio' name='unpaidrent-rentfrequency')
-            %label(for='unpaidrent-rentfrequency-fortnightly') Fortnightly
-          .row
-            %input#unpaidrent-rentfrequency-weekly(type='radio' name='unpaidrent-rentfrequency')
-            %label(for='unpaidrent-rentfrequency-weekly') Weekly
-      .row
-        %label(for='unpaidrent-dailyamount') Daily rent amount
-        %input.pound#unpaidrent-dailyamount(type='text' name='unpaidrent-dailyamount')
-      .row.rel.help-link
-        %a(href='#') About daily rent
-      %fieldset.striped-choice
-        %legend I would like to
-        .options
-          .row
-            %input#unpaidrentdetails-attach.js-depend(type='radio' name='unpaidrentdetails' data-depend='unpaid-rent-attach')
-            %label(for='unpaidrentdetails-attach') Attach files which list all unpaid rent
-          .row
-            %input#unpaidrentdetails-manually.js-depend(type='radio' name='unpaidrentdetails' data-depend='unpaid-rent-manual')
-            %label(for='unpaidrentdetails-manually') Manually enter the figures into this form
-      .sub-panel.js-unpaid-rent-attach.hide
-        .row
-          %label(for='unpaidrentfiles-total') Total unpaid rent
-          %input.pound#unpaidrentfiles-total(type='text' name='unpaidrentfiles-total')
-        .row
-          %a.button.primary.js-unpaid-rent-attachfiles(href='#') Attach unpaid rent files
-        .sub-panel.files-wrapper.hide
-          .row.divider
-          .row.full.files
-            %ul
-              %li
-                %span Rentdue-Apr2013.xls
-                %a.x(href='#') &times;
-              %li.hide
-                %span Rentdue-May2013.xls
-                %a.x(href='#') &times;
-              %li.hide
-                %span Rentdue-Jun2013.xls
-                %a.x(href='#') &times;
-              %li.hide
-                %span Rentdue-Jul2013.xls
-                %a.x(href='#') &times;
-              %li.hide
-                %span Rentdue-Aug2013.xls
-                %a.x(href='#') &times;
-              %li.hide
-                %span Rentdue-Sep2013.xls
-                %a.x(href='#') &times;
-      .sub-panel.js-unpaid-rent-manual.hide
-        %fieldset.date-picker
-          %legend Tenancy start date
-          .row
-            %select#unpaidrentdue-date.date-date
-              %option(value='') date
-              %option(value='1') 1
-              %option(value='2') 2
-              %option(value='3') 3
-              %option(value='4') 4
-              %option(value='5') 5
-              %option(value='6') 6
-              %option(value='7') 7
-              %option(value='8') 8
-              %option(value='9') 9
-              %option(value='10') 10
-              %option(value='11') 11
-              %option(value='12') 12
-              %option(value='13') 13
-              %option(value='14') 14
-              %option(value='15') 15
-              %option(value='16') 16
-              %option(value='17') 17
-              %option(value='18') 18
-              %option(value='19') 19
-              %option(value='20') 20
-              %option(value='21') 21
-              %option(value='22') 22
-              %option(value='23') 23
-              %option(value='24') 24
-              %option(value='25') 25
-              %option(value='26') 26
-              %option(value='27') 27
-              %option(value='28') 28
-              %option(value='29') 29
-              %option(value='30') 30
-              %option(value='31') 31
-            %select#unpaidrentdue-month.date-month
-              %option(value='') month
-              %option(value='January') January
-              %option(value='February') February
-              %option(value='March') March
-              %option(value='April') April
-              %option(value='May') May
-              %option(value='June') June
-              %option(value='July') July
-              %option(value='August') August
-              %option(value='September') September
-              %option(value='October') October
-              %option(value='November') November
-              %option(value='December') December
-            %select#unpaidrentdue-year.date-year
-              %option(value='') year
-              %option(value='2013') 2013
-              %option(value='2012') 2012
-              %option(value='2011') 2011
-              %option(value='2010') 2010
-              %option(value='2009') 2009
-              %option(value='2008') 2008
-              %option(value='2007') 2007
-              %option(value='2006') 2006
-              %option(value='2005') 2005
-              %option(value='2004') 2004
-              %option(value='2003') 2003
-              %option(value='2002') 2002
-              %option(value='2001') 2001
-              %option(value='2000') 2000
-              %option(value='1999') 1999
-              %option(value='1998') 1998
-              %option(value='1997') 1997
-              %option(value='1996') 1996
-              %option(value='1995') 1995
-              %option(value='1994') 1994
-              %option(value='1993') 1993
-              %option(value='1992') 1992
-              %option(value='1991') 1991
-              %option(value='1990') 1990
-        %fieldset.rel.striped-choice
-          .options
-            .has-extra
-              .row
-                %input#unpaidrent-partpaid(type='checkbox')
-                %label(for='unpaidrent-partpaid') The tenant paid part of the rent for this period
-              .extra
-                %label(for='unpaidrent-partpaid-detail') The tenant paid
-                %input.pound#unpaidrent-partpaid-detail(type='text' name='unpaidrent-partpaid-detail')
-        .row.rel
-          %a.button.primary.js-add-unpaid-rent-row(href='#') Add unpaid rent to table
-        .sub-panel.js-unpaid-rent-table.hide
-          .row.divider
-          .row.full.table
-            %table.unpaid-rent-table.js-scrolltable
-              %thead
-                %tr
-                  %th.remove.blank &nbsp;
-                  %th.date Rent due on
-                  %th.amount Rental amount
-                  %th.paid Amount paid
-                  %th.unpaid Unpaid rent
-              %tbody
-                %tr
-                  %td.remove
-                    %a.x(href='#') &times;
-                  %td.date 10 Apr 2013
-                  %td &pound;950
-                  %td &pound;0
-                  %td.unpaid &pound;950
-                %tr.hide
-                  %td.remove
-                    %a.x(href='#') &times;
-                  %td.date 10 May 2013
-                  %td &pound;950
-                  %td &pound;0
-                  %td.unpaid &pound;950
-                %tr.hide
-                  %td.remove
-                    %a.x(href='#') &times;
-                  %td.date 10 Jun 2013
-                  %td &pound;950
-                  %td &pound;0
-                  %td.unpaid &pound;950
-                %tr.hide
-                  %td.remove
-                    %a.x(href='#') &times;
-                  %td.date 10 Jul 2012
-                  %td &pound;950
-                  %td &pound;0
-                  %td.unpaid &pound;950
-                %tr.hide
-                  %td.remove
-                    %a.x(href='#') &times;
-                  %td.date 10 Aug 2012
-                  %td &pound;950
-                  %td &pound;0
-                  %td.unpaid &pound;950
-                %tr.hide
-                  %td.remove
-                    %a.x(href='#') &times;
-                  %td.date 10 Sep 2012
-                  %td &pound;950
-                  %td &pound;0
-                  %td.unpaid &pound;950
-                %tr.hide
-                  %td.remove
-                    %a.x(href='#') &times;
-                  %td.date 10 Oct 2012
-                  %td &pound;950
-                  %td &pound;0
-                  %td.unpaid &pound;950
-              %tfoot
-                %tr
-                  %td.blank &nbsp;
-                  %td(colspan='3') Total
-                  %td.unpaid &pound;2850
 
 %section.additional-information
   %h3.section-header Additional information
@@ -487,29 +222,6 @@
       .row.rel.full
         %input#human-rights(type='checkbox' name='human-rights')
         %label(for='human-rights') The case includes issues under the Human Rights Act 1998
-      .row.divider
-      .row.full
-        %p Attach files that support your case.
-        %p
-          %a(href='#') About attaching files
-      .row.rel.full
-        %a.button.primary.js-additional-attachfiles(href='#') Attach files
-      .sub-panel.files-wrapper.hide
-        .row.divider
-        .row.full.files
-          %ul
-            %li
-              %span TenantLetter-2013-02-26.doc
-              %a.x(href='#') &times;
-            %li.hide
-              %span FinalReminder-rent2012.doc
-              %a.x(href='#') &times;
-            %li.hide
-              %span RentSchedule-2012.xls
-              %a.x(href='#') &times;
-            %li.hide
-              %span StandardLettingTerms.pdf
-              %a.x(href='#') &times;
 
 %section
   .action-buttons.cf
