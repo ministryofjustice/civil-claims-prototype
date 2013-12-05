@@ -214,15 +214,16 @@ moj.Modules.demo = (function() {
       $( '.tenant-form' ).each( function( n ) {
         var $this = $( this );
         if( ( n + 1 ) > tenants ) {
+          $this.prev( '.divider' ).remove();
           $this.remove();
         }
       } );
     } else if( tenants > currTenants ) {
       // add tenants
-      for( x = currTenants; x < tenants; x++ ) {
+      for( x = parseInt( currTenants, 10 ); x < tenants; x++ ) {
         source = $( '#tenant-template' ).html();
         template = Handlebars.compile( source );
-        context = { grouping: 'tenant' + ( x + 1 ), additional: true };
+        context = { grouping: 'tenant' + ( x + 1 ), additional: true, num: x + 1 };
 
         $( '.tenants-wrapper' ).append( template( context ) );
       }
@@ -253,7 +254,7 @@ moj.Modules.demo = (function() {
     if( $( '.tenants-wrapper' ).length ) {
       tsource = $( '#tenant-template' ).html();
       ttemplate = Handlebars.compile( tsource );
-      tcontext = { grouping: 'tenant1' };
+      tcontext = { grouping: 'tenant1', num: 1 };
 
       $( '.tenants-wrapper' ).append( ttemplate( tcontext ) );
     }

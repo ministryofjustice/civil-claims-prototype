@@ -1,8 +1,9 @@
 %script#tenant-template(type='text/x-handlebars-template')
+  {{#if additional}}
+  .row.divider
+  {{/if}}
   .sub-panel(class='tenant-form' id='{{grouping}}')
-    {{#if additional}}
-    .row.divider
-    {{/if}}
+    %h4 Tenant {{num}}
     .row
       %label(for='{{grouping}}-title') Title
       %select.small(name='{{grouping}}-title' id='{{grouping}}-title')
