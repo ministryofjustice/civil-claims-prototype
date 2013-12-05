@@ -29,55 +29,42 @@
       .row.rel.help-link.js-manual-address-row
         %a.js-manual-address(href='#') Enter address manually
 
-%section.landlord-details
-  %h3.section-header Landlord (claimant)
+%section.review
+  %h3.section-header
+    Council (claimant)
+    %a.right(href='#') Make changes
   .moj-panel
-    %form
-      .row
-        %label(for='landlord-council')> Council
-        %input(type='text' name='landlord-council' id='landlord-council')
-      .row.rel.street
-        %label(for='landlord-address')> Street
-        %textarea(name='landlord-address' id='landlord-address')
-      .row.rel.town
-        %label(for='landlord-town')> Town
-        %input(type='text' name='landlord-town' id='landlord-town')
-      .row.rel.postcode
-        %label(for='landlord-postcode')> Postcode
-        %input.has-button.smalltext(type='text' name='landlord-postcode' id='landlord-postcode')>
-        %a.button.primary.js-find-address> Find UK address
-      .row
-        %label(for='landlord-title')> Title
-        %select.small(name='landlord-title' id='landlord-title')
-          %option(value='') select
-          %option(value='Mr') Mr
-          %option(value='Mrs') Mrs
-          %option(value='Miss') Miss
-          %option(value='Ms') Ms
-          %option(value='Dr') Dr
-          %option(value='Other') Other
-      .row.rel
-        %label(for='landlord-fullname')> Full name
-        %input(type='text' name='landlord-fullname' id='landlord-fullname')
-      .row.rel
-        %label(for='landlord-phone')> Phone
-        %input(type='text' name='landlord-phone' id='landlord-phone')
-      .row.rel
-        %label(for='landlord-mobile')> Mobile
-        %input(type='text' name='landlord-mobile' id='landlord-mobile')
-      .row.rel
-        %label(for='landlord-email')> Email
-        %input(type='text' name='landlord-email' id='landlord-email')
-      .row.rel.full
-        %details
-          %summary Would you like to provide a DX number?
-          .row
-            %label(for='landlord-dxnumber') DX number
-            %input(type='text' name='landlord-dxnumber' id='landlord-dxnumber')
-          .row.rel
-            %label(for='landlord-dxexchange') DX exchange
-            %input(type='text' name='landlord-dxexchange' id='landlord-dxexchange')
-
+    .row
+      .key
+        Council
+      .value
+        Bristol City Council
+    .row
+      .key
+        Address
+      .value
+        City Hall
+        %br/
+        College Green
+        %br/
+        Bristol
+        %br/
+        BS1 5TR
+    .row
+      .key
+        Full name
+      .value
+        Ms Julia Richards
+    .row
+      .key
+        Phone
+      .value
+        0115 915 5555
+    .row
+      .key
+        Email
+      .value
+        julia.richards@bristol.gov.uk
 
 %section.tenant-details
   %h3.section-header Tenant (defendant)

@@ -3,6 +3,10 @@
     %a(href='/') Home
   %li
     %a(href='/claims/demo/social_yourcases') Cases
+  %li
+    %a{:href => '/claims/demo/social_case/'+params[:case_id] }
+      Case 
+      = params[:case_id]
 
 %section
   %header.page-header
@@ -26,7 +30,7 @@
       .key
         Current status
       .value
-        Hearing scheduled
+        There will be a court hearing
     .row
       .key
         Hearing date
@@ -38,19 +42,8 @@
       .value
         Bristol Civil Justice Centre
     .row
-      .key
-        Address
-      .value
-        2 Redcliff Street
-        %br/
-        Bristol
-        %br/
-        BS1 6GR
-    .row
       .value
         %a(href='https://courttribunalfinder.service.gov.uk/courts/bristol-civil-justice-centre' rel='external') View full court details
-    .row.full.map
-      = image_tag('bristol-court-map.png', alt: 'Bristol Civic Justice Centre map')
 
 
 %section.review
