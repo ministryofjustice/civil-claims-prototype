@@ -17,17 +17,14 @@
       %label(for='{{grouping}}-fullname') Full name
       %input(type='text' name='{{grouping}}-fullname' id='{{grouping}}-fullname' placeholder='e.g. John Smith')
     %fieldset.striped-choice.rel
-      %legend Address
+      %legend Are they living in the property?
       .options.js-tenant-address
         .row.js-same
-          %input(type='radio' name='{{grouping}}-location' id='{{grouping}}-location-inproperty')
-          %label(for='{{grouping}}-location-inproperty') They are living in the property
+          %input(type='radio' name='{{grouping}}-inproperty' id='{{grouping}}-inproperty-yes')
+          %label(for='{{grouping}}-inproperty-yes') Yes
         .row.js-different
-          %input(type='radio' name='{{grouping}}-location' id='{{grouping}}-location-elsewhere')
-          %label(for='{{grouping}}-location-elsewhere') They are at another known address
-        .row.js-unknown
-          %input(type='radio' name='{{grouping}}-location' id='{{grouping}}-location-unknown')
-          %label(for='{{grouping}}-location-unknown') I don't know where they are
+          %input(type='radio' name='{{grouping}}-inproperty' id='{{grouping}}-inproperty-no')
+          %label(for='{{grouping}}-inproperty-no') No
     .row.rel
       %label(for='{{grouping}}-mobile') Mobile
       %input(type='text' name='{{grouping}}-mobile' id='{{grouping}}-mobile')

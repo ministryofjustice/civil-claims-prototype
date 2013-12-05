@@ -1,4 +1,4 @@
-= render partial: 'shared/header_message_rebuild', :locals => {:title => "Property repossession"}
+= render partial: 'shared/header_message_rebuild', :locals => {:title => "Start a property repossession case"}
 
 .container
   %nav.progress
@@ -8,19 +8,19 @@
       %li.completed
         %a(href='/claims/demo/social_step2') Case details
       %li.active
-        %span Confirm details
+        %span Check details
       %li
         %span Pay court fee
       %li
         %span Confirmation
 
 %header.content-header
-  %h2 Step 3 - Confirm details
-  %p Please read through the information you have provided to ensure it’s all correct.
+  %h2 Step 3 - Check details
+  %p Check through the information you have given to ensure it’s all correct.
 
 %section.review
   %h3.section-header
-    Property details
+    Property
     %a.right(href='#') Make changes
   .moj-panel
     .row
@@ -37,12 +37,12 @@
 
 %section.review
   %h3.section-header
-    Landlord details
+    Landlord (claimant)
     %a.right(href='#') Make changes
   .moj-panel
     .row
       .key
-        Company name
+        Council
       .value
         Bristol City Council
     .row
@@ -79,47 +79,7 @@
 
 %section.review
   %h3.section-header
-    Managing agent details
-    %a.right(href='#') Make changes
-  .moj-panel
-    .row
-      .key
-        Company name
-      .value
-        Agents UK Ltd
-    .row
-      .key
-        Address
-      .value
-        113 Haywards Road
-        %br/
-        Bristol
-        %br/
-        BS3 5PD
-    .row
-      .key
-        Full name
-      .value
-        Mr Robert Robertson
-    .row
-      .key
-        Phone
-      .value
-        020 8345 6789
-    .row
-      .key
-        Mobile
-      .value
-        07798 346457
-    .row
-      .key
-        Email
-      .value
-        rob.robertson@agentsuk.com
-
-%section.review
-  %h3.section-header
-    Tenant details
+    Tenant (defendant)
     %a.right(href='#') Make changes
   .moj-panel
     .row
@@ -145,19 +105,6 @@
 
 %section.review
   %h3.section-header
-    About the case
-    %a.right(href='#') Make changes
-  .moj-panel
-    .row
-      .key
-        Notice sent
-      .value
-        Notice to quit
-        %br/
-        Sent 10 September 2013
-
-%section.review
-  %h3.section-header
     About the tenancy
     %a.right(href='#') Make changes
   .moj-panel
@@ -165,7 +112,7 @@
       .key
         Tenancy type
       .value
-        Assured shorthold tenancy
+        Secure tenancy
     .row
       .key
         Tenancy start date
@@ -174,7 +121,20 @@
 
 %section.review
   %h3.section-header
-    Additional information
+    About the case
+    %a.right(href='#') Make changes
+  .moj-panel
+    .row
+      .key
+        Notice sent
+      .value
+        Notice seeking possession
+        %br/
+        Served 10 September 2013
+
+%section.review
+  %h3.section-header
+    Further information
     %a.right(href='#') Make changes
   .moj-panel
     .row.full
@@ -182,31 +142,21 @@
         Other information
       .value.highlight
         Lobortis augue sed tincidunt. Quisque posuere, est eget luctus interdum, nulla augue iaculis metus.
-    .row.full
-      .key
-        Attached files
-      .value.files
-        %ul
-          %li
-            Tenancyagreement.pdf
-            %a(href='#') View
-          %li
-            Letter_from_Lambeth_Council.doc
-            %a(href='#') View
-          %li
-            LettertoDefendant.doc
-            %a(href='#') View
 
 %section
   %h3.section-header
-    Confirm details
+    Statement of truth
   .moj-panel
     %form
       .row.full
         %input#confirm-details(type='checkbox' name='confirm-details')
-        %label(for='confirm-details') I believe that the facts stated in this case (and any attached documents) are to the best of my knowledge true and correct.
+        %label(for='confirm-details')
+          I
+          %strong John Smith Reynolds
+          believe the facts stated on this form (and any attached documents) are true.
       .row.rel.full.warning
-        A person who confirms these details without an honest belief in the truth of the given information is liable to proceedings for contempt of court.
+        Proceedings for contempt of court may be brought against a person if he makes, or causes to be made, a false statement in a document verified by a statement of truth without an honest belief in its truth.
+
 
 
 %section

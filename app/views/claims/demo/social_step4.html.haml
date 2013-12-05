@@ -1,4 +1,4 @@
-= render partial: 'shared/header_message_rebuild', :locals => {:title => "Property repossession"}
+= render partial: 'shared/header_message_rebuild', :locals => {:title => "Start a property repossession case"}
 
 .container
   %nav.progress
@@ -8,7 +8,7 @@
       %li.completed
         %a(href='/claims/demo/social_step2') Case details
       %li.completed
-        %a(href='/claims/demo/social_step3') Confirm details
+        %a(href='/claims/demo/social_step3') Check details
       %li.active
         %span Pay court fee
       %li
@@ -17,14 +17,12 @@
 %header.content-header
   %h2 Step 4 - Pay court fee
   %p
-    Below is the hearing you could get if you pay the court fee now.
-    %br/
-    Choose how you want to pay the fee and enter your payment details.
+    The hearing date below is available if you pay the court fee in the next 30 minutes:
 
 
 %section
   %h3.section-header
-    Provisional hearing
+    Hearing date
   .moj-panel.important
     .row
       .key
@@ -62,10 +60,6 @@
           Account number
         .value
           80044936
-      .row.divider
-      .row.full
-        %input#ask-tenent-to-pay(type='checkbox' name='ask-tenent-to-pay')
-        %label(for='ask-tenent-to-pay') Do you want to ask the tenant to pay for the cost of the case?
 
 %section
   %h3.section-header
@@ -73,12 +67,13 @@
   .moj-panel
     .row.full
       %input#agree-terms(type='checkbox' name='agree-terms')
-      %label(for='agree-terms') I agree to the terms and conditions of this service.
+      %label(for='agree-terms')
+        I agree to the #{link_to 'terms and conditions', '#'} of this service.
     .row.rel.full.information
-      We will never share any of the data or details you have provided in this form with anyone. See full details on our #{link_to 'privacy policy', '#'} and #{link_to 'terms and conditions', '#'}.
+      We will never share your details with anyone: see our #{link_to 'privacy policy', '#'}.
       
 
 %section
   .action-buttons.cf
-    %a.button.primary.large.chevron.left(href='/claims/demo/social_step5') Make payment and complete case
+    %a.button.primary.large.chevron.left(href='/claims/demo/social_step5') Pay and send case to the court
     %a.button.secondary.large.right(href='/claims/demo/social_step5') Save and come back later

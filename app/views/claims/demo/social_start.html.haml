@@ -1,7 +1,8 @@
 = render partial: 'shared/header_message_rebuild', :locals => {:title => "Property repossession"}
 
 .container.start
-  %p.lead Use this online form to start the process of repossessing a property if your tenant doesn’t pay their rent, breaks the tenancy agreement or refuses to move out.
+  %p.lead Start court action to repossess your property and collect unpaid rent.
+
 
   .action-buttons.cf
     %a.button.primary.large.chevron.left(href='/claims/demo/social_step1') Start a new case
@@ -10,16 +11,7 @@
   %h2 Before you start
 
   %ul
-    %li Try to contact your tenant to come to an agreement.
-    %li You must have given the tenants #{link_to 'notice to leave', '#'}.
-    %li
-      The form will take about
-      %strong 20 minutes
-      to complete.
-    %li
-      You will have to pay a
-      %strong £100
-      court fee.
-    %li You may have to go to a court hearing afterwards.
-    %li The whole process can take at least 12 weeks.
-    %li This service is only for England and Wales.
+    %li Try to contact the tenant.
+    %li Try to agree repayment.
+    %li Send them a notice to leave the property.
+    %li You must also follow the other steps in the #{link_to 'pre-action protocol', '#'}.
