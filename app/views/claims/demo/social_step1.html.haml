@@ -78,65 +78,6 @@
             %label(for='landlord-dxexchange') DX exchange
             %input(type='text' name='landlord-dxexchange' id='landlord-dxexchange')
 
-%section
-  %h3.section-header Managing agent
-  .moj-panel
-    %form
-      %fieldset.striped-choice
-        %legend Is there a managing agent?
-        .options
-          .row
-            %input#managing-egent-exists-yes.js-depend(type='radio' name='managing-egent-exists' data-depend='managing-agent')
-            %label(for='managing-egent-exists-yes') Yes
-          .row
-            %input#managing-egent-exists-no.js-depend(type='radio' name='managing-egent-exists')
-            %label(for='managing-egent-exists-no') No
-      .sub-panel.hide.js-managing-agent
-        .row
-          %label(for='managing-agent-companyname')> Company name
-          %input(type='text' name='managing-agent-companyname' id='managing-agent-companyname')
-        .row.rel.street
-          %label(for='managing-agent-address')> Street
-          %textarea(name='managing-agent-address' id='managing-agent-address')
-        .row.rel.town
-          %label(for='managing-agent-town')> Town
-          %input(type='text' name='managing-agent-town' id='managing-agent-town')
-        .row.rel.postcode
-          %label(for='managing-agent-postcode')> Postcode
-          %input.has-button.smalltext(type='text' name='managing-agent-postcode' id='managing-agent-postcode')>
-          %a.button.primary.js-find-address> Find UK address
-        .row
-          %label(for='managing-agent-title')> Title
-          %select.small(name='managing-agent-title' id='managing-agent-title')
-            %option(value='') select
-            %option(value='Mr') Mr
-            %option(value='Mrs') Mrs
-            %option(value='Miss') Miss
-            %option(value='Ms') Ms
-            %option(value='Dr') Dr
-            %option(value='Other') Other
-        .row.rel
-          %label(for='managing-agent-fullname')> Full name
-          %input(type='text' name='managing-agent-fullname' id='managing-agent-fullname')
-        .row.rel
-          %label(for='managing-agent-phone')> Phone
-          %input(type='text' name='managing-agent-phone' id='managing-agent-phone')
-        .row.rel
-          %label(for='managing-agent-mobile')> Mobile
-          %input(type='text' name='managing-agent-mobile' id='managing-agent-mobile')
-        .row.rel
-          %label(for='managing-agent-email')> Email
-          %input(type='text' name='managing-agent-email' id='managing-agent-email')
-        .row.rel.full
-          %details
-            %summary Would you like to provide a DX number?
-            .row
-              %label(for='managing-agent-dxnumber') DX number
-              %input(type='text' name='managing-agent-dxnumber' id='managing-agent-dxnumber')
-            .row.rel
-              %label(for='managing-agent-dxexchange') DX exchange
-              %input(type='text' name='managing-agent-dxexchange' id='managing-agent-dxexchange')
-
 
 %section.tenant-details
   %h3.section-header Tenant details
