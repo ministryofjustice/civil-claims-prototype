@@ -2,19 +2,7 @@ require 'pp'
 
 class ClaimsController < ApplicationController
   def home
-    # case session[:role]
-    # when 'claimant'
-    #   render 'claims/claimant/index'
-    # when 'defendant'
-    #   redirect_to claims_defence_path
-    # when 'staff'
-    #   render 'claims/staff/index', :layout => 'staff'
-    # when 'judge'
-    #   render 'claims/judge/index'
-    # end
-
     render 'claims/demo/social_start', :layout => 'application-rebuild'
-
   end
 
   def templates
