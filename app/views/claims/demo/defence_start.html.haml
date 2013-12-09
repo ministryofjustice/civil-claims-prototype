@@ -20,7 +20,7 @@
           SE26 6UP
       .row
         .key
-          Landlord
+          Council
         .value
           Bristol City Council
       .row
@@ -32,6 +32,7 @@
   %section.review
     %h3.section-header
       Case status
+      %a.right(href='#') View history
     .moj-panel.highlight
       .row
         .key
@@ -63,7 +64,7 @@
       .row.full.map
         = image_tag('bristol-court-map.png', alt: 'Bristol Civic Justice Centre map')
 
-  %h2 Guide to starting a defence
+  %h2 How to start a defence
 
   %ol.steps.defence
     %li
@@ -89,8 +90,5 @@
 
   %ul
     %li Speak to the council and try to come to an agreement.
-    %li The council must have sent you #{link_to 'notice to leave', '#'} before starting court action.
-    %li
-      The form will take about
-      %strong 20 minutes
-      to complete.
+    %li The council usually has to send you a letter telling you to leave the porperty before it starts legal action.
+    %li You may be able to get free advice from #{link_to 'Shelter', '#'}, #{link_to 'Citizens Advice', '#'} or a #{link_to 'law centre', '#'}.

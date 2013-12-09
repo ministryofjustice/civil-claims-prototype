@@ -23,7 +23,7 @@
       %label(for='defendant-title')> Title
       %select.small(name='defendant-title' id='defendant-title')
         %option(value='') select
-        %option(value='Mr') Mr
+        %option(value='Mr' selected) Mr
         %option(value='Mrs') Mrs
         %option(value='Miss') Miss
         %option(value='Ms') Ms
@@ -31,26 +31,23 @@
         %option(value='Other') Other
     .row.rel
       %label(for='defendant-fullname')> Full name
-      %input(type='text' name='defendant-fullname' id='defendant-fullname')
+      %input(type='text' name='defendant-fullname' id='defendant-fullname' value='Louis Robert Stevenson')
     .row.rel.street
       %label(for='defendant-address')> Street
-      %textarea(name='defendant-address' id='defendant-address')
+      %textarea(name='defendant-address' id='defendant-address') Flat 3   92 Crystal Palace Park Road
     .row.rel.town
       %label(for='defendant-town')> Town
-      %input(type='text' name='defendant-town' id='defendant-town')
+      %input(type='text' name='defendant-town' id='defendant-town' value='London')
     .row.rel.postcode
       %label(for='defendant-postcode')> Postcode
-      %input.has-button.smalltext(type='text' name='defendant-postcode' id='defendant-postcode')>
+      %input.has-button.smalltext(type='text' name='defendant-postcode' id='defendant-postcode' value='SE26 6UP')>
       %a.button.primary.js-find-address> Find UK address
-    .row.rel
-      %label(for='defendant-phone')> Phone
-      %input(type='text' name='defendant-phone' id='defendant-phone')
     .row.rel
       %label(for='defendant-mobile')> Mobile
       %input(type='text' name='defendant-mobile' id='defendant-mobile')
     .row.rel
       %label(for='defendant-email')> Email
-      %input(type='text' name='defendant-email' id='defendant-email')
+      %input(type='text' name='defendant-email' id='defendant-email' value='lrstevenson@hotmail.co.uk')
 
 %section
   %h3.section-header Your finances

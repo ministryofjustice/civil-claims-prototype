@@ -20,7 +20,7 @@
   %h3.section-header About the case
   .moj-panel
     %fieldset.striped-choice.full
-      %legend Have you fallen behind with the rent?
+      %legend Do you agree that you've fallen behind in paying the rent?
       .options
         .row
           %input#behind-rent-yes.js-depend(type='radio' name='behind-rent' data-depend='rent-arrears')
@@ -31,9 +31,7 @@
     .sub-panel.extra.hide.js-rent-arrears
       %fieldset.striped-choice.full
         %legend
-          The council says that the total amount of unpaid rent is <strong>&pound;2850</strong>.
-          %br/
-          Is this correct?
+          Do you agree that you owe <strong>&pound;2850</strong> in unpaid rent?
         .options
           .row
             %input#arrears-correct-yes.js-depend(type='radio' name='arrears-correct')
@@ -43,11 +41,11 @@
             %label(for='arrears-correct-no') No
       .sub-panel.hide.js-incorrect-total
         .row.full
-          %label(for='incorrect-total-figure') What do you think is the unpaid rent?
+          %label(for='incorrect-total-figure') What do you think you owe?
           %input#incorrect-total-figure.pound(type='text' name='incorrect-total-figure')
       %fieldset.striped-choice.full
         %legend
-          Have you paid any money to the council since <strong>10 July 2013</strong>?
+          Have you paid any money towards the unpaid rent since <strong>10 July 2013</strong> (when the court case started)?
         .options
           .row
             %input#made-payment-yes.js-depend(type='radio' name='made-payment' data-depend='money-paid')
@@ -61,7 +59,7 @@
           %input#money-paid-amount.pound(type='text' name='money-paid-amount')
       %fieldset.striped-choice.full
         %legend
-          Have you agreed to pay the money you owe in installments?
+          Have you come to an agreement with the council about paying the unpaid rent in instalments?
         .options
           .row
             %input#installments-yes.js-depend(type='radio' name='installments' data-depend='instalments')
@@ -85,9 +83,9 @@
             %option(value='weekly') per week
     %fieldset.striped-choice.full
       %legend
-        Has the council sent you a 'notice to quit'?
+        Has the council sent you a 'notice seeking possession'
         %br/
-        (a letter to say you must leave the property)
+        (a letter to say you must leave the property)?
       .options
         .row
           %input#notice-sent-yes.js-depend(type='radio' name='notice-sent' data-depend='notice-date')
@@ -177,19 +175,9 @@
         %summary Have you started a court case against the council about the property?
         %label(for='case-number') Case number
         %input#case-number(type='text' name='case-number')
-        %a.help-link(href='#') About other court cases
     .row.full
       %label(for='additional-info') Is there anything else you’d like to add about your case?
       %textarea#additional-info
-
-%section
-  %h3.section-header Attachments
-  .moj-panel
-    .row.full
-      %p Attach any bills, receipts, files that support your defence
-      %a.button(href='#') Attach files
-    .row.full.rel
-      %a.help-link(href='#') About attaching files
 
 %section
   .action-buttons.cf
