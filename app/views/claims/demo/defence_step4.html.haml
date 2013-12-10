@@ -1,0 +1,219 @@
+= render partial: 'shared/header_message_rebuild', :locals => {:title => "Property repossession: defence"}
+
+.container
+  %nav.progress
+    %ol
+      %li.completed
+        %a(href='/claims/demo/defence_step1') About the case
+      %li.completed
+        %a(href='/claims/demo/defence_step2') About you
+      %li.completed
+        %a(href='/claims/demo/defence_step3') Your finances
+      %li.active
+        %span Check details
+      %li
+        %span Confirmation
+
+%header.content-header
+  %h2 Step 4 - Check details
+  %p Please check through the information you have given to ensure it's all correct.
+
+%section.review
+  %h3.section-header
+    About the case
+    %a.right(href='#') Make changes
+  .moj-panel
+    .row.full
+      I <strong>received</strong> a notice seeking possession from the council on <strong>11 June 2010</strong>.
+    .row.full
+      I <strong>agree</strong> that I have fallen beind on the rent.
+    .row.full
+      I <strong>agree</strong> that the total amount of unpaid rent is <strong>&pound;1,150</strong>.
+    .row.full
+      I have paid <strong>&pound;200</strong> to the council since <strong>10 July 2013</strong> (when the court case started).
+    .row.full
+      I <strong>have</strong> agreed to pay <strong>&pound;3.60 per week</strong> towards the unpaid rent.
+    .row.full
+      I <strong>have</strong> a court case against my landlord: case number <strong>28FXJ75</strong>
+    .row.full
+      .value.highlight
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vehicula turpis non nunc tempus semper. Cras fringilla, leo non eleifend viverra, ligula est semper neque, at scelerisque erat nisl non nibh. Aliquam tempus blandit pretium. Nulla erat purus, laoreet a elementum in, tempor vel arcu.
+        %br/
+        %br/
+        Nunc at leo eu dolor malesuada consequat. Praesent enim odio, placerat vitae gravida sit amet, elementum id nibh. Praesent feugiat vitae ante sit amet egestas.
+        %br/
+        %br/
+        Nunc at leo eu dolor malesuada consequat. Praesent enim odio, placerat vitae gravida sit amet, elementum id nibh. Praesent feugiat vitae ante sit amet egestas.
+
+%section.review
+  %h3.section-header
+    Contact details
+    %a.right(href='#') Make changes
+  .moj-panel
+    .row
+      .key
+        Name
+      .value
+        Mr Louis Robert Stevenson
+    .row
+      .key
+        Address
+      .value
+        Flat 3
+        %br/
+        92 Crystal Palace Park Road
+        %br/
+        London
+        %br/
+        SE26 6UP
+    .row
+      .key
+        Email
+      .value
+        lrstevenson@hotmail.co.uk
+
+%section.review
+  %h3.section-header
+    Your circumstances
+    %a.right(href='#') Make changes
+  .moj-panel
+    .row.full
+      I <strong>would</strong> have somewhere else to live if the property were repossessed, and would be able to move in on <strong>10 August 2013</strong>.
+    .row.full
+      I have <strong>3 chuldren</strong> and <strong>1 adult</strong> who depend on me for financial support.
+    .row.full
+      .value.highlight
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vehicula turpis non nunc tempus semper. Cras fringilla, leo non eleifend viverra, ligula est semper neque, at scelerisque erat nisl non nibh. Aliquam tempus blandit pretium. Nulla erat purus, laoreet a elementum in, tempor vel arcu.
+        %br/
+        %br/
+        Nunc at leo eu dolor malesuada consequat. Praesent enim odio, placerat vitae gravida sit amet, elementum id nibh. Praesent feugiat vitae ante sit amet egestas.
+        %br/
+        %br/
+        Nunc at leo eu dolor malesuada consequat. Praesent enim odio, placerat vitae gravida sit amet, elementum id nibh. Praesent feugiat vitae ante sit amet egestas.
+
+%section.review
+  %h3.section-header
+    Bank balances
+    %a.right(href='#') Make changes
+  .moj-panel
+    .row
+      .key
+        Current account balance
+      .value
+        &pound;998.57
+    .row
+      .key
+        Savings account balance
+      .value
+        &pound;134.42
+
+%section.review
+  %h3.section-header
+    Money in
+    %a.right(href='#') Make changes
+  .moj-panel
+    .row
+      .key
+        Salary/earnings
+      .value
+        &pound;234 per week
+    .row
+      .key
+        Child Benefit
+      .value
+        &pound;20.30 per week
+    .row
+      .key
+        Jobseeker's Allowance
+      .value
+        &pound;71.70 per week
+    .row
+      .key
+        Income Support
+      .value
+        &pound;58.80 per week
+    .row
+      .key
+        Other money in
+      .value
+        &pound;40 per week
+    .row
+      .key.total
+        Total money in
+      .value.total
+        &pound;1699.20 per month
+
+%section.review
+  %h3.section-header
+    Money out
+    %a.right(href='#') Make changes
+  .moj-panel
+    .row
+      .key
+        Council Tax
+      .value
+        &pound;68.23 per month
+    .row
+      .key
+        Electricity
+      .value
+        &pound;93.91 per month
+    .row
+      .key
+        Gas
+      .value
+        &pound;20 per month
+    .row
+      .key
+        Water
+      .value
+        &pound;14.25 per month
+    .row
+      .key
+        Public transport
+      .value
+        &pound;58.40 per month
+    .row
+      .key
+        Mobile phone
+      .value
+        &pound;20 per month
+    .row
+      .key
+        TV licence
+      .value
+        &pound;10.50 per month
+    .row
+      .key
+        Groceries
+      .value
+        &pound;77 per week
+    .row
+      .key
+        Other money out
+      .value
+        &pound;50 per week
+    .row
+      .key.total
+        Total money out
+      .value.total
+        &pound;793.29 per month
+
+%section
+  %h3.section-header
+    Statement of truth
+  .moj-panel
+    %form
+      .row.full
+        %input#confirm-details(type='checkbox' name='confirm-details')
+        %label(for='confirm-details')
+          I
+          %strong Louis Robert Stevenson
+          believe the facts stated on this form are true.
+      .row.rel.full.warning
+        Proceedings for contempt of court may be brought against a person if he makes, or causes to be made, a false statement in a document verified by a statement of truth without an honest belief in its truth.
+
+
+%section
+  .action-buttons.cf
+    %a.button.primary.large.chevron.left(href='/claims/demo/defence_step5') Complete defence

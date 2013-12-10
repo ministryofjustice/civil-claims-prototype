@@ -73,6 +73,12 @@ button, .button
     .js-enabled &
       padding-top: 40px
 
+  &.js-benefits-detail
+    padding-top: 0
+
+    .row:first-child
+      margin-top: 40px
+
   > h4
     margin: 0 0 40px 30px
     font-size: 24px
@@ -242,6 +248,8 @@ button, .button
         width: 670px
         float: none
         margin: 0
+        &.rel
+          margin-top: 15px
       textarea
         width: 660px
         height: 100px
@@ -295,11 +303,14 @@ button, .button
     .key
       .review &
         color: $grey-1
+      &.total
+        color: $black
+        font-weight: bold
 
     .value
       &.total
+        font-weight: bold
         span
-          font-weight: bold
           display: inline-block
           &.pound
             width: 30px
@@ -310,6 +321,8 @@ button, .button
     .highlight
       background-color: $white
       padding: 15px
+      max-height: 180px
+      overflow-y: auto
 
     input[type="text"]
       width: 300px
