@@ -99,7 +99,7 @@
             %input#benefit-other.js-depend(type='checkbox' data-depend='benefit-other')
             %label(for='benefit-other') Other benefits
     %fieldset.striped-choice
-      %legend Are you receiving a state pension?
+      %legend Are you receiving a State Pension?
       .options
         .row
           %input#state-pension-yes.js-depend(type='radio' name='state-pension' data-depend='pension')
@@ -178,7 +178,7 @@
           %option(value='weekly') per week
 
     .row.hide.js-pension
-      %label(for='pension') State pension
+      %label(for='pension') State Pension
       %input#pension.pound(type='text' name='pension')
       %select#pension-frequency.small
         %option(value='monthly') per month
@@ -194,7 +194,7 @@
         Total money in
       .value.total
         %span.pound &pound;
-        %span.total 1850
+        %span.total.number 1850
         %span.frequency per month
     .row
       %a.help-link(href='#') About money in
@@ -205,7 +205,7 @@
   .moj-panel
     %h4 Household bills
     .row
-      %label(for='council-tax') Council tax
+      %label(for='council-tax') Council Tax
       %input#council-tax.pound(type='text' name='council-tax')
       %select#council-tax-frequency.small
         %option(value='monthly') per month
@@ -277,15 +277,15 @@
     .row.divider
     %h4 Living expenses
     .row
-      %label(for='child-care') Child care costs
-      %input#child-care.pound(type='text' name='child-care')
-      %select#child-care-frequency.small
-        %option(value='monthly') per month
-        %option(value='weekly') per week
-    .row
       %label(for='groceries') Groceries
       %input#groceries.pound(type='text' name='groceries')
       %select#groceries-frequency.small
+        %option(value='monthly') per month
+        %option(value='weekly') per week
+    .row
+      %label(for='child-care') Child care costs
+      %input#child-care.pound(type='text' name='child-care')
+      %select#child-care-frequency.small
         %option(value='monthly') per month
         %option(value='weekly') per week
     .row
@@ -306,7 +306,7 @@
         Total money out
       .value.total
         %span.pound &pound;
-        %span.total 1850
+        %span.total.number 1850
         %span.frequency per month
     .row
       %a.help-link(href='#') About money out

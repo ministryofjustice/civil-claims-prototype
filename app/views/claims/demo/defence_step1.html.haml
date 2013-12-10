@@ -33,7 +33,7 @@
     .sub-panel.extra.hide.js-rent-arrears
       %fieldset.striped-choice.full
         %legend
-          Do you agree that you owe <strong>&pound;2850</strong> in unpaid rent?
+          Do you agree that you owe <strong>&pound;<span class="number">1150</span></strong> in unpaid rent?
         .options
           .row
             %input#arrears-correct-yes.js-depend(type='radio' name='arrears-correct')
@@ -74,15 +74,15 @@
           %label(for='instalments-amount') Payment amount
           %input#instalments-amount.pound(type='text' name='instalments-amount')
           %select#instalments-frequency.small
-            %option(value='monthly') per month
             %option(value='weekly') per week
+            %option(value='monthly') per month
       .sub-panel.hide.js-could-afford
         .row.full
           %label(for='suggested-instalments-amount') How much could you afford to pay on top of the current rent?
           %input#suggested-instalments-amount.pound(type='text' name='suggested-instalments-amount')
           %select#suggested-instalments-frequency.small
-            %option(value='monthly') per month
             %option(value='weekly') per week
+            %option(value='monthly') per month
     %fieldset.striped-choice.full
       %legend
         Has the council sent you a 'notice seeking possession'
