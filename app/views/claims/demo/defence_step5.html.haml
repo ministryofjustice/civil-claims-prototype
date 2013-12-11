@@ -1,0 +1,96 @@
+%section.confirmation-intro
+  %h1 Your defence has been sent to the court
+  %p We've sent you an email with all the details of your defence.
+  %h2
+    Reference number:
+    %strong GLD7123R
+
+%section.review
+  %h3.section-header
+    Defence summary
+    %a.right(href='#') View the defence
+  .moj-panel
+    .row.full
+      I <strong>received</strong> a notice seeking possession from the council on <strong>11 June 2010</strong>.
+    .row.full
+      I <strong>agree</strong> that I have fallen beind on the rent.
+    .row.full
+      I <strong>agree</strong> that the total amount of unpaid rent is <strong>&pound;<span class="number">1150</span></strong>.
+    .row.full
+      I have paid <strong>&pound;<span class="number">200</span></strong> to the council since <strong>10 July 2013</strong> (when the court case started).
+    .row.full
+      I <strong>have</strong> agreed to pay <strong>&pound;<span class="number">3.60</span> per week</strong> towards the unpaid rent.
+    .row.full
+      I <strong>have</strong> a court case against the council: case number <strong>28FXJ75</strong>.
+
+%section.review
+  %h3.section-header
+    Case summary
+    %a.right(href='#') View the case
+  .moj-panel
+    .row
+      .key
+        Property
+      .value
+        Flat 3
+        %br/
+        92 Crystal Palace Park Road
+        %br/
+        London
+        %br/
+        SE26 6UP
+    .row
+      .key
+        Council
+      .value
+        Bristol City Council
+    .row
+      .key
+        Tenant
+      .value
+        Mr Louis Robert Stevenson
+
+%section.review
+  %h3.section-header
+    Case status
+    %a.right(href='/claims/demo/social_casehistory/2D9KUVVE') View case history
+  .moj-panel.highlight
+    .row
+      .key
+        Current status
+      .value
+        There will be a court hearing
+    .row
+      .key
+        Hearing date
+      .value
+        Wednesday 21 November 2013 at 10:30
+    .row
+      .key
+        Court
+      .value
+        Bristol Civil Justice Centre
+    .row
+      .key
+        Address
+      .value
+        2 Redcliff Street
+        %br/
+        Bristol
+        %br/
+        BS1 6GR
+    .row
+      .value
+        %a(href='https://courttribunalfinder.service.gov.uk/courts/bristol-civil-justice-centre' rel='external') View full court details
+    .row.full.map
+      = image_tag('bristol-court-map.png', alt: 'Bristol Civil Justice Centre map')
+
+%section.next
+  %h2 What happens next
+  %ul
+    %li We'll send the details of your defence to the court.
+    %li A judge will decide on the case at the hearing on <strong>21 August 2013</strong>.
+    %li It's in your best interests to attend.
+    %li You may be able to get free advice from #{link_to 'Shelter', '#'}, #{link_to 'Citizens Advice', '#'} or a #{link_to 'law centre', '#'}.
+    %li You may also be able to get last-minute help on the day of the hearing from an adviser in the court building.
+
