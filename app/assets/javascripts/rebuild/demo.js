@@ -23,6 +23,7 @@ moj.Modules.demo = (function() {
       addRentTableRow,
       formatNumber,
       fixThousands,
+      titleChange,
 
       //elements
       postcodeButtons,
@@ -31,6 +32,7 @@ moj.Modules.demo = (function() {
       jsDepends,
       ntqButton,
       jsDisable,
+      titleSelects,
 
       //vars
       currTenants = 1,
@@ -101,6 +103,7 @@ moj.Modules.demo = (function() {
     jsDepends = $( '.js-depend' );
     jsDisable = $( '.js-disable' );
     ntqButton = $( '.js-noticetoquit' );
+    titleSelects = $( 'select.title' );
   };
 
   bindEvents = function() {
@@ -124,6 +127,10 @@ moj.Modules.demo = (function() {
 
     $( jsDisable ).change( function( e ) {
       jsDisableClick( $( e.target ) );
+    } );
+
+    $( titleSelects ).change( function( e ) {
+      titleChange( $( this ) );
     } );
 
     $( '.addressDropdown' ).unbind('change').on( 'change', function( e ) {
@@ -384,6 +391,10 @@ moj.Modules.demo = (function() {
           x1 = x1.replace( rgx, '$1' + ',' + '$2' );
       }
       return x1 + x2;
+  };
+
+  titleChange = function( $el ) {
+    console.log( $el.val() );
   };
 
   // public
