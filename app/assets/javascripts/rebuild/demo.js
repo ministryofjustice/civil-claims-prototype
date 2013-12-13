@@ -404,10 +404,6 @@ moj.Modules.demo = (function() {
     }
   };
 
-  titleChange = function( $el ) {
-    console.log( $el.val() );
-  };
-
   // public
 
   return {
