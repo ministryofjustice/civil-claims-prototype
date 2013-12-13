@@ -388,9 +388,20 @@ moj.Modules.demo = (function() {
     x2 = x.length > 1 ? '.' + x[ 1 ] : '';
     rgx = /(\d+)(\d{3})/;
     while ( rgx.test( x1 ) ) {
-          x1 = x1.replace( rgx, '$1' + ',' + '$2' );
-      }
-      return x1 + x2;
+      x1 = x1.replace( rgx, '$1' + ',' + '$2' );
+    }
+    return x1 + x2;
+  };
+
+  titleChange = function( $el ) {
+    var html, id;
+    if( $el.val().toLowerCase() === 'other' ) {
+      id = $el.attr( 'id' );
+      html = '<input type="text" id="' + id + '" placeholder="Other">';
+      $el.after( html ).remove();
+    } else {
+
+    }
   };
 
   titleChange = function( $el ) {
