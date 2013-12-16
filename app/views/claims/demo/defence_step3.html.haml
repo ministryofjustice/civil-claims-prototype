@@ -24,19 +24,9 @@
     .row
       %label(for='current-account') Current account balance
       %input#current-account.pound(type='text' name='current-account')
-    %fieldset.striped-choice.nomargin
-      .options
-        .row
-          %input#no-current-account.js-disable(type='checkbox' name='no-current-account' data-disable='current-account')
-          %label(for='no-current-account') I don't have a current account
     .row
       %label(for='savings-account') Savings account balance
       %input#savings-account.pound(type='text' name='savings-account')
-    %fieldset.striped-choice.nomargin
-      .options
-        .row
-          %input#no-savings-account.js-disable(type='checkbox' name='no-savings-account' data-disable='savings-account')
-          %label(for='no-savings-account') I don't have a savings account
     .row.rel
       %a.help-link(href='#') About bank balances
 
@@ -184,7 +174,7 @@
         %option(value='monthly') per month
         %option(value='weekly') per week
     .row
-      %label(for='other-money-in') Any other money in
+      %label(for='other-money-in') Other
       %input#other-money-in.pound(type='text' name='other-money-in')
       %select#other-money-in-frequency.small
         %option(value='monthly') per month
@@ -296,7 +286,7 @@
         %option(value='weekly') per week
     .row.divider
     .row
-      %label(for='other-money-out') Any other money out
+      %label(for='other-money-out') Other
       %input#other-money-out.pound(type='text' name='other-money-out')
       %select#other-money-out-frequency.small
         %option(value='monthly') per month

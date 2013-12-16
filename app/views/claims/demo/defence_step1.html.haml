@@ -173,9 +173,17 @@
             %option(value='1992') 1992
             %option(value='1991') 1991
             %option(value='1990') 1990
-    .row.full
-      %details.full
-        %summary Have you started a court case against the council about the property?
+    %fieldset.striped-choice.full
+      %legend Have you made a counterclaim against the council?
+      .options
+        .row
+          %input#counterclaim-yes.js-depend(type='radio' name='counterclaim' data-depend='counterclaim')
+          %label(for='counterclaim-yes') Yes
+        .row
+          %input#counterclaim-no.js-depend(type='radio' name='counterclaim')
+          %label(for='counterclaim-no') No
+    .sub-panel.extra.rel.hide.js-counterclaim
+      .row.full
         %label(for='case-number') Case number
         %input#case-number(type='text' name='case-number')
     .row.full
