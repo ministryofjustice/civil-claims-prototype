@@ -21,35 +21,19 @@
 %section
   %h3.section-header(id='contact-details') Contact details
   .moj-panel.sub-panel
-    .row
-      %label(for='defendant-title')> Title
-      %select.small.title(name='defendant-title' id='defendant-title')
-        %option(value='') select
-        %option(value='Mr' selected) Mr
-        %option(value='Mrs') Mrs
-        %option(value='Miss') Miss
-        %option(value='Ms') Ms
-        %option(value='Dr') Dr
-        %option(value='Other') Other
-    .row.rel
-      %label(for='defendant-fullname')> Full name
-      %input(type='text' name='defendant-fullname' id='defendant-fullname' value='Louis Robert Stevenson')
-    .row.rel.street
-      %label(for='defendant-address')> Street
-      %textarea(name='defendant-address' id='defendant-address') Flat 3 &#10;12 Park Road &#10;Kingswood
-    .row.rel.town
-      %label(for='defendant-town')> Town
-      %input(type='text' name='defendant-town' id='defendant-town' value='Bristol')
-    .row.rel.postcode
+    .row.full If you aren't living in the property, please give your address below.
+    .row.postcode
       %label(for='defendant-postcode')> Postcode
-      %input.has-button.smalltext(type='text' name='defendant-postcode' id='defendant-postcode' value='BS15 1QU')>
+      %input.has-button.smalltext(type='text' name='defendant-postcode' id='defendant-postcode')>
       %a.button.primary.js-find-address> Find UK address
-    .row.rel
+    .row.rel.help-link.js-manual-address-row
+      %a.js-manual-address(href='#') Enter address manually
+    .row
       %label(for='defendant-mobile')> Mobile
       %input(type='text' name='defendant-mobile' id='defendant-mobile')
     .row.rel
       %label(for='defendant-email')> Email
-      %input(type='text' name='defendant-email' id='defendant-email' value='lrstevenson@hotmail.co.uk')
+      %input(type='text' name='defendant-email' id='defendant-email')
 
 
 %section

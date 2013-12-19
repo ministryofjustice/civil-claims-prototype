@@ -129,8 +129,8 @@
             %input#noticeserved-possession(type='radio' name='noticeserved')
             %label(for='noticeserved-possession') Notice seeking possession
           .row
-            %input#noticeserved-proceedings(type='radio' name='noticeserved')
-            %label(for='noticeserved-proceedings') Notice of possession proceedings
+            %input#noticeserved-intended(type='radio' name='noticeserved')
+            %label(for='noticeserved-intended') Notice of intended possession
       %fieldset.date-picker
         %legend Date notice served
         .row
@@ -211,8 +211,8 @@
         %input#total-unpaid-rent.pound(type='text' name='total-unpaid-rent')
 
 
-%section.further-information
-  %h3.section-header(id='further-information') Further information
+%section#further-information
+  %h3.section-header Further information
   .moj-panel.sub-panel
     %form
       .row.full
@@ -221,6 +221,28 @@
       .row.rel.full
         %input#human-rights(type='checkbox' name='human-rights')
         %label(for='human-rights') The case includes issues under the Human Rights Act 1998
+
+
+%section#recover-steps
+  %h3.section-header Recovery steps already taken
+  .moj-panel.sub-panel
+    %form
+      .row.full
+        %textarea.small#steps-taken(name='steps-taken')
+
+%section#recover-steps
+  %h3.section-header About the defendant
+  .moj-panel.sub-panel
+    %form
+      .row.full
+        %textarea.small#about-defendant(name='about-defendant')
+
+%section#recover-steps
+  %h3.section-header About the claimant
+  .moj-panel.sub-panel
+    %form
+      .row.full
+        %textarea.small#about-claimant(name='about-claimant')
 
 %section
   .action-buttons.cf
