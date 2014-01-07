@@ -1,0 +1,16 @@
+- @hide_user_nav = true
+
+%header.page-header.group
+  %h1 Sign in
+  %p.lead Sign in to start court action against a tenant, or view details of your other cases.
+
+.container
+  %form
+    %fieldset.plain
+      %label(for='fullname') Full name
+      %input#fullname(type='text')
+      %label(for='password') Password
+      %input#password(type='password')
+      %a.block(href='#') Request a new password
+    .action-buttons.cf
+      %a.button.primary.large.chevron.left(href='social_start') Sign in
