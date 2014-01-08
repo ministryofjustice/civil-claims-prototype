@@ -223,25 +223,28 @@
         %label(for='human-rights') The case includes issues under the Human Rights Act 1998
 
 
-%section#recover-steps
+%section#recovery-steps-section
   %h3.section-header Recovery steps already taken
   .moj-panel.sub-panel
     %form
       .row.full
+        %label.hidden(for='steps-taken') Recovery steps already taken
         %textarea.small#steps-taken(name='steps-taken')
 
-%section#recover-steps
+%section#about-defendant-section
   %h3.section-header About the defendant
   .moj-panel.sub-panel
     %form
       .row.full
+        %label.hidden(for='about-defendant') About the defendant
         %textarea.small#about-defendant(name='about-defendant')
 
-%section#recover-steps
+%section#about-claimant-section
   %h3.section-header About the claimant
   .moj-panel.sub-panel
     %form
       .row.full
+        %label.hidden(for='about-claimant') About the claimant
         %textarea.small#about-claimant(name='about-claimant')
 
 %section
