@@ -20,11 +20,12 @@
 
 
 %section.about-tenancy
+  %span.right *required
   %h3.section-header(id='about-the-tenancy') About the tenancy
   .moj-panel.sub-panel
     %form
       %fieldset.striped-choice
-        %legend Tenancy type
+        %legend Tenancy type*
         .options
           .row
             %input#tenancytype-secure(type='radio' name='tenancytype' checked='checked')
@@ -33,7 +34,7 @@
             %input#tenancytype-introductory(type='radio' name='tenancytype')
             %label(for='tenancytype-introductory') Introductory tenancy
       %fieldset.date-picker
-        %legend Tenancy start date
+        %legend Tenancy start date*
         .row
           %select#tenancystart-date.date-date
             %option(value='') day
@@ -109,7 +110,7 @@
             %option(value='1991') 1991
             %option(value='1990') 1990
       .row
-        %label(for='rent-amount') Rent amount
+        %label(for='rent-amount') Rent amount*
         %input#rent-amount.pound(type='text' name='rent-amount')
         %select#rent-amount-frequency.small
           %option(value='weekly') per week
@@ -119,20 +120,21 @@
         %input#daily-rent-amount.pound(type='text' name='daily-rent-amount')
 
 %section.about-case
-  %h3.section-header(id='about-the-case') About the case
+  %h3.section-header(id='about-the-case')
+    About the case
   .moj-panel
     %form
       %fieldset.striped-choice
-        %legend Notice served
+        %legend Notice served*
         .options
           .row
-            %input#noticeserved-possession(type='radio' name='noticeserved')
+            %input#noticeserved-possession(type='radio' name='noticeserved' checked='checked')
             %label(for='noticeserved-possession') Notice seeking possession
           .row
             %input#noticeserved-intended(type='radio' name='noticeserved')
             %label(for='noticeserved-intended') Notice of intended possession
       %fieldset.date-picker
-        %legend Date notice served
+        %legend Date notice served*
         .row
           %select#noticeserved-date.date-date
             %option(value='') day
@@ -207,20 +209,18 @@
             %option(value='1992') 1992
             %option(value='1991') 1991
       .row
-        %label(for='total-unpaid-rent') Total unpaid rent
+        %label(for='arrears-when-notice-served') Total arrears when notice was served
+        %input#arrears-when-notice-served.pound(type='text' name='arrears-when-notice-served')
+      .row
+        %label(for='total-unpaid-rent') Total unpaid rent*
         %input#total-unpaid-rent.pound(type='text' name='total-unpaid-rent')
-
-
-%section#further-information
-  %h3.section-header Further information
-  .moj-panel.sub-panel
-    %form
       .row.full
-        %label(for='further-info') Please give any other information that may be useful for the court.
-        %textarea#further-info(name='further-info')
+        %input#tenant-pay-costs(type='checkbox' checked='checked')
+        %label(for='tenant-pay-costs') Do you want to ask for the tenant to pay for the cost of the case?
       .row.rel.full
         %input#human-rights(type='checkbox' name='human-rights')
         %label(for='human-rights') The case includes issues under the Human Rights Act 1998
+
 
 
 %section#recovery-steps-section
@@ -229,7 +229,7 @@
     %form
       .row.full
         %label.hidden(for='steps-taken') Recovery steps already taken
-        %textarea.small#steps-taken(name='steps-taken')
+        %textarea#steps-taken(name='steps-taken' data-maxlength='1500')
 
 %section#about-defendant-section
   %h3.section-header About the defendant
@@ -237,7 +237,7 @@
     %form
       .row.full
         %label.hidden(for='about-defendant') About the defendant
-        %textarea.small#about-defendant(name='about-defendant')
+        %textarea#about-defendant(name='about-defendant' data-maxlength='1500')
 
 %section#about-claimant-section
   %h3.section-header About the claimant
@@ -245,7 +245,7 @@
     %form
       .row.full
         %label.hidden(for='about-claimant') About the claimant
-        %textarea.small#about-claimant(name='about-claimant')
+        %textarea#about-claimant(name='about-claimant' data-maxlength='1500')
 
 %section
   .action-buttons.cf

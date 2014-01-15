@@ -24,6 +24,8 @@ moj.Modules.demo = (function() {
       formatNumber,
       fixThousands,
       titleChange,
+      setupMaxLength,
+      checkMaxLength,
 
       //elements
       postcodeButtons,
@@ -33,6 +35,7 @@ moj.Modules.demo = (function() {
       ntqButton,
       jsDisable,
       titleSelects,
+      maxLengthEls,
 
       //vars
       currTenants = 1,
@@ -94,6 +97,8 @@ moj.Modules.demo = (function() {
     $( '.number' ).each( function() {
       fixThousands( $( this ) );
     } );
+
+    setupMaxLength();
   };
 
   cacheEls = function() {
@@ -104,6 +109,7 @@ moj.Modules.demo = (function() {
     jsDisable = $( '.js-disable' );
     ntqButton = $( '.js-noticetoquit' );
     titleSelects = $( 'select.title' );
+    maxLengthEls = $( 'textarea[data-maxlength]' );
   };
 
   bindEvents = function() {
@@ -129,7 +135,7 @@ moj.Modules.demo = (function() {
       jsDisableClick( $( e.target ) );
     } );
 
-    $( titleSelects ).change( function( e ) {
+    $( titleSelects ).change( function( ) {
       titleChange( $( this ) );
     } );
 
@@ -156,6 +162,10 @@ moj.Modules.demo = (function() {
 
     $( '.js-add-unpaid-rent-row' ).on( 'click', function( e ) {
       addRentTableRow( $( e.target ) );
+    } );
+
+    $( maxLengthEls ).on( 'keyup', function() {
+      checkMaxLength( $( this ) );
     } );
   };
 
@@ -399,9 +409,32 @@ moj.Modules.demo = (function() {
       id = $el.attr( 'id' );
       html = '<input type="text" id="' + id + '" placeholder="Other">';
       $el.after( html ).remove();
-    } else {
-
     }
+  };
+
+  setupMaxLength = function() {
+    maxLengthEls.each( function() {
+      var $this = $( this ),
+          html;
+      $this.css('background-color', '#fcc');
+
+      html = '<span class="charcount"></span>';
+
+      $this.after( html );
+
+      checkMaxLength( $this );
+    } );
+  };
+
+  checkMaxLength = function( $el ) {
+    var text = $el.val(),
+        max = $el.data( "maxlength" );
+
+    if( text.length > max ) {
+      $el.val( text.substring( 0, max ) );
+    }
+
+    $el.siblings( '.charcount' ).text( text.length + '/' + max );
   };
 
   // public
