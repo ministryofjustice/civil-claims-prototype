@@ -21,11 +21,14 @@ moj.Modules.demo = (function() {
       removeFile,
       attachMiscFile,
       addRentTableRow,
+      deleteRentTableRow,
       formatNumber,
       fixThousands,
       titleChange,
       setupMaxLength,
       checkMaxLength,
+      sortByKey,
+      rentTableRows,
 
       //elements
       postcodeButtons,
@@ -77,7 +80,8 @@ moj.Modules.demo = (function() {
           town:       'Holmrook',
           postcode:   'CA19 1UB'
         }
-      ];
+      ],
+      rentArray = [];
 
   init = function() {
     initTemplates();
@@ -166,6 +170,11 @@ moj.Modules.demo = (function() {
 
     $( maxLengthEls ).on( 'keyup', function() {
       checkMaxLength( $( this ) );
+    } );
+
+    $( document ).on( 'click', '.unpaid-rent-table a.x', function( e ) {
+      e.preventDefault();
+      deleteRentTableRow( $( e.target ) );
     } );
   };
 
@@ -375,14 +384,60 @@ moj.Modules.demo = (function() {
   };
 
   addRentTableRow = function( $el ) {
-    var $tablePanel = $el.closest( '.sub-panel' ).find( '.sub-panel' );
+    var $tablePanel = $el.closest( '.sub-panel' ).find( '.sub-panel' ),
+        $table = $tablePanel.find( 'table.unpaid-rent-table' ),
+        date = $( '#unpaidrentdue-date' ).val(),
+        month = $( '#unpaidrentdue-month' ).val().substring( 0, 3 ),
+        year = $( '#unpaidrentdue-year' ).val(),
+        rent = $( '#rent-amount' ).val(),
+        partPay = $( '#unpaidrent-partpaid' ).is( ':checked' ),
+        partPayAmount = $( '#unpaidrent-partpaid-detail' ).val(),
+        errors = [],
+        dateStr,
+        entryDate,
+        entryAmount,
+        totalRent;
 
-    $tablePanel.show();
-    if( $tablePanel.data( 'show' ) === true ) {
-      $tablePanel.find( 'tr:hidden' ).eq( 0 ).show();
-    } else {
-      $tablePanel.data( 'show', true );
+    if( date === '' || month === '' || year === '' ) {
+      errors[ errors.length ] = 'Please select a complete rent due date.';
     }
+    if( rent === '' ) {
+      errors[ errors.length ] = 'Please enter a rent amount.';
+    }
+    
+    if( partPay ) {
+      if( partPayAmount === '' ) {
+        errors[ errors.length ] = 'Please enter how much rent was part paid for this period.';
+      }
+    } else {
+      partPayAmount = 0;
+    }
+
+    if( errors.length > 0 ) {
+      alert( errors.join( '\n' ) );
+    } else {
+      dateStr = date + ' ' + month + ' ' + year;
+      entryDate = new Date( dateStr );
+
+      rentArray[rentArray.length] = {
+        rent:     rent,
+        partPay:  partPayAmount,
+        date:     entryDate,
+        dateStr:  dateStr
+      };
+
+      sortByKey( rentArray, 'date' );
+
+      rentTableRows( $table );
+    }
+  };
+
+  deleteRentTableRow = function( $el ) {
+    var $row = $el.closest( 'tr' ),
+        ind = $row.closest( 'tbody' ).find( 'tr' ).index( $row );
+
+    rentArray.splice( ind, 1 );
+    rentTableRows( $el.closest( 'table' ) );
   };
 
   fixThousands = function( $el ) {
@@ -416,7 +471,6 @@ moj.Modules.demo = (function() {
     maxLengthEls.each( function() {
       var $this = $( this ),
           html;
-      $this.css('background-color', '#fcc');
 
       html = '<span class="charcount"></span>';
 
@@ -435,6 +489,35 @@ moj.Modules.demo = (function() {
     }
 
     $el.siblings( '.charcount' ).text( text.length + '/' + max );
+  };
+
+  sortByKey = function( array, key ) {
+    return array.sort( function( a, b ) {
+      var x = a[ key ],
+          y = b[ key ];
+      return ( ( x < y ) ? -1 : ( ( x > y ) ? 1 : 0 ) );
+    } );
+  };
+
+  rentTableRows = function ( $table ) {
+    var x,
+        $el = $table.find( 'tbody' ),
+        html = '',
+        total = 0,
+        unpaid;
+
+    if( rentArray.length > 0 ) {
+      for( x = 0; x < rentArray.length; x++ ) {
+        unpaid = rentArray[x].rent - rentArray[x].partPay;
+        html += '<tr><td class="remove"><a class="x" href="#">&times;</a></td><td class="date">' + rentArray[x].dateStr + '</td><td>&pound;' + rentArray[x].rent + '</td><td>&pound;' + rentArray[x].partPay + '</td><td class="unpaid">&pound;' + unpaid + '</td></tr>';
+        total += unpaid;
+      }
+    } else {
+      html = '<tr class="blank"><td class="remove">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>';
+    }
+
+    $el.html( html );
+    $table.find( 'tfoot span.total' ).text( total );
   };
 
   // public
