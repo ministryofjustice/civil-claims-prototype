@@ -396,7 +396,8 @@ moj.Modules.demo = (function() {
         dateStr,
         entryDate,
         entryAmount,
-        totalRent;
+        totalRent,
+        x;
 
     if( date === '' || month === '' || year === '' ) {
       errors[ errors.length ] = 'Please select a complete rent due date.';
@@ -413,12 +414,18 @@ moj.Modules.demo = (function() {
       partPayAmount = 0;
     }
 
+    dateStr = date + ' ' + month + ' ' + year;
+    entryDate = new Date( dateStr );
+
+    for( x = 0; x < rentArray.length; x++ ) {
+      if( rentArray[x].dateStr === dateStr ) {
+        errors[ errors.length ] = 'You have already added an unpaid rent entry for that date.';
+      }
+    }
+
     if( errors.length > 0 ) {
       alert( errors.join( '\n' ) );
     } else {
-      dateStr = date + ' ' + month + ' ' + year;
-      entryDate = new Date( dateStr );
-
       rentArray[rentArray.length] = {
         rent:     rent,
         partPay:  partPayAmount,
