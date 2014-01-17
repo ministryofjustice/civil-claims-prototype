@@ -13,7 +13,10 @@
       %input#password(type='password')
       %a.block(href='#') Request a new password
     .action-buttons.cf
-      %a.button.primary.large.chevron.left(href='social_start') Sign in
+      - if !params[:hidepb]
+        %a.button.primary.large.chevron.left(href='/claims/demo/social_start') Sign in
+      - else
+        %a.button.primary.large.chevron.left(href='/claims/demo/social_start?hidepb=true') Sign in
 
   %br/
   %br/

@@ -1,18 +1,19 @@
 = render partial: 'shared/header_message_rebuild', :locals => {:title => "Start a property repossession case"}
 
-.container
-  %nav.progress
-    %ol
-      %li.active
-        %span Personal details
-      %li
-        %span Case details
-      %li
-        %span Check details
-      %li
-        %span Pay court fee
-      %li
-        %span Confirmation
+- if !params[:hidepb]
+  .container
+    %nav.progress
+      %ol
+        %li.active
+          %span Personal details
+        %li
+          %span Case details
+        %li
+          %span Check details
+        %li
+          %span Pay court fee
+        %li
+          %span Confirmation
 
 %header.content-header
   %h2 Step 1 - Personal details
@@ -33,7 +34,6 @@
 %section.review
   %h3.section-header(id='council')
     Council (claimant)
-    %a.right(href='#') Make changes
   .moj-panel
     .row
       .key
@@ -83,11 +83,14 @@
         .tenants-wrapper
         / rendered by JS/handlebars
 
+
 %section
   .action-buttons.cf
-    %a.button.primary.large.chevron.left(href='/claims/demo/social_step2') Continue to next step
-
-
+    - if !params[:hidepb]
+      %a.button.primary.large.chevron.left(href='/claims/demo/social_step2') Continue to next step
+    - else
+      %a.button.secondary.large.left(href='/claims/demo/social_start?hidepb=true') Back
+      %a.button.primary.large.chevron.right(href='/claims/demo/social_step2?hidepb=true') Continue to next step
 
 
 

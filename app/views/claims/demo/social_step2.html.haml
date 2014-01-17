@@ -1,18 +1,19 @@
 = render partial: 'shared/header_message_rebuild', :locals => {:title => "Start a property repossession case"}
 
-.container
-  %nav.progress
-    %ol
-      %li.completed
-        %a(href='/claims/demo/social_step1') Personal details
-      %li.active
-        %span Case details
-      %li
-        %span Check details
-      %li
-        %span Pay court fee
-      %li
-        %span Confirmation
+- if !params[:hidepb]
+  .container
+    %nav.progress
+      %ol
+        %li.completed
+          %a(href='/claims/demo/social_step1') Personal details
+        %li.active
+          %span Case details
+        %li
+          %span Check details
+        %li
+          %span Pay court fee
+        %li
+          %span Confirmation
 
 %header.content-header
   %h2 Step 2 - Case details
@@ -360,6 +361,11 @@
         %label.hidden(for='about-claimant') About the claimant
         %textarea#about-claimant(name='about-claimant' data-maxlength='1500')
 
+
 %section
   .action-buttons.cf
-    %a.button.primary.large.chevron.left(href='/claims/demo/social_step3') Continue to next step
+    - if !params[:hidepb]
+      %a.button.primary.large.chevron.left(href='/claims/demo/social_step3') Continue to next step
+    - else
+      %a.button.secondary.large.left(href='/claims/demo/social_step1?hidepb=true') Back
+      %a.button.primary.large.chevron.right(href='/claims/demo/social_step3?hidepb=true') Continue to next step

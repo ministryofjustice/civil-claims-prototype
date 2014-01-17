@@ -31,5 +31,8 @@
     \.
 
   .action-buttons.cf
-    %a.button.primary.large.chevron.left(href='/claims/demo/social_step1') Start a new case
+    - if !params[:hidepb]
+      %a.button.primary.large.chevron.left(href='/claims/demo/social_step1') Start a new case
+    - else
+      %a.button.primary.large.chevron.left(href='/claims/demo/social_step1?hidepb=true') Start a new case
     

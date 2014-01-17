@@ -1,18 +1,19 @@
 = render partial: 'shared/header_message_rebuild', :locals => {:title => "Start a property repossession case"}
 
-.container
-  %nav.progress
-    %ol
-      %li.completed
-        %a(href='/claims/demo/social_step1') Personal details
-      %li.completed
-        %a(href='/claims/demo/social_step2') Case details
-      %li.completed
-        %a(href='/claims/demo/social_step3') Check details
-      %li.active
-        %span Pay court fee
-      %li
-        %span Confirmation
+- if !params[:hidepb]
+  .container
+    %nav.progress
+      %ol
+        %li.completed
+          %a(href='/claims/demo/social_step1') Personal details
+        %li.completed
+          %a(href='/claims/demo/social_step2') Case details
+        %li.completed
+          %a(href='/claims/demo/social_step3') Check details
+        %li.active
+          %span Pay court fee
+        %li
+          %span Confirmation
 
 %header.content-header
   %h2 Step 4 - Pay court fee
@@ -75,4 +76,8 @@
 
 %section
   .action-buttons.cf
-    %a.button.primary.large.chevron.left(href='/claims/demo/social_step5') Pay and send case to the court
+    - if !params[:hidepb]
+      %a.button.primary.large.chevron.left(href='/claims/demo/social_step5') Pay and send case to the court
+    - else
+      %a.button.secondary.large.left(href='/claims/demo/social_step3?hidepb=true') Back
+      %a.button.primary.large.chevron.right(href='/claims/demo/social_step5?hidepb=true') Pay and send case to the court

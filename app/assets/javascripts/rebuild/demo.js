@@ -29,6 +29,7 @@ moj.Modules.demo = (function() {
       checkMaxLength,
       sortByKey,
       rentTableRows,
+      externaliseLinks,
 
       //elements
       postcodeButtons,
@@ -102,6 +103,7 @@ moj.Modules.demo = (function() {
       fixThousands( $( this ) );
     } );
 
+    externaliseLinks();
     setupMaxLength();
   };
 
@@ -175,6 +177,13 @@ moj.Modules.demo = (function() {
     $( document ).on( 'click', '.unpaid-rent-table a.x', function( e ) {
       e.preventDefault();
       deleteRentTableRow( $( e.target ) );
+    } );
+  };
+
+  externaliseLinks = function() {
+    $( 'a[rel="external"]' ).on( 'click', function( e ) {
+      e.preventDefault();
+      window.open( $( e.target ).attr( 'href' ), '_blank' );
     } );
   };
 
